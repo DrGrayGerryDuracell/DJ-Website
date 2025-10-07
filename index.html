@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DR. GRAY — Offizielle Website</title>
+  <meta name="description" content="DR. GRAY & MRS. DR. GRAY — Techno / House • Gigs, Musik, Booking." />
+  <meta property="og:title" content="DR. GRAY — Offizielle Website" />
+  <meta property="og:description" content="Techno / House. Tour, Musik, Booking." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.drgray-mrsdrgray.com" />
+  <meta property="og:image" content="assets/img/drgray-logo.jpg" />
+  <link rel="icon" href="assets/img/drgray-logo.jpg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="#home">DR. GRAY</a>
+    <nav class="nav">
+      <a href="#about">About</a>
+      <a href="#music">Musik</a>
+      <a href="#tour">Tour</a>
+      <a href="#gallery">Galerie</a>
+      <a href="#contact" class="btn btn-small">Booking</a>
+    </nav>
+    <button id="menuToggle" aria-label="Menü öffnen" class="menu-toggle">☰</button>
+  </header>
+
+  <main id="home">
+    <!-- HERO -->
+    <section class="hero" aria-label="Intro">
+      <div class="hero-media" role="img" aria-label="Hero Hintergrund"></div>
+      <div class="hero-content">
+        <img src="assets/img/drgray-logo.jpg" alt="DR. GRAY Logo" class="logo-hero" />
+        <h1><span class="accent">DR. GRAY</span> <span class="amp">&</span> MRS. DR. GRAY</h1>
+        <p class="kicker">Techno / House • B2B • International</p>
+        <div class="hero-cta">
+          <a href="#tour" class="btn">Tourdaten</a>
+          <a href="#music" class="btn btn-outline">Neueste Mixe</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="section">
+      <div class="section-head">
+        <h2>About</h2>
+        <p>Story & Rollen</p>
+      </div>
+      <div class="about-grid">
+        <div class="card">
+          <img src="assets/img/drgray-logo.jpg" alt="Dr. Gray" class="avatar">
+          <h3>DR. GRAY</h3>
+          <p>Haupt-DJ — setzt die Auswahl musikalisch um: präzises Mixing, energiegeladene Performances, Techno/House mit Druck.</p>
+        </div>
+        <div class="card">
+          <img src="assets/img/mrsdrgray-logo.png" alt="Mrs. Dr. Gray" class="avatar">
+          <h3>MRS. DR. GRAY</h3>
+          <p>Selektorin, Playlisten & Reihenfolge — kuratiert den Flow. Steht am Anfang eigener Produktionen und spielt bereits B2B mit DR. GRAY.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MUSIC -->
+    <section id="music" class="section">
+      <div class="section-head">
+        <h2>Musik</h2>
+        <p>Aktuelle Mixe & Playlists</p>
+      </div>
+      <div class="embeds">
+        <!-- SoundCloud -->
+        <div class="embed">
+          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//on.soundcloud.com/PzmQ0bF4Z28epDB0yz&color=%23ffd84d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true"></iframe>
+        </div>
+      </div>
+      <div class="socials center">
+        <a href="https://www.tiktok.com/@dr.gray.sic?_t=ZN-90LdwYo8FoU&_r=1" target="_blank" rel="noopener" class="social">TikTok: DR.GRAY</a>
+        <a href="https://www.tiktok.com/@ktina1986?_t=ZN-90Le06SEqmM&_r=1" target="_blank" rel="noopener" class="social">TikTok: MRS. DR. GRAY</a>
+      </div>
+    </section>
+
+    <!-- TOUR -->
+    <section id="tour" class="section">
+      <div class="section-head">
+        <h2>Tour</h2>
+        <p>Kommende Termine</p>
+      </div>
+      <ul class="tour-list">
+        <li class="tour-item">
+          <time datetime="2025-11-15">15 Nov 2025</time>
+          <span class="city">DE – Deine Stadt</span>
+          <span class="venue">Clubname</span>
+          <a class="ticket" href="#" target="_blank" rel="noopener">Info/Tickets</a>
+        </li>
+        <li class="tour-item">
+          <time datetime="2025-12-05">05 Dez 2025</time>
+          <span class="city">DE – Weitere Stadt</span>
+          <span class="venue">Festival/Club</span>
+          <a class="ticket" href="#" target="_blank" rel="noopener">Info/Tickets</a>
+        </li>
+      </ul>
+      <p class="note">Bookings & Anfragen: <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></p>
+    </section>
+
+    <!-- GALLERY -->
+    <section id="gallery" class="section section-tight">
+      <div class="section-head">
+        <h2>Galerie</h2>
+        <p>Visual Identity</p>
+      </div>
+      <div class="grid">
+        <img src="assets/img/drgray-logo.jpg" alt="DR. GRAY Logo">
+        <img src="assets/img/mrsdrgray-logo.png" alt="MRS. DR. GRAY Logo">
+        <img src="assets/img/hero-bg.jpg" alt="Hero Background">
+        <img src="assets/img/drgray-logo.jpg" alt="Logo">
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section section-invert">
+      <div class="section-head">
+        <h2>Booking & Kontakt</h2>
+        <p>Management / Press / General</p>
+      </div>
+      <div class="contact">
+        <ul>
+          <li><strong>Booking:</strong> <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></li>
+          <li><strong>Management:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></li>
+          <li><strong>Press:</strong> <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a></li>
+        </ul>
+        <form class="contact-form" name="contact" method="post" data-netlify="true">
+          <input type="hidden" name="form-name" value="contact">
+          <div class="row">
+            <input type="text" name="name" placeholder="Dein Name" required>
+            <input type="email" name="email" placeholder="Deine E-Mail" required>
+          </div>
+          <textarea name="message" rows="5" placeholder="Nachricht"></textarea>
+          <button type="submit" class="btn">Senden</button>
+        </form>
+      </div>
+      <div class="socials">
+        <a href="https://on.soundcloud.com/PzmQ0bF4Z28epDB0yz" aria-label="SoundCloud">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic?_t=ZN-90LdwYo8FoU&_r=1" aria-label="TikTok Dr.Gray">TikTok (DR.GRAY)</a>
+        <a href="https://www.tiktok.com/@ktina1986?_t=ZN-90Le06SEqmM&_r=1" aria-label="TikTok Mrs.Dr.Gray">TikTok (MRS.)</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> DR. GRAY & MRS. DR. GRAY • Alle Rechte vorbehalten.</p>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
