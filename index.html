@@ -4,17 +4,25 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>DR. GRAY — Offizielle Website</title>
+
   <meta name="description" content="DR. GRAY & MRS. DR. GRAY — Techno / House • Gigs, Musik, Booking." />
+  <link rel="canonical" href="https://www.drgray-mrsdrgray.com/" />
+  <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
+
+  <!-- Open Graph -->
   <meta property="og:title" content="DR. GRAY — Offizielle Website" />
   <meta property="og:description" content="Techno / House. Tour, Musik, Booking." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.drgray-mrsdrgray.com" />
-  <meta property="og:image" content="assets/img/drgray-logo.jpg" />
-  <link rel="icon" href="assets/img/drgray-logo.jpg" />
+  <meta property="og:image" content="https://www.drgray-mrsdrgray.com/drgray-logo.jpg" />
+
+  <link rel="icon" href="drgray-logo.jpg" />
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css" />
+  <!-- WICHTIG: Dateien liegen im Repo-Root -->
+  <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <header class="site-header">
@@ -34,7 +42,7 @@
     <section class="hero" aria-label="Intro">
       <div class="hero-media" role="img" aria-label="Hero Hintergrund"></div>
       <div class="hero-content">
-        <img src="assets/img/drgray-logo.jpg" alt="DR. GRAY Logo" class="logo-hero" />
+        <img src="drgray-logo.jpg" alt="DR. GRAY Logo" class="logo-hero" />
         <h1><span class="accent">DR. GRAY</span> <span class="amp">&</span> MRS. DR. GRAY</h1>
         <p class="kicker">Techno / House • B2B • International</p>
         <div class="hero-cta">
@@ -52,12 +60,12 @@
       </div>
       <div class="about-grid">
         <div class="card">
-          <img src="assets/img/drgray-logo.jpg" alt="Dr. Gray" class="avatar">
+          <img src="drgray-logo.jpg" alt="Dr. Gray" class="avatar">
           <h3>DR. GRAY</h3>
           <p>Haupt-DJ — setzt die Auswahl musikalisch um: präzises Mixing, energiegeladene Performances, Techno/House mit Druck.</p>
         </div>
         <div class="card">
-          <img src="assets/img/mrsdrgray-logo.png" alt="Mrs. Dr. Gray" class="avatar">
+          <img src="mrsdrgray-logo.png" alt="Mrs. Dr. Gray" class="avatar">
           <h3>MRS. DR. GRAY</h3>
           <p>Selektorin, Playlisten & Reihenfolge — kuratiert den Flow. Steht am Anfang eigener Produktionen und spielt bereits B2B mit DR. GRAY.</p>
         </div>
@@ -70,13 +78,19 @@
         <h2>Musik</h2>
         <p>Aktuelle Mixe & Playlists</p>
       </div>
+
       <div class="embeds">
-        <!-- SoundCloud -->
+        <!-- SoundCloud: hier ist ein stabiler Embed deiner Profilseite.
+             Wenn du einen bestimmten Track/Set einbetten willst:
+             Kopiere bei SoundCloud -> Teilen -> Einbetten den Code und ersetze die URL unten. -->
         <div class="embed">
-          <iframe width="100%" height="166" scrolling="no" frameborder="no" allow="autoplay"
-            src="<iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/soundcloud%253Atracks%253A2008790983&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe><div style="font-size: 10px; color: #cccccc;line-break: anywhere;word-break: normal;overflow: hidden;white-space: nowrap;text-overflow: ellipsis; font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;font-weight: 100;"><a href="https://soundcloud.com/drgray_sic" title="Dr.Gray &amp; Mrs.Dr Gray" target="_blank" style="color: #cccccc; text-decoration: none;">Dr.Gray &amp; Mrs.Dr Gray</a> · <a href="https://soundcloud.com/drgray_sic/love-is-techno-part-i" title="Love is Techno Part I" target="_blank" style="color: #cccccc; text-decoration: none;">Love is Techno Part I</a></div>"></iframe>
+          <iframe
+            width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A%2F%2Fsoundcloud.com%2Fdrgray_sic&color=%23ffd84d&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true">
+          </iframe>
         </div>
       </div>
+
       <div class="socials center">
         <a href="https://www.tiktok.com/@dr.gray.sic?_t=ZN-90LdwYo8FoU&_r=1" target="_blank" rel="noopener" class="social">TikTok: DR.GRAY</a>
         <a href="https://www.tiktok.com/@ktina1986?_t=ZN-90Le06SEqmM&_r=1" target="_blank" rel="noopener" class="social">TikTok: MRS. DR. GRAY</a>
@@ -113,10 +127,10 @@
         <p>Visual Identity</p>
       </div>
       <div class="grid">
-        <img src="assets/img/drgray-logo.jpg" alt="DR. GRAY Logo">
-        <img src="assets/img/mrsdrgray-logo.png" alt="MRS. DR. GRAY Logo">
-        <img src="assets/img/hero-bg.jpg" alt="Hero Background">
-        <img src="assets/img/drgray-logo.jpg" alt="Logo">
+        <img src="drgray-logo.jpg" alt="DR. GRAY Logo">
+        <img src="mrsdrgray-logo.png" alt="MRS. DR. GRAY Logo">
+        <img src="hero-bg.jpg" alt="Hero Background">
+        <img src="drgray-logo.jpg" alt="Logo">
       </div>
     </section>
 
@@ -129,11 +143,11 @@
       <div class="contact">
         <ul>
           <li><strong>Booking:</strong> <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></li>
-          <li><strong>Management:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></li>
-          <li><strong>Press:</strong> <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a></li>
         </ul>
-        <form class="contact-form" name="contact" method="post" data-netlify="true">
-          <input type="hidden" name="form-name" value="contact">
+
+        <!-- Hinweis: Das Formular funktioniert auf GitHub Pages ohne Backend nicht.
+             Wenn du Antworten empfangen willst, nutze z.B. Formspree/Getform oder setze "action" auf mailto:. -->
+        <form class="contact-form" name="contact" method="post">
           <div class="row">
             <input type="text" name="name" placeholder="Dein Name" required>
             <input type="email" name="email" placeholder="Deine E-Mail" required>
@@ -143,7 +157,7 @@
         </form>
       </div>
       <div class="socials">
-        <a href="https://soundcloud.com/drgray_sic?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" aria-label="SoundCloud">SoundCloud</a>
+        <a href="https://soundcloud.com/drgray_sic" aria-label="SoundCloud">SoundCloud</a>
         <a href="https://www.tiktok.com/@dr.gray.sic?_t=ZN-90LdwYo8FoU&_r=1" aria-label="TikTok Dr.Gray">TikTok (DR.GRAY)</a>
         <a href="https://www.tiktok.com/@ktina1986?_t=ZN-90Le06SEqmM&_r=1" aria-label="TikTok Mrs.Dr.Gray">TikTok (MRS.)</a>
       </div>
@@ -154,6 +168,7 @@
     <p>© <span id="year"></span> DR. GRAY & MRS. DR. GRAY • Alle Rechte vorbehalten.</p>
   </footer>
 
-  <script src="assets/js/main.js"></script>
+  <!-- JS liegt im Root -->
+  <script src="main.js" defer></script>
 </body>
 </html>
