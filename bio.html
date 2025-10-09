@@ -2,62 +2,9 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta-name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bio – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .bio-section {
-      padding: 4rem 1rem;
-      background-color: #0a0a0a;
-      color: #fff;
-      text-align: center;
-    }
-
-    .bio-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 4rem;
-      margin-bottom: 4rem;
-    }
-
-    .bio-block {
-      flex: 1 1 300px;
-      max-width: 400px;
-    }
-
-    .bio-image {
-      width: 100%;
-      height: auto;
-      border-radius: 16px;
-      border: 3px solid gold;
-      margin-bottom: 1rem;
-    }
-
-    .bio-block h2 {
-      color: gold;
-      margin-bottom: 1rem;
-    }
-
-    .bio-together {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    .bio-together img {
-      width: 100%;
-      border-radius: 20px;
-      border: 2px solid gold;
-      margin-top: 2rem;
-    }
-
-    @media (max-width: 768px) {
-      .bio-row {
-        flex-direction: column;
-        align-items: center;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -84,34 +31,41 @@
   <section class="bio-section">
 
     <div class="bio-row">
+      <!-- Er -->
       <div class="bio-block">
-        <img src="assets/images/drgray.jpg" alt="Dr. Gray" class="bio-image" />
-        <h2>Dr. Gray</h2>
-        <p>
-          Er war schon immer der DJ mit Herz, der die Musik für alle fühlbar gemacht hat. 
-          Beats, die Herzen treffen. Tracks, die Menschen verbinden.
-          Während seiner Livestreams auf TikTok hatte er jedoch nie mit dem gerechnet,
-          was wirklich passierte: <strong>Mrs. Dr. Gray</strong> fiel ihm auf – wieder und wieder.
-          Erst musikalisch, dann menschlich. Heute machen sie gemeinsam Musik,
-          fühlen den Vibe und feiern die Liebe, aus der alles entstanden ist.
-        </p>
+        <div class="bio-block-inner">
+          <img src="assets/images/drgray.jpg" alt="Dr. Gray" class="bio-image" />
+          <h2 class="bio-title"><span class="gold-script">Er</span> – Dr. Gray</h2>
+          <p>
+            Er war schon immer der DJ, der feinsten Techno mit Leidenschaft spielt. 
+            Während seiner Sets hatte er ein Auge auf sie – bis aus Bewunderung mehr wurde.
+            Heute stehen sie gemeinsam auf der Bühne: Er alsDJ, sie als Managerin & kreative Macherin.
+            Er bringt die Beats, sie orchestriert Musik, Shop und Vision.
+          </p>
+        </div>
       </div>
 
+      <!-- Sie -->
       <div class="bio-block">
-        <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray" class="bio-image" />
-        <h2>Mrs. Dr. Gray</h2>
-        <p>
-          Sie war die heißbegehrte Tänzerin in den TikTok Lives – voller Energie, Feuer und Stil.
-          Auch sie wurde irgendwann von Dr. Grays Musik berührt.
-          Ein Treffen folgte. Der Rest ist Geschichte. Heute lebt sie den Beat
-          nicht nur im Tanz, sondern auch in der Musik – gemeinsam mit dem Mann,
-          der sie zum ersten Mal wirklich berührte – musikalisch und menschlich.
-        </p>
+        <div class="bio-block-inner">
+          <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray" class="bio-image" />
+          <h2 class="bio-title"><span class="gold-script">Sie</span> – Mrs. Dr. Gray</h2>
+          <p>
+            Sie war die begehrte Tänzerin in TikTok-Livestreams. Ihre Energie faszinierte viele, 
+            doch ihr Herz öffnete sich, als er durch seine Musik sprach. Heute mixt sie selbst Techno, 
+            leitet das Management des Shops und arbeitet gemeinsam mit ihm im B2B-Modus. 
+            In ihm fand sie ihren Lebensmittelpunkt und ihren Seelenfrieden.
+          </p>
+        </div>
       </div>
     </div>
 
     <div class="bio-together">
       <img src="assets/images/bio-together.jpg" alt="Gemeinsames Bild" />
+      <p class="together-text">
+        Gemeinsam vereinen sie Musik, Liebe und Business. Ihre Wege verschmolzen – nun arbeiten sie 
+        als Duo, leben ihre Vision und teilen Herz & Klang „back-to-back“ auf jedem Floor.
+      </p>
     </div>
 
   </section>
@@ -123,5 +77,6 @@
     <a href="https://soundcloud.com/drgray_sic" target="_blank">SoundCloud</a>
   </footer>
 
+  <script src="main.js"></script>
 </body>
 </html>
