@@ -181,3 +181,86 @@ ul {
     padding: 0 1rem;
   }
 }
+/* … deine bestehenden CSS-Regeln … */
+
+/* Bio-Section Layout */
+.bio-section {
+  padding: 4rem 1rem;
+  background-color: #0a0a0a;
+  color: #fff;
+}
+
+.bio-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+.bio-block {
+  flex: 1 1 300px;
+  max-width: 400px;
+}
+
+.bio-block-inner {
+  text-align: center;
+}
+
+.bio-image {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  border: 2px solid gold;
+  margin-bottom: 1rem;
+  object-fit: cover;
+}
+
+.bio-title {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: gold;
+}
+
+.gold-script {
+  font-family: "Great Vibes", cursive; /* oder eine andere verschnörkelte Schrift */
+  font-size: 2.2rem;
+  color: gold;
+  margin-right: 0.5rem;
+}
+
+.bio-block p {
+  color: #ddd;
+  line-height: 1.6;
+  padding: 0 1rem;
+}
+
+.bio-together {
+  text-align: center;
+}
+
+.bio-together img {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  border-radius: 20px;
+  border: 2px solid gold;
+  margin-bottom: 1rem;
+}
+
+.together-text {
+  font-size: 1.1rem;
+  color: #ccc;
+  margin: 0 1rem;
+}
+
+/* Responsive Anpassung */
+@media (max-width: 768px) {
+  .bio-row {
+    flex-direction: column;
+    align-items: center;
+  }
+  .bio-block {
+    max-width: 90%;
+  }
+}
