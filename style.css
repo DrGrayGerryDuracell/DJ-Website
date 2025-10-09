@@ -1,4 +1,10 @@
-/* Allgemein */
+/* Allgemein */.hero {
+  background-image: url("assets/images/flx10-gold.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 80vh;
+}
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
