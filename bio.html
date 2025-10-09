@@ -5,6 +5,59 @@
   <meta-name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bio – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .bio-section {
+      padding: 4rem 1rem;
+      background-color: #0a0a0a;
+      color: #fff;
+      text-align: center;
+    }
+
+    .bio-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .bio-block {
+      flex: 1 1 300px;
+      max-width: 400px;
+    }
+
+    .bio-image {
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      border: 3px solid gold;
+      margin-bottom: 1rem;
+    }
+
+    .bio-block h2 {
+      color: gold;
+      margin-bottom: 1rem;
+    }
+
+    .bio-together {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .bio-together img {
+      width: 100%;
+      border-radius: 20px;
+      border: 2px solid gold;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      .bio-row {
+        flex-direction: column;
+        align-items: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -29,38 +82,36 @@
   </section>
 
   <section class="bio-section">
-    
-    <div class="bio-container">
-      <img src="assets/images/drgray.jpg" alt="Dr. Gray" class="bio-image" />
-      <div class="bio-text">
+
+    <div class="bio-row">
+      <div class="bio-block">
+        <img src="assets/images/drgray.jpg" alt="Dr. Gray" class="bio-image" />
         <h2>Dr. Gray</h2>
         <p>
           Er war schon immer der DJ mit Herz, der die Musik für alle fühlbar gemacht hat. 
           Beats, die Herzen treffen. Tracks, die Menschen verbinden.
           Während seiner Livestreams auf TikTok hatte er jedoch nie mit dem gerechnet,
           was wirklich passierte: <strong>Mrs. Dr. Gray</strong> fiel ihm auf – wieder und wieder.
-          Erst musikalisch, dann menschlich.  
-          Über die Musik hinaus begann eine Verbindung, die tiefer ging – bis aus dem DJ 
-          und der Tänzerin eine echte Einheit wurde. Heute machen sie gemeinsam Musik,
+          Erst musikalisch, dann menschlich. Heute machen sie gemeinsam Musik,
           fühlen den Vibe und feiern die Liebe, aus der alles entstanden ist.
+        </p>
+      </div>
+
+      <div class="bio-block">
+        <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray" class="bio-image" />
+        <h2>Mrs. Dr. Gray</h2>
+        <p>
+          Sie war die heißbegehrte Tänzerin in den TikTok Lives – voller Energie, Feuer und Stil.
+          Auch sie wurde irgendwann von Dr. Grays Musik berührt.
+          Ein Treffen folgte. Der Rest ist Geschichte. Heute lebt sie den Beat
+          nicht nur im Tanz, sondern auch in der Musik – gemeinsam mit dem Mann,
+          der sie zum ersten Mal wirklich berührte – musikalisch und menschlich.
         </p>
       </div>
     </div>
 
-    <div class="bio-container reverse">
-      <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray" class="bio-image" />
-      <div class="bio-text">
-        <h2>Mrs. Dr. Gray</h2>
-        <p>
-          Sie war die heißbegehrte Tänzerin in den TikTok Lives – voller Energie, Feuer und Stil.
-          Ihre Moves zogen Blicke an, doch ihr Herz hatte sie nie verschenkt.
-          Bis eines Tages der Sound des <strong>Dr. Gray</strong> sie erwischte –
-          hart, deep, emotional. Die Musik sprach mit ihr.
-          Ein Kontakt entstand. Ein Treffen folgte. Der Rest ist Geschichte.
-          Heute lebt sie den Beat nicht nur im Tanz, sondern auch in der Musik,
-          gemeinsam mit dem Mann, der sie zum ersten Mal wirklich berührte – musikalisch und menschlich.
-        </p>
-      </div>
+    <div class="bio-together">
+      <img src="assets/images/bio-together.jpg" alt="Gemeinsames Bild" />
     </div>
 
   </section>
