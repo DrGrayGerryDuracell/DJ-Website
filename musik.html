@@ -5,44 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Musik – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .main-header {
-      position: sticky;
-      top: 0;
-      background-color: rgba(10, 10, 10, 0.95);
-      z-index: 1000;
-    }
-    .music-heading {
-      background-color: #0a0a0a;
-      padding: 2rem 1rem 1rem;
-      text-align: center;
-    }
-    .music-heading h1 {
-      font-size: 2.2rem;
-      color: gold;
-      font-family: 'Playfair Display', serif;
-      margin: 1rem 0;
-    }
-    .logo-pair {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 1rem;
-    }
-    .logo-pair img {
-      height: 60px;
-    }
-    .music-hero {
-      background-image: url('assets/images/flx10-gold.png');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      height: 300px;
-    }
-  </style>
 </head>
 <body>
+
   <header class="main-header">
     <nav class="main-nav">
       <ul>
@@ -56,33 +21,37 @@
     </nav>
   </header>
 
+  <!-- Header / Titel + Logos über dem Bild -->
   <section class="music-heading">
     <div class="logo-pair">
-      <img src="assets/images/logo1.png" alt="Logo 1" />
-      <h1>Musik – Dr. Gray & Mrs. Dr. Gray</h1>
-      <img src="assets/images/logo2.png" alt="Logo 2" />
+      <img src="assets/images/logo1.png" alt="Logo 1" class="logo-img" />
+      <h1 class="music-title">Musik – Dr. Gray & Mrs. Dr. Gray</h1>
+      <img src="assets/images/logo2.png" alt="Logo 2" class="logo-img" />
     </div>
   </section>
 
+  <!-- Hintergrundbild -->
   <section class="music-hero"></section>
 
-  <section style="padding: 2rem 1rem; background-color: #111; color: #ccc; text-align: center;">
-    <h2 style="color: gold; font-family: 'Playfair Display', serif; font-size: 2rem;">🎵 Techno mit Gefühl</h2>
-    <p style="max-width: 800px; margin: auto; font-size: 1.1rem;">
-      Hier findest du eine Auswahl an <strong>Live Sets, Mixes und musikalischen Reisen</strong> direkt aus dem kreativen Zentrum von Dr. Gray & Mrs. Dr. Gray.
+  <!-- Intro-Text -->
+  <section class="music-intro">
+    <h2>🎵 Techno mit Gefühl</h2>
+    <p>
+      Hier findest du unsere Auswahl an <strong>Live Sets, Mixes und musikalischen Reisen</strong>.  
+      Ob <strong>Deep Techno, Melodic Peak Time, Progressive oder Hypnotic Bass</strong> –  
+      jedes Set trägt Emotionen, Spannung und Klangvisionen in sich.  
       <br><br>
-      Ob <strong>Deep Techno, Melodic Peak Time oder Hypnotic Bass</strong> – jedes Set spiegelt Emotionen wider, baut Spannung auf und entlädt sich in purer Energie.
-      <br><br>
-      Jedes Set ist handverlesen, jeder Mix ist eine Geschichte. Für Körper, Geist und Seele.
+      Für uns ist Musik mehr als Sound – sie ist Geschichte, Erinnerung und Ausdruck zugleich.
     </p>
   </section>
 
-  <section style="background-color: #0a0a0a; padding: 2rem 1rem; text-align: center;">
+  <!-- SoundCloud-Playlist einbetten -->
+  <section class="music-player-section">
     <iframe width="100%" height="450" scrolling="no" frameborder="no" allow="autoplay"
-      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/drgray_sic/sets/drgray-mixes&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true">
+      src="https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/drgray_sic/sets/drgray-mixes&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true">
     </iframe>
-    <div style="margin-top: 1rem; font-size: 0.9rem; color: #888;">
-      <a href="https://soundcloud.com/drgray_sic" target="_blank" style="color: gold;">🎧 Mehr Sets auf SoundCloud ansehen</a>
+    <div class="more-link">
+      <a href="https://soundcloud.com/drgray_sic" target="_blank">🎧 Mehr Sets auf SoundCloud ansehen</a>
     </div>
   </section>
 
