@@ -94,4 +94,24 @@
   .music-hero {
     height: 200px;
   }
+}.music-sets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: 2rem 1rem;
+  background-color: #0a0a0a;
+}
+
+.set-item {
+  text-align: center;
+}
+
+.set-item iframe {
+  border: none;
+}
+
+.set-item p {
+  color: #ccc;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 }
