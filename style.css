@@ -207,3 +207,38 @@ body {
     gap: 1rem;
   }
 }
+/* Live-Banner oberhalb des Hero */
+.live-banner{
+  position: relative;
+  top: 68px; /* Platz unter fixiertem Header; bei Bedarf 60–90px feinjustieren */
+  width: 100%;
+  background: #111;
+  color: gold;
+  text-align: center;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid gold;
+  z-index: 900;
+}
+.live-banner a{ color: gold; text-decoration: underline; }
+
+/* Logos & Title im Hero */
+.brand-row{
+  display:flex; align-items:center; justify-content:center; gap:1rem; flex-wrap:wrap;
+}
+.logo-small{ width:56px; height:auto; }
+.hero h1{ margin:0; font-family:'Great Vibes', cursive; font-size:3rem; color:gold; text-shadow:0 0 10px gold; }
+.cta-buttons{ margin-top:1rem; display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; }
+.btn{ background:gold; color:#000; padding:0.7rem 1.1rem; border-radius:24px; font-weight:600; border:2px solid gold; }
+.btn:hover{ background:#000; color:gold; }
+.btn-outline{ background:transparent; color:gold; }
+
+/* Intro / Preview */
+.intro, .music-preview{ max-width:1100px; margin:2rem auto; padding:0 1rem; text-align:center; }
+.music-preview h3{ color:gold; margin-bottom:1rem; }
+.center{ text-align:center; }
+
+@media (max-width: 768px){
+  .logo-small{ width:40px; }
+  .hero h1{ font-size:2.2rem; }
+  .live-banner{ top:64px; font-size:0.95rem; }
+}
