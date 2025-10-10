@@ -1,237 +1,151 @@
-/* Header fix & kleinere Höhe auf Mobil */
-.main-header {
-  position: sticky;
-  top: 0;
-  background-color: rgba(10, 10, 10, 0.95);
-  z-index: 1000;
-  /* weniger Höhe */
-  padding: 0.5rem 1rem;
+/* ========================
+   Global Styles
+========================= */
+
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0a0a;
+  color: #f5f5f5;
 }
 
-.main-nav ul {
-  display: flex;
-  justify-content: center;
-  gap: 1.5rem;
+a {
+  color: gold;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
   padding: 0;
   margin: 0;
 }
 
-/* Musik-Header über dem Bild */
-.music-heading {
-  background-color: #0a0a0a;
-  padding: 1rem 1rem;
-  text-align: center;
-}
+/* ========================
+   Header & Navigation
+========================= */
 
-.music-header-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-}
-
-.logo-small {
-  height: 40px;
-  width: auto;
-}
-
-.golden-heading {
-  color: gold;
-  font-family: 'Playfair Display', serif;
-  font-size: 1.8rem;
-  margin: 0;
-}
-
-/* Intro */
-.music-intro {
-  padding: 1.5rem 1rem;
-  background-color: #111;
-  color: #ccc;
-  text-align: center;
-}
-
-.music-intro h2 {
-  color: gold;
-  font-size: 1.8rem;
-  margin-bottom: 0.5rem;
-}
-
-.music-intro p {
-  max-width: 700px;
-  margin: auto;
-  line-height: 1.5;
-}
-
-/* Sets Grid */
-.music-sets-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  padding: 1.5rem 1rem;
-  background-color: #0a0a0a;
-}
-
-.set-item {
-  text-align: center;
-}
-
-.set-item p {
-  margin-top: 0.5rem;
-  color: #ccc;
-  font-size: 0.9rem;
-}body {
-  padding-top: 60px; /* Platz für fixiertes Menü schaffen */
-}
-@media (max-width: 768px) {
-  body {
-    padding-top: 80px; /* mehr Platz auf kleineren Geräten */
-  }
-}
-/* Musik Grid */
-.music-intro {
-  padding: 3rem 1rem;
-  text-align: center;
-  background-color: #0a0a0a;
-  color: gold;
-}
-
-.music-intro p {
-  color: #ccc;
-  max-width: 700px;
-  margin: 0 auto 1rem;
-}
-
-.grid-players {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem 1rem;
-}
-
-.player iframe {
-  width: 100%;
-  border-radius: 12px;
-}
-.music-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  background-color: #0a0a0a;
-}
-
-.music-grid iframe {
-  width: 100%;
-  height: 300px;
-  border: none;
-  border-radius: 12px;
-}
-
-.music-hero {
-  background-image: none;
-  background-color: #111;
-  padding: 6rem 1rem 2rem;
-  text-align: center;
-}
-/* Musik Hero Section mit Logos */
-.music-hero {
-  background-image: url("assets/images/flx10-gold.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  padding: 6rem 1rem 2rem;
-  position: relative;
-  text-align: center;
-}
-
-.hero-text {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-}
-
-.hero-text h1 {
-  color: gold;
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  margin: 0;
-}
-
-.logo-small {
-  width: 60px;
-  height: auto;
-}
-
-/* Musik-Intro-Text */
-.music-intro {
-  max-width: 900px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  text-align: center;
-  font-size: 1.1rem;
-  color: #ccc;
-}
-
-/* Musik Grid Layout */
-.music-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
-  padding: 2rem;
-  max-width: 1200px;
-  margin: auto;
-}
-
-.music-grid iframe {
-  width: 100%;
-  border-radius: 12px;
-  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
-}
-
-/* Fixiertes Menü */
 .main-header {
   position: fixed;
   top: 0;
   width: 100%;
   background-color: rgba(10, 10, 10, 0.95);
   z-index: 1000;
-  border-bottom: 1px solid gold;
+  transition: top 0.3s;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
 }
 
 .main-nav ul {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 2rem;
   padding: 1rem;
   flex-wrap: wrap;
 }
 
 .main-nav a {
-  color: gold;
   font-weight: bold;
   transition: color 0.3s;
 }
 
 .main-nav a:hover {
-  color: #fff;
+  color: #ffd700;
   border-bottom: 2px solid gold;
 }
 
-/* Aktive Seite hervorheben */
-.main-nav a.active {
-  border-bottom: 2px solid gold;
+/* ========================
+   Hero Section
+========================= */
+
+.hero {
+  padding: 6rem 1rem 2rem;
+  text-align: center;
+  background-image: url("assets/images/flx10-gold.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #f5f5f5;
 }
 
-/* Responsive Logos kleiner auf Mobil */
-@media (max-width: 600px) {
-  .logo-small {
-    width: 40px;
+.hero h1 {
+  font-size: 2.5rem;
+  color: gold;
+  margin: 0.5rem 0;
+  font-family: 'Playfair Display', serif;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+/* ========================
+   Music Section
+========================= */
+
+.music-section {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.music-section h2 {
+  text-align: center;
+  font-size: 2rem;
+  color: gold;
+  margin-bottom: 1rem;
+}
+
+.music-section p {
+  text-align: center;
+  font-size: 1rem;
+  color: #aaa;
+  margin-bottom: 2rem;
+}
+
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+iframe {
+  width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+/* ========================
+   Footer
+========================= */
+
+.social-footer {
+  text-align: center;
+  margin-top: 4rem;
+  padding: 1rem;
+  background-color: #111;
+  font-size: 0.9rem;
+}
+
+.social-footer a {
+  margin: 0 1rem;
+  color: gold;
+}
+
+/* ========================
+   Responsive Fixes
+========================= */
+
+@media (max-width: 768px) {
+  .main-nav ul {
+    gap: 1rem;
+    padding: 0.5rem;
   }
 
-  .hero-text h1 {
-    font-size: 1.5rem;
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
   }
 }
