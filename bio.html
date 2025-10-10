@@ -5,71 +5,217 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bio – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000;
+      color: #ddd;
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Fixiertes Menüband */
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.85);
+      padding: 15px 0;
+      text-align: center;
+      z-index: 1000;
+      border-bottom: 1px solid gold;
+    }
+
+    header ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+    }
+
+    header a {
+      color: gold;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    header a:hover {
+      color: #fff;
+    }
+
+    .bio-section {
+      padding: 120px 5% 60px 5%;
+      text-align: center;
+    }
+
+    .bio-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-bottom: 60px;
+      border: 1px solid gold;
+      border-radius: 10px;
+      padding: 20px;
+      background: rgba(20, 20, 20, 0.6);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+    }
+
+    .bio-container img {
+      width: 280px;
+      height: auto;
+      border-radius: 10px;
+      border: 2px solid gold;
+      box-shadow: 0 0 10px gold;
+    }
+
+    .bio-text {
+      flex: 1;
+      padding: 20px;
+      text-align: left;
+    }
+
+    .bio-text h2 {
+      font-size: 1.6rem;
+      color: gold;
+      margin-bottom: 10px;
+    }
+
+    .title-script {
+      font-family: 'Great Vibes', cursive;
+      color: gold;
+      font-size: 2.5rem;
+      text-shadow: 0 0 8px gold;
+    }
+
+    .divider {
+      border: none;
+      border-top: 2px solid gold;
+      margin: 40px auto;
+      width: 50%;
+    }
+
+    .bio-joint {
+      text-align: center;
+      margin-top: 40px;
+      padding: 40px;
+      background: rgba(25, 25, 25, 0.6);
+      border: 1px solid gold;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.25);
+    }
+
+    .bio-joint img {
+      width: 350px;
+      border-radius: 15px;
+      border: 2px solid gold;
+      box-shadow: 0 0 12px gold;
+      margin-top: 20px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px 0;
+      border-top: 1px solid gold;
+      margin-top: 60px;
+      color: gold;
+    }
+
+    @media (max-width: 768px) {
+      .bio-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .bio-text {
+        text-align: center;
+      }
+
+      .bio-container img {
+        margin-bottom: 20px;
+        width: 80%;
+      }
+
+      .bio-joint img {
+        width: 80%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <header class="main-header">
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="bio.html">Bio</a></li>
-        <li><a href="musik.html">Musik</a></li>
-        <li><a href="videos.html">Videos</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-      </ul>
-    </nav>
+
+  <header>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="bio.html">Bio</a></li>
+      <li><a href="musik.html">Musik</a></li>
+      <li><a href="videos.html">Videos</a></li>
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="kontakt.html">Kontakt</a></li>
+    </ul>
   </header>
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Dr. Gray & Mrs. Dr. Gray</h1>
-      <p>Wie aus Beats Liebe wurde – und aus Liebe eine musikalische Einheit.</p>
-    </div>
-  </section>
-
   <section class="bio-section">
+
     <div class="bio-container">
-      <div class="bio-item">
-        <img src="assets/images/drgray.jpg" alt="Dr. Gray" class="bio-image-small" />
-        <h2 class="bio-title">Er</h2>
+      <img src="assets/images/drgray.jpg" alt="Dr. Gray" />
+      <div class="bio-text">
+        <h2 class="title-script">Er – Dr. Gray</h2>
         <p>
-          Er war schon immer der DJ mit Herz, der die Musik für alle fühlbar gemacht hat. 
-          Beats, die Herzen treffen. Tracks, die Menschen verbinden. Während seiner Livestreams auf TikTok hatte er jedoch nie mit dem gerechnet,
-          was wirklich passierte: <strong>Mrs. Dr. Gray</strong> fiel ihm auf – wieder und wieder. Erst musikalisch, dann menschlich. 
-          Über die Musik hinaus begann eine Verbindung, die tiefer ging – bis aus dem DJ und der Tänzerin eine echte Einheit wurde. 
-          Heute machen sie gemeinsam Musik, fühlen den Vibe und feiern die Liebe, aus der alles entstanden ist.
-        </p>
-      </div>
-
-      <div class="bio-item">
-        <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray" class="bio-image-small" />
-        <h2 class="bio-title">Sie</h2>
-        <p>
-          Sie war die heißbegehrte Tänzerin in den TikTok Lives – voller Energie, Feuer und Stil. 
-          Ihre Moves zogen Blicke an, doch ihr Herz hatte sie nie verschenkt. Bis eines Tages der Sound des <strong>Dr. Gray</strong> sie erwischte –
-          hart, deep, emotional. Die Musik sprach mit ihr. Ein Kontakt entstand. Ein Treffen folgte. Der Rest ist Geschichte. 
-          Heute lebt sie den Beat nicht nur im Tanz, sondern auch in der Musik, gemeinsam mit dem Mann, der sie zum ersten Mal wirklich berührte – musikalisch und menschlich.
+          Dr. Gray – der Mann hinter den Decks. Ein Künstler, der den Techno lebt und atmet.  
+          Seine Leidenschaft begann mit den ersten Beats, die er auflegte, und wuchs zu einer Vision: Musik, die nicht nur gehört, sondern gefühlt wird.  
+          Mit jedem Set nimmt er sein Publikum mit auf eine Reise zwischen treibenden Bässen und hypnotischen Klangwelten.  
+          Auf TikTok und SoundCloud begeistert er tausende Zuhörer – nicht durch Mainstream, sondern durch Authentizität, Leidenschaft und Seele.  
+          <br><br>
+          Musik ist für ihn mehr als Sound – es ist Emotion, Energie und Ausdruck. Und irgendwo zwischen Kick und Snare fand er <strong>sie</strong> …
         </p>
       </div>
     </div>
 
-    <div class="bio-together">
-      <img src="assets/images/bio-together.jpg" alt="Dr. Gray & Mrs. Dr. Gray zusammen" class="bio-image-center" />
+    <div class="bio-container reverse">
+      <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray" />
+      <div class="bio-text">
+        <h2 class="title-script">Sie – Mrs. Dr. Gray</h2>
+        <p>
+          Sie war die Tänzerin, die mit jedem Beat verschmolz, die Musik fühlte, bevor der erste Drop fiel.  
+          Auf TikTok faszinierte sie mit Energie, Ausstrahlung und purer Leidenschaft.  
+          Doch irgendwann traf sie auf den einen Sound, der anders war – Dr. Gray.  
+          Erst zog sie der Rhythmus an, dann der Mensch dahinter.  
+          Heute ist sie nicht nur seine Partnerin im Leben, sondern auch im Beat.  
+          Sie managt den Shop, mischt eigene Sounds und inspiriert durch ihre kreative Kraft.  
+          Zusammen stehen sie für Musik mit Herz, Seele und elektrisierender Energie.
+        </p>
+      </div>
+    </div>
+
+    <hr class="divider">
+
+    <div class="bio-joint">
+      <h2 class="title-script">Dr. Gray & Mrs. Dr. Gray – Eine Einheit aus Beat & Gefühl</h2>
       <p>
-        Heute bilden sie eine harmonische musikalische Einheit. <strong>Dr. Gray</strong> – seit Jahren DJ mit Leidenschaft für harten, emotionalen Techno, 
-        und <strong>Mrs. Dr. Gray</strong> – die charismatische Performerin, die inzwischen selbst in die Welt des Mixings und Trackings eingetaucht ist. 
-        Sie übernimmt das Shop-Management, kuratiert Sounds und wird bald eigene Sets veröffentlichen. 
-        Gemeinsam spielen sie <em>B2B</em>, leben den Sound und zelebrieren die Liebe, die sie in Musik vereint. 
-        Ihr Lebensmittelpunkt ist die Bühne, ihr Seelenfrieden liegt ineinander.
+        Zwei Herzen, ein Rhythmus.  
+        Was als musikalische Begegnung begann, wurde zu einer tiefen Verbindung aus Liebe, Leidenschaft und Klang.  
+        Gemeinsam erschaffen sie Sets, die Menschen vereinen – ob live oder online.  
+        Ihre Musik ist ein Dialog zwischen Herz und Verstand, Körper und Seele.  
+        <br><br>
+        Dr. Gray sorgt für die treibenden Bässe, Mrs. Dr. Gray für die emotionale Tiefe.  
+        Zusammen bilden sie eine harmonische Fusion – kraftvoll, sinnlich, echt.  
+        <br><br>
+        „Wir machen keine Musik – wir leben sie.“
       </p>
+      <img src="assets/images/drgray-mrsdrgray.jpg" alt="Dr. Gray & Mrs. Dr. Gray gemeinsam" />
     </div>
+
   </section>
 
-  <footer class="social-footer">
+  <footer>
     <p>&copy; 2025 Dr. Gray & Mrs. Dr. Gray – All rights reserved.</p>
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank">TikTok Dr. Gray</a>
-    <a href="https://www.tiktok.com/@ktina1986" target="_blank">TikTok Mrs. Dr. Gray</a>
-    <a href="https://soundcloud.com/drgray_sic" target="_blank">SoundCloud</a>
   </footer>
+
 </body>
 </html>
