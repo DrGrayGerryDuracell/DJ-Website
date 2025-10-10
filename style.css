@@ -1,50 +1,51 @@
-/* Menü fix / sticky & Inhalte nicht verdecken */
+/* Header fix & kleinere Höhe auf Mobil */
 .main-header {
   position: sticky;
   top: 0;
   background-color: rgba(10, 10, 10, 0.95);
   z-index: 1000;
+  /* weniger Höhe */
+  padding: 0.5rem 1rem;
 }
 
-/* Header mit Logos über dem Bild */
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+/* Musik-Header über dem Bild */
 .music-heading {
   background-color: #0a0a0a;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem;
   text-align: center;
 }
 
-.logo-pair {
+.music-header-container {
   display: flex;
-  flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   gap: 1rem;
 }
 
-.logo-img {
-  height: 50px;
+.logo-small {
+  height: 40px;
   width: auto;
 }
 
-.music-title {
+.golden-heading {
   color: gold;
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
   margin: 0;
 }
 
-/* Hintergrundbild */
-.music-hero {
-  background-image: url("assets/images/flx10-gold.png");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  height: 300px;
-}
-
-/* Intro-Text */
+/* Intro */
 .music-intro {
-  padding: 2rem 1rem;
+  padding: 1.5rem 1rem;
   background-color: #111;
   color: #ccc;
   text-align: center;
@@ -52,53 +53,22 @@
 
 .music-intro h2 {
   color: gold;
-  font-family: 'Playfair Display', serif;
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
 }
 
 .music-intro p {
-  max-width: 800px;
+  max-width: 700px;
   margin: auto;
-  font-size: 1.1rem;
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
-/* Player Abschnitt */
-.music-player-section {
-  padding: 2rem 1rem;
-  background-color: #0a0a0a;
-  text-align: center;
-}
-
-.more-link {
-  margin-top: 1rem;
-  font-size: 0.9rem;
-  color: #888;
-}
-
-.more-link a {
-  color: gold;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-/* Responsive Anpassung */
-@media (max-width: 768px) {
-  .logo-pair {
-    flex-direction: column;
-  }
-  .music-title {
-    font-size: 1.5rem;
-  }
-  .music-hero {
-    height: 200px;
-  }
-}.music-sets-grid {
+/* Sets Grid */
+.music-sets-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 2rem;
-  padding: 2rem 1rem;
+  gap: 1.5rem;
+  padding: 1.5rem 1rem;
   background-color: #0a0a0a;
 }
 
@@ -106,12 +76,8 @@
   text-align: center;
 }
 
-.set-item iframe {
-  border: none;
-}
-
 .set-item p {
+  margin-top: 0.5rem;
   color: #ccc;
   font-size: 0.9rem;
-  margin-top: 0.5rem;
 }
