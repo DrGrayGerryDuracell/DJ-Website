@@ -88,3 +88,28 @@
     padding-top: 80px; /* mehr Platz auf kleineren Geräten */
   }
 }
+/* Musik Grid */
+.music-intro {
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: #0a0a0a;
+  color: gold;
+}
+
+.music-intro p {
+  color: #ccc;
+  max-width: 700px;
+  margin: 0 auto 1rem;
+}
+
+.grid-players {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem 1rem;
+}
+
+.player iframe {
+  width: 100%;
+  border-radius: 12px;
+}
