@@ -2,10 +2,84 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dr. Gray & Mrs. Dr. Gray – Home</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Logos bitte so benennen/ablegen: assets/images/logo-left.png, assets/images/logo-right.png -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --header-h: 64px; --banner-h: 44px; }
+
+    /* Live-Banner fixiert UNTER dem fixierten Header */
+    .live-banner {
+      position: fixed;
+      top: var(--header-h);
+      left: 0;
+      width: 100%;
+      background: #111;
+      color: gold;
+      text-align: center;
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid gold;
+      z-index: 950;
+      font-family: 'Poppins', sans-serif;
+    }
+    .live-banner a { color: gold; text-decoration: underline; }
+
+    /* Hauptinhalt erhält dynamischen Abstand nach oben (Header + Banner) */
+    .page-content { padding-top: calc(var(--header-h) + var(--banner-h) + 12px); }
+
+    /* Logos & Titel im Hero */
+    .brand-row {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:1rem;
+      flex-wrap:wrap;
+    }
+    .logo-small {
+      width:56px;
+      height:auto;
+    }
+    .hero h1 {
+      margin:0;
+      font-family:'Great Vibes', cursive;
+      font-size:3rem;
+      color:gold;
+      text-shadow:0 0 10px gold;
+    }
+    .cta-buttons {
+      margin-top:1rem;
+      display:flex;
+      gap:1rem;
+      justify-content:center;
+      flex-wrap:wrap;
+    }
+    .btn {
+      background:gold;
+      color:#000;
+      padding:0.7rem 1.1rem;
+      border-radius:24px;
+      font-weight:600;
+      border:2px solid gold;
+    }
+    .btn:hover { background:#000; color:gold; }
+    .btn.btn-outline { background:transparent; color:gold; }
+
+    .intro, .music-preview {
+      max-width:1100px;
+      margin:2rem auto;
+      padding:0 1rem;
+      text-align:center;
+    }
+    .music-preview h3 { color:gold; margin-bottom:1rem; }
+    .center { text-align:center; }
+
+    @media (max-width: 768px) {
+      .logo-small { width:40px; }
+      .hero h1 { font-size:2.2rem; }
+      :root { --header-h: 60px; --banner-h: 42px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -23,54 +97,76 @@
     </nav>
   </header>
 
-  <!-- Live-Banner über dem Hero (deutlich sichtbar) -->
+  <!-- Live-Banner unter Header -->
   <div class="live-banner">
     🔴 Jeden <strong>Freitag</strong> ab ca. <strong>20:00 Uhr</strong> – Live auf TikTok:
     <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">@dr.gray.sic</a>
   </div>
 
-  <!-- Hero mit FLX10 als Hintergrund -->
-  <section class="hero">
-    <div class="hero-text">
-      <div class="brand-row">
-        <img src="assets/images/logo1.png" alt="Logo Dr. Gray" class="logo-small" />
-        <h1>Dr. Gray &amp; Mrs. Dr. Gray</h1>
-        <img src="assets/images/logo2.png" alt="Logo Mrs. Dr. Gray" class="logo-small" />
+  <main class="page-content">
+
+    <!-- Hero mit FLX10 als Hintergrund -->
+    <section class="hero">
+      <div class="hero-text">
+        <div class="brand-row">
+          <img src="assets/images/logo1.png" alt="Logo Dr. Gray" class="logo-small" />
+          <h1>Dr. Gray &amp; Mrs. Dr. Gray</h1>
+          <img src="assets/images/logo2.png" alt="Logo Mrs. Dr. Gray" class="logo-small" />
+        </div>
+        <p>Feinster Techno mit Herz &amp; Seele – aus Liebe zur Musik.</p>
+        <div class="cta-buttons">
+          <a href="musik.html" class="btn">Zu den Sets</a>
+          <a href="shop.html" class="btn btn-outline">Zum Shop</a>
+        </div>
       </div>
-      <p>Feinster Techno mit Herz &amp; Seele – aus Liebe zur Musik.</p>
-      <div class="cta-buttons">
-        <a href="musik.html" class="btn">Zu den Sets</a>
-        <a href="shop.html" class="btn btn-outline">Zum Shop</a>
+    </section>
+
+    <!-- Intro -->
+    <section class="intro">
+      <h2>Live &amp; Vibes</h2>
+      <p>
+        Wir spielen melodischen bis treibenden Techno – live gemixt, roh und emotional.
+        Folge uns für Live-Sessions jeden <strong>Freitag ab ca. 20:00</strong> auf TikTok.
+      </p>
+    </section>
+
+    <!-- SoundCloud Vorschau -->
+    <section class="music-preview">
+      <h3>Frisch auf SoundCloud</h3>
+      <div class="music-grid">
+        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126060061&color=%23ffd700&auto_play=false&visual=true" frameborder="0" allow="autoplay"></iframe>
+        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168299668&color=%23ffd700&auto_play=false&visual=true" frameborder="0" allow="autoplay"></iframe>
+        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2008790983&color=%23ffd700&auto_play=false&visual=true" frameborder="0" allow="autoplay"></iframe>
       </div>
-    </div>
-  </section>
+      <p class="center">
+        <a class="btn btn-outline" href="musik.html">Mehr Musik anhören →</a>
+      </p>
+    </section>
 
-  <!-- Kurzintro + Streamingzeiten nochmal im Content -->
-  <section class="intro">
-    <h2>Live &amp; Vibes</h2>
-    <p>
-      Wir spielen melodischen bis treibenden Techno – live gemixt, roh und emotional.
-      Folge uns für Live-Sessions jeden <strong>Freitag ab ca. 20:00</strong> auf TikTok.
-    </p>
-  </section>
+    <!-- Footer -->
+    <footer class="social-footer">
+      <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
+      <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener">SoundCloud</a>
+      <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok</a>
+    </footer>
 
-  <!-- Optional: 3er Vorschau (kannst du später befüllen oder entfernen) -->
-  <section class="music-preview">
-    <h3>Frisch auf SoundCloud</h3>
-    <div class="music-grid">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126060061&color=%23ffd700&auto_play=false&visual=true" frameborder="0" allow="autoplay"></iframe>
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168299668&color=%23ffd700&auto_play=false&visual=true" frameborder="0" allow="autoplay"></iframe>
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2008790983&color=%23ffd700&auto_play=false&visual=true" frameborder="0" allow="autoplay"></iframe>
-    </div>
-    <p class="center">
-      <a class="btn btn-outline" href="musik.html">Mehr Musik anhören →</a>
-    </p>
-  </section>
+  </main>
 
-  <footer class="social-footer">
-    <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
-    <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener">SoundCloud</a>
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok</a>
-  </footer>
+  <!-- Script: Dynamischer Abstand -->
+  <script>
+    function setOffsets(){
+      const header = document.querySelector('.main-header');
+      const banner = document.querySelector('.live-banner');
+      if(header){
+        document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
+      }
+      if(banner){
+        document.documentElement.style.setProperty('--banner-h', banner.offsetHeight + 'px');
+      }
+    }
+    window.addEventListener('load', setOffsets);
+    window.addEventListener('resize', setOffsets);
+  </script>
+
 </body>
 </html>
