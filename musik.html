@@ -5,106 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Musik – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css" />
-  <style>
-    body {
-      background-color: #0a0a0a;
-      color: #f5f5f5;
-      margin: 0;
-      font-family: 'Inter', sans-serif;
-    }
-
-    .main-header {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background-color: rgba(10, 10, 10, 0.95);
-      padding: 1rem 0;
-    }
-
-    .main-nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-      gap: 2rem;
-      padding: 0;
-      margin: 0;
-    }
-
-    .main-nav a {
-      color: gold;
-      font-weight: bold;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
-
-    .main-nav a:hover {
-      color: #ffd700;
-    }
-
-    .page-header {
-      text-align: center;
-      padding: 2rem 1rem 1rem;
-      background-color: #000;
-    }
-
-    .page-header img {
-      width: 60px;
-      height: auto;
-      vertical-align: middle;
-    }
-
-    .page-header h1 {
-      display: inline-block;
-      margin: 0 1rem;
-      font-size: 2.2rem;
-      font-family: 'Playfair Display', serif;
-      color: gold;
-      vertical-align: middle;
-    }
-
-    .intro-text {
-      text-align: center;
-      margin: 2rem auto;
-      max-width: 800px;
-      font-size: 1.1rem;
-      color: #ccc;
-      line-height: 1.6;
-    }
-
-    .soundcloud-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 2rem;
-      padding: 2rem;
-    }
-
-    .soundcloud-item {
-      flex: 1 1 calc(33% - 2rem);
-      max-width: 400px;
-      min-width: 280px;
-    }
-
-    iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-    }
-
-    @media (max-width: 768px) {
-      .soundcloud-item {
-        flex: 1 1 100%;
-      }
-
-      .page-header h1 {
-        font-size: 1.5rem;
-      }
-
-      .page-header img {
-        width: 40px;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -113,7 +13,7 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
-        <li><a href="musik.html">Musik</a></li>
+        <li><a href="musik.html" class="active">Musik</a></li>
         <li><a href="videos.html">Videos</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
@@ -121,64 +21,47 @@
     </nav>
   </header>
 
-  <section class="page-header">
-    <img src="assets/images/logo1.png" alt="Logo 1" />
-    <h1>Dr. Gray & Mrs. Dr. Gray – Musik</h1>
-    <img src="assets/images/logo2.png" alt="Logo 2" />
+  <section class="hero music-hero">
+    <div class="hero-text">
+      <img src="assets/images/logo-left.png" alt="Logo Links" class="logo-small" />
+      <h1 class="gold-text">Musik – Dr. Gray & Mrs. Dr. Gray</h1>
+      <img src="assets/images/logo-right.png" alt="Logo Rechts" class="logo-small" />
+    </div>
   </section>
 
-  <section class="intro-text">
+  <section class="music-intro">
     <p>
-      Willkommen in unserem Soundkosmos. Unsere Sets bewegen sich zwischen treibendem Techno,
-      emotionalem Deep Tech und ekstatischen Momenten – live gemixt mit Gefühl, Seele und Energie.
-      <strong>MBIT</strong> steht für unsere Handschrift: <em>Musik braucht intensive Tiefe</em>.
-      Hier findest du eine Auswahl unserer neuesten Sets – klick dich durch, fühl den Vibe, tanz dich frei.
+      Willkommen in der musikalischen Welt von <strong>Dr. Gray</strong> & <strong>Mrs. Dr. Gray</strong> – ein Duo, das Techno nicht nur spielt, sondern lebt.  
+      Von melodischen Grooves bis hin zu treibenden Underground-Sets – jedes Set ist ein Gefühl, ein Moment, ein Erlebnis.  
+      Hier findest du ausgewählte Tracks, Remixes und Live-Mixe direkt von unserem SoundCloud-Profil.  
+      <br /><br />
+      🎧 Tauche ein – fühle den Bass, tanze mit dem Herzschlag und entdecke deinen eigenen Rhythmus.
     </p>
   </section>
 
-  <section class="soundcloud-grid">
-    <!-- SoundCloud Items -->
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126060061&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2008790983&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2032581476&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2173521759&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2112398340&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168299668&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1959994003&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2113662411&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168266476&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2120920662&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2184511415&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
-    <div class="soundcloud-item">
-      <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1909849949&color=%23ff5500&auto_play=false&visual=true"></iframe>
-    </div>
+  <section class="music-grid">
+    <!-- SoundCloud Embeds (12 Stück) -->
+    
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126060061&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2008790983&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2032581476&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2173521759&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2112398340&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168299668&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1959994003&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2113662411&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168266476&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2120920662&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2184511415&..."></iframe>
+    <iframe ... src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1909849949&..."></iframe>
+    
   </section>
 
-  <footer class="social-footer" style="text-align: center; padding: 2rem;">
+  <footer class="social-footer">
     <p>&copy; 2025 Dr. Gray & Mrs. Dr. Gray – All rights reserved.</p>
-    <a href="https://soundcloud.com/drgray_sic" target="_blank" style="color: gold;">Mehr auf SoundCloud →</a>
+    <a href="https://soundcloud.com/drgray_sic" target="_blank">SoundCloud</a>
+    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank">TikTok Dr. Gray</a>
+    <a href="https://www.tiktok.com/@ktina1986" target="_blank">TikTok Mrs. Dr. Gray</a>
   </footer>
 
 </body>
