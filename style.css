@@ -134,3 +134,104 @@
   padding: 6rem 1rem 2rem;
   text-align: center;
 }
+/* Musik Hero Section mit Logos */
+.music-hero {
+  background-image: url("assets/images/flx10-gold.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 6rem 1rem 2rem;
+  position: relative;
+  text-align: center;
+}
+
+.hero-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.hero-text h1 {
+  color: gold;
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  margin: 0;
+}
+
+.logo-small {
+  width: 60px;
+  height: auto;
+}
+
+/* Musik-Intro-Text */
+.music-intro {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* Musik Grid Layout */
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.music-grid iframe {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.1);
+}
+
+/* Fixiertes Menü */
+.main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: rgba(10, 10, 10, 0.95);
+  z-index: 1000;
+  border-bottom: 1px solid gold;
+}
+
+.main-nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.main-nav a {
+  color: gold;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+.main-nav a:hover {
+  color: #fff;
+  border-bottom: 2px solid gold;
+}
+
+/* Aktive Seite hervorheben */
+.main-nav a.active {
+  border-bottom: 2px solid gold;
+}
+
+/* Responsive Logos kleiner auf Mobil */
+@media (max-width: 600px) {
+  .logo-small {
+    width: 40px;
+  }
+
+  .hero-text h1 {
+    font-size: 1.5rem;
+  }
+}
