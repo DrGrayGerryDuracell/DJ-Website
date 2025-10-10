@@ -113,3 +113,24 @@
   width: 100%;
   border-radius: 12px;
 }
+.music-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #0a0a0a;
+}
+
+.music-grid iframe {
+  width: 100%;
+  height: 300px;
+  border: none;
+  border-radius: 12px;
+}
+
+.music-hero {
+  background-image: none;
+  background-color: #111;
+  padding: 6rem 1rem 2rem;
+  text-align: center;
+}
