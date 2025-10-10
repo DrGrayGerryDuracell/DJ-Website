@@ -1,32 +1,19 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Musik – Dr. Gray & Mrs. Dr. Gray</title>
-  <link rel="stylesheet" href="style.css">
-  <style>
-    .track-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-    }
-
-    .track-item iframe {
-      width: 100%;
-      height: 300px;
-      border: none;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+
   <header class="main-header">
     <nav class="main-nav">
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
-        <li><a href="musik.html">Musik</a></li>
+        <li><a href="musik.html" class="active">Musik</a></li>
         <li><a href="videos.html">Videos</a></li>
         <li><a href="shop.html">Shop</a></li>
         <li><a href="kontakt.html">Kontakt</a></li>
@@ -36,54 +23,53 @@
 
   <section class="hero">
     <div class="hero-text">
-      <h1>Musik-Playlist</h1>
-      <p>Erlebe den Sound von Dr. Gray & Mrs. Dr. Gray – feinster Techno, Leidenschaft & Energie.</p>
+      <div class="logo-row">
+        <img src="assets/images/logo-drgray.png" alt="Dr. Gray Logo" class="hero-logo" />
+        <h1>Musik von Dr. Gray & Mrs. Dr. Gray</h1>
+        <img src="assets/images/logo-mrsdrgray.png" alt="Mrs. Dr. Gray Logo" class="hero-logo" />
+      </div>
+      <p class="hero-sub">Gefühlvolle, treibende Techno-Sets – live, ehrlich & aus der Seele.</p>
     </div>
   </section>
 
-  <section class="track-grid">
-    <!-- SoundCloud Embeds (Beispielhafte 3) -->
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126060061&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
+  <section class="music-intro">
+    <div class="container">
+      <h2>🎶 Unsere Sets</h2>
+      <p>
+        Willkommen in unserer musikalischen Welt – hier findest du eine Auswahl an exklusiven Livesets,
+        gefüllt mit treibendem Techno, emotionalen Breaks und viel Gefühl. Jedes Set erzählt eine eigene Geschichte –
+        von Momenten aus TikTok-Lives bis zu deepen Sessions im Studio.
+      </p>
+      <p><strong>▶ Direkt anhören oder <a href="https://soundcloud.com/drgray_sic" target="_blank">mehr auf SoundCloud</a></strong></p>
     </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2008790983&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2032581476&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2173521759&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2112398340&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168299668&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1959994003&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2113662411&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168266476&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2120920662&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2184511415&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
-    </div>
-    <div class="track-item">
-      <iframe scrolling="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1909849949&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true"></iframe>
+  </section>
+
+  <section class="music-grid">
+    <div class="container">
+
+      <!-- SoundCloud Players Grid -->
+      <div class="grid-players">
+        <!-- Füge hier deine iFrames ein -->
+        <!-- Beispiel -->
+        <div class="player">
+          <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay"
+            src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126060061&color=%23ffd700&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&visual=true">
+          </iframe>
+        </div>
+
+        <!-- 11 weitere iFrames hier einfügen (du hast sie ja bereits gesammelt) -->
+
+      </div>
+
     </div>
   </section>
 
   <footer class="social-footer">
     <p>&copy; 2025 Dr. Gray & Mrs. Dr. Gray – All rights reserved.</p>
-    <a href="https://soundcloud.com/drgray_sic" target="_blank">Mehr auf SoundCloud</a>
+    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank">TikTok Dr. Gray</a>
+    <a href="https://www.tiktok.com/@ktina1986" target="_blank">TikTok Mrs. Dr. Gray</a>
+    <a href="https://soundcloud.com/drgray_sic" target="_blank">SoundCloud</a>
   </footer>
+
 </body>
 </html>
