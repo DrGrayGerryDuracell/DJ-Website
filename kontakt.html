@@ -1,58 +1,84 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta-name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Kontakt – Dr. Gray & Mrs. Dr. Gray</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+<!-- CONTACT -->
+<section id="contact" class="section section-invert">
+  <div class="section-head">
+    <h2>Booking & Kontakt</h2>
+    <p>Management • Booking • Presse</p>
+  </div>
 
-  <header class="main-header">
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="bio.html">Bio</a></li>
-        <li><a href="musik.html">Musik</a></li>
-        <li><a href="videos.html">Videos</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-      </ul>
-    </nav>
-  </header>
+  <div class="contact">
 
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Kontaktiere uns</h1>
-      <p>Bookings, Feedback, Liebe oder Beats? Wir freuen uns auf deine Nachricht!</p>
-    </div>
-  </section>
+    <!-- Kontaktinfos -->
+    <ul class="contact-info">
+      <li><strong>Booking:</strong> <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></li>
+      <li><strong>Management:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></li>
+      <li><strong>Presse:</strong> <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a></li>
+    </ul>
 
-  <section class="contact-section">
-    <div class="contact-info">
-      <p><strong>Email:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></p>
-      <p><strong>TikTok:</strong> <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank">@dr.gray.sic</a> + <a href="https://www.tiktok.com/@ktina1986" target="_blank">@ktina1986</a></p>
-      <p><strong>SoundCloud:</strong> <a href="https://soundcloud.com/drgray_sic" target="_blank">soundcloud.com/drgray_sic</a></p>
-    </div>
+    <!-- Formular -->
+    <form 
+      action="https://formspree.io/f/xeobykwe" 
+      method="POST" 
+      class="contact-form"
+      id="contactForm">
 
-    <!-- Optionales Formular – kein Mailversand ohne Backend -->
-    <form class="contact-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required />
+      <div class="row">
+        <input type="text" name="name" placeholder="Dein Name" required>
+        <input type="email" name="email" placeholder="Deine E-Mail" required>
+      </div>
 
-      <label for="email">E-Mail:</label>
-      <input type="email" id="email" name="email" required />
+      <textarea name="message" rows="5" placeholder="Deine Nachricht" required></textarea>
 
-      <label for="message">Nachricht:</label>
-      <textarea id="message" name="message" rows="5" required></textarea>
+      <button type="submit" class="btn">Senden</button>
 
-      <button type="submit">Absenden</button>
+      <!-- Erfolg / Fehler -->
+      <p id="form-success" style="display:none; color:#4CAF50; margin-top:10px;">
+        ✔️ Deine Nachricht wurde erfolgreich gesendet!
+      </p>
+
+      <p id="form-error" style="display:none; color:#ff5555; margin-top:10px;">
+        ❌ Fehler beim Senden – bitte versuche es erneut.
+      </p>
+
     </form>
-  </section>
 
-  <footer class="social-footer">
-    <p>&copy; 2025 Dr. Gray & Mrs. Dr. Gray</p>
-  </footer>
+  </div>
 
-</body>
-</html>
+  <!-- Social Icons -->
+  <div class="socials">
+    <a href="https://on.soundcloud.com/PzmQ0bF4Z28epDB0yz" aria-label="SoundCloud">SoundCloud</a>
+    <a href="https://www.tiktok.com/@dr.gray.sic" aria-label="TikTok Dr.Gray">TikTok (DR.GRAY)</a>
+    <a href="https://www.tiktok.com/@ktina1986" aria-label="TikTok Mrs.Dr.Gray">TikTok (MRS. DR. GRAY)</a>
+  </div>
+</section>
+
+<!-- Kontaktformular JS (Erfolg/Fehler anzeigen) -->
+<script>
+document.getElementById("contactForm").addEventListener("submit", async function(event) {
+  event.preventDefault();
+
+  const form = event.target;
+  const data = new FormData(form);
+  const success = document.getElementById("form-success");
+  const error = document.getElementById("form-error");
+
+  fetch(form.action, {
+    method: "POST",
+    body: data,
+    headers: { "Accept": "application/json" }
+  })
+  .then(response => {
+    if (response.ok) {
+      success.style.display = "block";
+      error.style.display = "none";
+      form.reset();
+    } else {
+      success.style.display = "none";
+      error.style.display = "block";
+    }
+  })
+  .catch(() => {
+    success.style.display = "none";
+    error.style.display = "block";
+  });
+});
+</script>
