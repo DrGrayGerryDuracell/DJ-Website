@@ -1,70 +1,126 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Booking & Kontakt – Dr. Gray & Mrs. Dr. Gray</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Booking & Kontakt – DR. GRAY & MRS. DR. GRAY</title>
 
+  <!-- dein zentrales CSS -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- kleine Zusatz-CSS nur für das Menü auf der Kontaktseite -->
+  <style>
+    .site-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .site-header .brand {
+      color: #ffd84d;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .site-header .nav {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .site-header .nav a {
+      color: #ffd84d;
+      text-decoration: none;
+    }
+
+    .site-header .nav a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
 <body>
 
-<!-- HEADER -->
-<header class="site-header">
-  <a class="brand" href="index.html">DR. GRAY & MRS. DR. GRAY</a>
+  <!-- HEADER -->
+  <header class="site-header">
+    <a class="brand" href="index.html">DR. GRAY &amp; MRS. DR. GRAY</a>
 
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="bio.html">Bio</a>
-    <a href="musik.html">Musik</a>
-    <a href="videos.html">Videos</a>
-    <a href="shop.html">Shop</a>
-    <a href="kontakt.html" class="btn btn-small">Kontakt</a>
-  </nav>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="bio.html">Bio</a>
+      <a href="musik.html">Musik</a>
+      <a href="videos.html">Videos</a>
+      <a href="shop.html">Shop</a>
+      <a href="kontakt.html" class="btn btn-small">Kontakt</a>
+    </nav>
 
-  <button id="menuToggle" aria-label="Menü öffnen" class="menu-toggle">☰</button>
-</header>
+    <button id="menuToggle" aria-label="Menü öffnen" class="menu-toggle">☰</button>
+  </header>
 
-<!-- HERO-BEREICH -->
-<section class="hero small-hero">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-        <h1 class="neon-title">Booking & Kontakt</h1>
-        <p class="hero-subtitle">Feinster Techno mit Herz & Seele – jetzt Anfrage senden.</p>
-    </div>
-</section>
+  <main>
+    <!-- HERO wie auf den anderen Seiten (ohne großes Logo) -->
+    <section class="hero" aria-label="Booking & Kontakt">
+      <div class="hero-media" role="img" aria-label="DJ-Controller Hintergrund"></div>
+      <div class="hero-content">
+        <h1>
+          <span class="accent">Booking</span> &amp; Kontakt
+        </h1>
+        <p class="kicker">Feinster Techno mit Herz &amp; Seele – jetzt Anfrage senden.</p>
+      </div>
+    </section>
 
-<!-- INHALT -->
-<section class="content-section">
-    <h2>Management & Booking</h2>
-    <p>Für Clubs, Festivals, Livestreams & Special Events</p>
+    <!-- KONTAKT-BEREICH -->
+    <section id="contact" class="section section-invert">
+      <div class="section-head">
+        <h2>Management &amp; Booking</h2>
+        <p>Für Clubs, Festivals, Livestreams &amp; Special Events</p>
+      </div>
 
-    <ul>
-        <li><strong>Booking:</strong> <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></li>
-        <li><strong>Management:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></li>
-        <li><strong>Presse:</strong> <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a></li>
-    </ul>
+      <div class="contact">
+        <ul>
+          <li>
+            <strong>Booking:</strong>
+            <a href="mailto:booking@drgray-mrsdrgray.com">
+              booking@drgray-mrsdrgray.com
+            </a>
+          </li>
+          <li>
+            <strong>Management:</strong>
+            <a href="mailto:management@drgray-mrsdrgray.com">
+              management@drgray-mrsdrgray.com
+            </a>
+          </li>
+          <li>
+            <strong>Presse:</strong>
+            <a href="mailto:press@drgray-mrsdrgray.com">
+              press@drgray-mrsdrgray.com
+            </a>
+          </li>
+        </ul>
 
-    <h3>Kontaktformular</h3>
+        <!-- Formular über Formspree -->
+        <form class="contact-form" action="https://formspree.io/f/xeobykwe" method="POST">
+          <div class="row">
+            <input type="text" name="name" placeholder="Dein Name" required />
+            <input type="email" name="email" placeholder="Deine E-Mail" required />
+          </div>
+          <textarea name="message" rows="6" placeholder="Deine Nachricht" required></textarea>
+          <button type="submit" class="btn">Senden</button>
+        </form>
+      </div>
 
-    <form action="https://formspree.io/f/xeobykwe" method="POST" class="contact-form">
-        <div class="form-row">
-            <input type="text" name="name" placeholder="Dein Name" required>
-            <input type="email" name="email" placeholder="Deine E-Mail" required>
-        </div>
+      <div class="socials">
+        <a href="https://on.soundcloud.com/PzmQ0bF4Z28epDB0yz" target="_blank" rel="noopener">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok (DR.GRAY)</a>
+        <a href="https://www.tiktok.com/@ktina1986" target="_blank" rel="noopener">TikTok (MRS. DR. GRAY)</a>
+      </div>
+    </section>
+  </main>
 
-        <textarea name="message" rows="5" placeholder="Deine Nachricht" required></textarea>
+  <footer class="site-footer">
+    <p>© 2024 DR. GRAY &amp; MRS. DR. GRAY • Alle Rechte vorbehalten.</p>
+  </footer>
 
-        <button type="submit" class="btn btn-main">Senden</button>
-    </form>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <p>© 2024 DR. GRAY & MRS. DR. GRAY • Alle Rechte vorbehalten.</p>
-</footer>
-
-<script src="main.js"></script>
-
+  <script src="main.js"></script>
 </body>
 </html>
