@@ -1,80 +1,68 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Booking & Kontakt – DR. GRAY & MRS. DR. GRAY</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Booking & Kontakt – DR. GRAY & MRS. DR. GRAY</title>
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
-
-    <!-- Haupt-Stylesheet (gleich wie Startseite!) -->
-    <link rel="stylesheet" href="styles.css">
-
-    <!-- Favicon -->
-    <link rel="icon" href="drgray-logo.jpg">
+  <!-- WICHTIG: genau diese Zeile bindet dein Design ein -->
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<!-- 🔥 HEADER WIE AUF DER STARTSEITE 🔥 -->
-<header class="main-header">
-    <nav class="navbar">
-        <div class="logo">DR. GRAY & MRS. DR. GRAY</div>
-        <ul class="nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="bio.html">Bio</a></li>
-            <li><a href="musik.html">Musik</a></li>
-            <li><a href="videos.html">Videos</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a class="active" href="kontakt.html">Kontakt</a></li>
-        </ul>
+  <!-- HEADER / NAV – simpel gehalten, CSS macht das Design -->
+  <header>
+    <div class="site-brand">
+      DR. GRAY & MRS. DR. GRAY
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="bio.html">Bio</a></li>
+        <li><a href="musik.html">Musik</a></li>
+        <li><a href="videos.html">Videos</a></li>
+        <li><a href="shop.html">Shop</a></li>
+        <li><a href="kontakt.html" class="active">Kontakt</a></li>
+      </ul>
     </nav>
-</header>
+  </header>
 
-
-<!-- 🔥 KONTAKT / BOOKING SECTION 🔥 -->
-<section class="section contact-section" id="contact">
-    <div class="section-title">
-        <h2>Booking & Kontakt</h2>
+  <main>
+    <section id="contact" class="section section-invert">
+      <div class="section-head">
+        <h1>Booking & Kontakt</h1>
         <p>Management • Booking • Presse</p>
-    </div>
+      </div>
 
-    <!-- Kontaktinfos -->
-    <div class="contact-info">
-        <ul>
-            <li><strong>Booking:</strong> <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></li>
-            <li><strong>Management:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></li>
-            <li><strong>Presse:</strong> <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a></li>
+      <div class="contact">
+        <ul class="contact-list">
+          <li><strong>Booking:</strong> <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></li>
+          <li><strong>Management:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></li>
+          <li><strong>Presse:</strong> <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a></li>
         </ul>
-    </div>
 
-    <!-- 🔥 FORMULAR MIT FORMSPREE 🔥 -->
-    <form class="contact-form" action="https://formspree.io/f/xeobykwe" method="POST">
-        
-        <div class="row">
+        <!-- FORMULAR – jetzt über FORMSPREE -->
+        <form class="contact-form" action="https://formspree.io/f/xeobykwe" method="POST">
+          <div class="row">
             <input type="text" name="name" placeholder="Dein Name" required>
             <input type="email" name="email" placeholder="Deine E-Mail" required>
-        </div>
+          </div>
+          <textarea name="message" rows="6" placeholder="Deine Nachricht" required></textarea>
+          <button type="submit" class="btn">Senden</button>
+        </form>
+      </div>
 
-        <textarea name="message" rows="6" placeholder="Deine Nachricht" required></textarea>
+      <div class="socials">
+        <a href="https://on.soundcloud.com/PzmQ0bF4Z28epDB0yz" target="_blank" rel="noopener">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok (DR.GRAY)</a>
+        <a href="https://www.tiktok.com/@ktina1986" target="_blank" rel="noopener">TikTok (MRS. DR. GRAY)</a>
+      </div>
+    </section>
+  </main>
 
-        <button type="submit" class="btn gold-btn">Senden</button>
-    </form>
-
-    <!-- Social Links -->
-    <div class="socials">
-        <a href="https://on.soundcloud.com/PzmQ0bF4Z28epDB0yz" target="_blank">SoundCloud</a>
-        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank">TikTok (DR.GRAY)</a>
-        <a href="https://www.tiktok.com/@ktina1986" target="_blank">TikTok (MRS. DR. GRAY)</a>
-    </div>
-</section>
-
-
-<!-- 🔥 FOOTER WIE AUF DER STARTSEITE 🔥 -->
-<footer class="footer">
+  <footer class="site-footer">
     <p>© 2024 DR. GRAY & MRS. DR. GRAY • Alle Rechte vorbehalten.</p>
-</footer>
+  </footer>
 
 </body>
 </html>
