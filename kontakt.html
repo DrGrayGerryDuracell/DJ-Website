@@ -1,84 +1,70 @@
-<!-- CONTACT -->
-<section id="contact" class="section section-invert">
-  <div class="section-head">
-    <h2>Booking & Kontakt</h2>
-    <p>Management • Booking • Presse</p>
-  </div>
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Booking & Kontakt – DR. GRAY & MRS. DR. GRAY</title>
 
-  <div class="contact">
+  <meta name="description" content="Booking & Kontakt für DR. GRAY & MRS. DR. GRAY – Techno / House DJ Duo." />
 
-    <!-- Kontaktinfos -->
-    <ul class="contact-info">
-      <li><strong>Booking:</strong> <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></li>
-      <li><strong>Management:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></li>
-      <li><strong>Presse:</strong> <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a></li>
-    </ul>
+  <link rel="icon" href="drgray-logo.jpg" />
+  <!-- WICHTIG: dein zentrales CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header / Navigation wie auf der Startseite -->
+  <header class="site-header">
+    <a class="brand" href="index.html">DR. GRAY</a>
+    <nav class="nav">
+      <a href="index.html">Home</a>
+      <a href="musik.html">Musik</a>
+      <a href="videos.html">Videos</a>
+      <a href="shop.html">Shop</a>
+      <a href="bio.html">Biografie</a>
+      <a href="kontakt.html" class="btn btn-small">Booking</a>
+    </nav>
+  </header>
 
-    <!-- Formular -->
-    <form 
-      action="https://formspree.io/f/xeobykwe" 
-      method="POST" 
-      class="contact-form"
-      id="contactForm">
-
-      <div class="row">
-        <input type="text" name="name" placeholder="Dein Name" required>
-        <input type="email" name="email" placeholder="Deine E-Mail" required>
+  <main>
+    <!-- CONTACT -->
+    <section id="contact" class="section section-invert">
+      <div class="section-head">
+        <h2>Booking & Kontakt</h2>
+        <p>Management • Booking • Presse</p>
       </div>
 
-      <textarea name="message" rows="5" placeholder="Deine Nachricht" required></textarea>
+      <div class="contact">
+        <ul class="contact-info">
+          <li><strong>Booking:</strong> <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></li>
+          <li><strong>Management:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></li>
+          <li><strong>Presse:</strong> <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a></li>
+        </ul>
 
-      <button type="submit" class="btn">Senden</button>
+        <!-- Formspree Formular -->
+        <form action="https://formspree.io/f/xeobykwe" method="POST" class="contact-form">
+          <div class="row">
+            <input type="text" name="name" placeholder="Dein Name" required />
+            <input type="email" name="email" placeholder="Deine E-Mail" required />
+          </div>
 
-      <!-- Erfolg / Fehler -->
-      <p id="form-success" style="display:none; color:#4CAF50; margin-top:10px;">
-        ✔️ Deine Nachricht wurde erfolgreich gesendet!
-      </p>
+          <textarea name="message" rows="5" placeholder="Deine Nachricht" required></textarea>
 
-      <p id="form-error" style="display:none; color:#ff5555; margin-top:10px;">
-        ❌ Fehler beim Senden – bitte versuche es erneut.
-      </p>
+          <button type="submit" class="btn">Senden</button>
+        </form>
+      </div>
 
-    </form>
+      <div class="socials">
+        <a href="https://on.soundcloud.com/PzmQ0bF4Z28epDB0yz" aria-label="SoundCloud">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic" aria-label="TikTok Dr.Gray">TikTok (DR. GRAY)</a>
+        <a href="https://www.tiktok.com/@ktina1986" aria-label="TikTok Mrs.Dr.Gray">TikTok (MRS. DR. GRAY)</a>
+      </div>
+    </section>
+  </main>
 
-  </div>
+  <footer class="site-footer">
+    <p>© <span id="year"></span> DR. GRAY &amp; MRS. DR. GRAY • Alle Rechte vorbehalten.</p>
+  </footer>
 
-  <!-- Social Icons -->
-  <div class="socials">
-    <a href="https://on.soundcloud.com/PzmQ0bF4Z28epDB0yz" aria-label="SoundCloud">SoundCloud</a>
-    <a href="https://www.tiktok.com/@dr.gray.sic" aria-label="TikTok Dr.Gray">TikTok (DR.GRAY)</a>
-    <a href="https://www.tiktok.com/@ktina1986" aria-label="TikTok Mrs.Dr.Gray">TikTok (MRS. DR. GRAY)</a>
-  </div>
-</section>
-
-<!-- Kontaktformular JS (Erfolg/Fehler anzeigen) -->
-<script>
-document.getElementById("contactForm").addEventListener("submit", async function(event) {
-  event.preventDefault();
-
-  const form = event.target;
-  const data = new FormData(form);
-  const success = document.getElementById("form-success");
-  const error = document.getElementById("form-error");
-
-  fetch(form.action, {
-    method: "POST",
-    body: data,
-    headers: { "Accept": "application/json" }
-  })
-  .then(response => {
-    if (response.ok) {
-      success.style.display = "block";
-      error.style.display = "none";
-      form.reset();
-    } else {
-      success.style.display = "none";
-      error.style.display = "block";
-    }
-  })
-  .catch(() => {
-    success.style.display = "none";
-    error.style.display = "block";
-  });
-});
-</script>
+  <script src="main.js"></script>
+</body>
+</html>
