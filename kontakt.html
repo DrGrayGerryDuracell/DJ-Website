@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Booking & Kontakt – DR. GRAY & MRS. DR. GRAY</title>
+  <title>Booking & Kontakt – Dr. Gray & Mrs. Dr. Gray</title>
 
-  <!-- wichtig: genau diese Datei hast du im Repo -->
+  <!-- nutzt dein bestehendes Design -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- HEADER / NAV wie auf den anderen Seiten -->
+  <!-- HEADER / NAV – wie auf allen Seiten -->
   <header class="site-header">
     <div class="site-brand">DR. GRAY &amp; MRS. DR. GRAY</div>
     <nav class="main-nav">
@@ -26,31 +26,53 @@
   </header>
 
   <main>
-    <!-- SECTION im gleichen Stil wie die anderen Seiten -->
+
+    <!-- HERO mit Controller wie auf Home/Musik/Shop -->
+    <section class="hero hero-contact" aria-label="Booking & Kontakt">
+      <div class="hero-media" role="img" aria-label="DJ-Controller"></div>
+      <div class="hero-content">
+        <img src="drgray-logo.jpg" alt="Dr. Gray Logo" class="logo-hero" />
+        <h1>Booking &amp; Kontakt</h1>
+        <p class="kicker">
+          Feinster Techno mit Herz &amp; Seele – jetzt Anfrage senden.
+        </p>
+      </div>
+    </section>
+
+    <!-- KONTAKT-BEREICH -->
     <section id="contact" class="section section-invert">
       <div class="section-head">
-        <h1>Booking &amp; Kontakt</h1>
-        <p>Management • Booking • Presse</p>
+        <h2>Management &amp; Booking</h2>
+        <p>Für Clubs, Festivals, Livestreams &amp; Special Events</p>
       </div>
 
       <div class="contact">
         <ul class="contact-list">
-          <li><strong>Booking:</strong>
-            <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a>
+          <li>
+            <strong>Booking:</strong>
+            <a href="mailto:booking@drgray-mrsdrgray.com">
+              booking@drgray-mrsdrgray.com
+            </a>
           </li>
-          <li><strong>Management:</strong>
-            <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a>
+          <li>
+            <strong>Management:</strong>
+            <a href="mailto:management@drgray-mrsdrgray.com">
+              management@drgray-mrsdrgray.com
+            </a>
           </li>
-          <li><strong>Presse:</strong>
-            <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a>
+          <li>
+            <strong>Presse:</strong>
+            <a href="mailto:press@drgray-mrsdrgray.com">
+              press@drgray-mrsdrgray.com
+            </a>
           </li>
         </ul>
 
-        <!-- Formular über Formspree -->
+        <!-- Formular über FORMSPREE -->
         <form class="contact-form" action="https://formspree.io/f/xeobykwe" method="POST">
           <div class="row">
-            <input type="text" name="name" placeholder="Dein Name" required>
-            <input type="email" name="email" placeholder="Deine E-Mail" required>
+            <input type="text" name="name" placeholder="Dein Name" required />
+            <input type="email" name="email" placeholder="Deine E-Mail" required />
           </div>
           <textarea name="message" rows="6" placeholder="Deine Nachricht" required></textarea>
           <button type="submit" class="btn">Senden</button>
