@@ -1,101 +1,76 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Booking & Kontakt – Dr. Gray & Mrs. Dr. Gray</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking & Kontakt – Dr. Gray & Mrs. Dr. Gray</title>
 
-  <!-- nutzt dein bestehendes Design -->
-  <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
 
-  <!-- HEADER / NAV – wie auf allen Seiten -->
-  <header class="site-header">
-    <div class="site-brand">DR. GRAY &amp; MRS. DR. GRAY</div>
-    <nav class="main-nav">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="bio.html">Bio</a></li>
-        <li><a href="musik.html">Musik</a></li>
-        <li><a href="videos.html">Videos</a></li>
-        <li><a href="shop.html">Shop</a></li>
-        <li><a href="kontakt.html" class="active">Kontakt</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-
-    <!-- HERO mit Controller wie auf Home/Musik/Shop -->
-    <section class="hero hero-contact" aria-label="Booking & Kontakt">
-      <div class="hero-media" role="img" aria-label="DJ-Controller"></div>
-      <div class="hero-content">
-        <img src="drgray-logo.jpg" alt="Dr. Gray Logo" class="logo-hero" />
-        <h1>Booking &amp; Kontakt</h1>
-        <p class="kicker">
-          Feinster Techno mit Herz &amp; Seele – jetzt Anfrage senden.
-        </p>
-      </div>
-    </section>
-
-    <!-- KONTAKT-BEREICH -->
-    <section id="contact" class="section section-invert">
-      <div class="section-head">
-        <h2>Management &amp; Booking</h2>
-        <p>Für Clubs, Festivals, Livestreams &amp; Special Events</p>
-      </div>
-
-      <div class="contact">
-        <ul class="contact-list">
-          <li>
-            <strong>Booking:</strong>
-            <a href="mailto:booking@drgray-mrsdrgray.com">
-              booking@drgray-mrsdrgray.com
-            </a>
-          </li>
-          <li>
-            <strong>Management:</strong>
-            <a href="mailto:management@drgray-mrsdrgray.com">
-              management@drgray-mrsdrgray.com
-            </a>
-          </li>
-          <li>
-            <strong>Presse:</strong>
-            <a href="mailto:press@drgray-mrsdrgray.com">
-              press@drgray-mrsdrgray.com
-            </a>
-          </li>
+<!-- Navigation -->
+<header>
+    <div class="logo-text">DR. GRAY & MRS. DR. GRAY</div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="bio.html">Bio</a></li>
+            <li><a href="musik.html">Musik</a></li>
+            <li><a href="videos.html">Videos</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a class="active" href="kontakt.html">Kontakt</a></li>
         </ul>
+    </nav>
+</header>
 
-        <!-- Formular über FORMSPREE -->
-        <form class="contact-form" action="https://formspree.io/f/xeobykwe" method="POST">
-          <div class="row">
-            <input type="text" name="name" placeholder="Dein Name" required />
-            <input type="email" name="email" placeholder="Deine E-Mail" required />
-          </div>
-          <textarea name="message" rows="6" placeholder="Deine Nachricht" required></textarea>
-          <button type="submit" class="btn">Senden</button>
-        </form>
-      </div>
+<!-- HERO / TITELBEREICH -->
+<section class="hero-small">
+    <div class="hero-content">
+        <h1 class="glow-title">Booking & Kontakt</h1>
+        <p class="hero-sub">Feinster Techno mit Herz & Seele – jetzt Anfrage senden.</p>
+    </div>
+</section>
 
-      <div class="socials">
-        <a href="https://on.soundcloud.com/PzmQ0bF4Z28epDB0yz" target="_blank" rel="noopener">
-          SoundCloud
-        </a>
-        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">
-          TikTok (DR.GRAY)
-        </a>
-        <a href="https://www.tiktok.com/@ktina1986" target="_blank" rel="noopener">
-          TikTok (MRS. DR. GRAY)
-        </a>
-      </div>
-    </section>
-  </main>
+<!-- INHALTSBEREICH -->
+<section class="content-section">
+    <div class="content-wrapper">
 
-  <footer class="site-footer">
-    <p>© 2024 DR. GRAY &amp; MRS. DR. GRAY • Alle Rechte vorbehalten.</p>
-  </footer>
+        <!-- Kontaktinfos -->
+        <div class="contact-info">
+            <h2>Management & Booking</h2>
+            <p>Für Clubs, Festivals, Livestreams & Special Events</p>
+
+            <ul class="contact-list">
+                <li><strong>Booking:</strong> <a href="mailto:booking@drgray-mrsdrgray.com">booking@drgray-mrsdrgray.com</a></li>
+                <li><strong>Management:</strong> <a href="mailto:management@drgray-mrsdrgray.com">management@drgray-mrsdrgray.com</a></li>
+                <li><strong>Presse:</strong> <a href="mailto:press@drgray-mrsdrgray.com">press@drgray-mrsdrgray.com</a></li>
+            </ul>
+        </div>
+
+        <!-- Formular -->
+        <div class="contact-form-box">
+            <form action="https://formspree.io/f/xeobykwe" method="POST">
+
+                <div class="form-row">
+                    <input type="text" name="name" placeholder="Dein Name" required>
+                    <input type="email" name="email" placeholder="Deine E-Mail" required>
+                </div>
+
+                <textarea name="message" placeholder="Deine Nachricht" rows="6" required></textarea>
+
+                <button type="submit" class="btn-yellow">Senden</button>
+            </form>
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>© 2024 DR. GRAY & MRS. DR. GRAY • Alle Rechte vorbehalten.</p>
+</footer>
 
 </body>
 </html>
