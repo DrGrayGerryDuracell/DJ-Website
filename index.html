@@ -1,93 +1,72 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dr. Gray & Mrs. Dr. Gray – Home</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dr. Gray & Mrs. Dr. Gray – Feinster Techno mit Herz & Seele. Live DJ-Sets auf TikTok, Musik auf SoundCloud.">
+  <meta name="keywords" content="Techno, DJ, Dr. Gray, Mrs. Dr. Gray, Live DJ, TikTok, SoundCloud, elektronische Musik">
+  <meta name="author" content="Dr. Gray & Mrs. Dr. Gray">
+  <meta name="theme-color" content="#ffd700">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="Dr. Gray & Mrs. Dr. Gray – Techno mit Herz">
+  <meta property="og:description" content="Feinster Techno mit Herz & Seele – aus Liebe zur Musik. Live-Sets jeden Freitag.">
+  <meta property="og:image" content="https://drgraygerryduracell.github.io/DJ-Website/assets/images/og-image.jpg">
+  <meta property="og:url" content="https://drgraygerryduracell.github.io/DJ-Website/">
+  <meta property="og:type" content="website">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Dr. Gray & Mrs. Dr. Gray – Techno mit Herz">
+  <meta name="twitter:description" content="Feinster Techno mit Herz & Seele – Live-Sets jeden Freitag auf TikTok.">
+  <meta name="twitter:image" content="https://drgraygerryduracell.github.io/DJ-Website/assets/images/og-image.jpg">
+  
+  <!-- Performance: Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://w.soundcloud.com">
+  
+  <title>Dr. Gray & Mrs. Dr. Gray – Techno mit Herz</title>
+  
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- Fonts: Display=swap for FCP optimization -->
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Dr. Gray & Mrs. Dr. Gray",
+    "description": "Feinster Techno mit Herz & Seele",
+    "url": "https://drgraygerryduracell.github.io/DJ-Website/",
+    "genre": "Techno",
+    "sameAs": [
+      "https://soundcloud.com/drgray_sic",
+      "https://www.tiktok.com/@dr.gray.sic"
+    ]
+  }
+  </script>
+  
+  <!-- Critical CSS Inline for LCP -->
   <style>
-    :root { --header-h: 64px; --banner-h: 44px; }
-
-    /* Live-Banner fixiert UNTER dem fixierten Header */
-    .live-banner {
-      position: fixed;
-      top: var(--header-h);
-      left: 0;
-      width: 100%;
-      background: #111;
-      color: gold;
-      text-align: center;
-      padding: 0.6rem 1rem;
-      border-bottom: 1px solid gold;
-      z-index: 950;
-      font-family: 'Poppins', sans-serif;
-    }
-    .live-banner a { color: gold; text-decoration: underline; }
-
-    /* Hauptinhalt erhält dynamischen Abstand nach oben (Header + Banner) */
-    .page-content { padding-top: calc(var(--header-h) + var(--banner-h) + 12px); }
-
-    /* Logos & Titel im Hero */
-    .brand-row {
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      gap:1rem;
-      flex-wrap:wrap;
-    }
-    .logo-small {
-      width:56px;
-      height:auto;
-    }
-    .hero h1 {
-      margin:0;
-      font-family:'Great Vibes', cursive;
-      font-size:3rem;
-      color:gold;
-      text-shadow:0 0 10px gold;
-    }
-    .cta-buttons {
-      margin-top:1rem;
-      display:flex;
-      gap:1rem;
-      justify-content:center;
-      flex-wrap:wrap;
-    }
-    .btn {
-      background:gold;
-      color:#000;
-      padding:0.7rem 1.1rem;
-      border-radius:24px;
-      font-weight:600;
-      border:2px solid gold;
-    }
-    .btn:hover { background:#000; color:gold; }
-    .btn.btn-outline { background:transparent; color:gold; }
-
-    .intro, .music-preview {
-      max-width:1100px;
-      margin:2rem auto;
-      padding:0 1rem;
-      text-align:center;
-    }
-    .music-preview h3 { color:gold; margin-bottom:1rem; }
-    .center { text-align:center; }
-
-    @media (max-width: 768px) {
-      .logo-small { width:40px; }
-      .hero h1 { font-size:2.2rem; }
-      :root { --header-h: 60px; --banner-h: 42px; }
-    }
+    .hero-text{opacity:0;animation:fadeInUp 0.6s ease-out 0.2s forwards}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
   </style>
 </head>
 <body>
-
-  <!-- Fixiertes Menü -->
-  <header class="main-header">
-    <nav class="main-nav">
+  <a href="#main-content" class="skip-link">Zum Hauptinhalt</a>
+  
+  <!-- Header -->
+  <header class="main-header" id="header">
+    <nav class="main-nav" aria-label="Hauptnavigation">
       <ul>
-        <li><a class="active" href="index.html">Home</a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
         <li><a href="musik.html">Musik</a></li>
         <li><a href="videos.html">Videos</a></li>
@@ -96,22 +75,21 @@
       </ul>
     </nav>
   </header>
-
-  <!-- Live-Banner unter Header -->
-  <div class="live-banner">
-    🔴 Jeden <strong>Freitag</strong> ab ca. <strong>20:00 Uhr</strong> – Live auf TikTok:
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">@dr.gray.sic</a>
+  
+  <!-- Live Banner -->
+  <div class="live-banner" role="complementary" aria-label="Live-Stream Ankündigung">
+    🔴 Jeden <strong>Freitag</strong> ab ca. <strong>20:00 Uhr</strong> – Live auf TikTok: 
+    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">@dr.gray.sic</a>
   </div>
-
-  <main class="page-content">
-
-    <!-- Hero mit FLX10 als Hintergrund -->
-    <section class="hero">
+  
+  <main id="main-content" class="page-content">
+    <!-- Hero -->
+    <section class="hero" aria-label="Willkommen">
       <div class="hero-text">
         <div class="brand-row">
-          <img src="assets/images/logo1.png" alt="Logo Dr. Gray" class="logo-small" />
+          <img src="assets/images/logo1.png" alt="Logo Dr. Gray" class="logo-small" width="56" height="56" loading="eager" fetchpriority="high">
           <h1>Dr. Gray &amp; Mrs. Dr. Gray</h1>
-          <img src="assets/images/logo2.png" alt="Logo Mrs. Dr. Gray" class="logo-small" />
+          <img src="assets/images/logo2.png" alt="Logo Mrs. Dr. Gray" class="logo-small" width="56" height="56" loading="eager" fetchpriority="high">
         </div>
         <p>Feinster Techno mit Herz &amp; Seele – aus Liebe zur Musik.</p>
         <div class="cta-buttons">
@@ -120,53 +98,43 @@
         </div>
       </div>
     </section>
-
+    
     <!-- Intro -->
-    <section class="intro">
-      <h2>Live &amp; Vibes</h2>
-      <p>
-        Wir spielen melodischen bis treibenden Techno – live gemixt, roh und emotional.
-        Folge uns für Live-Sessions jeden <strong>Freitag ab ca. 20:00</strong> auf TikTok.
-      </p>
+    <section class="intro" aria-labelledby="intro-heading">
+      <h2 id="intro-heading" class="section-title">Live &amp; Vibes</h2>
+      <p>Wir spielen melodischen bis treibenden Techno – live gemixt, roh und emotional. Folge uns für Live-Sessions jeden <strong>Freitag ab ca. 20:00</strong> auf TikTok.</p>
     </section>
-
-    <!-- SoundCloud Vorschau -->
-    <section class="music-preview">
-      <h3>Frisch auf SoundCloud</h3>
-      <div class="music-grid">
-        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126060061&color=%23ffd700&auto_play=false&visual=true" frameborder="0" allow="autoplay"></iframe>
-        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168299668&color=%23ffd700&auto_play=false&visual=true" frameborder="0" allow="autoplay"></iframe>
-        <iframe src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2008790983&color=%23ffd700&auto_play=false&visual=true" frameborder="0" allow="autoplay"></iframe>
+    
+    <!-- Music Preview with Intersection Observer Lazy Loading -->
+    <section class="music-preview" aria-labelledby="music-heading">
+      <h3 id="music-heading" style="font-family:var(--font-s);font-size:1.8rem;color:var(--c-accent);text-align:center;margin-bottom:1rem">Frisch auf SoundCloud</h3>
+      <div class="soundcloud-grid" id="music-preview-grid">
+        <!-- SoundCloud embeds loaded via intersection observer -->
+        <div class="soundcloud-item" data-track="2126060061" role="region" aria-label="SoundCloud Track 1">
+          <div class="skelly" style="width:100%;height:166px"></div>
+        </div>
+        <div class="soundcloud-item" data-track="2168299668" role="region" aria-label="SoundCloud Track 2">
+          <div class="skelly" style="width:100%;height:166px"></div>
+        </div>
+        <div class="soundcloud-item" data-track="2008790983" role="region" aria-label="SoundCloud Track 3">
+          <div class="skelly" style="width:100%;height:166px"></div>
+        </div>
       </div>
-      <p class="center">
-        <a class="btn btn-outline" href="musik.html">Mehr Musik anhören →</a>
+      <p class="center" style="margin-top:2rem">
+        <a href="musik.html" class="btn btn-outline">Mehr Musik anhören →</a>
       </p>
     </section>
-
-    <!-- Footer -->
-    <footer class="social-footer">
-      <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
-      <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener">SoundCloud</a>
-      <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok</a>
-    </footer>
-
   </main>
-
-  <!-- Script: Dynamischer Abstand -->
-  <script>
-    function setOffsets(){
-      const header = document.querySelector('.main-header');
-      const banner = document.querySelector('.live-banner');
-      if(header){
-        document.documentElement.style.setProperty('--header-h', header.offsetHeight + 'px');
-      }
-      if(banner){
-        document.documentElement.style.setProperty('--banner-h', banner.offsetHeight + 'px');
-      }
-    }
-    window.addEventListener('load', setOffsets);
-    window.addEventListener('resize', setOffsets);
-  </script>
-
+  
+  <!-- Footer -->
+  <footer class="social-footer">
+    <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
+    <nav aria-label="Social Media">
+      <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+      <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok</a>
+    </nav>
+  </footer>
+  
+  <script src="main.js" defer></script>
 </body>
 </html>
