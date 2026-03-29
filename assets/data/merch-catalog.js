@@ -54,6 +54,32 @@ window.MERCH_CATALOG = {
       status: "Geplant"
     },
     {
+      id: "dr-polo-nightshift",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Nightshift Polo",
+      slogan: "Polierter als Tee, aber weiter klar in der Techno-Linie.",
+      copy: "Ein reduziertes Herren-Polo fuer Clubcrew, Warm-up, Backstage und alle Tage dazwischen. Vorn kleines Dr.-Gray-Branding, hinten optional ein technischer Rueckenclaim.",
+      products: ["Polo", "Longsleeve Polo", "Light Jacket"],
+      tags: ["Herren", "Polo", "Smart Dark"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#herren-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "dr-shirtline-blackbook",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Blackbook Hemd",
+      slogan: "Sauber, dunkel und ohne Mainstream-Geste.",
+      copy: "Fuer ein edleres Herren-Piece mit minimalem Frontlogo und gerader Linie. Perfekt fuer Hemd, Overshirt oder dunklere Drop-Variante.",
+      products: ["Hemd", "Overshirt", "Light Shirt Jacket"],
+      tags: ["Herren", "Hemd", "Clean"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#herren-kollektion",
+      status: "Konzept"
+    },
+    {
       id: "mrs-crop-wild",
       section: "women",
       line: "Mrs. Dr. Gray",
@@ -106,6 +132,45 @@ window.MERCH_CATALOG = {
       status: "Geplant"
     },
     {
+      id: "mrs-dress-midnight",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Midnight Cutout Dress",
+      slogan: "Mehr Clublook, weniger Standard-Merch.",
+      copy: "Ein Abend-Piece fuer die Damen-Linie mit reduziertem Mrs.-Logo, kleiner Typo und starker Silhouette. Perfekt fuer Special Drops und hochwertigere Fotos.",
+      products: ["Kleid", "Bodycon Dress", "Event Look"],
+      tags: ["Damen", "Dress", "Club"],
+      image: "store-assets/variants/mrs-dress-front-liebe-lauter.png",
+      href: "shop.html#damen-kollektion",
+      status: "Konzept"
+    },
+    {
+      id: "mrs-polo-afterhours",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Afterhours Polo",
+      slogan: "Selbstbewusst, klar und nicht aufgesetzt.",
+      copy: "Eine etwas aufgeraeumtere Damen-Variante fuer Polo, fitted shirt oder leichtes Layering. Das Mrs.-Logo bleibt klein und stark, der Spruch fuehrt den Rest.",
+      products: ["Polo", "Fitted Shirt", "Soft Layer"],
+      tags: ["Damen", "Polo", "Elegant"],
+      image: "store-assets/variants/mrs-front-zu-wild.png",
+      href: "shop.html#damen-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "mrs-shirt-love-runs",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Liebe lauter Longsleeve",
+      slogan: "Weicher Ton, starke Wirkung.",
+      copy: "Langarmshirt und leichter Hoodie fuer melodischere Bilder, aber weiter klar in der Szene verankert.",
+      products: ["Longsleeve", "Light Hoodie", "Soft Tee"],
+      tags: ["Damen", "Longsleeve", "Melodic"],
+      image: "store-assets/variants/mrs-dress-front-liebe-lauter.png",
+      href: "shop.html#damen-kollektion",
+      status: "Geplant"
+    },
+    {
       id: "couple-hoodie-beat",
       section: "couple",
       line: "Couple Edition",
@@ -145,6 +210,19 @@ window.MERCH_CATALOG = {
       status: "Geplant"
     },
     {
+      id: "couple-shirt-set",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Two Souls. One Drop.",
+      slogan: "Als Shirt-Set gedacht, nicht als Kitsch.",
+      copy: "Fuer zwei abgestimmte Pieces mit gemeinsamer Sprache und klarer Symmetrie. Sehr stark fuer Merch-Fotos, Storys und Event-Content.",
+      products: ["Shirt Set", "Longsleeve Set", "Event Bundle"],
+      tags: ["Couple", "Set", "Story"],
+      image: "store-assets/variants/couple-front-verheiratet.png",
+      href: "shop.html#couple-edition",
+      status: "Konzept"
+    },
+    {
       id: "unisex-shirt-dual",
       section: "unisex",
       line: "Unisex",
@@ -166,6 +244,19 @@ window.MERCH_CATALOG = {
       copy: "Sauber fuer Hoodie und Heavy Tee. Vorne bleibt der Druck kompakt, hinten entscheidet das gewaehlte Logo den Charakter.",
       products: ["Hoodie", "Heavy Tee", "Zip Hoodie"],
       tags: ["Unisex", "Wahlmotiv", "Flexible Serie"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "Geplant"
+    },
+    {
+      id: "unisex-shirt-core",
+      section: "unisex",
+      line: "Unisex",
+      title: "Core Shirt mit Backprint-Wahl",
+      slogan: "Unsere flexible Einstiegslinie fuer beide Richtungen.",
+      copy: "Ein cleanes Unisex-Shirt fuer alle, die vorne reduziert bleiben und hinten klar markieren wollen, ob sie eher Dr. Gray oder Mrs. Dr. Gray tragen.",
+      products: ["Heavy Tee", "Classic Tee", "Longsleeve"],
+      tags: ["Unisex", "Core", "Choice"],
       image: "store-assets/variants/unisex-backprint-options.png",
       href: "shop.html#unisex-drop",
       status: "Geplant"
@@ -208,6 +299,19 @@ window.MERCH_CATALOG = {
       image: "store-assets/variants/mrs-front-zu-wild.png",
       href: "shop.html#accessoires",
       status: "Geplant"
+    },
+    {
+      id: "accessory-bag-club",
+      section: "accessories",
+      line: "Accessories",
+      title: "Clubnight Bag",
+      slogan: "Dunkler Stoff, klares Branding, null Kirmes.",
+      copy: "Funktioniert fuer Stoffbeutel, Weekender oder kleinere Alltagstasche mit Duo- oder Einzelbranding.",
+      products: ["Weekender", "Tasche", "Stoffbeutel"],
+      tags: ["Accessoire", "Bag", "Nightlife"],
+      image: "store-assets/variants/couple-front-verheiratet.png",
+      href: "shop.html#accessoires",
+      status: "Konzept"
     },
     {
       id: "special-lighter-afterhour",
