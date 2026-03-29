@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4500" height="5400" viewBox="0 0 4500 5400">
+  <rect width="4500" height="5400" fill="#050505"/>
+  <g fill="none" stroke="#f5c84c" stroke-width="16">
+    <circle cx="1620" cy="1830" r="420"/>
+    <circle cx="2880" cy="1830" r="420"/>
+    <path d="M2040 1830h420"/>
+  </g>
+  <text x="2250" y="2900" text-anchor="middle" fill="#f2efe8" font-family="serif" font-size="230" font-weight="700">TWO HEARTS</text>
+  <text x="2250" y="3340" text-anchor="middle" fill="#f5c84c" font-family="sans-serif" font-size="180" font-weight="800" letter-spacing="12">ONE RHYTHM</text>
+  <text x="2250" y="3880" text-anchor="middle" fill="#bba984" font-family="sans-serif" font-size="100" font-weight="500" letter-spacing="10">DR. GRAY &amp; MRS. DR. GRAY</text>
+</svg>

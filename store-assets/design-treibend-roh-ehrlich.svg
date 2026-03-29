@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4500" height="5400" viewBox="0 0 4500 5400" role="img" aria-labelledby="title desc">
+  <title id="title">Treibend Roh Ehrlich</title>
+  <desc id="desc">Hartes Typo-Motiv fuer Szene-Merch.</desc>
+  <rect width="4500" height="5400" fill="#050505"/>
+  <g opacity="0.1" stroke="#f5c84c" stroke-width="26">
+    <path d="M620 980h3260"/>
+    <path d="M620 4420h3260"/>
+    <path d="M620 980v3440"/>
+    <path d="M3880 980v3440"/>
+  </g>
+  <text x="2250" y="1840" text-anchor="middle" fill="#f5c84c" font-family="sans-serif" font-size="420" font-weight="900" letter-spacing="12">
+    TREIBEND.
+  </text>
+  <text x="2250" y="2620" text-anchor="middle" fill="#f2efe8" font-family="sans-serif" font-size="420" font-weight="900" letter-spacing="12">
+    ROH.
+  </text>
+  <text x="2250" y="3400" text-anchor="middle" fill="#f5c84c" font-family="sans-serif" font-size="420" font-weight="900" letter-spacing="12">
+    EHRLICH.
+  </text>
+  <g fill="#bba984">
+    <rect x="1060" y="3770" width="2380" height="12"/>
+    <rect x="1260" y="3925" width="1980" height="12"/>
+  </g>
+  <text x="2250" y="4200" text-anchor="middle" fill="#f2efe8" font-family="sans-serif" font-size="116" font-weight="600" letter-spacing="14">
+    TECHNO MIT HERZ. ABER OHNE FILTER.
+  </text>
+  <text x="2250" y="4500" text-anchor="middle" fill="#bba984" font-family="sans-serif" font-size="88" font-weight="400" letter-spacing="10">
+    DR. GRAY &amp; MRS. DR. GRAY • KOELN
+  </text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4500" height="5400" viewBox="0 0 4500 5400" role="img" aria-labelledby="title desc">
+  <title id="title">Techno mit Herz</title>
+  <desc id="desc">Goldenes Typo-Motiv fuer Merchandise von Dr. Gray und Mrs. Dr. Gray.</desc>
+  <rect width="4500" height="5400" fill="#050505"/>
+  <g opacity="0.18">
+    <circle cx="1100" cy="1200" r="760" fill="none" stroke="#f5c84c" stroke-width="12"/>
+    <circle cx="3400" cy="4300" r="640" fill="none" stroke="#f5c84c" stroke-width="10"/>
+    <path d="M600 4100C1200 3500 1700 3500 2250 4100C2800 4700 3350 4700 3900 4100" fill="none" stroke="#f5c84c" stroke-width="14"/>
+  </g>
+  <g fill="none" stroke="#f5c84c" stroke-width="18" opacity="0.55">
+    <path d="M850 750h2800"/>
+    <path d="M850 4620h2800"/>
+  </g>
+  <text x="2250" y="1850" text-anchor="middle" fill="#f2efe8" font-family="serif" font-size="420" font-weight="700" letter-spacing="-8">
+    TECHNO
+  </text>
+  <text x="2250" y="2360" text-anchor="middle" fill="#f5c84c" font-family="sans-serif" font-size="250" font-weight="700" letter-spacing="16">
+    MIT HERZ
+  </text>
+  <g transform="translate(2250 3010)">
+    <path d="M0 120c-35-28-214-166-214-312 0-94 67-166 159-166 58 0 102 28 135 72 33-44 77-72 135-72 92 0 159 72 159 166 0 146-179 284-214 312l-80 64-80-64z" fill="#f5c84c"/>
+  </g>
+  <text x="2250" y="3860" text-anchor="middle" fill="#f2efe8" font-family="sans-serif" font-size="128" font-weight="400" letter-spacing="10">
+    DR. GRAY &amp; MRS. DR. GRAY
+  </text>
+  <text x="2250" y="4065" text-anchor="middle" fill="#bba984" font-family="sans-serif" font-size="92" font-weight="400" letter-spacing="12">
+    KOELN • TECHNO MIT HALTUNG
+  </text>
+</svg>

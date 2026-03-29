@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4500" height="5400" viewBox="0 0 4500 5400">
+  <rect width="4500" height="5400" fill="#050505"/>
+  <circle cx="2250" cy="1820" r="760" fill="none" stroke="#f5c84c" stroke-width="20"/>
+  <circle cx="2250" cy="1820" r="520" fill="none" stroke="#bba984" stroke-width="8"/>
+  <text x="2250" y="1850" text-anchor="middle" fill="#f5c84c" font-family="sans-serif" font-size="240" font-weight="900" letter-spacing="12">BASS</text>
+  <text x="2250" y="2200" text-anchor="middle" fill="#f2efe8" font-family="sans-serif" font-size="180" font-weight="700" letter-spacing="12">IM BLUT.</text>
+  <rect x="990" y="3070" width="2520" height="10" fill="#f5c84c"/>
+  <text x="2250" y="3510" text-anchor="middle" fill="#f2efe8" font-family="sans-serif" font-size="116" font-weight="600" letter-spacing="10">DR. GRAY • TECHNO MIT HERZ</text>
+</svg>

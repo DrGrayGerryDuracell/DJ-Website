@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="4500" height="5400" viewBox="0 0 4500 5400">
+  <rect width="4500" height="5400" fill="#050505"/>
+  <rect x="640" y="860" width="3220" height="3680" rx="30" fill="none" stroke="#f5c84c" stroke-width="18"/>
+  <text x="2250" y="2050" text-anchor="middle" fill="#f2efe8" font-family="sans-serif" font-size="270" font-weight="800" letter-spacing="16">KEIN</text>
+  <text x="2250" y="2620" text-anchor="middle" fill="#f5c84c" font-family="sans-serif" font-size="420" font-weight="900" letter-spacing="10">MAINSTREAM.</text>
+  <text x="2250" y="3360" text-anchor="middle" fill="#f2efe8" font-family="sans-serif" font-size="120" font-weight="600" letter-spacing="10">DR. GRAY</text>
+  <text x="2250" y="3585" text-anchor="middle" fill="#bba984" font-family="sans-serif" font-size="94" font-weight="400" letter-spacing="10">KOELN • CLUB • NACHT</text>
+</svg>
