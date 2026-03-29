@@ -703,6 +703,60 @@ iframe.soundcloud-lazy {
   gap: 1rem;
 }
 
+.shop-anchor-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  border: 1px solid var(--line);
+  border-radius: calc(var(--radius) - 4px);
+  background:
+    radial-gradient(circle at left top, rgba(245, 200, 76, 0.14), transparent 36%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.2));
+  box-shadow: var(--shadow);
+}
+
+.shop-anchor-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 42px;
+  padding: 0.65rem 1rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 216, 109, 0.22);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text);
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  transition: transform 0.18s ease, border-color 0.18s ease, color 0.18s ease, background-color 0.18s ease;
+}
+
+.shop-anchor-link:hover,
+.shop-anchor-link:focus-visible {
+  transform: translateY(-1px);
+  color: var(--gold-strong);
+  border-color: rgba(255, 216, 109, 0.48);
+  background: rgba(245, 200, 76, 0.08);
+}
+
+.category-intro {
+  margin-bottom: 1.5rem;
+  padding: 1.15rem 1.2rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(255, 216, 109, 0.16);
+  background:
+    linear-gradient(135deg, rgba(245, 200, 76, 0.08), transparent 42%),
+    rgba(255, 255, 255, 0.025);
+}
+
+.category-intro .card-copy {
+  margin: 0.65rem 0 0;
+  max-width: 70ch;
+}
+
 .reel-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -932,6 +986,10 @@ iframe.soundcloud-lazy {
   .metric-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .shop-anchor-nav {
+    gap: 0.65rem;
+  }
 }
 
 @media (max-width: 760px) {
@@ -979,6 +1037,20 @@ iframe.soundcloud-lazy {
     padding: 0.75rem 0.85rem;
     font-size: 0.92rem;
     line-height: 1.35;
+  }
+
+  .shop-anchor-nav {
+    padding: 0.85rem;
+  }
+
+  .shop-anchor-link {
+    flex: 1 1 calc(50% - 0.5rem);
+    font-size: 0.82rem;
+    min-height: 40px;
+  }
+
+  .category-intro {
+    padding: 1rem;
   }
 
   .hero {
