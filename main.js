@@ -63,6 +63,22 @@
       });
     });
 
+    document.addEventListener("click", function (event) {
+      if (!body.classList.contains("menu-open")) {
+        return;
+      }
+      if (header && header.contains(event.target)) {
+        return;
+      }
+      setMenuState(false);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && body.classList.contains("menu-open")) {
+        setMenuState(false);
+      }
+    });
+
     window.addEventListener("resize", function () {
       if (window.innerWidth > 760) {
         setMenuState(false);
@@ -240,7 +256,7 @@
   }
 
   function initFadeIns() {
-    const items = document.querySelectorAll(".feature-card, .quote-card, .timeline-item, .soundcloud-item, .merch-card, .catalog-card, .video-card, .info-panel, .contact-card, .track-note, .panel-image");
+    const items = document.querySelectorAll(".feature-card, .quote-card, .timeline-item, .soundcloud-item, .merch-card, .catalog-card, .video-card, .reel-card, .info-panel, .contact-card, .track-note, .panel-image");
     if (!items.length || !("IntersectionObserver" in window)) {
       return;
     }
