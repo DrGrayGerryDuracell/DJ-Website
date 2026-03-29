@@ -114,8 +114,133 @@
     });
   }
 
+  function createCatalogCard(item) {
+    const article = document.createElement("article");
+    article.className = "catalog-card feature-card";
+
+    const visual = document.createElement("div");
+    visual.className = "catalog-card-visual";
+
+    const image = document.createElement("img");
+    image.src = item.image;
+    image.alt = item.title;
+    image.loading = "lazy";
+    image.width = 900;
+    image.height = 700;
+    visual.appendChild(image);
+
+    const header = document.createElement("div");
+    header.className = "catalog-header";
+
+    const line = document.createElement("span");
+    line.className = "catalog-line";
+    line.textContent = item.line;
+
+    const status = document.createElement("span");
+    status.className = "catalog-status";
+    status.textContent = item.status;
+
+    header.appendChild(line);
+    header.appendChild(status);
+
+    const title = document.createElement("h3");
+    title.className = "card-title";
+    title.textContent = item.title;
+
+    const slogan = document.createElement("p");
+    slogan.className = "card-copy";
+    slogan.textContent = item.slogan;
+
+    const copy = document.createElement("p");
+    copy.className = "card-copy";
+    copy.textContent = item.copy;
+
+    const products = document.createElement("div");
+    products.className = "catalog-products";
+    item.products.forEach(function (product) {
+      const chip = document.createElement("span");
+      chip.textContent = product;
+      products.appendChild(chip);
+    });
+
+    const tags = document.createElement("div");
+    tags.className = "pill-row";
+    item.tags.forEach(function (tag) {
+      const pill = document.createElement("span");
+      pill.className = "pill";
+      pill.textContent = tag;
+      tags.appendChild(pill);
+    });
+
+    const cta = document.createElement("div");
+    cta.className = "cta-row";
+
+    const link = document.createElement("a");
+    link.className = "btn btn-secondary";
+    link.href = item.href;
+    link.textContent = item.href.indexOf("http") === 0 ? "Artikelweg ansehen" : "Im Shop ansehen";
+
+    if (item.href.indexOf("http") === 0) {
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+    }
+
+    cta.appendChild(link);
+
+    article.appendChild(visual);
+    article.appendChild(header);
+    article.appendChild(title);
+    article.appendChild(slogan);
+    article.appendChild(copy);
+    article.appendChild(products);
+    article.appendChild(tags);
+    article.appendChild(cta);
+
+    return article;
+  }
+
+  function initMerchCatalog() {
+    const catalog = window.MERCH_CATALOG;
+    if (!catalog || !Array.isArray(catalog.items)) {
+      return;
+    }
+
+    document.querySelectorAll("[data-merch-section]").forEach(function (container) {
+      const section = container.getAttribute("data-merch-section");
+      const items = catalog.items.filter(function (item) {
+        return item.section === section;
+      });
+
+      if (!items.length) {
+        return;
+      }
+
+      container.innerHTML = "";
+      items.forEach(function (item) {
+        container.appendChild(createCatalogCard(item));
+      });
+    });
+
+    document.querySelectorAll("[data-merch-spotlight]").forEach(function (container) {
+      const items = catalog.spotlight.map(function (id) {
+        return catalog.items.find(function (item) {
+          return item.id === id;
+        });
+      }).filter(Boolean);
+
+      if (!items.length) {
+        return;
+      }
+
+      container.innerHTML = "";
+      items.forEach(function (item) {
+        container.appendChild(createCatalogCard(item));
+      });
+    });
+  }
+
   function initFadeIns() {
-    const items = document.querySelectorAll(".feature-card, .quote-card, .timeline-item, .soundcloud-item, .merch-card, .video-card, .info-panel, .contact-card, .track-note, .panel-image");
+    const items = document.querySelectorAll(".feature-card, .quote-card, .timeline-item, .soundcloud-item, .merch-card, .catalog-card, .video-card, .info-panel, .contact-card, .track-note, .panel-image");
     if (!items.length || !("IntersectionObserver" in window)) {
       return;
     }
@@ -161,6 +286,7 @@
     }
     initMenu();
     initSoundCloudEmbeds();
+    initMerchCatalog();
     initFadeIns();
     initYear();
   });
