@@ -3,17 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Kontakt zu Dr. Gray & Mrs. Dr. Gray – Buchungsanfragen, Fanmail, Kooperationen.">
+  <meta name="description" content="Kontakt zu Dr. Gray & Mrs. Dr. Gray für Bookings, Kooperationen, Content-Anfragen und Merch-Ideen.">
+  <meta name="theme-color" content="#060606">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>Kontakt – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <title>Kontakt | Dr. Gray & Mrs. Dr. Gray</title>
 </head>
 <body>
-  <header class="main-header">
-    <nav class="main-nav">
-      <ul>
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
+
+  <header class="main-header" id="site-header">
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-brand-logo" src="assets/images/logo1.png" alt="Dr. Gray Logo" width="46" height="46">
+        <span class="nav-brand-text">
+          <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+          <span>Techno mit Herz</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen">
+        <span class="nav-toggle-line" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
         <li><a href="musik.html">Musik</a></li>
@@ -23,36 +38,74 @@
       </ul>
     </nav>
   </header>
-  
-  <div class="live-banner">
-    🔴 Jeden <strong>Freitag</strong> ab ca. <strong>20:00 Uhr</strong> – Live auf TikTok: 
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">@dr.gray.sic</a>
+
+  <div class="live-banner" role="complementary" aria-label="TikTok Live Hinweis">
+    <span class="live-dot" aria-hidden="true">●</span>
+    Jeden Freitag ab ca. <strong>20:00 Uhr</strong> live auf TikTok:
+    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">@dr.gray.sic</a>
   </div>
-  
-  <main class="page-content">
-    <section class="hero" style="min-height:60vh;padding-top:8rem">
-      <div class="hero-text">
-        <h1>Kontakt</h1>
-        <p>Schreib uns – wir freuen uns auf deine Nachricht!</p>
+
+  <main id="main-content" class="page-content">
+    <section class="hero hero-home" style="min-height:60vh;">
+      <div class="hero-inner">
+        <span class="eyebrow">Kontakt | Booking, Zusammenarbeit, Merch</span>
+        <h1 class="page-title">Sprecht uns an, wenn ihr <span>mehr als Standard wollt.</span></h1>
+        <p class="lead">Für Bookings, Kooperationen, Collabs, Content-Ideen oder Fragen zu kommenden Drops soll der Kontaktbereich klar, direkt und unkompliziert funktionieren.</p>
       </div>
     </section>
-    
-    <section class="intro">
-      <h2 class="section-title">Get in Touch</h2>
-      <p>Über TikTok, SoundCloud oder per E-Mail erreichbar. Für Buchungsanfragen und Kooperationen schreibt uns bitte direkt.</p>
-      <div class="cta-buttons" style="margin-top:2rem">
-        <a href="mailto:dr.gray.sic@web.de" class="btn">E-Mail schreiben</a>
-        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" class="btn btn-outline">TikTok</a>
+
+    <section class="section">
+      <div class="section-shell contact-grid">
+        <article class="contact-card">
+          <strong>Bookings &amp; Kooperationen</strong>
+          <p class="card-copy">Für Events, Zusammenarbeiten und Anfragen rund um Auftritte oder Features.</p>
+          <a class="btn btn-primary" href="mailto:dr.gray.sic@web.de">dr.gray.sic@web.de</a>
+        </article>
+        <article class="contact-card">
+          <strong>TikTok &amp; Community</strong>
+          <p class="card-copy">Für Live-Sessions, Clips und direkten Austausch mit der Community.</p>
+          <a class="btn btn-secondary" href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">@dr.gray.sic</a>
+        </article>
+        <article class="contact-card">
+          <strong>SoundCloud</strong>
+          <p class="card-copy">Für Sets, musikalischen Eindruck und weiterführende Hörbeispiele.</p>
+          <a class="btn btn-ghost" href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">Zum Profil</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="section-shell two-grid">
+        <article class="info-panel">
+          <h2 class="card-title">Was hier jetzt besser ist</h2>
+          <p class="card-copy">Der Kontaktbereich ist nicht mehr nur eine kurze Notiz, sondern ein klarer Anlaufpunkt für Booking, Content und Shop-Anfragen. Genau das macht die Seite professioneller und sofort verständlicher.</p>
+        </article>
+        <article class="info-panel">
+          <h2 class="card-title">Auch für Merch wichtig</h2>
+          <p class="card-copy">Solange noch keine öffentlichen Shirtee-Produktlinks eingebaut sind, funktioniert diese Seite auch als Kontaktpunkt für Drop-Interesse und Community-Rückmeldung.</p>
+        </article>
       </div>
     </section>
   </main>
-  
-  <footer class="social-footer">
-    <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
-    <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener">SoundCloud</a>
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok</a>
+
+  <footer class="footer">
+    <div class="footer-shell">
+      <div>
+        <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+        <div class="muted">Techno mit Herz aus Köln</div>
+      </div>
+      <div class="footer-links">
+        <a href="bio.html">Bio</a>
+        <a href="musik.html">Musik</a>
+        <a href="videos.html">Videos</a>
+        <a href="shop.html">Shop</a>
+        <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </div>
+      <div class="muted">© <span data-year>2026</span> Dr. Gray &amp; Mrs. Dr. Gray</div>
+    </div>
   </footer>
-  
-  <script src="main.js"></script>
+
+  <script src="main.js" defer></script>
 </body>
 </html>

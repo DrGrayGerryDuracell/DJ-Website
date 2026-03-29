@@ -3,18 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Videos von Dr. Gray & Mrs. Dr. Gray – Live-Sets, Behind the Scenes, TikTok Highlights.">
+  <meta name="description" content="Videos und TikTok-Fokus von Dr. Gray & Mrs. Dr. Gray: Live-Friday, Hook-Content, Behind the Scenes und Szene-Statements.">
+  <meta name="theme-color" content="#060606">
+  <link rel="preconnect" href="https://www.tiktok.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preconnect" href="https://www.tiktok.com">
-  <title>Videos – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <title>Videos | Dr. Gray & Mrs. Dr. Gray</title>
 </head>
 <body>
-  <header class="main-header">
-    <nav class="main-nav">
-      <ul>
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
+
+  <header class="main-header" id="site-header">
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-brand-logo" src="assets/images/logo1.png" alt="Dr. Gray Logo" width="46" height="46">
+        <span class="nav-brand-text">
+          <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+          <span>Techno mit Herz</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen">
+        <span class="nav-toggle-line" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
         <li><a href="musik.html">Musik</a></li>
@@ -24,40 +39,123 @@
       </ul>
     </nav>
   </header>
-  
-  <div class="live-banner">
-    🔴 Jeden <strong>Freitag</strong> ab ca. <strong>20:00 Uhr</strong> – Live auf TikTok: 
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">@dr.gray.sic</a>
+
+  <div class="live-banner" role="complementary" aria-label="TikTok Live Hinweis">
+    <span class="live-dot" aria-hidden="true">●</span>
+    Jeden Freitag ab ca. <strong>20:00 Uhr</strong> live auf TikTok:
+    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">@dr.gray.sic</a>
   </div>
-  
-  <main class="page-content">
-    <section class="hero" style="min-height:60vh;padding-top:8rem">
-      <div class="hero-text">
-        <h1>Videos</h1>
-        <p>Live-Sets, Behind the Scenes & mehr.</p>
+
+  <main id="main-content" class="page-content">
+    <section class="hero hero-home" style="min-height:64vh;">
+      <div class="hero-inner">
+        <span class="eyebrow">Videos | TikTok als Herzstück</span>
+        <h1 class="page-title">Content, der euren <span>Vibe sichtbar macht.</span></h1>
+        <p class="lead">Die Video-Seite ist jetzt keine Platzhalterfläche mehr, sondern die Grundlage für eine echte TikTok- und Short-Form-Strategie: Live, Hook-Content, Community und wiedererkennbare Statements.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok Öffnen</a>
+          <a class="btn btn-secondary" href="kontakt.html">Für Kooperationen</a>
+        </div>
       </div>
     </section>
-    
-    <section class="intro">
-      <h2 class="section-title">Auf TikTok</h2>
-      <p>Folge uns für Live-Sessions, kurze Clips und behind-the-scenes Content jeden Freitag! 🎥</p>
-      <div class="cta-buttons" style="margin-top:2rem">
-        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" class="btn">@dr.gray.sic auf TikTok</a>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Drei Content-<span>Säulen</span></h2>
+            <p class="lead">Statt beliebiger Clips bekommt eure Website jetzt ein klares Video-System, das auf Reichweite, Bindung und Merch einzahlt.</p>
+          </div>
+        </div>
+        <div class="video-grid">
+          <article class="video-card">
+            <img src="assets/images/flx10-gold.png" alt="Techno-Licht und Bühnenstimmung" width="900" height="700" loading="lazy">
+            <h3 class="card-title">Live-Friday</h3>
+            <p class="card-copy">Euer fester wöchentlicher Slot. Perfekt für Regelmäßigkeit, Community und den klaren Call, freitags live dabei zu sein.</p>
+            <div class="pill-row">
+              <span class="pill">Wiederkehrendes Format</span>
+              <span class="pill">Live CTA</span>
+            </div>
+          </article>
+          <article class="video-card">
+            <img src="assets/images/drgray.jpg" alt="Dr. Gray als Video-Keyvisual" width="900" height="700" loading="lazy">
+            <h3 class="card-title">Hook-Statements</h3>
+            <p class="card-copy">Kurze Clips mit Haltung, Szene-Sprüchen, Techno-Lines und visueller Wiedererkennung. Daraus entstehen später auch Merch-Motive.</p>
+            <div class="pill-row">
+              <span class="pill">Hooks</span>
+              <span class="pill">Szene-Sprüche</span>
+            </div>
+          </article>
+          <article class="video-card">
+            <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray als Video-Keyvisual" width="900" height="700" loading="lazy">
+            <h3 class="card-title">Behind The Vibe</h3>
+            <p class="card-copy">Nähe, Dynamik, Blick hinter die Kulissen. Nicht nur DJ-Act, sondern Duo mit Persönlichkeit und echter Bindung.</p>
+            <div class="pill-row">
+              <span class="pill">Community</span>
+              <span class="pill">Nähe</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
-    
-    <section class="intro">
-      <h2 class="section-title">Video-Galerie</h2>
-      <p>Coming soon – Hier entsteht eine Sammlung unserer besten Moments. 🎬</p>
+
+    <section class="section alt">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Content-Ideen mit <span>Wiedererkennung</span></h2>
+            <p class="lead">Diese Formate lassen sich effizient produzieren, auf TikTok spielen und später mit Shop, Bio und Live-Kommunikation verbinden.</p>
+          </div>
+        </div>
+        <div class="three-grid">
+          <article class="feature-card">
+            <h3 class="card-title">“Techno mit Herz”</h3>
+            <p class="card-copy">Kurzer Claim-Clip mit Blick in Kamera, Visual Layer und Sound-Snippet aus einem Set.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">“Freitag wird laut”</h3>
+            <p class="card-copy">Wöchentlicher Teaser mit Uhrzeit, Energie und kleinem Live-Hook.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">“Szene, aber ehrlich”</h3>
+            <p class="card-copy">Stärkere Statements für Leute, die sich in glatter DJ-Ästhetik nicht wiederfinden.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell two-grid">
+        <article class="info-panel">
+          <h2 class="card-title">Warum das wichtig ist</h2>
+          <p class="card-copy">TikTok ist bei euch nicht nur Traffic-Quelle. Es ist Bühne, Community-Raum, Testfeld für Slogans und später auch Input für Produktideen im Shop.</p>
+        </article>
+        <article class="info-panel">
+          <h2 class="card-title">Nächster Schritt</h2>
+          <p class="card-copy">Sobald wir die ersten Merch-Motive festziehen, können Hook-Sprüche, TikTok-Captions und Produktdrops sauber aufeinander einzahlen.</p>
+        </article>
+      </div>
     </section>
   </main>
-  
-  <footer class="social-footer">
-    <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
-    <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener">SoundCloud</a>
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok</a>
+
+  <footer class="footer">
+    <div class="footer-shell">
+      <div>
+        <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+        <div class="muted">Techno mit Herz aus Köln</div>
+      </div>
+      <div class="footer-links">
+        <a href="bio.html">Bio</a>
+        <a href="musik.html">Musik</a>
+        <a href="shop.html">Shop</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </div>
+      <div class="muted">© <span data-year>2026</span> Dr. Gray &amp; Mrs. Dr. Gray</div>
+    </div>
   </footer>
-  
-  <script src="main.js"></script>
+
+  <script src="main.js" defer></script>
 </body>
 </html>

@@ -3,69 +3,63 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Dr. Gray & Mrs. Dr. Gray – Feinster Techno mit Herz & Seele. Live DJ-Sets auf TikTok, Musik auf SoundCloud.">
-  <meta name="keywords" content="Techno, DJ, Dr. Gray, Mrs. Dr. Gray, Live DJ, TikTok, SoundCloud, elektronische Musik">
+  <meta name="description" content="Dr. Gray & Mrs. Dr. Gray aus Köln: peaktime, melodic und treibender Techno mit Herz, Live-Sessions auf TikTok, Sets auf SoundCloud und Merch im Aufbau.">
+  <meta name="keywords" content="Dr. Gray, Mrs. Dr. Gray, Techno, Köln, TikTok Live, SoundCloud, DJ Duo, Merch, Shirtee">
   <meta name="author" content="Dr. Gray & Mrs. Dr. Gray">
-  <meta name="theme-color" content="#ffd700">
-  
-  <!-- Open Graph -->
-  <meta property="og:title" content="Dr. Gray & Mrs. Dr. Gray – Techno mit Herz">
-  <meta property="og:description" content="Feinster Techno mit Herz & Seele – aus Liebe zur Musik. Live-Sets jeden Freitag.">
-  <meta property="og:image" content="https://drgraygerryduracell.github.io/DJ-Website/assets/images/og-image.jpg">
-  <meta property="og:url" content="https://drgraygerryduracell.github.io/DJ-Website/">
+  <meta name="theme-color" content="#060606">
+  <meta property="og:title" content="Dr. Gray & Mrs. Dr. Gray | Techno mit Herz aus Köln">
+  <meta property="og:description" content="Driving, melodic und peaktime Techno, Live-Freitage auf TikTok, Sets auf SoundCloud und Merch-Drops in Vorbereitung.">
+  <meta property="og:image" content="https://www.drgray-mrsdrgray.com/assets/images/flx10-gold.png">
+  <meta property="og:url" content="https://www.drgray-mrsdrgray.com/">
   <meta property="og:type" content="website">
-  
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Dr. Gray & Mrs. Dr. Gray – Techno mit Herz">
-  <meta name="twitter:description" content="Feinster Techno mit Herz & Seele – Live-Sets jeden Freitag auf TikTok.">
-  <meta name="twitter:image" content="https://drgraygerryduracell.github.io/DJ-Website/assets/images/og-image.jpg">
-  
-  <!-- Performance: Preconnect -->
+  <meta name="twitter:title" content="Dr. Gray & Mrs. Dr. Gray | Techno mit Herz aus Köln">
+  <meta name="twitter:description" content="Driving, melodic und peaktime Techno, Live-Freitage auf TikTok, Sets auf SoundCloud und Merch-Drops in Vorbereitung.">
+  <meta name="twitter:image" content="https://www.drgray-mrsdrgray.com/assets/images/flx10-gold.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://w.soundcloud.com">
-  
-  <title>Dr. Gray & Mrs. Dr. Gray – Techno mit Herz</title>
-  
   <link rel="stylesheet" href="style.css">
-  
-  <!-- Fonts: Display=swap for FCP optimization -->
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-  
-  <!-- Favicon -->
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
-  
-  <!-- Structured Data -->
+  <title>Dr. Gray & Mrs. Dr. Gray | Techno mit Herz aus Köln</title>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "MusicGroup",
     "name": "Dr. Gray & Mrs. Dr. Gray",
-    "description": "Feinster Techno mit Herz & Seele",
-    "url": "https://drgraygerryduracell.github.io/DJ-Website/",
-    "genre": "Techno",
+    "description": "DJ-Duo aus Köln für driving, melodic und peaktime Techno mit Herz.",
+    "genre": ["Techno", "Melodic Techno", "Progressive Techno"],
+    "url": "https://www.drgray-mrsdrgray.com/",
     "sameAs": [
       "https://soundcloud.com/drgray_sic",
       "https://www.tiktok.com/@dr.gray.sic"
-    ]
+    ],
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Köln",
+      "addressCountry": "DE"
+    }
   }
   </script>
-  
-  <!-- Critical CSS Inline for LCP -->
-  <style>
-    .hero-text{opacity:0;animation:fadeInUp 0.6s ease-out 0.2s forwards}
-    @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-  </style>
 </head>
 <body>
-  <a href="#main-content" class="skip-link">Zum Hauptinhalt</a>
-  
-  <!-- Header -->
-  <header class="main-header" id="header">
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
+
+  <header class="main-header" id="site-header">
     <nav class="main-nav" aria-label="Hauptnavigation">
-      <ul>
+      <a class="nav-brand" href="index.html">
+        <img class="nav-brand-logo" src="assets/images/logo1.png" alt="Dr. Gray Logo" width="46" height="46">
+        <span class="nav-brand-text">
+          <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+          <span>Techno mit Herz</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen">
+        <span class="nav-toggle-line" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
         <li><a href="musik.html">Musik</a></li>
@@ -75,66 +69,215 @@
       </ul>
     </nav>
   </header>
-  
-  <!-- Live Banner -->
-  <div class="live-banner" role="complementary" aria-label="Live-Stream Ankündigung">
-    🔴 Jeden <strong>Freitag</strong> ab ca. <strong>20:00 Uhr</strong> – Live auf TikTok: 
+
+  <div class="live-banner" role="complementary" aria-label="TikTok Live Hinweis">
+    <span class="live-dot" aria-hidden="true">●</span>
+    Jeden Freitag ab ca. <strong>20:00 Uhr</strong> live auf TikTok:
     <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">@dr.gray.sic</a>
   </div>
-  
+
   <main id="main-content" class="page-content">
-    <!-- Hero -->
-    <section class="hero" aria-label="Willkommen">
-      <div class="hero-text">
-        <div class="brand-row">
-          <img src="assets/images/logo1.png" alt="Logo Dr. Gray" class="logo-small" width="56" height="56" loading="eager" fetchpriority="high">
-          <h1>Dr. Gray &amp; Mrs. Dr. Gray</h1>
-          <img src="assets/images/logo2.png" alt="Logo Mrs. Dr. Gray" class="logo-small" width="56" height="56" loading="eager" fetchpriority="high">
+    <section class="hero hero-home">
+      <div class="hero-inner hero-grid">
+        <div class="hero-copy">
+          <span class="eyebrow">Köln | Driving, Melodic &amp; Peaktime Techno</span>
+          <h1 class="hero-title">Zwei Herzen. <span>Ein Rhythmus.</span></h1>
+          <p class="hero-subtitle">Dr. Gray &amp; Mrs. Dr. Gray stehen für emotionale Sets, treibende Energie und eine spürbare Verbindung zwischen Liebe, Szene und Clubkultur. Hier findest du Musik, Live-Termine, Content und die ersten Merch-Drops.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="musik.html">Jetzt Hören</a>
+            <a class="btn btn-secondary" href="https://www.shirtee.com/de/store/drgray-mrsdrgray/" target="_blank" rel="noopener noreferrer">Merch Entdecken</a>
+            <a class="btn btn-ghost" href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok Live</a>
+          </div>
+          <div class="metric-grid" aria-label="Kurzüberblick">
+            <div class="metric">
+              <strong>Fr</strong>
+              <span>Regelmäßige TikTok-Live-Sessions</span>
+            </div>
+            <div class="metric">
+              <strong>Köln</strong>
+              <span>Homebase mit Szene-Fokus</span>
+            </div>
+            <div class="metric">
+              <strong>Techno</strong>
+              <span>Melodic bis treibend, roh bis emotional</span>
+            </div>
+          </div>
         </div>
-        <p>Feinster Techno mit Herz &amp; Seele – aus Liebe zur Musik.</p>
-        <div class="cta-buttons">
-          <a href="musik.html" class="btn">Zu den Sets</a>
-          <a href="shop.html" class="btn btn-outline">Zum Shop</a>
+
+        <aside class="hero-panel" aria-label="Brand-Fokus">
+          <div class="brand-stack">
+            <div class="brand-pair">
+              <article class="brand-chip">
+                <img src="assets/images/logo1.png" alt="Dr. Gray Logo" width="74" height="74" loading="eager">
+                <strong>Dr. Gray</strong>
+                <span class="muted">Druckvoll, fokussiert, hypnotisch</span>
+              </article>
+              <article class="brand-chip">
+                <img src="assets/images/logo2.png" alt="Mrs. Dr. Gray Logo" width="74" height="74" loading="eager">
+                <strong>Mrs. Dr. Gray</strong>
+                <span class="muted">Herz, Energie und Präsenz</span>
+              </article>
+            </div>
+            <article class="feature-card">
+              <h2 class="card-title">Was dich hier erwartet</h2>
+              <p class="card-copy">Neue Sets, ein klarerer Auftritt, stärkere Szene-Positionierung und ein Shop, der eure Ästhetik auch als Merch transportiert.</p>
+              <div class="pill-row">
+                <span class="pill">Live auf TikTok</span>
+                <span class="pill">SoundCloud Sets</span>
+                <span class="pill">Merch mit Haltung</span>
+              </div>
+            </article>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Euer <span>Sound</span> in drei Worten</h2>
+            <p class="lead">Kein glattes Artist-Profil, sondern ein Duo mit echter Bindung, ehrlicher Energie und einem Sound zwischen Druck, Emotion und dunklem Glow.</p>
+          </div>
+        </div>
+        <div class="three-grid">
+          <article class="feature-card">
+            <h3 class="card-title">Driving</h3>
+            <p class="card-copy">Wenn das Set nach vorne will, Bass und Groove aber nie leer wirken sollen.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Melodic</h3>
+            <p class="card-copy">Klangflächen, Spannung und emotionale Momente, ohne weich zu werden.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Peaktime</h3>
+            <p class="card-copy">Intensität mit Haltung, gemacht für Leute, die Techno nicht nur hören, sondern leben.</p>
+          </article>
         </div>
       </div>
     </section>
-    
-    <!-- Intro -->
-    <section class="intro" aria-labelledby="intro-heading">
-      <h2 id="intro-heading" class="section-title">Live &amp; Vibes</h2>
-      <p>Wir spielen melodischen bis treibenden Techno – live gemixt, roh und emotional. Folge uns für Live-Sessions jeden <strong>Freitag ab ca. 20:00</strong> auf TikTok.</p>
+
+    <section class="section alt">
+      <div class="section-shell split-layout">
+        <article class="quote-card">
+          <blockquote>“Techno mit Herz heißt für uns: Druck, Tiefe, Verbindung und eine Community, die den Vibe wirklich fühlt.”</blockquote>
+          <p>Dr. Gray &amp; Mrs. Dr. Gray verbinden Club-Energie mit persönlicher Geschichte. Genau daraus soll auch die Website, der Shop und der Content entstehen.</p>
+        </article>
+        <article class="panel-image glass-card">
+          <img src="assets/images/bio-together.jpg" alt="Dr. Gray und Mrs. Dr. Gray gemeinsam" width="900" height="700" loading="lazy">
+        </article>
+      </div>
     </section>
-    
-    <!-- Music Preview with Intersection Observer Lazy Loading -->
-    <section class="music-preview" aria-labelledby="music-heading">
-      <h3 id="music-heading" style="font-family:var(--font-s);font-size:1.8rem;color:var(--c-accent);text-align:center;margin-bottom:1rem">Frisch auf SoundCloud</h3>
-      <div class="soundcloud-grid" id="music-preview-grid">
-        <!-- SoundCloud embeds loaded via intersection observer -->
-        <div class="soundcloud-item" data-track="2126060061" role="region" aria-label="SoundCloud Track 1">
-          <div class="skelly" style="width:100%;height:166px"></div>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Frische <span>Sets</span></h2>
+            <p class="lead">SoundCloud bleibt euer musikalischer Kern. Hier holen Besucher schnell euren Stil ab, bevor sie in Bio, TikTok oder den Shop weitergehen.</p>
+          </div>
+          <a class="btn btn-secondary" href="musik.html">Alle Sets</a>
         </div>
-        <div class="soundcloud-item" data-track="2168299668" role="region" aria-label="SoundCloud Track 2">
-          <div class="skelly" style="width:100%;height:166px"></div>
-        </div>
-        <div class="soundcloud-item" data-track="2008790983" role="region" aria-label="SoundCloud Track 3">
-          <div class="skelly" style="width:100%;height:166px"></div>
+        <div class="soundcloud-grid" id="music-preview-grid">
+          <div class="soundcloud-item" data-track="2126060061" role="region" aria-label="SoundCloud Track 1"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2168299668" role="region" aria-label="SoundCloud Track 2"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2008790983" role="region" aria-label="SoundCloud Track 3"><div class="skelly"></div></div>
         </div>
       </div>
-      <p class="center" style="margin-top:2rem">
-        <a href="musik.html" class="btn btn-outline">Mehr Musik anhören →</a>
-      </p>
+    </section>
+
+    <section class="section alt">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">TikTok &amp; <span>Community</span></h2>
+            <p class="lead">Die Seite soll nicht nur verlinken, sondern euren Rhythmus sichtbar machen: Freitags live, Clips zwischen den Sets und Szene-Statements mit Wiedererkennung.</p>
+          </div>
+          <a class="btn btn-ghost" href="videos.html">Video-Bereich</a>
+        </div>
+        <div class="three-grid">
+          <article class="video-card">
+            <img src="assets/images/flx10-gold.png" alt="Goldener Techno-Hintergrund als Key Visual" width="960" height="720" loading="lazy">
+            <h3 class="card-title">Live-Friday</h3>
+            <p class="card-copy">Jeden Freitag der direkte Draht zur Community. Das ist euer stärkster wiederkehrender Anker.</p>
+          </article>
+          <article class="video-card">
+            <img src="assets/images/drgray.jpg" alt="Dr. Gray im Schwarzweiß-Porträt" width="960" height="720" loading="lazy">
+            <h3 class="card-title">Hook-Content</h3>
+            <p class="card-copy">Kurze Clips, Szene-Sprüche, Teaser und Statements, die sich später auch als Merch übersetzen lassen.</p>
+          </article>
+          <article class="video-card">
+            <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray Porträt" width="960" height="720" loading="lazy">
+            <h3 class="card-title">Behind The Vibe</h3>
+            <p class="card-copy">Persönlich, nahbar und trotzdem klar positioniert: das Duo, nicht nur der Track.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Merch mit <span>Szene-Attitüde</span></h2>
+            <p class="lead">Der Shop wird zur kuratierten Merch-Fläche für Logos, Couple-Drops, Szene-Shirts und geilen Sprüchen. Die Designs gehen erst nach deiner Freigabe in Shirtee hoch.</p>
+          </div>
+          <a class="btn btn-primary" href="https://www.shirtee.com/de/store/drgray-mrsdrgray/" target="_blank" rel="noopener noreferrer">Zum Store</a>
+        </div>
+        <div class="shop-grid">
+          <article class="merch-card">
+            <img src="assets/images/shop-preview.jpg" alt="Merch-Vorschau" width="900" height="700" loading="lazy">
+            <h3 class="card-title">Signature Logos</h3>
+            <p class="card-copy">Minimal, klar und direkt als Erkennungszeichen für Fans, Szene und Community.</p>
+            <div class="pill-row">
+              <span class="pill">Shirts</span>
+              <span class="pill">Hoodies</span>
+              <span class="pill">Caps</span>
+            </div>
+          </article>
+          <article class="merch-card">
+            <img src="assets/images/logo1.png" alt="Dr. Gray Logo als Merch-Motiv" width="900" height="700" loading="lazy">
+            <h3 class="card-title">Szene-Sprüche</h3>
+            <p class="card-copy">Techno mit Herz, Liebe lauter, treibend roh ehrlich und weitere Motive für die Leute, die den Film kennen.</p>
+            <div class="pill-row">
+              <span class="pill">Statement Frontprints</span>
+              <span class="pill">Backprints</span>
+              <span class="pill">Limited Drops</span>
+            </div>
+          </article>
+          <article class="merch-card">
+            <img src="assets/images/logo2.png" alt="Mrs. Dr. Gray Logo als Merch-Motiv" width="900" height="700" loading="lazy">
+            <h3 class="card-title">Duo Merch</h3>
+            <p class="card-copy">Seine Energie, ihre Präsenz, euer gemeinsamer Vibe. Genau daraus entsteht der stärkste Couple-Merch.</p>
+            <div class="pill-row">
+              <span class="pill">Couple Pieces</span>
+              <span class="pill">Festival Fits</span>
+              <span class="pill">Community Wear</span>
+            </div>
+          </article>
+        </div>
+      </div>
     </section>
   </main>
-  
-  <!-- Footer -->
-  <footer class="social-footer">
-    <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
-    <nav aria-label="Social Media">
-      <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
-      <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok</a>
-    </nav>
+
+  <footer class="footer">
+    <div class="footer-shell">
+      <div>
+        <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+        <div class="muted">Techno mit Herz aus Köln</div>
+      </div>
+      <div class="footer-links">
+        <a href="musik.html">Musik</a>
+        <a href="videos.html">Videos</a>
+        <a href="shop.html">Shop</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </div>
+      <div class="muted">© <span data-year>2026</span> Dr. Gray &amp; Mrs. Dr. Gray</div>
+    </div>
   </footer>
-  
+
   <script src="main.js" defer></script>
 </body>
 </html>

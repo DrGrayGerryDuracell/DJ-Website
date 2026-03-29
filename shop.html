@@ -3,17 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Official Merchandise von Dr. Gray & Mrs. Dr. Gray – Shirts, Hoodies, Accessoires.">
+  <meta name="description" content="Merch von Dr. Gray & Mrs. Dr. Gray: geplante Logo-Drops, Szene-Shirts, Duo-Motive und Shirtee-Produktworkflow mit Freigabe vor Upload.">
+  <meta name="theme-color" content="#060606">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>Shop – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <title>Shop | Dr. Gray & Mrs. Dr. Gray</title>
 </head>
 <body>
-  <header class="main-header">
-    <nav class="main-nav">
-      <ul>
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
+
+  <header class="main-header" id="site-header">
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-brand-logo" src="assets/images/logo1.png" alt="Dr. Gray Logo" width="46" height="46">
+        <span class="nav-brand-text">
+          <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+          <span>Techno mit Herz</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen">
+        <span class="nav-toggle-line" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
         <li><a href="musik.html">Musik</a></li>
@@ -23,32 +38,273 @@
       </ul>
     </nav>
   </header>
-  
-  <div class="live-banner">
-    🔴 Jeden <strong>Freitag</strong> ab ca. <strong>20:00 Uhr</strong> – Live auf TikTok: 
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">@dr.gray.sic</a>
+
+  <div class="live-banner" role="complementary" aria-label="TikTok Live Hinweis">
+    <span class="live-dot" aria-hidden="true">●</span>
+    Jeden Freitag ab ca. <strong>20:00 Uhr</strong> live auf TikTok:
+    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">@dr.gray.sic</a>
   </div>
-  
-  <main class="page-content">
-    <section class="hero" style="min-height:60vh;padding-top:8rem">
-      <div class="hero-text">
-        <h1>Shop</h1>
-        <p>Official Merchandise – Wear the Vibe.</p>
+
+  <main id="main-content" class="page-content">
+    <section class="hero hero-home" style="min-height:66vh;">
+      <div class="hero-inner">
+        <span class="eyebrow">Shop | Merch im Aufbau mit Shirtee</span>
+        <h1 class="page-title">Merch, das nicht nur nett aussieht, sondern <span>eure Szene spricht.</span></h1>
+        <p class="lead">Hier bündelt ihr Shirts, Hoodies und Accessoires mit Logo-Motiven, Couple-Drops und geilen Sprüchen. Der öffentliche Store bei Shirtee ist jetzt angebunden, weitere Produkte und Designs folgen nach Freigabe.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://www.shirtee.com/de/store/drgray-mrsdrgray/" target="_blank" rel="noopener noreferrer">Zum Shirtee Store</a>
+          <a class="btn btn-secondary" href="kontakt.html">Drop Anfragen</a>
+        </div>
       </div>
     </section>
-    
-    <section class="intro">
-      <h2 class="section-title">Coming Soon</h2>
-      <p>Unser Merch-Store ist in Arbeit. Bald gibt's Shirts, Hoodies & mehr! 🛍️</p>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Geplante <span>Kollektionen</span></h2>
+            <p class="lead">Wir bauen den Shop nicht mit beliebigen Artikeln voll, sondern mit klaren Linien, die zu Musik, TikTok und eurer Identität passen.</p>
+          </div>
+        </div>
+        <div class="shop-grid">
+          <article class="merch-card">
+            <img src="assets/images/shop-preview.jpg" alt="Merch-Vorschau für Signature-Kollektion" width="900" height="700" loading="lazy">
+            <h3 class="card-title">Signature Logos</h3>
+            <p class="card-copy">Klar, reduziert, tragbar. Die Motive für Fans, die eure Marke ohne große Erklärung kennen.</p>
+            <div class="pill-row">
+              <span class="pill">Shirts</span>
+              <span class="pill">Hoodies</span>
+              <span class="pill">Caps</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-secondary" href="https://www.shirtee.com/de/store/drgray-mrsdrgray/" target="_blank" rel="noopener noreferrer">Store Öffnen</a>
+            </div>
+          </article>
+          <article class="merch-card">
+            <img src="assets/images/logo1.png" alt="Dr. Gray Logo als Statement-Motiv" width="900" height="700" loading="lazy">
+            <h3 class="card-title">Szene Statements</h3>
+            <p class="card-copy">Techno mit Herz. Liebe lauter. Treibend, roh, ehrlich. Motive für die Leute, die nicht nach Mainstream aussehen wollen.</p>
+            <div class="pill-row">
+              <span class="pill">Frontprint</span>
+              <span class="pill">Backprint</span>
+              <span class="pill">Limited Drop</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-secondary" href="https://www.shirtee.com/de/store/drgray-mrsdrgray/" target="_blank" rel="noopener noreferrer">Store Öffnen</a>
+            </div>
+          </article>
+          <article class="merch-card">
+            <img src="assets/images/logo2.png" alt="Mrs. Dr. Gray Logo als Duo-Motiv" width="900" height="700" loading="lazy">
+            <h3 class="card-title">Duo &amp; Couple Pieces</h3>
+            <p class="card-copy">Für euch als Act, für Fans als Statement und für alle, die den Vibe als Paar oder Crew fühlen.</p>
+            <div class="pill-row">
+              <span class="pill">Couple Fits</span>
+              <span class="pill">Festival Wear</span>
+              <span class="pill">Community Merch</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-secondary" href="https://www.shirtee.com/de/store/drgray-mrsdrgray/" target="_blank" rel="noopener noreferrer">Store Öffnen</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Erste <span>9 Produkte</span></h2>
+            <p class="lead">Damit der Shop nicht abstrakt bleibt, ist hier bereits die erste konkrete Produktlinie vorbereitet. Diese Produkte sind die Basis für die spätere Shirtee-Anlage.</p>
+          </div>
+        </div>
+        <div class="three-grid">
+          <article class="feature-card">
+            <h3 class="card-title">Dr. Gray Signature Shirt</h3>
+            <p class="card-copy">Kleines Brustlogo, optional großer Rückenprint. Clean, schwarz-gold, direkt tragbar.</p>
+            <div class="pill-row">
+              <span class="pill">Unisex Shirt</span>
+              <span class="pill">Oversize</span>
+              <span class="pill">Hoodie</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Mrs. Dr. Gray Signature Shirt</h3>
+            <p class="card-copy">Reduzierter Signature-Look mit klarer Präsenz und stärkerem Community-Fit.</p>
+            <div class="pill-row">
+              <span class="pill">Unisex Shirt</span>
+              <span class="pill">Oversize</span>
+              <span class="pill">Hoodie</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Dual Crest Hoodie</h3>
+            <p class="card-copy">Beide Logos in einem gemeinsamen Emblem. Das stärkste Premium-Duo-Piece für den Start.</p>
+            <div class="pill-row">
+              <span class="pill">Hoodie</span>
+              <span class="pill">Sweatshirt</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Techno mit Herz Tee</h3>
+            <p class="card-copy">Der zentrale Dachclaim der Marke. Elegant, stark und direkt mit euch verbunden.</p>
+            <div class="pill-row">
+              <span class="pill">Shirt</span>
+              <span class="pill">Hoodie</span>
+              <span class="pill">Tote Bag</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Treibend. Roh. Ehrlich.</h3>
+            <p class="card-copy">Die härtere Linie für Szene, Club und Community mit Underground-Gefühl.</p>
+            <div class="pill-row">
+              <span class="pill">Oversize</span>
+              <span class="pill">Hoodie</span>
+              <span class="pill">Backprint</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Liebe Lauter</h3>
+            <p class="card-copy">Ein emotionaler Claim, der als Social-Hook und als tragbares Statement funktioniert.</p>
+            <div class="pill-row">
+              <span class="pill">Shirt</span>
+              <span class="pill">Crop</span>
+              <span class="pill">Hoodie</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Verheiratet mit dem Beat</h3>
+            <p class="card-copy">Das persönlichste Motiv im ersten Drop. Perfekt für Couple- und Story-Merch.</p>
+            <div class="pill-row">
+              <span class="pill">Shirt</span>
+              <span class="pill">Oversize</span>
+              <span class="pill">Hoodie</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Two Hearts One Rhythm</h3>
+            <p class="card-copy">Die internationale Variante für einen weicheren, melodischen Duo-Look.</p>
+            <div class="pill-row">
+              <span class="pill">Shirt</span>
+              <span class="pill">Hoodie</span>
+            </div>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Rave Ehe Clubshirt</h3>
+            <p class="card-copy">Ein verspielteres Community-Stück mit Club-Attitüde und Augenzwinkern.</p>
+            <div class="pill-row">
+              <span class="pill">Shirt</span>
+              <span class="pill">Hoodie</span>
+              <span class="pill">Bag</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Bereits <span>live im Store</span></h2>
+            <p class="lead">Diese Produkte sind schon öffentlich bei Shirtee erreichbar und jetzt direkt von eurer Website aus kaufbar.</p>
+          </div>
+        </div>
+        <div class="two-grid">
+          <article class="feature-card">
+            <h3 class="card-title">Mrs. Dr. Gray Unisex Hoodie</h3>
+            <p class="card-copy">Bereits online. Stark für kalte Nächte, TikTok-Lives und als erster echter Store-Anker.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://www.shirtee.com/de/drgray-mrsdrgray/" target="_blank" rel="noopener noreferrer">Jetzt kaufen</a>
+            </div>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Mrs. Dr. Gray Crop Shirt</h3>
+            <p class="card-copy">Bereits online. Das erste leichte Statement-Piece direkt aus eurem Shirtee-Store.</p>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="https://www.shirtee.com/de/gy1dj4cqvmh36/" target="_blank" rel="noopener noreferrer">Jetzt kaufen</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="section-shell two-grid">
+        <article class="info-panel">
+          <h2 class="card-title">Upload-Workflow</h2>
+          <p class="card-copy">Für maximale Effizienz läuft jedes Motiv gleich: Idee, Claim, Platzierung, Produktvorschlag, deine Freigabe und erst dann Upload in Shirtee.</p>
+          <ol class="list">
+            <li>Kollektion auswählen</li>
+            <li>Motiv und Spruch festziehen</li>
+            <li>Ich frage vor dem Upload nach</li>
+            <li>Du gibst frei mit „ja hochladen“</li>
+          </ol>
+        </article>
+        <article class="info-panel">
+          <h2 class="card-title">Wichtiger technischer Hinweis</h2>
+          <p class="card-copy">Der öffentliche Shirtee-Store ist jetzt vorhanden und kann direkt verlinkt werden. Im nächsten Schritt ergänzen wir einzelne Produktlinks und bauen neue Motive geordnet in den Store ein.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Erste Spruch- und <span>Motivrichtungen</span></h2>
+            <p class="lead">Diese Linien passen zum Auftritt und lassen sich sowohl als TikTok-Hooks als auch als Shirt-Statements weiterbauen.</p>
+          </div>
+        </div>
+        <div class="three-grid">
+          <article class="feature-card">
+            <h3 class="card-title">Techno mit Herz</h3>
+            <p class="card-copy">Der stärkste Dach-Claim. Elegant, klar und direkt mit der Marke verbunden.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Verheiratet mit dem Beat</h3>
+            <p class="card-copy">Perfekt für Couple- und Duo-Merch mit Wiedererkennungswert und Story-Fit.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Treibend. Roh. Ehrlich.</h3>
+            <p class="card-copy">Die härtere Szene-Linie für Leute, die eher Underground als brav wollen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="section-shell two-grid">
+        <article class="info-panel">
+          <h2 class="card-title">Was noch fehlt</h2>
+          <p class="card-copy">Der Store-Link ist jetzt bekannt und kann direkt genutzt werden. Für einzelne Produktbuttons fehlen nur noch die späteren Produkt-URLs der jeweiligen Designs.</p>
+        </article>
+        <article class="info-panel">
+          <h2 class="card-title">Was schon fertig ist</h2>
+          <p class="card-copy">Kollektionen, Produktnamen, Claims, Reihenfolge, Website-Präsentation und Upload-Workflow stehen jetzt. Damit können wir direkt motivweise in die Freigabe und danach in Shirtee gehen.</p>
+        </article>
+      </div>
     </section>
   </main>
-  
-  <footer class="social-footer">
-    <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
-    <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener">SoundCloud</a>
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok</a>
+
+  <footer class="footer">
+    <div class="footer-shell">
+      <div>
+        <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+        <div class="muted">Techno mit Herz aus Köln</div>
+      </div>
+      <div class="footer-links">
+        <a href="bio.html">Bio</a>
+        <a href="musik.html">Musik</a>
+        <a href="videos.html">Videos</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </div>
+      <div class="muted">© <span data-year>2026</span> Dr. Gray &amp; Mrs. Dr. Gray</div>
+    </div>
   </footer>
-  
-  <script src="main.js"></script>
+
+  <script src="main.js" defer></script>
 </body>
 </html>

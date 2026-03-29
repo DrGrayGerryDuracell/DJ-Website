@@ -3,18 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Alle DJ-Sets von Dr. Gray & Mrs. Dr. Gray auf SoundCloud – Techno, Live-Mixes, emotionale Beats.">
+  <meta name="description" content="Musik von Dr. Gray & Mrs. Dr. Gray: Techno-Sets auf SoundCloud zwischen driving, melodic und peaktime Energie.">
+  <meta name="theme-color" content="#060606">
   <link rel="preconnect" href="https://w.soundcloud.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>Musik – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <title>Musik | Dr. Gray & Mrs. Dr. Gray</title>
 </head>
 <body>
-  <header class="main-header">
-    <nav class="main-nav">
-      <ul>
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
+
+  <header class="main-header" id="site-header">
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-brand-logo" src="assets/images/logo1.png" alt="Dr. Gray Logo" width="46" height="46">
+        <span class="nav-brand-text">
+          <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+          <span>Techno mit Herz</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen">
+        <span class="nav-toggle-line" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
         <li><a href="musik.html" aria-current="page">Musik</a></li>
@@ -24,47 +39,105 @@
       </ul>
     </nav>
   </header>
-  
-  <div class="live-banner">
-    🔴 Jeden <strong>Freitag</strong> ab ca. <strong>20:00 Uhr</strong> – Live auf TikTok: 
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">@dr.gray.sic</a>
+
+  <div class="live-banner" role="complementary" aria-label="TikTok Live Hinweis">
+    <span class="live-dot" aria-hidden="true">●</span>
+    Jeden Freitag ab ca. <strong>20:00 Uhr</strong> live auf TikTok:
+    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">@dr.gray.sic</a>
   </div>
-  
-  <main class="page-content">
-    <section class="hero" style="min-height:60vh;padding-top:8rem">
-      <div class="hero-text">
-        <h1>Musik</h1>
-        <p>Techno. Emotion. Liebe. Hier findest du alle unsere Sets.</p>
+
+  <main id="main-content" class="page-content">
+    <section class="hero hero-home" style="min-height:64vh;">
+      <div class="hero-inner">
+        <span class="eyebrow">Musik | Sets, Stimmung, Druck</span>
+        <h1 class="page-title">Hier hört man, <span>wofür ihr steht.</span></h1>
+        <p class="lead">Die Musikseite bleibt euer stärkster Beweis. Besucher sollen hier schnell verstehen, wie sich Dr. Gray &amp; Mrs. Dr. Gray zwischen peaktime Druck, melodischer Tiefe und ehrlicher Live-Energie anfühlen.</p>
       </div>
     </section>
-    
-    <section class="music-intro">
-      <h2 class="section-title">Unsere Sounds</h2>
-      <p>Unsere Musik ist mehr als Klang – sie ist Ausdruck unseres Lebens. Von deepen Techno-Vibes bis zu emotional geladenen B2B-Sets 🔥</p>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Euer Sound auf <span>einen Blick</span></h2>
+            <p class="lead">Driving Techno, emotionaler Aufbau, dunkle Wärme und genug Zug nach vorne, damit ein Set nicht nur schön, sondern körperlich wirkt.</p>
+          </div>
+        </div>
+        <div class="three-grid">
+          <article class="feature-card">
+            <h3 class="card-title">Live gedacht</h3>
+            <p class="card-copy">Auch wenn viele Sets digital starten, ist der Kern immer Club, Bewegung und Spannungskurve.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Zwischen Druck &amp; Gefühl</h3>
+            <p class="card-copy">Tracks dürfen hart sein, aber nie leer. Emotion darf rein, aber nie beliebig wirken.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Duo-Handschrift</h3>
+            <p class="card-copy">Der Vibe ist nicht austauschbar, weil genau diese Verbindung als Paar und als Act mitschwingt.</p>
+          </article>
+        </div>
+      </div>
     </section>
-    
-    <section class="soundcloud-grid">
-      <div class="soundcloud-item" data-track="2126060061"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="2008790983"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="2032581476"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="2173521759"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="2112398340"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="2168299668"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="1959994003"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="2113662411"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="2168266476"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="2120920662"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="2184511415"><div class="skelly" style="height:166px"></div></div>
-      <div class="soundcloud-item" data-track="1909849949"><div class="skelly" style="height:166px"></div></div>
+
+    <section class="section alt">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Ausgewählte <span>Tracks &amp; Sets</span></h2>
+            <p class="lead">Die eingebetteten Sets bleiben bewusst im Fokus. Die Seite soll schnell laden, aber musikalisch sofort überzeugen.</p>
+          </div>
+          <a class="btn btn-secondary" href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud Profil</a>
+        </div>
+        <div class="soundcloud-grid">
+          <div class="soundcloud-item" data-track="2126060061" role="region" aria-label="SoundCloud Track 1"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2008790983" role="region" aria-label="SoundCloud Track 2"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2032581476" role="region" aria-label="SoundCloud Track 3"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2173521759" role="region" aria-label="SoundCloud Track 4"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2112398340" role="region" aria-label="SoundCloud Track 5"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2168299668" role="region" aria-label="SoundCloud Track 6"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="1959994003" role="region" aria-label="SoundCloud Track 7"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2113662411" role="region" aria-label="SoundCloud Track 8"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2168266476" role="region" aria-label="SoundCloud Track 9"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2120920662" role="region" aria-label="SoundCloud Track 10"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="2184511415" role="region" aria-label="SoundCloud Track 11"><div class="skelly"></div></div>
+          <div class="soundcloud-item" data-track="1909849949" role="region" aria-label="SoundCloud Track 12"><div class="skelly"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell two-grid">
+        <article class="track-note">
+          <h2 class="card-title">Für Fans</h2>
+          <p class="card-copy">Wenn du über TikTok gekommen bist, findest du hier die längere Reise: mehr Raum, mehr Entwicklung, mehr Tiefe als im schnellen Clip.</p>
+        </article>
+        <article class="track-note">
+          <h2 class="card-title">Für Booker</h2>
+          <p class="card-copy">Die Sets zeigen direkt, wie euer Sound Spannung aufbaut. Genau deshalb ist diese Seite auch ein kleines Audio-Press-Kit.</p>
+        </article>
+      </div>
     </section>
   </main>
-  
-  <footer class="social-footer">
-    <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
-    <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener">SoundCloud</a>
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok</a>
+
+  <footer class="footer">
+    <div class="footer-shell">
+      <div>
+        <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+        <div class="muted">Techno mit Herz aus Köln</div>
+      </div>
+      <div class="footer-links">
+        <a href="bio.html">Bio</a>
+        <a href="videos.html">Videos</a>
+        <a href="shop.html">Shop</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </div>
+      <div class="muted">© <span data-year>2026</span> Dr. Gray &amp; Mrs. Dr. Gray</div>
+    </div>
   </footer>
-  
-  <script src="main.js"></script>
+
+  <script src="main.js" defer></script>
 </body>
 </html>

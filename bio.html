@@ -3,17 +3,32 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Die Geschichte von Dr. Gray & Mrs. Dr. Gray – Zwei Herzen, ein Rhythmus.">
+  <meta name="description" content="Die Geschichte von Dr. Gray & Mrs. Dr. Gray: ein Duo aus Köln zwischen Liebe, Szene, TikTok-Live-Sessions und treibendem Techno.">
+  <meta name="theme-color" content="#060606">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <title>Bio – Dr. Gray & Mrs. Dr. Gray</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+  <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
+  <title>Bio | Dr. Gray & Mrs. Dr. Gray</title>
 </head>
 <body>
-  <header class="main-header">
-    <nav class="main-nav">
-      <ul>
+  <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
+
+  <header class="main-header" id="site-header">
+    <nav class="main-nav" aria-label="Hauptnavigation">
+      <a class="nav-brand" href="index.html">
+        <img class="nav-brand-logo" src="assets/images/logo1.png" alt="Dr. Gray Logo" width="46" height="46">
+        <span class="nav-brand-text">
+          <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+          <span>Techno mit Herz</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen">
+        <span class="nav-toggle-line" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="bio.html" aria-current="page">Bio</a></li>
         <li><a href="musik.html">Musik</a></li>
@@ -23,48 +38,142 @@
       </ul>
     </nav>
   </header>
-  
-  <div class="live-banner">
-    🔴 Jeden <strong>Freitag</strong> ab ca. <strong>20:00 Uhr</strong> – Live auf TikTok: 
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">@dr.gray.sic</a>
+
+  <div class="live-banner" role="complementary" aria-label="TikTok Live Hinweis">
+    <span class="live-dot" aria-hidden="true">●</span>
+    Jeden Freitag ab ca. <strong>20:00 Uhr</strong> live auf TikTok:
+    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">@dr.gray.sic</a>
   </div>
-  
-  <main class="page-content">
-    <section class="bio-sec">
-      <h1 class="section-title">Unsere Geschichte</h1>
-      
-      <div class="bio-row">
-        <img src="assets/images/drgray.jpg" alt="Dr. Gray" class="bio-img" loading="lazy">
-        <div class="bio-text">
-          <h2>Er – Dr. Gray</h2>
-          <p>Dr. Gray – der Mann hinter den Decks. Ein Künstler, der den Techno lebt und atmet. Seine Leidenschaft begann mit den ersten Beats und wuchs zu einer Vision: Musik, die nicht nur gehört, sondern gefühlt wird. Mit jedem Set nimmt er sein Publikum mit auf eine Reise zwischen treibenden Bässen und hypnotischen Klangwelten.</p>
+
+  <main id="main-content" class="page-content">
+    <section class="hero hero-home" style="min-height:68vh;">
+      <div class="hero-inner">
+        <span class="eyebrow">Bio | Duo, Szene, Leidenschaft</span>
+        <h1 class="page-title">Nicht nur ein Projekt. <span>Ein gemeinsamer Film.</span></h1>
+        <p class="lead">Die Geschichte von Dr. Gray &amp; Mrs. Dr. Gray beginnt nicht bei einem Marketingkonzept, sondern bei echter Verbindung, gemeinsamer Energie und einer Musik, die mehr will als nur Hintergrund zu sein.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell split-layout">
+        <article class="panel-image glass-card">
+          <img src="assets/images/drgray.jpg" alt="Dr. Gray im Schwarzweiß-Porträt" width="1200" height="900" loading="lazy">
+        </article>
+        <article class="info-panel">
+          <h2 class="card-title">Dr. Gray</h2>
+          <p class="card-copy">Dr. Gray steht für den Teil des Sounds, der nach vorne geht: Druck, Fokus, Stimmung und diese klare Linie im Set, die Menschen in Bewegung hält. Seine Arbeit an den Decks lebt von Kontrolle, Gefühl und dem Drang, Tracks nicht nur zu spielen, sondern Spannungsbögen wirklich aufzubauen.</p>
+          <p class="card-copy">Der rote Faden ist Techno mit Tiefe: treibend, düster, emotional und immer mit genug Raum für Entwicklung statt bloßer Härte.</p>
+          <div class="pill-row">
+            <span class="pill">Driving Techno</span>
+            <span class="pill">Peaktime Energy</span>
+            <span class="pill">Hypnotische Spannung</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="section-shell split-layout">
+        <article class="info-panel">
+          <h2 class="card-title">Mrs. Dr. Gray</h2>
+          <p class="card-copy">Mrs. Dr. Gray bringt die Wärme, Präsenz und emotionale Direktheit ins Duo. Ihre Energie macht aus einem Artist-Projekt eine greifbare Geschichte. Genau deshalb funktionieren TikTok, Community und Live-Momente bei euch nicht als Nebenbei-Content, sondern als echter Teil der Identität.</p>
+          <p class="card-copy">Sie steht für die Seite von Techno, die Menschen verbindet: Herz, Nähe, Vibe und das Gefühl, nicht nur zuzusehen, sondern Teil davon zu sein.</p>
+          <div class="pill-row">
+            <span class="pill">Community Vibe</span>
+            <span class="pill">Präsenz</span>
+            <span class="pill">Emotion im Fokus</span>
+          </div>
+        </article>
+        <article class="panel-image glass-card">
+          <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray Porträt" width="1200" height="900" loading="lazy">
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Wie ihr <span>zusammen klingt</span></h2>
+            <p class="lead">Als Duo entsteht genau die Mischung, die hängen bleibt: Härte ohne Kälte, Emotion ohne Kitsch und eine Klarheit, die auf Bühne, im Stream und im Merch wiedererkennbar sein muss.</p>
+          </div>
+        </div>
+        <div class="timeline">
+          <article class="timeline-item">
+            <small>01 | Begegnung</small>
+            <h3 class="card-title">Liebe trifft Szene</h3>
+            <p class="card-copy">Aus gemeinsamer Faszination für Sound, Bewegung und Atmosphäre wird nach und nach ein gemeinsamer Weg.</p>
+          </article>
+          <article class="timeline-item">
+            <small>02 | Entwicklung</small>
+            <h3 class="card-title">Live, digital, nahbar</h3>
+            <p class="card-copy">TikTok-Live-Sessions und Sets auf SoundCloud machen den Vibe auch außerhalb klassischer Clubs erlebbar.</p>
+          </article>
+          <article class="timeline-item">
+            <small>03 | Identität</small>
+            <h3 class="card-title">Duo mit Handschrift</h3>
+            <p class="card-copy">Die Marke wächst jetzt sauber zusammen: Musik, Visuals, Shop, Statements und Community in einem klaren Bild.</p>
+          </article>
         </div>
       </div>
-      
-      <div class="bio-row rev">
-        <img src="assets/images/mrsdrgray.jpg" alt="Mrs. Dr. Gray" class="bio-img" loading="lazy">
-        <div class="bio-text">
-          <h2>Sie – Mrs. Dr. Gray</h2>
-          <p>Sie war die Tänzerin, die mit jedem Beat verschmolz. Auf TikTok faszinierte sie mit Energie und purer Leidenschaft. Doch irgendwann traf sie auf den einen Sound, der anders war – Dr. Gray. Heute ist sie nicht nur seine Partnerin im Leben, sondern auch im Beat.</p>
+    </section>
+
+    <section class="section alt">
+      <div class="section-shell">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Wofür ihr <span>steht</span></h2>
+            <p class="lead">Die Bio soll nicht nur nett klingen, sondern eine Richtung geben. Genau das transportieren wir jetzt auf der ganzen Website.</p>
+          </div>
+        </div>
+        <div class="three-grid">
+          <article class="feature-card">
+            <h3 class="card-title">Köln</h3>
+            <p class="card-copy">Eine klare Homebase mit Szene-Nähe, urbanem Druck und Underground-Energie.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Techno mit Herz</h3>
+            <p class="card-copy">Nicht weichgespült, sondern emotional mit Haltung, Verbindung und Wiedererkennung.</p>
+          </article>
+          <article class="feature-card">
+            <h3 class="card-title">Duo statt Fassade</h3>
+            <p class="card-copy">Ihr verkauft nicht nur Tracks oder T-Shirts, sondern einen Lebensstil, den man wirklich spürt.</p>
+          </article>
         </div>
       </div>
-      
-      <div class="gold-line"></div>
-      
-      <div class="bio-joint">
-        <h2>Dr. Gray & Mrs. Dr. Gray – Eine Einheit</h2>
-        <p>Zwei Herzen, ein Rhythmus. Was als musikalische Begegnung begann, wurde zu einer tiefen Verbindung aus Liebe, Leidenschaft und Klang.</p>
-        <img src="assets/images/bio-together.jpg" alt="Dr. Gray & Mrs. Dr. Gray" loading="lazy">
+    </section>
+
+    <section class="section">
+      <div class="section-shell split-layout">
+        <article class="quote-card">
+          <blockquote>“Was als Begegnung begann, ist heute ein gemeinsamer Sound, ein gemeinsamer Auftritt und ein gemeinsamer Weg nach vorne.”</blockquote>
+          <p>Genau darauf bauen wir Musik, Socials, Website und Merch jetzt auf: klarer, schöner und stärker positioniert.</p>
+        </article>
+        <article class="panel-image glass-card">
+          <img src="assets/images/bio-together.jpg" alt="Dr. Gray und Mrs. Dr. Gray zusammen" width="1200" height="900" loading="lazy">
+        </article>
       </div>
     </section>
   </main>
-  
-  <footer class="social-footer">
-    <p>&copy; 2025 Dr. Gray &amp; Mrs. Dr. Gray</p>
-    <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener">SoundCloud</a>
-    <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener">TikTok</a>
+
+  <footer class="footer">
+    <div class="footer-shell">
+      <div>
+        <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+        <div class="muted">Techno mit Herz aus Köln</div>
+      </div>
+      <div class="footer-links">
+        <a href="musik.html">Musik</a>
+        <a href="videos.html">Videos</a>
+        <a href="shop.html">Shop</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+        <a href="https://www.tiktok.com/@dr.gray.sic" target="_blank" rel="noopener noreferrer">TikTok</a>
+      </div>
+      <div class="muted">© <span data-year>2026</span> Dr. Gray &amp; Mrs. Dr. Gray</div>
+    </div>
   </footer>
-  
-  <script src="main.js"></script>
+
+  <script src="main.js" defer></script>
 </body>
 </html>
