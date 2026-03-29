@@ -1,5 +1,5 @@
 window.MERCH_CATALOG = {
-  spotlight: ["dr-hoodie-mainstream", "mrs-crop-wild", "couple-hoodie-beat", "unisex-shirt-dual", "accessory-tote-techno", "special-lighter-afterhour"],
+  spotlight: ["dr-hoodie-mainstream", "dr-shirt-raw", "mrs-crop-wild", "mrs-dress-liebe", "couple-hoodie-beat", "unisex-shirt-dual", "accessory-tote-techno", "accessory-cap-gray"],
   items: [
     {
       id: "dr-hoodie-mainstream",
@@ -76,6 +76,45 @@ window.MERCH_CATALOG = {
       products: ["Hemd", "Overshirt", "Light Shirt Jacket"],
       tags: ["Herren", "Hemd", "Clean"],
       image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#herren-kollektion",
+      status: "Konzept"
+    },
+    {
+      id: "dr-longsleeve-pressure",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Pressure Longsleeve",
+      slogan: "Mehr Strecke im Look, dieselbe klare Haltung.",
+      copy: "Ein technischer Longsleeve fuer kalte Clubnaechte, reduzierte Fronts und kleine Backprint-Nackenloesungen.",
+      products: ["Longsleeve", "Heavy Longsleeve", "Layer Tee"],
+      tags: ["Herren", "Longsleeve", "Dark"],
+      image: "store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+      href: "shop.html#herren-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "dr-zip-blackout",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Blackout Zip Hoodie",
+      slogan: "Fuer den dunkleren, cleaneren Street-Fit.",
+      copy: "Zipper mit kleinem Frontlogo und grosser Rueckenpraesenz. Ideal fuer Alltag, Club und Travel-Fits.",
+      products: ["Zip Hoodie", "Heavy Zip", "Street Jacket"],
+      tags: ["Herren", "Zip", "Street"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#herren-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "dr-tank-raver",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Old Dogs Better Raver Tank",
+      slogan: "Frecher, direkter und bewusst mit Szenehaken.",
+      copy: "Ein Tank fuer heissere Naechte, Sommer-Sets und ironisch-freche Statements ohne albern zu wirken.",
+      products: ["Tank Top", "Sleeveless", "Festival Fit"],
+      tags: ["Herren", "Tank", "Statement"],
+      image: "store-assets/variants/dr-front-bass-im-blut.png",
       href: "shop.html#herren-kollektion",
       status: "Konzept"
     },
@@ -171,6 +210,58 @@ window.MERCH_CATALOG = {
       status: "Geplant"
     },
     {
+      id: "mrs-crop-love",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Liebe lauter Crop",
+      slogan: "Weicher im Wort, stark in der Wirkung.",
+      copy: "Crop mit melodischerem Spruch fuer die weichere Mrs.-Linie. Passt zu Clubfotos, Story-Posts und eleganteren Fits.",
+      products: ["Crop Shirt", "Soft Crop", "Summer Top"],
+      tags: ["Damen", "Crop", "Melodic"],
+      image: "store-assets/variants/mrs-front-liebe-lauter.png",
+      href: "shop.html#damen-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "mrs-hoodie-wild",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Zu wild fuer leise Hoodie",
+      slogan: "Die frechere Hoodie-Variante fuer kalte Naechte.",
+      copy: "Front clean, Logo dominant und kein visuelles Durcheinander. Funktioniert fuer Damen-Hoodie und weicheren Oversize-Fit.",
+      products: ["Hoodie", "Oversize Hoodie", "Soft Zip"],
+      tags: ["Damen", "Hoodie", "Frech"],
+      image: "store-assets/variants/mrs-front-zu-wild.png",
+      href: "shop.html#damen-kollektion",
+      status: "Prioritaet"
+    },
+    {
+      id: "mrs-shirt-signature",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Mrs. Dr. Gray Signature Tee",
+      slogan: "Nur Marke, nur Haltung, null Spielerei.",
+      copy: "Ein klares Shirt fuer die starke Logo-Linie. Perfekt fuer den direkten Wiedererkennungseffekt ohne weiteren Bildlärm.",
+      products: ["Tee", "Fitted Tee", "Clean Top"],
+      tags: ["Damen", "Signature", "Minimal"],
+      image: "store-assets/variants/mrs-front-signature.png",
+      href: "shop.html#damen-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "mrs-shirt-afterhour",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Afterhour Attitude Tee",
+      slogan: "Zu spaet fuer brav, zu echt fuer Plastik.",
+      copy: "Ein Statement-Piece fuer die frechere Damen-Seite, mit klarer Typo und reduzierter Form.",
+      products: ["Tee", "Longsleeve", "Layer Top"],
+      tags: ["Damen", "Afterhour", "Attitude"],
+      image: "store-assets/variants/mrs-front-signature.png",
+      href: "shop.html#damen-kollektion",
+      status: "Konzept"
+    },
+    {
       id: "couple-hoodie-beat",
       section: "couple",
       line: "Couple Edition",
@@ -223,6 +314,32 @@ window.MERCH_CATALOG = {
       status: "Konzept"
     },
     {
+      id: "couple-hoodie-rhythm",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Two Hearts. One Rhythm. Hoodie",
+      slogan: "Die melodischere Couple-Linie fuer softere Fotos und starke Storys.",
+      copy: "Gemeinsames Hoodie-Motiv mit ruhigerer Sprache, aber weiterhin sauberer Symmetrie und klarem Duo-Auftritt.",
+      products: ["Hoodie Set", "Couple Hoodie", "Gift Set"],
+      tags: ["Couple", "Hoodie", "Melodic"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
+      href: "shop.html#couple-edition",
+      status: "Prioritaet"
+    },
+    {
+      id: "couple-longsleeve-love",
+      section: "couple",
+      line: "Couple Edition",
+      title: "No Fake Love Longsleeve Set",
+      slogan: "Frecher, roher und mit klarer Haltung.",
+      copy: "Ein zweiteiliges Couple-Set fuer die dunklere Seite der Story. Weniger romantisch, mehr ehrliche Energie.",
+      products: ["Longsleeve Set", "Tee Set", "Dark Drop"],
+      tags: ["Couple", "Longsleeve", "Dark"],
+      image: "store-assets/variants/couple-front-verheiratet.png",
+      href: "shop.html#couple-edition",
+      status: "Konzept"
+    },
+    {
       id: "unisex-shirt-dual",
       section: "unisex",
       line: "Unisex",
@@ -260,6 +377,32 @@ window.MERCH_CATALOG = {
       image: "store-assets/variants/unisex-backprint-options.png",
       href: "shop.html#unisex-drop",
       status: "Geplant"
+    },
+    {
+      id: "unisex-sweat-core",
+      section: "unisex",
+      line: "Unisex",
+      title: "Techno mit Herz Sweatshirt",
+      slogan: "Sauber fuer beide Richtungen, vorne ruhig, hinten klar.",
+      copy: "Die neutralere Basis fuer alle, die das Duo tragen wollen, aber ohne harte Trennung in Herren und Damen.",
+      products: ["Sweatshirt", "Heavy Sweat", "Crewneck"],
+      tags: ["Unisex", "Sweatshirt", "Core"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "Geplant"
+    },
+    {
+      id: "unisex-polo-duo",
+      section: "unisex",
+      line: "Unisex",
+      title: "Duo Polo",
+      slogan: "Sauberer als Tee, aber immer noch Szene.",
+      copy: "Ein ruhigeres Unisex-Polo mit kompaktem Frontmotiv und optionalem Rueckenzeichen fuer einen smarten Dark-Fit.",
+      products: ["Polo", "Light Longsleeve", "Layer Piece"],
+      tags: ["Unisex", "Polo", "Dark Smart"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "Konzept"
     },
     {
       id: "accessory-tote-techno",
@@ -310,6 +453,45 @@ window.MERCH_CATALOG = {
       products: ["Weekender", "Tasche", "Stoffbeutel"],
       tags: ["Accessoire", "Bag", "Nightlife"],
       image: "store-assets/variants/couple-front-verheiratet.png",
+      href: "shop.html#accessoires",
+      status: "Konzept"
+    },
+    {
+      id: "accessory-beanie-dark",
+      section: "accessories",
+      line: "Accessories",
+      title: "Darkline Beanie",
+      slogan: "Nur Logo, nur Winter, null Ballast.",
+      copy: "Funktioniert fuer maennlichere und unisexige Fits zugleich und ist eine starke Ergaenzung zu Hoodie- und Jacket-Drops.",
+      products: ["Beanie", "Fischermuetze", "Winter Cap"],
+      tags: ["Accessoire", "Beanie", "Winter"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#accessoires",
+      status: "Geplant"
+    },
+    {
+      id: "accessory-phonecase-duo",
+      section: "accessories",
+      line: "Accessories",
+      title: "Duo Phone Case",
+      slogan: "Kleine Flaeche, klare Marke.",
+      copy: "Handyhuelle mit kompakter Typo oder Einzel-Logo fuer alltagstauglichen Wiedererkennungseffekt.",
+      products: ["Handyhuelle", "Sticker Pack", "Mini Gift"],
+      tags: ["Accessoire", "Phone Case", "Gift"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
+      href: "shop.html#accessoires",
+      status: "Konzept"
+    },
+    {
+      id: "accessory-poster-set",
+      section: "accessories",
+      line: "Accessories",
+      title: "Poster & Print Set",
+      slogan: "Fuer Wände, Booths und kleine Studio-Ecken.",
+      copy: "Poster, Art Print und kleinere Visual-Drops fuer Fans, die die Aesthetik nicht nur tragen, sondern auch haengen wollen.",
+      products: ["Poster", "Art Print", "Canvas"],
+      tags: ["Accessoire", "Poster", "Visual"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
       href: "shop.html#accessoires",
       status: "Konzept"
     },
