@@ -75,6 +75,30 @@ def dr_front() -> None:
     save("dr-front-kein-mainstream.png", image)
 
 
+def dr_front_treibend() -> None:
+    image = canvas()
+    draw = ImageDraw.Draw(image)
+    tracked_text(draw, "DR. GRAY", 960, font(DIN_BOLD, 150), TAUPE, tracking=12)
+    centered_text(draw, "TREIBEND.", 1410, font(GEORGIA_BOLD, 300), IVORY)
+    centered_text(draw, "ROH.", 1810, font(GEORGIA_BOLD, 300), IVORY)
+    tracked_text(draw, "EHRLICH.", 2220, font(ARIAL_BOLD, 290), GOLD, tracking=8)
+    draw.line((980, 2730, 3520, 2730), fill=SOFT, width=10)
+    tracked_text(draw, "PEAKTIME  PRESSURE  KOELN", 2870, font(DIN_BOLD, 98), TAUPE, tracking=10)
+    save("dr-front-treibend-roh-ehrlich.png", image)
+
+
+def dr_front_bass() -> None:
+    image = canvas()
+    draw = ImageDraw.Draw(image)
+    tracked_text(draw, "DR. GRAY", 980, font(DIN_BOLD, 150), TAUPE, tracking=12)
+    centered_text(draw, "BASS", 1480, font(GEORGIA_BOLD, 340), IVORY)
+    tracked_text(draw, "IM BLUT.", 1920, font(ARIAL_BOLD, 300), GOLD, tracking=8)
+    draw.rounded_rectangle((1180, 2480, 3320, 3050), radius=42, outline=SOFT, width=10)
+    tracked_text(draw, "RAW  DARK  CLUB  ENERGY", 2640, font(DIN_BOLD, 96), TAUPE, tracking=12)
+    tracked_text(draw, "NO MAINSTREAM  ONLY PRESSURE", 2830, font(DIN_BOLD, 84), IVORY, tracking=8)
+    save("dr-front-bass-im-blut.png", image)
+
+
 def dr_back() -> None:
     image = canvas()
     logo = load_logo(DR_LOGO, 1700)
@@ -99,6 +123,33 @@ def mrs_front() -> None:
     draw.line((1180, 3200, 3320, 3200), fill=SOFT, width=10)
     tracked_text(draw, "SEXY  SERIOES  FRECH", 3340, font(DIN_BOLD, 92), TAUPE, tracking=10)
     save("mrs-front-zu-wild.png", image)
+
+
+def mrs_front_liebe() -> None:
+    image = canvas()
+    logo = load_logo(MRS_LOGO, 920)
+    x = (W - logo.width) // 2
+    image.alpha_composite(logo, (x, 720))
+    draw = ImageDraw.Draw(image)
+    tracked_text(draw, "MRS. DR. GRAY", 1840, font(DIN_BOLD, 138), GOLD, tracking=12)
+    centered_text(draw, "LIEBE", 2260, font(GEORGIA_BOLD, 270), IVORY)
+    tracked_text(draw, "LAUTER.", 2640, font(ARIAL_BOLD, 250), GOLD, tracking=8)
+    draw.line((1180, 3140, 3320, 3140), fill=SOFT, width=10)
+    tracked_text(draw, "HEART  PRESSURE  NIGHTLIFE", 3290, font(DIN_BOLD, 90), TAUPE, tracking=10)
+    save("mrs-front-liebe-lauter.png", image)
+
+
+def mrs_front_signature() -> None:
+    image = canvas()
+    logo = load_logo(MRS_LOGO, 1060)
+    x = (W - logo.width) // 2
+    image.alpha_composite(logo, (x, 760))
+    draw = ImageDraw.Draw(image)
+    tracked_text(draw, "MRS. DR. GRAY", 2020, font(DIN_BOLD, 150), GOLD, tracking=12)
+    tracked_text(draw, "NO PLASTIC RAVES", 2460, font(ARIAL_BOLD, 210), IVORY, tracking=6)
+    draw.line((1080, 2930, 3420, 2930), fill=SOFT, width=10)
+    tracked_text(draw, "SEXY  CLEAN  AFTERHOURS", 3070, font(DIN_BOLD, 92), TAUPE, tracking=10)
+    save("mrs-front-signature.png", image)
 
 
 def mrs_dress_front() -> None:
@@ -130,6 +181,32 @@ def couple_front() -> None:
     save("couple-front-verheiratet.png", image)
 
 
+def couple_front_two_hearts() -> None:
+    image = canvas()
+    dr_logo = load_logo(DR_LOGO, 720)
+    mrs_logo = load_logo(MRS_LOGO, 720)
+    image.alpha_composite(dr_logo, (980, 860))
+    image.alpha_composite(mrs_logo, (W - 980 - mrs_logo.width, 860))
+    draw = ImageDraw.Draw(image)
+    draw.line((1020, 1930, 3480, 1930), fill=SOFT, width=10)
+    centered_text(draw, "TWO HEARTS.", 2250, font(GEORGIA_BOLD, 250), IVORY)
+    tracked_text(draw, "ONE RHYTHM.", 2610, font(ARIAL_BOLD, 250), GOLD, tracking=8)
+    tracked_text(draw, "COUPLE  EDITION  TECHNO  LOVE", 3070, font(DIN_BOLD, 94), TAUPE, tracking=10)
+    save("couple-front-two-hearts.png", image)
+
+
+def accessory_cap() -> None:
+    image = canvas()
+    logo = load_logo(DR_LOGO, 1200)
+    x = (W - logo.width) // 2
+    image.alpha_composite(logo, (x, 980))
+    draw = ImageDraw.Draw(image)
+    tracked_text(draw, "DR. GRAY", 2360, font(DIN_BOLD, 150), GOLD, tracking=12)
+    tracked_text(draw, "RETRO  TRUCKER  CAP", 2560, font(DIN_BOLD, 108), IVORY, tracking=10)
+    tracked_text(draw, "CLEAN  FRONT  LOGO", 2870, font(DIN_BOLD, 92), TAUPE, tracking=12)
+    save("accessory-dr-retro-cap.png", image)
+
+
 def unisex_back_choice_sheet() -> None:
     image = canvas()
     draw = ImageDraw.Draw(image)
@@ -149,10 +226,16 @@ def unisex_back_choice_sheet() -> None:
 
 def main() -> None:
     dr_front()
+    dr_front_treibend()
+    dr_front_bass()
     dr_back()
     mrs_front()
+    mrs_front_liebe()
+    mrs_front_signature()
     mrs_dress_front()
     couple_front()
+    couple_front_two_hearts()
+    accessory_cap()
     unisex_back_choice_sheet()
 
 
