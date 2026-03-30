@@ -280,6 +280,26 @@ button {
   background: url("assets/images/flx10-gold.png") center/cover no-repeat;
 }
 
+.hero-home.hero-with-video {
+  background: #050505;
+}
+
+.hero-video-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-video-bg video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.5) saturate(1.08) contrast(1.03);
+  transform: scale(1.06);
+  animation: heroPulse 18s ease-in-out infinite alternate;
+}
+
 .hero-bio {
   min-height: 68vh;
   background-position: center 24%;
@@ -1085,6 +1105,15 @@ iframe.soundcloud-lazy {
   }
 }
 
+@keyframes heroPulse {
+  from {
+    transform: scale(1.04);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+
 @media (max-width: 1080px) {
   .hero-grid,
   .split-layout,
@@ -1225,5 +1254,13 @@ iframe.soundcloud-lazy {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .hero-home.hero-with-video {
+    background: url("assets/uploads/posters/live-room-collage-2026.jpg") center/cover no-repeat;
+  }
+
+  .hero-video-bg video {
+    display: none;
   }
 }
