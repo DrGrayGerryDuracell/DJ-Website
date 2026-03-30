@@ -65,7 +65,6 @@ for (const item of catalog.items) {
 }
 
 const payload = {
-  checkedAt: new Date().toISOString(),
   storeHref,
   items
 };

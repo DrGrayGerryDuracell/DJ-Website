@@ -1,5 +1,4 @@
 window.LIVE_LINK_STATUS = {
-  "checkedAt": "2026-03-30T18:01:07.467Z",
   "storeHref": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
   "items": {
     "dr-hoodie-mainstream": {

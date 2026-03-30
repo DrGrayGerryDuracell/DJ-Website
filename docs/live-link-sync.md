@@ -17,3 +17,5 @@
 
 ## Hinweis
 Nach neuen Shirtee-Freischaltungen das Sync-Skript erneut laufen lassen und deployen.
+
+Das generierte `live-link-status.js` ist bewusst ohne Laufzeit-Timestamp gehalten, damit nur echte Link- oder Statusaenderungen neue Commits erzeugen.
