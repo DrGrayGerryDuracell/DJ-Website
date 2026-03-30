@@ -108,7 +108,7 @@ export const dashboardData = {
   socialMetrics: {
     links: [
       { platform: "TikTok Dr. Gray", clicks: 244, ctr: "6.2%" },
-      { platform: "TikTok Mrs.", clicks: 171, ctr: "4.9%" },
+      { platform: "TikTok Mrs. Dr. Gray", clicks: 171, ctr: "4.9%" },
       { platform: "SoundCloud", clicks: 133, ctr: "3.8%" },
       { platform: "Shop", clicks: 689, ctr: "8.1%" },
       { platform: "Kontakt", clicks: 87, ctr: "2.3%" }
@@ -122,7 +122,7 @@ export const dashboardData = {
       { label: "Shirtee Store", url: "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: "live" },
       { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: "live" },
       { label: "TikTok Dr. Gray", url: "https://www.tiktok.com/@dr.gray.sic", status: "live" },
-      { label: "TikTok Mrs.", url: "https://www.tiktok.com/@ktina1986", status: "live" }
+      { label: "TikTok Mrs. Dr. Gray", url: "https://www.tiktok.com/@ktina1986", status: "live" }
     ]
   },
   performanceMetrics: {
@@ -177,7 +177,7 @@ export const dashboardData = {
     { id: "qa-3", label: "Shirtee Store", href: "https://www.shirtee.com/de/store/drgray-mrsdrgray/", external: true },
     { id: "qa-7", label: "SoundCloud Profil", href: "https://soundcloud.com/drgray_sic", external: true },
     { id: "qa-4", label: "TikTok Dr. Gray", href: "https://www.tiktok.com/@dr.gray.sic", external: true },
-    { id: "qa-8", label: "TikTok Mrs.", href: "https://www.tiktok.com/@ktina1986", external: true },
+    { id: "qa-8", label: "TikTok Mrs. Dr. Gray", href: "https://www.tiktok.com/@ktina1986", external: true },
     { id: "qa-5", label: "Kontakt testen", href: "https://drgray-mrsdrgray.com/kontakt.html", external: true },
     { id: "qa-6", label: "Report Export (mock)", href: "#export", external: false }
   ]

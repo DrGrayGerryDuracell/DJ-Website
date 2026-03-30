@@ -504,7 +504,7 @@ window.MERCH_CATALOG = {
       copy: "Das Motiv arbeitet mit starkem Portraitfokus und wenig Ablenkung. Ideal fuer Signature-Tees, Crops und cleanere Event-Fits der Damen-Linie.",
       products: ["Signature Tee", "Crop Shirt", "Soft Longsleeve"],
       tags: ["Damen", "Portrait", "Signature"],
-      image: "assets/uploads/web-images/mrs-portrait-rain-bw.jpg",
+      image: "store-assets/variants/mrs-front-signature.png",
       href: "shop.html#damen-kollektion",
       status: "In Vorbereitung"
     },
@@ -829,7 +829,7 @@ window.MERCH_CATALOG = {
       copy: "Das Rain-Neon-Bild schiebt Couple-Energie in eine duestere Clubsprache. Perfekt fuer Shirt-Set, Hoodie-Set oder eine limitierte Night-Edition.",
       products: ["Couple Tee Set", "Couple Hoodie", "Night Edition"],
       tags: ["Couple", "Rain Neon", "Night Drop"],
-      image: "assets/uploads/web-images/duo-couple-rain-neon.jpg",
+      image: "store-assets/variants/couple-front-two-hearts.png",
       href: "shop.html#couple-edition",
       status: "Prioritaet"
     },
@@ -842,7 +842,7 @@ window.MERCH_CATALOG = {
       copy: "Fuer die weichere Couple-Schiene ohne Kitsch: cleanes Frontmotiv, ruhiger Rueckenprint und Bildsprache mit echtem Duo-Charakter.",
       products: ["Hoodie Set", "Crewneck Set", "Casual Bundle"],
       tags: ["Couple", "Clean", "Lifestyle"],
-      image: "assets/uploads/web-images/duo-couple-daylight.jpg",
+      image: "store-assets/variants/couple-front-verheiratet.png",
       href: "shop.html#couple-edition",
       status: "In Vorbereitung"
     },
@@ -1050,7 +1050,7 @@ window.MERCH_CATALOG = {
       copy: "Tee-Set fuer schnelle Couple-Welle mit klarer Symmetrie und emotionaler, aber praeziser Bildsprache.",
       products: ["2x Unisex Tee", "2x Premium Tee", "2x Heavy Tee"],
       tags: ["Couple", "Top Upload", "Rainline"],
-      image: "assets/uploads/web-images/duo-couple-rain-neon.jpg",
+      image: "store-assets/variants/couple-front-two-hearts.png",
       href: "shop.html#couple-edition",
       status: "Top Upload"
     },
@@ -1076,7 +1076,7 @@ window.MERCH_CATALOG = {
       copy: "Sweat-Set mit ruhiger Typo-Hierarchie und sauberer Logoposition fuer alltagstaugliche Couple-Drops.",
       products: ["2x Sweatshirt", "2x Crewneck", "2x Hoodie"],
       tags: ["Couple", "Top Upload", "Daylight"],
-      image: "assets/uploads/web-images/duo-couple-daylight.jpg",
+      image: "store-assets/variants/couple-front-verheiratet.png",
       href: "shop.html#couple-edition",
       status: "Top Upload"
     },
@@ -1154,7 +1154,7 @@ window.MERCH_CATALOG = {
       copy: "Die alltagstaugliche Duo-Variante fuer Unisex: cleanes Frontbild mit optionalem Dr.- oder Mrs.-Backprint fuer klare Identitaet.",
       products: ["Unisex Hoodie", "Unisex Tee", "Crewneck"],
       tags: ["Unisex", "Backprint Wahl", "Lifestyle"],
-      image: "assets/uploads/web-images/duo-couple-daylight.jpg",
+      image: "store-assets/variants/couple-front-verheiratet.png",
       href: "shop.html#unisex-drop",
       status: "In Vorbereitung"
     },
@@ -1492,7 +1492,7 @@ window.MERCH_CATALOG = {
       copy: "Das Rain-Neon-Motiv funktioniert stark als Poster, Artcard oder signierter Print fuer Community-Bundles und Limited-Merch-Pakete.",
       products: ["Poster", "Artcard", "Signed Print"],
       tags: ["Accessoire", "Poster", "Limited"],
-      image: "assets/uploads/web-images/duo-couple-rain-neon.jpg",
+      image: "store-assets/variants/couple-front-two-hearts.png",
       href: "shop.html#accessoires",
       status: "In Vorbereitung"
     },
@@ -1596,7 +1596,7 @@ window.MERCH_CATALOG = {
       copy: "Posterlinie fuer Studio, Booth und Home-Setup mit dunkler Farbwelt und klarer Dr.-/Mrs.-Ausrichtung.",
       products: ["Poster", "Art Print", "Canvas Print"],
       tags: ["Accessoire", "Poster", "Visual"],
-      image: "assets/uploads/web-images/duo-couple-daylight.jpg",
+      image: "store-assets/variants/couple-front-verheiratet.png",
       href: "shop.html#accessoires",
       status: "Konzept"
     },
@@ -1635,7 +1635,7 @@ window.MERCH_CATALOG = {
       copy: "Poster-Artikel fuer schnelle Print-Drops mit dunkler Farbwelt und hoher Lesbarkeit.",
       products: ["Poster", "Art Print", "Canvas Print"],
       tags: ["Accessoire", "Shirtee Ready", "Poster"],
-      image: "assets/uploads/web-images/duo-couple-rain-neon.jpg",
+      image: "store-assets/variants/couple-front-two-hearts.png",
       href: "shop.html#accessoires",
       status: "Uploadbereit"
     },
@@ -1687,7 +1687,7 @@ window.MERCH_CATALOG = {
       copy: "Poster fuer schnelle Accessoire-Welle mit dunkler Farbwelt und klarer Motivfuehrung.",
       products: ["Poster", "Art Print", "Canvas Print"],
       tags: ["Accessoire", "Top Upload", "Poster"],
-      image: "assets/uploads/web-images/duo-couple-rain-neon.jpg",
+      image: "store-assets/variants/couple-front-two-hearts.png",
       href: "shop.html#accessoires",
       status: "Top Upload"
     },
