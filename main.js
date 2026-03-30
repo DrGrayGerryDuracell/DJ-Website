@@ -162,6 +162,31 @@
       return typeof href === "string" && /^https?:\/\//i.test(href);
     }
 
+    function resolveExternalLink(item, statusKind) {
+      const liveStatus = window.LIVE_LINK_STATUS && window.LIVE_LINK_STATUS.items ? window.LIVE_LINK_STATUS.items[item.id] : null;
+      const fallbackHref = (liveStatus && liveStatus.fallbackHref) || (window.LIVE_LINK_STATUS && window.LIVE_LINK_STATUS.storeHref) || "https://www.shirtee.com/de/store/drgray-mrsdrgray/";
+      const verified = Boolean(liveStatus && liveStatus.verified && Number(liveStatus.httpCode) === 200);
+
+      if (verified) {
+        return {
+          href: liveStatus.finalUrl || item.href,
+          label: "Jetzt kaufen"
+        };
+      }
+
+      if (statusKind === "live") {
+        return {
+          href: fallbackHref,
+          label: "Store ansehen"
+        };
+      }
+
+      return {
+        href: item.href,
+        label: "Store ansehen"
+      };
+    }
+
     const article = document.createElement("article");
     article.className = "catalog-card feature-card";
     const lineSlug = slugify(item.line);
@@ -233,14 +258,16 @@
 
     const link = document.createElement("a");
     link.className = "btn btn-secondary";
-    link.href = item.href;
-    if (isExternalUrl(item.href) && statusKind === "live") {
-      link.textContent = "Jetzt kaufen";
-    } else if (isExternalUrl(item.href)) {
-      link.textContent = "Store ansehen";
+
+    if (isExternalUrl(item.href)) {
+      const resolved = resolveExternalLink(item, statusKind);
+      link.href = resolved.href;
+      link.textContent = resolved.label;
     } else if (String(item.href).indexOf("#") !== -1) {
+      link.href = item.href;
       link.textContent = "Zum Abschnitt";
     } else {
+      link.href = item.href;
       link.textContent = "Mehr ansehen";
     }
 
