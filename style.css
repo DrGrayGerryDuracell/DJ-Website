@@ -52,6 +52,7 @@ a {
 :focus-visible {
   outline: 2px solid rgba(255, 216, 109, 0.72);
   outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(245, 200, 76, 0.14);
 }
 
 img {
@@ -425,6 +426,10 @@ button {
 .btn:hover,
 .btn:focus-visible {
   transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
 }
 
 .btn-primary {
@@ -1416,7 +1421,8 @@ iframe.soundcloud-lazy {
   }
 
   .hero {
-    padding-top: 6rem;
+    min-height: auto;
+    padding-top: 5.6rem;
   }
 
   .hero-grid,
@@ -1472,6 +1478,12 @@ iframe.soundcloud-lazy {
 
   .cta-row .btn {
     width: 100%;
+    min-height: 52px;
+  }
+
+  .hero-video-bg video {
+    animation: none;
+    transform: scale(1.03);
   }
 
   .controller-track {

@@ -1,0 +1,17 @@
+{
+  "name": "drgray-mrsdrgray-website",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Public website + internal control dashboard for Dr. Gray & Mrs. Dr. Gray",
+  "scripts": {
+    "dev": "python3 -m http.server 4173",
+    "preview": "python3 -m http.server 4173",
+    "build": "npm run verify",
+    "verify": "node scripts/verify-build-safety.mjs",
+    "check:links": "bash scripts/check-shirtee-links.sh",
+    "check:live-links": "node scripts/sync-live-link-status.mjs"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

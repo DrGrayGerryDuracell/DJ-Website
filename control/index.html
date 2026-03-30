@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Internes Premium Control Center fuer Website-, Shop-, Social- und Performance-Monitoring von Dr. Gray & Mrs. Dr. Gray.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#050505">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./control.css">
+  <title>Control Center | Dr. Gray & Mrs. Dr. Gray</title>
+</head>
+<body>
+  <div class="control-layout">
+    <aside class="control-sidebar" aria-label="Dashboard Navigation">
+      <div class="control-brand">
+        <strong>Control Center</strong>
+        <span>Dr. Gray &amp; Mrs. Dr. Gray</span>
+      </div>
+      <nav class="control-nav" data-control-nav></nav>
+      <div class="control-side-footer">
+        <a href="/index.html">Public Website</a>
+        <a href="/shop.html">Shop Seite</a>
+      </div>
+    </aside>
+
+    <main class="control-main">
+      <header class="control-topbar">
+        <button type="button" class="control-nav-toggle" data-control-nav-toggle aria-label="Navigation ein-/ausblenden">☰</button>
+        <div>
+          <p class="eyebrow">Internal Dashboard</p>
+          <h1>Production Control &amp; Monitoring</h1>
+        </div>
+        <div class="topbar-actions">
+          <div class="range-switch" data-date-ranges></div>
+          <span class="mode-badge" data-mode-badge></span>
+        </div>
+      </header>
+
+      <section id="overview" class="control-section">
+        <div class="section-head">
+          <h2>Overview</h2>
+          <p>Live-Ueberblick ueber Reichweite, Klicks, Shop und operative Signale.</p>
+        </div>
+        <ul class="status-list" data-system-status></ul>
+        <div class="kpi-grid" data-kpis></div>
+      </section>
+
+      <section id="website" class="control-section">
+        <div class="section-head">
+          <h2>Website</h2>
+          <p>Traffic, Top-Seiten, Audience- und Engagement-Signale.</p>
+        </div>
+        <div class="panel-grid two" data-website-section></div>
+      </section>
+
+      <section id="shop" class="control-section">
+        <div class="section-head">
+          <h2>Shop</h2>
+          <p>Bestellungen, Umsatz, Top-Produkte und Conversion-Impuls.</p>
+        </div>
+        <div class="panel-grid two" data-shop-section></div>
+      </section>
+
+      <section id="live-activity" class="control-section">
+        <div class="section-head">
+          <h2>Live Activity</h2>
+          <p>Letzte Klicks, Orders, Kontaktaktionen und Statusaenderungen.</p>
+        </div>
+        <ul class="activity-list" data-activity-feed></ul>
+      </section>
+
+      <section id="performance" class="control-section">
+        <div class="section-head">
+          <h2>Performance</h2>
+          <p>Technische Stabilitaet, Antwortzeit, Link-Checks und Error-Log.</p>
+        </div>
+        <div class="panel-grid two" data-performance-section></div>
+      </section>
+
+      <section id="content" class="control-section">
+        <div class="section-head">
+          <h2>Content</h2>
+          <p>Starke Sections, CTA-Leistung und Verbesserungspotenzial.</p>
+        </div>
+        <div class="panel-grid two" data-content-section></div>
+      </section>
+
+      <section id="social" class="control-section">
+        <div class="section-head">
+          <h2>Social</h2>
+          <p>Externe Ziele und Plattformvergleich.</p>
+        </div>
+        <div class="panel-grid two" data-social-section></div>
+      </section>
+
+      <section id="alerts" class="control-section">
+        <div class="section-head">
+          <h2>Alerts</h2>
+          <p>Warnungen, Auffaelligkeiten und priorisierte Hinweise.</p>
+        </div>
+        <div class="alert-grid" data-alerts></div>
+      </section>
+
+      <section id="settings" class="control-section">
+        <div class="section-head">
+          <h2>Settings &amp; Quick Actions</h2>
+          <p>Schnellzugriffe fuer Testing, Reporting und operative Wege.</p>
+        </div>
+        <div class="action-grid" data-quick-actions></div>
+      </section>
+    </main>
+  </div>
+
+  <script type="module" src="./main.js"></script>
+</body>
+</html>
