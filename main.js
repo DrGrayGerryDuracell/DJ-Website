@@ -143,6 +143,9 @@
       if (normalized.indexOf("live") !== -1) {
         return "live";
       }
+      if (normalized.indexOf("upload") !== -1 || normalized.indexOf("ready") !== -1) {
+        return "priority";
+      }
       if (normalized.indexOf("prior") !== -1) {
         return "priority";
       }
@@ -298,12 +301,13 @@
 
     const statusWeight = {
       live: 0,
-      prioritaet: 1,
-      "in vorbereitung": 2,
-      geplant: 3,
-      konzept: 4,
-      "special drop": 5,
-      concept: 5
+      uploadbereit: 1,
+      prioritaet: 2,
+      "in vorbereitung": 3,
+      geplant: 4,
+      konzept: 5,
+      "special drop": 6,
+      concept: 6
     };
 
     document.querySelectorAll("[data-merch-section]").forEach(function (container) {
@@ -365,7 +369,7 @@
     }).length;
     const active = items.filter(function (item) {
       const status = normalize(item.status);
-      return status.indexOf("prior") !== -1 || status.indexOf("vorbereitung") !== -1 || status.indexOf("geplant") !== -1;
+      return status.indexOf("upload") !== -1 || status.indexOf("prior") !== -1 || status.indexOf("vorbereitung") !== -1 || status.indexOf("geplant") !== -1;
     }).length;
     const concept = items.filter(function (item) {
       const status = normalize(item.status);

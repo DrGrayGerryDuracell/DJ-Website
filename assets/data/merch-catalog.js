@@ -223,6 +223,58 @@ window.MERCH_CATALOG = {
       status: "Geplant"
     },
     {
+      id: "dr-tee-mainfloor-ready",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Mainfloor Ready Tee",
+      slogan: "Direkt, dunkel und druckstark.",
+      copy: "Klassisches Tee-Setup fuer schnelle Shirtee-Uploads mit klarer Frontlinie und optionalem Backprint.",
+      products: ["Unisex Tee", "Premium Tee", "Heavy Tee"],
+      tags: ["Herren", "Shirtee Ready", "Frontprint"],
+      image: "store-assets/variants/dr-front-kein-mainstream.png",
+      href: "shop.html#herren-kollektion",
+      status: "Uploadbereit"
+    },
+    {
+      id: "dr-hoodie-pressure-ready",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Pressure Ready Hoodie",
+      slogan: "Kontrolle vorne, Kante im Ruecken.",
+      copy: "Hoodie-Linie mit sauberer Typo und klarer Logik fuer Dr.-Gray-Pieces, optimiert fuer schnellen Drop.",
+      products: ["Unisex Hoodie", "Zip Hoodie", "Sweatshirt"],
+      tags: ["Herren", "Shirtee Ready", "Hoodie"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#herren-kollektion",
+      status: "Uploadbereit"
+    },
+    {
+      id: "dr-longsleeve-raw-ready",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Raw Signal Longsleeve",
+      slogan: "Roh im Ton, sauber im Build.",
+      copy: "Longsleeve fuer naechste Upload-Welle, mit klarer Lesbarkeit und ohne ueberladene Motive.",
+      products: ["Longsleeve", "Heavy Longsleeve", "Layer Tee"],
+      tags: ["Herren", "Shirtee Ready", "Longsleeve"],
+      image: "store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+      href: "shop.html#herren-kollektion",
+      status: "Uploadbereit"
+    },
+    {
+      id: "dr-polo-dark-ready",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Darkline Polo Ready",
+      slogan: "Weniger Deko, mehr Haltung.",
+      copy: "Polo-Variante fuer den smarten Dark-Fit mit kleinem Frontlogo und ruhiger Backoption.",
+      products: ["Polo", "Premium Polo", "Light Jacket"],
+      tags: ["Herren", "Shirtee Ready", "Polo"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#herren-kollektion",
+      status: "Uploadbereit"
+    },
+    {
       id: "mrs-crop-wild",
       section: "women",
       line: "Mrs. Dr. Gray",
@@ -483,6 +535,58 @@ window.MERCH_CATALOG = {
       status: "Konzept"
     },
     {
+      id: "mrs-crop-signature-ready",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Signature Crop Ready",
+      slogan: "Mrs. im Fokus, sauber gesetzt.",
+      copy: "Crop fuer schnellen Livegang mit dominantem Mrs.-Logo und klarer Hook ohne Ueberlagerung.",
+      products: ["Ladies Crop", "Fitted Tee", "Soft Crop"],
+      tags: ["Damen", "Shirtee Ready", "Mrs.-Fokus"],
+      image: "store-assets/variants/mrs-front-signature.png",
+      href: "shop.html#damen-kollektion",
+      status: "Uploadbereit"
+    },
+    {
+      id: "mrs-tee-wild-ready",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Wild Ready Tee",
+      slogan: "Frech, serioes, clubnah.",
+      copy: "Fitted Shirt mit klarer Frontachse fuer die frechere Damen-Linie und schnellen Upload.",
+      products: ["Ladies Tee", "Fitted Tee", "Longsleeve"],
+      tags: ["Damen", "Shirtee Ready", "Attitude"],
+      image: "store-assets/variants/mrs-front-zu-wild.png",
+      href: "shop.html#damen-kollektion",
+      status: "Uploadbereit"
+    },
+    {
+      id: "mrs-hoodie-core-ready",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Core Hoodie Ready",
+      slogan: "Selbstbewusst und druckstark.",
+      copy: "Mrs.-Hoodie fuer kuehlere Sets mit klarer Typo und konsistenter Logohierarchie.",
+      products: ["Ladies Hoodie", "Unisex Hoodie", "Zip Hoodie"],
+      tags: ["Damen", "Shirtee Ready", "Hoodie"],
+      image: "store-assets/variants/mrs-front-signature.png",
+      href: "shop.html#damen-kollektion",
+      status: "Uploadbereit"
+    },
+    {
+      id: "mrs-longsleeve-love-ready",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Loveline Longsleeve Ready",
+      slogan: "Weiblich im Ton, klar im Clubfit.",
+      copy: "Langarm-Piece fuer melodischere Mrs.-Drops mit sauberem Frontprint und hoher Lesbarkeit.",
+      products: ["Ladies Longsleeve", "Fitted Longsleeve", "Soft Hoodie"],
+      tags: ["Damen", "Shirtee Ready", "Longsleeve"],
+      image: "store-assets/variants/mrs-front-liebe-lauter.png",
+      href: "shop.html#damen-kollektion",
+      status: "Uploadbereit"
+    },
+    {
       id: "couple-hoodie-beat",
       section: "couple",
       line: "Couple Edition",
@@ -691,6 +795,58 @@ window.MERCH_CATALOG = {
       status: "Konzept"
     },
     {
+      id: "couple-tee-vows-ready",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Vows Tee Set Ready",
+      slogan: "Echt verbunden, klar inszeniert.",
+      copy: "Couple-Tee-Set mit spiegelnder Frontlogik und identischer Logo-Hoehe fuer schnellen Shirtee-Upload.",
+      products: ["2x Unisex Tee", "2x Premium Tee", "2x Longsleeve"],
+      tags: ["Couple", "Shirtee Ready", "Tee Set"],
+      image: "store-assets/variants/couple-front-verheiratet.png",
+      href: "shop.html#couple-edition",
+      status: "Uploadbereit"
+    },
+    {
+      id: "couple-hoodie-equal-ready",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Equal Hoodie Set Ready",
+      slogan: "Zwei Logos, eine klare Achse.",
+      copy: "Hoodie-Set fuer naechsten Couple-Drop mit sauberer Symmetrie und kontrollierter Druckflaeche.",
+      products: ["2x Unisex Hoodie", "2x Zip Hoodie", "2x Sweatshirt"],
+      tags: ["Couple", "Shirtee Ready", "Hoodie Set"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
+      href: "shop.html#couple-edition",
+      status: "Uploadbereit"
+    },
+    {
+      id: "couple-longsleeve-b2b-ready",
+      section: "couple",
+      line: "Couple Edition",
+      title: "B2B Longsleeve Set Ready",
+      slogan: "Duo-Flow ohne Kitsch.",
+      copy: "Langarm-Set mit ruhigen Fronts und abgestimmtem Rueckenclaim fuer starke Paarfotos.",
+      products: ["2x Longsleeve", "2x Heavy Longsleeve", "2x Tee"],
+      tags: ["Couple", "Shirtee Ready", "Longsleeve Set"],
+      image: "store-assets/variants/couple-front-verheiratet.png",
+      href: "shop.html#couple-edition",
+      status: "Uploadbereit"
+    },
+    {
+      id: "couple-sweat-rhythm-ready",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Rhythm Sweat Set Ready",
+      slogan: "Gemeinsame Energie, klare Linie.",
+      copy: "Sweatshirt-Pair mit cleaner Front und homogener Typo fuer alltagstaugliche Couple-Drops.",
+      products: ["2x Sweatshirt", "2x Crewneck", "2x Hoodie"],
+      tags: ["Couple", "Shirtee Ready", "Sweat Set"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
+      href: "shop.html#couple-edition",
+      status: "Uploadbereit"
+    },
+    {
       id: "unisex-shirt-dual",
       section: "unisex",
       line: "Unisex",
@@ -871,6 +1027,45 @@ window.MERCH_CATALOG = {
       image: "store-assets/variants/unisex-backprint-options.png",
       href: "shop.html#unisex-drop",
       status: "Geplant"
+    },
+    {
+      id: "unisex-tee-choice-ready",
+      section: "unisex",
+      line: "Unisex",
+      title: "Choice Tee Ready",
+      slogan: "Front clean, Backprint wahlbar.",
+      copy: "Core-Unisex-Tee fuer schnellen Upload mit konsistenter Front und klarer Dr./Mrs.-Backprint-Wahl.",
+      products: ["Unisex Tee", "Premium Tee", "Heavy Tee"],
+      tags: ["Unisex", "Shirtee Ready", "Backprint Wahl"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "Uploadbereit"
+    },
+    {
+      id: "unisex-hoodie-choice-ready",
+      section: "unisex",
+      line: "Unisex",
+      title: "Choice Hoodie Ready",
+      slogan: "Klarer Frontfit, freie Rueckenrichtung.",
+      copy: "Unisex-Hoodie fuer modularen Dropaufbau mit identischer Front und klaren Backprint-Optionen.",
+      products: ["Unisex Hoodie", "Zip Hoodie", "Sweatshirt"],
+      tags: ["Unisex", "Shirtee Ready", "Hoodie"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "Uploadbereit"
+    },
+    {
+      id: "unisex-longsleeve-choice-ready",
+      section: "unisex",
+      line: "Unisex",
+      title: "Choice Longsleeve Ready",
+      slogan: "Neutral im Schnitt, klar im Zeichen.",
+      copy: "Unisex-Longsleeve als schneller Upload-Artikel fuer die naechste Core-Welle.",
+      products: ["Longsleeve", "Heavy Longsleeve", "Layer Tee"],
+      tags: ["Unisex", "Shirtee Ready", "Longsleeve"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "Uploadbereit"
     },
     {
       id: "accessory-tote-techno",
@@ -1094,6 +1289,45 @@ window.MERCH_CATALOG = {
       status: "Konzept"
     },
     {
+      id: "accessory-tote-ready",
+      section: "accessories",
+      line: "Accessories",
+      title: "Core Tote Ready",
+      slogan: "Alltagstauglich, klar gebrandet.",
+      copy: "Tote fuer schnellen Shirtee-Upload mit sauberem Frontlogo und reduzierter Hook.",
+      products: ["Tote Bag", "Organic Tote", "Canvas Tote"],
+      tags: ["Accessoire", "Shirtee Ready", "Tote"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#accessoires",
+      status: "Uploadbereit"
+    },
+    {
+      id: "accessory-mug-ready",
+      section: "accessories",
+      line: "Accessories",
+      title: "Core Mug Ready",
+      slogan: "Kleinformat mit Wiedererkennung.",
+      copy: "Mug-Linie fuer schnelle Bundle-Drops mit ruhiger Typo und klarer Markenpraesenz.",
+      products: ["Mug", "Enamel Mug", "Gift Set"],
+      tags: ["Accessoire", "Shirtee Ready", "Mug"],
+      image: "store-assets/variants/mrs-front-signature.png",
+      href: "shop.html#accessoires",
+      status: "Uploadbereit"
+    },
+    {
+      id: "accessory-poster-ready",
+      section: "accessories",
+      line: "Accessories",
+      title: "Night Poster Ready",
+      slogan: "Visual Drop fuer Booth und Home.",
+      copy: "Poster-Artikel fuer schnelle Print-Drops mit dunkler Farbwelt und hoher Lesbarkeit.",
+      products: ["Poster", "Art Print", "Canvas Print"],
+      tags: ["Accessoire", "Shirtee Ready", "Poster"],
+      image: "assets/uploads/web-images/duo-couple-rain-neon.jpg",
+      href: "shop.html#accessoires",
+      status: "Uploadbereit"
+    },
+    {
       id: "special-lighter-afterhour",
       section: "special",
       line: "Special Merch",
@@ -1144,6 +1378,32 @@ window.MERCH_CATALOG = {
       image: "store-assets/variants/couple-front-two-hearts.png",
       href: "kontakt.html",
       status: "Special Drop"
+    },
+    {
+      id: "special-event-passband",
+      section: "special",
+      line: "Special Merch",
+      title: "Event Passband Set",
+      slogan: "Limited fuer echte Nachtformate.",
+      copy: "Nicht als Standard-POD gedacht, sondern als Sondermerch fuer Events, Meetups und Verlosungen.",
+      products: ["Wristband Set", "Event Pass", "Limited Bundle"],
+      tags: ["Special", "Event", "Limited"],
+      image: "store-assets/variants/couple-front-verheiratet.png",
+      href: "kontakt.html",
+      status: "Special Drop"
+    },
+    {
+      id: "special-backstage-tag",
+      section: "special",
+      line: "Special Merch",
+      title: "Backstage Metal Tag",
+      slogan: "Klein, robust, sammelbar.",
+      copy: "Collector-Piece fuer Community-Mitglieder und Special Bundles ausserhalb der normalen POD-Strecke.",
+      products: ["Metal Tag", "Collector Card", "VIP Bundle"],
+      tags: ["Special", "Collector", "Limited"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "kontakt.html",
+      status: "Konzept"
     }
   ]
 };
