@@ -741,6 +741,15 @@ a { color: inherit; text-decoration: none; }
 .status-pill.is-info { color: var(--info); }
 .status-pill.is-error { color: var(--error); }
 
+.social-bar.is-dim i {
+  opacity: 0.45;
+}
+
+.muted-row {
+  font-size: 0.78rem;
+  color: var(--text-soft);
+}
+
 .control-lock-shell {
   min-height: 100vh;
   display: grid;

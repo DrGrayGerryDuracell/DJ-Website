@@ -85,11 +85,13 @@ export function renderVisualPulse(container, dashboardData) {
   const uploadDeg = Math.round((upload / Math.max(catalog.totalItems, 1)) * 360);
 
   const socialTop = dashboardData.socialMetrics.links.slice(0, 4);
-  const socialMax = Math.max(...socialTop.map((item) => Number(item.clicks || 0)), 1);
+  const socialMax = Math.max(...socialTop.map((item) => Number(item.metricValue ?? item.clicks ?? 0)), 1);
   const socialBars = socialTop
     .map((item) => {
-      const h = Math.max(14, Math.round((Number(item.clicks || 0) / socialMax) * 72));
-      return `<div class="social-bar"><i style="height:${h}%"></i><span>${item.platform}</span></div>`;
+      const metricValue = Number(item.metricValue ?? item.clicks ?? 0);
+      const h = metricValue > 0 ? Math.max(14, Math.round((metricValue / socialMax) * 72)) : 10;
+      const dimClass = metricValue > 0 ? "" : " is-dim";
+      return `<div class="social-bar${dimClass}"><i style="height:${h}%"></i><span>${item.platform}</span></div>`;
     })
     .join("");
 
@@ -118,7 +120,7 @@ export function renderVisualPulse(container, dashboardData) {
       <p class="pulse-eyebrow">Social Pulse</p>
       <h3>Klickdynamik</h3>
       <div class="social-mini">${socialBars}</div>
-      <p class="pulse-copy">Stärkster Kanal: <strong>${socialTop[0]?.platform || "n/a"}</strong></p>
+      <p class="pulse-copy">Stärkster Kanal: <strong>${dashboardData.socialMetrics.strongestPlatform || socialTop[0]?.platform || "n/a"}</strong></p>
     </article>
   `;
 }
@@ -290,13 +292,22 @@ export function renderContent(container, contentPerformance) {
 }
 
 export function renderSocial(container, socialMetrics) {
+  const hasLiveValues = socialMetrics.links.some((row) => row.valueLabel || row.statusLabel || row.sourceLabel);
+
   container.innerHTML = `
     <article class="panel">
       <h3>Social & Externe Ziele</h3>
       <table class="data-table">
-        <thead><tr><th>Plattform</th><th>Klicks</th><th>CTR</th></tr></thead>
+        <thead><tr><th>Plattform</th><th>${hasLiveValues ? "Live-Wert" : "Klicks"}</th><th>${hasLiveValues ? "Status" : "CTR"}</th></tr></thead>
         <tbody>
-          ${socialMetrics.links.map((row) => `<tr><td>${row.platform}</td><td>${row.clicks}</td><td>${row.ctr}</td></tr>`).join("")}
+          ${socialMetrics.links
+            .map(
+              (row) =>
+                `<tr><td>${row.platform}</td><td>${row.valueLabel || row.clicks}</td><td>${row.statusLabel || row.ctr}</td></tr>${
+                  row.sourceLabel ? `<tr><td colspan="3" class="muted-row">Quelle: ${row.sourceLabel}</td></tr>` : ""
+                }`
+            )
+            .join("")}
         </tbody>
       </table>
     </article>

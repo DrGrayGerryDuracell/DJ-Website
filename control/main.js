@@ -18,6 +18,31 @@ import {
   renderQuickActions
 } from "./js/render.js";
 
+async function loadLiveMetrics() {
+  try {
+    const response = await fetch("/control/js/live-metrics.json", {
+      cache: "no-store"
+    });
+    if (!response.ok) return null;
+    return await response.json();
+  } catch {
+    return null;
+  }
+}
+
+function mergeLiveMetrics(baseData, liveMetrics) {
+  if (!liveMetrics?.social?.rows) {
+    return baseData;
+  }
+
+  const data = JSON.parse(JSON.stringify(baseData));
+  data.metadata.mode = liveMetrics.sourceMode || "mixed-live";
+  data.metadata.generatedAt = liveMetrics.generatedAt || data.metadata.generatedAt;
+  data.socialMetrics.links = liveMetrics.social.rows;
+  data.socialMetrics.strongestPlatform = liveMetrics.social.strongestPlatform || data.socialMetrics.strongestPlatform;
+  return data;
+}
+
 function formatAnimatedValue(value, unit) {
   if (unit === "EUR") {
     return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
@@ -83,10 +108,17 @@ function applyRangeToData(baseData, rangeId) {
     revenue: Math.max(1, Math.round(Number(item.revenue || 0) * profile.factor))
   }));
 
-  data.socialMetrics.links = data.socialMetrics.links.map((item) => ({
-    ...item,
-    clicks: Math.max(1, Math.round(Number(item.clicks || 0) * profile.factor))
-  }));
+  data.socialMetrics.links = data.socialMetrics.links.map((item) => {
+    const next = { ...item };
+    if (typeof next.metricValue === "number") {
+      next.metricValue = Math.max(0, Math.round(next.metricValue * profile.factor));
+      return next;
+    }
+    if (typeof next.clicks === "number") {
+      next.clicks = Math.max(0, Math.round(next.clicks * profile.factor));
+    }
+    return next;
+  });
 
   return data;
 }
@@ -96,8 +128,32 @@ function setupNavigation() {
   const layout = document.querySelector(".control-layout");
   if (!toggle || !layout) return;
 
+  const closeNav = () => {
+    layout.classList.remove("nav-open");
+  };
+
   toggle.addEventListener("click", function () {
     layout.classList.toggle("nav-open");
+  });
+
+  document.querySelectorAll(".control-nav-link").forEach((link) => {
+    link.addEventListener("click", () => {
+      closeNav();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!layout.classList.contains("nav-open")) return;
+    if (window.matchMedia("(min-width: 921px)").matches) return;
+    if (layout.contains(event.target) && !event.target.closest(".control-sidebar") && !event.target.closest("[data-control-nav-toggle]")) {
+      closeNav();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeNav();
+    }
   });
 }
 
@@ -183,18 +239,21 @@ function renderDashboardView(data) {
   animateKpis();
 }
 
-function initControlDashboard() {
+async function initControlDashboard() {
   if (!ensureControlAccess()) {
     return;
   }
 
+  const liveMetrics = await loadLiveMetrics();
+  const seedData = mergeLiveMetrics(dashboardData, liveMetrics);
+
   renderNav(document.querySelector("[data-control-nav]"), controlNav);
   renderRanges(document.querySelector("[data-date-ranges]"), dateRanges);
-  renderDashboardView(applyRangeToData(dashboardData, "week"));
+  renderDashboardView(applyRangeToData(seedData, "week"));
 
   setupNavigation();
   setupRangeButtons((rangeId) => {
-    renderDashboardView(applyRangeToData(dashboardData, rangeId));
+    renderDashboardView(applyRangeToData(seedData, rangeId));
   });
   setupExportAction();
   setupLogoutAction();

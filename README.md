@@ -50,6 +50,7 @@ npm run build
 npm run verify
 npm run check:links
 npm run check:live-links
+npm run sync:control-live
 ```
 
 ## Deployment (GitHub + Vercel)
@@ -105,6 +106,12 @@ Module:
 - Settings / Quick Actions
 
 Der Dashboard-Stand ist absichtlich **mock-first**, damit alles ohne lokale oder externe Runtime-Abhaengigkeit laeuft.
+
+Live-Sync fuer Social/Shop:
+- `npm run sync:control-live` schreibt verifizierte Live-Signale nach `control/js/live-metrics.json`
+- SoundCloud: oeffentliche API-Resolve-Daten (Follower, Track-Anzahl)
+- Shop: verifizierte Produktlink-Checks aus `assets/data/live-link-status.js`
+- TikTok: Profilerreichbarkeit + Plattform-Status; Follower sind je nach Plattform-Schutz ggf. nicht oeffentlich auslesbar
 
 ### Zugangsschutz fuer `/control`
 - Zugriff laeuft ueber einen vorgeschalteten Lock-Screen: `/control-login.html`

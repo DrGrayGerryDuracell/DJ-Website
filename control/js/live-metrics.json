@@ -1,0 +1,121 @@
+{
+  "generatedAt": "2026-03-30T21:04:49.135Z",
+  "sourceMode": "mixed-live",
+  "social": {
+    "rows": [
+      {
+        "platform": "TikTok Dr. Gray",
+        "metricValue": null,
+        "valueLabel": "Follower nicht oeffentlich abrufbar",
+        "statusLabel": "Profil live",
+        "sourceLabel": "tiktok-html • code 209002"
+      },
+      {
+        "platform": "TikTok Mrs. Dr. Gray",
+        "metricValue": null,
+        "valueLabel": "Follower nicht oeffentlich abrufbar",
+        "statusLabel": "Profil live",
+        "sourceLabel": "tiktok-html • code 209002"
+      },
+      {
+        "platform": "SoundCloud",
+        "metricValue": 498,
+        "valueLabel": "498 Follower",
+        "statusLabel": "25 Tracks live",
+        "sourceLabel": "soundcloud-public-api"
+      },
+      {
+        "platform": "Shop",
+        "metricValue": 3,
+        "valueLabel": "3/3 Produktlinks OK",
+        "statusLabel": "Alle geprueften Links OK",
+        "sourceLabel": "local-link-check"
+      }
+    ],
+    "strongestPlatform": "SoundCloud"
+  },
+  "sources": {
+    "tiktok": {
+      "drGray": {
+        "profile": "https://www.tiktok.com/@dr.gray.sic",
+        "reachable": true,
+        "statusCode": 209002,
+        "canonical": "https://www.tiktok.com/@dr.gray.sic",
+        "followers": null,
+        "likes": null,
+        "videos": null,
+        "source": "public-html"
+      },
+      "mrs": {
+        "profile": "https://www.tiktok.com/@ktina1986",
+        "reachable": true,
+        "statusCode": 209002,
+        "canonical": "https://www.tiktok.com/@ktina1986",
+        "followers": null,
+        "likes": null,
+        "videos": null,
+        "source": "public-html"
+      }
+    },
+    "soundcloud": {
+      "available": true,
+      "source": "soundcloud-public-api",
+      "clientId": "qNxp6KCjufkNWMIclTv0O4ycYGY0eFFX",
+      "user": {
+        "id": 838321216,
+        "username": "Dr.Gray & Mrs.Dr Gray",
+        "permalink": "drgray_sic",
+        "permalink_url": "https://soundcloud.com/drgray_sic",
+        "followers_count": 498,
+        "followings_count": 189,
+        "track_count": 25,
+        "playlist_count": 4
+      },
+      "latestTracks": []
+    },
+    "shop": {
+      "available": true,
+      "source": "local-link-check",
+      "total": 3,
+      "verified": 3,
+      "failed": 0
+    },
+    "website": {
+      "source": "public-http-check",
+      "ok": 6,
+      "total": 6,
+      "checks": [
+        {
+          "path": "/",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "path": "/shop.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "path": "/musik.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "path": "/videos.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "path": "/bio.html",
+          "status": 200,
+          "ok": true
+        },
+        {
+          "path": "/kontakt.html",
+          "status": 200,
+          "ok": true
+        }
+      ]
+    }
+  }
+}

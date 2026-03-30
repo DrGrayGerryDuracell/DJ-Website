@@ -9,7 +9,8 @@
     "build": "npm run verify",
     "verify": "node scripts/verify-build-safety.mjs",
     "check:links": "bash scripts/check-shirtee-links.sh",
-    "check:live-links": "node scripts/sync-live-link-status.mjs"
+    "check:live-links": "node scripts/sync-live-link-status.mjs",
+    "sync:control-live": "node scripts/sync-control-live-metrics.mjs"
   },
   "engines": {
     "node": ">=20"
