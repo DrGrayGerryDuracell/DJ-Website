@@ -1,0 +1,6 @@
+node_modules
+.git
+.playwright-cli
+assets/uploads/raw-images
+assets/uploads/raw-videos
+assets/uploads/reports/previews-2026-03-30

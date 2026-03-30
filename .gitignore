@@ -7,3 +7,4 @@ assets/uploads/raw-videos/
 
 # Optional local temp logs
 assets/uploads/reports/*.log
+.vercel

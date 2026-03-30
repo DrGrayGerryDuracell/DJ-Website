@@ -1,7 +1,20 @@
 {
+  "buildCommand": "npm run verify",
+  "outputDirectory": ".",
   "cleanUrls": false,
   "trailingSlash": false,
   "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.drgray-mrsdrgray.com"
+        }
+      ],
+      "destination": "https://drgray-mrsdrgray.com/$1",
+      "permanent": true
+    },
     {
       "source": "/dashboard",
       "destination": "/control",
