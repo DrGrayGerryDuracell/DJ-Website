@@ -1,5 +1,5 @@
 window.MERCH_CATALOG = {
-  spotlight: ["dr-hoodie-mainstream", "dr-shirt-raw", "mrs-crop-wild", "mrs-dress-liebe", "couple-hoodie-beat", "unisex-shirt-dual", "accessory-tote-techno", "accessory-cap-gray"],
+  spotlight: ["mrs-hoodie-serious", "mrs-crop-wild", "dr-shirt-raw", "couple-rainproof-tee", "couple-daylight-hoodie", "unisex-daylight-hoodie", "accessory-rainline-poster", "accessory-cap-gray"],
   items: [
     {
       id: "dr-hoodie-mainstream",
@@ -262,6 +262,19 @@ window.MERCH_CATALOG = {
       status: "Konzept"
     },
     {
+      id: "mrs-portrait-tee-bw",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Mrs. Portrait BW Tee",
+      slogan: "Selbstbewusst, reduziert, klar im Blick.",
+      copy: "Das Motiv arbeitet mit starkem Portraitfokus und wenig Ablenkung. Ideal fuer Signature-Tees, Crops und cleanere Event-Fits der Damen-Linie.",
+      products: ["Signature Tee", "Crop Shirt", "Soft Longsleeve"],
+      tags: ["Damen", "Portrait", "Signature"],
+      image: "assets/uploads/web-images/mrs-portrait-rain-bw.jpg",
+      href: "shop.html#damen-kollektion",
+      status: "In Vorbereitung"
+    },
+    {
       id: "couple-hoodie-beat",
       section: "couple",
       line: "Couple Edition",
@@ -340,6 +353,32 @@ window.MERCH_CATALOG = {
       status: "Konzept"
     },
     {
+      id: "couple-rainproof-tee",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Rainproof Couple Tee",
+      slogan: "Naehe unter Druck, nicht unter Zucker.",
+      copy: "Das Rain-Neon-Bild schiebt Couple-Energie in eine duestere Clubsprache. Perfekt fuer Shirt-Set, Hoodie-Set oder eine limitierte Night-Edition.",
+      products: ["Couple Tee Set", "Couple Hoodie", "Night Edition"],
+      tags: ["Couple", "Rain Neon", "Night Drop"],
+      image: "assets/uploads/web-images/duo-couple-rain-neon.jpg",
+      href: "shop.html#couple-edition",
+      status: "Prioritaet"
+    },
+    {
+      id: "couple-daylight-hoodie",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Daylight Duo Hoodie",
+      slogan: "Echt im Blick, klar in der Linie.",
+      copy: "Fuer die weichere Couple-Schiene ohne Kitsch: cleanes Frontmotiv, ruhiger Rueckenprint und Bildsprache mit echtem Duo-Charakter.",
+      products: ["Hoodie Set", "Crewneck Set", "Casual Bundle"],
+      tags: ["Couple", "Clean", "Lifestyle"],
+      image: "assets/uploads/web-images/duo-couple-daylight.jpg",
+      href: "shop.html#couple-edition",
+      status: "In Vorbereitung"
+    },
+    {
       id: "unisex-shirt-dual",
       section: "unisex",
       line: "Unisex",
@@ -403,6 +442,19 @@ window.MERCH_CATALOG = {
       image: "store-assets/variants/unisex-backprint-options.png",
       href: "shop.html#unisex-drop",
       status: "Konzept"
+    },
+    {
+      id: "unisex-daylight-hoodie",
+      section: "unisex",
+      line: "Unisex",
+      title: "Daylight Unisex Hoodie",
+      slogan: "Vorne ruhig, hinten klar waehlen.",
+      copy: "Die alltagstaugliche Duo-Variante fuer Unisex: cleanes Frontbild mit optionalem Dr.- oder Mrs.-Backprint fuer klare Identitaet.",
+      products: ["Unisex Hoodie", "Unisex Tee", "Crewneck"],
+      tags: ["Unisex", "Backprint Wahl", "Lifestyle"],
+      image: "assets/uploads/web-images/duo-couple-daylight.jpg",
+      href: "shop.html#unisex-drop",
+      status: "In Vorbereitung"
     },
     {
       id: "accessory-tote-techno",
@@ -496,6 +548,19 @@ window.MERCH_CATALOG = {
       status: "Konzept"
     },
     {
+      id: "accessory-rainline-poster",
+      section: "accessories",
+      line: "Accessories",
+      title: "Rainline Poster Drop",
+      slogan: "Bildsprache fuer Wände und Booth-Ecken.",
+      copy: "Das Rain-Neon-Motiv funktioniert stark als Poster, Artcard oder signierter Print fuer Community-Bundles und Limited-Merch-Pakete.",
+      products: ["Poster", "Artcard", "Signed Print"],
+      tags: ["Accessoire", "Poster", "Limited"],
+      image: "assets/uploads/web-images/duo-couple-rain-neon.jpg",
+      href: "shop.html#accessoires",
+      status: "In Vorbereitung"
+    },
+    {
       id: "special-lighter-afterhour",
       section: "special",
       line: "Special Merch",
@@ -519,7 +584,7 @@ window.MERCH_CATALOG = {
       tags: ["Special", "Festival", "Limited"],
       image: "store-assets/variants/couple-front-verheiratet.png",
       href: "kontakt.html",
-      status: "Concept"
+      status: "Konzept"
     }
   ]
 };
