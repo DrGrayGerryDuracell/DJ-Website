@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /control
+
+Sitemap: https://drgray-mrsdrgray.com/sitemap.xml

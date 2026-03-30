@@ -35,6 +35,33 @@ function setupRangeButtons() {
   });
 }
 
+function setupExportAction() {
+  const exportLink = document.querySelector('[href="#export"]');
+  if (!exportLink) {
+    return;
+  }
+
+  exportLink.addEventListener("click", function (event) {
+    event.preventDefault();
+
+    const payload = {
+      exportedAt: new Date().toISOString(),
+      source: "control-mock-snapshot",
+      data: dashboardData
+    };
+
+    const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = `control-report-${new Date().toISOString().slice(0, 10)}.json`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  });
+}
+
 function initControlDashboard() {
   renderNav(document.querySelector("[data-control-nav]"), controlNav);
   renderRanges(document.querySelector("[data-date-ranges]"), dateRanges);
@@ -52,6 +79,7 @@ function initControlDashboard() {
 
   setupNavigation();
   setupRangeButtons();
+  setupExportAction();
 }
 
 document.addEventListener("DOMContentLoaded", initControlDashboard);
