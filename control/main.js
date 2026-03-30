@@ -163,7 +163,7 @@ function setupAppShell() {
   }
 
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("./sw.js").catch(() => {});
+    navigator.serviceWorker.register("/control/sw.js").catch(() => {});
   });
 }
 
