@@ -132,6 +132,45 @@ window.MERCH_CATALOG = {
       status: "In Vorbereitung"
     },
     {
+      id: "dr-hoodie-controlroom",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Control Room Hoodie",
+      slogan: "Kontrolle vorne, Druck auf dem Ruecken.",
+      copy: "Harter Dr.-Gray-Fit mit kompakter Front und kontrolliertem Backprint. Die Linie bleibt technoid, direkt und ohne visuelle Spielerei.",
+      products: ["Heavy Hoodie", "Zip Hoodie", "Oversize Hoodie"],
+      tags: ["Herren", "Control", "Backprint"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#herren-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "dr-tee-peak-pressure",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Peak Pressure Tee",
+      slogan: "Fuer den Slot, in dem nichts weich ist.",
+      copy: "Classic und Heavy Tee in einer harten, geraden Typo-Achse. Ideal fuer Club, Warm-up und dunklere Street-Fits.",
+      products: ["Classic Tee", "Heavy Tee", "Longsleeve"],
+      tags: ["Herren", "Peak Time", "Druck"],
+      image: "store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+      href: "shop.html#herren-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "dr-utility-jacket",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Utility Night Jacket",
+      slogan: "Cleanes Frontlogo, harter Night-Service-Look.",
+      copy: "Gedacht fuer leichtere Uebergangsjacken und Overshirts in dunkler Farbwelt mit einem ruhigen, praezisen Dr.-Gray-Auftritt.",
+      products: ["Light Jacket", "Utility Overshirt", "Coach Jacket"],
+      tags: ["Herren", "Jacket", "Dark Utility"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#herren-kollektion",
+      status: "Konzept"
+    },
+    {
       id: "mrs-crop-wild",
       section: "women",
       line: "Mrs. Dr. Gray",
@@ -301,6 +340,45 @@ window.MERCH_CATALOG = {
       status: "In Vorbereitung"
     },
     {
+      id: "mrs-bodysuit-signal",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Signal Bodysuit",
+      slogan: "Sexy-serioes und klar im Clubprofil.",
+      copy: "Mrs.-Logo als starke Hauptfigur auf reduzierter Front. Das Piece bleibt selbstbewusst, weiblich und null beliebig.",
+      products: ["Bodysuit", "Fitted Top", "Club Layer"],
+      tags: ["Damen", "Bodysuit", "Mrs.-Logo"],
+      image: "store-assets/variants/mrs-front-signature.png",
+      href: "shop.html#damen-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "mrs-zip-command",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Command Zip Hoodie",
+      slogan: "Feminin im Schnitt, klar in der Haltung.",
+      copy: "Zip-Hoodie fuer die dunklere Damen-Linie mit sauberem Frontzeichen und ruhiger Backprint-Option fuer Night-Reels und Event-Looks.",
+      products: ["Zip Hoodie", "Crop Zip", "Soft Oversize"],
+      tags: ["Damen", "Zip", "Selbstbewusst"],
+      image: "store-assets/variants/mrs-front-zu-wild.png",
+      href: "shop.html#damen-kollektion",
+      status: "Geplant"
+    },
+    {
+      id: "mrs-tee-clubqueen",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Club Queen Signature Tee",
+      slogan: "Frech in der Message, sauber im Build.",
+      copy: "Signature-Tee fuer die frechere Mrs.-Achse. Kein Ueberladen, nur starke Typo, klare Mitte und praezise Logo-Hoehe.",
+      products: ["Signature Tee", "Fitted Tee", "Light Longsleeve"],
+      tags: ["Damen", "Signature", "Club"],
+      image: "store-assets/variants/mrs-front-signature.png",
+      href: "shop.html#damen-kollektion",
+      status: "In Vorbereitung"
+    },
+    {
       id: "couple-hoodie-beat",
       section: "couple",
       line: "Couple Edition",
@@ -418,6 +496,45 @@ window.MERCH_CATALOG = {
       status: "Geplant"
     },
     {
+      id: "couple-b2b-tee-set",
+      section: "couple",
+      line: "Couple Edition",
+      title: "B2B Couple Tee Set",
+      slogan: "Zwei Looks, ein Takt.",
+      copy: "Set mit gespiegelt gesetzten Frontclaims und optionalen Rueckenlogos auf identischer Hoehe. Emotional, aber klar ohne Kitsch.",
+      products: ["2er Tee Set", "2er Hoodie Set", "2er Longsleeve Set"],
+      tags: ["Couple", "B2B", "Symmetrie"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
+      href: "shop.html#couple-edition",
+      status: "Geplant"
+    },
+    {
+      id: "couple-split-signal-hoodie",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Split Signal Hoodie Set",
+      slogan: "Getrennte Fronts, gemeinsamer Rueckenschub.",
+      copy: "Beide Hoodies bleiben in derselben visuellen Hoehe und teilen sich einen konsistenten Backprint-Rhythmus fuer starke Paarfotos.",
+      products: ["Hoodie Set", "Crewneck Set", "Night Bundle"],
+      tags: ["Couple", "Hoodie", "Signal"],
+      image: "store-assets/variants/couple-front-verheiratet.png",
+      href: "shop.html#couple-edition",
+      status: "In Vorbereitung"
+    },
+    {
+      id: "couple-vows-techno-crew",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Vows over Noise Crew Set",
+      slogan: "Verbunden in Haltung, nicht in Kitsch.",
+      copy: "Crewneck-Pair mit ruhiger Front und kontrollierter Rueckenachse. Die Linie bleibt emotional und gleichzeitig klar technoid.",
+      products: ["Crewneck Set", "Longsleeve Set", "Event Duo Pack"],
+      tags: ["Couple", "Crewneck", "Underground Love"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
+      href: "shop.html#couple-edition",
+      status: "Konzept"
+    },
+    {
       id: "unisex-shirt-dual",
       section: "unisex",
       line: "Unisex",
@@ -504,6 +621,45 @@ window.MERCH_CATALOG = {
       copy: "Unisex-Longsleeve mit minimalem Frontzeichen und waehlbarem Dr.- oder Mrs.-Backprint. Der sauberste Weg fuer klare Identitaet ohne Ueberladung.",
       products: ["Longsleeve", "Heavy Tee", "Light Crew"],
       tags: ["Unisex", "Backprint Wahl", "Clean"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "Geplant"
+    },
+    {
+      id: "unisex-oversize-nightcode",
+      section: "unisex",
+      line: "Unisex",
+      title: "Nightcode Oversize Tee",
+      slogan: "Clean vorne, Charakter hinten.",
+      copy: "Oversize-Unisex mit klarer Front und waehlenbarem Dr.- oder Mrs.-Backprint. Bleibt neutral im Schnitt und deutlich in der Aussage.",
+      products: ["Oversize Tee", "Heavy Tee", "Light Hoodie"],
+      tags: ["Unisex", "Oversize", "Backprint Wahl"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "Geplant"
+    },
+    {
+      id: "unisex-zip-pairmode",
+      section: "unisex",
+      line: "Unisex",
+      title: "Pair Mode Zip",
+      slogan: "Ein Frontbild, zwei Rueckenrichtungen.",
+      copy: "Zip-Variante fuer Alltag und Reise mit identischer Frontlogik und frei waehlbarem Backprint je nach Dr.- oder Mrs.-Fokus.",
+      products: ["Zip Hoodie", "Heavy Zip", "Street Layer"],
+      tags: ["Unisex", "Zip", "Flexible Serie"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "In Vorbereitung"
+    },
+    {
+      id: "unisex-tee-sharedpulse",
+      section: "unisex",
+      line: "Unisex",
+      title: "Shared Pulse Tee",
+      slogan: "Minimal vorne, maximal klar hinten.",
+      copy: "Ein universelles Core-Shirt fuer die Community mit reduzierter Front und einer Backprint-Auswahl, die eure Richtung sauber markiert.",
+      products: ["Classic Tee", "Longsleeve", "Crewneck"],
+      tags: ["Unisex", "Core", "Community"],
       image: "store-assets/variants/unisex-backprint-options.png",
       href: "shop.html#unisex-drop",
       status: "Geplant"
@@ -626,6 +782,58 @@ window.MERCH_CATALOG = {
       status: "In Vorbereitung"
     },
     {
+      id: "accessory-gymbag-pressure",
+      section: "accessories",
+      line: "Accessories",
+      title: "Pressure Gym Bag",
+      slogan: "Sportform, Clubattitude.",
+      copy: "Kompakter Gym-Bag-Look fuer Alltag und Eventtage mit reduziertem Frontlogo und robuster, klarer Typo.",
+      products: ["Gym Bag", "Drawstring Bag", "Mini Weekender"],
+      tags: ["Accessoire", "Bag", "Utility"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "shop.html#accessoires",
+      status: "Geplant"
+    },
+    {
+      id: "accessory-lanyard-nightpass",
+      section: "accessories",
+      line: "Accessories",
+      title: "Nightpass Lanyard",
+      slogan: "Kleines Accessoire mit starker Wiedererkennung.",
+      copy: "Lanyard- und Keystrap-Linie fuer Crew, Community und Eventeinsatz. Reduziert, robust und klar im Branding.",
+      products: ["Lanyard", "Key Strap", "Pass Holder"],
+      tags: ["Accessoire", "Lanyard", "Event"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
+      href: "shop.html#accessoires",
+      status: "Konzept"
+    },
+    {
+      id: "accessory-sticker-nightcode",
+      section: "accessories",
+      line: "Accessories",
+      title: "Nightcode Sticker Pack",
+      slogan: "Mehr Szene auf kleinem Format.",
+      copy: "Sticker-Set mit Dr.-, Mrs.- und Couple-Motiven fuer Cases, Booths, Notebooks und Promo-Pakete.",
+      products: ["Sticker Pack", "Mini Print Set", "Promo Bundle"],
+      tags: ["Accessoire", "Sticker", "Bundle"],
+      image: "store-assets/variants/mrs-front-signature.png",
+      href: "shop.html#accessoires",
+      status: "Geplant"
+    },
+    {
+      id: "accessory-pinset-couple",
+      section: "accessories",
+      line: "Accessories",
+      title: "Couple Pin Set",
+      slogan: "Symmetrie als kleines Detail.",
+      copy: "Pin-Set fuer Jacke, Tasche und Festival-Fits mit sauber gepaarten Logos und konsistenten Hoehen.",
+      products: ["Pin Set", "Badge Set", "Collector Pack"],
+      tags: ["Accessoire", "Pin", "Couple"],
+      image: "store-assets/variants/couple-front-verheiratet.png",
+      href: "shop.html#accessoires",
+      status: "Konzept"
+    },
+    {
       id: "special-lighter-afterhour",
       section: "special",
       line: "Special Merch",
@@ -650,6 +858,32 @@ window.MERCH_CATALOG = {
       image: "store-assets/variants/couple-front-verheiratet.png",
       href: "kontakt.html",
       status: "Konzept"
+    },
+    {
+      id: "special-vinyl-slipmat",
+      section: "special",
+      line: "Special Merch",
+      title: "Dual Logo Slipmat Set",
+      slogan: "Booth-Upgrade fuer echte DJ-Setups.",
+      copy: "Special Item ausserhalb des klassischen POD-Flows. Gedacht fuer Limited Drops, Booth-Shots und Community-Verlosungen.",
+      products: ["Slipmat Pair", "Booth Bundle", "Collector Drop"],
+      tags: ["Special", "DJ Gear", "Limited"],
+      image: "store-assets/variants/dr-back-logo.png",
+      href: "kontakt.html",
+      status: "Konzept"
+    },
+    {
+      id: "special-vinyl-bag",
+      section: "special",
+      line: "Special Merch",
+      title: "Nightdrive Vinyl Bag",
+      slogan: "Von der Szene fuer die Szene.",
+      copy: "Vinyl-Bag als Sondermerch fuer Fans mit analogem Setup. Klar gebrandet, dunkel gehalten und fuer reale Clubnaechte gedacht.",
+      products: ["Vinyl Bag", "Record Carry Case", "Limited Bundle"],
+      tags: ["Special", "Vinyl", "Clubtool"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
+      href: "kontakt.html",
+      status: "Special Drop"
     }
   ]
 };
