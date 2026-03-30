@@ -422,6 +422,34 @@ a { color: inherit; text-decoration: none; }
 .log-list span { color: var(--text-soft); font-size: 0.8rem; text-transform: uppercase; }
 .log-list p { margin: 0.3rem 0 0; color: var(--text-soft); }
 
+.account-list {
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.45rem;
+}
+
+.account-list li {
+  display: grid;
+  gap: 0.35rem;
+  padding: 0.65rem;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.account-list span {
+  color: var(--gold-strong);
+  font-weight: 600;
+}
+
+.account-list a {
+  font-size: 0.82rem;
+  color: var(--text-soft);
+  word-break: break-all;
+}
+
 .alert-grid {
   margin-top: 0.85rem;
   display: grid;

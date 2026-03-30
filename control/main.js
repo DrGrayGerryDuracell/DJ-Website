@@ -62,6 +62,16 @@ function setupExportAction() {
   });
 }
 
+function setupAppShell() {
+  if (!("serviceWorker" in navigator)) {
+    return;
+  }
+
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js").catch(() => {});
+  });
+}
+
 function initControlDashboard() {
   renderNav(document.querySelector("[data-control-nav]"), controlNav);
   renderRanges(document.querySelector("[data-date-ranges]"), dateRanges);
@@ -80,6 +90,7 @@ function initControlDashboard() {
   setupNavigation();
   setupRangeButtons();
   setupExportAction();
+  setupAppShell();
 }
 
 document.addEventListener("DOMContentLoaded", initControlDashboard);

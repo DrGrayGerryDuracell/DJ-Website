@@ -104,6 +104,12 @@ export const mockDashboardData: DashboardData = {
     comparisons: [
       { label: "TikTok vs Shop", value: "1:2.82" },
       { label: "SoundCloud vs TikTok", value: "1:1.83" }
+    ],
+    officialAccounts: [
+      { label: "Website", url: "https://drgray-mrsdrgray.com", status: "live" },
+      { label: "Shirtee Store", url: "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: "live" },
+      { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: "live" },
+      { label: "TikTok", url: "https://www.tiktok.com/@dr.gray.sic", status: "live" }
     ]
   },
   performanceMetrics: {
@@ -153,11 +159,12 @@ export const mockDashboardData: DashboardData = {
     { id: "AL-3", level: "ok", title: "Core-Seiten online", description: "Alle Hauptseiten antworten stabil ohne Ausfall.", source: "Performance" }
   ],
   quickActions: [
-    { id: "qa-1", label: "Website oeffnen", href: "/index.html", external: false },
-    { id: "qa-2", label: "Shop oeffnen", href: "/shop.html", external: false },
+    { id: "qa-1", label: "Website oeffnen", href: "https://drgray-mrsdrgray.com", external: true },
+    { id: "qa-2", label: "Shop Seite oeffnen", href: "https://drgray-mrsdrgray.com/shop.html", external: true },
     { id: "qa-3", label: "Shirtee Store", href: "https://www.shirtee.com/de/store/drgray-mrsdrgray/", external: true },
+    { id: "qa-7", label: "SoundCloud Profil", href: "https://soundcloud.com/drgray_sic", external: true },
     { id: "qa-4", label: "TikTok Profil", href: "https://www.tiktok.com/@dr.gray.sic", external: true },
-    { id: "qa-5", label: "Kontakt testen", href: "/kontakt.html", external: false },
+    { id: "qa-5", label: "Kontakt testen", href: "https://drgray-mrsdrgray.com/kontakt.html", external: true },
     { id: "qa-6", label: "Report Export (mock)", href: "#export", external: false }
   ]
 };

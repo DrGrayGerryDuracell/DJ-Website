@@ -91,6 +91,7 @@ export interface DashboardData {
   socialMetrics: {
     links: Array<{ platform: string; clicks: number; ctr: string }>;
     comparisons: Array<{ label: string; value: string }>;
+    officialAccounts: Array<{ label: string; url: string; status: "live" | "check" }>;
   };
   performanceMetrics: {
     webVitals: Array<{ metric: string; value: string; state: "good" | "warn" }>;

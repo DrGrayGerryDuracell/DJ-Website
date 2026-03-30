@@ -186,7 +186,15 @@ export function renderSocial(container, socialMetrics) {
       </table>
     </article>
     <article class="panel">
-      <h3>Vergleiche</h3>
+      <h3>Live Ziele & Vergleiche</h3>
+      <ul class="account-list">
+        ${socialMetrics.officialAccounts
+          .map(
+            (item) =>
+              `<li><span>${item.label}</span><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.url}</a><em class="status-pill ${item.status === "live" ? "is-ok" : "is-warn"}">${item.status}</em></li>`
+          )
+          .join("")}
+      </ul>
       <ul class="status-list compact">
         ${socialMetrics.comparisons.map((item) => `<li><span>${item.label}</span><strong>${item.value}</strong></li>`).join("")}
       </ul>
