@@ -4,6 +4,7 @@ import {
   renderNav,
   renderRanges,
   renderModeBadge,
+  renderVisualPulse,
   renderSystemStatus,
   renderKpis,
   renderWebsiteSection,
@@ -76,6 +77,7 @@ function initControlDashboard() {
   renderNav(document.querySelector("[data-control-nav]"), controlNav);
   renderRanges(document.querySelector("[data-date-ranges]"), dateRanges);
   renderModeBadge(document.querySelector("[data-mode-badge]"), dashboardData.metadata);
+  renderVisualPulse(document.querySelector("[data-visual-pulse]"), dashboardData);
   renderSystemStatus(document.querySelector("[data-system-status]"), dashboardData.systemStatus);
   renderKpis(document.querySelector("[data-kpis]"), dashboardData.overviewKpis);
   renderWebsiteSection(document.querySelector("[data-website-section]"), dashboardData.websiteMetrics);

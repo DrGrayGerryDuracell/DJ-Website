@@ -16,6 +16,42 @@ function buildTrafficBars(series) {
     .join("");
 }
 
+function buildSparkline(series, key) {
+  const values = series.map((item) => Number(item[key] || 0));
+  const max = Math.max(...values, 1);
+  const min = Math.min(...values, 0);
+  const range = Math.max(max - min, 1);
+  const points = values
+    .map((value, index) => {
+      const x = (index / Math.max(values.length - 1, 1)) * 100;
+      const y = 90 - (((value - min) / range) * 70);
+      return `${x},${y}`;
+    })
+    .join(" ");
+  return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="${points}" /></svg>`;
+}
+
+function buildMiniBars(list, key, labelKey) {
+  const max = Math.max(...list.map((item) => Number(item[key] || 0)), 1);
+  return list
+    .map((item) => {
+      const value = Number(item[key] || 0);
+      const width = Math.max(8, Math.round((value / max) * 100));
+      return `
+        <div class="mini-bar-row">
+          <span>${item[labelKey]}</span>
+          <div class="mini-bar-track"><i style="width:${width}%"></i></div>
+          <strong>${value}%</strong>
+        </div>
+      `;
+    })
+    .join("");
+}
+
+function toStatusCount(label, value, cls) {
+  return `<span class="catalog-chip ${cls}">${label}: <strong>${value}</strong></span>`;
+}
+
 export function renderNav(container, nav) {
   container.innerHTML = nav
     .map((item) => `<a href="#${item.id}" class="control-nav-link">${item.label}</a>`)
@@ -30,6 +66,60 @@ export function renderRanges(container, ranges) {
 
 export function renderModeBadge(node, metadata) {
   node.textContent = `Data Mode: ${String(metadata.mode || "mock").toUpperCase()} • ${metadata.timezone}`;
+}
+
+export function renderVisualPulse(container, dashboardData) {
+  if (!container) {
+    return;
+  }
+
+  const trafficSeries = dashboardData.websiteMetrics.trafficSeries || [];
+  const visitorsSparkline = buildSparkline(trafficSeries, "visitors");
+
+  const catalog = dashboardData.shopMetrics.catalog;
+  const live = catalog.liveItems;
+  const upload = catalog.uploadWave;
+  const concept = Math.max(catalog.totalItems - live - upload, 0);
+  const liveDeg = Math.round((live / Math.max(catalog.totalItems, 1)) * 360);
+  const uploadDeg = Math.round((upload / Math.max(catalog.totalItems, 1)) * 360);
+
+  const socialTop = dashboardData.socialMetrics.links.slice(0, 4);
+  const socialMax = Math.max(...socialTop.map((item) => Number(item.clicks || 0)), 1);
+  const socialBars = socialTop
+    .map((item) => {
+      const h = Math.max(14, Math.round((Number(item.clicks || 0) / socialMax) * 72));
+      return `<div class="social-bar"><i style="height:${h}%"></i><span>${item.platform}</span></div>`;
+    })
+    .join("");
+
+  container.innerHTML = `
+    <article class="pulse-card">
+      <p class="pulse-eyebrow">Traffic Pulse</p>
+      <h3>Besuchertrend 7 Tage</h3>
+      <div class="sparkline-wrap">${visitorsSparkline}</div>
+      <p class="pulse-copy">Heute <strong>${formatNumber(dashboardData.overviewKpis.find((kpi) => kpi.id === "visitorsToday")?.value || 0)}</strong> Besucher</p>
+    </article>
+    <article class="pulse-card">
+      <p class="pulse-eyebrow">Catalog Mix</p>
+      <h3>Shop-Reifegrad</h3>
+      <div class="donut-wrap">
+        <div class="catalog-donut" style="--live:${liveDeg}deg; --upload:${uploadDeg}deg;">
+          <span>${catalog.totalItems}</span>
+        </div>
+        <div class="catalog-legend">
+          ${toStatusCount("Live", live, "is-live")}
+          ${toStatusCount("Upload", upload, "is-upload")}
+          ${toStatusCount("Konzept", concept, "is-concept")}
+        </div>
+      </div>
+    </article>
+    <article class="pulse-card">
+      <p class="pulse-eyebrow">Social Pulse</p>
+      <h3>Klickdynamik</h3>
+      <div class="social-mini">${socialBars}</div>
+      <p class="pulse-copy">Stärkster Kanal: <strong>${socialTop[0]?.platform || "n/a"}</strong></p>
+    </article>
+  `;
 }
 
 export function renderSystemStatus(container, systemStatus) {
@@ -58,6 +148,16 @@ export function renderWebsiteSection(container, metrics) {
     <article class="panel">
       <h3>Traffic Verlauf</h3>
       <div class="metric-bars">${buildTrafficBars(metrics.trafficSeries)}</div>
+      <div class="mini-split-grid">
+        <div>
+          <h4>Audience</h4>
+          <div class="mini-bar-group">${buildMiniBars(metrics.audiences, "value", "label")}</div>
+        </div>
+        <div>
+          <h4>Devices</h4>
+          <div class="mini-bar-group">${buildMiniBars(metrics.devices, "value", "label")}</div>
+        </div>
+      </div>
     </article>
     <article class="panel">
       <h3>Top-Seiten</h3>
@@ -69,6 +169,8 @@ export function renderWebsiteSection(container, metrics) {
             .join("")}
         </tbody>
       </table>
+      <h4>Traffic Quellen</h4>
+      <div class="mini-bar-group">${buildMiniBars(metrics.sources, "value", "label")}</div>
       <div class="mini-grid">
         <div><span>Ø Session</span><strong>${metrics.engagement.avgSession}</strong></div>
         <div><span>Absprungrate</span><strong>${metrics.engagement.bounceRate}</strong></div>
@@ -102,6 +204,8 @@ export function renderShopSection(container, shopMetrics) {
         <div><span>Upload-Welle</span><strong>${shopMetrics.catalog.uploadWave}</strong></div>
       </div>
       <p class="muted-line">${sectionSummary}</p>
+      <h4>Linienmix</h4>
+      <div class="mini-bar-group">${buildMiniBars(shopMetrics.catalog.sections.map((item) => ({ label: item.label, value: item.items })), "value", "label")}</div>
     </article>
     <article class="panel">
       <h3>Top-Produkte</h3>
