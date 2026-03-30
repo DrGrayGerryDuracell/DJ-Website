@@ -436,6 +436,69 @@
     });
   }
 
+  function initMerchSectionSummary() {
+    const catalog = window.MERCH_CATALOG;
+    if (!catalog || !Array.isArray(catalog.items)) {
+      return;
+    }
+
+    const labelBySection = {
+      men: "Dr. Gray / Herren",
+      women: "Mrs. Dr. Gray / Damen",
+      couple: "Couple",
+      unisex: "Unisex",
+      accessories: "Accessoires",
+      special: "Special Merch"
+    };
+
+    const normalize = function (value) {
+      return String(value || "").toLowerCase();
+    };
+
+    const sectionOrder = ["men", "women", "couple", "unisex", "accessories", "special"];
+
+    document.querySelectorAll("[data-merch-section-summary]").forEach(function (container) {
+      container.innerHTML = "";
+
+      sectionOrder.forEach(function (section) {
+        const scoped = catalog.items.filter(function (item) {
+          return item.section === section;
+        });
+
+        if (!scoped.length) {
+          return;
+        }
+
+        const live = scoped.filter(function (item) {
+          return normalize(item.status).indexOf("live") !== -1;
+        }).length;
+
+        const uploads = scoped.filter(function (item) {
+          const status = normalize(item.status);
+          return status.indexOf("top upload") !== -1 || status.indexOf("upload") !== -1;
+        }).length;
+
+        const concept = scoped.filter(function (item) {
+          const status = normalize(item.status);
+          return status.indexOf("konzept") !== -1 || status.indexOf("concept") !== -1 || status.indexOf("special") !== -1;
+        }).length;
+
+        const card = document.createElement("article");
+        card.className = "merch-line-card";
+        card.innerHTML = `
+          <h4>${labelBySection[section] || section}</h4>
+          <div class="merch-line-stats">
+            <span>Artikel: <strong>${scoped.length}</strong></span>
+            <span>Live: <strong>${live}</strong></span>
+            <span>Upload: <strong>${uploads}</strong></span>
+            <span>Konzept: <strong>${concept}</strong></span>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    });
+  }
+
   function initFadeIns() {
     const items = document.querySelectorAll(".feature-card, .quote-card, .timeline-item, .soundcloud-item, .merch-card, .catalog-card, .video-card, .reel-card, .info-panel, .contact-card, .track-note, .panel-image");
     if (!items.length || !("IntersectionObserver" in window)) {
@@ -486,6 +549,7 @@
     initMerchCatalog();
     initMerchStats();
     initMerchOptions();
+    initMerchSectionSummary();
     initFadeIns();
     initYear();
   });

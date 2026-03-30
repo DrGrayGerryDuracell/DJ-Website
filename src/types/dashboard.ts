@@ -82,6 +82,12 @@ export interface DashboardData {
   };
   shopMetrics: {
     period: { today: ShopPeriod; week: ShopPeriod; month: ShopPeriod };
+    catalog: {
+      totalItems: number;
+      liveItems: number;
+      uploadWave: number;
+      sections: Array<{ label: string; items: number }>;
+    };
     topProducts: ShopProduct[];
     cartAbandonment: string;
     averageOrderValue: string;

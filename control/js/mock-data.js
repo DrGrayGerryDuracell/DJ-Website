@@ -76,6 +76,19 @@ export const dashboardData = {
       week: { orders: 121, revenue: 3214, conversion: "2.5%" },
       month: { orders: 428, revenue: 11462, conversion: "2.3%" }
     },
+    catalog: {
+      totalItems: 154,
+      liveItems: 2,
+      uploadWave: 52,
+      sections: [
+        { label: "Herren", items: 29 },
+        { label: "Damen", items: 33 },
+        { label: "Couple", items: 29 },
+        { label: "Unisex", items: 26 },
+        { label: "Accessoires", items: 29 },
+        { label: "Special", items: 8 }
+      ]
+    },
     topProducts: [
       { name: "Mrs. Dr. Gray Crop Shirt", clicks: 143, orders: 11, revenue: 286 },
       { name: "Mrs. Dr. Gray Unisex Hoodie", clicks: 119, orders: 8, revenue: 298 },
@@ -94,20 +107,22 @@ export const dashboardData = {
   },
   socialMetrics: {
     links: [
-      { platform: "TikTok", clicks: 244, ctr: "6.2%" },
+      { platform: "TikTok Dr. Gray", clicks: 244, ctr: "6.2%" },
+      { platform: "TikTok Mrs.", clicks: 171, ctr: "4.9%" },
       { platform: "SoundCloud", clicks: 133, ctr: "3.8%" },
       { platform: "Shop", clicks: 689, ctr: "8.1%" },
       { platform: "Kontakt", clicks: 87, ctr: "2.3%" }
     ],
     comparisons: [
-      { label: "TikTok vs Shop", value: "1:2.82" },
-      { label: "SoundCloud vs TikTok", value: "1:1.83" }
+      { label: "TikTok gesamt vs Shop", value: "1:1.66" },
+      { label: "SoundCloud vs TikTok gesamt", value: "1:3.12" }
     ],
     officialAccounts: [
       { label: "Website", url: "https://drgray-mrsdrgray.com", status: "live" },
       { label: "Shirtee Store", url: "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: "live" },
       { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: "live" },
-      { label: "TikTok", url: "https://www.tiktok.com/@dr.gray.sic", status: "live" }
+      { label: "TikTok Dr. Gray", url: "https://www.tiktok.com/@dr.gray.sic", status: "live" },
+      { label: "TikTok Mrs.", url: "https://www.tiktok.com/@ktina1986", status: "live" }
     ]
   },
   performanceMetrics: {
@@ -161,7 +176,8 @@ export const dashboardData = {
     { id: "qa-2", label: "Shop Seite oeffnen", href: "https://drgray-mrsdrgray.com/shop.html", external: true },
     { id: "qa-3", label: "Shirtee Store", href: "https://www.shirtee.com/de/store/drgray-mrsdrgray/", external: true },
     { id: "qa-7", label: "SoundCloud Profil", href: "https://soundcloud.com/drgray_sic", external: true },
-    { id: "qa-4", label: "TikTok Profil", href: "https://www.tiktok.com/@dr.gray.sic", external: true },
+    { id: "qa-4", label: "TikTok Dr. Gray", href: "https://www.tiktok.com/@dr.gray.sic", external: true },
+    { id: "qa-8", label: "TikTok Mrs.", href: "https://www.tiktok.com/@ktina1986", external: true },
     { id: "qa-5", label: "Kontakt testen", href: "https://drgray-mrsdrgray.com/kontakt.html", external: true },
     { id: "qa-6", label: "Report Export (mock)", href: "#export", external: false }
   ]

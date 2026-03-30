@@ -1121,6 +1121,40 @@ iframe.soundcloud-lazy {
   letter-spacing: 0.02em;
 }
 
+.merch-line-grid {
+  display: grid;
+  gap: 0.7rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.merch-line-card {
+  padding: 0.85rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 216, 109, 0.18);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.merch-line-card h4 {
+  margin: 0 0 0.45rem;
+  font-family: var(--font-heading);
+  font-size: 1.12rem;
+  color: #fff1cf;
+}
+
+.merch-line-stats {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.merch-line-stats span {
+  color: var(--text-soft);
+  font-size: 0.86rem;
+}
+
+.merch-line-stats strong {
+  color: var(--gold-strong);
+}
+
 .meta-line {
   display: inline-flex;
   align-items: center;
@@ -1316,6 +1350,7 @@ iframe.soundcloud-lazy {
   .hero-grid,
   .split-layout,
   .shop-radar-grid,
+  .merch-line-grid,
   .three-grid,
   .two-grid,
   .catalog-grid,
@@ -1428,6 +1463,7 @@ iframe.soundcloud-lazy {
   .hero-grid,
   .split-layout,
   .shop-radar-grid,
+  .merch-line-grid,
   .three-grid,
   .two-grid,
   .catalog-grid,

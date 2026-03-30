@@ -79,6 +79,10 @@ export function renderWebsiteSection(container, metrics) {
 }
 
 export function renderShopSection(container, shopMetrics) {
+  const sectionSummary = shopMetrics.catalog.sections
+    .map((row) => `<span>${row.label}: <strong>${row.items}</strong></span>`)
+    .join("");
+
   container.innerHTML = `
     <article class="panel">
       <h3>Shop Kennzahlen</h3>
@@ -92,6 +96,12 @@ export function renderShopSection(container, shopMetrics) {
         <div><span>Umsatz Woche</span><strong>${formatValue(shopMetrics.period.week.revenue, "EUR")}</strong></div>
         <div><span>AOV</span><strong>${shopMetrics.averageOrderValue}</strong></div>
       </div>
+      <div class="mini-grid three">
+        <div><span>Katalog gesamt</span><strong>${shopMetrics.catalog.totalItems}</strong></div>
+        <div><span>Live Produkte</span><strong>${shopMetrics.catalog.liveItems}</strong></div>
+        <div><span>Upload-Welle</span><strong>${shopMetrics.catalog.uploadWave}</strong></div>
+      </div>
+      <p class="muted-line">${sectionSummary}</p>
     </article>
     <article class="panel">
       <h3>Top-Produkte</h3>
