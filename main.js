@@ -131,8 +131,47 @@
   }
 
   function createCatalogCard(item) {
+    function slugify(value) {
+      return String(value || "")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/(^-|-$)/g, "");
+    }
+
+    function getStatusKind(status) {
+      const normalized = String(status || "").toLowerCase();
+      if (normalized.indexOf("live") !== -1) {
+        return "live";
+      }
+      if (normalized.indexOf("prior") !== -1) {
+        return "priority";
+      }
+      if (normalized.indexOf("vorbereitung") !== -1 || normalized.indexOf("plan") !== -1) {
+        return "planned";
+      }
+      if (normalized.indexOf("konzept") !== -1 || normalized.indexOf("concept") !== -1) {
+        return "concept";
+      }
+      if (normalized.indexOf("special") !== -1) {
+        return "special";
+      }
+      return "default";
+    }
+
+    function isExternalUrl(href) {
+      return typeof href === "string" && /^https?:\/\//i.test(href);
+    }
+
     const article = document.createElement("article");
     article.className = "catalog-card feature-card";
+    const lineSlug = slugify(item.line);
+    const statusKind = getStatusKind(item.status);
+    if (lineSlug) {
+      article.classList.add("line-" + lineSlug);
+    }
+    article.classList.add("status-" + statusKind);
+    article.setAttribute("data-line", lineSlug);
+    article.setAttribute("data-status", statusKind);
 
     const visual = document.createElement("div");
     visual.className = "catalog-card-visual";
@@ -154,6 +193,7 @@
 
     const status = document.createElement("span");
     status.className = "catalog-status";
+    status.classList.add("is-" + statusKind);
     status.textContent = item.status;
 
     header.appendChild(line);
@@ -194,9 +234,17 @@
     const link = document.createElement("a");
     link.className = "btn btn-secondary";
     link.href = item.href;
-    link.textContent = item.href.indexOf("http") === 0 ? "Artikelweg ansehen" : "Im Shop ansehen";
+    if (isExternalUrl(item.href) && statusKind === "live") {
+      link.textContent = "Jetzt kaufen";
+    } else if (isExternalUrl(item.href)) {
+      link.textContent = "Store ansehen";
+    } else if (String(item.href).indexOf("#") !== -1) {
+      link.textContent = "Zum Abschnitt";
+    } else {
+      link.textContent = "Mehr ansehen";
+    }
 
-    if (item.href.indexOf("http") === 0) {
+    if (isExternalUrl(item.href)) {
       link.target = "_blank";
       link.rel = "noopener noreferrer";
     }
@@ -221,10 +269,28 @@
       return;
     }
 
+    const statusWeight = {
+      live: 0,
+      prioritaet: 1,
+      "in vorbereitung": 2,
+      geplant: 3,
+      konzept: 4,
+      "special drop": 5,
+      concept: 5
+    };
+
     document.querySelectorAll("[data-merch-section]").forEach(function (container) {
       const section = container.getAttribute("data-merch-section");
       const items = catalog.items.filter(function (item) {
         return item.section === section;
+      });
+      items.sort(function (a, b) {
+        const weightA = statusWeight[String(a.status || "").toLowerCase()] ?? 99;
+        const weightB = statusWeight[String(b.status || "").toLowerCase()] ?? 99;
+        if (weightA !== weightB) {
+          return weightA - weightB;
+        }
+        return String(a.title || "").localeCompare(String(b.title || ""), "de");
       });
 
       if (!items.length) {

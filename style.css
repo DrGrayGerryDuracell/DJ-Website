@@ -280,6 +280,26 @@ button {
   background: url("assets/images/flx10-gold.png") center/cover no-repeat;
 }
 
+.hero-bio {
+  min-height: 68vh;
+  background-position: center 24%;
+}
+
+.hero-musik,
+.hero-videos {
+  min-height: 64vh;
+}
+
+.hero-shop {
+  min-height: 66vh;
+  background-position: center 30%;
+}
+
+.hero-kontakt {
+  min-height: 60vh;
+  background-position: center 36%;
+}
+
 .hero-inner,
 .section-shell,
 .content-shell,
@@ -701,6 +721,46 @@ iframe.soundcloud-lazy {
 .catalog-card {
   display: grid;
   gap: 1rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease;
+}
+
+.catalog-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 216, 109, 0.62), transparent);
+  opacity: 0.8;
+}
+
+.catalog-card:hover,
+.catalog-card:focus-within {
+  transform: translateY(-2px);
+  border-color: rgba(255, 216, 109, 0.36);
+  box-shadow: 0 24px 66px rgba(0, 0, 0, 0.52);
+}
+
+.catalog-card.line-dr-gray::before {
+  background: linear-gradient(90deg, transparent, rgba(245, 200, 76, 0.82), transparent);
+}
+
+.catalog-card.line-mrs-dr-gray::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 142, 172, 0.82), transparent);
+}
+
+.catalog-card.line-couple-edition::before {
+  background: linear-gradient(90deg, transparent, rgba(255, 216, 109, 0.82), rgba(255, 142, 172, 0.82), transparent);
+}
+
+.catalog-card.line-unisex::before {
+  background: linear-gradient(90deg, transparent, rgba(147, 214, 255, 0.82), transparent);
+}
+
+.catalog-card.line-accessories::before,
+.catalog-card.line-special-merch::before {
+  background: linear-gradient(90deg, transparent, rgba(211, 178, 255, 0.82), transparent);
 }
 
 .shop-anchor-nav {
@@ -851,6 +911,65 @@ iframe.soundcloud-lazy {
   font-size: 0.8rem;
 }
 
+.catalog-status.is-live {
+  background: rgba(59, 210, 154, 0.2);
+  color: #b5ffd8;
+}
+
+.catalog-status.is-priority {
+  background: rgba(245, 200, 76, 0.22);
+  color: #ffe7a1;
+}
+
+.catalog-status.is-planned {
+  background: rgba(123, 164, 255, 0.2);
+  color: #d5e4ff;
+}
+
+.catalog-status.is-concept {
+  background: rgba(181, 181, 181, 0.2);
+  color: #e4e4e4;
+}
+
+.catalog-status.is-special {
+  background: rgba(201, 151, 255, 0.2);
+  color: #ebd8ff;
+}
+
+.shop-radar-grid {
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1.2fr 0.8fr;
+}
+
+.shop-radar-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.shop-radar-list li + li {
+  margin-top: 0.48rem;
+}
+
+.shop-radar-panel {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.meta-line {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
+  min-height: 28px;
+  border: 1px solid rgba(255, 216, 109, 0.26);
+  border-radius: 999px;
+  padding: 0.18rem 0.75rem;
+  color: var(--gold-strong);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
 .catalog-products {
   display: flex;
   flex-wrap: wrap;
@@ -969,6 +1088,7 @@ iframe.soundcloud-lazy {
 @media (max-width: 1080px) {
   .hero-grid,
   .split-layout,
+  .shop-radar-grid,
   .three-grid,
   .two-grid,
   .catalog-grid,
@@ -1059,6 +1179,7 @@ iframe.soundcloud-lazy {
 
   .hero-grid,
   .split-layout,
+  .shop-radar-grid,
   .three-grid,
   .two-grid,
   .catalog-grid,

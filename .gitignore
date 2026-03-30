@@ -1,0 +1,9 @@
+# Local tooling
+.playwright-cli/
+
+# Media pipeline raw staging (keep local, do not commit)
+assets/uploads/raw-images/
+assets/uploads/raw-videos/
+
+# Optional local temp logs
+assets/uploads/reports/*.log
