@@ -60,12 +60,13 @@ export function renderNav(container, nav) {
 
 export function renderRanges(container, ranges) {
   container.innerHTML = ranges
-    .map((range, index) => `<button class="range-btn${index === 1 ? " is-active" : ""}" data-range="${range.id}">${range.label}</button>`)
+    .map((range, index) => `<button class="range-btn${index === 1 ? " is-active" : ""}" data-range="${range.id}" aria-pressed="${index === 1 ? "true" : "false"}">${range.label}</button>`)
     .join("");
 }
 
 export function renderModeBadge(node, metadata) {
-  node.textContent = `Data Mode: ${String(metadata.mode || "mock").toUpperCase()} • ${metadata.timezone}`;
+  const range = metadata.activeRange ? ` • ${metadata.activeRange}` : "";
+  node.textContent = `Data Mode: ${String(metadata.mode || "mock").toUpperCase()} • ${metadata.timezone}${range}`;
 }
 
 export function renderVisualPulse(container, dashboardData) {
@@ -135,7 +136,7 @@ export function renderKpis(container, kpis) {
       return `
         <article class="kpi-card">
           <span class="kpi-label">${kpi.label}</span>
-          <strong class="kpi-value">${value}</strong>
+          <strong class="kpi-value" data-kpi-value="${Number(kpi.value) || 0}" data-kpi-unit="${kpi.unit || ""}">${value}</strong>
           <span class="kpi-delta ${trendClass(kpi.trend)}">${kpi.delta}</span>
         </article>
       `;

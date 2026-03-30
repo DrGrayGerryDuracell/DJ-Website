@@ -79,16 +79,16 @@ export const mockDashboardData: DashboardData = {
       month: { orders: 428, revenue: 11462, conversion: "2.3%" }
     },
     catalog: {
-      totalItems: 154,
+      totalItems: 167,
       liveItems: 2,
-      uploadWave: 52,
+      uploadWave: 70,
       sections: [
-        { label: "Herren", items: 29 },
-        { label: "Damen", items: 33 },
-        { label: "Couple", items: 29 },
-        { label: "Unisex", items: 26 },
-        { label: "Accessoires", items: 29 },
-        { label: "Special", items: 8 }
+        { label: "Herren", items: 31 },
+        { label: "Damen", items: 35 },
+        { label: "Couple", items: 31 },
+        { label: "Unisex", items: 28 },
+        { label: "Accessoires", items: 32 },
+        { label: "Special", items: 10 }
       ]
     },
     topProducts: [
