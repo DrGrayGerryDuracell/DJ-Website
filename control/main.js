@@ -1,5 +1,6 @@
 import { dashboardData } from "./js/mock-data.js";
 import { controlNav, dateRanges } from "./js/config.js";
+import { ensureControlAccess, clearControlSession } from "./js/auth.js";
 import {
   renderNav,
   renderRanges,
@@ -143,6 +144,19 @@ function setupExportAction() {
   });
 }
 
+function setupLogoutAction() {
+  const logoutLink = document.querySelector('[href="#logout"]');
+  if (!logoutLink) {
+    return;
+  }
+
+  logoutLink.addEventListener("click", (event) => {
+    event.preventDefault();
+    clearControlSession();
+    window.location.replace("/control-login.html");
+  });
+}
+
 function setupAppShell() {
   if (!("serviceWorker" in navigator)) {
     return;
@@ -170,6 +184,10 @@ function renderDashboardView(data) {
 }
 
 function initControlDashboard() {
+  if (!ensureControlAccess()) {
+    return;
+  }
+
   renderNav(document.querySelector("[data-control-nav]"), controlNav);
   renderRanges(document.querySelector("[data-date-ranges]"), dateRanges);
   renderDashboardView(applyRangeToData(dashboardData, "week"));
@@ -179,6 +197,7 @@ function initControlDashboard() {
     renderDashboardView(applyRangeToData(dashboardData, rangeId));
   });
   setupExportAction();
+  setupLogoutAction();
   setupAppShell();
 }
 

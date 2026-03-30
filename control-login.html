@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Geschuetzter Zugang zum internen Control UI von Dr. Gray & Mrs. Dr. Gray.">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#050505">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/control/control.css">
+  <title>Control Access | Dr. Gray & Mrs. Dr. Gray</title>
+</head>
+<body>
+  <main class="control-lock-shell">
+    <section class="control-lock-card" aria-labelledby="control-access-title">
+      <p class="eyebrow">Protected Area</p>
+      <h1 id="control-access-title">Control UI Zugang</h1>
+      <p class="control-lock-copy">
+        Diese Oberfläche ist nur fuer interne Nutzung freigegeben.
+        Session-Typ: <strong data-owner-label></strong>
+      </p>
+
+      <form class="control-lock-form" data-control-login-form>
+        <label for="control-passphrase">Passphrase</label>
+        <input id="control-passphrase" data-control-passphrase type="password" autocomplete="current-password" required minlength="8" />
+        <button type="submit">Control UI entsperren</button>
+      </form>
+
+      <p class="control-lock-status" data-lock-status role="status" aria-live="polite"></p>
+      <a class="control-lock-back" href="/index.html">Zur Website</a>
+    </section>
+  </main>
+  <script type="module" src="/control/login.js"></script>
+</body>
+</html>
+

@@ -179,6 +179,7 @@ export const dashboardData = {
     { id: "qa-4", label: "TikTok Dr. Gray", href: "https://www.tiktok.com/@dr.gray.sic", external: true },
     { id: "qa-8", label: "TikTok Mrs. Dr. Gray", href: "https://www.tiktok.com/@ktina1986", external: true },
     { id: "qa-5", label: "Kontakt testen", href: "https://drgray-mrsdrgray.com/kontakt.html", external: true },
-    { id: "qa-6", label: "Report Export (mock)", href: "#export", external: false }
+    { id: "qa-6", label: "Report Export (mock)", href: "#export", external: false },
+    { id: "qa-9", label: "Control Logout", href: "#logout", external: false }
   ]
 };

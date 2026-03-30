@@ -106,6 +106,28 @@ Module:
 
 Der Dashboard-Stand ist absichtlich **mock-first**, damit alles ohne lokale oder externe Runtime-Abhaengigkeit laeuft.
 
+### Zugangsschutz fuer `/control`
+- Zugriff laeuft ueber einen vorgeschalteten Lock-Screen: `/control-login.html`
+- Sessiondauer: 12 Stunden (lokal im Browser gespeichert)
+- Hash-Konfiguration: `control/js/config.js` -> `controlAuthConfig.passphraseHash`
+- Login-Logik: `control/js/auth.js` und `control/login.js`
+
+Passphrase rotieren:
+1. Neue Passphrase waehlen (lang + zufaellig).
+2. Hash mit SHA-256 fuer `salt:passphrase` erzeugen.
+3. Hash in `control/js/config.js` ersetzen.
+4. Deployen.
+
+Beispiel (lokal):
+```bash
+python3 - <<'PY'
+import hashlib
+salt='drgray-control-salt-v1'
+passphrase='DEINE_NEUE_PASSPHRASE'
+print(hashlib.sha256(f'{salt}:{passphrase}'.encode()).hexdigest())
+PY
+```
+
 ## Umgebungsvariablen
 Beispielwerte stehen in `.env.example`.
 
