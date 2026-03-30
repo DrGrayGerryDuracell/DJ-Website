@@ -10,8 +10,15 @@
 ## Performance Ergebnis
 
 Vorher (web-videos): ca. **42 MB**
-Nachher (web-videos): ca. **13 MB**
-Ersparnis: ca. **69%**
+Nachher (web-videos): ca. **11.90 MB**
+Ersparnis: ca. **71.7%**
+
+Zusatz-Pass (spaeter am 30.03.2026):
+- `live-koeln-announcement.mp4`: 4.72 MB -> 2.17 MB
+- `mrs-erinnerung.mp4`: 2.99 MB -> 1.42 MB
+- neue Batch-Clips aufgenommen:
+  - `live-room-collage-2026.mp4` (0.88 MB)
+  - `club-crowd-redroom-2026.mp4` (2.27 MB)
 
 Details: `assets/uploads/reports/video-optimized.csv`
 
@@ -24,6 +31,7 @@ Details: `assets/uploads/reports/video-optimized.csv`
   - `assets/uploads/reports/video-metadata.csv`
   - `assets/uploads/reports/video-optimized.csv`
   - `assets/uploads/reports/media-analysis-2026-03-30.md`
+  - `assets/uploads/reports/media-curation-2026-03-30.md`
 
 ## Deployment-Befehlskette (GitHub Pages / Cloudflare)
 
@@ -43,7 +51,10 @@ git add \
   assets/uploads/web-videos \
   assets/uploads/posters \
   assets/uploads/reports \
+  docs/shirtee-link-matrix.md \
+  scripts/check-shirtee-links.sh \
   scripts/check_shirtee_links.sh \
+  scripts/build-upload-preview-report.sh \
   scripts/process_new_upload_batch.sh
 
 # 3) Commit
@@ -57,4 +68,3 @@ git push origin main
 
 - `assets/uploads/raw-images/` und `assets/uploads/raw-videos/` bleiben lokal (via `.gitignore`) und werden nicht deployt.
 - Falls Cloudflare oder Browser-Cache alten Stand zeigt: Hard-Refresh + Cache Purge.
-
