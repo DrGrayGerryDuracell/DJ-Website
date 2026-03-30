@@ -386,6 +386,48 @@
     });
   }
 
+  function initMerchOptions() {
+    const catalog = window.MERCH_CATALOG;
+    if (!catalog || !Array.isArray(catalog.items)) {
+      return;
+    }
+
+    const unique = new Map();
+    catalog.items.forEach(function (item) {
+      if (!Array.isArray(item.products)) {
+        return;
+      }
+      item.products.forEach(function (name) {
+        const label = String(name || "").trim();
+        if (!label) {
+          return;
+        }
+        const key = label.toLowerCase();
+        if (!unique.has(key)) {
+          unique.set(key, label);
+        }
+      });
+    });
+
+    const options = Array.from(unique.values()).sort(function (a, b) {
+      return a.localeCompare(b, "de");
+    });
+
+    document.querySelectorAll("[data-merch-options-count]").forEach(function (node) {
+      node.textContent = String(options.length);
+    });
+
+    document.querySelectorAll("[data-merch-options]").forEach(function (container) {
+      container.innerHTML = "";
+      options.forEach(function (label) {
+        const chip = document.createElement("span");
+        chip.className = "merch-option-chip";
+        chip.textContent = label;
+        container.appendChild(chip);
+      });
+    });
+  }
+
   function initFadeIns() {
     const items = document.querySelectorAll(".feature-card, .quote-card, .timeline-item, .soundcloud-item, .merch-card, .catalog-card, .video-card, .reel-card, .info-panel, .contact-card, .track-note, .panel-image");
     if (!items.length || !("IntersectionObserver" in window)) {
@@ -435,6 +477,7 @@
     initSoundCloudEmbeds();
     initMerchCatalog();
     initMerchStats();
+    initMerchOptions();
     initFadeIns();
     initYear();
   });
