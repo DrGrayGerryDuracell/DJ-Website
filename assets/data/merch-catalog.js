@@ -1,5 +1,5 @@
 window.MERCH_CATALOG = {
-  spotlight: ["mrs-hoodie-serious", "mrs-crop-wild", "dr-shirt-raw", "couple-rainproof-tee", "couple-daylight-hoodie", "unisex-daylight-hoodie", "accessory-rainline-poster", "accessory-cap-gray"],
+  spotlight: ["mrs-hoodie-serious", "mrs-crop-wild", "dr-shirt-raw", "dr-crew-pressuregrid", "couple-rainproof-tee", "couple-daylight-hoodie", "unisex-daylight-hoodie", "accessory-rainline-poster", "accessory-cap-retro"],
   items: [
     {
       id: "dr-hoodie-mainstream",
@@ -117,6 +117,19 @@ window.MERCH_CATALOG = {
       image: "store-assets/variants/dr-front-bass-im-blut.png",
       href: "shop.html#herren-kollektion",
       status: "Konzept"
+    },
+    {
+      id: "dr-crew-pressuregrid",
+      section: "men",
+      line: "Dr. Gray",
+      title: "Pressure Grid Crewneck",
+      slogan: "Technische Linien, klare Mitte, null Ablenkung.",
+      copy: "Crewneck fuer die cleanere Dr.-Gray-Achse mit scharfem Frontclaim und optionalem Nackenprint. Ideal fuer Clubcrew, Warm-up und Travel-Fit.",
+      products: ["Crewneck", "Heavy Sweat", "Layer Tee"],
+      tags: ["Herren", "Crewneck", "Control"],
+      image: "store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+      href: "shop.html#herren-kollektion",
+      status: "In Vorbereitung"
     },
     {
       id: "mrs-crop-wild",
@@ -275,6 +288,19 @@ window.MERCH_CATALOG = {
       status: "In Vorbereitung"
     },
     {
+      id: "mrs-crop-playful-control",
+      section: "women",
+      line: "Mrs. Dr. Gray",
+      title: "Playful Control Crop",
+      slogan: "Frech im Hook, sauber in der Linie.",
+      copy: "Crop mit dominantem Mrs.-Logo und schmaler Claim-Zeile. Der Look bleibt sexy-serioes und sitzt stark auf Clubfotos und Night-Reels.",
+      products: ["Crop Shirt", "Fitted Tee", "Soft Hoodie"],
+      tags: ["Damen", "Crop", "Mrs.-Fokus"],
+      image: "store-assets/variants/mrs-front-signature.png",
+      href: "shop.html#damen-kollektion",
+      status: "In Vorbereitung"
+    },
+    {
       id: "couple-hoodie-beat",
       section: "couple",
       line: "Couple Edition",
@@ -379,6 +405,19 @@ window.MERCH_CATALOG = {
       status: "In Vorbereitung"
     },
     {
+      id: "couple-equal-heights-tee",
+      section: "couple",
+      line: "Couple Edition",
+      title: "Equal Heights Couple Tee",
+      slogan: "Symmetrie statt Zufall.",
+      copy: "Duo-Shirt mit exakt gleich hohen Logos, sauberer Mittelachse und ruhigem Rueckenclaim. Emotional im Kern, praezise in der Gestaltung.",
+      products: ["2er Tee Set", "2er Longsleeve Set", "Event Duo Pack"],
+      tags: ["Couple", "Symmetrie", "Logo-Hoehe"],
+      image: "store-assets/variants/couple-front-two-hearts.png",
+      href: "shop.html#couple-edition",
+      status: "Geplant"
+    },
+    {
       id: "unisex-shirt-dual",
       section: "unisex",
       line: "Unisex",
@@ -457,6 +496,19 @@ window.MERCH_CATALOG = {
       status: "In Vorbereitung"
     },
     {
+      id: "unisex-backline-core",
+      section: "unisex",
+      line: "Unisex",
+      title: "Backline Core Longsleeve",
+      slogan: "Vorne clean, hinten Haltung.",
+      copy: "Unisex-Longsleeve mit minimalem Frontzeichen und waehlbarem Dr.- oder Mrs.-Backprint. Der sauberste Weg fuer klare Identitaet ohne Ueberladung.",
+      products: ["Longsleeve", "Heavy Tee", "Light Crew"],
+      tags: ["Unisex", "Backprint Wahl", "Clean"],
+      image: "store-assets/variants/unisex-backprint-options.png",
+      href: "shop.html#unisex-drop",
+      status: "Geplant"
+    },
+    {
       id: "accessory-tote-techno",
       section: "accessories",
       line: "Accessories",
@@ -481,6 +533,19 @@ window.MERCH_CATALOG = {
       image: "store-assets/variants/dr-back-logo.png",
       href: "shop.html#accessoires",
       status: "Geplant"
+    },
+    {
+      id: "accessory-cap-retro",
+      section: "accessories",
+      line: "Accessories",
+      title: "Retro Duo Cap",
+      slogan: "Oldschool Shape, neue Linie.",
+      copy: "Cap mit Retro-Schnitt, klarer Frontstick und kleinem Rueckenzeichen. Funktioniert fuer Herren-, Damen- und Couple-Fits ohne Stilbruch.",
+      products: ["Retro Cap", "Dad Cap", "Snapback"],
+      tags: ["Accessoire", "Cap", "Retro"],
+      image: "store-assets/variants/accessory-dr-retro-cap.png",
+      href: "shop.html#accessoires",
+      status: "In Vorbereitung"
     },
     {
       id: "accessory-mug-mrs",

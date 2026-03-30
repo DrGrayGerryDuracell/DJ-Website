@@ -321,6 +321,44 @@
     });
   }
 
+  function initMerchStats() {
+    const catalog = window.MERCH_CATALOG;
+    if (!catalog || !Array.isArray(catalog.items)) {
+      return;
+    }
+
+    const items = catalog.items;
+    const normalize = function (value) {
+      return String(value || "").toLowerCase();
+    };
+
+    const total = items.length;
+    const live = items.filter(function (item) {
+      return normalize(item.status).indexOf("live") !== -1;
+    }).length;
+    const active = items.filter(function (item) {
+      const status = normalize(item.status);
+      return status.indexOf("prior") !== -1 || status.indexOf("vorbereitung") !== -1 || status.indexOf("geplant") !== -1;
+    }).length;
+    const concept = items.filter(function (item) {
+      const status = normalize(item.status);
+      return status.indexOf("konzept") !== -1 || status.indexOf("concept") !== -1 || status.indexOf("special") !== -1;
+    }).length;
+
+    document.querySelectorAll("[data-merch-count-total]").forEach(function (node) {
+      node.textContent = String(total);
+    });
+    document.querySelectorAll("[data-merch-count-live]").forEach(function (node) {
+      node.textContent = String(live);
+    });
+    document.querySelectorAll("[data-merch-count-active]").forEach(function (node) {
+      node.textContent = String(active);
+    });
+    document.querySelectorAll("[data-merch-count-concept]").forEach(function (node) {
+      node.textContent = String(concept);
+    });
+  }
+
   function initFadeIns() {
     const items = document.querySelectorAll(".feature-card, .quote-card, .timeline-item, .soundcloud-item, .merch-card, .catalog-card, .video-card, .reel-card, .info-panel, .contact-card, .track-note, .panel-image");
     if (!items.length || !("IntersectionObserver" in window)) {
@@ -369,6 +407,7 @@
     initMenu();
     initSoundCloudEmbeds();
     initMerchCatalog();
+    initMerchStats();
     initFadeIns();
     initYear();
   });
