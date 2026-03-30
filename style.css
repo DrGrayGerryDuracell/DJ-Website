@@ -627,6 +627,10 @@ button {
   text-wrap: balance;
 }
 
+.card-copy {
+  line-height: 1.62;
+}
+
 .pill-row {
   display: flex;
   flex-wrap: wrap;
@@ -1349,6 +1353,8 @@ iframe.soundcloud-lazy {
     pointer-events: none;
     transform: translateY(-8px);
     transition: opacity 0.2s ease, transform 0.2s ease;
+    max-height: calc(100vh - (var(--header-h) + var(--banner-h) + 2rem));
+    overflow-y: auto;
   }
 
   .menu-open .nav-links {
@@ -1417,6 +1423,11 @@ iframe.soundcloud-lazy {
   .section-header,
   .footer-shell {
     display: block;
+  }
+
+  .section-header > .btn,
+  .section-header > .cta-row {
+    margin-top: 0.95rem;
   }
 
   .footer-links {
