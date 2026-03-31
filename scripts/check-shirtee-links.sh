@@ -34,7 +34,14 @@ NODE
 echo "Shirtee URL check ($(date '+%Y-%m-%d %H:%M:%S %Z'))"
 failures=0
 for url in "${URLS[@]}"; do
-  code="$(curl -L -s -o /dev/null -w '%{http_code}' "$url")"
+  code="000"
+  for attempt in 1 2 3; do
+    code="$(curl -L -s -o /dev/null -w '%{http_code}' "$url")"
+    if [[ "$code" =~ ^2[0-9][0-9]$ ]]; then
+      break
+    fi
+    sleep 1
+  done
   echo "$code $url"
   if [[ ! "$code" =~ ^2[0-9][0-9]$ ]]; then
     failures=$((failures + 1))
