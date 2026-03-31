@@ -1,6 +1,9 @@
 import { formatNumber, formatValue, trendClass, levelClass } from "./formatters.js";
 
 function buildTrafficBars(series) {
+  if (!Array.isArray(series) || !series.length) {
+    return `<p class="muted-line">Keine Live-Daten vorhanden.</p>`;
+  }
   const maxVisitors = Math.max(...series.map((item) => item.visitors), 1);
   return series
     .map((item) => {
@@ -32,16 +35,20 @@ function buildSparkline(series, key) {
 }
 
 function buildMiniBars(list, key, labelKey) {
+  if (!Array.isArray(list) || !list.length) {
+    return `<p class="muted-line">Keine Live-Daten vorhanden.</p>`;
+  }
   const max = Math.max(...list.map((item) => Number(item[key] || 0)), 1);
   return list
     .map((item) => {
       const value = Number(item[key] || 0);
       const width = Math.max(8, Math.round((value / max) * 100));
+      const suffix = item.unit || "%";
       return `
         <div class="mini-bar-row">
           <span>${item[labelKey]}</span>
           <div class="mini-bar-track"><i style="width:${width}%"></i></div>
-          <strong>${value}%</strong>
+          <strong>${value}${suffix}</strong>
         </div>
       `;
     })
@@ -59,14 +66,15 @@ export function renderNav(container, nav) {
 }
 
 export function renderRanges(container, ranges) {
+  const activeIndex = ranges.length > 1 ? 1 : 0;
   container.innerHTML = ranges
-    .map((range, index) => `<button class="range-btn${index === 1 ? " is-active" : ""}" data-range="${range.id}" aria-pressed="${index === 1 ? "true" : "false"}">${range.label}</button>`)
+    .map((range, index) => `<button class="range-btn${index === activeIndex ? " is-active" : ""}" data-range="${range.id}" aria-pressed="${index === activeIndex ? "true" : "false"}">${range.label}</button>`)
     .join("");
 }
 
 export function renderModeBadge(node, metadata) {
   const range = metadata.activeRange ? ` • ${metadata.activeRange}` : "";
-  node.textContent = `Data Mode: ${String(metadata.mode || "mock").toUpperCase()} • ${metadata.timezone}${range}`;
+  node.textContent = `Datenquelle: ${String(metadata.mode || "live").toUpperCase()} • ${metadata.timezone}${range}`;
 }
 
 export function renderVisualPulse(container, dashboardData) {
@@ -97,14 +105,14 @@ export function renderVisualPulse(container, dashboardData) {
 
   container.innerHTML = `
     <article class="pulse-card">
-      <p class="pulse-eyebrow">Traffic Pulse</p>
-      <h3>Besuchertrend 7 Tage</h3>
+      <p class="pulse-eyebrow">Website</p>
+      <h3>Antwortzeiten im Blick</h3>
       <div class="sparkline-wrap">${visitorsSparkline}</div>
-      <p class="pulse-copy">Heute <strong>${formatNumber(dashboardData.overviewKpis.find((kpi) => kpi.id === "visitorsToday")?.value || 0)}</strong> Besucher</p>
+      <p class="pulse-copy">Seiten ok: <strong>${formatNumber(dashboardData.overviewKpis.find((kpi) => kpi.id === "pagesOk")?.value)}</strong></p>
     </article>
     <article class="pulse-card">
-      <p class="pulse-eyebrow">Catalog Mix</p>
-      <h3>Shop-Reifegrad</h3>
+      <p class="pulse-eyebrow">Shop</p>
+      <h3>Katalogstatus</h3>
       <div class="donut-wrap">
         <div class="catalog-donut" style="--live:${liveDeg}deg; --upload:${uploadDeg}deg;">
           <span>${catalog.totalItems}</span>
@@ -117,8 +125,8 @@ export function renderVisualPulse(container, dashboardData) {
       </div>
     </article>
     <article class="pulse-card">
-      <p class="pulse-eyebrow">Social Pulse</p>
-      <h3>Klickdynamik</h3>
+      <p class="pulse-eyebrow">Social</p>
+      <h3>Plattformstatus</h3>
       <div class="social-mini">${socialBars}</div>
       <p class="pulse-copy">Stärkster Kanal: <strong>${dashboardData.socialMetrics.strongestPlatform || socialTop[0]?.platform || "n/a"}</strong></p>
     </article>
@@ -135,10 +143,11 @@ export function renderKpis(container, kpis) {
   container.innerHTML = kpis
     .map((kpi) => {
       const value = formatValue(kpi.value, kpi.unit);
+      const isNumeric = typeof kpi.value === "number" && Number.isFinite(kpi.value);
       return `
         <article class="kpi-card">
           <span class="kpi-label">${kpi.label}</span>
-          <strong class="kpi-value" data-kpi-value="${Number(kpi.value) || 0}" data-kpi-unit="${kpi.unit || ""}">${value}</strong>
+          <strong class="kpi-value" data-kpi-value="${isNumeric ? Number(kpi.value) : 0}" data-kpi-unit="${kpi.unit || ""}" data-kpi-animate="${isNumeric ? "true" : "false"}">${value}</strong>
           <span class="kpi-delta ${trendClass(kpi.trend)}">${kpi.delta}</span>
         </article>
       `;
@@ -149,35 +158,35 @@ export function renderKpis(container, kpis) {
 export function renderWebsiteSection(container, metrics) {
   container.innerHTML = `
     <article class="panel">
-      <h3>Traffic Verlauf</h3>
+      <h3>Antwortzeit pro gepruefter Seite</h3>
       <div class="metric-bars">${buildTrafficBars(metrics.trafficSeries)}</div>
       <div class="mini-split-grid">
         <div>
-          <h4>Audience</h4>
+          <h4>Website-Status</h4>
           <div class="mini-bar-group">${buildMiniBars(metrics.audiences, "value", "label")}</div>
         </div>
         <div>
-          <h4>Devices</h4>
+          <h4>HTTP Klassen</h4>
           <div class="mini-bar-group">${buildMiniBars(metrics.devices, "value", "label")}</div>
         </div>
       </div>
     </article>
     <article class="panel">
-      <h3>Top-Seiten</h3>
+      <h3>Seiten nach Dateigroesse</h3>
       <table class="data-table">
-        <thead><tr><th>Seite</th><th>Views</th><th>CTR</th></tr></thead>
+        <thead><tr><th>Seite</th><th>KB</th><th>Status</th></tr></thead>
         <tbody>
           ${metrics.topPages
             .map((row) => `<tr><td>${row.page}</td><td>${formatNumber(row.views)}</td><td>${row.ctr}</td></tr>`)
             .join("")}
         </tbody>
       </table>
-      <h4>Traffic Quellen</h4>
+      <h4>Linkabdeckung im Inhalt</h4>
       <div class="mini-bar-group">${buildMiniBars(metrics.sources, "value", "label")}</div>
       <div class="mini-grid">
-        <div><span>Ø Session</span><strong>${metrics.engagement.avgSession}</strong></div>
+        <div><span>Ø Antwortzeit</span><strong>${metrics.engagement.avgSession}</strong></div>
         <div><span>Absprungrate</span><strong>${metrics.engagement.bounceRate}</strong></div>
-        <div><span>Button CTR</span><strong>${metrics.engagement.buttonCtr}</strong></div>
+        <div><span>Button-CTR</span><strong>${metrics.engagement.buttonCtr}</strong></div>
       </div>
     </article>
   `;
@@ -187,40 +196,44 @@ export function renderShopSection(container, shopMetrics) {
   const sectionSummary = shopMetrics.catalog.sections
     .map((row) => `<span>${row.label}: <strong>${row.items}</strong></span>`)
     .join("");
+  const visibleProducts = Number(shopMetrics.catalog.storeVisibleProducts || 0);
+  const visibleProductNames = Array.isArray(shopMetrics.catalog.storeVisibleProductNames) ? shopMetrics.catalog.storeVisibleProductNames : [];
 
   container.innerHTML = `
     <article class="panel">
-      <h3>Shop Kennzahlen</h3>
+      <h3>Shop Monitoring (nur Echt-Daten)</h3>
       <div class="mini-grid three">
-        <div><span>Bestellungen heute</span><strong>${shopMetrics.period.today.orders}</strong></div>
-        <div><span>Umsatz heute</span><strong>${formatValue(shopMetrics.period.today.revenue, "EUR")}</strong></div>
-        <div><span>Conversion</span><strong>${shopMetrics.period.today.conversion}</strong></div>
+        <div><span>Gepruefte Produktlinks</span><strong>${formatValue(shopMetrics.linkHealth.checkedLinks)}</strong></div>
+        <div><span>Erreichbare Produktlinks</span><strong>${formatValue(shopMetrics.linkHealth.okLinks)}</strong></div>
+        <div><span>Fehlerhafte Produktlinks</span><strong>${formatValue(shopMetrics.linkHealth.failLinks)}</strong></div>
       </div>
       <div class="mini-grid three">
-        <div><span>Bestellungen Woche</span><strong>${shopMetrics.period.week.orders}</strong></div>
-        <div><span>Umsatz Woche</span><strong>${formatValue(shopMetrics.period.week.revenue, "EUR")}</strong></div>
-        <div><span>AOV</span><strong>${shopMetrics.averageOrderValue}</strong></div>
+        <div><span>Erreichbarkeitsquote</span><strong>${shopMetrics.linkHealth.reachabilityRate}</strong></div>
+        <div><span>Katalogeintraege</span><strong>${formatValue(shopMetrics.catalog.totalItems)}</strong></div>
+        <div><span>Live im Store</span><strong>${formatValue(shopMetrics.catalog.liveItems)}</strong></div>
       </div>
       <div class="mini-grid three">
-        <div><span>Katalog gesamt</span><strong>${shopMetrics.catalog.totalItems}</strong></div>
-        <div><span>Live Produkte</span><strong>${shopMetrics.catalog.liveItems}</strong></div>
-        <div><span>Upload-Welle</span><strong>${shopMetrics.catalog.uploadWave}</strong></div>
+        <div><span>Sichtbar im Shirtee Store</span><strong>${formatValue(visibleProducts)}</strong></div>
+        <div><span>Uploadbereit</span><strong>${formatValue(shopMetrics.catalog.uploadWave)}</strong></div>
+        <div><span>Konzept / Entwurf</span><strong>${formatValue(shopMetrics.catalog.conceptItems)}</strong></div>
       </div>
+      <p class="muted-line">Letzter Check: <strong>${shopMetrics.linkHealth.checkedAtLabel}</strong></p>
       <p class="muted-line">${sectionSummary}</p>
-      <h4>Linienmix</h4>
+      ${visibleProductNames.length ? `<p class="muted-line">Store live: ${visibleProductNames.join(" • ")}</p>` : ""}
+      <h4>Linienmix im Katalog</h4>
       <div class="mini-bar-group">${buildMiniBars(shopMetrics.catalog.sections.map((item) => ({ label: item.label, value: item.items })), "value", "label")}</div>
     </article>
     <article class="panel">
-      <h3>Top-Produkte</h3>
+      <h3>Gepruefte Produktlinks</h3>
       <table class="data-table">
-        <thead><tr><th>Produkt</th><th>Klicks</th><th>Orders</th><th>Umsatz</th></tr></thead>
+        <thead><tr><th>Produkt</th><th>HTTP</th><th>Status</th><th>Link</th></tr></thead>
         <tbody>
           ${shopMetrics.topProducts
-            .map((row) => `<tr><td>${row.name}</td><td>${row.clicks}</td><td>${row.orders}</td><td>${formatValue(row.revenue, "EUR")}</td></tr>`)
+            .map((row) => `<tr><td>${row.name}</td><td>${formatValue(row.httpCode)}</td><td>${row.statusLabel || "-"}</td><td><a href="${row.href}" target="_blank" rel="noopener noreferrer">oeffnen</a></td></tr>${row.sourceLabel ? `<tr><td colspan="4" class="muted-row">Quelle: ${row.sourceLabel}</td></tr>` : ""}`)
             .join("")}
         </tbody>
       </table>
-      <p class="muted-line">Warenkorb-Abbruch: <strong>${shopMetrics.cartAbandonment}</strong> • Neue Kunden: <strong>${shopMetrics.customerSplit.newCustomers}%</strong></p>
+      <p class="muted-line">Hinweis: Umsatz- und Bestellzahlen werden erst angezeigt, sobald eine echte Shop-API angebunden ist.</p>
     </article>
   `;
 }
@@ -249,7 +262,7 @@ export function renderPerformance(container, performanceMetrics) {
       </ul>
     </article>
     <article class="panel">
-      <h3>Checks & Error Log</h3>
+      <h3>Checks & Fehlerlog</h3>
       <ul class="status-list compact">
         ${performanceMetrics.externalChecks
           .map((item) => `<li><span>${item.label}</span><strong class="status-pill ${levelClass(item.level)}">${item.status}</strong></li>`)
@@ -275,7 +288,7 @@ export function renderContent(container, contentPerformance) {
       </div>
     </article>
     <article class="panel">
-      <h3>CTA Performance</h3>
+      <h3>CTA Auswertung</h3>
       <table class="data-table">
         <thead><tr><th>CTA</th><th>Klicks</th><th>Rate</th></tr></thead>
         <tbody>
@@ -312,7 +325,7 @@ export function renderSocial(container, socialMetrics) {
       </table>
     </article>
     <article class="panel">
-      <h3>Live Ziele & Vergleiche</h3>
+      <h3>Profile & Vergleiche</h3>
       <ul class="account-list">
         ${socialMetrics.officialAccounts
           .map(

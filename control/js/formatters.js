@@ -1,17 +1,29 @@
 export function formatNumber(value) {
-  return new Intl.NumberFormat("de-DE").format(Number(value || 0));
+  const num = Number(value);
+  if (!Number.isFinite(num)) {
+    return "nicht verfuegbar";
+  }
+  return new Intl.NumberFormat("de-DE").format(num);
 }
 
 export function formatCurrency(value) {
-  return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(Number(value || 0));
+  const num = Number(value);
+  if (!Number.isFinite(num)) {
+    return "nicht verfuegbar";
+  }
+  return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(num);
 }
 
 export function formatValue(value, unit) {
+  if (value === null || value === undefined) {
+    return "nicht verfuegbar";
+  }
   if (unit === "EUR") {
     return formatCurrency(value);
   }
   if (unit === "%") {
-    return `${value}%`;
+    const num = Number(value);
+    return Number.isFinite(num) ? `${num}%` : "nicht verfuegbar";
   }
   if (typeof value === "number") {
     return formatNumber(value);

@@ -1,4 +1,4 @@
-const CACHE_NAME = "dg-control-v1";
+const CACHE_NAME = "dg-control-v2";
 const APP_SHELL = [
   "/control/",
   "/control/index.html",
@@ -6,7 +6,6 @@ const APP_SHELL = [
   "/control/main.js",
   "/control/js/config.js",
   "/control/js/formatters.js",
-  "/control/js/mock-data.js",
   "/control/js/render.js",
   "/control/manifest.webmanifest",
   "/control/icons/icon-192.png",

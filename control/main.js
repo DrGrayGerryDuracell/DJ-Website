@@ -1,4 +1,3 @@
-import { dashboardData } from "./js/mock-data.js";
 import { controlNav, dateRanges } from "./js/config.js";
 import { ensureControlAccess, clearControlSession } from "./js/auth.js";
 import {
@@ -30,19 +29,6 @@ async function loadLiveMetrics() {
   }
 }
 
-function mergeLiveMetrics(baseData, liveMetrics) {
-  if (!liveMetrics?.social?.rows) {
-    return baseData;
-  }
-
-  const data = JSON.parse(JSON.stringify(baseData));
-  data.metadata.mode = liveMetrics.sourceMode || "mixed-live";
-  data.metadata.generatedAt = liveMetrics.generatedAt || data.metadata.generatedAt;
-  data.socialMetrics.links = liveMetrics.social.rows;
-  data.socialMetrics.strongestPlatform = liveMetrics.social.strongestPlatform || data.socialMetrics.strongestPlatform;
-  return data;
-}
-
 function formatAnimatedValue(value, unit) {
   if (unit === "EUR") {
     return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(value);
@@ -54,7 +40,10 @@ function formatAnimatedValue(value, unit) {
 }
 
 function animateKpis() {
-  const nodes = document.querySelectorAll("[data-kpi-value]");
+  const nodes = document.querySelectorAll('[data-kpi-animate="true"]');
+  if (!nodes.length) {
+    return;
+  }
   const duration = 420;
   const start = performance.now();
 
@@ -77,49 +66,7 @@ function animateKpis() {
 
 function applyRangeToData(baseData, rangeId) {
   const data = JSON.parse(JSON.stringify(baseData));
-  const profile = {
-    today: { factor: 0.24, traffic: 0.7, pctShift: -0.4, label: "Heute" },
-    week: { factor: 1, traffic: 1, pctShift: 0, label: "7 Tage" },
-    month: { factor: 3.8, traffic: 1.35, pctShift: 0.6, label: "30 Tage" }
-  }[rangeId] || { factor: 1, traffic: 1, pctShift: 0, label: "7 Tage" };
-
-  data.metadata.activeRange = profile.label;
-
-  data.overviewKpis = data.overviewKpis.map((kpi) => {
-    const next = { ...kpi };
-    if (next.unit === "%") {
-      next.value = Number((Number(next.value || 0) + profile.pctShift).toFixed(1));
-      return next;
-    }
-    next.value = Math.max(0, Math.round(Number(next.value || 0) * profile.factor));
-    return next;
-  });
-
-  data.websiteMetrics.trafficSeries = data.websiteMetrics.trafficSeries.map((point) => ({
-    ...point,
-    visitors: Math.max(1, Math.round(Number(point.visitors || 0) * profile.traffic)),
-    pageviews: Math.max(1, Math.round(Number(point.pageviews || 0) * profile.traffic))
-  }));
-
-  data.shopMetrics.topProducts = data.shopMetrics.topProducts.map((item) => ({
-    ...item,
-    clicks: Math.max(1, Math.round(Number(item.clicks || 0) * profile.factor)),
-    orders: Math.max(1, Math.round(Number(item.orders || 0) * Math.max(profile.factor * 0.9, 0.4))),
-    revenue: Math.max(1, Math.round(Number(item.revenue || 0) * profile.factor))
-  }));
-
-  data.socialMetrics.links = data.socialMetrics.links.map((item) => {
-    const next = { ...item };
-    if (typeof next.metricValue === "number") {
-      next.metricValue = Math.max(0, Math.round(next.metricValue * profile.factor));
-      return next;
-    }
-    if (typeof next.clicks === "number") {
-      next.clicks = Math.max(0, Math.round(next.clicks * profile.factor));
-    }
-    return next;
-  });
-
+  data.metadata.activeRange = rangeId === "live" ? "Live-Daten" : "Live-Daten";
   return data;
 }
 
@@ -140,6 +87,13 @@ function setupNavigation() {
     link.addEventListener("click", () => {
       closeNav();
     });
+    link.addEventListener("touchend", () => {
+      closeNav();
+    });
+  });
+
+  window.addEventListener("hashchange", () => {
+    closeNav();
   });
 
   document.addEventListener("click", (event) => {
@@ -184,9 +138,13 @@ function setupExportAction() {
 
     const payload = {
       exportedAt: new Date().toISOString(),
-      source: "control-mock-snapshot",
-      data: dashboardData
+      source: "control-live-snapshot"
     };
+
+    const state = window.__CONTROL_DATA__ || null;
+    if (state) {
+      payload.data = state;
+    }
 
     const blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json;charset=utf-8" });
     const url = URL.createObjectURL(blob);
@@ -210,6 +168,20 @@ function setupLogoutAction() {
     event.preventDefault();
     clearControlSession();
     window.location.replace("/control-login.html");
+  });
+}
+
+function setupReloadAction(onReload) {
+  const reloadLink = document.querySelector('[href="#reload"]');
+  if (!reloadLink) {
+    return;
+  }
+
+  reloadLink.addEventListener("click", async (event) => {
+    event.preventDefault();
+    if (typeof onReload === "function") {
+      await onReload();
+    }
   });
 }
 
@@ -245,11 +217,15 @@ async function initControlDashboard() {
   }
 
   const liveMetrics = await loadLiveMetrics();
-  const seedData = mergeLiveMetrics(dashboardData, liveMetrics);
+  if (!liveMetrics || !liveMetrics.metadata) {
+    throw new Error("Live-Daten konnten nicht geladen werden.");
+  }
+  let seedData = liveMetrics;
+  window.__CONTROL_DATA__ = seedData;
 
   renderNav(document.querySelector("[data-control-nav]"), controlNav);
   renderRanges(document.querySelector("[data-date-ranges]"), dateRanges);
-  renderDashboardView(applyRangeToData(seedData, "week"));
+  renderDashboardView(applyRangeToData(seedData, dateRanges[0]?.id || "live"));
 
   setupNavigation();
   setupRangeButtons((rangeId) => {
@@ -257,7 +233,32 @@ async function initControlDashboard() {
   });
   setupExportAction();
   setupLogoutAction();
+  setupReloadAction(async () => {
+    const nextLiveMetrics = await loadLiveMetrics();
+    if (!nextLiveMetrics || !nextLiveMetrics.metadata) {
+      return;
+    }
+    seedData = nextLiveMetrics;
+    window.__CONTROL_DATA__ = seedData;
+    renderDashboardView(applyRangeToData(seedData, "live"));
+  });
   setupAppShell();
 }
 
-document.addEventListener("DOMContentLoaded", initControlDashboard);
+document.addEventListener("DOMContentLoaded", () => {
+  initControlDashboard().catch((error) => {
+    console.error(error);
+    const root = document.querySelector(".control-main");
+    if (root) {
+      root.innerHTML = `
+        <section class="control-section">
+          <div class="panel">
+            <h3>Live-Daten nicht verfuegbar</h3>
+            <p>Das Control UI konnte keine verifizierten Live-Daten laden. Bitte den Sync erneut ausfuehren.</p>
+            <p class="muted-line">Befehl: <code>npm run sync:control-live</code></p>
+          </div>
+        </section>
+      `;
+    }
+  });
+});

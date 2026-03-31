@@ -1,12 +1,12 @@
 {
-  "name": "Dr. Gray Control Center",
+  "name": "Dr. Gray Kontrollzentrum",
   "short_name": "DG Control",
   "start_url": "/control/",
   "scope": "/control/",
   "display": "standalone",
   "background_color": "#050505",
   "theme_color": "#050505",
-  "description": "Internes Dashboard fuer Website, Shop, Social und Performance.",
+  "description": "Internes Kontrollzentrum fuer Website, Shop, Social und Technik.",
   "icons": [
     {
       "src": "/control/icons/icon-192.png",
