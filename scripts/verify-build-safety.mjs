@@ -24,7 +24,6 @@ function verifyJsSyntax() {
   const files = [
     "main.js",
     "control/main.js",
-    "control/js/mock-data.js",
     "control/js/config.js",
     "control/js/formatters.js",
     "control/js/render.js"

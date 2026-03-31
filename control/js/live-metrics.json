@@ -1,121 +1,576 @@
 {
-  "generatedAt": "2026-03-30T21:04:49.135Z",
-  "sourceMode": "mixed-live",
-  "social": {
-    "rows": [
+  "metadata": {
+    "mode": "live",
+    "generatedAt": "2026-03-31T05:22:00.045Z",
+    "generatedAtLabel": "31.03.26, 07:22",
+    "timezone": "Europe/Berlin",
+    "activeRange": "Live-Check"
+  },
+  "systemStatus": {
+    "website": {
+      "label": "Website",
+      "value": "Erreichbar",
+      "level": "ok"
+    },
+    "storeLinks": {
+      "label": "Shop-Links",
+      "value": "3/3 erreichbar",
+      "level": "ok"
+    },
+    "social": {
+      "label": "Social-Profile",
+      "value": "2/2 TikTok erreichbar",
+      "level": "ok"
+    },
+    "deployment": {
+      "label": "Datenstand",
+      "value": "31.03.26, 07:22",
+      "level": "info"
+    }
+  },
+  "overviewKpis": [
+    {
+      "id": "pagesChecked",
+      "label": "Gepruefte Seiten",
+      "value": 8,
+      "delta": "Live",
+      "trend": "neutral"
+    },
+    {
+      "id": "pagesOk",
+      "label": "Seiten OK",
+      "value": 8,
+      "delta": "Live",
+      "trend": "up"
+    },
+    {
+      "id": "pagesFail",
+      "label": "Seiten mit Fehler",
+      "value": 0,
+      "delta": "Live",
+      "trend": "neutral"
+    },
+    {
+      "id": "responseAvg",
+      "label": "Ø Antwortzeit (ms)",
+      "value": 160,
+      "delta": "Live",
+      "trend": "neutral"
+    },
+    {
+      "id": "merchItems",
+      "label": "Merch Artikel gesamt",
+      "value": 167,
+      "delta": "Katalog",
+      "trend": "neutral"
+    },
+    {
+      "id": "shopLinks",
+      "label": "Shop-Links geprueft",
+      "value": 3,
+      "delta": "Shirtee",
+      "trend": "neutral"
+    },
+    {
+      "id": "shopLinksOk",
+      "label": "Shop-Links OK",
+      "value": 3,
+      "delta": "Shirtee",
+      "trend": "up"
+    },
+    {
+      "id": "soundcloudFollowers",
+      "label": "SoundCloud Follower",
+      "value": 498,
+      "delta": "Live",
+      "trend": "neutral"
+    },
+    {
+      "id": "tiktokProfiles",
+      "label": "TikTok Profile erreichbar",
+      "value": 2,
+      "delta": "Live",
+      "trend": "neutral"
+    },
+    {
+      "id": "siteTiktokLinks",
+      "label": "TikTok Links auf Website",
+      "value": 28,
+      "delta": "Inhalt",
+      "trend": "neutral"
+    },
+    {
+      "id": "siteShopLinks",
+      "label": "Shop Links auf Website",
+      "value": 12,
+      "delta": "Inhalt",
+      "trend": "neutral"
+    },
+    {
+      "id": "warnings",
+      "label": "Offene Warnungen",
+      "value": 0,
+      "delta": "Pruefstatus",
+      "trend": "neutral"
+    }
+  ],
+  "websiteMetrics": {
+    "trafficSeries": [
+      {
+        "label": "Start",
+        "visitors": 211,
+        "pageviews": 0
+      },
+      {
+        "label": "index",
+        "visitors": 148,
+        "pageviews": 0
+      },
+      {
+        "label": "bio",
+        "visitors": 148,
+        "pageviews": 0
+      },
+      {
+        "label": "musik",
+        "visitors": 145,
+        "pageviews": 0
+      },
+      {
+        "label": "videos",
+        "visitors": 154,
+        "pageviews": 0
+      },
+      {
+        "label": "shop",
+        "visitors": 156,
+        "pageviews": 0
+      },
+      {
+        "label": "kontakt",
+        "visitors": 169,
+        "pageviews": 0
+      },
+      {
+        "label": "control",
+        "visitors": 147,
+        "pageviews": 0
+      }
+    ],
+    "topPages": [
+      {
+        "page": "/",
+        "views": 0,
+        "ctr": "200"
+      },
+      {
+        "page": "/index.html",
+        "views": 0,
+        "ctr": "200"
+      },
+      {
+        "page": "/bio.html",
+        "views": 0,
+        "ctr": "200"
+      },
+      {
+        "page": "/musik.html",
+        "views": 0,
+        "ctr": "200"
+      },
+      {
+        "page": "/videos.html",
+        "views": 0,
+        "ctr": "200"
+      }
+    ],
+    "audiences": [
+      {
+        "label": "Erreichbar",
+        "value": 100
+      },
+      {
+        "label": "Fehler",
+        "value": 0
+      }
+    ],
+    "sources": [
+      {
+        "label": "TikTok Links",
+        "value": 28
+      },
+      {
+        "label": "SoundCloud Links",
+        "value": 13
+      },
+      {
+        "label": "Shop Links",
+        "value": 12
+      },
+      {
+        "label": "Kontakt Links",
+        "value": 16
+      }
+    ],
+    "devices": [
+      {
+        "label": "2xx",
+        "value": 100
+      },
+      {
+        "label": "3xx",
+        "value": 0
+      },
+      {
+        "label": "4xx/5xx",
+        "value": 0
+      }
+    ],
+    "regions": [],
+    "engagement": {
+      "avgSession": "160 ms",
+      "bounceRate": "nicht gemessen",
+      "buttonCtr": "nicht gemessen"
+    }
+  },
+  "shopMetrics": {
+    "linkHealth": {
+      "checkedLinks": 3,
+      "okLinks": 3,
+      "failLinks": 0,
+      "reachabilityRate": "100%",
+      "checkedAt": "2026-03-31T05:22:00.045Z",
+      "checkedAtLabel": "31.03.26, 07:22"
+    },
+    "catalog": {
+      "totalItems": 167,
+      "liveItems": 2,
+      "uploadWave": 70,
+      "conceptItems": 95,
+      "sections": [
+        {
+          "label": "Damen",
+          "items": 35
+        },
+        {
+          "label": "Accessoires",
+          "items": 32
+        },
+        {
+          "label": "Herren",
+          "items": 31
+        },
+        {
+          "label": "Couple",
+          "items": 31
+        },
+        {
+          "label": "Unisex",
+          "items": 28
+        },
+        {
+          "label": "Special",
+          "items": 10
+        }
+      ],
+      "storeVisibleProducts": 3,
+      "storeVisibleProductNames": [
+        "Kein Mainstream. Hoodie",
+        "Zu wild fuer leise. Crop",
+        "Mrs. Dr. Gray Signature Hoodie"
+      ]
+    },
+    "topProducts": [
+      {
+        "name": "Kein Mainstream. Hoodie",
+        "httpCode": 200,
+        "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
+        "statusLabel": "erreichbar",
+        "sourceLabel": "Shirtee-Linkcheck"
+      },
+      {
+        "name": "Zu wild fuer leise. Crop",
+        "httpCode": 200,
+        "href": "https://www.shirtee.com/de/gy1dj4cqvmh36/",
+        "statusLabel": "erreichbar",
+        "sourceLabel": "Shirtee-Linkcheck"
+      },
+      {
+        "name": "Mrs. Dr. Gray Signature Hoodie",
+        "httpCode": 200,
+        "href": "https://www.shirtee.com/de/drgray-mrsdrgray/",
+        "statusLabel": "erreichbar",
+        "sourceLabel": "Shirtee-Linkcheck"
+      }
+    ],
+    "timeline": [
+      {
+        "time": "31.03.26, 07:22",
+        "type": "ok",
+        "detail": "Shop-Link 1: HTTP 200"
+      },
+      {
+        "time": "31.03.26, 07:22",
+        "type": "ok",
+        "detail": "Shop-Link 2: HTTP 200"
+      },
+      {
+        "time": "31.03.26, 07:22",
+        "type": "ok",
+        "detail": "Shop-Link 3: HTTP 200"
+      }
+    ]
+  },
+  "socialMetrics": {
+    "links": [
       {
         "platform": "TikTok Dr. Gray",
-        "metricValue": null,
-        "valueLabel": "Follower nicht oeffentlich abrufbar",
-        "statusLabel": "Profil live",
-        "sourceLabel": "tiktok-html • code 209002"
+        "metricValue": 17,
+        "valueLabel": "17 Linksignale im Seiteninhalt",
+        "statusLabel": "Profil erreichbar",
+        "sourceLabel": "TikTok Profil-HTML • Code 209002"
       },
       {
         "platform": "TikTok Mrs. Dr. Gray",
-        "metricValue": null,
-        "valueLabel": "Follower nicht oeffentlich abrufbar",
-        "statusLabel": "Profil live",
-        "sourceLabel": "tiktok-html • code 209002"
+        "metricValue": 11,
+        "valueLabel": "11 Linksignale im Seiteninhalt",
+        "statusLabel": "Profil erreichbar",
+        "sourceLabel": "TikTok Profil-HTML • Code 209002"
       },
       {
         "platform": "SoundCloud",
-        "metricValue": 498,
-        "valueLabel": "498 Follower",
-        "statusLabel": "25 Tracks live",
-        "sourceLabel": "soundcloud-public-api"
+        "metricValue": 13,
+        "valueLabel": "498 Follower • 13 Linksignale",
+        "statusLabel": "25 Tracks",
+        "sourceLabel": "SoundCloud Public API"
       },
       {
         "platform": "Shop",
         "metricValue": 3,
-        "valueLabel": "3/3 Produktlinks OK",
-        "statusLabel": "Alle geprueften Links OK",
-        "sourceLabel": "local-link-check"
+        "valueLabel": "3 Produkte sichtbar • 3/3 gepruefte Produktlinks",
+        "statusLabel": "Alle geprueften Links erreichbar",
+        "sourceLabel": "Shirtee-Linkcheck"
       }
     ],
-    "strongestPlatform": "SoundCloud"
-  },
-  "sources": {
-    "tiktok": {
-      "drGray": {
-        "profile": "https://www.tiktok.com/@dr.gray.sic",
-        "reachable": true,
-        "statusCode": 209002,
-        "canonical": "https://www.tiktok.com/@dr.gray.sic",
-        "followers": null,
-        "likes": null,
-        "videos": null,
-        "source": "public-html"
+    "strongestPlatform": "TikTok Dr. Gray",
+    "comparisons": [
+      {
+        "label": "TikTok Links im Seiteninhalt",
+        "value": "28"
       },
-      "mrs": {
-        "profile": "https://www.tiktok.com/@ktina1986",
-        "reachable": true,
-        "statusCode": 209002,
-        "canonical": "https://www.tiktok.com/@ktina1986",
-        "followers": null,
-        "likes": null,
-        "videos": null,
-        "source": "public-html"
+      {
+        "label": "SoundCloud Links im Seiteninhalt",
+        "value": "13"
+      },
+      {
+        "label": "Shop Links im Seiteninhalt",
+        "value": "12"
       }
-    },
-    "soundcloud": {
-      "available": true,
-      "source": "soundcloud-public-api",
-      "clientId": "qNxp6KCjufkNWMIclTv0O4ycYGY0eFFX",
-      "user": {
-        "id": 838321216,
-        "username": "Dr.Gray & Mrs.Dr Gray",
-        "permalink": "drgray_sic",
-        "permalink_url": "https://soundcloud.com/drgray_sic",
-        "followers_count": 498,
-        "followings_count": 189,
-        "track_count": 25,
-        "playlist_count": 4
+    ],
+    "officialAccounts": [
+      {
+        "label": "Website",
+        "url": "https://drgray-mrsdrgray.com",
+        "status": "live"
       },
-      "latestTracks": []
+      {
+        "label": "Shirtee Store",
+        "url": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
+        "status": "live"
+      },
+      {
+        "label": "SoundCloud",
+        "url": "https://soundcloud.com/drgray_sic",
+        "status": "live"
+      },
+      {
+        "label": "TikTok Dr. Gray",
+        "url": "https://www.tiktok.com/@dr.gray.sic",
+        "status": "live"
+      },
+      {
+        "label": "TikTok Mrs. Dr. Gray",
+        "url": "https://www.tiktok.com/@ktina1986",
+        "status": "live"
+      }
+    ]
+  },
+  "performanceMetrics": {
+    "webVitals": [
+      {
+        "metric": "Core Web Vitals",
+        "value": "nicht verbunden",
+        "state": "warn"
+      },
+      {
+        "metric": "HTTP Seitenchecks",
+        "value": "8/8 OK",
+        "state": "good"
+      },
+      {
+        "metric": "Shirtee-Linkchecks",
+        "value": "3/3 OK",
+        "state": "good"
+      }
+    ],
+    "responseTime": "160 ms",
+    "uptime": "100% (Seitencheck)",
+    "externalChecks": [
+      {
+        "label": "Website Core-Pfade",
+        "status": "8/8 erreichbar",
+        "level": "ok"
+      },
+      {
+        "label": "Shop Produktlinks",
+        "status": "3/3 erreichbar",
+        "level": "ok"
+      },
+      {
+        "label": "SoundCloud Profil",
+        "status": "OK",
+        "level": "ok"
+      }
+    ],
+    "errorLog": []
+  },
+  "contentPerformance": {
+    "strongestSections": [
+      {
+        "section": "Damen",
+        "score": 21
+      },
+      {
+        "section": "Accessoires",
+        "score": 19
+      },
+      {
+        "section": "Herren",
+        "score": 19
+      }
+    ],
+    "ctas": [
+      {
+        "name": "TikTok Links",
+        "clicks": 28,
+        "rate": "Live-Linkcount"
+      },
+      {
+        "name": "Shop Links",
+        "clicks": 12,
+        "rate": "Live-Linkcount"
+      },
+      {
+        "name": "SoundCloud Links",
+        "clicks": 13,
+        "rate": "Live-Linkcount"
+      }
+    ],
+    "weakSpots": []
+  },
+  "activityFeed": [
+    {
+      "id": "EVT-1",
+      "time": "31.03.26, 07:22",
+      "type": "check",
+      "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
-    "shop": {
-      "available": true,
-      "source": "local-link-check",
-      "total": 3,
-      "verified": 3,
-      "failed": 0
+    {
+      "id": "EVT-2",
+      "time": "31.03.26, 07:22",
+      "type": "check",
+      "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
-    "website": {
-      "source": "public-http-check",
-      "ok": 6,
-      "total": 6,
-      "checks": [
-        {
-          "path": "/",
-          "status": 200,
-          "ok": true
-        },
-        {
-          "path": "/shop.html",
-          "status": 200,
-          "ok": true
-        },
-        {
-          "path": "/musik.html",
-          "status": 200,
-          "ok": true
-        },
-        {
-          "path": "/videos.html",
-          "status": 200,
-          "ok": true
-        },
-        {
-          "path": "/bio.html",
-          "status": 200,
-          "ok": true
-        },
-        {
-          "path": "/kontakt.html",
-          "status": 200,
-          "ok": true
-        }
-      ]
+    {
+      "id": "EVT-3",
+      "time": "31.03.26, 07:22",
+      "type": "check",
+      "text": "SoundCloud: Profilsignal abrufbar"
+    },
+    {
+      "id": "EVT-4",
+      "time": "31.03.26, 07:22",
+      "type": "check",
+      "text": "TikTok Profile: 2/2 erreichbar"
     }
-  }
+  ],
+  "alerts": [
+    {
+      "id": "AL-WEB",
+      "level": "ok",
+      "title": "Alle Seiten erreichbar",
+      "description": "Alle geprueften Kernseiten antworten mit HTTP 200.",
+      "source": "Website Monitoring"
+    },
+    {
+      "id": "AL-SHOP",
+      "level": "ok",
+      "title": "Shop-Links erreichbar",
+      "description": "Alle geprueften Produktlinks sind erreichbar.",
+      "source": "Shop Monitoring"
+    },
+    {
+      "id": "AL-SOC",
+      "level": "ok",
+      "title": "SoundCloud Live-Profil erkannt",
+      "description": "498 Follower und 25 Tracks verifiziert.",
+      "source": "Social Monitoring"
+    }
+  ],
+  "quickActions": [
+    {
+      "id": "qa-1",
+      "label": "Website oeffnen",
+      "href": "https://drgray-mrsdrgray.com",
+      "external": true
+    },
+    {
+      "id": "qa-2",
+      "label": "Shop Seite oeffnen",
+      "href": "https://drgray-mrsdrgray.com/shop.html",
+      "external": true
+    },
+    {
+      "id": "qa-3",
+      "label": "Shirtee Store",
+      "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
+      "external": true
+    },
+    {
+      "id": "qa-4",
+      "label": "SoundCloud Profil",
+      "href": "https://soundcloud.com/drgray_sic",
+      "external": true
+    },
+    {
+      "id": "qa-5",
+      "label": "TikTok Dr. Gray",
+      "href": "https://www.tiktok.com/@dr.gray.sic",
+      "external": true
+    },
+    {
+      "id": "qa-6",
+      "label": "TikTok Mrs. Dr. Gray",
+      "href": "https://www.tiktok.com/@ktina1986",
+      "external": true
+    },
+    {
+      "id": "qa-7",
+      "label": "Kontakt testen",
+      "href": "https://drgray-mrsdrgray.com/kontakt.html",
+      "external": true
+    },
+    {
+      "id": "qa-8",
+      "label": "Live-Daten neu laden",
+      "href": "#reload",
+      "external": false
+    },
+    {
+      "id": "qa-9",
+      "label": "Abmelden",
+      "href": "#logout",
+      "external": false
+    }
+  ]
 }
