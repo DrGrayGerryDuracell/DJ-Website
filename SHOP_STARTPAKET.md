@@ -79,7 +79,7 @@ Vor jedem eigentlichen Design- oder Uploadschritt gibt es eine Freigabe.
 
 ### Produkt 7
 
-- Name: `Verheiratet mit dem Beat`
+- Name: `Couple in Love mit dem Beat`
 - Motiv: Statement-Print als Kernspruch
 - Stil: duo-spezifisch, besonders stark für euch
 - Ziel: Couple-Merch, Story-Merch, Community
@@ -126,5 +126,5 @@ Vor jedem eigentlichen Design- oder Uploadschritt gibt es eine Freigabe.
 Empfohlene erste 3 Motive:
 
 1. `Techno mit Herz`
-2. `Verheiratet mit dem Beat`
+2. `Couple in Love mit dem Beat`
 3. `Treibend. Roh. Ehrlich.`

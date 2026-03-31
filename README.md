@@ -2,7 +2,7 @@
 
 Diese Codebasis enthaelt:
 - die **oeffentliche Website** (bestehende Markenpraesenz, konservativ veredelt)
-- das **interne Dashboard** unter **`/control`** (Premium Control UI, mockbasiert, deploybar ohne lokale Laufzeit)
+- das **interne Dashboard** unter **`/control`** (Premium Kontrollzentrum mit verifizierten Live-Daten, deploybar ohne lokale Laufzeit)
 
 Ziel: bestehende Identitaet erhalten, Qualitaet erhoehen, sauber auf GitHub + Vercel produktionsfaehig betreiben.
 
@@ -10,7 +10,7 @@ Ziel: bestehende Identitaet erhalten, Qualitaet erhoehen, sauber auf GitHub + Ve
 - Public Site: statische Multi-Page-Website (`index.html`, `bio.html`, `musik.html`, `videos.html`, `shop.html`, `kontakt.html`)
 - Control UI: statische Route unter `control/index.html` (Pfad: `/control`)
 - Datenbasis:
-  - Laufzeit-Mockdaten: `control/js/mock-data.js`
+  - Laufzeit-Live-Daten: `control/js/live-metrics.json`
   - Zukunftsfeste Typen/Adapter: `src/types`, `src/data`, `src/config`, `src/utils`
 - Shop-Katalog: `assets/data/merch-catalog.js`
 
@@ -105,7 +105,7 @@ Module:
 - Alerts
 - Settings / Quick Actions
 
-Der Dashboard-Stand ist absichtlich **mock-first**, damit alles ohne lokale oder externe Runtime-Abhaengigkeit laeuft.
+Das Dashboard laeuft jetzt **live-first** mit verifizierten Datenchecks und klaren Fallback-Texten, falls eine Quelle keine Kennzahl oeffentlich liefert.
 
 Live-Sync fuer Social/Shop:
 - `npm run sync:control-live` schreibt verifizierte Live-Signale nach `control/js/live-metrics.json`
@@ -141,7 +141,7 @@ Beispielwerte stehen in `.env.example`.
 Aktuell werden keine Secrets benoetigt. Fuer spaetere Integrationen koennen Endpoints und Flags dort zentral gepflegt werden.
 
 ## Wartung / Erweiterung
-- Neue KPI-Karten: Daten in `control/js/mock-data.js` (Laufzeit) + `src/types/dashboard.ts` (Vertrag) erweitern.
+- Neue KPI-Karten: Daten in `scripts/sync-control-live-metrics.mjs` + `control/js/live-metrics.json` erweitern.
 - Neue Datenquellen: in `src/data/adapters.ts` Live-Loader schrittweise aktivieren.
 - Public Site nur konservativ anpassen (veredeln, nicht neu erfinden).
 

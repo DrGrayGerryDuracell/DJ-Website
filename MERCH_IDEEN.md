@@ -8,7 +8,7 @@
 - Produkte: Shirt, Hoodie, Oversize Shirt
 - Platzierung: kleine Brust vorne, großer Rückenprint optional
 
-### 2. Verheiratet mit dem Beat
+### 2. Couple in Love mit dem Beat
 
 - Stil: duo, couple, community
 - Produkte: Shirt, Hoodie, Tote Bag

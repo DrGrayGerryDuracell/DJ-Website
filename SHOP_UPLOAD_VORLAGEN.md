@@ -18,9 +18,9 @@ Diese Vorlage ist für die praktische Shirtee-Anlage vorbereitet.
 - Kurzbeschreibung:
   Techno mit Herz ist der zentrale Claim von Dr. Gray & Mrs. Dr. Gray. Klar, stark und direkt aus der Verbindung von Musik, Szene und Gefühl entstanden.
 
-## 2. Verheiratet mit dem Beat
+## 2. Couple in Love mit dem Beat
 
-- Claim: `Verheiratet mit dem Beat`
+- Claim: `Couple in Love mit dem Beat`
 - Look: persönlicher, stärker auf Duo und Story
 - Platzierung:
   - großer Frontprint
@@ -56,7 +56,7 @@ Diese Vorlage ist für die praktische Shirtee-Anlage vorbereitet.
 ## Empfehlung zur Reihenfolge
 
 1. `Techno mit Herz`
-2. `Verheiratet mit dem Beat`
+2. `Couple in Love mit dem Beat`
 3. `Treibend. Roh. Ehrlich.`
 
 ## Freigabe-Regel

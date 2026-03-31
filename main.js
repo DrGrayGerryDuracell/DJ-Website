@@ -518,8 +518,9 @@
       rootMargin: "0px 0px -40px 0px"
     });
 
-    items.forEach(function (item) {
+    items.forEach(function (item, index) {
       item.classList.add("fade-in");
+      item.style.setProperty("--fade-delay", Math.min(index * 35, 260) + "ms");
       observer.observe(item);
     });
   }
