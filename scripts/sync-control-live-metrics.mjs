@@ -110,7 +110,7 @@ function deepFindObjectWithKeys(node, requiredKeys) {
   return null;
 }
 
-async function getTikTokProfile(uniqueId) {
+async function getTikTokProfileFallback(uniqueId) {
   const profileUrl = `https://www.tiktok.com/@${uniqueId}`;
   const html = await fetchText(profileUrl);
   const payload = findTikTokPayload(html);
@@ -120,12 +120,89 @@ async function getTikTokProfile(uniqueId) {
   const stats = deepFindObjectWithKeys(scope, ["followerCount", "heartCount", "videoCount"]);
   return {
     profileUrl,
+    source: "tiktok-public-html-fallback",
     canonical: typeof seo.canonical === "string" ? seo.canonical : null,
     statusCode: typeof detail.statusCode === "number" ? detail.statusCode : null,
     followers: safeNumber(stats?.followerCount),
     likes: safeNumber(stats?.heartCount),
     videos: safeNumber(stats?.videoCount)
   };
+}
+
+async function getTikTokProfileFromApi(accessToken) {
+  const headers = {
+    authorization: `Bearer ${accessToken}`,
+    "content-type": "application/json; charset=UTF-8",
+    "user-agent": USER_AGENT
+  };
+
+  const userResponse = await fetch(
+    "https://open.tiktokapis.com/v2/user/info/?fields=open_id,display_name,username,avatar_url,profile_deep_link,is_verified,follower_count,following_count,likes_count,video_count",
+    {
+      method: "GET",
+      headers
+    }
+  );
+
+  if (!userResponse.ok) {
+    return {
+      source: "tiktok-api-v2",
+      available: false,
+      error: `user_info_${userResponse.status}`
+    };
+  }
+
+  const userPayload = await userResponse.json();
+  const user = userPayload?.data?.user || {};
+  const username = typeof user.username === "string" ? user.username : null;
+  const deepLink = typeof user.profile_deep_link === "string" ? user.profile_deep_link : null;
+  const canonical = username ? `https://www.tiktok.com/@${username}` : deepLink;
+
+  let videos = safeNumber(user.video_count);
+  let recentVideoCount = null;
+  let videoListAvailable = false;
+
+  const videoResponse = await fetch("https://open.tiktokapis.com/v2/video/list/?fields=id,title,create_time,duration,view_count,like_count,comment_count,share_count", {
+    method: "POST",
+    headers,
+    body: JSON.stringify({ max_count: 20 })
+  });
+
+  if (videoResponse.ok) {
+    const videoPayload = await videoResponse.json();
+    const list = Array.isArray(videoPayload?.data?.videos) ? videoPayload.data.videos : [];
+    recentVideoCount = list.length;
+    videoListAvailable = true;
+    if (videos == null && recentVideoCount != null) {
+      videos = recentVideoCount;
+    }
+  }
+
+  return {
+    source: "tiktok-api-v2",
+    available: true,
+    canonical,
+    statusCode: 200,
+    followers: safeNumber(user.follower_count),
+    likes: safeNumber(user.likes_count),
+    videos,
+    following: safeNumber(user.following_count),
+    recentVideoCount,
+    videoListAvailable,
+    isVerified: Boolean(user.is_verified),
+    username
+  };
+}
+
+async function getTikTokProfile(uniqueId, accessToken) {
+  if (typeof accessToken === "string" && accessToken.trim().length > 0) {
+    const apiProfile = await getTikTokProfileFromApi(accessToken.trim());
+    if (apiProfile.available) {
+      return apiProfile;
+    }
+  }
+
+  return getTikTokProfileFallback(uniqueId);
 }
 
 async function getSoundCloudClientId() {
@@ -231,8 +308,8 @@ async function main() {
   const [pageChecks, soundcloud, tiktokDr, tiktokMrs, shirteeStore] = await Promise.all([
     Promise.all(corePages.map((path) => checkPage(path))),
     getSoundCloudProfile(),
-    getTikTokProfile("dr.gray.sic"),
-    getTikTokProfile("ktina1986"),
+    getTikTokProfile("dr.gray.sic", process.env.TIKTOK_DR_ACCESS_TOKEN),
+    getTikTokProfile("ktina1986", process.env.TIKTOK_MRS_ACCESS_TOKEN),
     getShirteeStoreOverview()
   ]);
 
@@ -268,6 +345,47 @@ async function main() {
     .map(([section, count]) => ({ label: mapSectionLabel(section), items: count }))
     .sort((a, b) => b.items - a.items);
 
+  const externalByHref = new Map(
+    externalResults
+      .filter((entry) => typeof entry?.sourceHref === "string" && entry.sourceHref.length > 0)
+      .map((entry) => [entry.sourceHref, entry])
+  );
+
+  const catalogItemStates = items.map((item, index) => {
+    const rawHref = typeof item?.href === "string" && item.href.length > 0 ? item.href : liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/";
+    const href = rawHref.startsWith("http") ? rawHref : rawHref.startsWith("/") ? rawHref : `/${rawHref.replace(/^\.?\//, "")}`;
+    const linked = externalByHref.get(href);
+    const catalogStatus = String(item?.status || "Unbekannt");
+    const loweredStatus = catalogStatus.toLowerCase();
+    const hasImage = typeof item?.image === "string" && item.image.trim().length > 0;
+    const imageSrc = hasImage ? (item.image.startsWith("http") ? item.image : item.image.startsWith("/") ? item.image : `/${item.image}`) : "";
+    const verified = Boolean(linked?.verified) && Number(linked?.httpCode) === 200;
+    const isUploaded = verified || loweredStatus.includes("live im store");
+    const isReady = !isUploaded && (loweredStatus.includes("uploadbereit") || loweredStatus.includes("top upload"));
+    const uploadState = isUploaded ? "uploaded" : isReady ? "ready" : "pending";
+    const uploadLabel = isUploaded ? "Bereits hochgeladen" : isReady ? "Uploadbereit" : "Noch offen";
+
+    return {
+      id: item?.id || `catalog-${index + 1}`,
+      title: item?.title || `Artikel ${index + 1}`,
+      line: item?.line || "Unbekannt",
+      section: item?.section || "other",
+      sectionLabel: mapSectionLabel(item?.section),
+      catalogStatus,
+      href,
+      hasImage,
+      imageSrc,
+      uploadState,
+      uploadLabel,
+      verifiedLink: verified,
+      httpCode: Number(linked?.httpCode) || 0
+    };
+  });
+
+  const uploadedCount = catalogItemStates.filter((item) => item.uploadState === "uploaded").length;
+  const readyCount = catalogItemStates.filter((item) => item.uploadState === "ready").length;
+  const pendingCount = catalogItemStates.filter((item) => item.uploadState === "pending").length;
+
   const topProducts = externalResults
     .slice(0, 6)
     .map((entry, index) => {
@@ -291,20 +409,20 @@ async function main() {
       metricValue: hrefCounts.tiktokDr,
       valueLabel:
         tiktokDr.followers != null
-          ? `${tiktokDr.followers.toLocaleString("de-DE")} Follower • ${hrefCounts.tiktokDr} Linksignale`
+          ? `${tiktokDr.followers.toLocaleString("de-DE")} Follower • ${tiktokDr.videos != null ? `${tiktokDr.videos} Videos` : `${hrefCounts.tiktokDr} Linksignale`}`
           : `${hrefCounts.tiktokDr} Linksignale im Seiteninhalt`,
       statusLabel: tiktokDr.canonical ? "Profil erreichbar" : "Profil nicht bestaetigt",
-      sourceLabel: `TikTok Profil-HTML${tiktokDr.statusCode != null ? ` • Code ${tiktokDr.statusCode}` : ""}`
+      sourceLabel: `${tiktokDr.source === "tiktok-api-v2" ? "TikTok API v2 OAuth" : "TikTok Profil-HTML"}${tiktokDr.statusCode != null ? ` • Code ${tiktokDr.statusCode}` : ""}${tiktokDr.likes != null ? ` • Likes ${tiktokDr.likes.toLocaleString("de-DE")}` : ""}`
     },
     {
       platform: "TikTok Mrs. Dr. Gray",
       metricValue: hrefCounts.tiktokMrs,
       valueLabel:
         tiktokMrs.followers != null
-          ? `${tiktokMrs.followers.toLocaleString("de-DE")} Follower • ${hrefCounts.tiktokMrs} Linksignale`
+          ? `${tiktokMrs.followers.toLocaleString("de-DE")} Follower • ${tiktokMrs.videos != null ? `${tiktokMrs.videos} Videos` : `${hrefCounts.tiktokMrs} Linksignale`}`
           : `${hrefCounts.tiktokMrs} Linksignale im Seiteninhalt`,
       statusLabel: tiktokMrs.canonical ? "Profil erreichbar" : "Profil nicht bestaetigt",
-      sourceLabel: `TikTok Profil-HTML${tiktokMrs.statusCode != null ? ` • Code ${tiktokMrs.statusCode}` : ""}`
+      sourceLabel: `${tiktokMrs.source === "tiktok-api-v2" ? "TikTok API v2 OAuth" : "TikTok Profil-HTML"}${tiktokMrs.statusCode != null ? ` • Code ${tiktokMrs.statusCode}` : ""}${tiktokMrs.likes != null ? ` • Likes ${tiktokMrs.likes.toLocaleString("de-DE")}` : ""}`
     },
     {
       platform: "SoundCloud",
@@ -413,7 +531,11 @@ async function main() {
         conceptItems: Math.max(items.length - ((statusCount["Live im Store"] || shopLive) + (statusCount.Uploadbereit || 0) + (statusCount["Top Upload"] || 0)), 0),
         sections: sectionRows,
         storeVisibleProducts,
-        storeVisibleProductNames
+        storeVisibleProductNames,
+        uploadedCount,
+        readyCount,
+        pendingCount,
+        itemStates: catalogItemStates
       },
       topProducts,
       timeline: externalResults.slice(0, 8).map((entry, index) => ({
@@ -498,8 +620,9 @@ async function main() {
       { id: "qa-5", label: "TikTok Dr. Gray", href: "https://www.tiktok.com/@dr.gray.sic", external: true },
       { id: "qa-6", label: "TikTok Mrs. Dr. Gray", href: "https://www.tiktok.com/@ktina1986", external: true },
       { id: "qa-7", label: "Kontakt testen", href: `${websiteBase}/kontakt.html`, external: true },
-      { id: "qa-8", label: "Live-Daten neu laden", href: "#reload", external: false },
-      { id: "qa-9", label: "Abmelden", href: "#logout", external: false }
+      { id: "qa-8", label: "Upload Queue CSV", href: "#export-upload-queue", external: false },
+      { id: "qa-9", label: "Live-Daten neu laden", href: "#reload", external: false },
+      { id: "qa-10", label: "Abmelden", href: "#logout", external: false }
     ]
   };
 

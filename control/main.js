@@ -9,6 +9,7 @@ import {
   renderKpis,
   renderWebsiteSection,
   renderShopSection,
+  renderCatalogUploadSection,
   renderActivity,
   renderPerformance,
   renderContent,
@@ -158,6 +159,50 @@ function setupExportAction() {
   });
 }
 
+function setupUploadQueueExportAction() {
+  const trigger = document.querySelector('[href="#export-upload-queue"]');
+  if (!trigger) {
+    return;
+  }
+
+  trigger.addEventListener("click", (event) => {
+    event.preventDefault();
+    const state = window.__CONTROL_DATA__;
+    const items = state?.shopMetrics?.catalog?.itemStates || [];
+    const pending = items.filter((item) => item.uploadState !== "uploaded");
+
+    const rows = [
+      ["id", "title", "line", "section", "catalogStatus", "uploadState", "uploadLabel", "hasImage", "imageSrc", "href", "verifiedLink", "httpCode"],
+      ...pending.map((item) => [
+        item.id,
+        item.title,
+        item.line,
+        item.sectionLabel,
+        item.catalogStatus,
+        item.uploadState,
+        item.uploadLabel,
+        String(Boolean(item.hasImage)),
+        item.imageSrc || "",
+        item.href || "",
+        String(Boolean(item.verifiedLink)),
+        String(item.httpCode ?? 0)
+      ])
+    ];
+
+    const escapeCell = (value) => `"${String(value ?? "").replace(/"/g, '""')}"`;
+    const csv = rows.map((row) => row.map(escapeCell).join(",")).join("\n");
+    const blob = new Blob([csv], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const anchor = document.createElement("a");
+    anchor.href = url;
+    anchor.download = `shirtee-upload-queue-${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(anchor);
+    anchor.click();
+    anchor.remove();
+    URL.revokeObjectURL(url);
+  });
+}
+
 function setupLogoutAction() {
   const logoutLink = document.querySelector('[href="#logout"]');
   if (!logoutLink) {
@@ -202,6 +247,7 @@ function renderDashboardView(data) {
   renderKpis(document.querySelector("[data-kpis]"), data.overviewKpis);
   renderWebsiteSection(document.querySelector("[data-website-section]"), data.websiteMetrics);
   renderShopSection(document.querySelector("[data-shop-section]"), data.shopMetrics);
+  renderCatalogUploadSection(document.querySelector("[data-catalog-upload-section]"), data.shopMetrics);
   renderActivity(document.querySelector("[data-activity-feed]"), data.activityFeed, data.shopMetrics.timeline);
   renderPerformance(document.querySelector("[data-performance-section]"), data.performanceMetrics);
   renderContent(document.querySelector("[data-content-section]"), data.contentPerformance);
@@ -232,6 +278,7 @@ async function initControlDashboard() {
     renderDashboardView(applyRangeToData(seedData, rangeId));
   });
   setupExportAction();
+  setupUploadQueueExportAction();
   setupLogoutAction();
   setupReloadAction(async () => {
     const nextLiveMetrics = await loadLiveMetrics();

@@ -1,13 +1,14 @@
 export const controlNav = [
-  { id: "overview", label: "Uebersicht" },
-  { id: "website", label: "Website" },
-  { id: "shop", label: "Shop" },
-  { id: "live-activity", label: "Aktivitaet" },
-  { id: "performance", label: "Technik" },
-  { id: "content", label: "Inhalte" },
-  { id: "social", label: "Social" },
-  { id: "alerts", label: "Warnungen" },
-  { id: "settings", label: "Aktionen" }
+  { id: "overview", label: "Uebersicht", hint: "Systemstatus und Kern-KPIs" },
+  { id: "website", label: "Website", hint: "HTTP Checks und Seitenwerte" },
+  { id: "shop", label: "Shop", hint: "Shop-Linkmonitor und Produktchecks" },
+  { id: "catalog-upload", label: "Katalog Uploads", hint: "Alle Artikel mit Upload-Status" },
+  { id: "live-activity", label: "Aktivitaet", hint: "Letzte Pruefereignisse" },
+  { id: "performance", label: "Technik", hint: "Verfuegbarkeit und Fehlerlog" },
+  { id: "content", label: "Inhalte", hint: "Content-Struktur und CTA-Hinweise" },
+  { id: "social", label: "Social", hint: "Profile, Signale, Vergleiche" },
+  { id: "alerts", label: "Warnungen", hint: "Priorisierte Auffaelligkeiten" },
+  { id: "settings", label: "Aktionen", hint: "Direkte Schnellzugriffe" }
 ];
 
 export const dateRanges = [

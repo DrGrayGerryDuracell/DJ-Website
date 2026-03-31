@@ -61,7 +61,7 @@ function toStatusCount(label, value, cls) {
 
 export function renderNav(container, nav) {
   container.innerHTML = nav
-    .map((item) => `<a href="#${item.id}" class="control-nav-link">${item.label}</a>`)
+    .map((item) => `<a href="#${item.id}" class="control-nav-link"><span>${item.label}</span>${item.hint ? `<small>${item.hint}</small>` : ""}</a>`)
     .join("");
 }
 
@@ -234,6 +234,69 @@ export function renderShopSection(container, shopMetrics) {
         </tbody>
       </table>
       <p class="muted-line">Hinweis: Umsatz- und Bestellzahlen werden erst angezeigt, sobald eine echte Shop-API angebunden ist.</p>
+    </article>
+  `;
+}
+
+export function renderCatalogUploadSection(container, shopMetrics) {
+  const catalog = shopMetrics?.catalog || {};
+  const itemStates = Array.isArray(catalog.itemStates) ? catalog.itemStates : [];
+  const uploaded = itemStates.filter((item) => item.uploadState === "uploaded");
+  const ready = itemStates.filter((item) => item.uploadState === "ready");
+  const pending = itemStates.filter((item) => item.uploadState === "pending");
+
+  const renderCard = (item) => {
+    const badgeClass = item.uploadState === "uploaded" ? "is-ok" : item.uploadState === "ready" ? "is-warn" : "is-info";
+    return `
+      <article class="catalog-item-card">
+        <div class="catalog-item-media">
+          ${item.imageSrc ? `<img src="${item.imageSrc}" alt="${item.title}">` : `<div class="catalog-item-placeholder">Kein Bild</div>`}
+        </div>
+        <div class="catalog-item-body">
+          <div class="catalog-item-head">
+            <h4>${item.title}</h4>
+            <span class="status-pill ${badgeClass}">${item.uploadLabel}</span>
+          </div>
+          <p>${item.line} • ${item.sectionLabel}</p>
+          <p class="muted-line">Katalogstatus: ${item.catalogStatus}</p>
+          <a href="${item.href}" target="_blank" rel="noopener noreferrer">Produktlink oeffnen</a>
+        </div>
+      </article>
+    `;
+  };
+
+  container.innerHTML = `
+    <article class="panel">
+      <h3>Upload-Stand Katalog</h3>
+      <div class="mini-grid three">
+        <div><span>Artikel gesamt</span><strong>${formatValue(catalog.totalItems || itemStates.length)}</strong></div>
+        <div><span>Bereits auf Shirtee</span><strong>${formatValue(catalog.uploadedCount || uploaded.length)}</strong></div>
+        <div><span>Noch offen</span><strong>${formatValue(catalog.pendingCount || pending.length)}</strong></div>
+      </div>
+      <div class="mini-grid three">
+        <div><span>Uploadbereit</span><strong>${formatValue(catalog.readyCount || ready.length)}</strong></div>
+        <div><span>Mit Bild</span><strong>${formatValue(itemStates.filter((item) => item.hasImage).length)}</strong></div>
+        <div><span>Ohne Bild</span><strong>${formatValue(itemStates.filter((item) => !item.hasImage).length)}</strong></div>
+      </div>
+      <p class="muted-line">Logik: "Bereits hochgeladen" basiert auf Shirtee-Linkcheck (HTTP 200) oder Katalogstatus "Live im Store".</p>
+    </article>
+    <article class="panel">
+      <h3>Upload-Reihenfolge (DJ)</h3>
+      <p class="muted-line">Empfohlen: erst "Uploadbereit", danach offene Konzeptartikel in Prioritaetsreihenfolge hochladen.</p>
+      <div class="catalog-group-grid">
+        <div>
+          <h4>Bereits hochgeladen</h4>
+          <div class="catalog-list">${uploaded.slice(0, 24).map(renderCard).join("") || `<p class="muted-line">Noch keine Live-Artikel erkannt.</p>`}</div>
+        </div>
+        <div>
+          <h4>Uploadbereit</h4>
+          <div class="catalog-list">${ready.slice(0, 24).map(renderCard).join("") || `<p class="muted-line">Aktuell nichts als uploadbereit markiert.</p>`}</div>
+        </div>
+        <div>
+          <h4>Noch offen</h4>
+          <div class="catalog-list">${pending.slice(0, 24).map(renderCard).join("") || `<p class="muted-line">Keine offenen Artikel.</p>`}</div>
+        </div>
+      </div>
     </article>
   `;
 }

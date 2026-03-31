@@ -98,6 +98,7 @@ Module:
 - Overview
 - Website
 - Shop
+- Katalog Uploads
 - Live Activity
 - Performance
 - Content
@@ -111,7 +112,8 @@ Live-Sync fuer Social/Shop:
 - `npm run sync:control-live` schreibt verifizierte Live-Signale nach `control/js/live-metrics.json`
 - SoundCloud: oeffentliche API-Resolve-Daten (Follower, Track-Anzahl)
 - Shop: verifizierte Produktlink-Checks aus `assets/data/live-link-status.js`
-- TikTok: Profilerreichbarkeit + Plattform-Status; Follower sind je nach Plattform-Schutz ggf. nicht oeffentlich auslesbar
+- TikTok: nutzt bevorzugt offizielle OAuth API Tokens (`TIKTOK_DR_ACCESS_TOKEN`, `TIKTOK_MRS_ACCESS_TOKEN`) fuer echte Live-Werte; ohne Token faellt der Sync auf Profil-Erreichbarkeit via HTML-Fallback zurueck
+- Katalog Uploads: zeigt alle Artikel mit Bild, Uploadstatus (hochgeladen/uploadbereit/offen) und Export als Upload-Queue CSV
 
 ### Zugangsschutz fuer `/control`
 - Zugriff laeuft ueber einen vorgeschalteten Lock-Screen: `/control-login.html`
