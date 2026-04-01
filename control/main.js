@@ -112,6 +112,62 @@ function setupNavigation() {
   });
 }
 
+function activateSection(sectionId) {
+  const sections = document.querySelectorAll(".control-section");
+  const links = document.querySelectorAll(".control-nav-link");
+  const pulse = document.querySelector("[data-control-pulse]");
+  const targetId = typeof sectionId === "string" && sectionId.length > 0 ? sectionId : "overview";
+
+  sections.forEach((section) => {
+    const isTarget = section.id === targetId;
+    section.classList.toggle("is-active-section", isTarget);
+    section.classList.toggle("is-hidden-section", !isTarget);
+    section.setAttribute("aria-hidden", isTarget ? "false" : "true");
+  });
+
+  links.forEach((link) => {
+    const href = link.getAttribute("href") || "";
+    const isTarget = href === `#${targetId}`;
+    link.classList.toggle("is-active", isTarget);
+    link.setAttribute("aria-current", isTarget ? "page" : "false");
+  });
+
+  if (pulse) {
+    const showPulse = targetId === "overview";
+    pulse.classList.toggle("is-hidden-section", !showPulse);
+    pulse.setAttribute("aria-hidden", showPulse ? "false" : "true");
+  }
+}
+
+function setupSectionVisibilityRouting() {
+  const links = document.querySelectorAll(".control-nav-link");
+  const visibleSections = new Set(Array.from(document.querySelectorAll(".control-section")).map((section) => section.id));
+
+  const resolveHashTarget = () => {
+    const hash = String(window.location.hash || "").replace(/^#/, "");
+    if (hash && visibleSections.has(hash)) {
+      return hash;
+    }
+    return "overview";
+  };
+
+  activateSection(resolveHashTarget());
+
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      const href = link.getAttribute("href") || "";
+      const id = href.replace(/^#/, "");
+      if (id && visibleSections.has(id)) {
+        activateSection(id);
+      }
+    });
+  });
+
+  window.addEventListener("hashchange", () => {
+    activateSection(resolveHashTarget());
+  });
+}
+
 function setupRangeButtons(onChange) {
   document.querySelectorAll(".range-btn").forEach((button) => {
     button.addEventListener("click", () => {
@@ -274,6 +330,7 @@ async function initControlDashboard() {
   renderDashboardView(applyRangeToData(seedData, dateRanges[0]?.id || "live"));
 
   setupNavigation();
+  setupSectionVisibilityRouting();
   setupRangeButtons((rangeId) => {
     renderDashboardView(applyRangeToData(seedData, rangeId));
   });

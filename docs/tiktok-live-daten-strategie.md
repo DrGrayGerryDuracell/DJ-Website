@@ -18,6 +18,28 @@
 4. Tokens lokal oder im Deployment als Secrets setzen.
 5. `npm run sync:control-live` ausfuehren und Werte im Reiter `Social` pruefen.
 
+## Vollumfang (reale Live-Daten)
+- Mindestziel fuer den Productive-Mode:
+  - `follower_count`
+  - `likes_count`
+  - `video_count`
+  - optional `video/list` fuer Aktivitaetsfenster
+- Dafuer wird API v2 + gueltiges OAuth Token benoetigt.
+- Empfohlene Variablen:
+  - `TIKTOK_DR_ACCESS_TOKEN`
+  - `TIKTOK_MRS_ACCESS_TOKEN`
+  - optional zusaetzlich getrennte Refresh-Token pro Account.
+
+## Token-Lifecycle (empfohlen)
+1. Access-Token kurzlebig behandeln.
+2. Refresh-Token sicher speichern (nur Secret Store, nie Git).
+3. Vor jedem geplanten Sync pruefen:
+   - Token gueltig -> normaler Lauf
+   - Token abgelaufen -> Refresh ausfuehren, dann Sync
+4. Bei Refresh-Fehler:
+   - auf HTML-Fallback gehen
+   - Warnung im Control UI als `info/warn` markieren
+
 ## Wichtige Hinweise
 - Ohne App-Freigabe/Scopes liefert TikTok nur eingeschraenkte Daten.
 - Wenn Token ablaufen, muessen Refresh-Flows eingebaut werden (naechster Schritt).

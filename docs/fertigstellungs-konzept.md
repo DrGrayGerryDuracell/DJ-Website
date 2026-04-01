@@ -38,3 +38,20 @@
 - Upload-Queue Artefakte neu geschrieben.
 - API-Anfragevorlage erstellt und versandbereit.
 - Deployment aktualisiert.
+
+## Ausfuehrung (Stand 2026-04-01)
+- Erfolgreich ausgefuehrt: `npm run finish:all`
+- Ergebnis:
+  1. Website-/Shop-Linkchecks: erfolgreich
+  2. Control-Live-Metriken: neu geschrieben
+  3. Upload-Queue: **164** offen (`70 ready`, `94 pending`)
+  4. Upload-Batches: **9** CSV-Dateien erzeugt
+  5. Shirtee-API-Anfragevorlage: neu geschrieben
+
+## Operativer Abschlussplan
+1. `ready-batch-*` komplett in Shirtee abarbeiten.
+2. Nach jeder Welle:
+   - Live-Links neu pruefen
+   - Control-Live-Sync neu laufen lassen
+   - Sichtbar hochgeladene Artikel im Reiter `Katalog Uploads` kontrollieren
+3. Danach `pending-batch-*` in derselben Schleife bearbeiten.

@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-04-01T09:06:08.848Z",
-    "generatedAtLabel": "01.04.26, 11:06",
+    "generatedAt": "2026-04-01T09:50:21.536Z",
+    "generatedAtLabel": "01.04.26, 11:50",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "01.04.26, 11:06",
+      "value": "01.04.26, 11:50",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 210,
+      "value": 175,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 221,
+        "visitors": 224,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 169,
+        "visitors": 171,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 168,
-        "pageviews": 0
-      },
-      {
-        "label": "musik",
-        "visitors": 166,
-        "pageviews": 0
-      },
-      {
-        "label": "videos",
         "visitors": 169,
         "pageviews": 0
       },
       {
+        "label": "musik",
+        "visitors": 173,
+        "pageviews": 0
+      },
+      {
+        "label": "videos",
+        "visitors": 167,
+        "pageviews": 0
+      },
+      {
         "label": "shop",
-        "visitors": 180,
+        "visitors": 163,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 174,
+        "visitors": 170,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 429,
+        "visitors": 163,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "210 ms",
+      "avgSession": "175 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     }
@@ -239,8 +239,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-04-01T09:06:08.848Z",
-      "checkedAtLabel": "01.04.26, 11:06"
+      "checkedAt": "2026-04-01T09:50:21.536Z",
+      "checkedAtLabel": "01.04.26, 11:50"
     },
     "catalog": {
       "totalItems": 167,
@@ -2815,17 +2815,17 @@
     ],
     "timeline": [
       {
-        "time": "01.04.26, 11:06",
+        "time": "01.04.26, 11:50",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "01.04.26, 11:06",
+        "time": "01.04.26, 11:50",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "01.04.26, 11:06",
+        "time": "01.04.26, 11:50",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -2923,7 +2923,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "210 ms",
+    "responseTime": "175 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -2981,25 +2981,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "01.04.26, 11:06",
+      "time": "01.04.26, 11:50",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "01.04.26, 11:06",
+      "time": "01.04.26, 11:50",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "01.04.26, 11:06",
+      "time": "01.04.26, 11:50",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "01.04.26, 11:06",
+      "time": "01.04.26, 11:50",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }

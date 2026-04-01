@@ -244,6 +244,8 @@ export function renderCatalogUploadSection(container, shopMetrics) {
   const uploaded = itemStates.filter((item) => item.uploadState === "uploaded");
   const ready = itemStates.filter((item) => item.uploadState === "ready");
   const pending = itemStates.filter((item) => item.uploadState === "pending");
+  const withImage = itemStates.filter((item) => item.hasImage);
+  const withoutImage = itemStates.filter((item) => !item.hasImage);
 
   const renderCard = (item) => {
     const badgeClass = item.uploadState === "uploaded" ? "is-ok" : item.uploadState === "ready" ? "is-warn" : "is-info";
@@ -275,10 +277,14 @@ export function renderCatalogUploadSection(container, shopMetrics) {
       </div>
       <div class="mini-grid three">
         <div><span>Uploadbereit</span><strong>${formatValue(catalog.readyCount || ready.length)}</strong></div>
-        <div><span>Mit Bild</span><strong>${formatValue(itemStates.filter((item) => item.hasImage).length)}</strong></div>
-        <div><span>Ohne Bild</span><strong>${formatValue(itemStates.filter((item) => !item.hasImage).length)}</strong></div>
+        <div><span>Mit Bild</span><strong>${formatValue(withImage.length)}</strong></div>
+        <div><span>Ohne Bild</span><strong>${formatValue(withoutImage.length)}</strong></div>
       </div>
       <p class="muted-line">Logik: "Bereits hochgeladen" basiert auf Shirtee-Linkcheck (HTTP 200) oder Katalogstatus "Live im Store".</p>
+      <h4>Katalog mit Bild (Preview)</h4>
+      <div class="catalog-list">${withImage.slice(0, 10).map(renderCard).join("") || `<p class="muted-line">Keine Katalogartikel mit Bild erkannt.</p>`}</div>
+      <h4>Bereits auf Shirtee hochgeladen (Preview)</h4>
+      <div class="catalog-list">${uploaded.slice(0, 10).map(renderCard).join("") || `<p class="muted-line">Noch keine bereits hochgeladenen Artikel erkannt.</p>`}</div>
     </article>
     <article class="panel">
       <h3>Upload-Reihenfolge (DJ)</h3>

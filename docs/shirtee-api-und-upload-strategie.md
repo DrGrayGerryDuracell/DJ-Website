@@ -40,6 +40,27 @@
   - API-Keys nur via `.env`/Secret Store,
   - Dry-Run und Rate-Limit-Retry.
 
+## Operativer Status (2026-04-01)
+- Upload-Queue offen: `164` Artikel
+  - `70` uploadbereit
+  - `94` pending
+- Batch-Dateien erzeugt unter:
+  - `artifacts/upload-batches/ready-batch-*.csv`
+  - `artifacts/upload-batches/pending-batch-*.csv`
+- API-Anfrage ist als versandfertiger Text vorhanden:
+  - `artifacts/requests/shirtee-api-request.md`
+
+## Realistischer Abschlussweg fuer "alle Artikel live"
+1. `ready`-Batches vollstaendig hochladen (schnellster Gewinn).
+2. Nach jeder Batch:
+   - Linkcheck + Control Sync,
+   - hochgeladene Produkte im Katalogstatus auf `Live im Store` setzen.
+3. Danach `pending`-Batches in derselben Schleife.
+4. Parallel API-Freischaltung ueber Support abschliessen.
+5. Sobald API-Doku vorliegt:
+   - Upload-CLI bauen (idempotent),
+   - Produktstatus automatisch zurueck in `merch-catalog.js` und Control UI schreiben.
+
 ## Praktische Reihenfolge fuer "alle Artikel hochladen"
 1. `Bereits hochgeladen`: nur verifizieren.
 2. `Uploadbereit`: komplett zuerst hochladen.
