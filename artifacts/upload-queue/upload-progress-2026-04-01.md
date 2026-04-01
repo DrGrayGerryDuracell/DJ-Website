@@ -1,13 +1,11 @@
 # Shirtee Upload Progress (2026-04-01)
 
-## Session
-- Zeitraum: 01.04.2026 (Berlin)
-- Methode: Shirtee Dashboard -> "Aehnliche Kampagne erstellen" -> Publish-Flow
+## Status
+- Gesamt eingereicht: **164**
+- Methode: Dashboard Upload ueber Aehnliche Kampagne + individuelle Texte + individuelle Tags
 - Shop: `Dr. Gray & Mrs. Dr. Gray`
 
-## Verarbeitete Ready-Artikel
-
-### Ready Batch 01
+## Eingereichte Artikel-IDs
 1. `dr-tee-mainfloor-ready`
 2. `dr-hoodie-pressure-ready`
 3. `dr-longsleeve-raw-ready`
@@ -28,8 +26,6 @@
 18. `mrs-crop-heartline-top`
 19. `mrs-tee-afterhour-top`
 20. `mrs-hoodie-command-top`
-
-### Ready Batch 02 (Teil)
 21. `couple-tee-vows-ready`
 22. `couple-hoodie-equal-ready`
 23. `couple-longsleeve-b2b-ready`
@@ -40,7 +36,141 @@
 28. `couple-tee-rainline-top`
 29. `couple-hoodie-echoline-top`
 30. `couple-sweat-daylight-top`
+31. `unisex-tee-choice-ready`
+32. `unisex-hoodie-choice-ready`
+33. `unisex-longsleeve-choice-ready`
+34. `unisex-tee-core-top`
+35. `unisex-hoodie-core-top`
+36. `unisex-longsleeve-core-top`
+37. `unisex-tee-switch-top`
+38. `unisex-hoodie-switch-top`
+39. `unisex-crew-core-top`
+40. `accessory-tote-ready`
+41. `accessory-mug-ready`
+42. `accessory-poster-ready`
+43. `accessory-tote-top`
+44. `accessory-cap-top`
+45. `accessory-mug-top`
+46. `accessory-poster-neon-top`
+47. `accessory-phonecase-core-top`
+48. `accessory-sticker-core-top`
+49. `dr-tank-mainfloor-top`
+50. `dr-shirt-controlgrid-upload`
+51. `mrs-dress-nightline-top`
+52. `mrs-crop-heartline-top`
+53. `mrs-hoodie-signal-ready`
+54. `couple-hoodie-symmetry-top`
+55. `couple-tee-rhythm-ready`
+56. `unisex-tee-cleanfront-top`
+57. `unisex-hoodie-backprint-ready`
+58. `unisex-sweat-core-upload`
+59. `accessory-beanie-nightcore-top`
+60. `accessory-bottle-raveflow-ready`
+61. `dr-overshirt-nightline-top`
+62. `dr-tee-druckpunkt-upload`
+63. `mrs-polo-signature-top`
+64. `mrs-longsleeve-louder-upload`
+65. `couple-tee-vow-top`
+66. `couple-hoodie-rhythm-upload`
+67. `unisex-polo-core-top`
+68. `unisex-longsleeve-clean-upload`
+69. `accessory-gymbag-core-top`
+70. `accessory-cushion-couple-upload`
+71. `dr-shirt-raw`
+72. `dr-oversize-bass`
+73. `dr-shirt-pressure`
+74. `dr-polo-nightshift`
+75. `dr-shirtline-blackbook`
+76. `dr-longsleeve-pressure`
+77. `dr-zip-blackout`
+78. `dr-tank-raver`
+79. `dr-crew-pressuregrid`
+80. `dr-hoodie-controlroom`
+81. `dr-tee-peak-pressure`
+82. `dr-utility-jacket`
+83. `dr-heavy-tee-industrial`
+84. `dr-polo-control-axis`
+85. `dr-longsleeve-underground`
+86. `dr-zip-subpressure`
+87. `mrs-dress-liebe`
+88. `mrs-top-afterglow`
+89. `mrs-dress-midnight`
+90. `mrs-polo-afterhours`
+91. `mrs-shirt-love-runs`
+92. `mrs-crop-love`
+93. `mrs-hoodie-wild`
+94. `mrs-shirt-signature`
+95. `mrs-shirt-afterhour`
+96. `mrs-portrait-tee-bw`
+97. `mrs-crop-playful-control`
+98. `mrs-bodysuit-signal`
+99. `mrs-zip-command`
+100. `mrs-tee-clubqueen`
+101. `mrs-crop-nightpulse`
+102. `mrs-longsleeve-command`
+103. `mrs-tee-heartline`
+104. `mrs-dress-afterset`
+105. `couple-hoodie-beat`
+106. `couple-set-rhythm`
+107. `couple-set-vibe`
+108. `couple-shirt-set`
+109. `couple-hoodie-rhythm`
+110. `couple-longsleeve-love`
+111. `couple-rainproof-tee`
+112. `couple-daylight-hoodie`
+113. `couple-equal-heights-tee`
+114. `couple-b2b-tee-set`
+115. `couple-split-signal-hoodie`
+116. `couple-vows-techno-crew`
+117. `couple-tee-synchronized`
+118. `couple-hoodie-nightvows`
+119. `couple-longsleeve-equaltempo`
+120. `couple-crew-echopair`
+121. `unisex-shirt-dual`
+122. `unisex-hoodie-switch`
+123. `unisex-shirt-core`
+124. `unisex-sweat-core`
+125. `unisex-polo-duo`
+126. `unisex-daylight-hoodie`
+127. `unisex-backline-core`
+128. `unisex-oversize-nightcode`
+129. `unisex-zip-pairmode`
+130. `unisex-tee-sharedpulse`
+131. `unisex-heavytee-coreloop`
+132. `unisex-crew-switchline`
+133. `unisex-longsleeve-duallabel`
+134. `unisex-hoodie-midnightchoice`
+135. `accessory-tote-techno`
+136. `accessory-cap-gray`
+137. `accessory-cap-retro`
+138. `accessory-mug-mrs`
+139. `accessory-bag-club`
+140. `accessory-beanie-dark`
+141. `accessory-phonecase-duo`
+142. `accessory-poster-set`
+143. `accessory-rainline-poster`
+144. `accessory-gymbag-pressure`
+145. `accessory-lanyard-nightpass`
+146. `accessory-sticker-nightcode`
+147. `accessory-pinset-couple`
+148. `accessory-tote-nightline`
+149. `accessory-cap-duallogo`
+150. `accessory-mug-couplepulse`
+151. `accessory-poster-citygrid`
+152. `couple-longsleeve-vow`
+153. `accessory-keyring-duallogo`
+154. `special-fan-card-limited`
+155. `special-lanyard-clubpass`
+156. `accessory-notebook-nightline`
+157. `special-vip-pass-card`
+158. `special-metal-pin-duo`
+159. `special-lighter-afterhour`
+160. `special-sunglasses-night`
+161. `special-vinyl-slipmat`
+162. `special-vinyl-bag`
+163. `special-event-passband`
+164. `special-backstage-tag`
 
-## Hinweis
-- Kampagnen werden nach `Produkte veroeffentlichen` im Status "wird gespeichert / wird geprueft" verarbeitet.
-- Nicht jede Kampagne ist sofort im Store oeffentlich sichtbar.
+## Textlogik
+- Beschreibung je Artikel: Slogan + Copy + Linienhinweis (individuell je Batchzeile)
+- Tags je Artikel: Batch-Tags + Line + DJ + Techno

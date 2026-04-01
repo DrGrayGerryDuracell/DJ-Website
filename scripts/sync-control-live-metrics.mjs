@@ -7,6 +7,7 @@ const repoRoot = "/Users/martendr.gray/Documents/New project/DJ-Website";
 const outPath = `${repoRoot}/control/js/live-metrics.json`;
 const catalogPath = `${repoRoot}/assets/data/merch-catalog.js`;
 const linkStatusPath = `${repoRoot}/assets/data/live-link-status.js`;
+const uploadProgressPath = `${repoRoot}/artifacts/upload-queue/upload-progress-2026-04-01.md`;
 
 const USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
 const websiteBase = "https://drgray-mrsdrgray.com";
@@ -37,6 +38,16 @@ function loadWindowData(filePath, key) {
   vm.createContext(context);
   vm.runInContext(code, context);
   return context.window[key];
+}
+
+function loadSubmittedIdsFromProgress() {
+  try {
+    const raw = readFileSync(uploadProgressPath, "utf8");
+    const ids = [...raw.matchAll(/`([a-z0-9-]+)`/gi)].map((match) => match[1]);
+    return new Set(ids);
+  } catch {
+    return new Set();
+  }
 }
 
 async function fetchText(url) {
@@ -304,6 +315,7 @@ function mapSectionLabel(section) {
 async function main() {
   const catalog = loadWindowData(catalogPath, "MERCH_CATALOG");
   const liveLinkStatus = loadWindowData(linkStatusPath, "LIVE_LINK_STATUS");
+  const submittedIds = loadSubmittedIdsFromProgress();
 
   const [pageChecks, soundcloud, tiktokDr, tiktokMrs, shirteeStore] = await Promise.all([
     Promise.all(corePages.map((path) => checkPage(path))),
@@ -361,9 +373,10 @@ async function main() {
     const imageSrc = hasImage ? (item.image.startsWith("http") ? item.image : item.image.startsWith("/") ? item.image : `/${item.image}`) : "";
     const verified = Boolean(linked?.verified) && Number(linked?.httpCode) === 200;
     const isUploaded = verified || loweredStatus.includes("live im store");
+    const isSubmitted = !isUploaded && submittedIds.has(item?.id || `catalog-${index + 1}`);
     const isReady = !isUploaded && (loweredStatus.includes("uploadbereit") || loweredStatus.includes("top upload"));
-    const uploadState = isUploaded ? "uploaded" : isReady ? "ready" : "pending";
-    const uploadLabel = isUploaded ? "Bereits hochgeladen" : isReady ? "Uploadbereit" : "Noch offen";
+    const uploadState = isUploaded ? "uploaded" : isSubmitted ? "submitted" : isReady ? "ready" : "pending";
+    const uploadLabel = isUploaded ? "Bereits hochgeladen" : isSubmitted ? "Eingereicht (in Pruefung)" : isReady ? "Uploadbereit" : "Noch offen";
 
     return {
       id: item?.id || `catalog-${index + 1}`,
@@ -383,6 +396,7 @@ async function main() {
   });
 
   const uploadedCount = catalogItemStates.filter((item) => item.uploadState === "uploaded").length;
+  const submittedCount = catalogItemStates.filter((item) => item.uploadState === "submitted").length;
   const readyCount = catalogItemStates.filter((item) => item.uploadState === "ready").length;
   const pendingCount = catalogItemStates.filter((item) => item.uploadState === "pending").length;
 
@@ -533,6 +547,7 @@ async function main() {
         storeVisibleProducts,
         storeVisibleProductNames,
         uploadedCount,
+        submittedCount,
         readyCount,
         pendingCount,
         itemStates: catalogItemStates

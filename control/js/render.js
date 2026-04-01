@@ -242,13 +242,14 @@ export function renderCatalogUploadSection(container, shopMetrics) {
   const catalog = shopMetrics?.catalog || {};
   const itemStates = Array.isArray(catalog.itemStates) ? catalog.itemStates : [];
   const uploaded = itemStates.filter((item) => item.uploadState === "uploaded");
+  const submitted = itemStates.filter((item) => item.uploadState === "submitted");
   const ready = itemStates.filter((item) => item.uploadState === "ready");
   const pending = itemStates.filter((item) => item.uploadState === "pending");
   const withImage = itemStates.filter((item) => item.hasImage);
   const withoutImage = itemStates.filter((item) => !item.hasImage);
 
   const renderCard = (item) => {
-    const badgeClass = item.uploadState === "uploaded" ? "is-ok" : item.uploadState === "ready" ? "is-warn" : "is-info";
+    const badgeClass = item.uploadState === "uploaded" ? "is-ok" : item.uploadState === "submitted" ? "is-info" : item.uploadState === "ready" ? "is-warn" : "is-info";
     return `
       <article class="catalog-item-card">
         <div class="catalog-item-media">
@@ -273,12 +274,12 @@ export function renderCatalogUploadSection(container, shopMetrics) {
       <div class="mini-grid three">
         <div><span>Artikel gesamt</span><strong>${formatValue(catalog.totalItems || itemStates.length)}</strong></div>
         <div><span>Bereits auf Shirtee</span><strong>${formatValue(catalog.uploadedCount || uploaded.length)}</strong></div>
-        <div><span>Noch offen</span><strong>${formatValue(catalog.pendingCount || pending.length)}</strong></div>
+        <div><span>Eingereicht (Pruefung)</span><strong>${formatValue(catalog.submittedCount || submitted.length)}</strong></div>
       </div>
       <div class="mini-grid three">
         <div><span>Uploadbereit</span><strong>${formatValue(catalog.readyCount || ready.length)}</strong></div>
         <div><span>Mit Bild</span><strong>${formatValue(withImage.length)}</strong></div>
-        <div><span>Ohne Bild</span><strong>${formatValue(withoutImage.length)}</strong></div>
+        <div><span>Noch offen</span><strong>${formatValue(catalog.pendingCount || pending.length)}</strong></div>
       </div>
       <p class="muted-line">Logik: "Bereits hochgeladen" basiert auf Shirtee-Linkcheck (HTTP 200) oder Katalogstatus "Live im Store".</p>
       <h4>Katalog mit Bild (Preview)</h4>
@@ -297,6 +298,10 @@ export function renderCatalogUploadSection(container, shopMetrics) {
         <div>
           <h4>Uploadbereit</h4>
           <div class="catalog-list">${ready.slice(0, 24).map(renderCard).join("") || `<p class="muted-line">Aktuell nichts als uploadbereit markiert.</p>`}</div>
+        </div>
+        <div>
+          <h4>Eingereicht (Pruefung)</h4>
+          <div class="catalog-list">${submitted.slice(0, 24).map(renderCard).join("") || `<p class="muted-line">Aktuell keine eingereichten Artikel erkannt.</p>`}</div>
         </div>
         <div>
           <h4>Noch offen</h4>

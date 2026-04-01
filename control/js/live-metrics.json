@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-04-01T09:50:21.536Z",
-    "generatedAtLabel": "01.04.26, 11:50",
+    "generatedAt": "2026-04-01T11:21:03.200Z",
+    "generatedAtLabel": "01.04.26, 13:21",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "01.04.26, 11:50",
+      "value": "01.04.26, 13:21",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 175,
+      "value": 299,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 224,
+        "visitors": 319,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 171,
+        "visitors": 327,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 169,
+        "visitors": 356,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 173,
+        "visitors": 329,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 167,
+        "visitors": 339,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 163,
+        "visitors": 192,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 170,
+        "visitors": 213,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 163,
+        "visitors": 320,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "175 ms",
+      "avgSession": "299 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     }
@@ -239,8 +239,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-04-01T09:50:21.536Z",
-      "checkedAtLabel": "01.04.26, 11:50"
+      "checkedAt": "2026-04-01T11:21:03.200Z",
+      "checkedAtLabel": "01.04.26, 13:21"
     },
     "catalog": {
       "totalItems": 167,
@@ -280,8 +280,9 @@
         "Mrs. Dr. Gray Signature Hoodie"
       ],
       "uploadedCount": 3,
-      "readyCount": 70,
-      "pendingCount": 94,
+      "submittedCount": 164,
+      "readyCount": 0,
+      "pendingCount": 0,
       "itemStates": [
         {
           "id": "dr-hoodie-mainstream",
@@ -308,8 +309,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -323,8 +324,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -338,8 +339,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -353,8 +354,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -368,8 +369,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -383,8 +384,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -398,8 +399,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -413,8 +414,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-bass-im-blut.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -428,8 +429,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -443,8 +444,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -458,8 +459,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -473,8 +474,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -488,8 +489,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -503,8 +504,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -518,8 +519,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -533,8 +534,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -548,8 +549,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -563,8 +564,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -578,8 +579,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -593,8 +594,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -608,8 +609,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -623,8 +624,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -638,8 +639,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -653,8 +654,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-bass-im-blut.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -668,8 +669,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -683,8 +684,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -713,8 +714,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -743,8 +744,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -758,8 +759,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -773,8 +774,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -788,8 +789,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -803,8 +804,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -818,8 +819,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -833,8 +834,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -848,8 +849,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -863,8 +864,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -878,8 +879,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -893,8 +894,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -908,8 +909,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -923,8 +924,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -938,8 +939,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -953,8 +954,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -968,8 +969,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -983,8 +984,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -998,8 +999,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1013,8 +1014,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1028,8 +1029,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1043,8 +1044,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1058,8 +1059,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1073,8 +1074,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1088,8 +1089,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1103,8 +1104,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1118,8 +1119,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1133,8 +1134,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1148,8 +1149,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1163,8 +1164,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1178,8 +1179,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1193,8 +1194,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1208,8 +1209,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1223,8 +1224,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1238,8 +1239,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1253,8 +1254,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1268,8 +1269,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1283,8 +1284,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1298,8 +1299,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1313,8 +1314,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1328,8 +1329,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1343,8 +1344,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1358,8 +1359,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1373,8 +1374,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1388,8 +1389,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1403,8 +1404,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1418,8 +1419,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1433,8 +1434,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1448,8 +1449,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1463,8 +1464,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1478,8 +1479,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1493,8 +1494,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1508,8 +1509,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1523,8 +1524,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1538,8 +1539,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1553,8 +1554,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1568,8 +1569,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1583,8 +1584,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1598,8 +1599,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1613,8 +1614,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1628,8 +1629,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1643,8 +1644,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1658,8 +1659,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1673,8 +1674,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1688,8 +1689,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1703,8 +1704,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1718,8 +1719,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1733,8 +1734,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1748,8 +1749,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1763,8 +1764,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1778,8 +1779,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1793,8 +1794,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1808,8 +1809,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1823,8 +1824,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1838,8 +1839,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1853,8 +1854,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1868,8 +1869,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1883,8 +1884,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1898,8 +1899,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1913,8 +1914,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/accessory-dr-retro-cap.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1928,8 +1929,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1943,8 +1944,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1958,8 +1959,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1973,8 +1974,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1988,8 +1989,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2003,8 +2004,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2018,8 +2019,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2033,8 +2034,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2048,8 +2049,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2063,8 +2064,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2078,8 +2079,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2093,8 +2094,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/accessory-dr-retro-cap.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2108,8 +2109,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2123,8 +2124,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2138,8 +2139,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2153,8 +2154,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2168,8 +2169,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2183,8 +2184,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2198,8 +2199,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/accessory-dr-retro-cap.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2213,8 +2214,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2228,8 +2229,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2243,8 +2244,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2258,8 +2259,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2273,8 +2274,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-bass-im-blut.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2288,8 +2289,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2303,8 +2304,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2318,8 +2319,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2333,8 +2334,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2348,8 +2349,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2363,8 +2364,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2378,8 +2379,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2393,8 +2394,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2408,8 +2409,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2423,8 +2424,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2438,8 +2439,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/accessory-dr-retro-cap.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2453,8 +2454,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2468,8 +2469,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2483,8 +2484,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2498,8 +2499,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2513,8 +2514,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2528,8 +2529,8 @@
           "href": "/shop.html#herren-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2543,8 +2544,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2558,8 +2559,8 @@
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2573,8 +2574,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2588,8 +2589,8 @@
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2603,8 +2604,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2618,8 +2619,8 @@
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2633,8 +2634,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2648,8 +2649,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "ready",
-          "uploadLabel": "Uploadbereit",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2663,8 +2664,8 @@
           "href": "/shop.html#accessoires",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2678,8 +2679,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2693,8 +2694,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2708,8 +2709,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2723,8 +2724,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2738,8 +2739,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2753,8 +2754,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2768,8 +2769,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2783,8 +2784,8 @@
           "href": "/kontakt.html",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
+          "uploadState": "submitted",
+          "uploadLabel": "Eingereicht (in Pruefung)",
           "verifiedLink": false,
           "httpCode": 0
         }
@@ -2815,17 +2816,17 @@
     ],
     "timeline": [
       {
-        "time": "01.04.26, 11:50",
+        "time": "01.04.26, 13:21",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "01.04.26, 11:50",
+        "time": "01.04.26, 13:21",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "01.04.26, 11:50",
+        "time": "01.04.26, 13:21",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -2923,7 +2924,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "175 ms",
+    "responseTime": "299 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -2981,25 +2982,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "01.04.26, 11:50",
+      "time": "01.04.26, 13:21",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "01.04.26, 11:50",
+      "time": "01.04.26, 13:21",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "01.04.26, 11:50",
+      "time": "01.04.26, 13:21",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "01.04.26, 11:50",
+      "time": "01.04.26, 13:21",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
