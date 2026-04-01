@@ -167,6 +167,19 @@
       article.classList.add("line-" + lineSlug);
     }
     article.setAttribute("data-line", lineSlug);
+    article.setAttribute("data-section", String(item.section || "").toLowerCase());
+    article.setAttribute("data-item-id", String(item.id || ""));
+    article.setAttribute(
+      "data-search",
+      [
+        item.title,
+        item.slogan,
+        item.copy,
+        item.line,
+        Array.isArray(item.products) ? item.products.join(" ") : "",
+        Array.isArray(item.tags) ? item.tags.join(" ") : ""
+      ].join(" ").toLowerCase()
+    );
 
     const visual = document.createElement("div");
     visual.className = "catalog-card-visual";
@@ -260,6 +273,41 @@
       return;
     }
 
+    function uniqueIds(ids) {
+      const seen = new Set();
+      return ids.filter(function (id) {
+        if (seen.has(id)) {
+          return false;
+        }
+        seen.add(id);
+        return true;
+      });
+    }
+
+    function getSpotlightIds(mode) {
+      if (mode === "new") {
+        return uniqueIds(
+          catalog.items
+            .map(function (item) {
+              return item && item.id;
+            })
+            .filter(Boolean)
+            .slice(-8)
+            .reverse()
+        );
+      }
+
+      return uniqueIds(Array.isArray(catalog.spotlight) ? catalog.spotlight.slice() : []);
+    }
+
+    function getItemsFromIds(ids) {
+      return ids.map(function (id) {
+        return catalog.items.find(function (item) {
+          return item.id === id;
+        });
+      }).filter(Boolean);
+    }
+
     document.querySelectorAll("[data-merch-section]").forEach(function (container) {
       const section = container.getAttribute("data-merch-section");
       const items = catalog.items.filter(function (item) {
@@ -280,11 +328,10 @@
     });
 
     document.querySelectorAll("[data-merch-spotlight]").forEach(function (container) {
-      const items = catalog.spotlight.map(function (id) {
-        return catalog.items.find(function (item) {
-          return item.id === id;
-        });
-      }).filter(Boolean);
+      const mode = String(container.getAttribute("data-merch-spotlight") || "top").toLowerCase();
+      const limit = Math.max(1, Number(container.getAttribute("data-merch-limit")) || 6);
+      const spotlightIds = getSpotlightIds(mode);
+      const items = getItemsFromIds(spotlightIds).slice(0, limit);
 
       if (!items.length) {
         return;
@@ -295,6 +342,79 @@
         container.appendChild(createCatalogCard(item));
       });
     });
+  }
+
+  function initShopFilters() {
+    const shopFilter = document.querySelector("[data-shop-filter]");
+    if (!shopFilter) {
+      return;
+    }
+
+    const buttons = Array.from(shopFilter.querySelectorAll("[data-filter-section]"));
+    const searchInput = shopFilter.querySelector("[data-shop-search]");
+    const resultNode = document.querySelector("[data-shop-filter-result]");
+    const cards = Array.from(document.querySelectorAll(".catalog-grid[data-merch-section] .catalog-card"));
+    const sectionGrids = Array.from(document.querySelectorAll(".catalog-grid[data-merch-section]"));
+    let activeSection = "all";
+    let searchQuery = "";
+
+    function updateButtonState() {
+      buttons.forEach(function (button) {
+        const isActive = button.getAttribute("data-filter-section") === activeSection;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-pressed", String(isActive));
+      });
+    }
+
+    function applyFilters() {
+      let visibleCount = 0;
+      cards.forEach(function (card) {
+        const section = card.getAttribute("data-section");
+        const search = card.getAttribute("data-search") || "";
+        const sectionMatch = activeSection === "all" || section === activeSection;
+        const searchMatch = !searchQuery || search.indexOf(searchQuery) !== -1;
+        const isVisible = sectionMatch && searchMatch;
+        card.hidden = !isVisible;
+        if (isVisible) {
+          visibleCount += 1;
+        }
+      });
+
+      sectionGrids.forEach(function (grid) {
+        const hasVisibleCards = Array.from(grid.children).some(function (child) {
+          return !child.hidden;
+        });
+        grid.hidden = !hasVisibleCards;
+      });
+
+      if (resultNode) {
+        if (!visibleCount) {
+          resultNode.textContent = "Keine Treffer. Bitte Filter oder Suchbegriff anpassen.";
+        } else if (activeSection === "all" && !searchQuery) {
+          resultNode.textContent = "Alle Artikel sichtbar.";
+        } else {
+          resultNode.textContent = String(visibleCount) + " passende Artikel gefunden.";
+        }
+      }
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        activeSection = button.getAttribute("data-filter-section") || "all";
+        updateButtonState();
+        applyFilters();
+      });
+    });
+
+    if (searchInput) {
+      searchInput.addEventListener("input", function () {
+        searchQuery = String(searchInput.value || "").trim().toLowerCase();
+        applyFilters();
+      });
+    }
+
+    updateButtonState();
+    applyFilters();
   }
 
   function initMerchOptions() {
@@ -389,6 +509,7 @@
     initSoundCloudEmbeds();
     initMerchCatalog();
     initMerchOptions();
+    initShopFilters();
     initFadeIns();
     initYear();
   });
