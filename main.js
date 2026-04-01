@@ -138,37 +138,11 @@
         .replace(/(^-|-$)/g, "");
     }
 
-    function getStatusKind(status) {
-      const normalized = String(status || "").toLowerCase();
-      if (normalized.indexOf("live") !== -1) {
-        return "live";
-      }
-      if (normalized.indexOf("top upload") !== -1) {
-        return "priority";
-      }
-      if (normalized.indexOf("upload") !== -1 || normalized.indexOf("ready") !== -1) {
-        return "priority";
-      }
-      if (normalized.indexOf("prior") !== -1) {
-        return "priority";
-      }
-      if (normalized.indexOf("vorbereitung") !== -1 || normalized.indexOf("plan") !== -1) {
-        return "planned";
-      }
-      if (normalized.indexOf("konzept") !== -1 || normalized.indexOf("concept") !== -1) {
-        return "concept";
-      }
-      if (normalized.indexOf("special") !== -1) {
-        return "special";
-      }
-      return "default";
-    }
-
     function isExternalUrl(href) {
       return typeof href === "string" && /^https?:\/\//i.test(href);
     }
 
-    function resolveExternalLink(item, statusKind) {
+    function resolveExternalLink(item) {
       const liveStatus = window.LIVE_LINK_STATUS && window.LIVE_LINK_STATUS.items ? window.LIVE_LINK_STATUS.items[item.id] : null;
       const fallbackHref = (liveStatus && liveStatus.fallbackHref) || (window.LIVE_LINK_STATUS && window.LIVE_LINK_STATUS.storeHref) || "https://www.shirtee.com/de/store/drgray-mrsdrgray/";
       const verified = Boolean(liveStatus && liveStatus.verified && Number(liveStatus.httpCode) === 200);
@@ -180,15 +154,8 @@
         };
       }
 
-      if (statusKind === "live") {
-        return {
-          href: fallbackHref,
-          label: "Store ansehen"
-        };
-      }
-
       return {
-        href: item.href,
+        href: isExternalUrl(item.href) ? item.href : fallbackHref,
         label: "Store ansehen"
       };
     }
@@ -196,13 +163,10 @@
     const article = document.createElement("article");
     article.className = "catalog-card feature-card";
     const lineSlug = slugify(item.line);
-    const statusKind = getStatusKind(item.status);
     if (lineSlug) {
       article.classList.add("line-" + lineSlug);
     }
-    article.classList.add("status-" + statusKind);
     article.setAttribute("data-line", lineSlug);
-    article.setAttribute("data-status", statusKind);
 
     const visual = document.createElement("div");
     visual.className = "catalog-card-visual";
@@ -222,13 +186,7 @@
     line.className = "catalog-line";
     line.textContent = item.line;
 
-    const status = document.createElement("span");
-    status.className = "catalog-status";
-    status.classList.add("is-" + statusKind);
-    status.textContent = item.status;
-
     header.appendChild(line);
-    header.appendChild(status);
 
     const title = document.createElement("h3");
     title.className = "card-title";
@@ -266,7 +224,7 @@
     link.className = "btn btn-secondary";
 
     if (isExternalUrl(item.href)) {
-      const resolved = resolveExternalLink(item, statusKind);
+      const resolved = resolveExternalLink(item);
       link.href = resolved.href;
       link.textContent = resolved.label;
     } else if (String(item.href).indexOf("#") !== -1) {
@@ -302,29 +260,12 @@
       return;
     }
 
-    const statusWeight = {
-      live: 0,
-      "top upload": 1,
-      uploadbereit: 2,
-      prioritaet: 3,
-      "in vorbereitung": 4,
-      geplant: 5,
-      konzept: 6,
-      "special drop": 7,
-      concept: 7
-    };
-
     document.querySelectorAll("[data-merch-section]").forEach(function (container) {
       const section = container.getAttribute("data-merch-section");
       const items = catalog.items.filter(function (item) {
         return item.section === section;
       });
       items.sort(function (a, b) {
-        const weightA = statusWeight[String(a.status || "").toLowerCase()] ?? 99;
-        const weightB = statusWeight[String(b.status || "").toLowerCase()] ?? 99;
-        if (weightA !== weightB) {
-          return weightA - weightB;
-        }
         return String(a.title || "").localeCompare(String(b.title || ""), "de");
       });
 
@@ -353,44 +294,6 @@
       items.forEach(function (item) {
         container.appendChild(createCatalogCard(item));
       });
-    });
-  }
-
-  function initMerchStats() {
-    const catalog = window.MERCH_CATALOG;
-    if (!catalog || !Array.isArray(catalog.items)) {
-      return;
-    }
-
-    const items = catalog.items;
-    const normalize = function (value) {
-      return String(value || "").toLowerCase();
-    };
-
-    const total = items.length;
-    const live = items.filter(function (item) {
-      return normalize(item.status).indexOf("live") !== -1;
-    }).length;
-    const active = items.filter(function (item) {
-      const status = normalize(item.status);
-      return status.indexOf("top upload") !== -1 || status.indexOf("upload") !== -1 || status.indexOf("prior") !== -1 || status.indexOf("vorbereitung") !== -1 || status.indexOf("geplant") !== -1;
-    }).length;
-    const concept = items.filter(function (item) {
-      const status = normalize(item.status);
-      return status.indexOf("konzept") !== -1 || status.indexOf("concept") !== -1 || status.indexOf("special") !== -1;
-    }).length;
-
-    document.querySelectorAll("[data-merch-count-total]").forEach(function (node) {
-      node.textContent = String(total);
-    });
-    document.querySelectorAll("[data-merch-count-live]").forEach(function (node) {
-      node.textContent = String(live);
-    });
-    document.querySelectorAll("[data-merch-count-active]").forEach(function (node) {
-      node.textContent = String(active);
-    });
-    document.querySelectorAll("[data-merch-count-concept]").forEach(function (node) {
-      node.textContent = String(concept);
     });
   }
 
@@ -432,69 +335,6 @@
         chip.className = "merch-option-chip";
         chip.textContent = label;
         container.appendChild(chip);
-      });
-    });
-  }
-
-  function initMerchSectionSummary() {
-    const catalog = window.MERCH_CATALOG;
-    if (!catalog || !Array.isArray(catalog.items)) {
-      return;
-    }
-
-    const labelBySection = {
-      men: "Dr. Gray / Herren",
-      women: "Mrs. Dr. Gray / Damen",
-      couple: "Couple",
-      unisex: "Unisex",
-      accessories: "Accessoires",
-      special: "Special Merch"
-    };
-
-    const normalize = function (value) {
-      return String(value || "").toLowerCase();
-    };
-
-    const sectionOrder = ["men", "women", "couple", "unisex", "accessories", "special"];
-
-    document.querySelectorAll("[data-merch-section-summary]").forEach(function (container) {
-      container.innerHTML = "";
-
-      sectionOrder.forEach(function (section) {
-        const scoped = catalog.items.filter(function (item) {
-          return item.section === section;
-        });
-
-        if (!scoped.length) {
-          return;
-        }
-
-        const live = scoped.filter(function (item) {
-          return normalize(item.status).indexOf("live") !== -1;
-        }).length;
-
-        const uploads = scoped.filter(function (item) {
-          const status = normalize(item.status);
-          return status.indexOf("top upload") !== -1 || status.indexOf("upload") !== -1;
-        }).length;
-
-        const concept = scoped.filter(function (item) {
-          const status = normalize(item.status);
-          return status.indexOf("konzept") !== -1 || status.indexOf("concept") !== -1 || status.indexOf("special") !== -1;
-        }).length;
-
-        const card = document.createElement("article");
-        card.className = "merch-line-card";
-        card.innerHTML = `
-          <h4>${labelBySection[section] || section}</h4>
-          <div class="merch-line-stats">
-            <span>Artikel: <strong>${scoped.length}</strong></span>
-            <span>Live: <strong>${live}</strong></span>
-            <span>Upload: <strong>${uploads}</strong></span>
-            <span>Konzept: <strong>${concept}</strong></span>
-          </div>
-        `;
-        container.appendChild(card);
       });
     });
   }
@@ -548,9 +388,7 @@
     initMenu();
     initSoundCloudEmbeds();
     initMerchCatalog();
-    initMerchStats();
     initMerchOptions();
-    initMerchSectionSummary();
     initFadeIns();
     initYear();
   });
