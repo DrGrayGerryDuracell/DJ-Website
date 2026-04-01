@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-03-31T09:06:10.236Z",
-    "generatedAtLabel": "31.03.26, 11:06",
+    "generatedAt": "2026-04-01T09:06:08.848Z",
+    "generatedAtLabel": "01.04.26, 11:06",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "31.03.26, 11:06",
+      "value": "01.04.26, 11:06",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 290,
+      "value": 210,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -81,7 +81,7 @@
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 498,
+      "value": 501,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 319,
+        "visitors": 221,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 296,
+        "visitors": 169,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 287,
+        "visitors": 168,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 277,
+        "visitors": 166,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 326,
+        "visitors": 169,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 324,
+        "visitors": 180,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 340,
+        "visitors": 174,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 151,
+        "visitors": 429,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "290 ms",
+      "avgSession": "210 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     }
@@ -239,8 +239,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-03-31T09:06:10.236Z",
-      "checkedAtLabel": "31.03.26, 11:06"
+      "checkedAt": "2026-04-01T09:06:08.848Z",
+      "checkedAtLabel": "01.04.26, 11:06"
     },
     "catalog": {
       "totalItems": 167,
@@ -2815,17 +2815,17 @@
     ],
     "timeline": [
       {
-        "time": "31.03.26, 11:06",
+        "time": "01.04.26, 11:06",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "31.03.26, 11:06",
+        "time": "01.04.26, 11:06",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "31.03.26, 11:06",
+        "time": "01.04.26, 11:06",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -2850,7 +2850,7 @@
       {
         "platform": "SoundCloud",
         "metricValue": 13,
-        "valueLabel": "498 Follower • 13 Linksignale",
+        "valueLabel": "501 Follower • 13 Linksignale",
         "statusLabel": "25 Tracks",
         "sourceLabel": "SoundCloud Public API"
       },
@@ -2923,7 +2923,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "290 ms",
+    "responseTime": "210 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -2981,25 +2981,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "31.03.26, 11:06",
+      "time": "01.04.26, 11:06",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "31.03.26, 11:06",
+      "time": "01.04.26, 11:06",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "31.03.26, 11:06",
+      "time": "01.04.26, 11:06",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "31.03.26, 11:06",
+      "time": "01.04.26, 11:06",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3023,7 +3023,7 @@
       "id": "AL-SOC",
       "level": "ok",
       "title": "SoundCloud Live-Profil erkannt",
-      "description": "498 Follower und 25 Tracks verifiziert.",
+      "description": "501 Follower und 25 Tracks verifiziert.",
       "source": "Social Monitoring"
     }
   ],

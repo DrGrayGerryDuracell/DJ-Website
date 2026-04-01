@@ -12,8 +12,9 @@
     "check:live-links": "node scripts/sync-live-link-status.mjs",
     "sync:control-live": "node scripts/sync-control-live-metrics.mjs",
     "generate:upload-queue": "node scripts/generate-upload-queue.mjs",
+    "generate:upload-batches": "node scripts/prepare-shirtee-upload-batches.mjs",
     "generate:shirtee-api-request": "node scripts/generate-shirtee-api-request.mjs",
-    "finish:all": "npm run verify && npm run check:links && npm run check:live-links && npm run sync:control-live && npm run generate:upload-queue && npm run generate:shirtee-api-request"
+    "finish:all": "npm run verify && npm run check:links && npm run check:live-links && npm run sync:control-live && npm run generate:upload-queue && npm run generate:upload-batches && npm run generate:shirtee-api-request"
   },
   "engines": {
     "node": ">=20"

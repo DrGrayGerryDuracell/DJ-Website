@@ -1,0 +1,65 @@
+{
+  "generatedAt": "2026-04-01T09:06:09.350Z",
+  "batchSize": 20,
+  "totals": {
+    "queue": 164,
+    "ready": 70,
+    "pending": 94
+  },
+  "batches": [
+    {
+      "name": "ready-batch-01",
+      "type": "ready",
+      "itemCount": 20,
+      "csvPath": "/Users/martendr.gray/Documents/New project/DJ-Website/artifacts/upload-batches/ready-batch-01.csv"
+    },
+    {
+      "name": "ready-batch-02",
+      "type": "ready",
+      "itemCount": 20,
+      "csvPath": "/Users/martendr.gray/Documents/New project/DJ-Website/artifacts/upload-batches/ready-batch-02.csv"
+    },
+    {
+      "name": "ready-batch-03",
+      "type": "ready",
+      "itemCount": 20,
+      "csvPath": "/Users/martendr.gray/Documents/New project/DJ-Website/artifacts/upload-batches/ready-batch-03.csv"
+    },
+    {
+      "name": "ready-batch-04",
+      "type": "ready",
+      "itemCount": 10,
+      "csvPath": "/Users/martendr.gray/Documents/New project/DJ-Website/artifacts/upload-batches/ready-batch-04.csv"
+    },
+    {
+      "name": "pending-batch-01",
+      "type": "pending",
+      "itemCount": 20,
+      "csvPath": "/Users/martendr.gray/Documents/New project/DJ-Website/artifacts/upload-batches/pending-batch-01.csv"
+    },
+    {
+      "name": "pending-batch-02",
+      "type": "pending",
+      "itemCount": 20,
+      "csvPath": "/Users/martendr.gray/Documents/New project/DJ-Website/artifacts/upload-batches/pending-batch-02.csv"
+    },
+    {
+      "name": "pending-batch-03",
+      "type": "pending",
+      "itemCount": 20,
+      "csvPath": "/Users/martendr.gray/Documents/New project/DJ-Website/artifacts/upload-batches/pending-batch-03.csv"
+    },
+    {
+      "name": "pending-batch-04",
+      "type": "pending",
+      "itemCount": 20,
+      "csvPath": "/Users/martendr.gray/Documents/New project/DJ-Website/artifacts/upload-batches/pending-batch-04.csv"
+    },
+    {
+      "name": "pending-batch-05",
+      "type": "pending",
+      "itemCount": 14,
+      "csvPath": "/Users/martendr.gray/Documents/New project/DJ-Website/artifacts/upload-batches/pending-batch-05.csv"
+    }
+  ]
+}
