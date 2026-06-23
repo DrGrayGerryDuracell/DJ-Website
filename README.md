@@ -151,3 +151,6 @@ Aktuell werden keine Secrets benoetigt. Fuer spaetere Integrationen koennen Endp
 - `CNAME` ist aus frueherer GitHub-Pages-Nutzung vorhanden.
 - Fuer Vercel ist die Domainfuehrung in Vercel selbst massgeblich.
 - Alte Pages-Hinweise wurden in die neue Vercel-Strategie ueberfuehrt.
+
+
+--- Automatically pushed at Tue Jun 23 19:31:56 CEST 2026 from Jarvis mini ---
