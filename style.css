@@ -220,9 +220,9 @@ button {
 .nav-links a {
   position: relative;
   padding: 0.4rem 0;
-  color: var(--text-soft);
-  font-weight: 500;
-  letter-spacing: 0.03em;
+  color: #f0e5c2;
+  font-weight: 600;
+  letter-spacing: 0.04em;
 }
 
 .nav-links a::after {
@@ -241,7 +241,7 @@ button {
 .nav-links a:hover,
 .nav-links a:focus-visible,
 .nav-links a[aria-current="page"] {
-  color: var(--gold-strong);
+  color: #fff3bf;
 }
 
 .nav-links a:hover::after,
@@ -1072,6 +1072,7 @@ body.page-home .nav-card p {
   touch-action: manipulation;
   letter-spacing: 0.03em;
   text-align: center;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.35);
 }
 
 .btn:hover,
@@ -1315,12 +1316,14 @@ body.page-home .nav-card p {
   display: inline-flex;
   align-items: center;
   min-height: 34px;
-  padding: 0.35rem 0.75rem;
+  padding: 0.35rem 0.82rem;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  font-size: 0.86rem;
-  color: var(--text-soft);
+  background: rgba(245, 200, 76, 0.08);
+  border: 1px solid rgba(255, 216, 109, 0.18);
+  font-size: 0.84rem;
+  color: #f2e7c0;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .three-grid {
@@ -1644,14 +1647,15 @@ iframe.soundcloud-lazy {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 38px;
-  padding: 0.45rem 0.8rem;
+  min-height: 42px;
+  padding: 0.55rem 1rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 216, 109, 0.2);
-  background: rgba(255, 255, 255, 0.03);
-  color: var(--text-soft);
-  font-size: 0.82rem;
-  letter-spacing: 0.06em;
+  border: 1px solid rgba(255, 216, 109, 0.24);
+  background: rgba(245, 200, 76, 0.08);
+  color: #f5e6b6;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   transition: transform 0.15s ease, color 0.2s ease, border-color 0.2s ease, background-color 0.2s ease;
 }
@@ -1659,14 +1663,15 @@ iframe.soundcloud-lazy {
 .shop-filter-chip:hover,
 .shop-filter-chip:focus-visible {
   transform: translateY(-1px);
-  border-color: rgba(255, 216, 109, 0.45);
-  color: var(--gold-strong);
+  border-color: rgba(255, 216, 109, 0.6);
+  color: #fff4c7;
+  background: rgba(245, 200, 76, 0.14);
 }
 
 .shop-filter-chip.is-active {
-  color: #fff0bd;
-  border-color: rgba(255, 216, 109, 0.52);
-  background: rgba(245, 200, 76, 0.12);
+  color: #fff8dc;
+  border-color: rgba(255, 216, 109, 0.7);
+  background: rgba(245, 200, 76, 0.2);
 }
 
 .shop-search-field {
@@ -1987,7 +1992,22 @@ iframe.soundcloud-lazy {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  color: var(--text-soft);
+  color: #f0e5c2;
+}
+
+.footer-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding: 0.1rem 0.2rem;
+  color: inherit;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.footer-links a:hover,
+.footer-links a:focus-visible {
+  color: #fff2bf;
 }
 
 .center {
