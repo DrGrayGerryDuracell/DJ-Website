@@ -30,8 +30,8 @@
       --black: #0a0a0a;
       --dark-gray: #141414;
       --gold: #d4af37;
-      --pink: #ff00ff;
-      --pink-light: #ff33ff;
+      --pink: #ff4fd8;
+      --pink-light: #34e4ff;
       --text-primary: #ffffff;
       --text-secondary: #b3b3b3;
       --border: #2a2a2a;
@@ -50,15 +50,25 @@
     }
 
     body {
-      background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 10, 31, 0.95) 50%, rgba(10, 10, 10, 0.95) 100%),
-                  url('/assets/images/flx10-gold.png') center/cover fixed no-repeat;
-      background-attachment: fixed;
+      background: linear-gradient(180deg, rgba(5, 5, 5, 0.92) 0%, rgba(9, 9, 9, 0.98) 100%);
       color: var(--text-primary);
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
+    }
+
+    .site-bg-video::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(4, 4, 4, 0.28), rgba(4, 4, 4, 0.88)),
+        radial-gradient(circle at 20% 16%, rgba(255, 79, 216, 0.07), transparent 24%),
+        radial-gradient(circle at 84% 74%, rgba(52, 228, 255, 0.06), transparent 22%),
+        radial-gradient(circle at 64% 22%, rgba(245, 200, 76, 0.16), transparent 22%);
+      pointer-events: none;
     }
 
     .skip-link {
@@ -197,7 +207,14 @@
       font-weight: 700;
       margin-bottom: 1rem;
       line-height: 1.2;
-      background: linear-gradient(135deg, var(--text-primary) 0%, var(--gold) 50%, var(--pink) 100%);
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--gold) 42%, var(--pink) 72%, var(--pink-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #ffd86d 0%, var(--pink) 52%, var(--pink-light) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -216,7 +233,7 @@
       gap: 1.5rem;
       margin-bottom: 3rem;
       padding: 2rem;
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 0, 255, 0.05) 100%);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.08) 0%, rgba(255, 79, 216, 0.06) 50%, rgba(52, 228, 255, 0.05) 100%);
       border-radius: 12px;
       border: 1px solid var(--border);
     }
@@ -270,7 +287,7 @@
     }
 
     .nav-card {
-      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 0, 255, 0.05) 100%);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 79, 216, 0.06) 52%, rgba(52, 228, 255, 0.05) 100%);
       border: 1px solid var(--border);
       border-radius: 12px;
       padding: 2rem 1.5rem;
@@ -293,7 +310,7 @@
       left: -100%;
       width: 100%;
       height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), rgba(255, 79, 216, 0.16), rgba(52, 228, 255, 0.14), transparent);
       transition: left 0.5s ease;
     }
 
@@ -303,7 +320,7 @@
 
     .nav-card:hover {
       border-color: var(--gold);
-      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 20px rgba(255, 0, 255, 0.1);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.28), 0 0 18px rgba(255, 79, 216, 0.14), inset 0 0 20px rgba(52, 228, 255, 0.08);
       transform: translateY(-6px);
     }
 
@@ -314,7 +331,7 @@
     }
 
     .nav-card:hover .nav-card-icon {
-      filter: drop-shadow(0 0 12px var(--gold));
+      filter: drop-shadow(0 0 12px var(--gold)) drop-shadow(0 0 10px rgba(255, 79, 216, 0.2));
       transform: scale(1.1);
     }
 
@@ -470,7 +487,12 @@
     }
   </style>
 </head>
-<body>
+<body class="page-home">
+  <div class="site-bg-video" aria-hidden="true">
+    <video autoplay muted loop playsinline preload="metadata" poster="assets/uploads/posters/live-dj-controller-neon.jpg">
+      <source src="assets/uploads/web-videos/live-dj-controller-neon.mp4" type="video/mp4">
+    </video>
+  </div>
   <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
 
   <header>
@@ -500,7 +522,7 @@
   <main id="main-content">
     <div class="hero-content">
       <span class="eyebrow">⚡ Driving Techno • Peak Time • Dark & Hypnotic</span>
-      <h1>Driven by Rhythm.<br><span style="color: var(--pink);">United by Emotion.</span></h1>
+      <h1>Driven by Rhythm.<br><span>United by Emotion.</span></h1>
 
       <div class="info-grid">
         <div class="info-card">
@@ -560,7 +582,14 @@
           <p>Bookings & Anfragen</p>
         </a>
         <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer" class="nav-card">
-          <span class="nav-card-icon">☁️</span>
+          <span class="nav-card-icon" aria-hidden="true">
+            <svg class="brand-icon brand-icon--soundcloud" viewBox="0 0 24 24" role="img" aria-label="">
+              <path d="M8.2 18.5h9.2a4 4 0 0 0 0-8c-.5 0-1 .1-1.5.3A5.7 5.7 0 0 0 5 12.4c0 .3 0 .6.1.9a3.5 3.5 0 0 0 3.1 5.2Z" fill="currentColor"/>
+              <rect x="2.5" y="13.5" width="1.8" height="5.2" rx="0.9" fill="currentColor"/>
+              <rect x="5.5" y="11.5" width="1.8" height="7.2" rx="0.9" fill="currentColor"/>
+              <rect x="8.5" y="9.5" width="1.8" height="9.2" rx="0.9" fill="currentColor"/>
+            </svg>
+          </span>
           <h3>SoundCloud</h3>
           <p>Alle Sets im Stream</p>
         </a>

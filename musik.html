@@ -34,8 +34,8 @@
     }
 
     .track-card:hover {
-      border-color: #ff00ff;
-      box-shadow: 0 12px 32px rgba(255, 0, 255, 0.2);
+      border-color: var(--gold);
+      box-shadow: 0 12px 32px rgba(245, 200, 76, 0.16), 0 0 18px rgba(255, 79, 216, 0.1);
       transform: translateY(-4px);
     }
 
@@ -60,9 +60,9 @@
     }
 
     .genre-tag {
-      background: rgba(255, 0, 255, 0.1);
-      border: 0.5px solid rgba(255, 0, 255, 0.3);
-      color: #ff00ff;
+      background: rgba(245, 200, 76, 0.1);
+      border: 0.5px solid rgba(255, 216, 109, 0.26);
+      color: var(--gold-strong);
       padding: 6px 12px;
       border-radius: 50px;
       font-size: 11px;
@@ -81,7 +81,7 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       padding: 1rem;
-      background: rgba(255, 0, 255, 0.05);
+      background: linear-gradient(135deg, rgba(245, 200, 76, 0.06) 0%, rgba(255, 79, 216, 0.05) 50%, rgba(52, 228, 255, 0.04) 100%);
       border-radius: 8px;
       margin-bottom: 1rem;
     }
@@ -93,7 +93,7 @@
 
     .stat-value {
       font-weight: 600;
-      color: #ff00ff;
+      color: var(--gold-strong);
       display: block;
     }
 
@@ -104,10 +104,13 @@
     }
 
     .btn {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.55rem;
       padding: 12px 24px;
-      background: #ff00ff;
-      color: #000;
+      background: linear-gradient(135deg, var(--gold-strong), var(--gold));
+      color: #120c00;
       border-radius: 50px;
       text-decoration: none;
       font-weight: 600;
@@ -120,8 +123,8 @@
     }
 
     .btn:hover {
-      background: #ff33ff;
-      box-shadow: 0 8px 24px rgba(255, 0, 255, 0.3);
+      background: linear-gradient(135deg, var(--gold-strong), var(--pink), var(--pink-light));
+      box-shadow: 0 8px 24px rgba(245, 200, 76, 0.24), 0 0 18px rgba(255, 79, 216, 0.12);
       transform: scale(1.02);
     }
 
@@ -138,9 +141,10 @@
   <header class="main-header" id="site-header">
     <nav class="main-nav" aria-label="Hauptnavigation">
       <a class="nav-brand" href="index.html">
-        <span class="nav-brand-mark" aria-hidden="true">
-          <img class="nav-brand-logo" src="assets/images/logo1.png" alt="" width="46" height="46">
-          <img class="nav-brand-logo" src="assets/images/logo2.png" alt="" width="46" height="46">
+        <span class="nav-brand-logos" aria-hidden="true">
+          <img class="nav-brand-logo" src="assets/images/logo1.png" alt="" width="40" height="40">
+          <img class="nav-brand-logo" src="assets/images/logo2.png" alt="" width="40" height="40">
+          <img class="logo-blink" src="assets/images/logo1.png" alt="" width="40" height="40" aria-hidden="true">
         </span>
         <span class="nav-brand-text">
           <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
@@ -214,7 +218,15 @@
             <p class="lead">🔄 Live synchronized von SoundCloud — alle Sets, alle Genres, alle Stats aktualisieren sich automatisch.</p>
           </div>
           <a class="btn" href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">
-            🎵 Alle Sets auf SoundCloud
+            <span class="brand-icon brand-icon--soundcloud" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-label="">
+                <path d="M8.2 18.5h9.2a4 4 0 0 0 0-8c-.5 0-1 .1-1.5.3A5.7 5.7 0 0 0 5 12.4c0 .3 0 .6.1.9a3.5 3.5 0 0 0 3.1 5.2Z" fill="currentColor"/>
+                <rect x="2.5" y="13.5" width="1.8" height="5.2" rx="0.9" fill="currentColor"/>
+                <rect x="5.5" y="11.5" width="1.8" height="7.2" rx="0.9" fill="currentColor"/>
+                <rect x="8.5" y="9.5" width="1.8" height="9.2" rx="0.9" fill="currentColor"/>
+              </svg>
+            </span>
+            <span>Alle Sets auf SoundCloud</span>
           </a>
         </div>
 

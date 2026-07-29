@@ -32,8 +32,8 @@
     90deg,
     transparent,
     transparent 8px,
-    rgba(255, 0, 255, 0.03) 8px,
-    rgba(255, 0, 255, 0.03) 16px
+    rgba(255, 79, 216, 0.03) 8px,
+    rgba(255, 79, 216, 0.03) 16px
   );
   pointer-events: none;
   opacity: 0;
@@ -53,7 +53,7 @@
 .hero-title span {
   display: inline-block;
   animation: gradientFlow 2s ease-in-out infinite;
-  background: linear-gradient(90deg, #ff00ff, #00ffff, #ff00ff);
+  background: linear-gradient(90deg, var(--gold-strong), var(--accent-pink), var(--accent-cyan), var(--gold-strong));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -103,12 +103,12 @@
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(255, 0, 255, 0.4);
+  box-shadow: 0 8px 24px rgba(245, 200, 76, 0.34), 0 0 18px rgba(255, 79, 216, 0.18);
 }
 
 .btn-secondary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 255, 255, 0.4);
+  box-shadow: 0 8px 24px rgba(52, 228, 255, 0.24), 0 0 18px rgba(245, 200, 76, 0.16);
 }
 
 /* Live Banner Pulse */
@@ -272,7 +272,7 @@ button,
 
 .article-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 12px 32px rgba(255, 0, 255, 0.15);
+  box-shadow: 0 12px 32px rgba(255, 79, 216, 0.12), 0 0 18px rgba(245, 200, 76, 0.08);
 }
 
 /* Image Zoom on Hover */
@@ -297,7 +297,7 @@ a::after {
   left: 0;
   width: 0;
   height: 2px;
-  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  background: linear-gradient(90deg, var(--accent-pink), var(--accent-cyan));
   transition: width var(--anim-duration-fast) var(--anim-ease-smooth);
 }
 
@@ -337,7 +337,7 @@ iframe[src*="soundcloud"] {
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(0, 255, 255, 0.1),
+    rgba(52, 228, 255, 0.1),
     transparent
   );
   pointer-events: none;
@@ -357,7 +357,7 @@ iframe[src*="soundcloud"] {
   display: inline-block;
   padding: 8px 16px;
   border-radius: 50px;
-  background: rgba(255, 0, 255, 0.1);
+  background: rgba(255, 79, 216, 0.1);
   border: 1px solid rgba(255, 0, 255, 0.3);
   font-size: 12px;
   font-weight: 600;
@@ -425,8 +425,8 @@ iframe[src*="soundcloud"] {
 }
 
 .featured-track-card:hover {
-  border-color: #ff00ff;
-  box-shadow: 0 12px 32px rgba(255, 0, 255, 0.15);
+  border-color: var(--accent-pink);
+  box-shadow: 0 12px 32px rgba(255, 79, 216, 0.12), 0 0 16px rgba(245, 200, 76, 0.08);
   transform: translateY(-2px);
 }
 
@@ -455,9 +455,9 @@ iframe[src*="soundcloud"] {
 }
 
 .genre-tag-homepage {
-  background: rgba(255, 0, 255, 0.1);
-  border: 0.5px solid rgba(255, 0, 255, 0.3);
-  color: #ff00ff;
+  background: linear-gradient(135deg, rgba(245, 200, 76, 0.1), rgba(255, 79, 216, 0.08), rgba(52, 228, 255, 0.06));
+  border: 0.5px solid rgba(255, 216, 109, 0.24);
+  color: var(--gold-strong);
   padding: 6px 12px;
   border-radius: 50px;
   font-size: 11px;
@@ -467,8 +467,8 @@ iframe[src*="soundcloud"] {
 }
 
 .genre-tag-homepage:hover {
-  border-color: #ff00ff;
-  box-shadow: 0 4px 12px rgba(255, 0, 255, 0.2);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 4px 12px rgba(52, 228, 255, 0.14), 0 0 12px rgba(255, 79, 216, 0.1);
   transform: scale(1.05);
 }
 
@@ -505,8 +505,8 @@ iframe[src*="soundcloud"] {
 }
 
 .track-card-homepage:hover {
-  border-color: #ff00ff;
-  box-shadow: 0 12px 32px rgba(255, 0, 255, 0.15);
+  border-color: var(--accent-pink);
+  box-shadow: 0 12px 32px rgba(255, 79, 216, 0.12), 0 0 16px rgba(245, 200, 76, 0.08);
   transform: translateY(-4px);
 }
 

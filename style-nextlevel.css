@@ -104,13 +104,13 @@
 
 .glitch-text:hover::before {
   animation: glitch1 0.3s ease;
-  color: #ff0040;
+  color: var(--accent-pink);
   opacity: 0.7;
 }
 
 .glitch-text:hover::after {
   animation: glitch2 0.3s ease;
-  color: #00ff9f;
+  color: var(--accent-cyan);
   opacity: 0.7;
 }
 

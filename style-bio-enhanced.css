@@ -13,8 +13,8 @@
 
 .info-card:hover {
   background: var(--surface-2);
-  border-color: #ff00ff;
-  box-shadow: 0 8px 24px rgba(255, 0, 255, 0.2);
+  border-color: var(--gold);
+  box-shadow: 0 8px 24px rgba(245, 200, 76, 0.18), 0 0 18px rgba(255, 79, 216, 0.08);
   transform: translateY(-4px);
 }
 
@@ -41,8 +41,8 @@
 
 .cta-card {
   display: block;
-  background: linear-gradient(135deg, rgba(255, 0, 255, 0.05), rgba(0, 255, 255, 0.05));
-  border: 1px solid rgba(255, 0, 255, 0.2);
+  background: linear-gradient(135deg, rgba(245, 200, 76, 0.06), rgba(255, 79, 216, 0.05), rgba(52, 228, 255, 0.04));
+  border: 1px solid rgba(255, 216, 109, 0.2);
   border-radius: 12px;
   padding: 24px;
   text-decoration: none;
@@ -52,9 +52,9 @@
 }
 
 .cta-card:hover {
-  background: linear-gradient(135deg, rgba(255, 0, 255, 0.15), rgba(0, 255, 255, 0.15));
-  border-color: #ff00ff;
-  box-shadow: 0 12px 32px rgba(255, 0, 255, 0.3);
+  background: linear-gradient(135deg, rgba(245, 200, 76, 0.14), rgba(255, 79, 216, 0.14), rgba(52, 228, 255, 0.12));
+  border-color: var(--gold-strong);
+  box-shadow: 0 12px 32px rgba(245, 200, 76, 0.18), 0 0 24px rgba(255, 79, 216, 0.18);
   transform: translateY(-8px);
 }
 
@@ -62,7 +62,7 @@
   font-size: 18px;
   font-weight: 600;
   margin: 0 0 12px 0;
-  background: linear-gradient(90deg, #ff00ff, #00ffff);
+  background: linear-gradient(90deg, var(--gold-strong), var(--accent-pink), var(--accent-cyan));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -85,8 +85,8 @@
 }
 
 .track-card:hover {
-  border-color: #00ffff;
-  box-shadow: 0 8px 24px rgba(0, 255, 255, 0.2);
+  border-color: var(--accent-cyan);
+  box-shadow: 0 8px 24px rgba(52, 228, 255, 0.16), 0 0 18px rgba(245, 200, 76, 0.08);
 }
 
 .track-card .btn {
@@ -138,9 +138,9 @@
 
 .pill {
   display: inline-block;
-  background: rgba(255, 0, 255, 0.1);
-  border: 0.5px solid rgba(255, 0, 255, 0.3);
-  color: #ff00ff;
+  background: rgba(245, 200, 76, 0.09);
+  border: 0.5px solid rgba(255, 216, 109, 0.25);
+  color: var(--gold-strong);
   padding: 8px 16px;
   border-radius: 50px;
   font-size: 12px;
@@ -150,9 +150,9 @@
 }
 
 .pill:hover {
-  background: rgba(255, 0, 255, 0.2);
-  border-color: #ff00ff;
-  box-shadow: 0 4px 12px rgba(255, 0, 255, 0.2);
+  background: rgba(255, 79, 216, 0.12);
+  border-color: var(--accent-pink);
+  box-shadow: 0 4px 12px rgba(255, 79, 216, 0.16), 0 0 10px rgba(52, 228, 255, 0.08);
 }
 
 /* Split Layout Enhancement */
@@ -231,9 +231,9 @@
 }
 
 .feature-card:hover {
-  border-color: #ff00ff;
+  border-color: var(--gold-strong);
   background: var(--surface-2);
-  box-shadow: 0 8px 24px rgba(255, 0, 255, 0.15);
+  box-shadow: 0 8px 24px rgba(245, 200, 76, 0.16), 0 0 18px rgba(255, 79, 216, 0.1);
   transform: translateY(-4px);
 }
 
@@ -275,7 +275,7 @@
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(180deg, #ff00ff, #00ffff);
+  background: linear-gradient(180deg, var(--accent-pink), var(--accent-cyan), var(--gold));
   opacity: 0.3;
 }
 
@@ -296,7 +296,7 @@
   width: 8px;
   height: 8px;
   border-radius: 50%;
-  background: #ff00ff;
+  background: var(--accent-pink);
   border: 2px solid var(--surface-0);
 }
 
