@@ -188,28 +188,28 @@
         <div class="section-header">
           <div>
             <h2 class="section-title">Frische <span>Sets</span></h2>
-            <p class="lead">SoundCloud bleibt unser musikalischer Kern. Hier zeigen wir schnell unseren Stil, bevor es in Bio, TikTok oder den Shop weitergeht.</p>
+            <p class="lead">🔄 <strong>Live synchronized:</strong> Hier zeigen wir direkt unseren Sound mit Genres und Beschreibungen wie auf SoundCloud. Automatisch aktualisiert, immer aktuell.</p>
           </div>
           <a class="btn btn-secondary" href="musik.html">Alle Sets</a>
         </div>
-        <div class="soundcloud-grid" id="music-preview-grid">
-          <div class="soundcloud-item" data-track="2126060061" role="region" aria-label="SoundCloud Track 1"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2168299668" role="region" aria-label="SoundCloud Track 2"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2008790983" role="region" aria-label="SoundCloud Track 3"><div class="skelly"></div></div>
+
+        <!-- Featured Latest Track with Description & Genres -->
+        <div style="margin-bottom: 3rem;" data-featured-track>
+          <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+            🔄 Neuester Track lädt...
+          </div>
         </div>
-        <div class="three-grid latest-track-grid">
-          <article class="feature-card">
-            <h3 class="card-title">Emotional Flow</h3>
-            <p class="card-copy">Aktuellster Upload auf SoundCloud, veröffentlicht am 7. Oktober 2025.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Old Dogs are better Raver</h3>
-            <p class="card-copy">Veröffentlicht am 19. September 2025 und klar in unserer rougheren Linie verortet.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">SYNCOPATH Part II</h3>
-            <p class="card-copy">Veröffentlicht am 10. September 2025 und direkt an die SYNCOPATH-Reihe angeschlossen.</p>
-          </article>
+
+        <!-- Track Grid with Genres -->
+        <div>
+          <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-primary);">
+            Top Tracks dieser Woche
+          </h3>
+          <div class="three-grid" data-homepage-track-grid>
+            <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+              🔄 Laden...
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -320,5 +320,6 @@
   <script src="main.js" defer></script>
   <script src="nextlevel.js" defer></script>
   <script src="animations.js" defer></script>
+  <script src="soundcloud-loader-homepage.js" defer></script>
 </body>
 </html>

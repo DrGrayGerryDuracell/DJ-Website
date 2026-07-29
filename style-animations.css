@@ -410,3 +410,175 @@ iframe[src*="soundcloud"] {
     transition: all var(--anim-duration-fast) var(--anim-ease-smooth);
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   HOMEPAGE TRACK CARDS & GENRES
+   ═══════════════════════════════════════════════════════════════ */
+
+.featured-track-card {
+  background: var(--surface-1);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 2rem;
+  animation: fadeInUp 0.6s var(--anim-ease-smooth) backwards;
+  transition: all 0.3s var(--anim-ease-smooth);
+}
+
+.featured-track-card:hover {
+  border-color: #ff00ff;
+  box-shadow: 0 12px 32px rgba(255, 0, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.featured-header {
+  margin-bottom: 1.5rem;
+}
+
+.featured-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+  color: var(--text-primary);
+}
+
+.featured-date {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.featured-genres {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 1.5rem;
+}
+
+.genre-tag-homepage {
+  background: rgba(255, 0, 255, 0.1);
+  border: 0.5px solid rgba(255, 0, 255, 0.3);
+  color: #ff00ff;
+  padding: 6px 12px;
+  border-radius: 50px;
+  font-size: 11px;
+  font-weight: 500;
+  display: inline-block;
+  transition: all 0.3s var(--anim-ease-smooth);
+}
+
+.genre-tag-homepage:hover {
+  border-color: #ff00ff;
+  box-shadow: 0 4px 12px rgba(255, 0, 255, 0.2);
+  transform: scale(1.05);
+}
+
+.featured-description {
+  font-size: 15px;
+  color: var(--text-primary);
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.featured-stats {
+  display: flex;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-small {
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.stat-small span {
+  display: flex;
+  gap: 4px;
+}
+
+.track-card-homepage {
+  background: var(--surface-1);
+  border: 0.5px solid var(--border);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s var(--anim-ease-smooth);
+  animation-delay: var(--delay, 0s);
+}
+
+.track-card-homepage:hover {
+  border-color: #ff00ff;
+  box-shadow: 0 12px 32px rgba(255, 0, 255, 0.15);
+  transform: translateY(-4px);
+}
+
+.track-header-homepage {
+  margin-bottom: 1rem;
+}
+
+.track-title-homepage {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  color: var(--text-primary);
+  line-height: 1.4;
+}
+
+.track-date-small {
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.track-genres-homepage {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+
+.track-description-homepage {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+.track-stats-row {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.btn-sm {
+  padding: 8px 16px;
+  font-size: 12px;
+  width: 100%;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .featured-track-card {
+    padding: 1.5rem;
+  }
+
+  .featured-title {
+    font-size: 20px;
+  }
+
+  .featured-genres {
+    gap: 6px;
+  }
+
+  .genre-tag-homepage {
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+
+  .track-title-homepage {
+    font-size: 14px;
+  }
+
+  .track-card-homepage {
+    padding: 1rem;
+  }
+}
