@@ -1,0 +1,104 @@
+{
+  "site": {
+    "title": "Dr. Gray & Mrs. Dr. Gray",
+    "tagline": "🔥 Driven by Rhythm. United by Emotion.",
+    "description": "Couple-Duo aus Köln für Driving, Melodic und Peaktime Techno",
+    "location": "Köln",
+    "founded": 2024
+  },
+  "social": {
+    "tiktok_main": {
+      "handle": "@drgray_mrsdrgray",
+      "url": "https://www.tiktok.com/@drgray_mrsdrgray",
+      "label": "TikTok Live",
+      "description": "Jeden Freitag 18:00 Uhr live"
+    },
+    "tiktok_afterhours": {
+      "handle": "@gray.afterhours",
+      "url": "https://www.tiktok.com/@gray.afterhours",
+      "label": "Afterhours",
+      "description": "Late-night Vibes"
+    },
+    "soundcloud": {
+      "handle": "drgray_sic",
+      "url": "https://soundcloud.com/drgray_sic",
+      "label": "SoundCloud",
+      "description": "Alle unsere Sets"
+    }
+  },
+  "artists": {
+    "dr_gray": {
+      "name": "Dr. Gray",
+      "role": "Driving Force",
+      "energy": "Druck, Kontrolle, dunkle Kante",
+      "description": "Hypnotische Spannung, Driving Techno, Peaktime Energy, Kontrolle im Mix",
+      "characteristics": [
+        "Druckvoll",
+        "Kontrolliert",
+        "Dunkel fokussiert",
+        "Strukturiert"
+      ]
+    },
+    "mrs_dr_gray": {
+      "name": "Mrs. Dr. Gray",
+      "role": "Presence & Connection",
+      "energy": "Präsenz, Reiz, klare Haltung",
+      "description": "Community Vibe, Präsenz, Emotion im Fokus, Damenlinie Lead",
+      "characteristics": [
+        "Selbstbewusst",
+        "Nahbar",
+        "Elektrisierend",
+        "Community-orientiert"
+      ]
+    }
+  },
+  "music": {
+    "genres": ["Driving Techno", "Melodic Techno", "Peaktime"],
+    "tempo_range": "120-135 BPM",
+    "vibe": "Emotional mit Haltung, hypnotisch, club-ready"
+  },
+  "sync": {
+    "soundcloud_enabled": true,
+    "soundcloud_cache_duration": 3600000,
+    "auto_update_interval": 3600000,
+    "last_sync": null
+  },
+  "pages": {
+    "home": {
+      "title": "Home",
+      "url": "index.html",
+      "include_latest_tracks": true,
+      "include_videos": true
+    },
+    "bio": {
+      "title": "Bio",
+      "url": "bio.html",
+      "include_latest_tracks": true,
+      "include_artist_profiles": true,
+      "personal_focused": true
+    },
+    "musik": {
+      "title": "Musik",
+      "url": "musik.html",
+      "include_latest_tracks": true,
+      "include_soundcloud": true
+    },
+    "videos": {
+      "title": "Videos",
+      "url": "videos.html",
+      "include_tiktok": true,
+      "include_community": true
+    },
+    "shop": {
+      "title": "Shop",
+      "url": "shop.html",
+      "include_merch": true,
+      "minimal_bio": true
+    },
+    "kontakt": {
+      "title": "Kontakt",
+      "url": "kontakt.html",
+      "include_social_links": true
+    }
+  }
+}
