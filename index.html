@@ -6,7 +6,7 @@
   <meta name="description" content="🔥 Driven by Rhythm. United by Emotion. — Dr. Gray & Mrs. Dr. Gray: Driving Techno aus Köln. TikTok Live Freitags, Sets auf SoundCloud.">
   <meta name="keywords" content="Dr. Gray, Mrs. Dr. Gray, Techno, Köln, TikTok Live, SoundCloud, DJ Duo, Driving Techno">
   <meta name="author" content="Dr. Gray & Mrs. Dr. Gray">
-  <meta name="theme-color" content="#060606">
+  <meta name="theme-color" content="#0a0a0a">
   <meta property="og:title" content="Dr. Gray & Mrs. Dr. Gray | Driven by Rhythm. United by Emotion.">
   <meta property="og:description" content="⚡ Driving Techno • Peak Time • Dark & Hypnotic. DJ Duo aus Köln. TikTok Live, SoundCloud Sets.">
   <meta property="og:image" content="https://www.drgray-mrsdrgray.com/assets/images/flx10-gold.png">
@@ -27,12 +27,14 @@
   <title>Dr. Gray & Mrs. Dr. Gray | Driven by Rhythm. United by Emotion.</title>
   <style>
     :root {
-      --surface-0: #0a0a0a;
-      --surface-1: #141414;
-      --surface-2: #1e1e1e;
-      --border: #333333;
+      --black: #0a0a0a;
+      --dark-gray: #141414;
+      --gold: #d4af37;
+      --pink: #ff00ff;
+      --pink-light: #ff33ff;
       --text-primary: #ffffff;
       --text-secondary: #b3b3b3;
+      --border: #2a2a2a;
     }
 
     * {
@@ -41,8 +43,16 @@
       box-sizing: border-box;
     }
 
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow-x: hidden;
+    }
+
     body {
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1f 50%, #0a0a0a 100%);
+      background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 10, 31, 0.95) 50%, rgba(10, 10, 10, 0.95) 100%),
+                  url('/assets/images/flx10-gold.png') center/cover fixed no-repeat;
+      background-attachment: fixed;
       color: var(--text-primary);
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
@@ -55,7 +65,7 @@
       position: absolute;
       top: -40px;
       left: 0;
-      background: #ff00ff;
+      background: var(--pink);
       color: white;
       padding: 8px;
       text-decoration: none;
@@ -67,7 +77,7 @@
     }
 
     header {
-      background: rgba(10, 10, 10, 0.9);
+      background: rgba(10, 10, 10, 0.95);
       border-bottom: 1px solid var(--border);
       padding: 1.5rem 0;
       position: sticky;
@@ -91,28 +101,51 @@
       gap: 1rem;
       text-decoration: none;
       color: var(--text-primary);
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand:hover {
+      opacity: 0.8;
     }
 
     .nav-brand-logos {
       display: flex;
       gap: 0.5rem;
+      position: relative;
     }
 
     .nav-brand-logos img {
       width: 40px;
       height: 40px;
       border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+
+    .nav-brand:hover .nav-brand-logos img {
+      filter: drop-shadow(0 0 8px var(--gold));
+    }
+
+    .logo-blink {
+      position: absolute;
+      opacity: 0;
+      animation: logoBlink 0.5s ease-in-out 2s infinite;
+    }
+
+    @keyframes logoBlink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; filter: brightness(1.5) drop-shadow(0 0 12px var(--gold)); }
     }
 
     .nav-brand-text strong {
       display: block;
       font-size: 16px;
       font-weight: 600;
+      color: var(--gold);
     }
 
     .nav-brand-text span {
       font-size: 12px;
-      color: var(--text-secondary);
+      color: var(--pink);
     }
 
     .nav-links {
@@ -126,11 +159,12 @@
       text-decoration: none;
       font-size: 14px;
       font-weight: 500;
-      transition: color 0.3s ease;
+      transition: all 0.3s ease;
+      position: relative;
     }
 
     .nav-links a:hover {
-      color: #ff00ff;
+      color: var(--gold);
     }
 
     main {
@@ -149,38 +183,42 @@
 
     .eyebrow {
       display: block;
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: #ff00ff;
+      color: var(--gold);
       margin-bottom: 1rem;
       font-weight: 600;
     }
 
     h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 8vw, 5rem);
+      font-size: clamp(2.5rem, 8vw, 4.5rem);
       font-weight: 700;
       margin-bottom: 1rem;
-      line-height: 1.1;
+      line-height: 1.2;
+      background: linear-gradient(135deg, var(--text-primary) 0%, var(--gold) 50%, var(--pink) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .tagline {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       color: var(--text-secondary);
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       line-height: 1.8;
     }
 
     .info-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.5rem;
       margin-bottom: 3rem;
       padding: 2rem;
-      background: rgba(255, 0, 255, 0.05);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(255, 0, 255, 0.05) 100%);
       border-radius: 12px;
-      border: 1px solid rgba(255, 0, 255, 0.1);
+      border: 1px solid var(--border);
     }
 
     .info-card {
@@ -188,8 +226,8 @@
     }
 
     .info-card h3 {
-      font-size: 14px;
-      color: #ff00ff;
+      font-size: 13px;
+      color: var(--gold);
       margin-bottom: 0.5rem;
       font-weight: 600;
       text-transform: uppercase;
@@ -204,7 +242,7 @@
 
     .bio-text {
       background: rgba(20, 20, 20, 0.8);
-      border-left: 4px solid #ff00ff;
+      border-left: 4px solid var(--gold);
       padding: 2rem;
       border-radius: 8px;
       margin-bottom: 3rem;
@@ -213,85 +251,139 @@
       color: var(--text-primary);
     }
 
+    .bio-text strong {
+      color: var(--gold);
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      margin-bottom: 2rem;
+      color: var(--gold);
+    }
+
     .cta-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 1.5rem;
       margin-bottom: 3rem;
     }
 
     .nav-card {
-      background: var(--surface-1);
+      background: linear-gradient(135deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 0, 255, 0.05) 100%);
       border: 1px solid var(--border);
       border-radius: 12px;
-      padding: 2rem;
+      padding: 2rem 1.5rem;
       text-decoration: none;
       color: var(--text-primary);
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       display: flex;
       flex-direction: column;
       align-items: center;
       gap: 1rem;
       text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .nav-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+      transition: left 0.5s ease;
+    }
+
+    .nav-card:hover::before {
+      left: 100%;
     }
 
     .nav-card:hover {
-      border-color: #ff00ff;
-      box-shadow: 0 12px 32px rgba(255, 0, 255, 0.2);
-      transform: translateY(-4px);
-      background: rgba(255, 0, 255, 0.05);
+      border-color: var(--gold);
+      box-shadow: 0 0 20px rgba(212, 175, 55, 0.3), inset 0 0 20px rgba(255, 0, 255, 0.1);
+      transform: translateY(-6px);
     }
 
     .nav-card-icon {
-      font-size: 2rem;
+      font-size: 2.5rem;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 0px var(--gold));
+    }
+
+    .nav-card:hover .nav-card-icon {
+      filter: drop-shadow(0 0 12px var(--gold));
+      transform: scale(1.1);
     }
 
     .nav-card h3 {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
+      color: var(--gold);
+      position: relative;
+      z-index: 1;
     }
 
     .nav-card p {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-secondary);
+      position: relative;
+      z-index: 1;
     }
 
     .social-links {
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 1.5rem;
       margin-bottom: 2rem;
+      flex-wrap: wrap;
     }
 
     .social-link {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 0.5rem;
       color: var(--text-secondary);
       text-decoration: none;
       font-size: 13px;
-      transition: color 0.3s ease;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      border-radius: 50px;
     }
 
     .social-link:hover {
-      color: #ff00ff;
+      color: var(--gold);
+      border-color: var(--gold);
+      box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
+      transform: scale(1.05);
     }
 
     .language-toggle {
       text-align: center;
       margin-bottom: 2rem;
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-secondary);
     }
 
     .language-toggle a {
-      color: #ff00ff;
+      color: var(--pink);
       text-decoration: none;
       margin: 0 0.5rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .language-toggle a:hover {
+      color: var(--gold);
+      text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
     }
 
     footer {
-      background: rgba(10, 10, 10, 0.95);
+      background: rgba(10, 10, 10, 0.98);
       border-top: 1px solid var(--border);
       padding: 2rem;
       text-align: center;
@@ -299,10 +391,24 @@
       font-size: 12px;
     }
 
+    footer strong {
+      color: var(--gold);
+    }
+
+    footer a {
+      color: var(--pink);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    footer a:hover {
+      color: var(--gold);
+    }
+
     @keyframes fadeInUp {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(30px);
       }
       to {
         opacity: 1;
@@ -312,11 +418,11 @@
 
     @media (max-width: 768px) {
       h1 {
-        font-size: 2rem;
+        font-size: 1.8rem;
       }
 
       .tagline {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
       }
 
       .nav-links {
@@ -332,7 +438,34 @@
       }
 
       .cta-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .nav-card {
+        padding: 1.5rem 1rem;
+      }
+
+      .nav-card-icon {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .cta-grid {
         grid-template-columns: 1fr;
+      }
+
+      .nav-card h3 {
+        font-size: 14px;
+      }
+
+      .social-links {
+        gap: 0.8rem;
+      }
+
+      .social-link {
+        padding: 6px 12px;
+        font-size: 11px;
       }
     }
   </style>
@@ -346,6 +479,7 @@
         <span class="nav-brand-logos">
           <img src="assets/images/logo1.png" alt="Dr. Gray Logo" width="40" height="40">
           <img src="assets/images/logo2.png" alt="Mrs. Dr. Gray Logo" width="40" height="40">
+          <img class="logo-blink" src="assets/images/logo1.png" alt="" width="40" height="40" aria-hidden="true">
         </span>
         <span class="nav-brand-text">
           <strong>Dr. Gray & Mrs. Dr. Gray</strong>
@@ -366,7 +500,7 @@
   <main id="main-content">
     <div class="hero-content">
       <span class="eyebrow">⚡ Driving Techno • Peak Time • Dark & Hypnotic</span>
-      <h1>Driven by Rhythm.<br><span style="color: #ff00ff;">United by Emotion.</span></h1>
+      <h1>Driven by Rhythm.<br><span style="color: var(--pink);">United by Emotion.</span></h1>
 
       <div class="info-grid">
         <div class="info-card">
@@ -397,7 +531,7 @@
         <p>Techno ist für uns mehr als Musik. Es ist Bewegung, Ausdruck und Gemeinschaft. Der Moment, in dem der Kopf abschaltet, der Bass übernimmt und aus einzelnen Menschen eine gemeinsame Energie entsteht.</p>
       </div>
 
-      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2rem; color: #ff00ff;">Entdecke uns</h2>
+      <h2 class="section-title">Entdecke uns</h2>
 
       <div class="cta-grid">
         <a href="bio.html" class="nav-card">
@@ -450,8 +584,8 @@
   <footer>
     <div style="max-width: 1200px; margin: 0 auto;">
       <strong>Dr. Gray & Mrs. Dr. Gray</strong>
-      <div style="margin: 1rem 0;">🔥 Driven by Rhythm. United by Emotion.</div>
-      <div style="margin-top: 1rem;">© 2026 Dr. Gray & Mrs. Dr. Gray | <a href="kontakt.html" style="color: #ff00ff; text-decoration: none;">Impressum & Kontakt</a></div>
+      <div style="margin: 1rem 0; color: var(--gold);">🔥 Driven by Rhythm. United by Emotion.</div>
+      <div style="margin-top: 1rem;">© 2026 Dr. Gray & Mrs. Dr. Gray | <a href="kontakt.html">Impressum & Kontakt</a></div>
     </div>
   </footer>
 
