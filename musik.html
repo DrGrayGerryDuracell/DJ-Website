@@ -3,8 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Musik von Dr. Gray & Mrs. Dr. Gray: Techno-Sets auf SoundCloud zwischen driving, melodic und peaktime Energie.">
+  <meta name="description" content="🔥 Driven by Rhythm. United by Emotion. — Musik von Dr. Gray & Mrs. Dr. Gray: Alle Tracks, Sets & Mixes mit Player, Likes, Comments, Genres & Covers auf SoundCloud.">
   <meta name="theme-color" content="#060606">
+  <meta property="og:title" content="Musik | Dr. Gray & Mrs. Dr. Gray">
+  <meta property="og:description" content="Neueste Sets & Tracks mit Covers, Genres und Statistiken. Live synchronized von SoundCloud.">
+  <meta property="og:image" content="https://www.drgray-mrsdrgray.com/assets/images/flx10-gold.png">
+  <meta property="og:url" content="https://www.drgray-mrsdrgray.com/musik.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Musik | Dr. Gray & Mrs. Dr. Gray">
+  <meta name="twitter:description" content="Neueste Sets & Tracks mit Covers, Genres und Statistiken.">
+  <meta name="twitter:image" content="https://www.drgray-mrsdrgray.com/assets/images/flx10-gold.png">
   <link rel="preconnect" href="https://w.soundcloud.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +24,231 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <title>Musik | Dr. Gray & Mrs. Dr. Gray</title>
+  <style>
+    /* Track Card Pro */
+    .track-card-pro {
+      background: var(--surface-1);
+      border: 0.5px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      animation-delay: var(--delay, 0s);
+    }
+
+    .track-card-pro:hover {
+      border-color: #ff00ff;
+      box-shadow: 0 12px 32px rgba(255, 0, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    /* Cover */
+    .track-cover-wrapper {
+      position: relative;
+      width: 100%;
+      padding-bottom: 100%;
+      background: linear-gradient(135deg, #ff00ff20, #00ffff20);
+      overflow: hidden;
+    }
+
+    .track-cover {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .track-card-pro:hover .track-cover {
+      transform: scale(1.05);
+    }
+
+    .badge-new {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: #ff00ff;
+      color: #000;
+      padding: 8px 12px;
+      border-radius: 50px;
+      font-size: 12px;
+      font-weight: 600;
+      z-index: 10;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+    }
+
+    /* Player */
+    .track-player {
+      background: var(--surface-0);
+      padding: 0.5rem;
+    }
+
+    .track-player iframe {
+      border-radius: 8px;
+    }
+
+    /* Info */
+    .track-info {
+      padding: 1.5rem;
+    }
+
+    .track-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--text-primary);
+    }
+
+    .track-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    /* Genres */
+    .track-genres {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .genre-tag {
+      background: rgba(255, 0, 255, 0.1);
+      border: 0.5px solid rgba(255, 0, 255, 0.3);
+      color: #ff00ff;
+      padding: 6px 12px;
+      border-radius: 50px;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    /* Stats */
+    .track-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      padding: 1rem;
+      background: rgba(255, 0, 255, 0.05);
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .stat {
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stat-icon {
+      font-size: 20px;
+    }
+
+    .stat-value {
+      font-weight: 600;
+      color: #ff00ff;
+      font-size: 16px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Meta */
+    .track-meta {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .track-meta small {
+      display: flex;
+      gap: 4px;
+    }
+
+    /* Button */
+    .btn-primary {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* Top Tracks List */
+    .top-track-item {
+      display: flex;
+      gap: 12px;
+      padding: 12px;
+      background: var(--surface-1);
+      border: 0.5px solid var(--border);
+      border-radius: 8px;
+      transition: all 0.3s ease;
+      align-items: center;
+    }
+
+    .top-track-item:hover {
+      border-color: #ff00ff;
+      background: var(--surface-2);
+    }
+
+    .top-track-cover {
+      width: 60px;
+      height: 60px;
+      border-radius: 6px;
+      object-fit: cover;
+      flex-shrink: 0;
+    }
+
+    .top-track-details {
+      flex: 1;
+    }
+
+    .top-track-details h4 {
+      font-size: 14px;
+      font-weight: 600;
+      margin: 0 0 6px 0;
+      color: var(--text-primary);
+    }
+
+    .top-track-stats {
+      font-size: 12px;
+      color: var(--text-secondary);
+      display: flex;
+      gap: 12px;
+    }
+
+    .btn-sm {
+      padding: 8px 16px;
+      font-size: 12px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .track-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .track-card-pro {
+        margin-bottom: 1rem;
+      }
+
+      .top-track-cover {
+        width: 50px;
+        height: 50px;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
@@ -54,154 +288,83 @@
   </div>
 
   <main id="main-content" class="page-content">
-    <section class="hero hero-home hero-musik">
+    <!-- HERO -->
+    <section class="hero hero-musik">
       <div class="hero-inner">
-        <span class="eyebrow">Musik | Druck, Tiefe, Duo-Handschrift</span>
-        <h1 class="page-title">Hier hört man nicht nur Tracks. <span>Hier hört man uns.</span></h1>
-        <p class="lead">Musik ist bei uns kein Beiwerk, sondern Beweis. Hier wird direkt hoerbar, wie wir Druck, Tiefe und Duo-Energie ohne Schablone zusammenziehen.</p>
+        <span class="eyebrow scroll-fade-in">Musik | Druck, Tiefe, Duo-Handschrift</span>
+        <h1 class="page-title scroll-slide-in-left">Hier hört man nicht nur Tracks. <span>Hier hört man uns.</span></h1>
+        <p class="lead scroll-fade-in">Musik ist bei uns kein Beiwerk, sondern Beweis. Hier wird direkt hörbar, wie wir Druck, Tiefe und Duo-Energie ohne Schablone zusammenziehen.</p>
       </div>
     </section>
 
-    <section class="section">
+    <!-- PHILOSOPHY -->
+    <section class="section scroll-fade-in">
       <div class="section-shell">
         <div class="section-header">
           <div>
             <h2 class="section-title">Unser Sound auf <span>einen Blick</span></h2>
-            <p class="lead">Wir zeigen hier nicht Technik, sondern Wirkung. Unsere Sets muessen ziehen, halten und nachhallen: Druck im Koerper, Haltung im Kopf, Verbindung im Moment.</p>
+            <p class="lead">Wir zeigen hier nicht Technik, sondern Wirkung. Unsere Sets müssen ziehen, halten und nachhallen: Druck im Körper, Haltung im Kopf, Verbindung im Moment.</p>
           </div>
         </div>
         <div class="three-grid">
-          <article class="feature-card">
+          <article class="feature-card scroll-scale-in">
             <h3 class="card-title">Live gedacht</h3>
-            <p class="card-copy">Auch wenn vieles digital startet, bleibt unser Kern Club. Bewegung, Koerper und ein Spannungsbogen, der Menschen fuehrt statt nur Lautheit zu liefern.</p>
+            <p class="card-copy">Auch wenn vieles digital startet, bleibt unser Kern Club. Bewegung, Körper und ein Spannungsbogen, der Menschen führt statt nur Lautheit zu liefern.</p>
           </article>
-          <article class="feature-card">
-            <h3 class="card-title">Zwischen Druck &amp; Gefühl</h3>
-            <p class="card-copy">Tracks duerfen hart sein, aber nie leer. Emotion darf rein, aber nie als Deko. Genau diese Balance trennt unsere Linie von Standard-Techno.</p>
+          <article class="feature-card scroll-scale-in">
+            <h3 class="card-title">Zwischen Druck & Gefühl</h3>
+            <p class="card-copy">Tracks dürfen hart sein, aber nie leer. Emotion darf rein, aber nie als Deko. Genau diese Balance trennt unsere Linie von Standard-Techno.</p>
           </article>
-          <article class="feature-card">
+          <article class="feature-card scroll-scale-in">
             <h3 class="card-title">Duo-Handschrift</h3>
-            <p class="card-copy">Unser Vibe ist nicht austauschbar, weil man hoert, dass hier zwei Perspektiven zusammenarbeiten: Kontrolle und Naehe, Kante und Herz.</p>
+            <p class="card-copy">Unser Vibe ist nicht austauschbar, weil man hört, dass hier zwei Perspektiven zusammenarbeiten: Kontrolle und Nähe, Kante und Herz.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt">
+    <!-- LATEST TRACKS WITH PLAYERS -->
+    <section class="section alt scroll-fade-in" data-soundcloud-feed>
       <div class="section-shell">
         <div class="section-header">
           <div>
-            <h2 class="section-title">Controller-<span>Linie</span></h2>
-            <p class="lead">Die neue Upload-Serie zeigt unsere musikalische Handschrift auch visuell: Technik, Kontrolle und Bewegung statt austauschbarer Promo-Optik.</p>
-          </div>
-        </div>
-        <div class="controller-showcase" aria-label="Controller Visual Showcase">
-          <div class="controller-track">
-            <article class="video-card controller-card depth-1">
-              <img src="assets/uploads/web-images/controller-decks-closeup-2026.jpg" alt="DJ-Decks im Close-up mit farbigen Buttons" width="1920" height="1280" loading="lazy">
-              <h3 class="card-title">Decks im Fokus</h3>
-              <p class="card-copy">Klarer Blick auf Setup und Druckpunkt. Genau diese Bildsprache passt zu der kontrollierten Dr.-Gray-Achse im Sound.</p>
-            </article>
-            <article class="video-card controller-card depth-2">
-              <img src="assets/uploads/web-images/controller-hands-blue-2026.jpg" alt="Haende am DJ-Controller im blauen Clublicht" width="1920" height="1440" loading="lazy">
-              <h3 class="card-title">Hands on Rhythm</h3>
-              <p class="card-copy">Direkte Performance statt Stock-Material: echte Bewegung, echte Energie, echter Aufbau.</p>
-            </article>
-            <article class="video-card controller-card depth-3">
-              <img src="assets/uploads/web-images/controller-laser-green-2026.jpg" alt="DJ-Controller mit gruenen Laserlinien im dunklen Raum" width="1920" height="1280" loading="lazy">
-              <h3 class="card-title">Laser und Spannung</h3>
-              <p class="card-copy">Dunkel, technoid und auf Wirkung gebaut. Der Look traegt genau die Peak-Time-Atmosphaere, die man in unseren Sets hoert.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- DYNAMISCH: Auto-updated from SoundCloud every hour -->
-    <section class=”section scroll-fade-in” data-soundcloud-feed>
-      <div class=”section-shell”>
-        <div class=”section-header”>
-          <div>
-            <h2 class=”section-title”>Zuletzt hochgeladen auf <span>SoundCloud</span></h2>
-            <p class=”lead”>
-              🔄 <strong>Live synchronized:</strong> Diese Tracks werden automatisch von SoundCloud aktualisiert.
-              Keine veralteten Daten mehr - immer das Neueste von uns.
+            <h2 class="section-title">Neueste <span>Tracks & Sets</span></h2>
+            <p class="lead">
+              🔄 <strong>Live synchronized:</strong> Die eingebetteten Player laden automatisch.
+              Mit Likes, Kommentare und Covers direkt zum Spielen!
             </p>
           </div>
-          <a class=”btn btn-secondary” href=”https://soundcloud.com/drgray_sic” target=”_blank” rel=”noopener noreferrer”>
-            Alle Sets auf SoundCloud
+          <a class="btn btn-secondary" href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">
+            Alle auf SoundCloud
           </a>
         </div>
-        <div class=”three-grid” data-soundcloud-tracks>
-          <!-- Auto-populated by soundcloud-sync.js -->
-          <article class=”feature-card scroll-fade-in”>
-            <h3 class=”card-title”>🔄 Laden...</h3>
-            <p class=”card-copy”>Neueste Tracks werden gerade von SoundCloud abgerufen.</p>
-          </article>
-        </div>
-      </div>
-    </section>
 
-    <section class=”section alt scroll-fade-in”>
-      <div class=”section-shell”>
-        <div class=”section-header”>
-          <div>
-            <h2 class=”section-title”>Direkt von <span>SoundCloud</span></h2>
-            <p class=”lead”>
-              Die eingebetteten Tracks sind unser Kern: Hier wird sofort klar,
-              wie wir aufbauen, Druck halten und Spannung als Duo steuern.
-            </p>
+        <!-- Track Cards mit Players -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 2rem;" data-soundcloud-track-cards>
+          <div class="track-card-pro scroll-fade-in">
+            <div style="text-align: center; padding: 3rem; background: var(--surface-0);">
+              <p style="color: var(--text-secondary);">🔄 Laden...</p>
+            </div>
           </div>
         </div>
-        <div class=”soundcloud-grid”>
-          <!-- Emotional Flow -->
-          <iframe width=”100%” height=”166” scrolling=”no” frameborder=”no” allow=”autoplay” src=”https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2126060061&color=%23ff00ff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true” data-track=”2126060061” role=”region” aria-label=”SoundCloud Track 1”></iframe>
-
-          <!-- Old Dogs are better Raver -->
-          <iframe width=”100%” height=”166” scrolling=”no” frameborder=”no” allow=”autoplay” src=”https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2168299668&color=%2300ffff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true” data-track=”2168299668” role=”region” aria-label=”SoundCloud Track 2”></iframe>
-
-          <!-- SYNCOPATH Part II -->
-          <iframe width=”100%” height=”166” scrolling=”no” frameborder=”no” allow=”autoplay” src=”https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/2008790983&color=%23ff00ff&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true” data-track=”2008790983” role=”region” aria-label=”SoundCloud Track 3”></iframe>
-        </div>
       </div>
     </section>
 
-    <section class="section alt">
+    <!-- TOP TRACKS LIST -->
+    <section class="section scroll-fade-in">
       <div class="section-shell">
         <div class="section-header">
           <div>
-            <h2 class="section-title">Ausgewählte <span>Tracks &amp; Sets</span></h2>
-            <p class="lead">Die eingebetteten Sets sind unser Kern: Hier wird sofort klar, wie wir aufbauen, Druck halten und Spannung als Duo steuern.</p>
+            <h2 class="section-title">Alle <span>Tracks</span></h2>
+            <p class="lead">Die komplette Liste mit den neuesten & beliebtesten Tracks. Jeder mit Play-Count, Likes und direktem SoundCloud-Link.</p>
           </div>
-          <a class="btn btn-secondary" href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud Profil</a>
         </div>
-        <div class="soundcloud-grid">
-          <div class="soundcloud-item" data-track="2126060061" role="region" aria-label="SoundCloud Track 1"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2008790983" role="region" aria-label="SoundCloud Track 2"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2032581476" role="region" aria-label="SoundCloud Track 3"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2173521759" role="region" aria-label="SoundCloud Track 4"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2112398340" role="region" aria-label="SoundCloud Track 5"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2168299668" role="region" aria-label="SoundCloud Track 6"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="1959994003" role="region" aria-label="SoundCloud Track 7"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2113662411" role="region" aria-label="SoundCloud Track 8"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2168266476" role="region" aria-label="SoundCloud Track 9"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2120920662" role="region" aria-label="SoundCloud Track 10"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="2184511415" role="region" aria-label="SoundCloud Track 11"><div class="skelly"></div></div>
-          <div class="soundcloud-item" data-track="1909849949" role="region" aria-label="SoundCloud Track 12"><div class="skelly"></div></div>
-        </div>
-      </div>
-    </section>
 
-    <section class="section">
-      <div class="section-shell two-grid">
-        <article class="track-note">
-          <h2 class="card-title">Fuer unsere Community</h2>
-          <p class="card-copy">Wenn wir auf TikTok den Hook setzen, zeigen wir hier die volle Strecke: mehr Raum, mehr Entwicklung, mehr Tiefe.</p>
-        </article>
-        <article class="track-note">
-          <h2 class="card-title">Fuer Booker</h2>
-          <p class="card-copy">Die Sets zeigen direkt, wie wir Spannung bauen, Dynamik halten und als Duo im Raum funktionieren. Genau deshalb taugt diese Seite als kompaktes Audio-Press-Kit.</p>
-        </article>
+        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 2rem;" data-soundcloud-top-tracks>
+          <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+            🔄 Laden...
+          </div>
+        </div>
       </div>
     </section>
   </main>
@@ -214,11 +377,12 @@
       </div>
       <div class="footer-links">
         <a href="bio.html">Bio</a>
+        <a href="musik.html">Musik</a>
         <a href="videos.html">Videos</a>
         <a href="shop.html">Shop</a>
         <a href="kontakt.html">Kontakt</a>
         <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
-        <a href="https://www.tiktok.com/@drgray_mrsdrgray" target="_blank" rel="noopener noreferrer">TikTok Dr. Gray</a>
+        <a href="https://www.tiktok.com/@drgray_mrsdrgray" target="_blank" rel="noopener noreferrer">TikTok Live</a>
         <a href="https://www.tiktok.com/@gray.afterhours" target="_blank" rel="noopener noreferrer">Afterhours</a>
       </div>
       <div class="muted">© <span data-year>2026</span> Dr. Gray &amp; Mrs. Dr. Gray</div>
@@ -227,6 +391,6 @@
 
   <script src="main.js" defer></script>
   <script src="animations.js" defer></script>
-  <script src="soundcloud-loader.js" defer></script>
+  <script src="soundcloud-loader-pro.js" defer></script>
 </body>
 </html>
