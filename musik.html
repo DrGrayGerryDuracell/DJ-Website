@@ -24,116 +24,6 @@
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <title>Musik | Dr. Gray & Mrs. Dr. Gray</title>
-  <style>
-    .track-card {
-      background: var(--surface-1);
-      border: 0.5px solid var(--border);
-      border-radius: 12px;
-      padding: 1.5rem;
-      transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-    }
-
-    .track-card:hover {
-      border-color: var(--gold);
-      box-shadow: 0 12px 32px rgba(245, 200, 76, 0.16), 0 0 18px rgba(255, 79, 216, 0.1);
-      transform: translateY(-4px);
-    }
-
-    .track-title {
-      font-size: 18px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: var(--text-primary);
-    }
-
-    .track-date {
-      font-size: 12px;
-      color: var(--text-secondary);
-      margin-bottom: 1rem;
-    }
-
-    .track-genres {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 1rem;
-    }
-
-    .genre-tag {
-      background: rgba(245, 200, 76, 0.1);
-      border: 0.5px solid rgba(255, 216, 109, 0.26);
-      color: var(--gold-strong);
-      padding: 6px 12px;
-      border-radius: 50px;
-      font-size: 11px;
-      font-weight: 500;
-    }
-
-    .track-desc {
-      font-size: 13px;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 1rem;
-    }
-
-    .track-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      padding: 1rem;
-      background: linear-gradient(135deg, rgba(245, 200, 76, 0.06) 0%, rgba(255, 79, 216, 0.05) 50%, rgba(52, 228, 255, 0.04) 100%);
-      border-radius: 8px;
-      margin-bottom: 1rem;
-    }
-
-    .stat {
-      text-align: center;
-      font-size: 12px;
-    }
-
-    .stat-value {
-      font-weight: 600;
-      color: var(--gold-strong);
-      display: block;
-    }
-
-    .stat-label {
-      font-size: 10px;
-      color: var(--text-secondary);
-      text-transform: uppercase;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.55rem;
-      padding: 12px 24px;
-      background: linear-gradient(135deg, var(--gold-strong), var(--gold));
-      color: #120c00;
-      border-radius: 50px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 14px;
-      transition: all 0.3s ease;
-      border: none;
-      cursor: pointer;
-      width: 100%;
-      text-align: center;
-    }
-
-    .btn:hover {
-      background: linear-gradient(135deg, var(--gold-strong), var(--pink), var(--pink-light));
-      box-shadow: 0 8px 24px rgba(245, 200, 76, 0.24), 0 0 18px rgba(255, 79, 216, 0.12);
-      transform: scale(1.02);
-    }
-
-    @media (max-width: 768px) {
-      .track-stats {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
@@ -141,7 +31,7 @@
   <header class="main-header" id="site-header">
     <nav class="main-nav" aria-label="Hauptnavigation">
       <a class="nav-brand" href="index.html">
-        <span class="nav-brand-logos" aria-hidden="true">
+        <span class="nav-brand-mark" aria-hidden="true">
           <img class="nav-brand-logo" src="assets/images/logo1.png" alt="" width="40" height="40">
           <img class="nav-brand-logo" src="assets/images/logo2.png" alt="" width="40" height="40">
           <img class="logo-blink" src="assets/images/logo1.png" alt="" width="40" height="40" aria-hidden="true">
@@ -230,10 +120,10 @@
           </a>
         </div>
 
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;" data-soundcloud-track-cards>
+        <div class="track-card-grid" data-soundcloud-track-cards>
           <!-- Tracks load here via soundcloud-loader-pro.js -->
-          <div class="track-card scroll-fade-in">
-            <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+          <div class="track-card-pro scroll-fade-in">
+            <div class="track-empty-state">
               <p>🔄 Tracks werden von SoundCloud geladen...</p>
             </div>
           </div>
@@ -251,9 +141,9 @@
           </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 2rem;" data-soundcloud-top-tracks>
+        <div class="track-list-stack" data-soundcloud-top-tracks>
           <!-- Track list loads here via soundcloud-loader-pro.js -->
-          <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+          <div class="track-empty-state">
             🔄 Tracks werden von SoundCloud geladen...
           </div>
         </div>

@@ -66,6 +66,17 @@
     );
   }
 
+  function buildEmbedUrl(trackUrl) {
+    const url = new URL('https://w.soundcloud.com/player/');
+    url.searchParams.set('url', trackUrl);
+    url.searchParams.set('visual', 'true');
+    url.searchParams.set('show_artwork', 'true');
+    url.searchParams.set('show_comments', 'false');
+    url.searchParams.set('show_user', 'true');
+    url.searchParams.set('show_reposts', 'false');
+    return url.toString();
+  }
+
   /**
    * Display full track cards with players
    */
@@ -89,11 +100,13 @@
         <div class="track-player">
           <iframe
             width="100%"
-            height="166"
+            height="300"
             scrolling="no"
             frameborder="no"
-            allow="autoplay"
-            src="${track.embedUrl}">
+            allow="autoplay; encrypted-media"
+            loading="eager"
+            title="${escapeHtml(track.title)}"
+            src="${buildEmbedUrl(track.url)}">
           </iframe>
         </div>
 
