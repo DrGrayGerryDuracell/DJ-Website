@@ -2,7 +2,7 @@
 
 ## 1. Atmosphere & Identity
 
-Dark, premium, techno, and intimate. The site feels like a black stage with controlled neon-gold edges: minimal noise, strong contrast, and a constant sense of motion underneath the surface. The signature is the dual-background system - a fixed DJ FLX black-gold scene on most pages, and a live controller video on the Home page only.
+Dark, premium, techno, and intimate. The site feels like a black stage with controlled neon-gold edges: minimal noise, strong contrast, and a constant sense of motion underneath the surface. The signature is the unified black-gold FLX background system across all pages.
 
 ## 2. Color
 
@@ -30,10 +30,9 @@ Dark, premium, techno, and intimate. The site feels like a black stage with cont
 - Gold is the primary accent family.
 - Pink and cyan are secondary energy accents used sparingly in gradients, motion, and media highlights.
 - Black and near-black surfaces carry the structure; gold carries the signal and pink/cyan add the pulse.
-- The Home page uses the live controller video as the signature background.
-- Other pages use the DJ FLX black-gold background image as the persistent backdrop.
+- All pages use the DJ FLX black-gold background image as the persistent backdrop.
 - No magenta or cyan should dominate the UI; they are support accents only.
-- The shared header uses the same dual-logo lockup everywhere, with a subtle blink treatment on the leading logo to echo the Home page.
+- The shared header uses the same dual-logo lockup everywhere, with a subtle blink treatment on the leading logo.
 
 ## 3. Typography
 
@@ -113,11 +112,12 @@ All spacing derives from an 8px visual rhythm with 4px micro-adjustments where n
 
 ### Hero
 - **Structure**: background media layer, gradient overlay, eyebrow, title, lead, CTA row
-- **Variants**: Home video hero, image-backed section hero
+- **Variants**: image-backed section hero
+- **Variants**: image-backed hero section
 - **Spacing**: `--space-12` to `--space-20`
 - **States**: default, reduced motion fallback
 - **Accessibility**: content always readable over media layers
-- **Motion**: Home video loops; other heroes remain static with subtle ambient overlays
+- **Motion**: all heroes remain static with subtle ambient overlays
 
 ### Card
 - **Structure**: image/media, title, copy, optional pills, CTA
@@ -137,10 +137,10 @@ All spacing derives from an 8px visual rhythm with 4px micro-adjustments where n
 
 ### Media Stage
 - **Structure**: video or image frame with poster, overlay, rounded container
-- **Variants**: Home video background, reel preview, image panel
+- **Variants**: reel preview, image panel
 - **Spacing**: `--space-4`
 - **States**: default, hover, loading poster fallback
-- **Accessibility**: muted autoplay only; poster must carry meaning if video fails
+- **Accessibility**: media must remain readable if image assets fail to load
 - **Motion**: subtle scale or brightness modulation only
 
 ## 6. Motion & Interaction

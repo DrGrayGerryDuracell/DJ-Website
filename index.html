@@ -50,25 +50,12 @@
     }
 
     body {
-      background: linear-gradient(180deg, rgba(5, 5, 5, 0.92) 0%, rgba(9, 9, 9, 0.98) 100%);
       color: var(--text-primary);
       font-family: 'Poppins', sans-serif;
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-
-    .site-bg-video::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(4, 4, 4, 0.28), rgba(4, 4, 4, 0.88)),
-        radial-gradient(circle at 20% 16%, rgba(255, 79, 216, 0.07), transparent 24%),
-        radial-gradient(circle at 84% 74%, rgba(52, 228, 255, 0.06), transparent 22%),
-        radial-gradient(circle at 64% 22%, rgba(245, 200, 76, 0.16), transparent 22%);
-      pointer-events: none;
     }
 
     .skip-link {
@@ -488,19 +475,14 @@
   </style>
 </head>
 <body class="page-home">
-  <div class="site-bg-video" aria-hidden="true">
-    <video autoplay muted loop playsinline preload="metadata" poster="assets/uploads/posters/live-dj-controller-neon.jpg">
-      <source src="assets/uploads/web-videos/live-dj-controller-neon.mp4" type="video/mp4">
-    </video>
-  </div>
   <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
 
-  <header>
-    <nav aria-label="Hauptnavigation">
+  <header class="main-header" id="site-header">
+    <nav class="main-nav" aria-label="Hauptnavigation">
       <a class="nav-brand" href="index.html">
-        <span class="nav-brand-logos">
-          <img src="assets/images/logo1.png" alt="Dr. Gray Logo" width="40" height="40">
-          <img src="assets/images/logo2.png" alt="Mrs. Dr. Gray Logo" width="40" height="40">
+        <span class="nav-brand-mark" aria-hidden="true">
+          <img class="nav-brand-logo" src="assets/images/logo1.png" alt="" width="40" height="40">
+          <img class="nav-brand-logo" src="assets/images/logo2.png" alt="" width="40" height="40">
           <img class="logo-blink" src="assets/images/logo1.png" alt="" width="40" height="40" aria-hidden="true">
         </span>
         <span class="nav-brand-text">
@@ -508,7 +490,10 @@
           <span>🔥 Driven by Rhythm. United by Emotion.</span>
         </span>
       </a>
-      <ul class="nav-links">
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen">
+        <span class="nav-toggle-line" aria-hidden="true"></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
         <li><a href="musik.html">Musik</a></li>
@@ -610,11 +595,23 @@
     </div>
   </main>
 
-  <footer>
-    <div style="max-width: 1200px; margin: 0 auto;">
-      <strong>Dr. Gray & Mrs. Dr. Gray</strong>
-      <div style="margin: 1rem 0; color: var(--gold);">🔥 Driven by Rhythm. United by Emotion.</div>
-      <div style="margin-top: 1rem;">© 2026 Dr. Gray & Mrs. Dr. Gray | <a href="kontakt.html">Impressum & Kontakt</a></div>
+  <footer class="footer">
+    <div class="footer-shell">
+      <div>
+        <strong>Dr. Gray & Mrs. Dr. Gray</strong>
+        <div class="muted">🔥 Driven by Rhythm. United by Emotion.</div>
+      </div>
+      <div class="footer-links">
+        <a href="bio.html">Bio</a>
+        <a href="musik.html">Musik</a>
+        <a href="videos.html">Videos</a>
+        <a href="shop.html">Shop</a>
+        <a href="kontakt.html">Kontakt</a>
+        <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
+        <a href="https://www.tiktok.com/@drgray_mrsdrgray" target="_blank" rel="noopener noreferrer">TikTok Live</a>
+        <a href="https://www.tiktok.com/@gray.afterhours" target="_blank" rel="noopener noreferrer">Afterhours</a>
+      </div>
+      <div class="muted">© <span data-year>2026</span> Dr. Gray &amp; Mrs. Dr. Gray</div>
     </div>
   </footer>
 
