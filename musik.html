@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="🔥 Driven by Rhythm. United by Emotion. — Musik von Dr. Gray & Mrs. Dr. Gray: Alle Tracks, Sets & Mixes mit Player, Likes, Comments, Genres & Covers auf SoundCloud.">
+  <meta name="description" content="🔥 Driven by Rhythm. United by Emotion. — Musik von Dr. Gray & Mrs. Dr. Gray: Alle Tracks & Sets mit Genres auf SoundCloud. Driving Techno, Peak Time, Dark & Hypnotic.">
   <meta name="theme-color" content="#060606">
   <meta property="og:title" content="Musik | Dr. Gray & Mrs. Dr. Gray">
   <meta property="og:description" content="Neueste Sets & Tracks mit Covers, Genres und Statistiken. Live synchronized von SoundCloud.">
@@ -12,7 +12,7 @@
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Musik | Dr. Gray & Mrs. Dr. Gray">
-  <meta name="twitter:description" content="Neueste Sets & Tracks mit Covers, Genres und Statistiken.">
+  <meta name="twitter:description" content="Neueste Sets & Tracks mit Genres und Statistiken.">
   <meta name="twitter:image" content="https://www.drgray-mrsdrgray.com/assets/images/flx10-gold.png">
   <link rel="preconnect" href="https://w.soundcloud.com">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,77 +25,18 @@
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <title>Musik | Dr. Gray & Mrs. Dr. Gray</title>
   <style>
-    /* Track Card Pro */
-    .track-card-pro {
+    .track-card {
       background: var(--surface-1);
       border: 0.5px solid var(--border);
       border-radius: 12px;
-      overflow: hidden;
+      padding: 1.5rem;
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-      animation-delay: var(--delay, 0s);
     }
 
-    .track-card-pro:hover {
+    .track-card:hover {
       border-color: #ff00ff;
       box-shadow: 0 12px 32px rgba(255, 0, 255, 0.2);
       transform: translateY(-4px);
-    }
-
-    /* Cover */
-    .track-cover-wrapper {
-      position: relative;
-      width: 100%;
-      padding-bottom: 100%;
-      background: linear-gradient(135deg, #ff00ff20, #00ffff20);
-      overflow: hidden;
-    }
-
-    .track-cover {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.3s ease;
-    }
-
-    .track-card-pro:hover .track-cover {
-      transform: scale(1.05);
-    }
-
-    .badge-new {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      background: #ff00ff;
-      color: #000;
-      padding: 8px 12px;
-      border-radius: 50px;
-      font-size: 12px;
-      font-weight: 600;
-      z-index: 10;
-      animation: pulse 2s ease-in-out infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
-    }
-
-    /* Player */
-    .track-player {
-      background: var(--surface-0);
-      padding: 0.5rem;
-    }
-
-    .track-player iframe {
-      border-radius: 8px;
-    }
-
-    /* Info */
-    .track-info {
-      padding: 1.5rem;
     }
 
     .track-title {
@@ -105,14 +46,12 @@
       color: var(--text-primary);
     }
 
-    .track-desc {
-      font-size: 14px;
+    .track-date {
+      font-size: 12px;
       color: var(--text-secondary);
       margin-bottom: 1rem;
-      line-height: 1.6;
     }
 
-    /* Genres */
     .track-genres {
       display: flex;
       flex-wrap: wrap;
@@ -130,10 +69,16 @@
       font-weight: 500;
     }
 
-    /* Stats */
+    .track-desc {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
     .track-stats {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 12px;
       padding: 1rem;
       background: rgba(255, 0, 255, 0.05);
@@ -143,109 +88,46 @@
 
     .stat {
       text-align: center;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .stat-icon {
-      font-size: 20px;
+      font-size: 12px;
     }
 
     .stat-value {
       font-weight: 600;
       color: #ff00ff;
-      font-size: 16px;
+      display: block;
     }
 
     .stat-label {
-      font-size: 11px;
+      font-size: 10px;
       color: var(--text-secondary);
       text-transform: uppercase;
-      letter-spacing: 0.5px;
     }
 
-    /* Meta */
-    .track-meta {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      font-size: 12px;
-      color: var(--text-secondary);
-    }
-
-    .track-meta small {
-      display: flex;
-      gap: 4px;
-    }
-
-    /* Button */
-    .btn-primary {
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #ff00ff;
+      color: #000;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
       width: 100%;
       text-align: center;
     }
 
-    /* Top Tracks List */
-    .top-track-item {
-      display: flex;
-      gap: 12px;
-      padding: 12px;
-      background: var(--surface-1);
-      border: 0.5px solid var(--border);
-      border-radius: 8px;
-      transition: all 0.3s ease;
-      align-items: center;
+    .btn:hover {
+      background: #ff33ff;
+      box-shadow: 0 8px 24px rgba(255, 0, 255, 0.3);
+      transform: scale(1.02);
     }
 
-    .top-track-item:hover {
-      border-color: #ff00ff;
-      background: var(--surface-2);
-    }
-
-    .top-track-cover {
-      width: 60px;
-      height: 60px;
-      border-radius: 6px;
-      object-fit: cover;
-      flex-shrink: 0;
-    }
-
-    .top-track-details {
-      flex: 1;
-    }
-
-    .top-track-details h4 {
-      font-size: 14px;
-      font-weight: 600;
-      margin: 0 0 6px 0;
-      color: var(--text-primary);
-    }
-
-    .top-track-stats {
-      font-size: 12px;
-      color: var(--text-secondary);
-      display: flex;
-      gap: 12px;
-    }
-
-    .btn-sm {
-      padding: 8px 16px;
-      font-size: 12px;
-    }
-
-    /* Responsive */
     @media (max-width: 768px) {
       .track-stats {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .track-card-pro {
-        margin-bottom: 1rem;
-      }
-
-      .top-track-cover {
-        width: 50px;
-        height: 50px;
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -293,7 +175,7 @@
       <div class="hero-inner">
         <span class="eyebrow scroll-fade-in">Musik | Druck, Tiefe, Duo-Handschrift</span>
         <h1 class="page-title scroll-slide-in-left">Hier hört man nicht nur Tracks. <span>Hier hört man uns.</span></h1>
-        <p class="lead scroll-fade-in">Musik ist bei uns kein Beiwerk, sondern Beweis. Hier wird direkt hörbar, wie wir Druck, Tiefe und Duo-Energie ohne Schablone zusammenziehen.</p>
+        <p class="lead scroll-fade-in">🎧 Unsere komplette Musik: Driving Techno, Peak Time, Dark & Hypnotic. Live auf SoundCloud, direkt von den Decks ins Ohr.</p>
       </div>
     </section>
 
@@ -302,69 +184,81 @@
       <div class="section-shell">
         <div class="section-header">
           <div>
-            <h2 class="section-title">Unser Sound auf <span>einen Blick</span></h2>
-            <p class="lead">Wir zeigen hier nicht Technik, sondern Wirkung. Unsere Sets müssen ziehen, halten und nachhallen: Druck im Körper, Haltung im Kopf, Verbindung im Moment.</p>
+            <h2 class="section-title">Unser Sound <span>im Focus</span></h2>
+            <p class="lead">⚡ Driving Techno • 🔊 Peak Time • 🌑 Dark & Hypnotic — Das ist unser Kern. Rollende Grooves, hypnotische Atmosphären, emotionale Tiefe.</p>
           </div>
         </div>
         <div class="three-grid">
           <article class="feature-card scroll-scale-in">
-            <h3 class="card-title">Live gedacht</h3>
-            <p class="card-copy">Auch wenn vieles digital startet, bleibt unser Kern Club. Bewegung, Körper und ein Spannungsbogen, der Menschen führt statt nur Lautheit zu liefern.</p>
+            <h3 class="card-title">Driving Techno</h3>
+            <p class="card-copy">Treibende Energie, rollende Basslines, der Mix marschiert. Druck ohne Hektik, Spannung vom ersten Beat.</p>
           </article>
           <article class="feature-card scroll-scale-in">
-            <h3 class="card-title">Zwischen Druck & Gefühl</h3>
-            <p class="card-copy">Tracks dürfen hart sein, aber nie leer. Emotion darf rein, aber nie als Deko. Genau diese Balance trennt unsere Linie von Standard-Techno.</p>
+            <h3 class="card-title">Peak Time Energy</h3>
+            <p class="card-copy">Die intensiven Momente, wenn das Set seinen Peak erreicht: vollgeladen, emotional, mit Haltung.</p>
           </article>
           <article class="feature-card scroll-scale-in">
-            <h3 class="card-title">Duo-Handschrift</h3>
-            <p class="card-copy">Unser Vibe ist nicht austauschbar, weil man hört, dass hier zwei Perspektiven zusammenarbeiten: Kontrolle und Nähe, Kante und Herz.</p>
+            <h3 class="card-title">Dark & Hypnotic</h3>
+            <p class="card-copy">Dunkle Atmosphären, hypnotische Grooves, melodische Tiefenschichten. Techno, der im Kopf bleibt.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- LATEST TRACKS WITH PLAYERS -->
-    <section class="section alt scroll-fade-in" data-soundcloud-feed>
+    <!-- LATEST TRACKS -->
+    <section class="section alt scroll-fade-in">
       <div class="section-shell">
         <div class="section-header">
           <div>
             <h2 class="section-title">Neueste <span>Tracks & Sets</span></h2>
-            <p class="lead">
-              🔄 <strong>Live synchronized:</strong> Die eingebetteten Player laden automatisch.
-              Mit Likes, Kommentare und Covers direkt zum Spielen!
-            </p>
+            <p class="lead">🔄 Live synchronized von SoundCloud — alle Sets, alle Genres, alle Stats aktualisieren sich automatisch.</p>
           </div>
-          <a class="btn btn-secondary" href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">
-            Alle auf SoundCloud
+          <a class="btn" href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">
+            🎵 Alle Sets auf SoundCloud
           </a>
         </div>
 
-        <!-- Track Cards mit Players -->
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 2rem;" data-soundcloud-track-cards>
-          <div class="track-card-pro scroll-fade-in">
-            <div style="text-align: center; padding: 3rem; background: var(--surface-0);">
-              <p style="color: var(--text-secondary);">🔄 Laden...</p>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2rem;" data-soundcloud-track-cards>
+          <!-- Tracks load here via soundcloud-loader-pro.js -->
+          <div class="track-card scroll-fade-in">
+            <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
+              <p>🔄 Tracks werden von SoundCloud geladen...</p>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- TOP TRACKS LIST -->
+    <!-- ALL TRACKS LIST -->
     <section class="section scroll-fade-in">
       <div class="section-shell">
         <div class="section-header">
           <div>
             <h2 class="section-title">Alle <span>Tracks</span></h2>
-            <p class="lead">Die komplette Liste mit den neuesten & beliebtesten Tracks. Jeder mit Play-Count, Likes und direktem SoundCloud-Link.</p>
+            <p class="lead">Komplette Liste aller Releases mit Play-Counts, Likes & direktem SoundCloud-Link. Sortiert nach Veröffentlichungsdatum.</p>
           </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 12px; margin-top: 2rem;" data-soundcloud-top-tracks>
+        <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 2rem;" data-soundcloud-top-tracks>
+          <!-- Track list loads here via soundcloud-loader-pro.js -->
           <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
-            🔄 Laden...
+            🔄 Tracks werden von SoundCloud geladen...
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- CALL TO ACTION -->
+    <section class="section">
+      <div class="section-shell two-grid">
+        <article class="track-note">
+          <h2 class="card-title">Für unsere Community</h2>
+          <p class="card-copy">Die vollständige Musikreise: Hier sehen Sie, wie wir Sets aufbauen, Spannung halten und als Duo zusammenarbeiten. Mehr Zeit, mehr Tiefe, mehr Moment.</p>
+        </article>
+        <article class="track-note">
+          <h2 class="card-title">Für Booker & Partner</h2>
+          <p class="card-copy">Das ist unser Audio-Pressekit: Alle Genres, Stats und Sounds in einer Übersicht. Genau so funktionieren wir live: fokussiert, emotional, zeitlos.</p>
+        </article>
       </div>
     </section>
   </main>
