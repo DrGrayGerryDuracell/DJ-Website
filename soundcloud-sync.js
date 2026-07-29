@@ -1,131 +1,133 @@
 /**
  * ═══════════════════════════════════════════════════════════════
- * SOUNDCLOUD SYNC SYSTEM
- * Auto-fetches latest tracks from SoundCloud API
- * Updates website with newest sets & metadata
+ * SOUNDCLOUD SYNC SYSTEM (Simplified)
+ * Uses direct SoundCloud track embeds + local data
+ * No API key needed
  * ═══════════════════════════════════════════════════════════════
  */
 
 (function () {
   'use strict';
 
-  const SOUNDCLOUD_USERNAME = 'drgray_sic';
-  const SOUNDCLOUD_CLIENT_ID = 'YOUR_CLIENT_ID'; // Set in env
-  const CACHE_DURATION = 3600000; // 1 hour
-  const STORAGE_KEY = 'drgray_soundcloud_cache';
-
-  /**
-   * Fetch latest tracks from SoundCloud
-   */
-  async function fetchSoundCloudTracks() {
-    try {
-      // Check cache first
-      const cached = getCachedData();
-      if (cached) {
-        console.log('📦 Using cached SoundCloud data');
-        return cached;
-      }
-
-      // Fetch from SoundCloud API
-      const response = await fetch(
-        `https://api-v2.soundcloud.com/users/lookup?handle=${SOUNDCLOUD_USERNAME}&client_id=${SOUNDCLOUD_CLIENT_ID}`
-      );
-
-      if (!response.ok) throw new Error('SoundCloud API error');
-
-      const user = await response.json();
-      const tracksResponse = await fetch(
-        `https://api-v2.soundcloud.com/users/${user.id}/tracks?limit=10&client_id=${SOUNDCLOUD_CLIENT_ID}`
-      );
-
-      const tracks = await tracksResponse.json();
-
-      // Cache the data
-      setCachedData(tracks);
-
-      console.log('✨ Fetched latest SoundCloud tracks:', tracks.length);
-      return tracks;
-    } catch (error) {
-      console.error('❌ SoundCloud fetch error:', error);
-      return null;
+  // Track metadata (update this with newest track info)
+  const TRACKS = [
+    {
+      id: '2126060061',
+      title: 'Emotional Flow',
+      date: '2025-10-07',
+      description: 'Aktuellster Upload – melodic, treibend, mit Herz.'
+    },
+    {
+      id: '2168299668',
+      title: 'Old Dogs are better Raver',
+      date: '2025-09-19',
+      description: 'Peaktime für die Erfahrenen. Rough, direkt, unverfälscht.'
+    },
+    {
+      id: '2008790983',
+      title: 'SYNCOPATH Part II',
+      date: '2025-09-10',
+      description: 'Die Reihe geht weiter. Kontrollierte Intensität, perfekt für die späte Nacht.'
     }
-  }
+  ];
 
   /**
-   * Cache management
+   * Initialize SoundCloud widgets on page
    */
-  function getCachedData() {
-    const cached = localStorage.getItem(STORAGE_KEY);
-    if (!cached) return null;
+  function initSoundCloudWidgets() {
+    console.log('🎵 Initializing SoundCloud widgets...');
 
-    const { data, timestamp } = JSON.parse(cached);
-    if (Date.now() - timestamp > CACHE_DURATION) {
-      localStorage.removeItem(STORAGE_KEY);
-      return null;
-    }
-
-    return data;
-  }
-
-  function setCachedData(data) {
-    localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        data,
-        timestamp: Date.now(),
-      })
-    );
-  }
-
-  /**
-   * Update HTML elements with track data
-   */
-  function updateTrackElements(tracks) {
-    if (!tracks || !tracks.length) return;
-
+    // Update track display
     const container = document.querySelector('[data-soundcloud-tracks]');
+    if (container) {
+      updateTrackDisplay(container);
+    }
+
+    // Load SoundCloud embed script
+    loadSoundCloudEmbedScript();
+
+    console.log('✅ SoundCloud sync ready');
+  }
+
+  /**
+   * Update track cards
+   */
+  function updateTrackDisplay(container) {
     if (!container) return;
 
-    // Get top 3 tracks
-    const topTracks = tracks.slice(0, 3);
+    container.innerHTML = TRACKS.slice(0, 3)
+      .map(
+        (track) => `
+      <article class="track-card scroll-fade-in">
+        <h3 class="card-title">${escapeHtml(track.title)}</h3>
+        <p class="card-copy">
+          Hochgeladen: ${formatDate(track.date)}<br>
+          <em>${escapeHtml(track.description)}</em>
+        </p>
+        <a href="https://soundcloud.com/drgray_sic/tracks" target="_blank" rel="noopener" class="btn btn-secondary">
+          SoundCloud öffnen
+        </a>
+      </article>
+    `
+      )
+      .join('');
+  }
 
-    topTracks.forEach((track, index) => {
-      const element = container.querySelector(
-        `[data-track-slot="${index}"]`
-      );
-      if (!element) return;
+  /**
+   * Load SoundCloud embed script
+   */
+  function loadSoundCloudEmbedScript() {
+    if (window.SC && window.SC.Widget) {
+      console.log('✅ SoundCloud script already loaded');
+      return;
+    }
 
-      element.innerHTML = `
-        <article class="track-card scroll-fade-in">
-          <h3 class="card-title">${escapeHtml(track.title)}</h3>
-          <p class="card-copy">${getTrackDescription(track)}</p>
-          <a href="${track.permalink_url}" target="_blank" rel="noopener" class="btn btn-secondary">
-            SoundCloud hören
-          </a>
-        </article>
-      `;
+    const script = document.createElement('script');
+    script.src = 'https://w.soundcloud.com/player/api.js';
+    script.async = true;
+    script.onload = function () {
+      console.log('✅ SoundCloud API loaded');
+      initSoundCloudEmbeds();
+    };
+    document.body.appendChild(script);
+  }
+
+  /**
+   * Initialize SoundCloud embed players
+   */
+  function initSoundCloudEmbeds() {
+    if (!window.SC || !window.SC.Widget) {
+      console.log('⏳ Waiting for SC.Widget...');
+      setTimeout(initSoundCloudEmbeds, 500);
+      return;
+    }
+
+    const iframes = document.querySelectorAll('[data-track]');
+    if (iframes.length === 0) {
+      console.log('📭 No SoundCloud iframes found');
+      return;
+    }
+
+    iframes.forEach((iframe, index) => {
+      const trackId = iframe.getAttribute('data-track');
+      if (!trackId) return;
+
+      const widget = SC.Widget(iframe);
+      widget.bind(SC.Widget.Events.READY, function () {
+        console.log(`✅ Track ${index + 1} ready`);
+      });
+
+      widget.bind(SC.Widget.Events.ERROR, function () {
+        console.error(`❌ Track ${index + 1} error`);
+      });
     });
   }
 
   /**
-   * Generate track description
+   * Format date
    */
-  function getTrackDescription(track) {
-    const date = new Date(track.created_at);
-    const duration = Math.floor(track.duration / 1000 / 60);
-    const plays = track.playback_count || 0;
-
-    return `
-      Hochgeladen: ${formatDate(date)} |
-      ${duration}min |
-      ${plays} Plays
-    `;
-  }
-
-  /**
-   * Helper: Format date
-   */
-  function formatDate(date) {
+  function formatDate(dateStr) {
+    const date = new Date(dateStr);
     return new Intl.DateTimeFormat('de-DE', {
       day: 'numeric',
       month: 'long',
@@ -134,7 +136,7 @@
   }
 
   /**
-   * Helper: Escape HTML
+   * Escape HTML
    */
   function escapeHtml(text) {
     const div = document.createElement('div');
@@ -143,79 +145,45 @@
   }
 
   /**
-   * Sync all data across pages
+   * Update meta description
    */
-  async function syncAllData() {
-    console.log('🔄 Starting SoundCloud sync...');
+  function updateMetaDescription() {
+    const meta = document.querySelector('meta[name="description"]');
+    if (!meta || TRACKS.length === 0) return;
 
-    const tracks = await fetchSoundCloudTracks();
-    if (tracks) {
-      updateTrackElements(tracks);
-      updatePageMetadata(tracks);
-      updateBioSection(tracks);
-    }
-
-    console.log('✅ SoundCloud sync complete');
+    const latest = TRACKS[0];
+    const current = meta.getAttribute('content');
+    const updated = `${current} | Neuester Track: ${latest.title}`;
+    meta.setAttribute('content', updated);
   }
 
   /**
-   * Update meta descriptions with latest track
-   */
-  function updatePageMetadata(tracks) {
-    if (!tracks || !tracks.length) return;
-
-    const latestTrack = tracks[0];
-    const metaDescription = document.querySelector(
-      'meta[name="description"]'
-    );
-
-    if (metaDescription) {
-      const currentDesc = metaDescription.getAttribute('content');
-      const newDesc = `${currentDesc} Neuester Track: ${latestTrack.title}`;
-      metaDescription.setAttribute('content', newDesc);
-    }
-  }
-
-  /**
-   * Update bio section with latest activity
-   */
-  function updateBioSection(tracks) {
-    const bioSection = document.querySelector('[data-bio-section]');
-    if (!bioSection || !tracks || !tracks.length) return;
-
-    const latestTrack = tracks[0];
-    const html = `
-      <div class="bio-update scroll-fade-in">
-        <p class="lead">
-          🎵 <strong>Neuester Release:</strong> "${latestTrack.title}" auf SoundCloud.
-          Wir teilen regelmäßig unsere neuesten Sets und Soundscapes - dein Zugang zu unserer
-          aktuellen Soundwelt.
-        </p>
-      </div>
-    `;
-
-    const existing = bioSection.querySelector('.bio-update');
-    if (existing) {
-      existing.replaceWith(html);
-    } else {
-      bioSection.insertAdjacentHTML('afterbegin', html);
-    }
-  }
-
-  /**
-   * Auto-sync on page load & periodic updates
+   * Init on page load
    */
   function init() {
     if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', syncAllData);
+      document.addEventListener('DOMContentLoaded', function () {
+        initSoundCloudWidgets();
+        updateMetaDescription();
+      });
     } else {
-      syncAllData();
+      initSoundCloudWidgets();
+      updateMetaDescription();
     }
-
-    // Sync every hour
-    setInterval(syncAllData, CACHE_DURATION);
   }
 
   init();
-  window.soundcloudSync = { syncAllData, fetchSoundCloudTracks };
+
+  // Expose for manual updates
+  window.soundcloudSync = {
+    updateTracks(newTracks) {
+      Object.assign(TRACKS, newTracks);
+      console.log('✅ Tracks updated:', TRACKS);
+      const container = document.querySelector('[data-soundcloud-tracks]');
+      if (container) updateTrackDisplay(container);
+    },
+    getTracks() {
+      return TRACKS;
+    }
+  };
 })();
