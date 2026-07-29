@@ -3,70 +3,357 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="🔥 Driven by Rhythm. United by Emotion. — Dr. Gray & Mrs. Dr. Gray: Peaktime, melodic & treibender Techno aus Köln. Live auf TikTok, Sets auf SoundCloud, Merch mit Haltung.">
-  <meta name="keywords" content="Dr. Gray, Mrs. Dr. Gray, Techno, Köln, TikTok Live, SoundCloud, DJ Duo, Merch, Techno Köln">
+  <meta name="description" content="🔥 Driven by Rhythm. United by Emotion. — Dr. Gray & Mrs. Dr. Gray: Driving Techno aus Köln. TikTok Live Freitags, Sets auf SoundCloud.">
+  <meta name="keywords" content="Dr. Gray, Mrs. Dr. Gray, Techno, Köln, TikTok Live, SoundCloud, DJ Duo, Driving Techno">
   <meta name="author" content="Dr. Gray & Mrs. Dr. Gray">
   <meta name="theme-color" content="#060606">
   <meta property="og:title" content="Dr. Gray & Mrs. Dr. Gray | Driven by Rhythm. United by Emotion.">
-  <meta property="og:description" content="Peaktime, melodic & treibender Techno aus Köln. Live Freitags auf TikTok, Sets auf SoundCloud.">
+  <meta property="og:description" content="⚡ Driving Techno • Peak Time • Dark & Hypnotic. DJ Duo aus Köln. TikTok Live, SoundCloud Sets.">
   <meta property="og:image" content="https://www.drgray-mrsdrgray.com/assets/images/flx10-gold.png">
   <meta property="og:url" content="https://www.drgray-mrsdrgray.com/">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Dr. Gray & Mrs. Dr. Gray | Driven by Rhythm. United by Emotion.">
-  <meta name="twitter:description" content="Peaktime, melodic & treibender Techno aus Köln. Live Freitags auf TikTok, Sets auf SoundCloud.">
+  <meta name="twitter:description" content="Driving Techno aus Köln. TikTok Live Freitags, Sets auf SoundCloud.">
   <meta name="twitter:image" content="https://www.drgray-mrsdrgray.com/assets/images/flx10-gold.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://w.soundcloud.com">
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="style-nextlevel.css">
   <link rel="stylesheet" href="style-animations.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
   <title>Dr. Gray & Mrs. Dr. Gray | Driven by Rhythm. United by Emotion.</title>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "MusicGroup",
-    "name": "Dr. Gray & Mrs. Dr. Gray",
-    "description": "DJ-Duo aus Köln für driving, melodic und peaktime Techno mit Herz.",
-    "genre": ["Techno", "Melodic Techno", "Progressive Techno"],
-    "url": "https://www.drgray-mrsdrgray.com/",
-    "sameAs": [
-      "https://soundcloud.com/drgray_sic",
-      "https://www.tiktok.com/@drgray_mrsdrgray",
-      "https://www.tiktok.com/@gray.afterhours"
-    ],
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Köln",
-      "addressCountry": "DE"
+  <style>
+    :root {
+      --surface-0: #0a0a0a;
+      --surface-1: #141414;
+      --surface-2: #1e1e1e;
+      --border: #333333;
+      --text-primary: #ffffff;
+      --text-secondary: #b3b3b3;
     }
-  }
-  </script>
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0a1f 50%, #0a0a0a 100%);
+      color: var(--text-primary);
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: #ff00ff;
+      color: white;
+      padding: 8px;
+      text-decoration: none;
+      z-index: 100;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    header {
+      background: rgba(10, 10, 10, 0.9);
+      border-bottom: 1px solid var(--border);
+      padding: 1.5rem 0;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(10px);
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      color: var(--text-primary);
+    }
+
+    .nav-brand-logos {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .nav-brand-logos img {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
+
+    .nav-brand-text strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .nav-brand-text span {
+      font-size: 12px;
+      color: var(--text-secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ff00ff;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 2rem;
+    }
+
+    .hero-content {
+      text-align: center;
+      max-width: 900px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .eyebrow {
+      display: block;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #ff00ff;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5rem);
+      font-weight: 700;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+    }
+
+    .tagline {
+      font-size: 1.5rem;
+      color: var(--text-secondary);
+      margin-bottom: 2rem;
+      line-height: 1.8;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+      padding: 2rem;
+      background: rgba(255, 0, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 0, 255, 0.1);
+    }
+
+    .info-card {
+      text-align: center;
+    }
+
+    .info-card h3 {
+      font-size: 14px;
+      color: #ff00ff;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .bio-text {
+      background: rgba(20, 20, 20, 0.8);
+      border-left: 4px solid #ff00ff;
+      padding: 2rem;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--text-primary);
+    }
+
+    .cta-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .nav-card {
+      background: var(--surface-1);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 2rem;
+      text-decoration: none;
+      color: var(--text-primary);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      text-align: center;
+    }
+
+    .nav-card:hover {
+      border-color: #ff00ff;
+      box-shadow: 0 12px 32px rgba(255, 0, 255, 0.2);
+      transform: translateY(-4px);
+      background: rgba(255, 0, 255, 0.05);
+    }
+
+    .nav-card-icon {
+      font-size: 2rem;
+    }
+
+    .nav-card h3 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .nav-card p {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      font-size: 13px;
+      transition: color 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: #ff00ff;
+    }
+
+    .language-toggle {
+      text-align: center;
+      margin-bottom: 2rem;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .language-toggle a {
+      color: #ff00ff;
+      text-decoration: none;
+      margin: 0 0.5rem;
+    }
+
+    footer {
+      background: rgba(10, 10, 10, 0.95);
+      border-top: 1px solid var(--border);
+      padding: 2rem;
+      text-align: center;
+      color: var(--text-secondary);
+      font-size: 12px;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2rem;
+      }
+
+      .tagline {
+        font-size: 1.1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+      }
+
+      .nav-links a {
+        font-size: 12px;
+      }
+
+      main {
+        padding: 2rem 1rem;
+      }
+
+      .cta-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Hauptinhalt</a>
 
-  <header class="main-header" id="site-header">
-    <nav class="main-nav" aria-label="Hauptnavigation">
+  <header>
+    <nav aria-label="Hauptnavigation">
       <a class="nav-brand" href="index.html">
-        <span class="nav-brand-mark" aria-hidden="true">
-          <img class="nav-brand-logo" src="assets/images/logo1.png" alt="" width="46" height="46">
-          <img class="nav-brand-logo" src="assets/images/logo2.png" alt="" width="46" height="46">
+        <span class="nav-brand-logos">
+          <img src="assets/images/logo1.png" alt="Dr. Gray Logo" width="40" height="40">
+          <img src="assets/images/logo2.png" alt="Mrs. Dr. Gray Logo" width="40" height="40">
         </span>
         <span class="nav-brand-text">
-          <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
+          <strong>Dr. Gray & Mrs. Dr. Gray</strong>
           <span>🔥 Driven by Rhythm. United by Emotion.</span>
         </span>
       </a>
-      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menü öffnen">
-        <span class="nav-toggle-line" aria-hidden="true"></span>
-      </button>
-      <ul class="nav-links" id="nav-links">
-        <li><a href="index.html" aria-current="page">Home</a></li>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
         <li><a href="bio.html">Bio</a></li>
         <li><a href="musik.html">Musik</a></li>
         <li><a href="videos.html">Videos</a></li>
@@ -76,251 +363,99 @@
     </nav>
   </header>
 
-  <div class="live-banner" role="complementary" aria-label="TikTok Live Hinweis">
-    <span class="live-dot" aria-hidden="true">●</span>
-    <span class="live-banner-track">
-      <span>Wir sind jeden Freitag ab <strong>18:00 Uhr</strong> live auf TikTok:</span>
-      <a href="https://www.tiktok.com/@drgray_mrsdrgray" target="_blank" rel="noopener noreferrer">@drgray_mrsdrgray</a>
-    </span>
-  </div>
+  <main id="main-content">
+    <div class="hero-content">
+      <span class="eyebrow">⚡ Driving Techno • Peak Time • Dark & Hypnotic</span>
+      <h1>Driven by Rhythm.<br><span style="color: #ff00ff;">United by Emotion.</span></h1>
 
-  <main id="main-content" class="page-content">
-    <section class="hero hero-home hero-with-video">
-      <div class="hero-video-bg" aria-hidden="true">
-        <video autoplay muted loop playsinline preload="none" poster="assets/uploads/web-images/hostinger-controller-poster.jpg">
-          <source src="assets/uploads/web-videos/hostinger-controller-loop.mp4" type="video/mp4">
-        </video>
-      </div>
-      <div class="hero-inner hero-grid">
-        <div class="hero-copy">
-          <span class="eyebrow">Köln | Duo, Szene, Druck &amp; Herz</span>
-          <h1 class="hero-title">Wir spielen keinen Hintergrund. <span>Wir setzen den Ton.</span></h1>
-          <p class="hero-subtitle">Wir sind Dr. Gray &amp; Mrs. Dr. Gray: Couple, Duo und zwei unterschiedliche Energien mit einer gemeinsamen Linie. Bei uns trifft Druck auf Nähe, Clubspannung auf Persönlichkeit und Techno auf eine Handschrift, die man nicht nur hört, sondern wiedererkennt.</p>
-          <div class="cta-row">
-            <a class="btn btn-primary" href="musik.html">Jetzt Hören</a>
-            <a class="btn btn-secondary" href="https://www.shirtee.com/de/store/drgray-mrsdrgray/" target="_blank" rel="noopener noreferrer">Merch Entdecken</a>
-            <a class="btn btn-ghost" href="https://www.tiktok.com/@drgray_mrsdrgray" target="_blank" rel="noopener noreferrer">TikTok Live</a>
-            <a class="btn btn-ghost" href="https://www.tiktok.com/@gray.afterhours" target="_blank" rel="noopener noreferrer">Afterhours</a>
-          </div>
-          <div class="metric-grid" aria-label="Kurzüberblick">
-            <div class="metric">
-              <strong>Fr</strong>
-              <span>Regelmäßige TikTok-Live-Sessions</span>
-            </div>
-            <div class="metric">
-              <strong>Köln</strong>
-              <span>Homebase mit Szene-Fokus</span>
-            </div>
-            <div class="metric">
-              <strong>Techno</strong>
-              <span>Melodic bis treibend, roh bis emotional</span>
-            </div>
-          </div>
+      <div class="info-grid">
+        <div class="info-card">
+          <h3>🎧 DJ Duo</h3>
+          <p>Gemeinsam im Sound</p>
         </div>
-
-        <aside class="hero-panel" aria-label="Brand-Fokus">
-          <div class="brand-stack">
-            <div class="brand-pair">
-              <article class="brand-chip">
-                <img src="assets/images/logo1.png" alt="Dr. Gray Logo" width="74" height="74" loading="eager">
-                <strong>Dr. Gray</strong>
-                <span class="muted">Druckvoll, kontrolliert, dunkel fokussiert</span>
-              </article>
-              <article class="brand-chip">
-                <img src="assets/images/logo2.png" alt="Mrs. Dr. Gray Logo" width="74" height="74" loading="eager">
-                <strong>Mrs. Dr. Gray</strong>
-                <span class="muted">Selbstbewusst, nahbar, elektrisierend</span>
-              </article>
-            </div>
-            <article class="feature-card">
-              <h2 class="card-title">Was uns hier wichtig ist</h2>
-              <p class="card-copy">Wir bauen hier keinen beliebigen Artist-Auftritt, sondern unsere gemeinsame Fläche: Sets, Lives, Couple-Energie, klare Statements und Merch, das wirklich nach uns aussieht.</p>
-              <div class="pill-row">
-                <span class="pill">Live auf TikTok</span>
-                <span class="pill">SoundCloud Sets</span>
-                <span class="pill">Merch mit Haltung</span>
-              </div>
-            </article>
-          </div>
-        </aside>
-      </div>
-    </section>
-
-    <section class="section scroll-fade-in">
-      <div class="section-shell">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title scroll-slide-in-left">Unser <span>Sound</span> in drei Bewegungen</h2>
-            <p class="lead">Wir wollen nicht geschniegelt wirken, sondern echt. Deshalb bleibt unser Sound zwischen Kontrolle, Emotion, Zug nach vorne und dem Gefühl, dass hinter dem Druck auch Charakter steht.</p>
-          </div>
+        <div class="info-card">
+          <h3>📍 Cologne, Germany</h3>
+          <p>Köln, Deutschland 🇩🇪</p>
         </div>
-        <div class="three-grid">
-          <article class="feature-card scroll-scale-in">
-            <h3 class="card-title">Driving</h3>
-            <p class="card-copy">Wenn das Set nach vorne will, Bass und Groove aber nie leer wirken sollen.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Melodic</h3>
-            <p class="card-copy">Klangflächen, Spannung und emotionale Momente, ohne weich zu werden.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Peaktime</h3>
-            <p class="card-copy">Intensität mit Haltung, gemacht für Leute, die Techno nicht nur hören, sondern leben.</p>
-          </article>
+        <div class="info-card">
+          <h3>🔴 Freitags Live</h3>
+          <p>TikTok Live ab 18:00</p>
         </div>
       </div>
-    </section>
 
-    <section class="section alt">
-      <div class="section-shell split-layout">
-        <article class="quote-card">
-          <blockquote>“Techno mit Herz heißt für uns nicht weich. Es heißt echt, intensiv und verbunden.”</blockquote>
-          <p>Genau daraus entsteht unser Auftritt: eine Beziehung, die man nicht versteckt, ein Sound, der nicht geschniegelt ist, und ein Vibe, der zwischen Club, Live und Community denselben Kern trägt.</p>
-        </article>
-        <article class="panel-image glass-card">
-            <img class="face-safe" src="assets/images/bio-together.jpg" alt="Dr. Gray und Mrs. Dr. Gray gemeinsam" width="900" height="700" loading="lazy">
-        </article>
+      <div class="bio-text">
+        <p>Wir sind <strong>Dr. Gray & Mrs. Dr. Gray</strong> – ein DJ-Duo aus Köln mit einer gemeinsamen Leidenschaft für treibenden, dunklen und emotionalen Techno. 🖤🎧</p>
+        <br>
+        <p>Unser Sound verbindet <strong>Driving Techno</strong> und <strong>Peak Time Techno</strong> mit dunklen Atmosphären, hypnotischen Grooves, rollenden Basslines und melodischen Momenten. Unsere Sets bauen Spannung auf, erzählen eine Geschichte und entwickeln ihre Energie vom ersten bis zum letzten Beat. 🔊⚡</p>
+        <br>
+        <p><strong>Unser Kern bleibt klar:</strong></p>
+        <p style="margin-top: 1rem;">⚡ Treibende Energie<br>
+        🌑 Dunkle und hypnotische Atmosphäre<br>
+        🔊 Rollende Grooves und kraftvolle Basslines<br>
+        ❤️‍🔥 Emotion, Spannung und Verbindung</p>
+        <br>
+        <p>Techno ist für uns mehr als Musik. Es ist Bewegung, Ausdruck und Gemeinschaft. Der Moment, in dem der Kopf abschaltet, der Bass übernimmt und aus einzelnen Menschen eine gemeinsame Energie entsteht.</p>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="section-shell">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">Frische <span>Sets</span></h2>
-            <p class="lead">🔄 <strong>Live synchronized:</strong> Hier zeigen wir direkt unseren Sound mit Genres und Beschreibungen wie auf SoundCloud. Automatisch aktualisiert, immer aktuell.</p>
-          </div>
-          <a class="btn btn-secondary" href="musik.html">Alle Sets</a>
-        </div>
+      <h2 style="font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; margin-bottom: 2rem; color: #ff00ff;">Entdecke uns</h2>
 
-        <!-- Featured Latest Track with Description & Genres -->
-        <div style="margin-bottom: 3rem;" data-featured-track>
-          <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
-            🔄 Neuester Track lädt...
-          </div>
-        </div>
-
-        <!-- Track Grid with Genres -->
-        <div>
-          <h3 style="font-size: 18px; font-weight: 600; margin-bottom: 1.5rem; color: var(--text-primary);">
-            Top Tracks dieser Woche
-          </h3>
-          <div class="three-grid" data-homepage-track-grid>
-            <div style="text-align: center; padding: 2rem; color: var(--text-secondary);">
-              🔄 Laden...
-            </div>
-          </div>
-        </div>
+      <div class="cta-grid">
+        <a href="bio.html" class="nav-card">
+          <span class="nav-card-icon">👥</span>
+          <h3>Bio</h3>
+          <p>Unsere Geschichte, unsere Energie</p>
+        </a>
+        <a href="musik.html" class="nav-card">
+          <span class="nav-card-icon">🎵</span>
+          <h3>Musik</h3>
+          <p>Alle Tracks & Sets mit Player</p>
+        </a>
+        <a href="videos.html" class="nav-card">
+          <span class="nav-card-icon">🎬</span>
+          <h3>Videos</h3>
+          <p>TikTok Hooks & Performance</p>
+        </a>
+        <a href="shop.html" class="nav-card">
+          <span class="nav-card-icon">🛍️</span>
+          <h3>Shop</h3>
+          <p>Merch mit Szene-Attitüde</p>
+        </a>
+        <a href="kontakt.html" class="nav-card">
+          <span class="nav-card-icon">📧</span>
+          <h3>Kontakt</h3>
+          <p>Bookings & Anfragen</p>
+        </a>
+        <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer" class="nav-card">
+          <span class="nav-card-icon">☁️</span>
+          <h3>SoundCloud</h3>
+          <p>Alle Sets im Stream</p>
+        </a>
       </div>
-    </section>
 
-    <section class="section alt">
-      <div class="section-shell">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">TikTok &amp; <span>Community</span></h2>
-            <p class="lead">Hier ziehen wir Aufmerksamkeit nicht mit Lautstärke, sondern mit Wiedererkennung: wir live, wir direkt, wir als Duo. Genau daraus entstehen Hooks, Kommentare, Running Gags, Couple-Momente und später sogar Merch-Zeilen.</p>
-          </div>
-          <a class="btn btn-ghost" href="videos.html">Video-Bereich</a>
-        </div>
-        <div class="three-grid">
-          <article class="video-card">
-            <img src="assets/uploads/web-images/controller-neon-purple-2026.jpg" alt="DJ-Controller im Neonlicht als Live-Setup von Dr. Gray" width="1920" height="1280" loading="lazy">
-            <h3 class="card-title">Controller im Fokus</h3>
-            <p class="card-copy">Jeden Freitag gehen wir live. Dieses Setup zeigt genau die technische Dr.-Gray-Achse: sauber, direkt und mit echtem Clubdruck.</p>
-          </article>
-          <article class="video-card">
-            <img src="assets/uploads/web-images/controller-hands-blue-2026.jpg" alt="Haende am DJ-Controller im blauen Clublicht" width="1920" height="1440" loading="lazy">
-            <h3 class="card-title">Hands on Decks</h3>
-            <p class="card-copy">Keine leeren Phrasen: wir zeigen echte Performance-Momente. Genau daraus entstehen Hooks, Reels und spaetere Merch-Claims mit Haltung.</p>
-          </article>
-          <article class="video-card">
-            <img class="face-safe" src="assets/uploads/web-images/mrs-portrait-rain-bw.jpg" alt="Mrs. Dr. Gray im Schwarzweiß-Porträt" width="960" height="720" loading="lazy">
-            <h3 class="card-title">Mrs. Dr. Gray im Fokus</h3>
-            <p class="card-copy">Mrs. Dr. Gray ist nicht Beiwerk. Sie bringt eigene Praesenz, eigenen Reiz und genau die feminine Schaerfe rein, die unser Duo unverwechselbar macht.</p>
-          </article>
-        </div>
+      <div class="social-links">
+        <a href="https://www.tiktok.com/@drgray_mrsdrgray" target="_blank" rel="noopener noreferrer" class="social-link">
+          🎵 TikTok Live
+        </a>
+        <a href="https://www.tiktok.com/@gray.afterhours" target="_blank" rel="noopener noreferrer" class="social-link">
+          🌙 Afterhours
+        </a>
       </div>
-    </section>
 
-    <section class="section">
-      <div class="section-shell">
-        <div class="section-header">
-          <div>
-            <h2 class="section-title">Merch mit <span>Szene-Attitüde</span></h2>
-            <p class="lead">Unser Shop soll nicht nach Standard-POD aussehen. Wir bauen Herren-, Damen-, Couple- und Unisex-Linien mit Statements, die zu uns passen: klar, frech, clubnah und sauber gesetzt.</p>
-          </div>
-          <a class="btn btn-primary" href="https://www.shirtee.com/de/store/drgray-mrsdrgray/" target="_blank" rel="noopener noreferrer">Zum Store</a>
-        </div>
-        <div class="shop-grid">
-          <article class="merch-card">
-            <img src="store-assets/variants/dr-front-kein-mainstream.png" alt="Dr.-Gray-Merch mit klarer Frontlinie" width="900" height="700" loading="lazy">
-            <h3 class="card-title">Dr. Gray Linie</h3>
-            <p class="card-copy">Vorne klare Techno-Typo, hinten wahlweise das Hauptlogo als sauber gesetzter Backprint. Keine Collage, keine Überlagerung, keine Fremdelemente.</p>
-            <div class="pill-row">
-              <span class="pill">Hauptlogo</span>
-              <span class="pill">Techno Frontprint</span>
-              <span class="pill">Klarer Backprint</span>
-            </div>
-          </article>
-          <article class="merch-card">
-            <img src="store-assets/variants/mrs-front-zu-wild.png" alt="Mrs.-Dr.-Gray-Merch mit femininem Statement" width="900" height="700" loading="lazy">
-            <h3 class="card-title">Mrs. Dr. Gray Linie</h3>
-            <p class="card-copy">Mrs. Dr. Gray fuehrt die Damen-Linie sichtbar an. Dazu kommen sexy-serioese Statements, selbstbewusste Hooks und elegantere Club-Pieces, die weiblich bleiben, ohne brav zu wirken.</p>
-            <div class="pill-row">
-              <span class="pill">Mrs.-Logo</span>
-              <span class="pill">Sexy-seriös</span>
-              <span class="pill">Kleider &amp; Fits</span>
-            </div>
-          </article>
-          <article class="merch-card">
-            <img src="store-assets/variants/couple-front-verheiratet.png" alt="Couple-Merch mit sauber getrennten Logos" width="900" height="700" loading="lazy">
-            <h3 class="card-title">Unisex &amp; Couple</h3>
-            <p class="card-copy">Bei Unisex-Stücken bleibt der Frontprint clean, während wir hinten zwischen Dr.-Gray- oder Mrs.-Dr.-Gray-Logo wählen. Beide Logos zusammen setzen wir nur bei Couple-Designs ein.</p>
-            <div class="pill-row">
-              <span class="pill">Backprint-Wahl</span>
-              <span class="pill">Couple Edition</span>
-              <span class="pill">Symmetrisch gesetzt</span>
-            </div>
-          </article>
-        </div>
-        <div class="section-header top-space">
-          <div>
-            <h3 class="section-title merch-subtitle">Neue <span>Artikel im Katalog</span></h3>
-            <p class="lead">Startseite und Shop greifen jetzt auf dieselbe Merch-Basis zu. So koennen wir unsere Linien profilnah weiterziehen, ohne dass die Seite auseinanderfaellt oder der Stil kippt.</p>
-          </div>
-          <a class="btn btn-secondary" href="shop.html">Gesamten Katalog ansehen</a>
-        </div>
-        <div class="catalog-grid" data-merch-spotlight></div>
+      <div class="language-toggle">
+        <a href="#english">🇬🇧 English version coming soon</a>
       </div>
-    </section>
+    </div>
   </main>
 
-  <footer class="footer">
-    <div class="footer-shell">
-      <div>
-        <strong>Dr. Gray &amp; Mrs. Dr. Gray</strong>
-        <div class="muted">🔥 Driven by Rhythm. United by Emotion.</div>
-      </div>
-      <div class="footer-links">
-        <a href="bio.html">Bio</a>
-        <a href="musik.html">Musik</a>
-        <a href="videos.html">Videos</a>
-        <a href="shop.html">Shop</a>
-        <a href="kontakt.html">Kontakt</a>
-        <a href="https://soundcloud.com/drgray_sic" target="_blank" rel="noopener noreferrer">SoundCloud</a>
-        <a href="https://www.tiktok.com/@drgray_mrsdrgray" target="_blank" rel="noopener noreferrer">TikTok Live</a>
-        <a href="https://www.tiktok.com/@gray.afterhours" target="_blank" rel="noopener noreferrer">Afterhours</a>
-      </div>
-      <div class="muted">© <span data-year>2026</span> Dr. Gray &amp; Mrs. Dr. Gray</div>
+  <footer>
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <strong>Dr. Gray & Mrs. Dr. Gray</strong>
+      <div style="margin: 1rem 0;">🔥 Driven by Rhythm. United by Emotion.</div>
+      <div style="margin-top: 1rem;">© 2026 Dr. Gray & Mrs. Dr. Gray | <a href="kontakt.html" style="color: #ff00ff; text-decoration: none;">Impressum & Kontakt</a></div>
     </div>
   </footer>
 
-  <script src="assets/data/live-link-status.js" defer></script>
-  <script src="assets/data/merch-catalog.js" defer></script>
   <script src="main.js" defer></script>
-  <script src="nextlevel.js" defer></script>
   <script src="animations.js" defer></script>
-  <script src="soundcloud-loader-homepage.js" defer></script>
 </body>
 </html>
