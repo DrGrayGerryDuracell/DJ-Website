@@ -9,6 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style-animations.css">
+  <link rel="stylesheet" href="style-bio-enhanced.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="icon" type="image/png" href="assets/images/favicon.png">
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png">
@@ -115,73 +117,46 @@
       </div>
     </section>
 
-    <section class="section">
-      <div class="section-shell">
-        <div class="section-header">
+    <!-- DYNAMISCH: Auto-updated from SoundCloud every hour -->
+    <section class=”section scroll-fade-in” data-soundcloud-feed>
+      <div class=”section-shell”>
+        <div class=”section-header”>
           <div>
-            <h2 class="section-title">Zuletzt hochgeladen auf <span>SoundCloud</span></h2>
-            <p class="lead">Stand 30. Maerz 2026 (laut SoundCloud-Feed): Das sind unsere zuletzt veroeffentlichten Sets und Tracks. So bleibt unsere Musikseite nicht statisch, sondern nah an unserem echten Upload-Flow.</p>
+            <h2 class=”section-title”>Zuletzt hochgeladen auf <span>SoundCloud</span></h2>
+            <p class=”lead”>
+              🔄 <strong>Live synchronized:</strong> Diese Tracks werden automatisch von SoundCloud aktualisiert.
+              Keine veralteten Daten mehr - immer das Neueste von uns.
+            </p>
           </div>
+          <a class=”btn btn-secondary” href=”https://soundcloud.com/drgray_sic” target=”_blank” rel=”noopener noreferrer”>
+            Alle Sets auf SoundCloud
+          </a>
         </div>
-        <div class="three-grid">
-          <article class="feature-card">
-            <h3 class="card-title">SPRECHSTUNDE: CLUB PRESSURE</h3>
-            <p class="card-copy">Veroeffentlicht am 29. Maerz 2026. 30 Minuten Peak-Time-Druck als kompaktes Duo-Set von uns.</p>
-            <div class="cta-row">
-              <a class="btn btn-secondary" href="https://soundcloud.com/drgray_sic/sprechstunde-club-pressure-dr" target="_blank" rel="noopener noreferrer">Auf SoundCloud</a>
-            </div>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Tweety’s Dance Fairy: Back to Life</h3>
-            <p class="card-copy">Veroeffentlicht am 8. Maerz 2026. Ein langes User-Set mit 2:07h, in dem wir Druck und Storyline ausbalancieren.</p>
-            <div class="cta-row">
-              <a class="btn btn-secondary" href="https://soundcloud.com/drgray_sic/tweetys-dance-fairy-back-to" target="_blank" rel="noopener noreferrer">Auf SoundCloud</a>
-            </div>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Ronnys Coco Beats</h3>
-            <p class="card-copy">Veroeffentlicht am 26. Januar 2026. Unsere Special-Techno-Journey mit langer Spannungsfahrt und klarer Duo-Signatur.</p>
-            <div class="cta-row">
-              <a class="btn btn-secondary" href="https://soundcloud.com/drgray_sic/ronnys-coco-beats-a-special-techno-journey" target="_blank" rel="noopener noreferrer">Auf SoundCloud</a>
-            </div>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Tanz den Nikolaus</h3>
-            <p class="card-copy">Veroeffentlicht am 6. Dezember 2025. Ein Seasonal-Set, das bei uns trotzdem klar in der Techno-Achse bleibt.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Halloween‘90 Oldschool Rave.wav</h3>
-            <p class="card-copy">Veroeffentlicht am 1. November 2025. Unsere nostalgisch-raue Ravekante mit klarer Clubausrichtung.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Cyber Love</h3>
-            <p class="card-copy">Veroeffentlicht am 23. Oktober 2025. Bei uns die melodisch-emotionale Strecke zwischen Licht und Schatten.</p>
+        <div class=”three-grid” data-soundcloud-tracks>
+          <!-- Auto-populated by soundcloud-sync.js -->
+          <article class=”feature-card scroll-fade-in”>
+            <h3 class=”card-title”>🔄 Laden...</h3>
+            <p class=”card-copy”>Neueste Tracks werden gerade von SoundCloud abgerufen.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section alt">
-      <div class="section-shell">
-        <div class="section-header">
+    <section class=”section alt scroll-fade-in”>
+      <div class=”section-shell”>
+        <div class=”section-header”>
           <div>
-            <h2 class="section-title">Best of Three: <span>meistgespielt</span></h2>
-            <p class="lead">Laut unserem SoundCloud-Bereich „Popular tracks“ sind diese drei aktuell am staerksten gespielt. Diese Auswahl nutzen wir als Kern fuer Hook-Content und Live-Ankuendigungen.</p>
+            <h2 class=”section-title”>Direkt von <span>SoundCloud</span></h2>
+            <p class=”lead”>
+              Die eingebetteten Tracks sind unser Kern: Hier wird sofort klar,
+              wie wir aufbauen, Druck halten und Spannung als Duo steuern.
+            </p>
           </div>
         </div>
-        <div class="three-grid">
-          <article class="feature-card">
-            <h3 class="card-title">Ronnys Coco Beats</h3>
-            <p class="card-copy">Unser meistgespielter Long-Run aus der aktuellen Phase und ein klarer Referenzpunkt fuer unseren Peak-Time-Aufbau.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Tanz den Nikolaus</h3>
-            <p class="card-copy">Stark gespielt und klar in unserer Community verankert. Genau diese Mischung aus Charakter und Druck zieht bei uns am besten.</p>
-          </article>
-          <article class="feature-card">
-            <h3 class="card-title">Halloween‘90 Oldschool Rave.wav</h3>
-            <p class="card-copy">Unsere dritte starke Dauerrotation im Popular-Bereich und ein wichtiger Teil unserer raueren Storyline.</p>
-          </article>
+        <div class=”soundcloud-grid”>
+          <div class=”soundcloud-item” data-track=”2126060061” role=”region” aria-label=”SoundCloud Track 1”><div class=”skelly”></div></div>
+          <div class=”soundcloud-item” data-track=”2168299668” role=”region” aria-label=”SoundCloud Track 2”><div class=”skelly”></div></div>
+          <div class=”soundcloud-item” data-track=”2008790983” role=”region” aria-label=”SoundCloud Track 3”><div class=”skelly”></div></div>
         </div>
       </div>
     </section>
@@ -246,5 +221,7 @@
   </footer>
 
   <script src="main.js" defer></script>
+  <script src="animations.js" defer></script>
+  <script src="soundcloud-sync.js" defer></script>
 </body>
 </html>
