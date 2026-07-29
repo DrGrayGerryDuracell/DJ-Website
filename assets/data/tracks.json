@@ -1,0 +1,76 @@
+{
+  "tracks": [
+    {
+      "id": "1",
+      "title": "Mrs.Dr.Gray - Learning to Destroy",
+      "date": "2026-07-20",
+      "plays": 310,
+      "description": "Neuester Track - Mrs. Dr. Gray bringt ihre eigene Energie & ihren persönlichen Stil",
+      "url": "https://soundcloud.com/drgray_sic/mrs-dr-gray-learning-to",
+      "type": "drgray_set",
+      "genres": ["Techno"]
+    },
+    {
+      "id": "2",
+      "title": "Dr.Gray – Goodbye My Friend (The Last TikTok Set for Andy Tauchert)",
+      "date": "2026-07-12",
+      "plays": 567,
+      "description": "Ein emotionales Peak-Time-Set mit Haltung und Trauer",
+      "url": "https://soundcloud.com/drgray_sic/dr-gray-goodbye-my-friend-the",
+      "type": "drgray_set",
+      "genres": ["Techno", "Peak Time", "Driving Techno"]
+    },
+    {
+      "id": "3",
+      "title": "Mrs. Dr. Gray – First Signal | Official Debut Set",
+      "date": "2026-07-02",
+      "plays": 485,
+      "description": "Mrs. Dr. Gray's offizielles Debut-Set - präzise, nahbar, elektrisierend",
+      "url": "https://soundcloud.com/drgray_sic/mrs-dr-gray-first-signal-official",
+      "type": "mrsdrgray_solo",
+      "genres": ["Techno"]
+    },
+    {
+      "id": "4",
+      "title": "Mrs. Dr. Gray – No Escape",
+      "date": "2026-07-09",
+      "plays": 386,
+      "description": "Dunkle, treibende Energie - Mrs. Dr. Gray in voller Kraft",
+      "url": "https://soundcloud.com/drgray_sic/mrs-dr-gray-no-escape",
+      "type": "mrsdrgray_solo",
+      "genres": ["Techno", "Driving dark"]
+    },
+    {
+      "id": "5",
+      "title": "Dr.Gray & Mrs.Dr.Gray 🖤 – Sunset Euphoria | Closing Set",
+      "date": "2026-06-29",
+      "plays": 1445,
+      "description": "Ein wundervolles abgeschlossenes Set - Melodic Techno trifft Emotion",
+      "url": "https://soundcloud.com/drgray_sic/dr-gray-mrs-dr-gray-sunset",
+      "type": "couple_set",
+      "genres": ["Melodic Techno"]
+    },
+    {
+      "id": "6",
+      "title": "Dr.Gray & Mrs.Dr.Gray 🖤 - Dark Matter Groove",
+      "date": "2026-06-29",
+      "plays": 683,
+      "description": "Hypnotische Spannung und rollende Basslines - unser Kern",
+      "url": "https://soundcloud.com/drgray_sic/dr-gray-mrs-dr-gray-dark-matter",
+      "type": "couple_set",
+      "genres": ["Driving Techno"]
+    },
+    {
+      "id": "7",
+      "title": "Love is Techno Part I",
+      "date": "2025-07-20",
+      "plays": 14927,
+      "description": "Unsere Couple-Story im Sound - emotional, druck, verbindend",
+      "url": "https://soundcloud.com/drgray_sic/love-is-techno-part-i",
+      "type": "couple_set",
+      "genres": ["Techno"]
+    }
+  ],
+  "lastUpdated": "2026-07-29T16:13:00Z",
+  "totalTracks": 31
+}
