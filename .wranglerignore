@@ -1,0 +1,47 @@
+# Wrangler Ignore File
+# Files that should NOT be deployed to Cloudflare Workers
+
+# Dependencies
+node_modules/
+npm-debug.log
+package-lock.json
+yarn.lock
+
+# Environment files
+.env
+.env.*.local
+.env.production
+
+# Development
+.git/
+.gitignore
+.github/
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+
+# Build artifacts
+dist/
+build/
+.cache/
+.wrangler/
+
+# Documentation
+*.md
+README*
+CHANGELOG*
+LICENSE
+
+# Scripts
+scripts/
+*.mjs
+*.test.js
+
+# Other
+node_modules/
+.npmrc
+.eslintrc*
+.prettierrc*
+tsconfig.json

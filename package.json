@@ -2,21 +2,45 @@
   "name": "drgray-mrsdrgray-website",
   "private": true,
   "version": "1.0.0",
-  "description": "Public website + internal control dashboard for Dr. Gray & Mrs. Dr. Gray",
+  "description": "Public website + internal control dashboard for Dr. Gray & Mrs. Dr. Gray - Deployed on Cloudflare Workers",
+  "type": "module",
   "scripts": {
-    "dev": "python3 -m http.server 4173",
-    "preview": "python3 -m http.server 4173",
-    "build": "npm run verify",
+    "dev": "wrangler dev",
+    "dev:local": "python3 -m http.server 4173",
+    "preview": "wrangler preview",
+    "build": "node scripts/build-static.mjs",
     "verify": "node scripts/verify-build-safety.mjs",
+    "check:build": "node scripts/check-cloudflare-config.mjs",
     "check:links": "bash scripts/check-shirtee-links.sh",
     "check:live-links": "node scripts/sync-live-link-status.mjs",
     "sync:control-live": "node scripts/sync-control-live-metrics.mjs",
     "generate:upload-queue": "node scripts/generate-upload-queue.mjs",
     "generate:upload-batches": "node scripts/prepare-shirtee-upload-batches.mjs",
     "generate:shirtee-api-request": "node scripts/generate-shirtee-api-request.mjs",
-    "finish:all": "npm run verify && npm run check:links && npm run check:live-links && npm run sync:control-live && npm run generate:upload-queue && npm run generate:upload-batches && npm run generate:shirtee-api-request"
+    "finish:all": "npm run verify && npm run check:links && npm run check:live-links && npm run sync:control-live && npm run generate:upload-queue && npm run generate:upload-batches && npm run generate:shirtee-api-request",
+    "deploy:staging": "wrangler deploy --env staging",
+    "deploy:prod": "wrangler deploy --env production",
+    "test": "node scripts/test-worker.mjs",
+    "test:health": "curl https://www.drgray-mrsdrgray.com/health",
+    "lint": "eslint src/**/*.js",
+    "format": "prettier --write src/**/*.js",
+    "logs": "wrangler tail --env production",
+    "logs:staging": "wrangler tail --env staging",
+    "setup:kv": "node scripts/setup-kv-namespaces.mjs",
+    "setup:db": "wrangler d1 execute drgray-website --remote --file schema.sql",
+    "backup:db": "wrangler d1 backup drgray-website",
+    "migrate": "wrangler d1 migrations list drgray-website --remote"
   },
   "engines": {
     "node": ">=20"
+  },
+  "devDependencies": {
+    "wrangler": "^3.58.0",
+    "eslint": "^8.56.0",
+    "prettier": "^3.1.1",
+    "@types/node": "^20.10.6"
+  },
+  "dependencies": {
+    "uuid": "^9.0.1"
   }
 }
