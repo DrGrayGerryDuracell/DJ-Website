@@ -115,6 +115,11 @@ export const mockDashboardData: DashboardData = {
       { platform: "Shop", clicks: 689, ctr: "8.1%" },
       { platform: "Kontakt", clicks: 87, ctr: "2.3%" }
     ],
+    routes: [
+      { from: "Website", to: "TikTok Dr. Gray", channel: "Hero / CTA", status: "live" },
+      { from: "Website", to: "TikTok Mrs. Dr. Gray", channel: "Hero / CTA", status: "live" },
+      { from: "Website", to: "SoundCloud", channel: "Player / Music", status: "live" }
+    ],
     comparisons: [
       { label: "TikTok gesamt vs Shop", value: "1:1.66" },
       { label: "SoundCloud vs TikTok gesamt", value: "1:3.12" }

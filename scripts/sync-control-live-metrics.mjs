@@ -1047,6 +1047,12 @@ async function main() {
     socialMetrics: {
       links: socialRows,
       strongestPlatform: socialStrongest?.platform || "nicht verfuegbar",
+      routes: [
+        { from: "Website", to: "TikTok Dr. Gray", channel: "Hero / CTA", status: "live" },
+        { from: "Website", to: "TikTok Mrs. Dr. Gray", channel: "Hero / CTA", status: "live" },
+        { from: "Website", to: "SoundCloud", channel: "Player / Music", status: soundcloud.available ? "live" : "check" },
+        { from: "Instagram", to: "nicht genutzt", channel: "kein Kanal", status: "info" }
+      ],
       comparisons: [
         { label: "TikTok Links im Seiteninhalt", value: String(hrefCounts.tiktok) },
         { label: "SoundCloud Links im Seiteninhalt", value: String(hrefCounts.soundcloud) },

@@ -364,6 +364,16 @@ function downloadHermesSpoolFile(text, session) {
   URL.revokeObjectURL(url);
 }
 
+function setHermesChatStatus(message, tone = "is-info") {
+  const node = document.querySelector("[data-hermes-chat-status]");
+  if (!node) {
+    return;
+  }
+
+  node.className = `status-pill ${tone}`;
+  node.innerHTML = `<strong>${message}</strong>`;
+}
+
 function setupHermesChatActions() {
   document.addEventListener("click", async (event) => {
     const sendButton = event.target.closest("[data-hermes-chat-send]");
@@ -416,13 +426,16 @@ function setupHermesChatActions() {
     } catch {
       // Clipboard ist nur ein Komfort-Fallback.
     }
+    let spoolCreated = true;
     try {
       downloadHermesSpoolFile(text, session);
     } catch {
       // Download ist ein Komfort-Fallback; Queue bleibt erhalten.
+      spoolCreated = false;
     }
     input.value = "";
     renderHermesChat(document.querySelector("[data-hermes-chat]"), data);
+    setHermesChatStatus(spoolCreated ? "Spool-Datei erzeugt" : "Spool-Download blockiert", spoolCreated ? "is-live" : "is-warn");
   });
 }
 

@@ -525,6 +525,10 @@ export function renderHermesChat(container, dashboardData) {
         <span class="status-pill is-info">Spool: <strong>${escapeHtml(spoolPath)}</strong></span>
         <p>${escapeHtml(spoolPreview)}</p>
       </div>
+      <div class="hermes-chat-status-row">
+        <span class="status-pill is-info" data-hermes-chat-status><strong>Bereit</strong></span>
+        <span class="muted-line">Der Button legt die Nachricht als Spool-Datei an und startet den Download als Beleg.</span>
+      </div>
       <div class="hermes-chat-thread">${renderHermesChatMessages(merged)}</div>
       <div class="hermes-chat-composer">
         <label for="hermes-chat-input">Nachricht an Hermes</label>
@@ -1043,6 +1047,7 @@ export function renderSocial(container, socialMetrics) {
     return "is-info";
   };
   const strongest = socialMetrics.strongestPlatform || socialMetrics.links.find((row) => Number(row.metricValue ?? row.clicks ?? 0) > 0)?.platform || "nicht erfasst";
+  const routes = Array.isArray(socialMetrics.routes) ? socialMetrics.routes : [];
 
   container.innerHTML = `
     <article class="panel">
@@ -1072,6 +1077,19 @@ export function renderSocial(container, socialMetrics) {
               </article>
             `;
           })
+          .join("")}
+      </div>
+      <div class="social-route-grid">
+        ${routes
+          .map(
+            (route) => `
+              <article class="social-route-card">
+                <span class="status-pill ${route.status === "live" ? "is-live" : route.status === "check" ? "is-warn" : "is-info"}">${escapeHtml(route.status || "info")}</span>
+                <strong>${escapeHtml(route.from)} → ${escapeHtml(route.to)}</strong>
+                <p>${escapeHtml(route.channel)}</p>
+              </article>
+            `
+          )
           .join("")}
       </div>
       <table class="data-table">
