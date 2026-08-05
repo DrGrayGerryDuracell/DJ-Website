@@ -503,6 +503,163 @@ a { color: inherit; text-decoration: none; }
   grid-column: 1 / -1;
 }
 
+.agentsroom-panel-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+}
+
+.agentsroom-panel-head h3 {
+  margin-bottom: 0.3rem;
+}
+
+.agentsroom-network {
+  position: relative;
+  min-height: 360px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at 18% 18%, rgba(52, 228, 255, 0.16), transparent 22%),
+    radial-gradient(circle at 82% 18%, rgba(255, 79, 216, 0.12), transparent 20%),
+    radial-gradient(circle at 50% 78%, rgba(245, 200, 76, 0.16), transparent 28%),
+    rgba(6, 8, 12, 0.72);
+  overflow: hidden;
+}
+
+.agentsroom-network::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 40px 40px,
+    linear-gradient(0deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 40px 40px;
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.agentsroom-network-svg,
+.agentsroom-network-nodes {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.agentsroom-network-svg {
+  pointer-events: none;
+}
+
+.agentsroom-network-edge path {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-dasharray: 8 8;
+  animation: agentsroom-flow 8s linear infinite;
+  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.12));
+}
+
+.agentsroom-network-edge circle {
+  fill: rgba(255, 255, 255, 0.92);
+  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.22));
+}
+
+.agentsroom-network-edge.is-live path {
+  stroke: url(#agentsroom-line-live);
+}
+
+.agentsroom-network-edge.is-support path {
+  stroke: url(#agentsroom-line-support);
+}
+
+.agentsroom-network-edge.is-connected path,
+.agentsroom-network-edge.is-ready path,
+.agentsroom-network-edge.is-active path,
+.agentsroom-network-edge.is-sync path,
+.agentsroom-network-edge.is-info path {
+  stroke: rgba(132, 185, 255, 0.88);
+}
+
+.agentsroom-network-node {
+  position: absolute;
+  min-width: 120px;
+  max-width: 150px;
+  padding: 0.55rem 0.65rem;
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(10, 10, 13, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.36);
+  transform: translate(-50%, -50%);
+}
+
+.agentsroom-network-node strong {
+  display: block;
+  font-size: 0.88rem;
+  font-family: var(--font-display);
+}
+
+.agentsroom-network-node span {
+  display: block;
+  margin-top: 0.18rem;
+  font-size: 0.72rem;
+  color: var(--text-soft);
+}
+
+.agentsroom-network-node.core {
+  border-color: rgba(52, 228, 255, 0.34);
+  box-shadow: 0 0 18px rgba(52, 228, 255, 0.18);
+}
+
+.agentsroom-network-node.support {
+  border-color: rgba(255, 79, 216, 0.28);
+  box-shadow: 0 0 18px rgba(255, 79, 216, 0.14);
+}
+
+.agentsroom-network-node.bridge {
+  border-color: rgba(245, 200, 76, 0.34);
+  box-shadow: 0 0 18px rgba(245, 200, 76, 0.16);
+}
+
+.agentsroom-network-node.device {
+  border-color: rgba(81, 207, 156, 0.25);
+}
+
+.agentsroom-network-node.human {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.agentsroom-network-node.service {
+  border-color: rgba(132, 185, 255, 0.25);
+}
+
+.agentsroom-network-legend {
+  margin-top: 0.75rem;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.agentsroom-network-legend-item {
+  padding: 0.65rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.agentsroom-network-legend-item span {
+  display: block;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+.agentsroom-network-legend-item strong {
+  display: block;
+  margin-top: 0.2rem;
+  font-size: 0.88rem;
+}
+
 .agentsroom-delegation-wrap {
   display: grid;
   gap: 1rem;
@@ -687,6 +844,54 @@ a { color: inherit; text-decoration: none; }
   gap: 0.35rem;
   min-height: 96px;
   align-items: end;
+}
+
+.social-network {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-bottom: 0.9rem;
+}
+
+.social-node {
+  padding: 0.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(circle at top right, rgba(245, 200, 76, 0.12), transparent 28%),
+    rgba(255, 255, 255, 0.03);
+}
+
+.social-node-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.social-node-head strong {
+  font-size: 0.95rem;
+}
+
+.social-node p {
+  margin: 0.45rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+.social-node-value {
+  margin-top: 0.45rem;
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: #fff4cc;
+}
+
+.social-node small {
+  display: block;
+  margin-top: 0.35rem;
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  word-break: break-word;
 }
 
 .social-bar {
@@ -1297,7 +1502,9 @@ a { color: inherit; text-decoration: none; }
   .agentsroom-runtime-grid,
   .agentsroom-source-grid,
   .agentsroom-session-grid,
-  .agentsroom-message-grid {
+  .agentsroom-message-grid,
+  .social-network,
+  .agentsroom-network-legend {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -1361,6 +1568,15 @@ a { color: inherit; text-decoration: none; }
     width: 100%;
     height: auto;
     padding: 0.15rem 0;
+  }
+
+  .agentsroom-panel-head,
+  .social-node-head {
+    flex-direction: column;
+  }
+
+  .agentsroom-network {
+    min-height: 520px;
   }
 
   .activity-list li {
@@ -1546,6 +1762,15 @@ a { color: inherit; text-decoration: none; }
 .control-pulse,
 .mode-badge {
   box-shadow: var(--glow-sm);
+}
+
+@keyframes agentsroom-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -80;
+  }
 }
 
 :focus-visible {

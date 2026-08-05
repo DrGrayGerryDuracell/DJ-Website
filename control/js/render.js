@@ -109,6 +109,156 @@ function buildFlowItems(items) {
     .join("");
 }
 
+function buildRoutingGraph(agentsRoom) {
+  const routing = Array.isArray(agentsRoom?.routing) ? agentsRoom.routing : [];
+  const devices = Array.isArray(agentsRoom?.devices) ? agentsRoom.devices : [];
+  if (!routing.length && !devices.length) {
+    return `<p class="muted-line">Keine Kommunikationsdaten vorhanden.</p>`;
+  }
+
+  const statusToTone = {
+    live: "is-live",
+    connected: "is-connected",
+    support: "is-support",
+    ready: "is-ready",
+    active: "is-active",
+    sync: "is-sync"
+  };
+
+  const nodeMeta = new Map([
+    ["Mensch", { x: 6, y: 44, tone: "human", label: "Mensch", detail: "Telegram Input" }],
+    ["Hermes", { x: 20, y: 24, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
+    ["Jarvis", { x: 38, y: 30, tone: "core", label: "Jarvis", detail: "Verteiler" }],
+    ["Argus", { x: 56, y: 18, tone: "support", label: "Argus", detail: "Vorprüfung" }],
+    ["OpenClaw Gateway", { x: 34, y: 50, tone: "bridge", label: "OpenClaw", detail: "Broker / Queue" }],
+    ["Forge", { x: 56, y: 38, tone: "service", label: "Forge", detail: "Infra / Skills" }],
+    ["Sentinel", { x: 56, y: 58, tone: "service", label: "Sentinel", detail: "Logs / Security" }],
+    ["Oracle", { x: 74, y: 16, tone: "service", label: "Oracle", detail: "Briefings" }],
+    ["Muse", { x: 74, y: 34, tone: "service", label: "Muse", detail: "Content / Audio" }],
+    ["Heimdall", { x: 74, y: 52, tone: "device", label: "Heimdall", detail: "Home Assistant" }],
+    ["Friday", { x: 74, y: 70, tone: "service", label: "Friday", detail: "Deep Repair" }],
+    ["Claude", { x: 90, y: 24, tone: "support", label: "Claude", detail: "Escalation" }],
+    ["Codex", { x: 90, y: 42, tone: "support", label: "Codex", detail: "Implementation" }],
+    ["Mac mini", { x: 20, y: 70, tone: "device", label: "Mac mini", detail: "Zentralserver" }],
+    ["MacBook", { x: 6, y: 68, tone: "device", label: "MacBook", detail: "Mirror-Node" }],
+    ["iMac", { x: 6, y: 82, tone: "device", label: "iMac", detail: "Operator" }],
+    ["iPhone", { x: 18, y: 84, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
+    ["Home Assistant", { x: 38, y: 76, tone: "device", label: "Home Assistant", detail: "Automation" }],
+    ["GitHub", { x: 38, y: 86, tone: "device", label: "GitHub", detail: "Repo Sync" }],
+    ["Obsidian", { x: 56, y: 84, tone: "device", label: "Obsidian", detail: "Vault" }],
+    ["StreamDeck", { x: 74, y: 86, tone: "device", label: "StreamDeck", detail: "Hotkeys" }],
+    ["Rodecaster", { x: 90, y: 80, tone: "device", label: "Rodecaster", detail: "Audio" }],
+    ["TikTok Live Studio", { x: 90, y: 62, tone: "device", label: "TikTok Live", detail: "Publishing" }],
+    ["SoundCloud", { x: 90, y: 52, tone: "device", label: "SoundCloud", detail: "Music" }]
+  ]);
+
+  const usedNodes = new Map();
+  const deviceTargets = {
+    "Mac mini": "Hermes",
+    MacBook: "Hermes",
+    iMac: "Hermes",
+    iPhone: "Hermes",
+    "Home Assistant": "Mac mini",
+    GitHub: "Jarvis",
+    Obsidian: "Jarvis",
+    StreamDeck: "Jarvis",
+    Rodecaster: "Muse",
+    "TikTok Live Studio": "Muse",
+    SoundCloud: "Muse"
+  };
+
+  const deviceEdges = devices
+    .map((device) => {
+      const targetName = deviceTargets[device.name];
+      const source = nodeMeta.get(device.name);
+      const target = targetName ? nodeMeta.get(targetName) : null;
+      if (!source || !target) {
+        return null;
+      }
+      return {
+        from: device.name,
+        to: targetName,
+        channel: device.channel || "Device Link",
+        purpose: device.role || "Gerätepfad",
+        status: device.status || "connected",
+        statusLabel: device.statusLabel || "Verbunden"
+      };
+    })
+    .filter(Boolean);
+
+  const combinedEdges = [...routing, ...deviceEdges];
+
+  const edges = combinedEdges.map((item) => {
+    const source = nodeMeta.get(item.from) || nodeMeta.get(String(item.from).replace(/\s+/g, " "));
+    const target = nodeMeta.get(item.to) || nodeMeta.get(String(item.to).replace(/\s+/g, " "));
+    if (source) usedNodes.set(item.from, source);
+    if (target) usedNodes.set(item.to, target);
+    return { ...item, source, target };
+  });
+
+  const visibleNodes = Array.from(usedNodes.entries()).map(([name, meta]) => ({ name, ...meta }));
+
+  const lineNodes = edges
+    .filter((edge) => edge.source && edge.target)
+    .map((edge) => {
+      const tone = statusToTone[edge.status] || "is-info";
+      const x1 = edge.source.x * 10;
+      const y1 = edge.source.y * 5.6;
+      const x2 = edge.target.x * 10;
+      const y2 = edge.target.y * 5.6;
+      const ctrlX = (x1 + x2) / 2;
+      const ctrlY = Math.min(y1, y2) - Math.max(18, Math.abs(x1 - x2) * 0.08);
+      return `
+        <g class="agentsroom-network-edge ${tone}">
+          <path d="M ${x1} ${y1} C ${ctrlX} ${ctrlY}, ${ctrlX} ${ctrlY}, ${x2} ${y2}" />
+          <circle cx="${x2}" cy="${y2}" r="4" />
+        </g>
+      `;
+    })
+    .join("");
+
+  const nodeCards = visibleNodes
+    .map((node) => `
+      <div class="agentsroom-network-node ${node.tone}" style="left:${node.x}%; top:${node.y}%">
+        <strong>${escapeHtml(node.label)}</strong>
+        <span>${escapeHtml(node.detail)}</span>
+      </div>
+    `)
+    .join("");
+
+  const legend = edges
+    .slice(0, 6)
+    .map(
+      (edge) => `
+        <div class="agentsroom-network-legend-item">
+          <span>${escapeHtml(edge.from)} → ${escapeHtml(edge.to)}</span>
+          <strong>${escapeHtml(edge.channel)}</strong>
+        </div>
+      `
+    )
+    .join("");
+
+  return `
+    <div class="agentsroom-network">
+      <svg class="agentsroom-network-svg" viewBox="0 0 1000 560" role="img" aria-label="Kommunikationsgraph der Agenten und Geräte">
+        <defs>
+          <linearGradient id="agentsroom-line-live" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="rgba(52, 228, 255, 0.95)" />
+            <stop offset="100%" stop-color="rgba(245, 200, 76, 0.95)" />
+          </linearGradient>
+          <linearGradient id="agentsroom-line-support" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="rgba(255, 79, 216, 0.95)" />
+            <stop offset="100%" stop-color="rgba(245, 200, 76, 0.75)" />
+          </linearGradient>
+        </defs>
+        ${lineNodes}
+      </svg>
+      <div class="agentsroom-network-nodes">${nodeCards}</div>
+    </div>
+    <div class="agentsroom-network-legend">${legend}</div>
+  `;
+}
+
 function buildNodeCards(items, kind = "agent") {
   if (!Array.isArray(items) || !items.length) {
     return `<p class="muted-line">Keine Daten vorhanden.</p>`;
@@ -385,6 +535,17 @@ export function renderAgentsRoomSection(container, agentsRoom) {
         <div><span>Gespräche</span><strong>${formatValue(metrics.conversationCount || conversations.length)}</strong></div>
         <div><span>Quellen</span><strong>${formatValue(metrics.sourceCount || sourceRegistry.length)}</strong></div>
       </div>
+    </article>
+
+    <article class="panel agentsroom-panel agentsroom-panel-wide">
+      <div class="agentsroom-panel-head">
+        <div>
+          <h3>Kommunikationskarte</h3>
+          <p class="muted-line">Live-Pfade mit Richtung, Kanal und Eskalation. Hermes bleibt der zentrale Eingang, Jarvis verteilt, Argus prüft nach.</p>
+        </div>
+        <span class="status-pill is-live">Live Graph</span>
+      </div>
+      ${buildRoutingGraph(agentsRoom)}
     </article>
 
     <div class="agentsroom-grid">
@@ -706,17 +867,44 @@ export function renderContent(container, contentPerformance) {
 
 export function renderSocial(container, socialMetrics) {
   const hasLiveValues = socialMetrics.links.some((row) => row.valueLabel || row.statusLabel || row.sourceLabel);
+  const pickSocialStatusClass = (row) => {
+    const status = String(row.status || "").toLowerCase();
+    const statusLabel = String(row.statusLabel || "").toLowerCase();
+    if (status === "live" || /live|verbunden/.test(statusLabel)) return "is-live";
+    if (status === "check" || /pruef|prüf|signal/.test(statusLabel)) return "is-warn";
+    if (status === "connected") return "is-connected";
+    return "is-info";
+  };
+  const strongest = socialMetrics.strongestPlatform || socialMetrics.links.find((row) => Number(row.metricValue ?? row.clicks ?? 0) > 0)?.platform || "nicht erfasst";
 
   container.innerHTML = `
     <article class="panel">
       <h3>Social & Externe Ziele</h3>
+      <div class="social-network">
+        ${socialMetrics.links
+          .map((row) => {
+            const value = row.valueLabel || row.metricValue || row.clicks || 0;
+            return `
+              <article class="social-node">
+                <div class="social-node-head">
+                  <strong>${escapeHtml(row.platform)}</strong>
+                  <span class="status-pill ${pickSocialStatusClass(row)}">${escapeHtml(row.statusLabel || row.status || "check")}</span>
+                </div>
+                <p>${escapeHtml(row.sourceLabel || "Live-Check")}</p>
+                <div class="social-node-value">${escapeHtml(String(value))}</div>
+                <small>${escapeHtml(row.url || "")}</small>
+              </article>
+            `;
+          })
+          .join("")}
+      </div>
       <table class="data-table">
         <thead><tr><th>Plattform</th><th>${hasLiveValues ? "Live-Wert" : "Klicks"}</th><th>${hasLiveValues ? "Status" : "CTR"}</th></tr></thead>
         <tbody>
           ${socialMetrics.links
             .map(
               (row) =>
-                `<tr><td>${row.platform}</td><td>${row.valueLabel || row.clicks}</td><td>${row.statusLabel || row.ctr}</td></tr>${
+                `<tr><td>${row.platform}</td><td>${row.valueLabel || row.metricValue || row.clicks || "n/a"}</td><td>${row.statusLabel || row.ctr || "n/a"}</td></tr>${
                   row.sourceLabel ? `<tr><td colspan="3" class="muted-row">Quelle: ${row.sourceLabel}</td></tr>` : ""
                 }`
             )
@@ -730,13 +918,14 @@ export function renderSocial(container, socialMetrics) {
         ${socialMetrics.officialAccounts
           .map(
             (item) =>
-              `<li><span>${item.label}</span><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.url}</a><em class="status-pill ${item.status === "live" ? "is-ok" : "is-warn"}">${item.status}</em></li>`
+              `<li><span>${item.label}</span><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.url}</a><em class="status-pill ${item.status === "live" ? "is-ok" : item.status === "check" ? "is-warn" : "is-info"}">${item.status === "live" ? "Verbunden" : item.status === "check" ? "Pruefen" : item.status}</em></li>`
           )
           .join("")}
       </ul>
       <ul class="status-list compact">
         ${socialMetrics.comparisons.map((item) => `<li><span>${item.label}</span><strong>${item.value}</strong></li>`).join("")}
       </ul>
+      <p class="muted-line">Stärkster Kanal: <strong>${escapeHtml(strongest)}</strong></p>
     </article>
   `;
 }
