@@ -228,6 +228,328 @@ a { color: inherit; text-decoration: none; }
   margin-top: 1rem;
 }
 
+.agentsroom-shell {
+  display: grid;
+  gap: 1rem;
+}
+
+.agentsroom-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
+  gap: 1rem;
+  padding: 1.05rem;
+  border-radius: var(--radius);
+  border: 1px solid rgba(116, 217, 255, 0.16);
+  background:
+    radial-gradient(circle at top left, rgba(131, 118, 255, 0.18), transparent 34%),
+    radial-gradient(circle at top right, rgba(72, 208, 149, 0.16), transparent 42%),
+    rgba(12, 12, 14, 0.96);
+  box-shadow: var(--shadow);
+}
+
+.agentsroom-hero h3 {
+  margin: 0.15rem 0 0.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 2.6vw, 2.25rem);
+  line-height: 1;
+}
+
+.agentsroom-eyebrow {
+  margin: 0;
+  color: #9be9ff;
+  font-size: 0.76rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.agentsroom-hero-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.agentsroom-hero-stats div,
+.agentsroom-rail-card,
+.agentsroom-node,
+.agentsroom-flow-item {
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.agentsroom-hero-stats div {
+  padding: 0.75rem 0.8rem;
+}
+
+.agentsroom-hero-stats span,
+.agentsroom-rail-label,
+.agentsroom-node p,
+.agentsroom-flow-item span {
+  color: var(--text-soft);
+}
+
+.agentsroom-hero-stats span {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.agentsroom-hero-stats strong {
+  display: block;
+  margin-top: 0.3rem;
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+}
+
+.agentsroom-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.15fr) minmax(0, 0.95fr);
+  gap: 1rem;
+}
+
+.agentsroom-flow-list,
+.agentsroom-node-grid,
+.agentsroom-device-grid,
+.agentsroom-rail,
+.agentsroom-runtime-grid,
+.agentsroom-source-grid,
+.agentsroom-session-grid,
+.agentsroom-message-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.agentsroom-flow-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.agentsroom-flow-item {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr) auto;
+  gap: 0.6rem;
+  align-items: center;
+  padding: 0.75rem 0.8rem;
+  border-color: rgba(132, 185, 255, 0.16);
+  background:
+    linear-gradient(135deg, rgba(132, 185, 255, 0.07), rgba(81, 207, 156, 0.03)),
+    rgba(255, 255, 255, 0.03);
+}
+
+.agentsroom-flow-item strong {
+  display: block;
+  font-size: 0.98rem;
+}
+
+.agentsroom-flow-item span {
+  display: block;
+  margin-top: 0.16rem;
+  font-size: 0.8rem;
+}
+
+.agentsroom-flow-arrow {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.07);
+  color: #e6f4ff;
+  font-weight: 700;
+}
+
+.agentsroom-node-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.agentsroom-device-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-bottom: 0.8rem;
+}
+
+.agentsroom-node {
+  padding: 0.8rem;
+}
+
+.agentsroom-node.agent {
+  background:
+    radial-gradient(circle at top right, rgba(132, 185, 255, 0.12), transparent 34%),
+    rgba(255, 255, 255, 0.03);
+}
+
+.agentsroom-node.device {
+  background:
+    radial-gradient(circle at top right, rgba(72, 208, 149, 0.12), transparent 34%),
+    rgba(255, 255, 255, 0.03);
+}
+
+.agentsroom-node-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.agentsroom-node h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-family: var(--font-display);
+}
+
+.agentsroom-node p {
+  margin: 0.4rem 0 0;
+  font-size: 0.82rem;
+}
+
+.agentsroom-node-meta {
+  margin-top: 0.55rem;
+  display: grid;
+  gap: 0.2rem;
+}
+
+.agentsroom-node-meta strong {
+  font-size: 0.88rem;
+}
+
+.agentsroom-node-meta span {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+
+.agentsroom-tags {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.agentsroom-tag {
+  min-height: 24px;
+  padding: 0.12rem 0.5rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--text-soft);
+  font-size: 0.72rem;
+}
+
+.agentsroom-rail {
+  margin-top: 0.75rem;
+}
+
+.agentsroom-rail-card {
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.75rem 0.8rem;
+  border-color: rgba(116, 217, 255, 0.14);
+}
+
+.agentsroom-rail-card strong {
+  font-family: var(--font-display);
+  font-size: 1.12rem;
+}
+
+.agentsroom-runtime-grid,
+.agentsroom-source-grid,
+.agentsroom-session-grid,
+.agentsroom-message-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.agentsroom-source-card,
+.agentsroom-session-card,
+.agentsroom-message-card {
+  padding: 0.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(135deg, rgba(255, 216, 109, 0.06), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.03);
+}
+
+.agentsroom-source-card h4,
+.agentsroom-session-card h4,
+.agentsroom-message-card h4 {
+  margin: 0;
+  font-size: 1rem;
+  font-family: var(--font-display);
+}
+
+.agentsroom-source-card p,
+.agentsroom-session-card p,
+.agentsroom-message-card p {
+  margin: 0.4rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+.agentsroom-source-card .agentsroom-node-meta,
+.agentsroom-session-card .agentsroom-node-meta {
+  margin-top: 0.55rem;
+}
+
+.agentsroom-panel-wide {
+  grid-column: 1 / -1;
+}
+
+.agentsroom-delegation-wrap {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+}
+
+.agentsroom-delegation-wrap h4 {
+  margin: 0 0 0.65rem;
+  font-size: 1rem;
+  color: var(--gold-strong);
+}
+
+.agentsroom-task-grid,
+.agentsroom-conversation-grid {
+  display: grid;
+  gap: 0.65rem;
+}
+
+.agentsroom-task-card,
+.agentsroom-conversation-card {
+  padding: 0.8rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.agentsroom-task-head,
+.agentsroom-conversation-head {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.55rem;
+}
+
+.agentsroom-task-card p,
+.agentsroom-conversation-card p {
+  margin: 0.45rem 0 0;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+}
+
+.agentsroom-task-meta,
+.agentsroom-conversation-meta {
+  margin-top: 0.55rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  color: var(--text-soft);
+  font-size: 0.76rem;
+}
+
+.agentsroom-conversation-card span {
+  color: var(--text-soft);
+}
+
 .pulse-grid {
   display: grid;
   gap: 0.85rem;
@@ -766,6 +1088,12 @@ a { color: inherit; text-decoration: none; }
 .status-pill.is-warn { color: var(--warn); }
 .status-pill.is-info { color: var(--info); }
 .status-pill.is-error { color: var(--error); }
+.status-pill.is-live { color: var(--ok); }
+.status-pill.is-connected { color: var(--info); }
+.status-pill.is-support { color: #c6a8ff; }
+.status-pill.is-ready { color: #89f0ff; }
+.status-pill.is-active { color: var(--ok); }
+.status-pill.is-sync { color: #a7c7ff; }
 
 .social-bar.is-dim i {
   opacity: 0.45;
@@ -948,6 +1276,21 @@ a { color: inherit; text-decoration: none; }
   .alert-grid,
   .action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .status-list { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .agentsroom-grid,
+  .agentsroom-hero {
+    grid-template-columns: 1fr;
+  }
+  .agentsroom-delegation-wrap {
+    grid-template-columns: 1fr;
+  }
+  .agentsroom-node-grid,
+  .agentsroom-device-grid,
+  .agentsroom-runtime-grid,
+  .agentsroom-source-grid,
+  .agentsroom-session-grid,
+  .agentsroom-message-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 920px) {
@@ -990,6 +1333,25 @@ a { color: inherit; text-decoration: none; }
   .kpi-grid,
   .status-list {
     grid-template-columns: 1fr;
+  }
+  .agentsroom-node-grid,
+  .agentsroom-device-grid,
+  .agentsroom-runtime-grid,
+  .agentsroom-source-grid,
+  .agentsroom-session-grid,
+  .agentsroom-message-grid {
+    grid-template-columns: 1fr;
+  }
+  .agentsroom-delegation-wrap {
+    grid-template-columns: 1fr;
+  }
+  .agentsroom-flow-item {
+    grid-template-columns: 1fr;
+  }
+  .agentsroom-flow-arrow {
+    width: 100%;
+    height: auto;
+    padding: 0.15rem 0;
   }
 
   .activity-list li {

@@ -5,6 +5,7 @@ import {
   renderRanges,
   renderModeBadge,
   renderVisualPulse,
+  renderAgentsRoomSection,
   renderSystemStatus,
   renderKpis,
   renderWebsiteSection,
@@ -18,9 +19,13 @@ import {
   renderQuickActions
 } from "./js/render.js";
 
+const LIVE_REFRESH_MS = 30000;
+
 async function loadLiveMetrics() {
   try {
-    const response = await fetch("/control/js/live-metrics.json", {
+    const url = new URL("/control/js/live-metrics.json", window.location.origin);
+    url.searchParams.set("t", String(Date.now()));
+    const response = await fetch(url, {
       cache: "no-store"
     });
     if (!response.ok) return null;
@@ -301,6 +306,7 @@ function renderDashboardView(data) {
   renderVisualPulse(document.querySelector("[data-visual-pulse]"), data);
   renderSystemStatus(document.querySelector("[data-system-status]"), data.systemStatus);
   renderKpis(document.querySelector("[data-kpis]"), data.overviewKpis);
+  renderAgentsRoomSection(document.querySelector("[data-agentsroom-section]"), data.agentsRoom);
   renderWebsiteSection(document.querySelector("[data-website-section]"), data.websiteMetrics);
   renderShopSection(document.querySelector("[data-shop-section]"), data.shopMetrics);
   renderCatalogUploadSection(document.querySelector("[data-catalog-upload-section]"), data.shopMetrics);
@@ -324,6 +330,7 @@ async function initControlDashboard() {
   }
   let seedData = liveMetrics;
   window.__CONTROL_DATA__ = seedData;
+  let refreshInFlight = false;
 
   renderNav(document.querySelector("[data-control-nav]"), controlNav);
   renderRanges(document.querySelector("[data-date-ranges]"), dateRanges);
@@ -338,15 +345,40 @@ async function initControlDashboard() {
   setupUploadQueueExportAction();
   setupLogoutAction();
   setupReloadAction(async () => {
-    const nextLiveMetrics = await loadLiveMetrics();
-    if (!nextLiveMetrics || !nextLiveMetrics.metadata) {
+    if (refreshInFlight) {
       return;
     }
-    seedData = nextLiveMetrics;
-    window.__CONTROL_DATA__ = seedData;
-    renderDashboardView(applyRangeToData(seedData, "live"));
+    refreshInFlight = true;
+    try {
+      const nextLiveMetrics = await loadLiveMetrics();
+      if (!nextLiveMetrics || !nextLiveMetrics.metadata) {
+        return;
+      }
+      seedData = nextLiveMetrics;
+      window.__CONTROL_DATA__ = seedData;
+      renderDashboardView(applyRangeToData(seedData, "live"));
+    } finally {
+      refreshInFlight = false;
+    }
   });
   setupAppShell();
+
+  window.setInterval(async () => {
+    if (refreshInFlight) {
+      return;
+    }
+    refreshInFlight = true;
+    try {
+      const nextLiveMetrics = await loadLiveMetrics();
+      if (nextLiveMetrics && nextLiveMetrics.metadata) {
+        seedData = nextLiveMetrics;
+        window.__CONTROL_DATA__ = seedData;
+        renderDashboardView(applyRangeToData(seedData, "live"));
+      }
+    } finally {
+      refreshInFlight = false;
+    }
+  }, LIVE_REFRESH_MS);
 }
 
 document.addEventListener("DOMContentLoaded", () => {

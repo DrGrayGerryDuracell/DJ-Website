@@ -1,5 +1,14 @@
 import { formatNumber, formatValue, trendClass, levelClass } from "./formatters.js";
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
 function buildTrafficBars(series) {
   if (!Array.isArray(series) || !series.length) {
     return `<p class="muted-line">Keine Live-Daten vorhanden.</p>`;
@@ -59,6 +68,204 @@ function toStatusCount(label, value, cls) {
   return `<span class="catalog-chip ${cls}">${label}: <strong>${value}</strong></span>`;
 }
 
+function buildTagPills(tags) {
+  if (!Array.isArray(tags) || !tags.length) {
+    return "";
+  }
+  return tags.map((tag) => `<span class="agentsroom-tag">${escapeHtml(tag)}</span>`).join("");
+}
+
+function statusClass(status) {
+  if (status === "live") return "is-live";
+  if (status === "connected") return "is-connected";
+  if (status === "support") return "is-support";
+  if (status === "ready") return "is-ready";
+  if (status === "active") return "is-active";
+  if (status === "sync") return "is-sync";
+  return "is-info";
+}
+
+function buildFlowItems(items) {
+  if (!Array.isArray(items) || !items.length) {
+    return `<p class="muted-line">Keine Routing-Daten vorhanden.</p>`;
+  }
+  return items
+    .map(
+      (item) => `
+        <li class="agentsroom-flow-item">
+          <div>
+            <strong>${escapeHtml(item.from)}</strong>
+            <span>${escapeHtml(item.channel)}</span>
+          </div>
+          <div class="agentsroom-flow-arrow">→</div>
+          <div>
+            <strong>${escapeHtml(item.to)}</strong>
+            <span>${escapeHtml(item.purpose)}</span>
+          </div>
+          <small class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel || item.status)}</small>
+        </li>
+      `
+    )
+    .join("");
+}
+
+function buildNodeCards(items, kind = "agent") {
+  if (!Array.isArray(items) || !items.length) {
+    return `<p class="muted-line">Keine Daten vorhanden.</p>`;
+  }
+  return items
+    .map(
+      (item) => `
+        <article class="agentsroom-node ${kind}">
+          <div class="agentsroom-node-head">
+            <h4>${escapeHtml(item.name)}</h4>
+            <span class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel || item.status)}</span>
+          </div>
+          <p>${escapeHtml(item.role)}</p>
+          <div class="agentsroom-node-meta">
+            <strong>${escapeHtml(item.route)}</strong>
+            <span>${escapeHtml(item.channel)}</span>
+          </div>
+          <div class="agentsroom-tags">${buildTagPills(item.tags)}</div>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function buildLiveData(items) {
+  if (!Array.isArray(items) || !items.length) {
+    return `<p class="muted-line">Keine Live-Daten vorhanden.</p>`;
+  }
+  return items
+    .map(
+      (item) => `
+        <article class="agentsroom-rail-card">
+          <span class="agentsroom-rail-label">${escapeHtml(item.label)}</span>
+          <strong>${escapeHtml(item.value)}</strong>
+          <small class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel || item.status)}</small>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function buildSourceCards(items) {
+  if (!Array.isArray(items) || !items.length) {
+    return `<p class="muted-line">Keine Quellen gefunden.</p>`;
+  }
+  return items
+    .map(
+      (item) => `
+        <article class="agentsroom-source-card">
+          <div class="agentsroom-node-head">
+            <h4>${escapeHtml(item.name)}</h4>
+            <span class="status-pill ${statusClass(item.state)}">${escapeHtml(item.kind || item.state)}</span>
+          </div>
+          <p>${escapeHtml(item.detail)}</p>
+          <div class="agentsroom-node-meta">
+            <strong>${escapeHtml(item.channel)}</strong>
+            <span>${escapeHtml(item.route)}</span>
+          </div>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function buildSessionCards(items) {
+  if (!Array.isArray(items) || !items.length) {
+    return `<p class="muted-line">Keine Session-Daten gefunden.</p>`;
+  }
+  return items
+    .map(
+      (item) => `
+        <article class="agentsroom-session-card">
+          <div class="agentsroom-node-head">
+            <h4>${escapeHtml(item.name)}</h4>
+            <span class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel || item.status)}</span>
+          </div>
+          <p>${escapeHtml(item.role)}</p>
+          <div class="agentsroom-node-meta">
+            <strong>${escapeHtml(item.channel)}</strong>
+            <span>${escapeHtml(item.route)}</span>
+          </div>
+          <div class="agentsroom-tags">${buildTagPills(item.tags)}</div>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function buildMessageCards(items) {
+  if (!Array.isArray(items) || !items.length) {
+    return `<p class="muted-line">Keine Nachrichten gefunden.</p>`;
+  }
+  return items
+    .map(
+      (item) => `
+        <article class="agentsroom-message-card">
+          <div class="agentsroom-conversation-head">
+            <strong>${escapeHtml(item.topic)}</strong>
+            <span>${escapeHtml(item.time)}</span>
+          </div>
+          <p>${escapeHtml(item.summary)}</p>
+          <div class="agentsroom-conversation-meta">
+            <span>${escapeHtml(item.from)} → ${escapeHtml(item.to)}</span>
+            <span class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel || item.status)}</span>
+          </div>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function buildDelegationCards(items) {
+  if (!Array.isArray(items) || !items.length) {
+    return `<p class="muted-line">Keine Delegationen vorhanden.</p>`;
+  }
+  return items
+    .map(
+      (item) => `
+        <article class="agentsroom-task-card">
+          <div class="agentsroom-task-head">
+            <strong>${item.from} → ${item.to}</strong>
+            <span class="status-pill ${statusClass(item.status)}">${item.statusLabel || item.status}</span>
+          </div>
+          <p>${item.task}</p>
+          <div class="agentsroom-task-meta">
+            <span>${item.channel}</span>
+            <strong>${item.priority}</strong>
+          </div>
+        </article>
+      `
+    )
+    .join("");
+}
+
+function buildConversationFeed(items) {
+  if (!Array.isArray(items) || !items.length) {
+    return `<p class="muted-line">Keine Gesprächseinträge vorhanden.</p>`;
+  }
+  return items
+    .map(
+      (item) => `
+        <article class="agentsroom-conversation-card">
+          <div class="agentsroom-conversation-head">
+            <strong>${item.topic}</strong>
+            <span>${item.time}</span>
+          </div>
+          <p>${item.summary}</p>
+          <div class="agentsroom-conversation-meta">
+            <span>${item.from} → ${item.to}</span>
+            <span class="status-pill ${statusClass(item.status)}">${item.statusLabel || item.status}</span>
+          </div>
+        </article>
+      `
+    )
+    .join("");
+}
+
 export function renderNav(container, nav) {
   container.innerHTML = nav
     .map((item) => `<a href="#${item.id}" class="control-nav-link"><span>${item.label}</span>${item.hint ? `<small>${item.hint}</small>` : ""}</a>`)
@@ -74,7 +281,8 @@ export function renderRanges(container, ranges) {
 
 export function renderModeBadge(node, metadata) {
   const range = metadata.activeRange ? ` • ${metadata.activeRange}` : "";
-  node.textContent = `Datenquelle: ${String(metadata.mode || "live").toUpperCase()} • ${metadata.timezone}${range}`;
+  const lastSync = metadata.generatedAtLabel ? ` • ${metadata.generatedAtLabel}` : "";
+  node.textContent = `Datenquelle: ${String(metadata.mode || "live").toUpperCase()} • ${metadata.timezone}${range}${lastSync}`;
 }
 
 export function renderVisualPulse(container, dashboardData) {
@@ -130,6 +338,124 @@ export function renderVisualPulse(container, dashboardData) {
       <div class="social-mini">${socialBars}</div>
       <p class="pulse-copy">Stärkster Kanal: <strong>${dashboardData.socialMetrics.strongestPlatform || socialTop[0]?.platform || "n/a"}</strong></p>
     </article>
+  `;
+}
+
+export function renderAgentsRoomSection(container, agentsRoom) {
+  if (!container) {
+    return;
+  }
+
+  const runtime = agentsRoom?.runtime || {};
+  const routing = Array.isArray(agentsRoom?.routing) ? agentsRoom.routing : [];
+  const agents = Array.isArray(agentsRoom?.agents) ? agentsRoom.agents : [];
+  const devices = Array.isArray(agentsRoom?.devices) ? agentsRoom.devices : [];
+  const delegations = Array.isArray(agentsRoom?.delegations) ? agentsRoom.delegations : [];
+  const conversations = Array.isArray(agentsRoom?.conversations) ? agentsRoom.conversations : [];
+  const liveData = Array.isArray(agentsRoom?.liveData) ? agentsRoom.liveData : [];
+  const sourceRegistry = Array.isArray(agentsRoom?.sourceRegistry) ? agentsRoom.sourceRegistry : [];
+  const sessions = Array.isArray(agentsRoom?.sessions) ? agentsRoom.sessions : [];
+  const recentMessages = Array.isArray(agentsRoom?.recentMessages) ? agentsRoom.recentMessages : [];
+  const recentDelegations = Array.isArray(agentsRoom?.recentDelegations) ? agentsRoom.recentDelegations : [];
+  const recentObligations = Array.isArray(agentsRoom?.recentObligations) ? agentsRoom.recentObligations : [];
+  const metrics = agentsRoom?.metrics || {};
+  const runtimeLiveData = [
+    { label: "Gateway", value: runtime.gatewayState?.gateway_state || "unbekannt", status: runtime.gatewayState?.gateway_state === "running" ? "live" : "support", statusLabel: runtime.gatewayState?.gateway_state === "running" ? "Running" : "Check" },
+    { label: "Telegram", value: runtime.gatewayState?.platforms?.telegram?.state || "unbekannt", status: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "connected" : "support", statusLabel: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "Connected" : "Check" },
+    { label: "Lifecycle", value: runtime.gatewayLifecycle?.phase || "unbekannt", status: runtime.gatewayLifecycle?.phase === "running" ? "live" : "sync", statusLabel: runtime.gatewayLifecycle?.phase === "running" ? "Running" : "Sync" },
+    { label: "Aktuelle Route", value: runtime.currentRouting?.displayName ? `${runtime.currentRouting.displayName} • ${String(runtime.currentRouting.sessionId || runtime.currentRouting.sessionKey || "").slice(-8)}` : "keine", status: runtime.currentRouting ? "connected" : "info", statusLabel: runtime.currentRouting ? "Route" : "n/a" },
+    { label: "Aktive Sessions", value: String(runtime.counts?.sessions ?? 0), status: (runtime.counts?.sessions || 0) > 0 ? "live" : "info", statusLabel: "SQLite" },
+    { label: "Nachrichten", value: String(runtime.counts?.messages ?? 0), status: (runtime.counts?.messages || 0) > 0 ? "live" : "info", statusLabel: "SQLite" },
+    { label: "Delegationen", value: String(runtime.counts?.delegations ?? 0), status: (runtime.counts?.delegations || 0) > 0 ? "support" : "info", statusLabel: "SQLite" }
+  ];
+
+  container.innerHTML = `
+    <article class="agentsroom-hero">
+      <div>
+        <p class="agentsroom-eyebrow">AgentsRoom / Hermes Mesh</p>
+        <h3>Routing, Kommunikation und Geräte als eigene Kontrollansicht</h3>
+        <p class="muted-line">Mensch → Hermes per Telegram, Hermes → Jarvis zur Verteilung, Jarvis → Argus zur Vorprüfung. Zusätzlich sind die Geräte- und Servicepfade live sichtbar.</p>
+      </div>
+      <div class="agentsroom-hero-stats">
+        <div><span>Agenten</span><strong>${formatValue(metrics.agentCount || agents.length)}</strong></div>
+        <div><span>Routen</span><strong>${formatValue(metrics.routeCount || routing.length)}</strong></div>
+        <div><span>Geräte</span><strong>${formatValue(metrics.deviceCount || devices.length)}</strong></div>
+        <div><span>Live</span><strong>${formatValue(metrics.liveCount || liveData.length)}</strong></div>
+        <div><span>Delegationen</span><strong>${formatValue(metrics.delegationCount || delegations.length)}</strong></div>
+        <div><span>Gespräche</span><strong>${formatValue(metrics.conversationCount || conversations.length)}</strong></div>
+        <div><span>Quellen</span><strong>${formatValue(metrics.sourceCount || sourceRegistry.length)}</strong></div>
+      </div>
+    </article>
+
+    <div class="agentsroom-grid">
+      <article class="panel agentsroom-panel agentsroom-panel-wide">
+        <h3>Live Hermes Runtime</h3>
+        <div class="agentsroom-runtime-grid">${buildLiveData(runtimeLiveData)}</div>
+      </article>
+
+      <article class="panel agentsroom-panel">
+        <h3>Routing</h3>
+        <ul class="agentsroom-flow-list">${buildFlowItems(routing)}</ul>
+      </article>
+
+      <article class="panel agentsroom-panel">
+        <h3>Agenten</h3>
+        <div class="agentsroom-node-grid">${buildNodeCards(agents, "agent")}</div>
+      </article>
+
+      <article class="panel agentsroom-panel">
+        <h3>Geräte & Live-Daten</h3>
+        <div class="agentsroom-device-grid">${buildNodeCards(devices, "device")}</div>
+        <div class="agentsroom-rail">${buildLiveData(liveData)}</div>
+      </article>
+
+      <article class="panel agentsroom-panel">
+        <h3>Quellen & Vault</h3>
+        <div class="agentsroom-source-grid">${buildSourceCards(sourceRegistry)}</div>
+      </article>
+
+      <article class="panel agentsroom-panel">
+        <h3>Sessions</h3>
+        <div class="agentsroom-session-grid">${buildSessionCards(sessions)}</div>
+      </article>
+
+      <article class="panel agentsroom-panel agentsroom-panel-wide">
+        <h3>Delegationen, Aufgaben und Gesprächslog</h3>
+        <div class="agentsroom-delegation-wrap">
+          <div>
+            <h4>Delegationen</h4>
+            <div class="agentsroom-task-grid">${buildDelegationCards(delegations)}</div>
+          </div>
+          <div>
+            <h4>Live-Gesprächslog</h4>
+            <div class="agentsroom-conversation-grid">${buildConversationFeed(conversations)}</div>
+          </div>
+        </div>
+      </article>
+
+      <article class="panel agentsroom-panel agentsroom-panel-wide">
+        <h3>Hermes Live Nachrichten</h3>
+        <div class="agentsroom-message-grid">${buildMessageCards(recentMessages)}</div>
+        <div class="agentsroom-delegation-wrap">
+          <div>
+            <h4>Aktuelle Delegationen</h4>
+            <div class="agentsroom-task-grid">${buildDelegationCards(recentDelegations)}</div>
+          </div>
+          <div>
+            <h4>Delivery Obligations</h4>
+            <div class="agentsroom-conversation-grid">${buildConversationFeed(recentObligations.map((item) => ({
+              topic: item.label,
+              time: "",
+              from: "Hermes",
+              to: item.label,
+              summary: item.value,
+              status: item.status,
+              statusLabel: item.statusLabel
+            })))}</div>
+          </div>
+        </div>
+      </article>
+    </div>
   `;
 }
 
