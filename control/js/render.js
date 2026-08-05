@@ -447,6 +447,92 @@ function buildConversationFeed(items) {
     .join("");
 }
 
+const HERMES_CHAT_STORAGE_PREFIX = "dg-control-hermes-chat-v1";
+
+function getHermesChatKey(session) {
+  const sessionKey = session?.session_key || session?.id || "default";
+  return `${HERMES_CHAT_STORAGE_PREFIX}:${sessionKey}`;
+}
+
+function readHermesChatDrafts(session) {
+  try {
+    const raw = window.localStorage.getItem(getHermesChatKey(session));
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function renderHermesChatMessages(messages) {
+  if (!Array.isArray(messages) || !messages.length) {
+    return `<p class="muted-line">Noch keine Chatdaten geladen.</p>`;
+  }
+
+  return messages
+    .map((item) => {
+      const side = item.from === "user" ? "is-user" : item.from === "assistant" ? "is-assistant" : "is-system";
+      const label = item.from === "user" ? "Du" : item.from === "assistant" ? "Hermes" : "System";
+      return `
+        <article class="hermes-chat-message ${side}">
+          <div class="hermes-chat-message-head">
+            <strong>${label}</strong>
+            <span>${escapeHtml(item.time || "")}</span>
+          </div>
+          <p>${escapeHtml(item.summary || item.text || "")}</p>
+          ${item.statusLabel ? `<small>${escapeHtml(item.statusLabel)}</small>` : ""}
+        </article>
+      `;
+    })
+    .join("");
+}
+
+export function renderHermesChat(container, dashboardData) {
+  if (!container) {
+    return;
+  }
+
+  const runtime = dashboardData?.agentsRoom?.runtime || {};
+  const session = runtime.activeTelegramSession || null;
+  const liveMessages = Array.isArray(dashboardData?.agentsRoom?.recentMessages) ? dashboardData.agentsRoom.recentMessages : [];
+  const conversation = liveMessages.slice(0, 6);
+  const drafts = readHermesChatDrafts(session);
+  const merged = [
+    ...conversation.map((item) => ({ ...item, from: item.from === "user" ? "user" : item.from === "assistant" ? "assistant" : "system" })),
+    ...drafts.map((item) => ({
+      from: "user",
+      time: item.time,
+      summary: item.text,
+      statusLabel: item.sent ? "Gesendet" : "Wartet auf Sync"
+    }))
+  ].slice(-10);
+
+  container.innerHTML = `
+    <article class="panel hermes-chat-panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Hermes Chat</p>
+          <h3>Direkter Thread mit Hermes</h3>
+        </div>
+        <div class="section-banner-chips">
+          <span class="status-pill ${runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "is-live" : "is-warn"}">Telegram: <strong>${escapeHtml(runtime.gatewayState?.platforms?.telegram?.state || "unbekannt")}</strong></span>
+          <span class="status-pill is-info">Session: <strong>${escapeHtml(session?.title || "n/a")}</strong></span>
+        </div>
+      </div>
+      <div class="hermes-chat-thread">${renderHermesChatMessages(merged)}</div>
+      <div class="hermes-chat-composer">
+        <label for="hermes-chat-input">Nachricht an Hermes</label>
+        <textarea id="hermes-chat-input" data-hermes-chat-input rows="4" placeholder="Kurz und direkt schreiben. Wird lokal im Thread gesichert und kann mit dem Hermes-Thread synchron bleiben, sobald der Telegram-Bridge-Flow greift."></textarea>
+        <div class="hermes-chat-actions">
+          <button type="button" class="action-btn" data-hermes-chat-send>In Queue sichern</button>
+          <button type="button" class="action-btn" data-hermes-chat-copy>Text kopieren</button>
+        </div>
+        <p class="muted-line">Live-Thread kommt aus Hermes. Eigene Nachrichten landen lokal in der Queue und bleiben beim nächsten Sync sichtbar.</p>
+      </div>
+    </article>
+  `;
+}
+
 export function renderNav(container, nav) {
   container.innerHTML = nav
     .map((item) => `<a href="#${item.id}" class="control-nav-link"><span>${item.label}</span>${item.hint ? `<small>${item.hint}</small>` : ""}</a>`)

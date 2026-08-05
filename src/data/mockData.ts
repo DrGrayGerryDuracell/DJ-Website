@@ -123,8 +123,8 @@ export const mockDashboardData: DashboardData = {
       { label: "Website", url: "https://drgray-mrsdrgray.com", status: "live" },
       { label: "Shirtee Store", url: "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: "live" },
       { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: "live" },
-      { label: "TikTok Dr. Gray", url: "https://www.tiktok.com/@dr.gray.sic", status: "live" },
-      { label: "TikTok Mrs. Dr. Gray", url: "https://www.tiktok.com/@ktina1986", status: "live" }
+      { label: "TikTok Dr. Gray", url: "https://www.tiktok.com/@drgray_mrsdrgray", status: "live" },
+      { label: "TikTok Mrs. Dr. Gray", url: "https://www.tiktok.com/@gray.afterhours", status: "live" }
     ]
   },
   performanceMetrics: {
@@ -178,8 +178,8 @@ export const mockDashboardData: DashboardData = {
     { id: "qa-2", label: "Shop Seite oeffnen", href: "https://drgray-mrsdrgray.com/shop.html", external: true },
     { id: "qa-3", label: "Shirtee Store", href: "https://www.shirtee.com/de/store/drgray-mrsdrgray/", external: true },
     { id: "qa-7", label: "SoundCloud Profil", href: "https://soundcloud.com/drgray_sic", external: true },
-    { id: "qa-4", label: "TikTok Dr. Gray", href: "https://www.tiktok.com/@dr.gray.sic", external: true },
-    { id: "qa-8", label: "TikTok Mrs. Dr. Gray", href: "https://www.tiktok.com/@ktina1986", external: true },
+    { id: "qa-4", label: "TikTok Dr. Gray", href: "https://www.tiktok.com/@drgray_mrsdrgray", external: true },
+    { id: "qa-8", label: "TikTok Mrs. Dr. Gray", href: "https://www.tiktok.com/@gray.afterhours", external: true },
     { id: "qa-5", label: "Kontakt testen", href: "https://drgray-mrsdrgray.com/kontakt.html", external: true },
     { id: "qa-6", label: "Report Export (mock)", href: "#export", external: false }
   ]

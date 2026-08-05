@@ -5,6 +5,7 @@ import {
   renderRanges,
   renderModeBadge,
   renderVisualPulse,
+  renderHermesChat,
   renderAgentsRoomSection,
   renderSystemStatus,
   renderKpis,
@@ -325,6 +326,82 @@ function setupReloadAction(onReload) {
   });
 }
 
+function getHermesChatStorageKey(session) {
+  const sessionKey = session?.session_key || session?.id || "default";
+  return `dg-control-hermes-chat-v1:${sessionKey}`;
+}
+
+function readHermesChatQueue(session) {
+  try {
+    const raw = window.localStorage.getItem(getHermesChatStorageKey(session));
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeHermesChatQueue(session, items) {
+  window.localStorage.setItem(getHermesChatStorageKey(session), JSON.stringify(items));
+}
+
+function setupHermesChatActions() {
+  document.addEventListener("click", async (event) => {
+    const sendButton = event.target.closest("[data-hermes-chat-send]");
+    const copyButton = event.target.closest("[data-hermes-chat-copy]");
+
+    if (!sendButton && !copyButton) {
+      return;
+    }
+
+    const input = document.querySelector("[data-hermes-chat-input]");
+    if (!input) {
+      return;
+    }
+
+    const data = window.__CONTROL_DATA__ || null;
+    const session = data?.agentsRoom?.runtime?.activeTelegramSession || null;
+
+    if (copyButton) {
+      const text = String(input.value || "").trim();
+      if (!text) {
+        return;
+      }
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch {
+        input.select();
+      }
+      return;
+    }
+
+    if (!sendButton) {
+      return;
+    }
+
+    const text = String(input.value || "").trim();
+    if (!text) {
+      return;
+    }
+
+    const queue = readHermesChatQueue(session);
+    queue.push({
+      id: `draft-${Date.now()}`,
+      time: new Date().toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" }),
+      text,
+      sent: false
+    });
+    writeHermesChatQueue(session, queue.slice(-20));
+    try {
+      await navigator.clipboard.writeText(text);
+    } catch {
+      // Clipboard ist nur ein Komfort-Fallback.
+    }
+    input.value = "";
+    renderHermesChat(document.querySelector("[data-hermes-chat]"), data);
+  });
+}
+
 function setupAppShell() {
   if (!("serviceWorker" in navigator)) {
     return;
@@ -339,6 +416,7 @@ function renderDashboardView(data) {
   renderModeBadge(document.querySelector("[data-mode-badge]"), data.metadata);
   renderVisualPulse(document.querySelector("[data-visual-pulse]"), data);
   renderSystemStatus(document.querySelector("[data-system-status]"), data.systemStatus);
+  renderHermesChat(document.querySelector("[data-hermes-chat]"), data);
   renderKpis(document.querySelector("[data-kpis]"), data.overviewKpis);
   renderAgentsRoomSection(document.querySelector("[data-agentsroom-section]"), data.agentsRoom);
   renderWebsiteSection(document.querySelector("[data-website-section]"), data.websiteMetrics);
@@ -397,6 +475,7 @@ async function initControlDashboard() {
     }
   });
   setupAppShell();
+  setupHermesChatActions();
 
   window.setInterval(async () => {
     if (refreshInFlight) {
