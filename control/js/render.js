@@ -109,6 +109,37 @@ function buildFlowItems(items) {
     .join("");
 }
 
+function buildDeviceLinks(devices) {
+  const names = Array.isArray(devices) ? devices.map((device) => device.name) : [];
+  const has = (name) => names.includes(name);
+  const items = [
+    has("Mac mini") && has("MacBook") ? { from: "Mac mini", to: "MacBook", channel: "SMB", state: "connected", note: "Mirror / Backup" } : null,
+    has("Mac mini") && has("iMac") ? { from: "Mac mini", to: "iMac", channel: "SMB", state: "connected", note: "Operator Sync" } : null,
+    has("Mac mini") && has("Home Assistant") ? { from: "Home Assistant", to: "Mac mini", channel: "SMB / Bridge", state: "live", note: "HA Backup" } : null,
+    has("MacBook") && has("iMac") ? { from: "MacBook", to: "iMac", channel: "SMB", state: "connected", note: "Shared Work" } : null,
+    has("iPhone") ? { from: "iPhone", to: "Hermes", channel: "Telegram", state: "live", note: "Mobile Control" } : null,
+    has("GitHub") ? { from: "GitHub", to: "Mac mini", channel: "Repo Sync", state: "connected", note: "Codebasis" } : null,
+    has("Obsidian") ? { from: "Obsidian", to: "Jarvis", channel: "Memory", state: "sync", note: "Vault Graph" } : null
+  ].filter(Boolean);
+
+  if (!items.length) {
+    return `<p class="muted-line">Keine Gerätepfade vorhanden.</p>`;
+  }
+
+  return items
+    .map(
+      (item) => `
+        <li>
+          <strong>${escapeHtml(item.from)} → ${escapeHtml(item.to)}</strong>
+          <span>${escapeHtml(item.channel)}</span>
+          <p>${escapeHtml(item.note)}</p>
+          <em class="status-pill ${statusClass(item.state)}">${escapeHtml(item.state)}</em>
+        </li>
+      `
+    )
+    .join("");
+}
+
 function buildRoutingGraph(agentsRoom) {
   const routing = Array.isArray(agentsRoom?.routing) ? agentsRoom.routing : [];
   const devices = Array.isArray(agentsRoom?.devices) ? agentsRoom.devices : [];
@@ -567,6 +598,8 @@ export function renderAgentsRoomSection(container, agentsRoom) {
       <article class="panel agentsroom-panel">
         <h3>Geräte & Live-Daten</h3>
         <div class="agentsroom-device-grid">${buildNodeCards(devices, "device")}</div>
+        <h4>Direkte Gerätepfade</h4>
+        <ul class="agentsroom-device-link-list">${buildDeviceLinks(devices)}</ul>
         <div class="agentsroom-rail">${buildLiveData(liveData)}</div>
       </article>
 
@@ -643,9 +676,24 @@ export function renderKpis(container, kpis) {
 }
 
 export function renderWebsiteSection(container, metrics) {
+  const statusChips = [
+    { label: "Erreichbar", value: metrics.audiences?.find((item) => item.label === "Erreichbar")?.value ?? 0, tone: "is-ok" },
+    { label: "Fehler", value: metrics.audiences?.find((item) => item.label === "Fehler")?.value ?? 0, tone: "is-warn" },
+    { label: "Antwortzeit", value: metrics.engagement?.avgSession || "0 ms", tone: "is-info" },
+    { label: "Live Quellen", value: metrics.sources?.length ?? 0, tone: "is-connected" }
+  ];
+
   container.innerHTML = `
     <article class="panel">
-      <h3>Antwortzeit pro gepruefter Seite</h3>
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Website Monitoring</p>
+          <h3>Antwortzeit und Erreichbarkeit</h3>
+        </div>
+        <div class="section-banner-chips">
+          ${statusChips.map((item) => `<span class="status-pill ${item.tone}">${item.label}: <strong>${escapeHtml(String(item.value))}</strong></span>`).join("")}
+        </div>
+      </div>
       <div class="metric-bars">${buildTrafficBars(metrics.trafficSeries)}</div>
       <div class="mini-split-grid">
         <div>
@@ -808,13 +856,30 @@ export function renderActivity(container, activityFeed, timeline) {
 }
 
 export function renderPerformance(container, performanceMetrics) {
+  const stateCards = [
+    { label: "Seitenchecks", value: performanceMetrics.webVitals.find((item) => item.metric === "HTTP Seitenchecks")?.value || "0/0", tone: "is-warn" },
+    { label: "Shop", value: performanceMetrics.webVitals.find((item) => item.metric === "Shirtee-Linkchecks")?.value || "0/0", tone: "is-ok" },
+    { label: "SoundCloud", value: performanceMetrics.externalChecks.find((item) => item.label === "SoundCloud Profil")?.status || "n/a", tone: "is-warn" }
+  ];
+  const overallState = performanceMetrics.webVitals.some((item) => item.state === "warn") || performanceMetrics.externalChecks.some((item) => item.level === "warn")
+    ? "Eingeschränkt"
+    : "Stabil";
+
   container.innerHTML = `
     <article class="panel">
-      <h3>Performance & Technik</h3>
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Technik</p>
+          <h3>Checks, Uptime und Fehlerlog</h3>
+        </div>
+        <div class="section-banner-chips">
+          ${stateCards.map((item) => `<span class="status-pill ${item.tone}">${item.label}: <strong>${escapeHtml(String(item.value))}</strong></span>`).join("")}
+        </div>
+      </div>
       <div class="mini-grid three">
         <div><span>Uptime</span><strong>${performanceMetrics.uptime}</strong></div>
         <div><span>Antwortzeit</span><strong>${performanceMetrics.responseTime}</strong></div>
-        <div><span>Status</span><strong>Online</strong></div>
+        <div><span>Status</span><strong>${overallState}</strong></div>
       </div>
       <ul class="status-list compact">
         ${performanceMetrics.webVitals
@@ -839,9 +904,19 @@ export function renderPerformance(container, performanceMetrics) {
 }
 
 export function renderContent(container, contentPerformance) {
+  const strongest = contentPerformance.strongestSections[0] || null;
   container.innerHTML = `
     <article class="panel">
-      <h3>Starke Sections</h3>
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Inhalte</p>
+          <h3>Section-Priorität und CTA-Signale</h3>
+        </div>
+        <div class="section-banner-chips">
+          ${strongest ? `<span class="status-pill is-live">Stärkste Section: <strong>${escapeHtml(strongest.section)}</strong></span>` : ""}
+          <span class="status-pill is-info">Live CTAs: <strong>${contentPerformance.ctas.length}</strong></span>
+        </div>
+      </div>
       <div class="metric-bars">
         ${contentPerformance.strongestSections
           .map((item) => `<div class="metric-bar-row"><span class="metric-bar-label">${item.section}</span><div class="metric-bar-track"><span class="metric-bar-fill" style="width:${item.score}%"></span></div><strong>${item.score}</strong></div>`)
@@ -879,7 +954,16 @@ export function renderSocial(container, socialMetrics) {
 
   container.innerHTML = `
     <article class="panel">
-      <h3>Social & Externe Ziele</h3>
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Social</p>
+          <h3>Profile, Signale und Quellenlage</h3>
+        </div>
+        <div class="section-banner-chips">
+          <span class="status-pill is-live">Stärkster Kanal: <strong>${escapeHtml(strongest)}</strong></span>
+          <span class="status-pill is-warn">Signal geprüft</span>
+        </div>
+      </div>
       <div class="social-network">
         ${socialMetrics.links
           .map((row) => {
@@ -913,7 +997,12 @@ export function renderSocial(container, socialMetrics) {
       </table>
     </article>
     <article class="panel">
-      <h3>Profile & Vergleiche</h3>
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Profile</p>
+          <h3>Verifizierte Accounts und Vergleich</h3>
+        </div>
+      </div>
       <ul class="account-list">
         ${socialMetrics.officialAccounts
           .map(
@@ -925,25 +1014,75 @@ export function renderSocial(container, socialMetrics) {
       <ul class="status-list compact">
         ${socialMetrics.comparisons.map((item) => `<li><span>${item.label}</span><strong>${item.value}</strong></li>`).join("")}
       </ul>
-      <p class="muted-line">Stärkster Kanal: <strong>${escapeHtml(strongest)}</strong></p>
+      <p class="muted-line">SoundCloud bleibt als Quelle sichtbar, auch wenn das Profil aktuell kein Live-Signal liefert.</p>
     </article>
   `;
 }
 
 export function renderAlerts(container, alerts) {
-  container.innerHTML = alerts
-    .map((alert) => {
-      const cls = alert.level === "warn" ? "is-warn" : alert.level === "ok" ? "is-ok" : "is-info";
-      return `<article class="alert-card ${cls}"><h4>${alert.title}</h4><p>${alert.description}</p><span>${alert.source}</span></article>`;
-    })
-    .join("");
+  const summary = {
+    warn: alerts.filter((item) => item.level === "warn").length,
+    ok: alerts.filter((item) => item.level === "ok").length,
+    info: alerts.filter((item) => item.level === "info").length
+  };
+
+  container.innerHTML = `
+    <article class="panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Warnungen</p>
+          <h3>Priorisierte Live-Auffälligkeiten</h3>
+        </div>
+        <div class="section-banner-chips">
+          <span class="status-pill is-warn">Warnungen: <strong>${summary.warn}</strong></span>
+          <span class="status-pill is-ok">OK: <strong>${summary.ok}</strong></span>
+          <span class="status-pill is-info">Info: <strong>${summary.info}</strong></span>
+        </div>
+      </div>
+      <div class="alert-grid">
+        ${alerts
+          .map((alert) => {
+            const cls = alert.level === "warn" ? "is-warn" : alert.level === "ok" ? "is-ok" : "is-info";
+            return `<article class="alert-card ${cls}"><h4>${alert.title}</h4><p>${alert.description}</p><span>${alert.source}</span></article>`;
+          })
+          .join("")}
+      </div>
+    </article>
+  `;
 }
 
 export function renderQuickActions(container, actions) {
   const validActions = Array.isArray(actions)
     ? actions.filter((item) => item && typeof item.href === "string" && item.href.trim() && typeof item.label === "string" && item.label.trim())
     : [];
-  container.innerHTML = validActions
-    .map((item) => `<a class="action-btn" href="${item.href}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ""}>${item.label}</a>`)
-    .join("");
+  const grouped = {
+    live: validActions.slice(0, 4),
+    social: validActions.slice(4, 7),
+    admin: validActions.slice(7)
+  };
+
+  const renderGroup = (title, items) => `
+    <div class="quick-action-group">
+      <h4>${title}</h4>
+      <div class="action-grid compact">
+        ${items
+          .map((item) => `<a class="action-btn" href="${item.href}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ""}>${item.label}</a>`)
+          .join("")}
+      </div>
+    </div>
+  `;
+
+  container.innerHTML = `
+    <article class="panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Aktionen</p>
+          <h3>Schnellzugriffe für Live-Betrieb</h3>
+        </div>
+      </div>
+      ${renderGroup("Direkt", grouped.live)}
+      ${renderGroup("Social", grouped.social)}
+      ${renderGroup("Administration", grouped.admin)}
+    </article>
+  `;
 }

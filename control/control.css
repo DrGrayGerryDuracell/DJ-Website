@@ -427,6 +427,47 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.78rem;
 }
 
+.agentsroom-device-link-list {
+  margin: 0 0 0.8rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.5rem;
+}
+
+.agentsroom-device-link-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.35rem 0.75rem;
+  align-items: center;
+  padding: 0.7rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.agentsroom-device-link-list strong {
+  grid-column: 1 / 2;
+  font-size: 0.92rem;
+}
+
+.agentsroom-device-link-list span {
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+
+.agentsroom-device-link-list p {
+  grid-column: 1 / 2;
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+
+.agentsroom-device-link-list .status-pill {
+  grid-column: 2 / 3;
+  grid-row: 1 / span 2;
+}
+
 .agentsroom-tags {
   margin-top: 0.6rem;
   display: flex;
@@ -924,6 +965,25 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-soft);
 }
 
+.section-banner {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.9rem;
+  margin-bottom: 0.9rem;
+}
+
+.section-banner h3 {
+  margin: 0.15rem 0 0;
+}
+
+.section-banner-chips {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}
+
 .status-list {
   margin: 0.95rem 0 0;
   padding: 0;
@@ -1269,6 +1329,11 @@ a { color: inherit; text-decoration: none; }
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.action-grid.compact {
+  margin-top: 0;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
 .action-btn {
   min-height: 46px;
   padding: 0.7rem 0.9rem;
@@ -1286,6 +1351,18 @@ a { color: inherit; text-decoration: none; }
 .action-btn:focus-visible {
   border-color: rgba(255, 216, 109, 0.5);
   background: rgba(255, 216, 109, 0.08);
+}
+
+.quick-action-group {
+  margin-top: 0.9rem;
+}
+
+.quick-action-group h4 {
+  margin: 0 0 0.55rem;
+  font-size: 0.86rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-strong);
 }
 
 .status-pill {
@@ -1546,6 +1623,7 @@ a { color: inherit; text-decoration: none; }
   .mini-grid,
   .alert-grid,
   .action-grid,
+  .action-grid.compact,
   .kpi-grid,
   .status-list {
     grid-template-columns: 1fr;
@@ -1577,6 +1655,25 @@ a { color: inherit; text-decoration: none; }
 
   .agentsroom-network {
     min-height: 520px;
+  }
+
+  .section-banner,
+  .section-banner-chips {
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+
+  .section-banner-chips {
+    align-items: flex-start;
+  }
+
+  .agentsroom-device-link-list li {
+    grid-template-columns: 1fr;
+  }
+
+  .agentsroom-device-link-list .status-pill {
+    grid-column: auto;
+    grid-row: auto;
   }
 
   .activity-list li {
