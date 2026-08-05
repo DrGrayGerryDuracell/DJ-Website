@@ -336,7 +336,7 @@ export function renderVisualPulse(container, dashboardData) {
       <p class="pulse-eyebrow">Social</p>
       <h3>Plattformstatus</h3>
       <div class="social-mini">${socialBars}</div>
-      <p class="pulse-copy">Stärkster Kanal: <strong>${dashboardData.socialMetrics.strongestPlatform || socialTop[0]?.platform || "n/a"}</strong></p>
+      <p class="pulse-copy">Stärkster Kanal: <strong>${dashboardData.socialMetrics.strongestPlatform || socialTop[0]?.platform || "nicht erfasst"}</strong></p>
     </article>
   `;
 }
@@ -360,10 +360,10 @@ export function renderAgentsRoomSection(container, agentsRoom) {
   const recentObligations = Array.isArray(agentsRoom?.recentObligations) ? agentsRoom.recentObligations : [];
   const metrics = agentsRoom?.metrics || {};
   const runtimeLiveData = [
-    { label: "Gateway", value: runtime.gatewayState?.gateway_state || "unbekannt", status: runtime.gatewayState?.gateway_state === "running" ? "live" : "support", statusLabel: runtime.gatewayState?.gateway_state === "running" ? "Running" : "Check" },
-    { label: "Telegram", value: runtime.gatewayState?.platforms?.telegram?.state || "unbekannt", status: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "connected" : "support", statusLabel: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "Connected" : "Check" },
-    { label: "Lifecycle", value: runtime.gatewayLifecycle?.phase || "unbekannt", status: runtime.gatewayLifecycle?.phase === "running" ? "live" : "sync", statusLabel: runtime.gatewayLifecycle?.phase === "running" ? "Running" : "Sync" },
-    { label: "Aktuelle Route", value: runtime.currentRouting?.displayName ? `${runtime.currentRouting.displayName} • ${String(runtime.currentRouting.sessionId || runtime.currentRouting.sessionKey || "").slice(-8)}` : "keine", status: runtime.currentRouting ? "connected" : "info", statusLabel: runtime.currentRouting ? "Route" : "n/a" },
+    { label: "Gateway", value: runtime.gatewayState?.gateway_state || "unbekannt", status: runtime.gatewayState?.gateway_state === "running" ? "live" : "support", statusLabel: runtime.gatewayState?.gateway_state === "running" ? "Aktiv" : "Pruefen" },
+    { label: "Telegram", value: runtime.gatewayState?.platforms?.telegram?.state || "unbekannt", status: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "connected" : "support", statusLabel: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "Verbunden" : "Pruefen" },
+    { label: "Lifecycle", value: runtime.gatewayLifecycle?.phase || "unbekannt", status: runtime.gatewayLifecycle?.phase === "running" ? "live" : "sync", statusLabel: runtime.gatewayLifecycle?.phase === "running" ? "Laufend" : "Sync" },
+    { label: "Aktuelle Route", value: runtime.currentRouting?.displayName ? `${runtime.currentRouting.displayName} • ${String(runtime.currentRouting.sessionId || runtime.currentRouting.sessionKey || "").slice(-8)}` : "keine Route", status: runtime.currentRouting ? "connected" : "info", statusLabel: runtime.currentRouting ? "Route" : "Keine" },
     { label: "Aktive Sessions", value: String(runtime.counts?.sessions ?? 0), status: (runtime.counts?.sessions || 0) > 0 ? "live" : "info", statusLabel: "SQLite" },
     { label: "Nachrichten", value: String(runtime.counts?.messages ?? 0), status: (runtime.counts?.messages || 0) > 0 ? "live" : "info", statusLabel: "SQLite" },
     { label: "Delegationen", value: String(runtime.counts?.delegations ?? 0), status: (runtime.counts?.delegations || 0) > 0 ? "support" : "info", statusLabel: "SQLite" }
