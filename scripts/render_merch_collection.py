@@ -6,7 +6,7 @@ from typing import Literal
 from PIL import Image, ImageDraw, ImageFont
 
 
-ROOT = Path("/Users/martendr.gray/Documents/New project/DJ-Website")
+ROOT = Path(__file__).resolve().parents[1]
 OUTPUT_DIR = ROOT / "store-assets" / "png"
 PREVIEW_DIR = ROOT / "store-assets" / "previews"
 

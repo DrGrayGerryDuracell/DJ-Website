@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
-import { join } from "node:path";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-const repoRoot = "/Users/martendr.gray/Documents/New project/DJ-Website";
+const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const metricsPath = join(repoRoot, "control/js/live-metrics.json");
 const outDir = join(repoRoot, "artifacts/requests");
 const outPath = join(outDir, "shirtee-api-request.md");

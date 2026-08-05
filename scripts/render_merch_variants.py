@@ -5,7 +5,7 @@ from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
 
 
-ROOT = Path("/Users/martendr.gray/Documents/New project/DJ-Website")
+ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "store-assets" / "variants"
 DR_LOGO = ROOT / "drgray-logo.jpg"
 MRS_LOGO = ROOT / "mrsdrgray-logo.png"

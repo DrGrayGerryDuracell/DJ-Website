@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SRC_DIR="${1:-/Users/martendr.gray/Documents/websitedatenupload}"
-BASE="/Users/martendr.gray/Documents/New project/DJ-Website/assets/uploads"
+BASE="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/assets/uploads"
 
 mkdir -p "$BASE/raw-images" "$BASE/raw-videos" "$BASE/web-images" "$BASE/web-videos" "$BASE/posters" "$BASE/reports"
 
