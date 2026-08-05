@@ -1,20 +1,27 @@
 :root {
-  --bg: #040404;
-  --bg-soft: #101010;
-  --panel: rgba(18, 18, 18, 0.88);
-  --panel-strong: rgba(20, 20, 20, 0.94);
-  --line: rgba(255, 216, 109, 0.2);
+  --bg: #0b0b0d;
+  --bg-soft: #16161a;
+  --panel: rgba(28, 28, 33, 0.9);
+  --panel-strong: rgba(33, 33, 38, 0.94);
+  --line: rgba(255, 216, 109, 0.28);
   --gold: #f5c84c;
   --gold-strong: #ffdc7a;
-  --text: #f5f1e8;
-  --text-soft: #cfc8b9;
+  --accent-pink: #ff4fd8;
+  --accent-cyan: #34e4ff;
+  --text: #f7f4ed;
+  --text-soft: #d8d2c4;
   --ok: #51cf9c;
   --warn: #ffba5b;
   --info: #84b9ff;
   --error: #ff7474;
   --radius: 18px;
-  --shadow: 0 18px 48px rgba(0, 0, 0, 0.42);
-  --max: 1500px;
+  --shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+  --shadow-soft: 0 14px 40px rgba(0, 0, 0, 0.34);
+  --glow-sm: 0 0 10px color-mix(in oklab, var(--section-accent) 45%, transparent);
+  --glow-md: 0 0 20px color-mix(in oklab, var(--section-accent) 50%, transparent);
+  --glow-lg: 0 0 38px color-mix(in oklab, var(--section-accent) 32%, transparent);
+  --section-accent: var(--gold);
+  --max: 1240px;
   --font-body: "Poppins", sans-serif;
   --font-display: "Cormorant Garamond", serif;
 }
@@ -27,8 +34,10 @@ html, body {
   background:
     linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px) 0 0 / 32px 32px,
     linear-gradient(0deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px) 0 0 / 32px 32px,
-    radial-gradient(circle at top right, rgba(245, 200, 76, 0.14), transparent 32%),
-    linear-gradient(180deg, #080808, #040404);
+    radial-gradient(circle at top right, rgba(245, 200, 76, 0.18), transparent 34%),
+    radial-gradient(circle at 8% 78%, rgba(52, 228, 255, 0.09), transparent 38%),
+    radial-gradient(circle at 92% 96%, rgba(255, 79, 216, 0.07), transparent 36%),
+    linear-gradient(180deg, #101013, #0b0b0d);
   color: var(--text);
   font-family: var(--font-body);
 }
@@ -69,7 +78,7 @@ a { color: inherit; text-decoration: none; }
 .control-brand span {
   color: var(--text-soft);
   letter-spacing: 0.06em;
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   text-transform: uppercase;
 }
 
@@ -96,7 +105,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .control-nav-link small {
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: rgba(245, 241, 232, 0.65);
   line-height: 1.3;
 }
@@ -155,7 +164,7 @@ a { color: inherit; text-decoration: none; }
 .eyebrow {
   margin: 0 0 0.35rem;
   color: var(--gold-strong);
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   letter-spacing: 0.13em;
   text-transform: uppercase;
 }
@@ -190,7 +199,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid rgba(255, 216, 109, 0.2);
   background: rgba(255, 255, 255, 0.03);
   color: var(--text-soft);
-  font-size: 0.82rem;
+  font-size: 0.86rem;
   cursor: pointer;
 }
 
@@ -206,7 +215,7 @@ a { color: inherit; text-decoration: none; }
   border-radius: 999px;
   border: 1px solid rgba(255, 216, 109, 0.25);
   color: var(--gold-strong);
-  font-size: 0.73rem;
+  font-size: 0.72rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -1365,5 +1374,191 @@ a { color: inherit; text-decoration: none; }
   .catalog-item-media {
     width: 100%;
     height: 180px;
+  }
+}
+
+/* ==========================================================================
+   v2 - Bereichsakzente, Glow, Hover
+   ========================================================================== */
+
+#overview,
+#website,
+#settings,
+#content,
+.control-nav-link[href="#overview"],
+.control-nav-link[href="#website"],
+.control-nav-link[href="#settings"],
+.control-nav-link[href="#content"] {
+  --section-accent: var(--gold);
+}
+
+#live-activity,
+#performance,
+#agentsroom,
+.control-nav-link[href="#live-activity"],
+.control-nav-link[href="#performance"],
+.control-nav-link[href="#agentsroom"] {
+  --section-accent: var(--accent-cyan);
+}
+
+#alerts,
+#social,
+#shop,
+#catalog-upload,
+.control-nav-link[href="#alerts"],
+.control-nav-link[href="#social"],
+.control-nav-link[href="#shop"],
+.control-nav-link[href="#catalog-upload"] {
+  --section-accent: var(--accent-pink);
+}
+
+.control-nav-link {
+  position: relative;
+  overflow: hidden;
+}
+
+.control-nav-link::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: var(--section-accent);
+  transform: scaleY(0);
+  transform-origin: 50%;
+  transition: transform 0.18s ease;
+}
+
+.control-nav-link:hover {
+  border-color: color-mix(in oklab, var(--section-accent) 45%, transparent);
+  box-shadow: var(--glow-sm);
+}
+
+.control-nav-link:hover::before,
+.control-nav-link[aria-current="page"]::before,
+.control-nav-link.is-active::before {
+  transform: scaleY(1);
+}
+
+.control-nav-link[aria-current="page"],
+.control-nav-link.is-active {
+  color: var(--text);
+  border-color: color-mix(in oklab, var(--section-accent) 55%, transparent);
+  box-shadow: var(--glow-sm);
+}
+
+.control-section {
+  position: relative;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.control-section > .section-head {
+  position: relative;
+  padding-left: 0.9rem;
+}
+
+.control-section > .section-head::before {
+  content: "";
+  position: absolute;
+  inset: 0.15rem auto 0.15rem 0;
+  width: 3px;
+  border-radius: 3px;
+  background: var(--section-accent);
+  opacity: 0.6;
+  transition: opacity 0.2s ease, box-shadow 0.2s ease;
+}
+
+.control-section:hover > .section-head::before {
+  opacity: 1;
+  box-shadow: var(--glow-sm);
+}
+
+.control-section:target {
+  box-shadow: var(--glow-lg);
+}
+
+.control-section .eyebrow {
+  color: var(--section-accent);
+}
+
+.panel,
+.kpi-grid > *,
+.pulse-grid > *,
+.alert-grid > * {
+  position: relative;
+  transition: border-color 0.18s ease, background-color 0.18s ease,
+              box-shadow 0.18s ease, transform 0.12s ease;
+}
+
+.panel:hover,
+.kpi-grid > *:hover,
+.pulse-grid > *:hover,
+.alert-grid > *:hover {
+  border-color: color-mix(in oklab, var(--section-accent) 42%, transparent);
+  box-shadow: var(--glow-sm), var(--shadow);
+}
+
+.kpi-grid > *::after,
+.pulse-grid > *::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--section-accent), transparent);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.kpi-grid > *:hover::after,
+.pulse-grid > *:hover::after {
+  opacity: 0.85;
+}
+
+.action-btn,
+.range-btn {
+  transition: border-color 0.18s ease, color 0.18s ease,
+              box-shadow 0.18s ease, transform 0.1s ease;
+}
+
+.action-btn:hover,
+.range-btn:hover {
+  border-color: color-mix(in oklab, var(--section-accent) 55%, transparent);
+  color: var(--text);
+  box-shadow: var(--glow-sm);
+}
+
+.action-btn:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.activity-list > *,
+.status-list > * {
+  box-shadow: inset 2px 0 0 transparent;
+  transition: background-color 0.14s ease, box-shadow 0.14s ease;
+}
+
+.activity-list > *:hover,
+.status-list > *:hover {
+  background: rgba(255, 255, 255, 0.035);
+  box-shadow: inset 2px 0 0 var(--section-accent);
+}
+
+.control-pulse,
+.mode-badge {
+  box-shadow: var(--glow-sm);
+}
+
+:focus-visible {
+  outline: 2px solid var(--section-accent);
+  outline-offset: 2px;
+  box-shadow: var(--glow-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

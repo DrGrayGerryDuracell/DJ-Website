@@ -751,7 +751,10 @@ export function renderAlerts(container, alerts) {
 }
 
 export function renderQuickActions(container, actions) {
-  container.innerHTML = actions
+  const validActions = Array.isArray(actions)
+    ? actions.filter((item) => item && typeof item.href === "string" && item.href.trim() && typeof item.label === "string" && item.label.trim())
+    : [];
+  container.innerHTML = validActions
     .map((item) => `<a class="action-btn" href="${item.href}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ""}>${item.label}</a>`)
     .join("");
 }

@@ -173,6 +173,40 @@ function setupSectionVisibilityRouting() {
   });
 }
 
+function setupSectionScrollSpy() {
+  const sections = Array.from(document.querySelectorAll(".control-section"));
+  const visibleSections = new Set(sections.map((section) => section.id));
+  if (!sections.length || !("IntersectionObserver" in window)) {
+    return;
+  }
+
+  let currentSectionId = document.querySelector(".control-section.is-active-section")?.id || "overview";
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const visible = entries
+        .filter((entry) => entry.isIntersecting && visibleSections.has(entry.target.id))
+        .sort((a, b) => b.intersectionRatio - a.intersectionRatio || a.boundingClientRect.top - b.boundingClientRect.top);
+
+      if (!visible.length) {
+        return;
+      }
+
+      const nextId = visible[0].target.id;
+      if (nextId !== currentSectionId) {
+        currentSectionId = nextId;
+        activateSection(nextId);
+      }
+    },
+    {
+      root: null,
+      threshold: [0.15, 0.3, 0.5, 0.7],
+      rootMargin: "-18% 0px -55% 0px"
+    }
+  );
+
+  sections.forEach((section) => observer.observe(section));
+}
+
 function setupRangeButtons(onChange) {
   document.querySelectorAll(".range-btn").forEach((button) => {
     button.addEventListener("click", () => {
@@ -338,6 +372,7 @@ async function initControlDashboard() {
 
   setupNavigation();
   setupSectionVisibilityRouting();
+  setupSectionScrollSpy();
   setupRangeButtons((rangeId) => {
     renderDashboardView(applyRangeToData(seedData, rangeId));
   });
