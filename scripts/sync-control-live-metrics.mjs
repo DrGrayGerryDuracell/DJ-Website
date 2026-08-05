@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { performance } from "node:perf_hooks";
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
@@ -22,6 +22,7 @@ const hermesChannelDirectoryPath = join(hermesProfileRoot, "channel_directory.js
 const hermesBrainVaultStatePath = join(hermesProfileRoot, "state", "brain_vault_state.json");
 const hermesArgusBridgeStatePath = join(hermesProfileRoot, "state", "argus_bridge_state.json");
 const hermesActiveSessionsPath = join(hermesProfileRoot, "runtime", "active_sessions.json");
+const hermesCronOutputPath = join(hermesProfileRoot, "cron", "output");
 const corePages = [
   "/",
   "/index.html",
@@ -119,6 +120,27 @@ function sanitizeSnippet(value, maxLength = 140) {
   return `${text.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`;
 }
 
+function findLatestHermesSpoolFile() {
+  if (!existsSync(hermesCronOutputPath)) {
+    return null;
+  }
+
+  let latestPath = null;
+  let latestMtime = 0;
+  for (const entry of readdirSync(hermesCronOutputPath, { withFileTypes: true })) {
+    if (!entry.isDirectory()) continue;
+    const candidate = join(hermesCronOutputPath, entry.name, "last_message_to_send.txt");
+    if (!existsSync(candidate)) continue;
+    const mtime = statSync(candidate).mtimeMs;
+    if (mtime > latestMtime) {
+      latestMtime = mtime;
+      latestPath = candidate;
+    }
+  }
+
+  return latestPath;
+}
+
 function countByTable(dbPath, tableName) {
   const rows = sqliteQueryJson(dbPath, `select count(*) as count from ${tableName};`, []);
   return Number(rows?.[0]?.count || 0);
@@ -202,6 +224,8 @@ function buildHermesRuntimeSnapshot() {
   const activeTelegramSession = activeSessions.find((row) => String(row.source || "").includes("telegram")) || activeSessions[0] || sessionRows[0] || null;
   const latestDelegation = delegationRows[0] || null;
   const latestDelivery = deliveryRows[0] || null;
+  const latestSpoolPath = findLatestHermesSpoolFile();
+  const latestSpoolPreview = latestSpoolPath ? sanitizeSnippet(readFileSync(latestSpoolPath, "utf8"), 180) : null;
   const routingSession = routingRows
     .map((row) => {
       const entry = parseJsonMaybe(row.entry_json) || {};
@@ -261,6 +285,14 @@ function buildHermesRuntimeSnapshot() {
       channel: "JSON"
     },
     {
+      name: "Telegram Spool",
+      kind: "Delivery",
+      state: latestSpoolPath ? "connected" : "support",
+      detail: latestSpoolPreview || "Kein aktueller Nachrichtenspool gefunden",
+      route: latestSpoolPath || hermesCronOutputPath,
+      channel: "last_message_to_send.txt"
+    },
+    {
       name: "Channel Directory",
       kind: "Routing",
       state: "connected",
@@ -305,10 +337,12 @@ function buildHermesRuntimeSnapshot() {
     activeTelegramSession,
     latestDelegation,
     latestDelivery,
+    latestSpoolPath,
+    latestSpoolPreview,
     routingRows,
     stateMetaRows,
     currentRouting
-    };
+  };
 
   return {
     runtime,

@@ -345,6 +345,25 @@ function writeHermesChatQueue(session, items) {
   window.localStorage.setItem(getHermesChatStorageKey(session), JSON.stringify(items));
 }
 
+function formatHermesSpoolText(text, session) {
+  const chatId = session?.origin?.chat_id || "8720180667";
+  const target = session?.origin?.chat_name || "Marten";
+  return `An ${target} über Telegram (${chatId}):\n${text}\n`;
+}
+
+function downloadHermesSpoolFile(text, session) {
+  const payload = formatHermesSpoolText(text, session);
+  const blob = new Blob([payload], { type: "text/plain;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `hermes-last-message-to-send-${new Date().toISOString().slice(0, 10)}.txt`;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+}
+
 function setupHermesChatActions() {
   document.addEventListener("click", async (event) => {
     const sendButton = event.target.closest("[data-hermes-chat-send]");
@@ -396,6 +415,11 @@ function setupHermesChatActions() {
       await navigator.clipboard.writeText(text);
     } catch {
       // Clipboard ist nur ein Komfort-Fallback.
+    }
+    try {
+      downloadHermesSpoolFile(text, session);
+    } catch {
+      // Download ist ein Komfort-Fallback; Queue bleibt erhalten.
     }
     input.value = "";
     renderHermesChat(document.querySelector("[data-hermes-chat]"), data);

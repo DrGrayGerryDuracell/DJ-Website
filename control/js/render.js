@@ -497,6 +497,8 @@ export function renderHermesChat(container, dashboardData) {
   const liveMessages = Array.isArray(dashboardData?.agentsRoom?.recentMessages) ? dashboardData.agentsRoom.recentMessages : [];
   const conversation = liveMessages.slice(0, 6);
   const drafts = readHermesChatDrafts(session);
+  const spoolPath = runtime.latestSpoolPath || "n/a";
+  const spoolPreview = runtime.latestSpoolPreview || "Noch kein aktiver Spool.";
   const merged = [
     ...conversation.map((item) => ({ ...item, from: item.from === "user" ? "user" : item.from === "assistant" ? "assistant" : "system" })),
     ...drafts.map((item) => ({
@@ -519,15 +521,19 @@ export function renderHermesChat(container, dashboardData) {
           <span class="status-pill is-info">Session: <strong>${escapeHtml(session?.title || "n/a")}</strong></span>
         </div>
       </div>
+      <div class="hermes-chat-spool">
+        <span class="status-pill is-info">Spool: <strong>${escapeHtml(spoolPath)}</strong></span>
+        <p>${escapeHtml(spoolPreview)}</p>
+      </div>
       <div class="hermes-chat-thread">${renderHermesChatMessages(merged)}</div>
       <div class="hermes-chat-composer">
         <label for="hermes-chat-input">Nachricht an Hermes</label>
         <textarea id="hermes-chat-input" data-hermes-chat-input rows="4" placeholder="Kurz und direkt schreiben. Wird lokal im Thread gesichert und kann mit dem Hermes-Thread synchron bleiben, sobald der Telegram-Bridge-Flow greift."></textarea>
         <div class="hermes-chat-actions">
-          <button type="button" class="action-btn" data-hermes-chat-send>In Queue sichern</button>
+          <button type="button" class="action-btn" data-hermes-chat-send>Spool-Datei erzeugen</button>
           <button type="button" class="action-btn" data-hermes-chat-copy>Text kopieren</button>
         </div>
-        <p class="muted-line">Live-Thread kommt aus Hermes. Eigene Nachrichten landen lokal in der Queue und bleiben beim nächsten Sync sichtbar.</p>
+        <p class="muted-line">Live-Thread kommt aus Hermes. Eigene Nachrichten landen lokal in der Queue, werden als Spool-Datei vorbereitet und bleiben beim nächsten Sync sichtbar.</p>
       </div>
     </article>
   `;
