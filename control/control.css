@@ -239,14 +239,14 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-shell {
   display: grid;
-  gap: 1rem;
+  gap: 1.35rem;
 }
 
 .agentsroom-hero {
   display: grid;
   grid-template-columns: minmax(0, 1.5fr) minmax(280px, 0.9fr);
-  gap: 1rem;
-  padding: 1.05rem;
+  gap: 1.2rem;
+  padding: 1.2rem 1.15rem;
   border-radius: var(--radius);
   border: 1px solid rgba(116, 217, 255, 0.16);
   background:
@@ -274,7 +274,7 @@ a { color: inherit; text-decoration: none; }
 .agentsroom-hero-stats {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.65rem;
+  gap: 0.72rem;
 }
 
 .agentsroom-hero-stats div,
@@ -287,7 +287,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .agentsroom-hero-stats div {
-  padding: 0.75rem 0.8rem;
+  padding: 0.85rem 0.9rem;
 }
 
 .agentsroom-hero-stats span,
@@ -308,13 +308,13 @@ a { color: inherit; text-decoration: none; }
   display: block;
   margin-top: 0.3rem;
   font-family: var(--font-display);
-  font-size: 1.8rem;
+  font-size: 1.95rem;
 }
 
 .agentsroom-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.15fr) minmax(0, 0.95fr);
-  gap: 1rem;
+  grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.2fr) minmax(0, 0.9fr);
+  gap: 1.15rem;
 }
 
 .agentsroom-flow-list,
@@ -326,7 +326,7 @@ a { color: inherit; text-decoration: none; }
 .agentsroom-session-grid,
 .agentsroom-message-grid {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.82rem;
 }
 
 .agentsroom-flow-list {
@@ -337,14 +337,15 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-flow-item {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 22px minmax(0, 1fr) auto;
-  gap: 0.6rem;
+  grid-template-columns: minmax(0, 1fr) 30px minmax(0, 1fr) auto;
+  gap: 0.8rem;
   align-items: center;
-  padding: 0.75rem 0.8rem;
+  padding: 0.92rem 0.95rem;
   border-color: rgba(132, 185, 255, 0.16);
   background:
-    linear-gradient(135deg, rgba(132, 185, 255, 0.07), rgba(81, 207, 156, 0.03)),
+    linear-gradient(135deg, rgba(132, 185, 255, 0.12), rgba(81, 207, 156, 0.04), rgba(255, 79, 216, 0.03)),
     rgba(255, 255, 255, 0.03);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.14);
 }
 
 .agentsroom-flow-item strong {
@@ -361,12 +362,14 @@ a { color: inherit; text-decoration: none; }
 .agentsroom-flow-arrow {
   display: grid;
   place-items: center;
-  width: 22px;
-  height: 22px;
+  width: 30px;
+  height: 30px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.07);
-  color: #e6f4ff;
+  background: linear-gradient(135deg, rgba(52, 228, 255, 0.18), rgba(245, 200, 76, 0.18));
+  border: 1px solid rgba(132, 185, 255, 0.18);
+  color: #f3fbff;
   font-weight: 700;
+  box-shadow: 0 0 18px rgba(52, 228, 255, 0.08);
 }
 
 .agentsroom-node-grid {
@@ -379,7 +382,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .agentsroom-node {
-  padding: 0.8rem;
+  padding: 0.92rem 0.95rem;
 }
 
 .agentsroom-node.agent {
@@ -403,7 +406,7 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-node h4 {
   margin: 0;
-  font-size: 1rem;
+  font-size: 1.02rem;
   font-family: var(--font-display);
 }
 
@@ -492,7 +495,7 @@ a { color: inherit; text-decoration: none; }
 .agentsroom-rail-card {
   display: grid;
   gap: 0.25rem;
-  padding: 0.75rem 0.8rem;
+  padding: 0.86rem 0.9rem;
   border-color: rgba(116, 217, 255, 0.14);
 }
 
@@ -511,7 +514,7 @@ a { color: inherit; text-decoration: none; }
 .agentsroom-source-card,
 .agentsroom-session-card,
 .agentsroom-message-card {
-  padding: 0.8rem;
+  padding: 0.92rem 0.95rem;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
@@ -558,14 +561,14 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-network {
   position: relative;
-  min-height: 360px;
+  min-height: 440px;
   border-radius: 20px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(116, 217, 255, 0.14);
   background:
-    radial-gradient(circle at 18% 18%, rgba(52, 228, 255, 0.16), transparent 22%),
-    radial-gradient(circle at 82% 18%, rgba(255, 79, 216, 0.12), transparent 20%),
-    radial-gradient(circle at 50% 78%, rgba(245, 200, 76, 0.16), transparent 28%),
-    rgba(6, 8, 12, 0.72);
+    radial-gradient(circle at 18% 18%, rgba(52, 228, 255, 0.2), transparent 22%),
+    radial-gradient(circle at 82% 18%, rgba(255, 79, 216, 0.16), transparent 20%),
+    radial-gradient(circle at 50% 78%, rgba(245, 200, 76, 0.2), transparent 28%),
+    rgba(6, 8, 12, 0.8);
   overflow: hidden;
 }
 
@@ -574,9 +577,9 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 40px 40px,
-    linear-gradient(0deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px) 0 0 / 40px 40px;
-  opacity: 0.5;
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 48px 48px,
+    linear-gradient(0deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px) 0 0 / 48px 48px;
+  opacity: 0.42;
   pointer-events: none;
 }
 
@@ -594,16 +597,16 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-network-edge path {
   fill: none;
-  stroke-width: 2.4;
+  stroke-width: 3.1;
   stroke-linecap: round;
-  stroke-dasharray: 8 8;
-  animation: agentsroom-flow 8s linear infinite;
-  filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.12));
+  stroke-dasharray: 10 10;
+  animation: agentsroom-flow 7s linear infinite;
+  filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.16));
 }
 
 .agentsroom-network-edge circle {
   fill: rgba(255, 255, 255, 0.92);
-  filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.22));
+  filter: drop-shadow(0 0 14px rgba(255, 255, 255, 0.25));
 }
 
 .agentsroom-network-edge.is-live path {
@@ -619,19 +622,19 @@ a { color: inherit; text-decoration: none; }
 .agentsroom-network-edge.is-active path,
 .agentsroom-network-edge.is-sync path,
 .agentsroom-network-edge.is-info path {
-  stroke: rgba(132, 185, 255, 0.88);
+  stroke: rgba(132, 185, 255, 0.94);
 }
 
 .agentsroom-network-node {
   position: absolute;
-  min-width: 120px;
-  max-width: 150px;
-  padding: 0.55rem 0.65rem;
+  min-width: 132px;
+  max-width: 168px;
+  padding: 0.7rem 0.75rem;
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(10, 10, 13, 0.8);
   backdrop-filter: blur(10px);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.36);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.42);
   transform: translate(-50%, -50%);
 }
 
@@ -650,17 +653,17 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-network-node.core {
   border-color: rgba(52, 228, 255, 0.34);
-  box-shadow: 0 0 18px rgba(52, 228, 255, 0.18);
+  box-shadow: 0 0 22px rgba(52, 228, 255, 0.2);
 }
 
 .agentsroom-network-node.support {
   border-color: rgba(255, 79, 216, 0.28);
-  box-shadow: 0 0 18px rgba(255, 79, 216, 0.14);
+  box-shadow: 0 0 22px rgba(255, 79, 216, 0.16);
 }
 
 .agentsroom-network-node.bridge {
   border-color: rgba(245, 200, 76, 0.34);
-  box-shadow: 0 0 18px rgba(245, 200, 76, 0.16);
+  box-shadow: 0 0 22px rgba(245, 200, 76, 0.18);
 }
 
 .agentsroom-network-node.device {
@@ -679,7 +682,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: 0.75rem;
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .agentsroom-network-legend-item {
@@ -703,7 +706,7 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-delegation-wrap {
   display: grid;
-  gap: 1rem;
+  gap: 1.15rem;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 }
 
@@ -716,12 +719,12 @@ a { color: inherit; text-decoration: none; }
 .agentsroom-task-grid,
 .agentsroom-conversation-grid {
   display: grid;
-  gap: 0.65rem;
+  gap: 0.8rem;
 }
 
 .agentsroom-task-card,
 .agentsroom-conversation-card {
-  padding: 0.8rem;
+  padding: 0.92rem 0.95rem;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background: rgba(255, 255, 255, 0.03);
@@ -902,7 +905,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .social-route-card {
-  padding: 0.75rem 0.8rem;
+  padding: 0.85rem 0.9rem;
   border-radius: 14px;
   border: 1px solid rgba(52, 228, 255, 0.18);
   background:
@@ -923,7 +926,7 @@ a { color: inherit; text-decoration: none; }
 }
 
 .social-node {
-  padding: 0.8rem;
+  padding: 0.9rem 0.92rem;
   border-radius: 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
   background:
