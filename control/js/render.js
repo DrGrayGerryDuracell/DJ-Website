@@ -953,12 +953,26 @@ export function renderActivity(container, activityFeed, timeline) {
 
 export function renderPerformance(container, performanceMetrics) {
   const stateCards = [
-    { label: "Seitenchecks", value: performanceMetrics.webVitals.find((item) => item.metric === "HTTP Seitenchecks")?.value || "0/0", tone: "is-warn" },
-    { label: "Shop", value: performanceMetrics.webVitals.find((item) => item.metric === "Shirtee-Linkchecks")?.value || "0/0", tone: "is-ok" },
-    { label: "SoundCloud", value: performanceMetrics.externalChecks.find((item) => item.label === "SoundCloud Profil")?.status || "n/a", tone: "is-warn" }
+    {
+      label: "Seitenchecks",
+      value: performanceMetrics.webVitals.find((item) => item.metric === "HTTP Seitenchecks")?.value || "0/0",
+      tone: performanceMetrics.webVitals.find((item) => item.metric === "HTTP Seitenchecks")?.state === "info" ? "is-info" : "is-warn"
+    },
+    {
+      label: "Shop",
+      value: performanceMetrics.webVitals.find((item) => item.metric === "Shirtee-Linkchecks")?.value || "0/0",
+      tone: performanceMetrics.webVitals.find((item) => item.metric === "Shirtee-Linkchecks")?.state === "info" ? "is-info" : "is-ok"
+    },
+    {
+      label: "SoundCloud",
+      value: performanceMetrics.externalChecks.find((item) => item.label === "SoundCloud Profil")?.status || "n/a",
+      tone: performanceMetrics.externalChecks.find((item) => item.label === "SoundCloud Profil")?.level === "info" ? "is-info" : "is-warn"
+    }
   ];
   const overallState = performanceMetrics.webVitals.some((item) => item.state === "warn") || performanceMetrics.externalChecks.some((item) => item.level === "warn")
     ? "Eingeschränkt"
+    : performanceMetrics.webVitals.some((item) => item.state === "info") || performanceMetrics.externalChecks.some((item) => item.level === "info")
+      ? "Hinweis"
     : "Stabil";
 
   container.innerHTML = `
@@ -979,7 +993,7 @@ export function renderPerformance(container, performanceMetrics) {
       </div>
       <ul class="status-list compact">
         ${performanceMetrics.webVitals
-          .map((item) => `<li><span>${item.metric}</span><strong class="status-pill ${item.state === "good" ? "is-ok" : "is-warn"}">${item.value}</strong></li>`)
+          .map((item) => `<li><span>${item.metric}</span><strong class="status-pill ${item.state === "good" ? "is-ok" : item.state === "info" ? "is-info" : "is-warn"}">${item.value}</strong></li>`)
           .join("")}
       </ul>
     </article>

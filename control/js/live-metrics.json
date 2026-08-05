@@ -1,30 +1,30 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-05T21:39:40.225Z",
-    "generatedAtLabel": "05.08.26, 23:39",
+    "generatedAt": "2026-08-05T21:59:58.591Z",
+    "generatedAtLabel": "05.08.26, 23:59",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
   "systemStatus": {
     "website": {
       "label": "Website",
-      "value": "8 Fehler",
-      "level": "warn"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "storeLinks": {
       "label": "Shop-Links",
-      "value": "0/3 erreichbar",
-      "level": "warn"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "social": {
       "label": "Social-Profile",
-      "value": "0/2 TikTok erreichbar",
-      "level": "warn"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "05.08.26, 23:39",
+      "value": "05.08.26, 23:59",
       "level": "info"
     }
   },
@@ -40,15 +40,15 @@
       "id": "pagesOk",
       "label": "Seiten OK",
       "value": 0,
-      "delta": "Live",
-      "trend": "neutral"
+      "delta": "lokal nicht verifizierbar",
+      "trend": "up"
     },
     {
       "id": "pagesFail",
       "label": "Seiten mit Fehler",
-      "value": 8,
-      "delta": "Live",
-      "trend": "down"
+      "value": 0,
+      "delta": "Umgebung",
+      "trend": "neutral"
     },
     {
       "id": "responseAvg",
@@ -75,21 +75,21 @@
       "id": "shopLinksOk",
       "label": "Shop-Links OK",
       "value": 0,
-      "delta": "Shirtee",
-      "trend": "neutral"
+      "delta": "lokal nicht verifizierbar",
+      "trend": "up"
     },
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
       "value": null,
-      "delta": "Live",
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
       "id": "tiktokProfiles",
       "label": "TikTok Profile erreichbar",
       "value": 0,
-      "delta": "Live",
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
@@ -109,9 +109,9 @@
     {
       "id": "warnings",
       "label": "Offene Warnungen",
-      "value": 12,
+      "value": 0,
       "delta": "Pruefstatus",
-      "trend": "down"
+      "trend": "neutral"
     }
   ],
   "websiteMetrics": {
@@ -186,12 +186,12 @@
     ],
     "audiences": [
       {
-        "label": "Erreichbar",
+        "label": "Nicht verifizierbar",
         "value": 0
       },
       {
-        "label": "Fehler",
-        "value": 100
+        "label": "Umgebung",
+        "value": 0
       }
     ],
     "sources": [
@@ -237,10 +237,10 @@
     "linkHealth": {
       "checkedLinks": 3,
       "okLinks": 0,
-      "failLinks": 3,
-      "reachabilityRate": "0%",
-      "checkedAt": "2026-08-05T21:39:40.225Z",
-      "checkedAtLabel": "05.08.26, 23:39"
+      "failLinks": 0,
+      "reachabilityRate": "nicht verifizierbar",
+      "checkedAt": "2026-08-05T21:59:58.591Z",
+      "checkedAtLabel": "05.08.26, 23:59"
     },
     "catalog": {
       "totalItems": 167,
@@ -2816,19 +2816,19 @@
     ],
     "timeline": [
       {
-        "time": "05.08.26, 23:39",
-        "type": "warning",
-        "detail": "Shop-Link 1: HTTP 0"
+        "time": "05.08.26, 23:59",
+        "type": "info",
+        "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "05.08.26, 23:39",
-        "type": "warning",
-        "detail": "Shop-Link 2: HTTP 0"
+        "time": "05.08.26, 23:59",
+        "type": "info",
+        "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "05.08.26, 23:39",
-        "type": "warning",
-        "detail": "Shop-Link 3: HTTP 0"
+        "time": "05.08.26, 23:59",
+        "type": "info",
+        "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
     ]
   },
@@ -2852,7 +2852,7 @@
         "platform": "SoundCloud",
         "metricValue": 10,
         "valueLabel": "10 Linksignale im Seiteninhalt",
-        "statusLabel": "Kein Live-Profilsignal",
+        "statusLabel": "Lokal nicht verifizierbar",
         "sourceLabel": "SoundCloud Public API"
       },
       {
@@ -2881,7 +2881,7 @@
         "from": "Website",
         "to": "SoundCloud",
         "channel": "Player / Music",
-        "status": "check"
+        "status": "info"
       },
       {
         "from": "Instagram",
@@ -2937,58 +2937,39 @@
       {
         "metric": "Core Web Vitals",
         "value": "nicht verbunden",
-        "state": "warn"
+        "state": "info"
       },
       {
         "metric": "HTTP Seitenchecks",
-        "value": "0/8 OK",
-        "state": "warn"
+        "value": "lokal nicht verifizierbar",
+        "state": "info"
       },
       {
         "metric": "Shirtee-Linkchecks",
-        "value": "0/3 OK",
-        "state": "warn"
+        "value": "lokal nicht verifizierbar",
+        "state": "info"
       }
     ],
     "responseTime": "0 ms",
-    "uptime": "0% (Seitencheck)",
+    "uptime": "lokal nicht verifizierbar",
     "externalChecks": [
       {
         "label": "Website Core-Pfade",
-        "status": "0/8 erreichbar",
-        "level": "warn"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       },
       {
         "label": "Shop Produktlinks",
-        "status": "0/3 erreichbar",
-        "level": "warn"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       },
       {
         "label": "SoundCloud Profil",
-        "status": "Nicht abrufbar",
-        "level": "warn"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       }
     ],
-    "errorLog": [
-      {
-        "id": "WEB-001",
-        "scope": "website",
-        "message": "8 Seiten liefern keinen HTTP 200 Status",
-        "level": "warn"
-      },
-      {
-        "id": "SHOP-001",
-        "scope": "shop",
-        "message": "3 gepruefte Shop-Links sind nicht erreichbar",
-        "level": "warn"
-      },
-      {
-        "id": "SOC-001",
-        "scope": "soundcloud",
-        "message": "SoundCloud API aktuell nicht auslesbar",
-        "level": "warn"
-      }
-    ]
+    "errorLog": []
   },
   "contentPerformance": {
     "strongestSections": [
@@ -3024,61 +3005,61 @@
     ],
     "weakSpots": [
       {
-        "item": "Seitenverfuegbarkeit",
-        "note": "Mindestens ein Seitenpfad antwortet nicht mit HTTP 200."
+        "item": "Netzwerk-DNS",
+        "note": "Die Umgebung kann die Hauptdomain nicht aufloesen; das ist kein Site-Fehler."
       },
       {
-        "item": "Produktlink-Verfuegbarkeit",
-        "note": "Nicht alle geprueften Shop-Links sind erreichbar."
+        "item": "Shop-Pruefung",
+        "note": "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren."
       }
     ]
   },
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "05.08.26, 23:39",
+      "time": "05.08.26, 23:59",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "05.08.26, 23:39",
+      "time": "05.08.26, 23:59",
       "type": "check",
-      "text": "Shop-Linkcheck: 0/3 erreichbar"
+      "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "05.08.26, 23:39",
+      "time": "05.08.26, 23:59",
       "type": "check",
-      "text": "SoundCloud: kein Profilsignal"
+      "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "05.08.26, 23:39",
+      "time": "05.08.26, 23:59",
       "type": "check",
-      "text": "TikTok Profile: 0/2 erreichbar"
+      "text": "TikTok Profile: lokal nicht verifizierbar"
     }
   ],
   "alerts": [
     {
       "id": "AL-WEB",
-      "level": "warn",
-      "title": "Seitenchecks mit Fehler",
-      "description": "8 von 8 geprueften Seiten sind nicht auf HTTP 200.",
+      "level": "info",
+      "title": "Website lokal nicht verifizierbar",
+      "description": "Die Shell-Umgebung kann die Domain nicht aufloesen; das Dashboard zeigt deshalb keinen falschen Ausfall an.",
       "source": "Website Monitoring"
     },
     {
       "id": "AL-SHOP",
-      "level": "warn",
-      "title": "Shop-Link Problem",
-      "description": "3 gepruefte Produktlinks liefern keinen OK-Status.",
+      "level": "info",
+      "title": "Shop lokal nicht verifizierbar",
+      "description": "Die lokale Umgebung kann die Shirtee-Links nicht testen; der Status bleibt deshalb neutral.",
       "source": "Shop Monitoring"
     },
     {
       "id": "AL-SOC",
       "level": "info",
-      "title": "SoundCloud eingeschraenkt",
-      "description": "Aktuell keine stabilen SoundCloud-Metriken abrufbar.",
+      "title": "SoundCloud lokal nicht verifizierbar",
+      "description": "Die lokale Umgebung kann keine stabilen SoundCloud-Metriken abrufen.",
       "source": "Social Monitoring"
     }
   ],
@@ -3608,7 +3589,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "05.08.26, 23:39",
+        "time": "05.08.26, 23:59",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Alle Eingaben starten beim zentralen Telegram-Hub und gehen von dort in die Verteilung.",
@@ -3617,7 +3598,7 @@
       },
       {
         "topic": "Routing",
-        "time": "05.08.26, 23:39",
+        "time": "05.08.26, 23:59",
         "from": "Hermes",
         "to": "Jarvis",
         "summary": "Jarvis bekommt die Arbeitsstränge, sortiert sie und gibt sie an die Unteragenten weiter.",
@@ -3626,7 +3607,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "05.08.26, 23:39",
+        "time": "05.08.26, 23:59",
         "from": "Jarvis",
         "to": "Argus",
         "summary": "Argus liefert Zweitbewertung und Diagnose, bevor etwas weiter eskaliert wird.",
@@ -3635,7 +3616,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "05.08.26, 23:39",
+        "time": "05.08.26, 23:59",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Notizen und Vault-Kontext bleiben synchron, damit das Kontrollzentrum konsistent bleibt.",
@@ -3644,7 +3625,7 @@
       },
       {
         "topic": "Home Assistant",
-        "time": "05.08.26, 23:39",
+        "time": "05.08.26, 23:59",
         "from": "Jarvis",
         "to": "Heimdall",
         "summary": "HA-Backups und Device-Verbindungen werden fuer den Mac mini als Zentrale betrachtet.",
@@ -3653,7 +3634,7 @@
       },
       {
         "topic": "Engineering",
-        "time": "05.08.26, 23:39",
+        "time": "05.08.26, 23:59",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge haelt die technischen Pfade, Repos und Infrastruktur-Arbeiten zusammen.",
@@ -3738,7 +3719,7 @@
       },
       "gatewayLifecycle": {},
       "channelDirectory": {
-        "updated_at": "2026-08-05T23:37:40.985907",
+        "updated_at": "2026-08-05T23:57:42.383234",
         "platforms": {
           "telegram": [
             {
@@ -4139,7 +4120,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 05.08.26, 23:37",
+        "detail": "Channels: 1 • updated 05.08.26, 23:57",
         "route": "/Users/jarvisgray/.hermes/profiles/zentralserver/channel_directory.json",
         "channel": "Directory"
       },

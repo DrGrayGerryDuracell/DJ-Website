@@ -44,6 +44,36 @@ function toPercent(part, total) {
   return Math.round((part / total) * 100);
 }
 
+function classifyFetchIssue(error) {
+  const message = String(error?.message || error || "");
+  const code = String(error?.cause?.code || error?.code || "").toUpperCase();
+  const haystack = `${code} ${message}`.toLowerCase();
+
+  if (
+    code === "ENOTFOUND" ||
+    code === "EAI_AGAIN" ||
+    haystack.includes("could not resolve host") ||
+    haystack.includes("name or service not known") ||
+    haystack.includes("dns")
+  ) {
+    return "dns";
+  }
+
+  if (
+    code === "ECONNREFUSED" ||
+    code === "ECONNRESET" ||
+    code === "ETIMEDOUT" ||
+    haystack.includes("failed to fetch") ||
+    haystack.includes("fetch failed") ||
+    haystack.includes("network") ||
+    haystack.includes("timeout")
+  ) {
+    return "network";
+  }
+
+  return "unknown";
+}
+
 function loadWindowData(filePath, key) {
   const code = readFileSync(filePath, "utf8");
   const context = { window: {} };
@@ -417,14 +447,16 @@ async function checkPage(path) {
       timingMs,
       contentLength
     };
-  } catch {
+  } catch (error) {
     return {
       path,
       url,
       status: 0,
       ok: false,
       timingMs: null,
-      contentLength: null
+      contentLength: null,
+      errorKind: classifyFetchIssue(error),
+      errorMessage: sanitizeSnippet(error?.message || String(error || ""), 120)
     };
   }
 }
@@ -725,6 +757,10 @@ async function main() {
 
   const pageOk = pageChecks.filter((item) => item.ok).length;
   const pageFail = pageChecks.length - pageOk;
+  const pageHttpFailures = pageChecks.filter((item) => !item.ok && item.status >= 400);
+  const pageEnvironmentFailures = pageChecks.filter((item) => !item.ok && item.status === 0 && item.errorKind && item.errorKind !== "unknown");
+  const pageEnvironmentIssue = pageChecks.length > 0 && pageEnvironmentFailures.length === pageChecks.length && pageHttpFailures.length === 0;
+  const pageProblemCount = pageEnvironmentIssue ? 0 : pageFail;
   const avgResponse = Math.round(
     pageChecks.filter((item) => typeof item.timingMs === "number").reduce((sum, item) => sum + item.timingMs, 0) /
       Math.max(pageChecks.filter((item) => typeof item.timingMs === "number").length, 1)
@@ -742,6 +778,8 @@ async function main() {
   const shopChecked = externalResults.length;
   const shopLive = externalResults.filter((result) => result.verified && Number(result.httpCode) === 200).length;
   const shopFail = shopChecked - shopLive;
+  const shopEnvironmentIssue = shopChecked > 0 && externalResults.every((result) => Number(result.httpCode) === 0);
+  const shopProblemCount = shopEnvironmentIssue ? 0 : shopFail;
 
   const sectionRows = Object.entries(sectionCount)
     .map(([section, count]) => ({ label: mapSectionLabel(section), items: count }))
@@ -832,7 +870,7 @@ async function main() {
       platform: "SoundCloud",
       metricValue: hrefCounts.soundcloud,
       valueLabel: soundcloud.available ? `${soundcloud.user.followers_count.toLocaleString("de-DE")} Follower • ${hrefCounts.soundcloud} Linksignale` : `${hrefCounts.soundcloud} Linksignale im Seiteninhalt`,
-      statusLabel: soundcloud.available ? `${soundcloud.user.track_count} Tracks` : "Kein Live-Profilsignal",
+      statusLabel: soundcloud.available ? `${soundcloud.user.track_count} Tracks` : "Lokal nicht verifizierbar",
       sourceLabel: "SoundCloud Public API"
     },
     {
@@ -848,7 +886,9 @@ async function main() {
     .filter((row) => typeof row.metricValue === "number")
     .sort((a, b) => b.metricValue - a.metricValue)[0];
 
-  const warningCount = pageFail + Math.max(shopFail, 0) + (soundcloud.available ? 0 : 1);
+  const tiktokEnvironmentIssue = [tiktokDr, tiktokMrs].some((entry) => entry.error === "network_unavailable");
+  const soundcloudEnvironmentIssue = !soundcloud.available && ["network_unavailable", "client_id_nicht_gefunden"].includes(soundcloud.error || "");
+  const warningCount = pageProblemCount + shopProblemCount + (soundcloud.available || soundcloudEnvironmentIssue ? 0 : 1);
 
   const agentsRoom = {
     metrics: {
@@ -954,25 +994,35 @@ async function main() {
       activeRange: "Live-Check"
     },
     systemStatus: {
-      website: { label: "Website", value: pageFail === 0 ? "Erreichbar" : `${pageFail} Fehler`, level: pageFail === 0 ? "ok" : "warn" },
-      storeLinks: { label: "Shop-Links", value: `${shopLive}/${shopChecked} erreichbar`, level: shopFail === 0 ? "ok" : "warn" },
+      website: {
+        label: "Website",
+        value: pageEnvironmentIssue ? "Lokal nicht verifizierbar" : pageProblemCount === 0 ? "Erreichbar" : `${pageProblemCount} Fehler`,
+        level: pageEnvironmentIssue ? "info" : pageProblemCount === 0 ? "ok" : "warn"
+      },
+      storeLinks: {
+        label: "Shop-Links",
+        value: shopEnvironmentIssue ? "Lokal nicht verifizierbar" : `${shopLive}/${shopChecked} erreichbar`,
+        level: shopEnvironmentIssue ? "info" : shopProblemCount === 0 ? "ok" : "warn"
+      },
       social: {
         label: "Social-Profile",
-        value: `${[tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length}/2 TikTok erreichbar`,
-        level: [tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length === 2 ? "ok" : "warn"
+        value: tiktokEnvironmentIssue
+          ? "Lokal nicht verifizierbar"
+          : `${[tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length}/2 TikTok erreichbar`,
+        level: tiktokEnvironmentIssue ? "info" : [tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length === 2 ? "ok" : "warn"
       },
       deployment: { label: "Datenstand", value: generatedAtLabel, level: "info" }
     },
     overviewKpis: [
       { id: "pagesChecked", label: "Gepruefte Seiten", value: pageChecks.length, delta: "Live", trend: "neutral" },
-      { id: "pagesOk", label: "Seiten OK", value: pageOk, delta: "Live", trend: pageFail === 0 ? "up" : "neutral" },
-      { id: "pagesFail", label: "Seiten mit Fehler", value: pageFail, delta: "Live", trend: pageFail > 0 ? "down" : "neutral" },
+      { id: "pagesOk", label: "Seiten OK", value: pageOk, delta: pageEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: pageProblemCount === 0 ? "up" : "neutral" },
+      { id: "pagesFail", label: "Seiten mit Fehler", value: pageProblemCount, delta: pageEnvironmentIssue ? "Umgebung" : "Live", trend: pageProblemCount > 0 ? "down" : "neutral" },
       { id: "responseAvg", label: "Ø Antwortzeit (ms)", value: avgResponse, delta: "Live", trend: "neutral" },
       { id: "merchItems", label: "Merch Artikel gesamt", value: items.length, delta: "Katalog", trend: "neutral" },
       { id: "shopLinks", label: "Shop-Links geprueft", value: shopChecked, delta: "Shirtee", trend: "neutral" },
-      { id: "shopLinksOk", label: "Shop-Links OK", value: shopLive, delta: "Shirtee", trend: shopFail === 0 ? "up" : "neutral" },
-      { id: "soundcloudFollowers", label: "SoundCloud Follower", value: soundcloud.available ? soundcloud.user.followers_count : null, delta: "Live", trend: "neutral" },
-      { id: "tiktokProfiles", label: "TikTok Profile erreichbar", value: [tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length, delta: "Live", trend: "neutral" },
+      { id: "shopLinksOk", label: "Shop-Links OK", value: shopLive, delta: shopEnvironmentIssue ? "lokal nicht verifizierbar" : "Shirtee", trend: shopProblemCount === 0 ? "up" : "neutral" },
+      { id: "soundcloudFollowers", label: "SoundCloud Follower", value: soundcloud.available ? soundcloud.user.followers_count : null, delta: soundcloudEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: "neutral" },
+      { id: "tiktokProfiles", label: "TikTok Profile erreichbar", value: [tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length, delta: tiktokEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: "neutral" },
       { id: "siteTiktokLinks", label: "TikTok Links auf Website", value: hrefCounts.tiktok, delta: "Inhalt", trend: "neutral" },
       { id: "siteShopLinks", label: "Shop Links auf Website", value: hrefCounts.shop, delta: "Inhalt", trend: "neutral" },
       { id: "warnings", label: "Offene Warnungen", value: warningCount, delta: "Pruefstatus", trend: warningCount > 0 ? "down" : "neutral" }
@@ -993,8 +1043,8 @@ async function main() {
           ctr: item.ok ? "200" : String(item.status || 0)
         })),
       audiences: [
-        { label: "Erreichbar", value: toPercent(pageOk, pageChecks.length) },
-        { label: "Fehler", value: toPercent(pageFail, pageChecks.length) }
+        { label: pageEnvironmentIssue ? "Nicht verifizierbar" : "Erreichbar", value: pageEnvironmentIssue ? 0 : toPercent(pageOk, pageChecks.length) },
+        { label: pageEnvironmentIssue ? "Umgebung" : "Fehler", value: pageEnvironmentIssue ? 0 : toPercent(pageProblemCount, pageChecks.length) }
       ],
       sources: [
         { label: "TikTok Links", value: hrefCounts.tiktok },
@@ -1018,8 +1068,8 @@ async function main() {
       linkHealth: {
         checkedLinks: shopChecked,
         okLinks: shopLive,
-        failLinks: shopFail,
-        reachabilityRate: shopChecked ? `${toPercent(shopLive, shopChecked)}%` : "0%",
+        failLinks: shopProblemCount,
+        reachabilityRate: shopEnvironmentIssue ? "nicht verifizierbar" : shopChecked ? `${toPercent(shopLive, shopChecked)}%` : "0%",
         checkedAt: generatedAtIso,
         checkedAtLabel: generatedAtLabel
       },
@@ -1040,8 +1090,8 @@ async function main() {
       topProducts,
       timeline: externalResults.slice(0, 8).map((entry, index) => ({
         time: generatedAtLabel,
-        type: entry.verified ? "ok" : "warning",
-        detail: `Shop-Link ${index + 1}: HTTP ${entry.httpCode}`
+        type: entry.verified ? "ok" : shopEnvironmentIssue ? "info" : "warning",
+        detail: shopEnvironmentIssue ? `Shop-Link ${index + 1}: lokal nicht verifizierbar` : `Shop-Link ${index + 1}: HTTP ${entry.httpCode}`
       }))
     },
     socialMetrics: {
@@ -1050,7 +1100,7 @@ async function main() {
       routes: [
         { from: "Website", to: "TikTok Dr. Gray", channel: "Hero / CTA", status: "live" },
         { from: "Website", to: "TikTok Mrs. Dr. Gray", channel: "Hero / CTA", status: "live" },
-        { from: "Website", to: "SoundCloud", channel: "Player / Music", status: soundcloud.available ? "live" : "check" },
+        { from: "Website", to: "SoundCloud", channel: "Player / Music", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "info" : "check" },
         { from: "Instagram", to: "nicht genutzt", channel: "kein Kanal", status: "info" }
       ],
       comparisons: [
@@ -1060,29 +1110,29 @@ async function main() {
       ],
       officialAccounts: [
         { label: "Website", url: websiteBase, status: "live" },
-        { label: "Shirtee Store", url: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: shopFail === 0 ? "live" : "check" },
-        { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : "check" },
-        { label: "TikTok Dr. Gray", url: "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : "check" },
-        { label: "TikTok Mrs. Dr. Gray", url: "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : "check" }
+        { label: "Shirtee Store", url: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: shopEnvironmentIssue ? "check" : shopProblemCount === 0 ? "live" : "check" },
+        { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "check" : "check" },
+        { label: "TikTok Dr. Gray", url: "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check" },
+        { label: "TikTok Mrs. Dr. Gray", url: "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check" }
       ]
     },
     performanceMetrics: {
       webVitals: [
-        { metric: "Core Web Vitals", value: "nicht verbunden", state: "warn" },
-        { metric: "HTTP Seitenchecks", value: `${pageOk}/${pageChecks.length} OK`, state: pageFail === 0 ? "good" : "warn" },
-        { metric: "Shirtee-Linkchecks", value: `${shopLive}/${shopChecked} OK`, state: shopFail === 0 ? "good" : "warn" }
+        { metric: "Core Web Vitals", value: "nicht verbunden", state: "info" },
+        { metric: "HTTP Seitenchecks", value: pageEnvironmentIssue ? "lokal nicht verifizierbar" : `${pageOk}/${pageChecks.length} OK`, state: pageEnvironmentIssue ? "info" : pageProblemCount === 0 ? "good" : "warn" },
+        { metric: "Shirtee-Linkchecks", value: shopEnvironmentIssue ? "lokal nicht verifizierbar" : `${shopLive}/${shopChecked} OK`, state: shopEnvironmentIssue ? "info" : shopProblemCount === 0 ? "good" : "warn" }
       ],
       responseTime: `${avgResponse} ms`,
-      uptime: `${toPercent(pageOk, pageChecks.length)}% (Seitencheck)`,
+      uptime: pageEnvironmentIssue ? "lokal nicht verifizierbar" : `${toPercent(pageOk, pageChecks.length)}% (Seitencheck)`,
       externalChecks: [
-        { label: "Website Core-Pfade", status: `${pageOk}/${pageChecks.length} erreichbar`, level: pageFail === 0 ? "ok" : "warn" },
-        { label: "Shop Produktlinks", status: `${shopLive}/${shopChecked} erreichbar`, level: shopFail === 0 ? "ok" : "warn" },
-        { label: "SoundCloud Profil", status: soundcloud.available ? "OK" : "Nicht abrufbar", level: soundcloud.available ? "ok" : "warn" }
+        { label: "Website Core-Pfade", status: pageEnvironmentIssue ? "lokal nicht verifizierbar" : `${pageOk}/${pageChecks.length} erreichbar`, level: pageEnvironmentIssue ? "info" : pageProblemCount === 0 ? "ok" : "warn" },
+        { label: "Shop Produktlinks", status: shopEnvironmentIssue ? "lokal nicht verifizierbar" : `${shopLive}/${shopChecked} erreichbar`, level: shopEnvironmentIssue ? "info" : shopProblemCount === 0 ? "ok" : "warn" },
+        { label: "SoundCloud Profil", status: soundcloud.available ? "OK" : soundcloudEnvironmentIssue ? "lokal nicht verifizierbar" : "Nicht abrufbar", level: soundcloud.available ? "ok" : soundcloudEnvironmentIssue ? "info" : "warn" }
       ],
       errorLog: [
-        ...(pageFail > 0 ? [{ id: "WEB-001", scope: "website", message: `${pageFail} Seiten liefern keinen HTTP 200 Status`, level: "warn" }] : []),
-        ...(shopFail > 0 ? [{ id: "SHOP-001", scope: "shop", message: `${shopFail} gepruefte Shop-Links sind nicht erreichbar`, level: "warn" }] : []),
-        ...(!soundcloud.available ? [{ id: "SOC-001", scope: "soundcloud", message: "SoundCloud API aktuell nicht auslesbar", level: "warn" }] : [])
+        ...(pageProblemCount > 0 ? [{ id: "WEB-001", scope: "website", message: `${pageProblemCount} Seiten liefern keinen HTTP 200 Status`, level: "warn" }] : []),
+        ...(shopProblemCount > 0 ? [{ id: "SHOP-001", scope: "shop", message: `${shopProblemCount} gepruefte Shop-Links sind nicht erreichbar`, level: "warn" }] : []),
+        ...(!soundcloud.available && !soundcloudEnvironmentIssue ? [{ id: "SOC-001", scope: "soundcloud", message: "SoundCloud API aktuell nicht auslesbar", level: "warn" }] : [])
       ]
     },
     contentPerformance: {
@@ -1096,25 +1146,39 @@ async function main() {
         { name: "SoundCloud Links", clicks: hrefCounts.soundcloud, rate: "Live-Linkcount" }
       ],
       weakSpots: [
-        ...(pageFail > 0 ? [{ item: "Seitenverfuegbarkeit", note: "Mindestens ein Seitenpfad antwortet nicht mit HTTP 200." }] : []),
-        ...(shopFail > 0 ? [{ item: "Produktlink-Verfuegbarkeit", note: "Nicht alle geprueften Shop-Links sind erreichbar." }] : []),
+        ...(pageProblemCount > 0 ? [{ item: "Seitenverfuegbarkeit", note: "Mindestens ein Seitenpfad antwortet nicht mit HTTP 200." }] : []),
+        ...(shopProblemCount > 0 ? [{ item: "Produktlink-Verfuegbarkeit", note: "Nicht alle geprueften Shop-Links sind erreichbar." }] : []),
+        ...(pageEnvironmentIssue ? [{ item: "Netzwerk-DNS", note: "Die Umgebung kann die Hauptdomain nicht aufloesen; das ist kein Site-Fehler." }] : []),
+        ...(shopEnvironmentIssue ? [{ item: "Shop-Pruefung", note: "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren." }] : []),
         ...(hrefCounts.contact === 0 ? [{ item: "Kontakt-CTA", note: "Keine Kontakt-Links im Seiteninhalt erkannt." }] : [])
       ]
     },
     activityFeed: [
       { id: "EVT-1", time: generatedAtLabel, type: "check", text: `Live-Pruefung abgeschlossen: ${pageChecks.length} Seitenchecks` },
-      { id: "EVT-2", time: generatedAtLabel, type: "check", text: `Shop-Linkcheck: ${shopLive}/${shopChecked} erreichbar` },
-      { id: "EVT-3", time: generatedAtLabel, type: "check", text: `SoundCloud: ${soundcloud.available ? "Profilsignal abrufbar" : "kein Profilsignal"}` },
-      { id: "EVT-4", time: generatedAtLabel, type: "check", text: `TikTok Profile: ${[tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length}/2 erreichbar` }
+      { id: "EVT-2", time: generatedAtLabel, type: "check", text: shopEnvironmentIssue ? "Shop-Linkcheck: lokal nicht verifizierbar" : `Shop-Linkcheck: ${shopLive}/${shopChecked} erreichbar` },
+      { id: "EVT-3", time: generatedAtLabel, type: "check", text: soundcloudEnvironmentIssue ? "SoundCloud: lokal nicht verifizierbar" : `SoundCloud: ${soundcloud.available ? "Profilsignal abrufbar" : "kein Profilsignal"}` },
+      { id: "EVT-4", time: generatedAtLabel, type: "check", text: tiktokEnvironmentIssue ? "TikTok Profile: lokal nicht verifizierbar" : `TikTok Profile: ${[tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length}/2 erreichbar` }
     ],
     alerts: [
-      ...(pageFail > 0 ? [{ id: "AL-WEB", level: "warn", title: "Seitenchecks mit Fehler", description: `${pageFail} von ${pageChecks.length} geprueften Seiten sind nicht auf HTTP 200.`, source: "Website Monitoring" }] : [{ id: "AL-WEB", level: "ok", title: "Alle Seiten erreichbar", description: "Alle geprueften Kernseiten antworten mit HTTP 200.", source: "Website Monitoring" }]),
-      ...(shopFail > 0 ? [{ id: "AL-SHOP", level: "warn", title: "Shop-Link Problem", description: `${shopFail} gepruefte Produktlinks liefern keinen OK-Status.`, source: "Shop Monitoring" }] : [{ id: "AL-SHOP", level: "ok", title: "Shop-Links erreichbar", description: "Alle geprueften Produktlinks sind erreichbar.", source: "Shop Monitoring" }]),
+      ...(pageEnvironmentIssue
+        ? [{ id: "AL-WEB", level: "info", title: "Website lokal nicht verifizierbar", description: "Die Shell-Umgebung kann die Domain nicht aufloesen; das Dashboard zeigt deshalb keinen falschen Ausfall an.", source: "Website Monitoring" }]
+        : pageProblemCount > 0
+          ? [{ id: "AL-WEB", level: "warn", title: "Seitenchecks mit Fehler", description: `${pageProblemCount} von ${pageChecks.length} geprueften Seiten sind nicht auf HTTP 200.`, source: "Website Monitoring" }]
+          : [{ id: "AL-WEB", level: "ok", title: "Alle Seiten erreichbar", description: "Alle geprueften Kernseiten antworten mit HTTP 200.", source: "Website Monitoring" }]),
+      ...(shopEnvironmentIssue
+        ? [{ id: "AL-SHOP", level: "info", title: "Shop lokal nicht verifizierbar", description: "Die lokale Umgebung kann die Shirtee-Links nicht testen; der Status bleibt deshalb neutral.", source: "Shop Monitoring" }]
+        : shopProblemCount > 0
+          ? [{ id: "AL-SHOP", level: "warn", title: "Shop-Link Problem", description: `${shopProblemCount} gepruefte Produktlinks liefern keinen OK-Status.`, source: "Shop Monitoring" }]
+          : [{ id: "AL-SHOP", level: "ok", title: "Shop-Links erreichbar", description: "Alle geprueften Produktlinks sind erreichbar.", source: "Shop Monitoring" }]),
       {
         id: "AL-SOC",
-        level: soundcloud.available ? "ok" : "info",
-        title: soundcloud.available ? "SoundCloud Live-Profil erkannt" : "SoundCloud eingeschraenkt",
-        description: soundcloud.available ? `${soundcloud.user.followers_count} Follower und ${soundcloud.user.track_count} Tracks verifiziert.` : "Aktuell keine stabilen SoundCloud-Metriken abrufbar.",
+        level: soundcloud.available ? "ok" : soundcloudEnvironmentIssue ? "info" : "warn",
+        title: soundcloud.available ? "SoundCloud Live-Profil erkannt" : soundcloudEnvironmentIssue ? "SoundCloud lokal nicht verifizierbar" : "SoundCloud eingeschraenkt",
+        description: soundcloud.available
+          ? `${soundcloud.user.followers_count} Follower und ${soundcloud.user.track_count} Tracks verifiziert.`
+          : soundcloudEnvironmentIssue
+            ? "Die lokale Umgebung kann keine stabilen SoundCloud-Metriken abrufen."
+            : "Aktuell keine stabilen SoundCloud-Metriken abrufbar.",
         source: "Social Monitoring"
       }
     ],

@@ -100,7 +100,7 @@ export interface DashboardData {
     officialAccounts: Array<{ label: string; url: string; status: "live" | "check" }>;
   };
   performanceMetrics: {
-    webVitals: Array<{ metric: string; value: string; state: "good" | "warn" }>;
+    webVitals: Array<{ metric: string; value: string; state: "good" | "warn" | "info" }>;
     responseTime: string;
     uptime: string;
     externalChecks: Array<{ label: string; status: string; level: StatusLevel }>;
