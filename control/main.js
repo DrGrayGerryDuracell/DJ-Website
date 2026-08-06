@@ -19,7 +19,7 @@ import {
   renderSocial,
   renderAlerts,
   renderQuickActions
-} from "./js/render.js?v=20260806d";
+} from "./js/render.js?v=20260806e";
 
 const LIVE_REFRESH_MS = 30000;
 const NETWORK_ZOOM_MIN = 0.7;
@@ -140,7 +140,7 @@ async function queueHaAction(payload) {
   });
 }
 
-async function runHaAction(action, payload) {
+async function runControlAction(action, payload) {
   return controlApi("/action", {
     method: "POST",
     body: JSON.stringify({ action, payload })
@@ -737,6 +737,9 @@ function buildDialogPayload(data, kind, id) {
       actions: [
         { type: "link", label: "Seite öffnen", href: page.path },
         { type: "link", label: "Abschnitt im Dashboard", href: "#website" },
+        { type: "control-action", label: "Status auf Review", action: "website.page-status", payload: { pageId: page.id, status: "review" } },
+        { type: "control-action", label: "Entwurf sperren", action: "website.page-note", payload: { pageId: page.id, note: "locked-from-dashboard" } },
+        { type: "control-action", label: "Draft-Lock aktivieren", action: "website.page-lock", payload: { pageId: page.id, locked: true } },
         { type: "copy", label: "Editor-Notiz kopieren", value: `${page.title}\n${page.path}\n${page.editor}\n${page.note}` }
       ],
       toggles: [{ id: "draft-lock", label: "Bearbeitungsmodus", value: getControlToggleValue(kind, id, "draft-lock", true), onLabel: "Entwurf", offLabel: "Nur Lesen" }]
@@ -757,6 +760,8 @@ function buildDialogPayload(data, kind, id) {
         { type: "bridge-command", label: "Queue erzeugen", command: "generate-upload-queue" },
         { type: "bridge-command", label: "Batches erzeugen", command: "generate-upload-batches" },
         { type: "bridge-command", label: "API-Request bauen", command: "generate-shirtee-api-request" },
+        { type: "control-action", label: "Batch vorbereiten", action: "shop.prepare-draft", payload: { draftId: draft.id, stage: "batch-prepared" } },
+        { type: "control-action", label: "Status freigeben", action: "shop.draft-status", payload: { draftId: draft.id, status: "approved" } },
         { type: "copy", label: "Queue-Befehl kopieren", value: "npm run generate:upload-queue\nnpm run generate:upload-batches\nnpm run generate:shirtee-api-request" }
       ],
       toggles: [
@@ -781,6 +786,8 @@ function buildDialogPayload(data, kind, id) {
           label: "Social Bereich öffnen",
           href: "#social"
         },
+        { type: "control-action", label: "Plan freigeben", action: "content.plan-entry", payload: { id: entry.id, status: "approved", owner: channel?.handle || "dashboard" } },
+        { type: "control-action", label: "Status einplanen", action: "content.plan-entry", payload: { id: entry.id, status: "scheduled", owner: channel?.handle || "dashboard" } },
         {
           type: "copy",
           label: "Content-Brief kopieren",
@@ -836,6 +843,18 @@ function buildDialogPayload(data, kind, id) {
       paragraphs: [`Primärstrategie: ${agent.llm}`, `Fallback: ${agent.fallback}`],
       actions: [
         {
+          type: "control-action",
+          label: "Cloud-first setzen",
+          action: "ops.run-subagent",
+          payload: { agentId: agent.id, mode: "cloud-first" }
+        },
+        {
+          type: "control-action",
+          label: "Argus-first setzen",
+          action: "ops.run-subagent",
+          payload: { agentId: agent.id, mode: "argus-first" }
+        },
+        {
           type: "copy",
           label: "Agent-Regel kopieren",
           value: `${agent.name}\nMode: ${agent.mode}\nPrimary: ${agent.llm}\nFallback: ${agent.fallback}\nRule: erst Cloud LLM, dann Escalation.`
@@ -858,6 +877,8 @@ function buildDialogPayload(data, kind, id) {
       paragraphs: [`Steward: ${node.steward}`, "Vorbereitung für Pflege, Writeback und Lernregeln mit Cloud-LLM-sparendem Pfad."],
       actions: [
         { type: "link", label: "AgentsRoom öffnen", href: "#agentsroom" },
+        { type: "control-action", label: "Writeback ausführen", action: "ops.vault-writeback", payload: { nodeId: node.id, mode: "writeback" } },
+        { type: "control-action", label: "Summary-only setzen", action: "ops.vault-writeback", payload: { nodeId: node.id, mode: "summary-only" } },
         {
           type: "copy",
           label: "Vault-Notiz kopieren",
@@ -912,7 +933,7 @@ function renderControlDialog(payload) {
               if (action.type === "ha-queue") {
                 return `<button type="button" class="action-btn is-secondary" data-control-ha='${escapeHtml(JSON.stringify(action.payload || {}))}'>${escapeHtml(action.label)}</button>`;
               }
-              if (action.type === "ha-action") {
+              if (action.type === "ha-action" || action.type === "control-action") {
                 return `<button type="button" class="action-btn is-secondary" data-control-action="${escapeHtml(action.action || "")}" data-control-payload='${escapeHtml(JSON.stringify(action.payload || {}))}'>${escapeHtml(action.label)}</button>`;
               }
               return `<button type="button" class="action-btn is-secondary" data-control-copy="${escapeHtml(action.value || "")}">${escapeHtml(action.label)}</button>`;
@@ -1042,10 +1063,17 @@ function setupControlDialogActions() {
       try {
         const action = actionTrigger.getAttribute("data-control-action");
         const payload = JSON.parse(actionTrigger.getAttribute("data-control-payload") || "{}");
-        const result = await runHaAction(action, payload);
+        const result = await runControlAction(action, payload);
         const detail = result.mode ? ` (${result.mode})` : "";
         actionTrigger.textContent = "Ausgeführt";
         updateHaActionStatus(`Letzte Action: ${action} erfolgreich${detail}`, "live");
+        if (!action.startsWith("ha.")) {
+          const nextLiveMetrics = await loadLiveMetrics();
+          if (nextLiveMetrics?.metadata) {
+            window.__CONTROL_DATA__ = nextLiveMetrics;
+            renderDashboardView(applyRangeToData(nextLiveMetrics, "live"));
+          }
+        }
       } catch (error) {
         actionTrigger.textContent = "Fehler";
         updateHaActionStatus(`Letzte Action fehlgeschlagen: ${error.message || "unbekannter Fehler"}`, "error");

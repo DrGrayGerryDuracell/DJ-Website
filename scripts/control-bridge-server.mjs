@@ -44,16 +44,20 @@ const ACTIONS = {
   "ha.toggle-device": async ({ entityId, nextState }) => ({ ok: true, entityId, nextState, mode: "queued-local" }),
   "ha.run-scene": async ({ room, scene }) => ({ ok: true, room, scene, mode: "queued-local" }),
   "ha.run-automation": async ({ automation, mode }) => ({ ok: true, automation, automationMode: mode, mode: "queued-local" }),
-  "content.plan-entry": async ({ id, status, owner }) => ({ ok: true, id, status, owner }),
+  "website.page-status": async ({ pageId, status }) => ({ ok: true, pageId, status }),
   "website.page-note": async ({ pageId, note }) => ({ ok: true, pageId, note }),
+  "website.page-lock": async ({ pageId, locked }) => ({ ok: true, pageId, locked: Boolean(locked) }),
   "shop.prepare-draft": async ({ draftId, stage }) => ({ ok: true, draftId, stage }),
-  "ops.run-subagent": async ({ agentId, mode }) => ({ ok: true, agentId, mode })
+  "shop.draft-status": async ({ draftId, status }) => ({ ok: true, draftId, status }),
+  "content.plan-entry": async ({ id, status, owner }) => ({ ok: true, id, status, owner }),
+  "ops.run-subagent": async ({ agentId, mode }) => ({ ok: true, agentId, mode }),
+  "ops.vault-writeback": async ({ nodeId, mode }) => ({ ok: true, nodeId, mode })
 };
 
 function ensureStateFiles() {
   mkdirSync(stateDir, { recursive: true });
   if (!existsSync(statePath)) {
-    writeFileSync(statePath, JSON.stringify({ updatedAt: null, controls: {} }, null, 2), "utf8");
+    writeFileSync(statePath, JSON.stringify({ updatedAt: null, controls: {}, actions: [], commands: [] }, null, 2), "utf8");
   }
   if (!existsSync(haQueuePath)) {
     writeFileSync(haQueuePath, JSON.stringify({ updatedAt: null, queue: [] }, null, 2), "utf8");
@@ -137,7 +141,21 @@ async function runAction(name, payload) {
   }
 
   try {
-    return await action(payload);
+    const result = await action(payload);
+    if (!result.ok) return result;
+    const state = readJson(statePath, { updatedAt: null, controls: {}, actions: [], commands: [] });
+    state.actions = Array.isArray(state.actions) ? state.actions : [];
+    state.actions.push({
+      id: `action-${Date.now()}`,
+      action: name,
+      payload,
+      createdAt: new Date().toISOString(),
+      status: "completed"
+    });
+    state.actions = state.actions.slice(-24);
+    state.updatedAt = new Date().toISOString();
+    writeJson(statePath, state);
+    return result;
   } catch (error) {
     return { ok: false, error: error instanceof Error ? error.message : "Unknown action error" };
   }
@@ -213,6 +231,17 @@ async function handleApi(request, response, url) {
       return badRequest(response, "command ist erforderlich.");
     }
     const result = await runCommand(body.command);
+    const state = readJson(statePath, { updatedAt: null, controls: {}, actions: [], commands: [] });
+    state.commands = Array.isArray(state.commands) ? state.commands : [];
+    state.commands.push({
+      id: `command-${Date.now()}`,
+      command: body.command,
+      createdAt: new Date().toISOString(),
+      status: result.ok ? "completed" : "failed"
+    });
+    state.commands = state.commands.slice(-24);
+    state.updatedAt = new Date().toISOString();
+    writeJson(statePath, state);
     return json(response, result.ok ? 200 : 500, result);
   }
 

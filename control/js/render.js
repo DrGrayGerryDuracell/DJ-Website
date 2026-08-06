@@ -2045,7 +2045,11 @@ export function renderAlerts(container, alerts) {
 export function renderQuickActions(container, dashboardData) {
   const actions = Array.isArray(dashboardData?.quickActions) ? dashboardData.quickActions : [];
   const operations = dashboardData?.operationsWorkbench || { cronJobs: [], subagents: [], vaultNodes: [] };
-  const validActions = actions.filter((item) => item && typeof item.href === "string" && item.href.trim() && typeof item.label === "string" && item.label.trim());
+  const validActions = actions.filter((item) => item && typeof item.label === "string" && item.label.trim() && (
+    (typeof item.href === "string" && item.href.trim()) ||
+    (typeof item.command === "string" && item.command.trim()) ||
+    (typeof item.action === "string" && item.action.trim())
+  ));
   const grouped = {
     live: validActions.slice(0, 4),
     social: validActions.slice(4, 7),
@@ -2057,7 +2061,15 @@ export function renderQuickActions(container, dashboardData) {
       <h4>${title}</h4>
       <div class="action-grid compact">
         ${items
-          .map((item) => `<a class="action-btn" href="${item.href}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ""}>${item.label}</a>`)
+          .map((item) => {
+            if (item.command) {
+              return `<button type="button" class="action-btn" data-control-command="${escapeHtml(item.command)}">${escapeHtml(item.label)}</button>`;
+            }
+            if (item.action) {
+              return `<button type="button" class="action-btn" data-control-action="${escapeHtml(item.action)}" data-control-payload='${escapeHtml(JSON.stringify(item.payload || {}))}'>${escapeHtml(item.label)}</button>`;
+            }
+            return `<a class="action-btn" href="${escapeHtml(item.href)}" ${item.external ? 'target="_blank" rel="noopener noreferrer"' : ""}>${escapeHtml(item.label)}</a>`;
+          })
           .join("")}
       </div>
     </div>
@@ -2117,6 +2129,14 @@ export function renderQuickActions(container, dashboardData) {
             <button type="button" class="action-btn is-secondary" data-control-dialog-kind="vault-node" data-control-dialog-id="${escapeHtml(node.id)}">Vault öffnen</button>
           </article>
         `).join("")}
+      </div>
+      <div class="control-dialog-section">
+        <h4>Lokale Action-Zusammenfassung</h4>
+        <ul class="log-list">
+          ${(operations.actionSummary?.entries || []).map((entry) => `<li><p>${escapeHtml(`${entry.action} • ${entry.status} • ${entry.createdAtLabel}`)}</p></li>`).join("") || "<li><p>Noch keine lokalen Actions ausgeführt.</p></li>"}
+          <li><p>${escapeHtml(`Queue: ${operations.queueSummary?.total || 0} Einträge, ${operations.queueSummary?.queued || 0} offen`)}</p></li>
+          ${(operations.schedulerSummary?.entries || []).map((entry) => `<li><p>${escapeHtml(`${entry.name}: ${entry.stateLabel}`)}</p></li>`).join("")}
+        </ul>
       </div>
     </article>
   `;

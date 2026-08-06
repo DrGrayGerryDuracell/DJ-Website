@@ -852,6 +852,18 @@ async function main() {
   const haQueueEntries = Array.isArray(haQueue.queue) ? haQueue.queue : [];
   const queuedHaEntries = haQueueEntries.filter((entry) => entry.status === "queued");
   const bridgeControlGroups = Object.keys(bridgeState.controls || {});
+  const bridgeActions = Array.isArray(bridgeState.actions) ? bridgeState.actions : [];
+  const bridgeCommands = Array.isArray(bridgeState.commands) ? bridgeState.commands : [];
+  const formatActionTime = (value) => value ? new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short", timeZone: "Europe/Berlin" }).format(new Date(value)) : "unbekannt";
+  const cronControlState = bridgeState.controls?.["cron-job"] || {};
+  const schedulerEntries = [
+    { id: "cron-live", name: "sync-control-live", defaultState: "live", defaultLabel: "Aktiv" },
+    { id: "cron-shop", name: "check-shirtee-links", defaultState: "ready", defaultLabel: "Bereit" },
+    { id: "cron-upload", name: "generate-upload-queue", defaultState: "connected", defaultLabel: "Verbunden" }
+  ].map((job) => {
+    const enabled = cronControlState?.[job.id]?.enabled;
+    return { ...job, state: enabled === false ? "warn" : job.defaultState, stateLabel: enabled === false ? "Pausiert" : job.defaultLabel };
+  });
 
   const [pageChecks, soundcloud, tiktokDr, tiktokMrs, shirteeStore] = await Promise.all([
     Promise.all(corePages.map((path) => checkPage(path))),
@@ -1372,6 +1384,9 @@ async function main() {
       }
     ],
     quickActions: [
+      { id: "qa-sync", label: "Live Sync", command: "sync-control-live" },
+      { id: "qa-ha", label: "HA Queue", href: "#home-assistant" },
+      { id: "qa-queue", label: "Upload Queue bauen", command: "generate-upload-queue" },
       { id: "qa-1", label: "Website oeffnen", href: websiteBase, external: true },
       { id: "qa-2", label: "Shop Seite oeffnen", href: `${websiteBase}/shop.html`, external: true },
       { id: "qa-3", label: "Shirtee Store", href: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", external: true },
@@ -1443,12 +1458,28 @@ async function main() {
         updatedAt: bridgeState.updatedAt || null,
         controlGroups: bridgeControlGroups,
         queuedHaActions: queuedHaEntries.length,
-        latestHaAction: haQueueEntries.at(-1) || null
+        latestHaAction: haQueueEntries.at(-1) || null,
+        latestAction: bridgeActions.at(-1) || null
+      },
+      actionSummary: {
+        total: bridgeActions.length,
+        entries: bridgeActions.slice(-6).reverse().map((entry) => ({ ...entry, createdAtLabel: formatActionTime(entry.createdAt) }))
+      },
+      queueSummary: {
+        updatedAt: haQueue.updatedAt || null,
+        total: haQueueEntries.length,
+        queued: queuedHaEntries.length,
+        latest: haQueueEntries.at(-1) || null,
+        lastCommand: bridgeCommands.at(-1) || null
+      },
+      schedulerSummary: {
+        updatedAt: bridgeState.updatedAt || null,
+        entries: schedulerEntries
       },
       cronJobs: [
-        { id: "cron-live", name: "sync-control-live", schedule: "*/30 * * * *", state: "live", stateLabel: "Aktiv", owner: "Hermes" },
-        { id: "cron-shop", name: "check-shirtee-links", schedule: "0 */4 * * *", state: "ready", stateLabel: "Bereit", owner: "Jarvis" },
-        { id: "cron-upload", name: "generate-upload-queue", schedule: "15 2 * * *", state: "connected", stateLabel: "Verbunden", owner: "Forge" }
+        { id: "cron-live", name: "sync-control-live", schedule: "*/30 * * * *", state: schedulerEntries[0].state, stateLabel: schedulerEntries[0].stateLabel, owner: "Hermes" },
+        { id: "cron-shop", name: "check-shirtee-links", schedule: "0 */4 * * *", state: schedulerEntries[1].state, stateLabel: schedulerEntries[1].stateLabel, owner: "Jarvis" },
+        { id: "cron-upload", name: "generate-upload-queue", schedule: "15 2 * * *", state: schedulerEntries[2].state, stateLabel: schedulerEntries[2].stateLabel, owner: "Forge" }
       ],
       subagents: [
         { id: "sub-forge", name: "Forge", mode: "Infrastructure", llm: "Cloud LLM first", fallback: "Codex", state: "live" },
