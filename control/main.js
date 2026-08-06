@@ -1068,9 +1068,11 @@ function setupControlDialogActions() {
           updateHaActionStatus("Letzte Action: Queue-Eintrag erstellt", "ready");
         } else {
           haTrigger.textContent = "Bridge fehlt";
+          updateHaActionStatus("Queue nicht verfügbar: lokale Bridge fehlt", "error");
         }
-      } catch {
+      } catch (error) {
         haTrigger.textContent = "Fehler";
+        updateHaActionStatus(`Queue fehlgeschlagen: ${error.message || "unbekannter Fehler"}`, "error");
       }
       window.setTimeout(() => {
         haTrigger.textContent = previous;

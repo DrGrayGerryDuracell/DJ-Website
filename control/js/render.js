@@ -1287,7 +1287,12 @@ export function renderHomeAssistantSection(container, dashboardData) {
   const agentsRoom = dashboardData?.agentsRoom || {};
   const workbench = dashboardData?.homeAssistantWorkbench || { rooms: [], automations: [] };
   const queueSummary = workbench.queueSummary || { total: 0, queued: 0, entries: [] };
-  const queueEntries = Array.isArray(queueSummary.entries) ? queueSummary.entries : [];
+  const queueEntries = (Array.isArray(queueSummary.entries) ? [...queueSummary.entries] : [])
+    .sort((left, right) => {
+      const leftTimestamp = Date.parse(left?.createdAt || "") || 0;
+      const rightTimestamp = Date.parse(right?.createdAt || "") || 0;
+      return rightTimestamp - leftTimestamp;
+    });
   const latestQueueEntry = queueEntries[0];
   const latestAction = window.__CONTROL_HA_ACTION_STATUS__;
   const haDevice = (agentsRoom.devices || []).find((item) => item.name === "Home Assistant") || {};
