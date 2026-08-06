@@ -593,6 +593,22 @@ async function getTikTokProfileFallback(uniqueId) {
   const detail = scope["webapp.user-detail"] || {};
   const seo = scope["seo.abtest"] || {};
   const stats = deepFindObjectWithKeys(scope, ["followerCount", "heartCount", "videoCount"]);
+  const userInfo =
+    deepFindObjectWithKeys(scope, ["uniqueId", "nickname"]) ||
+    deepFindObjectWithKeys(scope, ["avatarLarger", "avatarThumb"]) ||
+    {};
+  const ogImageMatch =
+    html.match(/<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i) ||
+    html.match(/<meta[^>]+name=["']twitter:image["'][^>]+content=["']([^"']+)["']/i);
+  const avatarUrl =
+    userInfo.avatarLarger ||
+    userInfo.avatarMedium ||
+    userInfo.avatarThumb ||
+    userInfo.avatarUrl ||
+    ogImageMatch?.[1] ||
+    null;
+  const displayName = typeof userInfo.nickname === "string" ? userInfo.nickname : null;
+  const username = typeof userInfo.uniqueId === "string" ? userInfo.uniqueId : uniqueId;
   return {
     profileUrl,
     source: "tiktok-public-html-fallback",
@@ -600,7 +616,11 @@ async function getTikTokProfileFallback(uniqueId) {
     statusCode: typeof detail.statusCode === "number" ? detail.statusCode : null,
     followers: safeNumber(stats?.followerCount),
     likes: safeNumber(stats?.heartCount),
-    videos: safeNumber(stats?.videoCount)
+    videos: safeNumber(stats?.videoCount),
+    avatarUrl,
+    displayName,
+    username,
+    isVerified: Boolean(userInfo.verified)
   };
 }
 
@@ -679,7 +699,9 @@ async function getTikTokProfileFromApi(accessToken) {
     recentVideoCount,
     videoListAvailable,
     isVerified: Boolean(user.is_verified),
-    username
+    username,
+    displayName: typeof user.display_name === "string" ? user.display_name : null,
+    avatarUrl: typeof user.avatar_url === "string" ? user.avatar_url : null
   };
 }
 
@@ -747,7 +769,10 @@ async function getSoundCloudProfile() {
     user: {
       id: profile.id,
       username: profile.username,
+      full_name: profile.full_name,
       permalink_url: profile.permalink_url,
+      avatar_url: profile.avatar_url,
+      verified: Boolean(profile.verified),
       followers_count: safeNumber(profile.followers_count),
       followings_count: safeNumber(profile.followings_count),
       track_count: safeNumber(profile.track_count),
@@ -929,7 +954,13 @@ async function main() {
 
   const socialRows = [
     {
-      platform: "TikTok Hauptseite · Dr. Gray & Mrs. Dr. Gray",
+      platform: "TikTok Hauptseite",
+      displayName: tiktokDr.displayName || "Dr. Gray & Mrs. Dr. Gray",
+      handle: tiktokDr.username ? `@${tiktokDr.username}` : "@drgray_mrsdrgray",
+      profileImage: tiktokDr.avatarUrl || null,
+      profileUrl: tiktokDr.canonical || "https://www.tiktok.com/@drgray_mrsdrgray",
+      verified: Boolean(tiktokDr.isVerified),
+      status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "info" : "check",
       metricValue: hrefCounts.tiktokDr,
       valueLabel:
         tiktokDr.followers != null
@@ -939,7 +970,13 @@ async function main() {
       sourceLabel: `${tiktokDr.source === "tiktok-api-v2" ? "TikTok API v2 OAuth" : "TikTok Profil-HTML"}${tiktokDr.statusCode != null ? ` • Code ${tiktokDr.statusCode}` : ""}${tiktokDr.likes != null ? ` • Likes ${tiktokDr.likes.toLocaleString("de-DE")}` : ""}`
     },
     {
-      platform: "TikTok Backup · Gray Afterhours",
+      platform: "TikTok Backup",
+      displayName: tiktokMrs.displayName || "Gray Afterhours",
+      handle: tiktokMrs.username ? `@${tiktokMrs.username}` : "@gray.afterhours",
+      profileImage: tiktokMrs.avatarUrl || null,
+      profileUrl: tiktokMrs.canonical || "https://www.tiktok.com/@gray.afterhours",
+      verified: Boolean(tiktokMrs.isVerified),
+      status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "info" : "check",
       metricValue: hrefCounts.tiktokMrs,
       valueLabel:
         tiktokMrs.followers != null
@@ -950,6 +987,12 @@ async function main() {
     },
     {
       platform: "SoundCloud",
+      displayName: soundcloud.available ? soundcloud.user.full_name || soundcloud.user.username || "drgray_sic" : "drgray_sic",
+      handle: soundcloud.available && soundcloud.user.permalink_url ? `@${String(soundcloud.user.permalink_url).split("/").pop()}` : "@drgray_sic",
+      profileImage: soundcloud.available ? soundcloud.user.avatar_url || null : null,
+      profileUrl: soundcloud.available ? soundcloud.user.permalink_url : "https://soundcloud.com/drgray_sic",
+      verified: Boolean(soundcloud.available && soundcloud.user.verified),
+      status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "info" : "check",
       metricValue: hrefCounts.soundcloud,
       valueLabel: soundcloud.available ? `${soundcloud.user.followers_count.toLocaleString("de-DE")} Follower • ${hrefCounts.soundcloud} Linksignale` : `${hrefCounts.soundcloud} Linksignale im Seiteninhalt`,
       statusLabel: soundcloud.available ? `${soundcloud.user.track_count} Tracks` : "Lokal nicht verifizierbar",
@@ -957,6 +1000,12 @@ async function main() {
     },
     {
       platform: "Shop",
+      displayName: "Shirtee Store",
+      handle: "Store / Merch",
+      profileImage: null,
+      profileUrl: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
+      verified: shopFail === 0,
+      status: shopFail > 0 ? "warn" : "connected",
       metricValue: storeVisibleProducts,
       valueLabel: `${storeVisibleProducts} Produkte sichtbar • ${shopLive}/${shopChecked} gepruefte Produktlinks`,
       statusLabel: shopFail > 0 ? `${shopFail} Links fehlerhaft` : "Alle geprueften Links erreichbar",
@@ -993,31 +1042,31 @@ async function main() {
       { from: "Jarvis", to: "Heimdall", channel: "Home Assistant", purpose: "Smart Home und Automationen", status: "connected", statusLabel: "Verbunden" }
     ],
     agents: [
-      { name: "Hermes", role: "Primär-Controller und Telegram-Hub", route: "Mensch -> Hermes", channel: "Control / Review", status: "live", statusLabel: "Live", tags: ["Telegram", "Control", "Review"] },
-      { name: "Jarvis", role: "Organizer und Verteiler", route: "Hermes -> Jarvis", channel: "Routing", status: "live", statusLabel: "Live", tags: ["Delegation", "Graph", "Queue"] },
-      { name: "Argus", role: "Vorpruefung und Diagnose", route: "Jarvis -> Argus", channel: "Checks", status: "support", statusLabel: "Support", tags: ["Audit", "Second Pass", "Safety"] },
+      { name: "Hermes", role: "Primär-Controller und Telegram-Hub", route: "Mensch -> Hermes", channel: "Control / Review", status: "live", statusLabel: "Live", tags: ["Telegram", "Control", "Review"], image: "/assets/generated/agent-avatars/hermes.png" },
+      { name: "Jarvis", role: "Organizer und Verteiler", route: "Hermes -> Jarvis", channel: "Routing", status: "live", statusLabel: "Live", tags: ["Delegation", "Graph", "Queue"], image: "/assets/generated/agent-avatars/jarvis.png" },
+      { name: "Argus", role: "Vorpruefung und Diagnose", route: "Jarvis -> Argus", channel: "Checks", status: "support", statusLabel: "Support", tags: ["Audit", "Second Pass", "Safety"], image: "/assets/generated/agent-avatars/argus.png" },
       { name: "OpenClaw Gateway", role: "Broker und Bridge-Schicht", route: "Hermes -> Gateway", channel: "Queue", status: "connected", statusLabel: "Verbunden", tags: ["Bridge", "Queue", "Delegation"] },
-      { name: "Forge", role: "OpenClaw Infra, Skills und Server", route: "Jarvis -> Forge", channel: "Engineering", status: "live", statusLabel: "Live", tags: ["Infra", "Skills", "Server"] },
-      { name: "Sentinel", role: "Monitoring, Logs und Security", route: "Jarvis -> Sentinel", channel: "Watch", status: "live", statusLabel: "Live", tags: ["Logs", "Health", "Security"] },
-      { name: "Oracle", role: "Briefings, Wetter und News", route: "Jarvis -> Oracle", channel: "Briefings", status: "ready", statusLabel: "Bereit", tags: ["Briefing", "Weather", "News"] },
-      { name: "Muse", role: "TikTok, SoundCloud und Content", route: "Jarvis -> Muse", channel: "Media", status: "ready", statusLabel: "Bereit", tags: ["Content", "Audio", "Social"] },
-      { name: "Heimdall", role: "Home Assistant und Smart Home", route: "Jarvis -> Heimdall", channel: "Home", status: "connected", statusLabel: "Verbunden", tags: ["HA", "Scenes", "Devices"] },
+      { name: "Forge", role: "OpenClaw Infra, Skills und Server", route: "Jarvis -> Forge", channel: "Engineering", status: "live", statusLabel: "Live", tags: ["Infra", "Skills", "Server"], image: "/assets/generated/agent-avatars/forge.png" },
+      { name: "Sentinel", role: "Monitoring, Logs und Security", route: "Jarvis -> Sentinel", channel: "Watch", status: "live", statusLabel: "Live", tags: ["Logs", "Health", "Security"], image: "/assets/generated/agent-avatars/sentinel.png" },
+      { name: "Oracle", role: "Briefings, Wetter und News", route: "Jarvis -> Oracle", channel: "Briefings", status: "ready", statusLabel: "Bereit", tags: ["Briefing", "Weather", "News"], image: "/assets/generated/agent-avatars/oracle.png" },
+      { name: "Muse", role: "TikTok, SoundCloud und Content", route: "Jarvis -> Muse", channel: "Media", status: "ready", statusLabel: "Bereit", tags: ["Content", "Audio", "Social"], image: "/assets/generated/agent-avatars/muse.png" },
+      { name: "Heimdall", role: "Home Assistant und Smart Home", route: "Jarvis -> Heimdall", channel: "Home", status: "connected", statusLabel: "Verbunden", tags: ["HA", "Scenes", "Devices"], image: "/assets/generated/agent-avatars/heimdall.png" },
       { name: "Friday", role: "Schwere Reparaturen und Deep Work", route: "Jarvis -> Friday", channel: "Repair", status: "ready", statusLabel: "Bereit", tags: ["Deep Work", "Fixes", "Review"] },
       { name: "Claude", role: "High trust, Nachpruefung und komplexe Arbeit", route: "Escalation", channel: "Claude", status: "support", statusLabel: "Support", tags: ["Escalation", "Review", "Reasoning"] },
       { name: "Codex", role: "Code-ausfuehrende Eskalationsschicht", route: "Escalation", channel: "Codex", status: "support", statusLabel: "Support", tags: ["Code", "Fixes", "Implementation"] }
     ],
     devices: [
-      { name: "Mac mini", role: "Zentralserver", route: "Mac mini -> alles", channel: "SMB / Host", status: "connected", statusLabel: "Verbunden", tags: ["Zentrale", "SMB", "HA"] },
-      { name: "MacBook", role: "Arbeits- und Mirror-Node", route: "MacBook -> Hermes", channel: "Mirror", status: "connected", statusLabel: "Verbunden", tags: ["Mirror", "Review", "Remote"] },
-      { name: "iMac", role: "Operator-Station", route: "iMac -> Control", channel: "Operator", status: "live", statusLabel: "Live", tags: ["iMac", "Dashboard", "Control"] },
-      { name: "iPhone", role: "Telegram / Mobile Companion", route: "iPhone -> Hermes", channel: "Telegram", status: "active", statusLabel: "Aktiv", tags: ["Mobile", "Telegram", "Alerts"] },
-      { name: "Home Assistant", role: "Automation und Bruecke", route: "HA -> Mac mini", channel: "Automation", status: "live", statusLabel: "Live", tags: ["HA", "Scenes", "Bridge"] },
-      { name: "GitHub", role: "Repo Sync und Codebasis", route: "GitHub -> Repo", channel: "Sync", status: "connected", statusLabel: "Verbunden", tags: ["Repo", "PR", "Workflow"] },
-      { name: "Obsidian", role: "Vault und Live-Gedächtnis", route: "Vault -> Graph", channel: "Memory", status: "sync", statusLabel: "Sync", tags: ["Vault", "Graph", "Memory"] },
-      { name: "StreamDeck", role: "Aktionen und Hotkeys", route: "StreamDeck -> Ops", channel: "Actions", status: "ready", statusLabel: "Bereit", tags: ["Shortcuts", "Macros", "Live"] },
-      { name: "Rodecaster", role: "Audio-Routing", route: "Rodecaster -> Audio", channel: "Audio", status: "ready", statusLabel: "Bereit", tags: ["Audio", "Mic", "Scenes"] },
-      { name: "TikTok Live Studio", role: "Content Live-Fläche", route: "TikTok -> Content", channel: "Live", status: "ready", statusLabel: "Bereit", tags: ["Live", "Content", "Publishing"] },
-      { name: "SoundCloud", role: "Music Publishing", route: "SoundCloud -> Public", channel: "Audio", status: "live", statusLabel: "Live", tags: ["Audio", "Public", "Music"] }
+      { name: "Mac mini", role: "Zentralserver", route: "Mac mini -> alles", channel: "SMB / Host", status: "connected", statusLabel: "Verbunden", tags: ["Zentrale", "SMB", "HA"], image: "/assets/generated/device-visuals/mac-mini-central-server.png" },
+      { name: "MacBook", role: "Arbeits- und Mirror-Node", route: "MacBook -> Hermes", channel: "Mirror", status: "connected", statusLabel: "Verbunden", tags: ["Mirror", "Review", "Remote"], image: "/assets/generated/device-visuals/macbook-mirror-node.png" },
+      { name: "iMac", role: "Operator-Station", route: "iMac -> Control", channel: "Operator", status: "live", statusLabel: "Live", tags: ["iMac", "Dashboard", "Control"], image: "/assets/generated/device-visuals/imac-operator-station.png" },
+      { name: "iPhone", role: "Telegram / Mobile Companion", route: "iPhone -> Hermes", channel: "Telegram", status: "active", statusLabel: "Aktiv", tags: ["Mobile", "Telegram", "Alerts"], image: "/assets/generated/device-visuals/iphone-mobile-control.png" },
+      { name: "Home Assistant", role: "Automation und Bruecke", route: "HA -> Mac mini", channel: "Automation", status: "live", statusLabel: "Live", tags: ["HA", "Scenes", "Bridge"], image: "/assets/generated/device-visuals/home-assistant-automation.png" },
+      { name: "GitHub", role: "Repo Sync und Codebasis", route: "GitHub -> Repo", channel: "Sync", status: "connected", statusLabel: "Verbunden", tags: ["Repo", "PR", "Workflow"], image: "/assets/generated/dashboard-visuals/website-structure-monitoring.png" },
+      { name: "Obsidian", role: "Vault und Live-Gedächtnis", route: "Vault -> Graph", channel: "Memory", status: "sync", statusLabel: "Sync", tags: ["Vault", "Graph", "Memory"], image: "/assets/generated/dashboard-visuals/vault-memory-graph.png" },
+      { name: "StreamDeck", role: "Aktionen und Hotkeys", route: "StreamDeck -> Ops", channel: "Actions", status: "ready", statusLabel: "Bereit", tags: ["Shortcuts", "Macros", "Live"], image: "/assets/generated/dashboard-visuals/agent-routing-live.png" },
+      { name: "Rodecaster", role: "Audio-Routing", route: "Rodecaster -> Audio", channel: "Audio", status: "ready", statusLabel: "Bereit", tags: ["Audio", "Mic", "Scenes"], image: "/assets/generated/dashboard-visuals/audio-publishing-streams.png" },
+      { name: "TikTok Live Studio", role: "Content Live-Fläche", route: "TikTok -> Content", channel: "Live", status: "ready", statusLabel: "Bereit", tags: ["Live", "Content", "Publishing"], image: "/assets/generated/dashboard-visuals/social-platform-analytics.png" },
+      { name: "SoundCloud", role: "Music Publishing", route: "SoundCloud -> Public", channel: "Audio", status: "live", statusLabel: "Live", tags: ["Audio", "Public", "Music"], image: soundcloud.available ? soundcloud.user.avatar_url || "/assets/generated/dashboard-visuals/audio-publishing-streams.png" : "/assets/generated/dashboard-visuals/audio-publishing-streams.png" }
     ],
     delegations: [
       { from: "Hermes", to: "Jarvis", task: "Eingaben priorisieren und in Arbeitsstränge verteilen", channel: "Telegram", priority: "P0", status: "live", statusLabel: "Live" },
@@ -1191,11 +1240,11 @@ async function main() {
         { label: "Shop Links im Seiteninhalt", value: String(hrefCounts.shop) }
       ],
       officialAccounts: [
-        { label: "Website", url: websiteBase, status: "live" },
-        { label: "Shirtee Store", url: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: shopEnvironmentIssue ? "check" : shopProblemCount === 0 ? "live" : "check" },
-        { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "check" : "check" },
-        { label: "TikTok Hauptseite · Dr. Gray & Mrs. Dr. Gray", url: "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check" },
-        { label: "TikTok Backup · Gray Afterhours", url: "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check" }
+        { label: "Website", url: websiteBase, status: "live", displayName: "drgray-mrsdrgray.com", handle: "Hauptdomain", profileImage: null, note: "Kontrollpfad / Hauptdomain" },
+        { label: "Shirtee Store", url: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: shopEnvironmentIssue ? "check" : shopProblemCount === 0 ? "live" : "check", displayName: "Dr. Gray & Mrs. Dr. Gray Store", handle: "Shirtee", profileImage: null, note: "Store / Produktlinks" },
+        { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "check" : "check", displayName: soundcloud.available ? soundcloud.user.full_name || soundcloud.user.username || "drgray_sic" : "drgray_sic", handle: soundcloud.available && soundcloud.user.permalink_url ? `@${String(soundcloud.user.permalink_url).split("/").pop()}` : "@drgray_sic", profileImage: soundcloud.available ? soundcloud.user.avatar_url || null : null, note: "Musik / Profilsignal" },
+        { label: "TikTok Hauptseite", url: "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: tiktokDr.displayName || "Dr. Gray & Mrs. Dr. Gray", handle: tiktokDr.username ? `@${tiktokDr.username}` : "@drgray_mrsdrgray", profileImage: tiktokDr.avatarUrl || null, verified: Boolean(tiktokDr.isVerified), note: "Hauptprofil" },
+        { label: "TikTok Backup", url: "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: tiktokMrs.displayName || "Gray Afterhours", handle: tiktokMrs.username ? `@${tiktokMrs.username}` : "@gray.afterhours", profileImage: tiktokMrs.avatarUrl || null, verified: Boolean(tiktokMrs.isVerified), note: "Backup-Profil" }
       ]
     },
     performanceMetrics: {

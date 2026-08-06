@@ -19,7 +19,7 @@ import {
   renderSocial,
   renderAlerts,
   renderQuickActions
-} from "./js/render.js";
+} from "./js/render.js?v=20260806d";
 
 const LIVE_REFRESH_MS = 30000;
 
@@ -577,6 +577,20 @@ function setupAgentsRoomControls() {
 
 function setupAppShell() {
   if (!("serviceWorker" in navigator)) {
+    return;
+  }
+
+  const url = new URL(window.location.href);
+  const isQaMode = url.searchParams.has("qa");
+
+  if (isQaMode) {
+    navigator.serviceWorker.getRegistrations().then((registrations) => {
+      registrations
+        .filter((registration) => String(registration.scope || "").includes("/control/"))
+        .forEach((registration) => {
+          registration.unregister().catch(() => {});
+        });
+    }).catch(() => {});
     return;
   }
 

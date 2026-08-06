@@ -118,6 +118,22 @@ function statusNarrative(status) {
   return "Info";
 }
 
+const DASHBOARD_VISUALS = {
+  centralServer: "/assets/generated/device-visuals/mac-mini-central-server.png",
+  communication: "/assets/generated/dashboard-visuals/agent-routing-live.png",
+  vault: "/assets/generated/dashboard-visuals/vault-memory-graph.png",
+  homeAssistant: "/assets/generated/device-visuals/home-assistant-automation.png",
+  alerts: "/assets/generated/dashboard-visuals/system-alerts-monitoring.png",
+  website: "/assets/generated/dashboard-visuals/website-structure-monitoring.png",
+  social: "/assets/generated/dashboard-visuals/social-platform-analytics.png",
+  shop: "/assets/generated/dashboard-visuals/shop-commerce-catalog.png",
+  audio: "/assets/generated/dashboard-visuals/audio-publishing-streams.png"
+};
+
+function getDashboardVisual(kind) {
+  return DASHBOARD_VISUALS[kind] || DASHBOARD_VISUALS.centralServer;
+}
+
 function buildOverviewCommandCards(dashboardData) {
   const agentsRoom = dashboardData.agentsRoom || {};
   const gatewayState = agentsRoom.runtime?.gatewayState?.gateway_state || "unbekannt";
@@ -131,35 +147,35 @@ function buildOverviewCommandCards(dashboardData) {
       value: gatewayState === "running" ? "Mac mini / Hermes stabil" : "Zentralserver pruefen",
       detail: `Gateway ${gatewayState} · Telegram ${telegramState}`,
       status: gatewayState === "running" && telegramState === "connected" ? "live" : "warn",
-      image: "/assets/uploads/web-images/controller-laser-green-2026.jpg"
+      image: getDashboardVisual("centralServer")
     },
     {
       title: "Kommunikation",
       value: `${formatValue(agentsRoom.metrics?.routeCount || 0)} aktive Routen`,
       detail: `${formatValue(agentsRoom.metrics?.delegationCount || 0)} Delegationen · ${formatValue(agentsRoom.metrics?.conversationCount || 0)} Gespraeche`,
       status: (agentsRoom.metrics?.routeCount || 0) > 0 ? "connected" : "warn",
-      image: "/assets/uploads/web-images/controller-decks-closeup-2026.jpg"
+      image: getDashboardVisual("communication")
     },
     {
       title: "Vault / Memory",
       value: vaultSource?.detail || "Brain Vault nicht gemeldet",
       detail: vaultSource?.route || "Vault-Verbindungen pruefen",
       status: vaultSource?.state || "warn",
-      image: "/assets/uploads/posters/live-room-collage-2026.jpg"
+      image: getDashboardVisual("vault")
     },
     {
       title: "HA Backup",
       value: backupRoutePresent ? "Mac mini als Ziel aktiv" : "Backup-Pfad fehlt",
       detail: backupRoutePresent ? "Home Assistant -> Mac mini ueber SMB / Bridge" : "Heimdall / HA Route offen",
       status: backupRoutePresent ? "live" : "warn",
-      image: "/assets/images/flx10-gold.png"
+      image: getDashboardVisual("homeAssistant")
     },
     {
       title: "Warnungen",
       value: warningCount > 0 ? `${warningCount} Punkte mit Bedarf` : "Keine offenen Warnungen",
       detail: warningCount > 0 ? "Prio in Warnungen und Technik pruefen" : "Systemzustand im Snapshot ruhig",
       status: warningCount > 0 ? "warn" : "live",
-      image: "/assets/uploads/posters/club-red-stage.jpg"
+      image: getDashboardVisual("alerts")
     }
   ];
 
@@ -190,25 +206,28 @@ function buildOverviewCommandCards(dashboardData) {
 
 function getSocialVisual(label) {
   const key = String(label || "").toLowerCase();
-  if (key.includes("hauptseite")) {
-    return "/assets/images/drgray.jpg";
-  }
-  if (key.includes("backup") || key.includes("afterhours")) {
-    return "/assets/images/mrsdrgray.jpg";
+  if (key.includes("website")) {
+    return getDashboardVisual("website");
   }
   if (key.includes("soundcloud")) {
-    return "/assets/uploads/web-images/controller-decks-closeup-2026.jpg";
+    return getDashboardVisual("audio");
   }
   if (key.includes("shirtee") || key.includes("shop")) {
-    return "/assets/images/shirtee-crop-live.png";
+    return getDashboardVisual("shop");
   }
-  if (key.includes("website")) {
-    return "/assets/images/logo1.png";
+  if (key.includes("tiktok") || key.includes("hauptseite") || key.includes("backup") || key.includes("afterhours")) {
+    return getDashboardVisual("social");
   }
-  if (key.includes("tiktok")) {
-    return "/assets/images/tiktok-futuristic-cover.png";
-  }
-  return "/assets/uploads/posters/live-room-collage-2026.jpg";
+  return getDashboardVisual("social");
+}
+
+function formatSocialStatus(status, statusLabel) {
+  if (statusLabel) return statusLabel;
+  if (status === "live") return "Live";
+  if (status === "connected") return "Verbunden";
+  if (status === "warn" || status === "check") return "Pruefen";
+  if (status === "info") return "Hinweis";
+  return status || "Info";
 }
 
 function buildFlowItems(items) {
@@ -569,7 +588,8 @@ function buildNodeCards(items, kind = "agent") {
   return items
     .map(
       (item) => `
-        <article class="agentsroom-node ${kind}">
+        <article class="agentsroom-node ${kind}${item.image ? " has-media" : ""}">
+          ${item.image ? `<div class="agentsroom-node-media"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}"></div>` : ""}
           <div class="agentsroom-node-head">
             <h4>${escapeHtml(item.name)}</h4>
             <span class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel || item.status)}</span>
@@ -1001,15 +1021,15 @@ export function renderAgentsRoomSection(container, agentsRoom) {
       <h3>Topologie visuell lesen</h3>
       <div class="agentsroom-visual-strip">
         <article class="agentsroom-visual-card">
-          <img src="/assets/uploads/web-images/controller-laser-green-2026.jpg" alt="Hermes Steuerung">
+          <img src="${getDashboardVisual("communication")}" alt="Hermes Steuerung">
           <div><strong>Hermes Mesh</strong><span>Operator, Hermes, Jarvis und Delegationen auf einen Blick.</span></div>
         </article>
         <article class="agentsroom-visual-card">
-          <img src="/assets/uploads/web-images/controller-decks-closeup-2026.jpg" alt="Geraetenetz">
+          <img src="${getDashboardVisual("homeAssistant")}" alt="Geraetenetz">
           <div><strong>Geraetenetz</strong><span>Mac mini, Macs, Home Assistant und Publishing-Pfade.</span></div>
         </article>
         <article class="agentsroom-visual-card">
-          <img src="/assets/uploads/posters/live-room-collage-2026.jpg" alt="Vault Graph">
+          <img src="${getDashboardVisual("vault")}" alt="Vault Graph">
           <div><strong>Vault Graph</strong><span>Brain Vault, Obsidian, Session-Layer und Rueckfluesse.</span></div>
         </article>
       </div>
@@ -1487,7 +1507,7 @@ export function renderSocial(container, socialMetrics) {
   ];
   const profileCards = socialMetrics.links.map((row) => ({
     ...row,
-    image: getSocialVisual(row.platform),
+    image: row.profileImage || getSocialVisual(row.platform),
     value: row.valueLabel || row.metricValue || row.clicks || "0",
     detail: row.sourceLabel || "Live-Check"
   }));
@@ -1495,8 +1515,8 @@ export function renderSocial(container, socialMetrics) {
     const related = socialMetrics.links.find((row) => item.label.includes("TikTok Hauptseite") ? /hauptseite/i.test(row.platform || "") : item.label.includes("TikTok Backup") ? /backup/i.test(row.platform || "") : item.label === "SoundCloud" ? /soundcloud/i.test(row.platform || "") : null);
     return {
       ...item,
-      image: getSocialVisual(item.label),
-      meta: related?.valueLabel || (item.label === "Website" ? "Kontrollpfad / Hauptdomain" : item.label === "Shirtee Store" ? "Store / Produktlinks" : item.label === "SoundCloud" ? "Musik / Profilsignal" : "Profil / Kanal"),
+      image: item.profileImage || related?.profileImage || getSocialVisual(item.label),
+      meta: related?.valueLabel || item.note || (item.label === "Website" ? "Kontrollpfad / Hauptdomain" : item.label === "Shirtee Store" ? "Store / Produktlinks" : item.label === "SoundCloud" ? "Musik / Profilsignal" : "Profil / Kanal"),
       note: related?.sourceLabel || item.url
     };
   });
@@ -1510,7 +1530,7 @@ export function renderSocial(container, socialMetrics) {
         </div>
         <div class="section-banner-chips">
           <span class="status-pill is-live">Stärkster Kanal: <strong>${escapeHtml(strongest)}</strong></span>
-          <span class="status-pill is-warn">Signal geprüft</span>
+          <span class="status-pill is-connected">Live-Profile: <strong>${liveProfiles}/${socialMetrics.links.length}</strong></span>
         </div>
       </div>
       <div class="social-summary-grid">
@@ -1537,12 +1557,19 @@ export function renderSocial(container, socialMetrics) {
                 <img src="${row.image}" alt="${escapeHtml(row.platform)}">
                 <div class="social-profile-body">
                   <div class="social-node-head">
-                    <strong>${escapeHtml(row.platform)}</strong>
-                    <span class="status-pill ${pickSocialStatusClass(row)}">${escapeHtml(row.statusLabel || row.status || "check")}</span>
+                    <div>
+                      <strong>${escapeHtml(row.platform)}</strong>
+                      <span class="social-node-title">${escapeHtml(row.displayName || "")}</span>
+                    </div>
+                    <span class="status-pill ${pickSocialStatusClass(row)}">${escapeHtml(formatSocialStatus(row.status, row.statusLabel))}</span>
                   </div>
-                  <p>${escapeHtml(row.detail)}</p>
+                  <p>${escapeHtml(row.handle || row.detail)}</p>
                   <div class="social-node-value">${escapeHtml(String(row.value))}</div>
-                  <small>${escapeHtml(row.url || "")}</small>
+                  <small>${escapeHtml(row.detail)}</small>
+                  <div class="social-node-links">
+                    ${row.verified ? `<span class="status-pill is-live">Verifiziert</span>` : ""}
+                    ${row.profileUrl ? `<a href="${escapeHtml(row.profileUrl)}" target="_blank" rel="noopener noreferrer">Profil öffnen</a>` : ""}
+                  </div>
                 </div>
               </article>
             `
@@ -1591,12 +1618,18 @@ export function renderSocial(container, socialMetrics) {
                 <img src="${item.image}" alt="${escapeHtml(item.label)}">
                 <div class="social-registry-body">
                   <div class="social-node-head">
-                    <strong>${escapeHtml(item.label)}</strong>
+                    <div>
+                      <strong>${escapeHtml(item.label)}</strong>
+                      <span class="social-node-title">${escapeHtml(item.displayName || "")}</span>
+                    </div>
                     <em class="status-pill ${item.status === "live" ? "is-ok" : item.status === "check" ? "is-warn" : "is-info"}">${item.status === "live" ? "Verbunden" : item.status === "check" ? "Pruefen" : item.status}</em>
                   </div>
-                  <p>${escapeHtml(item.meta)}</p>
+                  <p>${escapeHtml(item.handle || item.meta)}</p>
                   <a href="${item.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.url)}</a>
                   <small>${escapeHtml(item.note)}</small>
+                  <div class="social-node-links">
+                    ${item.verified ? `<span class="status-pill is-live">Verifiziert</span>` : ""}
+                  </div>
                 </div>
               </article>
             `

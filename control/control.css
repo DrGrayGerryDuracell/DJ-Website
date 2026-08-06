@@ -121,7 +121,7 @@ a { color: inherit; text-decoration: none; }
   color: var(--gold-strong);
   border-color: color-mix(in oklab, var(--section-accent) 50%, rgba(255, 255, 255, 0.08));
   background:
-    linear-gradient(135deg, color-mix(in oklab, var(--section-accent) 18%, rgba(8, 10, 14, 0.95)), rgba(11, 13, 17, 0.98)),
+    linear-gradient(135deg, color-mix(in oklab, var(--section-accent) 11%, rgba(8, 10, 14, 0.95)), rgba(11, 13, 17, 0.98)),
     rgba(255, 255, 255, 0.02);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.03), var(--glow-sm);
 }
@@ -436,6 +436,11 @@ a { color: inherit; text-decoration: none; }
   padding: 0.92rem 0.95rem;
 }
 
+.agentsroom-node.has-media {
+  overflow: hidden;
+  padding: 0;
+}
+
 .agentsroom-node.agent {
   background:
     radial-gradient(circle at top right, rgba(132, 185, 255, 0.12), transparent 34%),
@@ -453,6 +458,35 @@ a { color: inherit; text-decoration: none; }
   align-items: start;
   justify-content: space-between;
   gap: 0.5rem;
+}
+
+.agentsroom-node-media {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(0, 0, 0, 0.24);
+}
+
+.agentsroom-node-media img {
+  display: block;
+  width: 100%;
+  height: 172px;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.agentsroom-node.has-media .agentsroom-node-head,
+.agentsroom-node.has-media p,
+.agentsroom-node.has-media .agentsroom-node-meta,
+.agentsroom-node.has-media .agentsroom-tags {
+  padding-left: 0.95rem;
+  padding-right: 0.95rem;
+}
+
+.agentsroom-node.has-media .agentsroom-node-head {
+  padding-top: 0.8rem;
+}
+
+.agentsroom-node.has-media .agentsroom-tags {
+  padding-bottom: 0.95rem;
 }
 
 .agentsroom-node h4 {
@@ -1411,7 +1445,7 @@ a { color: inherit; text-decoration: none; }
 .social-profile-card,
 .social-registry-card {
   display: grid;
-  grid-template-columns: 132px minmax(0, 1fr);
+  grid-template-columns: 156px minmax(0, 1fr);
   gap: 0.8rem;
   overflow: hidden;
   border-radius: 14px;
@@ -1425,7 +1459,7 @@ a { color: inherit; text-decoration: none; }
 .social-registry-card img {
   width: 100%;
   height: 100%;
-  min-height: 152px;
+  min-height: 180px;
   object-fit: cover;
   background: rgba(0, 0, 0, 0.25);
 }
@@ -1444,6 +1478,14 @@ a { color: inherit; text-decoration: none; }
   margin: 0;
   color: var(--text-soft);
   font-size: 0.8rem;
+}
+
+.social-node-title {
+  display: block;
+  margin-top: 0.18rem;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+  line-height: 1.35;
 }
 
 .social-profile-body small,
@@ -1468,6 +1510,21 @@ a { color: inherit; text-decoration: none; }
   text-decoration: underline;
   text-underline-offset: 2px;
   word-break: break-all;
+}
+
+.social-node-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  align-items: center;
+  margin-top: 0.18rem;
+}
+
+.social-node-links a {
+  color: var(--accent-cyan);
+  font-size: 0.78rem;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .social-route-grid {
@@ -2364,6 +2421,9 @@ a { color: inherit; text-decoration: none; }
   .pulse-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .panel-grid.two {
+    grid-template-columns: 1fr;
+  }
   .kpi-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .alert-grid,
   .action-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2396,6 +2456,21 @@ a { color: inherit; text-decoration: none; }
   .social-profile-grid,
   .agentsroom-network-legend {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .social-route-grid {
+    grid-template-columns: 1fr;
+  }
+  .social-profile-card,
+  .social-registry-card {
+    grid-template-columns: 1fr;
+  }
+  .social-profile-card img,
+  .social-registry-card img {
+    min-height: 164px;
+  }
+  .social-profile-body,
+  .social-registry-body {
+    padding: 0 0.85rem 0.9rem;
   }
 }
 
