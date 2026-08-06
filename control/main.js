@@ -507,6 +507,17 @@ function buildDialogPayload(data, kind, id) {
         { title: "Szenen", items: room.scenes },
         { title: "Geräte", items: room.devices.map((device) => `${device.name} • ${device.type} • ${device.stateLabel}`) }
       ],
+      actions: [
+        {
+          type: "copy",
+          label: "HA-Servicecall kopieren",
+          value: JSON.stringify({
+            room: room.id,
+            scenes: room.scenes,
+            devices: room.devices.map((device) => ({ id: device.id, name: device.name, type: device.type }))
+          }, null, 2)
+        }
+      ],
       toggles: room.devices
         .filter((device) => ["Light", "Switch", "Media"].includes(device.type))
         .map((device) => ({
@@ -527,6 +538,13 @@ function buildDialogPayload(data, kind, id) {
       subtitle: "Automation / Cron / Adapter",
       badges: [{ label: item.stateLabel, tone: item.state }],
       paragraphs: [`Zeitplan: ${item.cron}`, "Die UI ist vorbereitet für Start, Pause, Resume und manuelles Triggern."],
+      actions: [
+        {
+          type: "copy",
+          label: "Trigger-Kommando kopieren",
+          value: `# HA Adapter Trigger\n${item.label}\nZeitplan: ${item.cron}`
+        }
+      ],
       toggles: [{ id: "enabled", label: "Automation aktiv", value: getControlToggleValue(kind, id, "enabled", item.state === "live"), onLabel: "Aktiv", offLabel: "Pausiert" }]
     };
   }
@@ -540,6 +558,11 @@ function buildDialogPayload(data, kind, id) {
       badges: [{ label: page.statusLabel, tone: page.status }],
       paragraphs: [page.note, `Editor-Fokus: ${page.editor}`],
       lists: [{ title: "Bearbeitungsfelder", items: page.editor.split(",").map((item) => item.trim()) }],
+      actions: [
+        { type: "link", label: "Seite öffnen", href: page.path },
+        { type: "link", label: "Abschnitt im Dashboard", href: "#website" },
+        { type: "copy", label: "Editor-Notiz kopieren", value: `${page.title}\n${page.path}\n${page.editor}\n${page.note}` }
+      ],
       toggles: [{ id: "draft-lock", label: "Bearbeitungsmodus", value: getControlToggleValue(kind, id, "draft-lock", true), onLabel: "Entwurf", offLabel: "Nur Lesen" }]
     };
   }
@@ -552,6 +575,11 @@ function buildDialogPayload(data, kind, id) {
       subtitle: draft.line,
       badges: [{ label: draft.stateLabel, tone: draft.state }],
       paragraphs: [draft.task, `Priorität: ${draft.priority}`],
+      actions: [
+        { type: "link", label: "Upload Queue CSV", href: "/artifacts/upload-queue/shirtee-upload-queue.csv" },
+        { type: "link", label: "Batch Manifest", href: "/artifacts/upload-batches/manifest.json" },
+        { type: "copy", label: "Queue-Befehl kopieren", value: "npm run generate:upload-queue\nnpm run generate:upload-batches\nnpm run generate:shirtee-api-request" }
+      ],
       toggles: [
         { id: "copy-ready", label: "Copy fertig", value: getControlToggleValue(kind, id, "copy-ready", draft.state !== "draft"), onLabel: "Ja", offLabel: "Nein" },
         { id: "upload-ready", label: "Upload bereit", value: getControlToggleValue(kind, id, "upload-ready", draft.state === "ready"), onLabel: "Ja", offLabel: "Nein" }
@@ -568,6 +596,18 @@ function buildDialogPayload(data, kind, id) {
       subtitle: `${entry.day} • ${entry.slot} • ${entry.channel}`,
       badges: [{ label: entry.statusLabel, tone: entry.status }],
       paragraphs: [channel ? `Kanal: ${channel.handle} • ${channel.cadence}` : "Kanalinfo nicht gefunden."],
+      actions: [
+        {
+          type: "link",
+          label: "Social Bereich öffnen",
+          href: "#social"
+        },
+        {
+          type: "copy",
+          label: "Content-Brief kopieren",
+          value: `${entry.title}\nKanal: ${entry.channel}\nSlot: ${entry.day} ${entry.slot}\nStatus: ${entry.statusLabel}`
+        }
+      ],
       toggles: [
         { id: "script", label: "Script fertig", value: getControlToggleValue(kind, id, "script", entry.status !== "draft"), onLabel: "Fertig", offLabel: "Offen" },
         { id: "upload", label: "Upload freigegeben", value: getControlToggleValue(kind, id, "upload", false), onLabel: "Freigegeben", offLabel: "Blockiert" }
@@ -583,6 +623,17 @@ function buildDialogPayload(data, kind, id) {
       subtitle: `Cronjob • ${job.schedule}`,
       badges: [{ label: job.stateLabel, tone: job.state }],
       paragraphs: [`Owner: ${job.owner}`, "Vorbereitung für Run-now, Pause, Resume und Schedule-Editing im Dashboard."],
+      actions: [
+        {
+          type: "copy",
+          label: "Cron-Kommando kopieren",
+          value: job.name === "sync-control-live"
+            ? "npm run sync:control-live"
+            : job.name === "check-shirtee-links"
+              ? "npm run check:links"
+              : "npm run generate:upload-queue"
+        }
+      ],
       toggles: [{ id: "enabled", label: "Cronjob aktiv", value: getControlToggleValue(kind, id, "enabled", job.state === "live"), onLabel: "Aktiv", offLabel: "Pausiert" }]
     };
   }
@@ -595,6 +646,13 @@ function buildDialogPayload(data, kind, id) {
       subtitle: agent.mode,
       badges: [{ label: agent.state, tone: agent.state }],
       paragraphs: [`Primärstrategie: ${agent.llm}`, `Fallback: ${agent.fallback}`],
+      actions: [
+        {
+          type: "copy",
+          label: "Agent-Regel kopieren",
+          value: `${agent.name}\nMode: ${agent.mode}\nPrimary: ${agent.llm}\nFallback: ${agent.fallback}\nRule: erst Cloud LLM, dann Escalation.`
+        }
+      ],
       toggles: [
         { id: "cloud-first", label: "Cloud LLM zuerst", value: getControlToggleValue(kind, id, "cloud-first", true), onLabel: "Aktiv", offLabel: "Aus" },
         { id: "argus-first", label: "Argus Review zuerst", value: getControlToggleValue(kind, id, "argus-first", true), onLabel: "Aktiv", offLabel: "Aus" }
@@ -610,6 +668,14 @@ function buildDialogPayload(data, kind, id) {
       subtitle: node.role,
       badges: [{ label: node.stateLabel, tone: node.state }],
       paragraphs: [`Steward: ${node.steward}`, "Vorbereitung für Pflege, Writeback und Lernregeln mit Cloud-LLM-sparendem Pfad."],
+      actions: [
+        { type: "link", label: "AgentsRoom öffnen", href: "#agentsroom" },
+        {
+          type: "copy",
+          label: "Vault-Notiz kopieren",
+          value: `${node.name}\nRolle: ${node.role}\nSteward: ${node.steward}\nStatus: ${node.stateLabel}`
+        }
+      ],
       toggles: [
         { id: "writeback", label: "Writeback aktiv", value: getControlToggleValue(kind, id, "writeback", node.id !== "vault-learning"), onLabel: "Aktiv", offLabel: "Aus" },
         { id: "summary-only", label: "Nur verdichtet speichern", value: getControlToggleValue(kind, id, "summary-only", true), onLabel: "Ja", offLabel: "Nein" }
@@ -625,6 +691,7 @@ function renderControlDialog(payload) {
   const paragraphs = Array.isArray(payload.paragraphs) ? payload.paragraphs : [];
   const lists = Array.isArray(payload.lists) ? payload.lists : [];
   const toggles = Array.isArray(payload.toggles) ? payload.toggles : [];
+  const actions = Array.isArray(payload.actions) ? payload.actions : [];
   return `
     <div class="control-dialog-head">
       <p class="eyebrow">${escapeHtml(payload.subtitle || "Workbench")}</p>
@@ -643,6 +710,17 @@ function renderControlDialog(payload) {
           </ul>
         </div>
       `).join("")}
+      ${actions.length ? `
+        <div class="control-dialog-section">
+          <h4>Aktionen</h4>
+          <div class="action-grid compact">
+            ${actions.map((action) => action.type === "link"
+              ? `<a class="action-btn is-secondary" href="${escapeHtml(action.href)}">${escapeHtml(action.label)}</a>`
+              : `<button type="button" class="action-btn is-secondary" data-control-copy="${escapeHtml(action.value || "")}">${escapeHtml(action.label)}</button>`
+            ).join("")}
+          </div>
+        </div>
+      ` : ""}
       ${toggles.length ? `
         <div class="control-dialog-section">
           <h4>Steuerung</h4>
@@ -719,6 +797,19 @@ function setupControlDialogActions() {
       const nextValue = !toggleTrigger.classList.contains("is-active");
       setControlToggleValue(kind, id, controlId, nextValue);
       reopenCurrentDialog();
+      return;
+    }
+
+    const copyTrigger = event.target.closest("[data-control-copy]");
+    if (copyTrigger) {
+      const value = copyTrigger.getAttribute("data-control-copy") || "";
+      navigator.clipboard.writeText(value).then(() => {
+        const previous = copyTrigger.textContent;
+        copyTrigger.textContent = "Kopiert";
+        window.setTimeout(() => {
+          copyTrigger.textContent = previous;
+        }, 1400);
+      }).catch(() => {});
     }
   });
 

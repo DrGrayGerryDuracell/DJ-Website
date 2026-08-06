@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T06:50:51.882Z",
-    "generatedAtLabel": "06.08.26, 08:50",
+    "generatedAt": "2026-08-06T06:55:02.452Z",
+    "generatedAtLabel": "06.08.26, 08:55",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 08:50",
+      "value": "06.08.26, 08:55",
       "level": "info"
     }
   },
@@ -293,8 +293,8 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T06:50:51.882Z",
-      "checkedAtLabel": "06.08.26, 08:50"
+      "checkedAt": "2026-08-06T06:55:02.452Z",
+      "checkedAtLabel": "06.08.26, 08:55"
     },
     "catalog": {
       "totalItems": 167,
@@ -2924,17 +2924,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "type": "info",
         "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "type": "info",
         "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "type": "info",
         "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
@@ -3260,25 +3260,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 08:50",
+      "time": "06.08.26, 08:55",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 08:50",
+      "time": "06.08.26, 08:55",
       "type": "check",
       "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 08:50",
+      "time": "06.08.26, 08:55",
       "type": "check",
       "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 08:50",
+      "time": "06.08.26, 08:55",
       "type": "check",
       "text": "TikTok Profile: lokal nicht verifizierbar"
     }
@@ -4162,7 +4162,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4171,7 +4171,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
@@ -4180,7 +4180,7 @@
       },
       {
         "topic": "Broker",
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4189,7 +4189,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
@@ -4198,7 +4198,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
@@ -4207,7 +4207,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
@@ -4216,7 +4216,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
@@ -4225,7 +4225,7 @@
       },
       {
         "topic": "Rueckgabe",
-        "time": "06.08.26, 08:50",
+        "time": "06.08.26, 08:55",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
@@ -4301,7 +4301,7 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T08:48:03.888808",
+        "updated_at": "2026-08-06T08:53:04.282549",
         "platformCounts": {
           "telegram": 1
         }
@@ -4408,7 +4408,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 08:48",
+        "detail": "Channels: 1 • updated 06.08.26, 08:53",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
