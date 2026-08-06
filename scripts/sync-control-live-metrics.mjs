@@ -11,6 +11,8 @@ const outPath = `${repoRoot}/control/js/live-metrics.json`;
 const catalogPath = `${repoRoot}/assets/data/merch-catalog.js`;
 const linkStatusPath = `${repoRoot}/assets/data/live-link-status.js`;
 const uploadProgressPath = `${repoRoot}/artifacts/upload-queue/upload-progress-2026-04-01.md`;
+const controlBridgeStatePath = `${repoRoot}/artifacts/control-bridge/state.json`;
+const controlHaQueuePath = `${repoRoot}/artifacts/control-bridge/ha-command-queue.json`;
 
 const USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
 const websiteBase = "https://drgray-mrsdrgray.com";
@@ -845,6 +847,11 @@ async function main() {
   const catalog = loadWindowData(catalogPath, "MERCH_CATALOG");
   const liveLinkStatus = loadWindowData(linkStatusPath, "LIVE_LINK_STATUS");
   const submittedIds = loadSubmittedIdsFromProgress();
+  const bridgeState = readJsonFile(controlBridgeStatePath, { updatedAt: null, controls: {} });
+  const haQueue = readJsonFile(controlHaQueuePath, { updatedAt: null, queue: [] });
+  const haQueueEntries = Array.isArray(haQueue.queue) ? haQueue.queue : [];
+  const queuedHaEntries = haQueueEntries.filter((entry) => entry.status === "queued");
+  const bridgeControlGroups = Object.keys(bridgeState.controls || {});
 
   const [pageChecks, soundcloud, tiktokDr, tiktokMrs, shirteeStore] = await Promise.all([
     Promise.all(corePages.map((path) => checkPage(path))),
@@ -1377,6 +1384,17 @@ async function main() {
       { id: "qa-10", label: "Abmelden", href: "#logout", external: false }
     ],
     homeAssistantWorkbench: {
+      bridgeState: {
+        updatedAt: bridgeState.updatedAt || null,
+        controlGroups: bridgeControlGroups,
+        controlGroupCount: bridgeControlGroups.length
+      },
+      queueSummary: {
+        updatedAt: haQueue.updatedAt || null,
+        total: haQueueEntries.length,
+        queued: queuedHaEntries.length,
+        entries: haQueueEntries.slice(-8).reverse()
+      },
       rooms: [
         {
           id: "wohnzimmer",
@@ -1421,6 +1439,12 @@ async function main() {
       ]
     },
     operationsWorkbench: {
+      controlBridge: {
+        updatedAt: bridgeState.updatedAt || null,
+        controlGroups: bridgeControlGroups,
+        queuedHaActions: queuedHaEntries.length,
+        latestHaAction: haQueueEntries.at(-1) || null
+      },
       cronJobs: [
         { id: "cron-live", name: "sync-control-live", schedule: "*/30 * * * *", state: "live", stateLabel: "Aktiv", owner: "Hermes" },
         { id: "cron-shop", name: "check-shirtee-links", schedule: "0 */4 * * *", state: "ready", stateLabel: "Bereit", owner: "Jarvis" },

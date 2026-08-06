@@ -40,6 +40,15 @@ const COMMANDS = {
   "check-links": { cmd: "/bin/bash", args: [join(repoRoot, "scripts/check-shirtee-links.sh")] }
 };
 
+const ACTIONS = {
+  "ha.toggle-device": async ({ entityId, nextState }) => ({ ok: true, entityId, nextState, mode: "queued-local" }),
+  "ha.run-scene": async ({ room, scene }) => ({ ok: true, room, scene, mode: "queued-local" }),
+  "content.plan-entry": async ({ id, status, owner }) => ({ ok: true, id, status, owner }),
+  "website.page-note": async ({ pageId, note }) => ({ ok: true, pageId, note }),
+  "shop.prepare-draft": async ({ draftId, stage }) => ({ ok: true, draftId, stage }),
+  "ops.run-subagent": async ({ agentId, mode }) => ({ ok: true, agentId, mode })
+};
+
 function ensureStateFiles() {
   mkdirSync(stateDir, { recursive: true });
   if (!existsSync(statePath)) {
@@ -120,6 +129,19 @@ function runCommand(name, extraArgs = []) {
   });
 }
 
+async function runAction(name, payload) {
+  const action = ACTIONS[name];
+  if (!action) {
+    return { ok: false, error: `Unknown action: ${name}` };
+  }
+
+  try {
+    return await action(payload);
+  } catch (error) {
+    return { ok: false, error: error instanceof Error ? error.message : "Unknown action error" };
+  }
+}
+
 function sanitizePath(urlPath) {
   const cleaned = decodeURIComponent(urlPath.split("?")[0]);
   const candidate = cleaned === "/" ? "/index.html" : cleaned;
@@ -193,6 +215,12 @@ async function handleApi(request, response, url) {
     return json(response, result.ok ? 200 : 500, result);
   }
 
+  if (request.method === "POST" && url.pathname === "/api/control/action") {
+    const body = await readJsonBody(request);
+    const result = await runAction(body.action, body.payload || {});
+    return json(response, result.ok ? 200 : 500, result);
+  }
+
   if (request.method === "POST" && url.pathname === "/api/control/hermes-spool") {
     const body = await readJsonBody(request);
     if (!String(body.message || "").trim()) {
@@ -235,8 +263,12 @@ async function handleApi(request, response, url) {
     queue.queue.push({
       id: `ha-${Date.now()}`,
       createdAt: new Date().toISOString(),
+      kind: body.automation ? "automation" : "room",
       room: body.room || null,
       automation: body.automation || null,
+      requestedState: body.payload?.state || null,
+      source: "control-dashboard",
+      status: "queued",
       payload: body.payload || null
     });
     queue.updatedAt = new Date().toISOString();
