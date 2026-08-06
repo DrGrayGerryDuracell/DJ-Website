@@ -929,7 +929,7 @@ async function main() {
 
   const socialRows = [
     {
-      platform: "TikTok Dr. Gray",
+      platform: "TikTok Hauptseite · Dr. Gray & Mrs. Dr. Gray",
       metricValue: hrefCounts.tiktokDr,
       valueLabel:
         tiktokDr.followers != null
@@ -939,7 +939,7 @@ async function main() {
       sourceLabel: `${tiktokDr.source === "tiktok-api-v2" ? "TikTok API v2 OAuth" : "TikTok Profil-HTML"}${tiktokDr.statusCode != null ? ` • Code ${tiktokDr.statusCode}` : ""}${tiktokDr.likes != null ? ` • Likes ${tiktokDr.likes.toLocaleString("de-DE")}` : ""}`
     },
     {
-      platform: "TikTok Mrs. Dr. Gray",
+      platform: "TikTok Backup · Gray Afterhours",
       metricValue: hrefCounts.tiktokMrs,
       valueLabel:
         tiktokMrs.followers != null
@@ -1180,8 +1180,8 @@ async function main() {
       links: socialRows,
       strongestPlatform: socialStrongest?.platform || "nicht verfuegbar",
       routes: [
-        { from: "Website", to: "TikTok Dr. Gray", channel: "Hero / CTA", status: "live" },
-        { from: "Website", to: "TikTok Mrs. Dr. Gray", channel: "Hero / CTA", status: "live" },
+        { from: "Website", to: "TikTok Hauptseite", channel: "Hero / CTA", status: "live" },
+        { from: "Website", to: "TikTok Backup", channel: "Hero / CTA", status: "live" },
         { from: "Website", to: "SoundCloud", channel: "Player / Music", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "info" : "check" },
         { from: "Instagram", to: "nicht genutzt", channel: "kein Kanal", status: "info" }
       ],
@@ -1194,8 +1194,8 @@ async function main() {
         { label: "Website", url: websiteBase, status: "live" },
         { label: "Shirtee Store", url: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: shopEnvironmentIssue ? "check" : shopProblemCount === 0 ? "live" : "check" },
         { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "check" : "check" },
-        { label: "TikTok Dr. Gray", url: "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check" },
-        { label: "TikTok Mrs. Dr. Gray", url: "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check" }
+        { label: "TikTok Hauptseite · Dr. Gray & Mrs. Dr. Gray", url: "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check" },
+        { label: "TikTok Backup · Gray Afterhours", url: "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check" }
       ]
     },
     performanceMetrics: {
@@ -1269,8 +1269,8 @@ async function main() {
       { id: "qa-2", label: "Shop Seite oeffnen", href: `${websiteBase}/shop.html`, external: true },
       { id: "qa-3", label: "Shirtee Store", href: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", external: true },
       { id: "qa-4", label: "SoundCloud Profil", href: "https://soundcloud.com/drgray_sic", external: true },
-      { id: "qa-5", label: "TikTok Dr. Gray", href: "https://www.tiktok.com/@drgray_mrsdrgray", external: true },
-      { id: "qa-6", label: "TikTok Mrs. Dr. Gray", href: "https://www.tiktok.com/@gray.afterhours", external: true },
+      { id: "qa-5", label: "TikTok Hauptseite", href: "https://www.tiktok.com/@drgray_mrsdrgray", external: true },
+      { id: "qa-6", label: "TikTok Backup · Gray Afterhours", href: "https://www.tiktok.com/@gray.afterhours", external: true },
       { id: "qa-7", label: "Kontakt testen", href: `${websiteBase}/kontakt.html`, external: true },
       { id: "qa-8", label: "Upload Queue CSV", href: "#export-upload-queue", external: false },
       { id: "qa-9", label: "Live-Daten neu laden", href: "#reload", external: false },

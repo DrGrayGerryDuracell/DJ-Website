@@ -2320,9 +2320,11 @@ a { color: inherit; text-decoration: none; }
 #live-activity,
 #performance,
 #agentsroom,
+#home-assistant,
 .control-nav-link[href="#live-activity"],
 .control-nav-link[href="#performance"],
-.control-nav-link[href="#agentsroom"] {
+.control-nav-link[href="#agentsroom"],
+.control-nav-link[href="#home-assistant"] {
   --section-accent: var(--accent-cyan);
 }
 
@@ -2494,5 +2496,349 @@ a { color: inherit; text-decoration: none; }
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+}
+
+/* Control v3: status semantics, bidirectional routing and HA workspace. */
+.status-pill {
+  gap: 0.3rem;
+  background: rgba(255, 255, 255, 0.035);
+  font-weight: 600;
+}
+
+.status-pill.is-ok,
+.status-pill.is-live,
+.status-pill.is-active {
+  color: var(--ok);
+  border-color: color-mix(in oklab, var(--ok) 38%, transparent);
+  background: color-mix(in oklab, var(--ok) 10%, transparent);
+}
+
+.status-pill.is-info,
+.status-pill.is-connected,
+.status-pill.is-sync {
+  color: var(--accent-cyan);
+  border-color: color-mix(in oklab, var(--accent-cyan) 34%, transparent);
+  background: color-mix(in oklab, var(--accent-cyan) 8%, transparent);
+}
+
+.status-pill.is-ready,
+.status-pill.is-support {
+  color: var(--gold-strong);
+  border-color: color-mix(in oklab, var(--gold-strong) 38%, transparent);
+  background: color-mix(in oklab, var(--gold-strong) 9%, transparent);
+}
+
+.status-pill.is-warn {
+  color: var(--warn);
+  border-color: color-mix(in oklab, var(--warn) 46%, transparent);
+  background: color-mix(in oklab, var(--warn) 11%, transparent);
+}
+
+.status-pill.is-error {
+  color: var(--error);
+  border-color: color-mix(in oklab, var(--error) 48%, transparent);
+  background: color-mix(in oklab, var(--error) 12%, transparent);
+}
+
+.status-guide {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.status-guide.is-compact {
+  margin-top: 0;
+}
+
+.status-guide-item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 0.1rem 0.45rem;
+  align-items: center;
+  min-width: 0;
+  padding: 0.6rem 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.status-guide-item strong {
+  font-size: 0.8rem;
+}
+
+.status-guide-item > span:last-child {
+  grid-column: 2;
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  line-height: 1.35;
+}
+
+.status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: var(--info);
+  box-shadow: 0 0 12px currentColor;
+}
+
+.status-dot.is-live { color: var(--ok); background: var(--ok); }
+.status-dot.is-connected { color: var(--accent-cyan); background: var(--accent-cyan); }
+.status-dot.is-ready { color: var(--gold-strong); background: var(--gold-strong); }
+.status-dot.is-warn { color: var(--warn); background: var(--warn); }
+.status-dot.is-error { color: var(--error); background: var(--error); }
+
+.pulse-command-score.is-healthy .score-value { stroke: var(--ok); }
+.pulse-command-score.is-warning .score-value { stroke: var(--warn); }
+.pulse-command-score.is-critical .score-value { stroke: var(--error); }
+
+.agentsroom-routing-key {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem 1.2rem;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+.agentsroom-routing-key span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.route-sample {
+  display: inline-block;
+  width: 42px;
+  border-top: 3px dashed var(--accent-cyan);
+}
+
+.route-sample.is-feedback {
+  border-color: var(--gold-strong);
+  border-top-style: dotted;
+}
+
+.agentsroom-network-edge.is-feedback path {
+  stroke: var(--gold-strong);
+  stroke-width: 1.7;
+  stroke-dasharray: 3 9;
+  animation-direction: reverse;
+  opacity: 0.72;
+  filter: drop-shadow(0 0 6px rgba(245, 200, 76, 0.2));
+}
+
+.agentsroom-network-svg marker[id*="feedback"] path {
+  fill: var(--gold-strong);
+}
+
+.agentsroom-network-edge.is-muted {
+  opacity: 0.48;
+}
+
+.agentsroom-network-legend-item.is-muted {
+  opacity: 0.68;
+  filter: saturate(0.65);
+}
+
+.agentsroom-inspector-actions,
+.ha-actions {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.action-btn {
+  cursor: pointer;
+  font: inherit;
+}
+
+.action-btn.is-secondary {
+  color: var(--text-soft);
+  border-color: rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.agentsroom-node-grid,
+.agentsroom-device-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.agentsroom-source-grid,
+.agentsroom-session-grid,
+.agentsroom-message-grid,
+.agentsroom-runtime-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.ha-dashboard {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.ha-wide {
+  grid-column: 1 / -1;
+}
+
+.ha-command-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.55fr) minmax(220px, 0.45fr);
+  gap: 1rem;
+  align-items: center;
+  background:
+    radial-gradient(circle at top left, rgba(81, 207, 156, 0.12), transparent 30%),
+    radial-gradient(circle at bottom right, rgba(52, 228, 255, 0.09), transparent 32%),
+    var(--panel-strong);
+}
+
+.ha-command-card h3,
+.ha-dashboard .panel > h3 {
+  margin-top: 0;
+}
+
+.ha-command-card p:not(.eyebrow) {
+  margin: 0.5rem 0 0;
+  color: var(--text-soft);
+  line-height: 1.55;
+}
+
+.ha-command-status {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.ha-flow {
+  counter-reset: ha-flow;
+  display: grid;
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ha-flow li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.1rem 0.7rem;
+  padding: 0.7rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.ha-flow li::before {
+  counter-increment: ha-flow;
+  content: counter(ha-flow);
+  grid-row: 1 / span 2;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 999px;
+  color: var(--accent-cyan);
+  border: 1px solid color-mix(in oklab, var(--accent-cyan) 38%, transparent);
+}
+
+.ha-flow span,
+.ha-kpi-grid small {
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+.ha-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.ha-kpi-grid > div {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.ha-kpi-grid span {
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ha-kpi-grid strong {
+  overflow-wrap: anywhere;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.ha-route-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.ha-route-grid article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.35rem 0.7rem;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.ha-route-grid article .status-pill {
+  grid-column: 2;
+  grid-row: 1 / span 2;
+}
+
+.ha-route-grid article p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+@media (max-width: 1200px) {
+  .status-guide,
+  .agentsroom-node-grid,
+  .agentsroom-device-grid,
+  .agentsroom-source-grid,
+  .agentsroom-session-grid,
+  .agentsroom-message-grid,
+  .agentsroom-runtime-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ha-command-card {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .ha-command-card > div:first-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 760px) {
+  .status-guide,
+  .agentsroom-node-grid,
+  .agentsroom-device-grid,
+  .agentsroom-source-grid,
+  .agentsroom-session-grid,
+  .agentsroom-message-grid,
+  .agentsroom-runtime-grid,
+  .ha-dashboard,
+  .ha-command-card,
+  .ha-kpi-grid,
+  .ha-route-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ha-command-card > div:first-child,
+  .ha-wide {
+    grid-column: auto;
   }
 }

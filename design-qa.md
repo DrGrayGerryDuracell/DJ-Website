@@ -44,6 +44,27 @@
 4. The large sticky mobile header was made static because it obscured the graph while scrolling.
 5. Raw Hermes delegation content was replaced with status, ID and character-count metadata.
 6. A dead Shirtee product target was redirected to the verified main store, and the finish script now refreshes live link data before checking it.
+7. TikTok channel labels were corrected to the main and backup account names.
+8. Status colors were changed to a semantic green, cyan, yellow, orange and red scale with visible explanations.
+9. Agent routing gained separate forward and feedback paths; muted routes remain readable.
+10. AgentsRoom data panels were widened and a dedicated Home Assistant workspace was added.
+
+## Current Verification Run
+
+- Date: 2026-08-06
+- Source visual truth: user screenshots in `/tmp/codex-remote-attachments/019fd2d1-8721-7c41-aacc-bb6fd7dd2f79/0EBC413A-2DA2-475E-98E6-F97E1345850C/`
+- Intended implementation capture: `/control/#agentsroom` and `/control/#home-assistant` at 1440 x 1000 CSS px, density 1
+- Implementation screenshot: unavailable in this run
+- State: local preview available on port 4173; browser access to the local URL was denied by automatic security review
+- Full-view comparison evidence: blocked because no current browser-rendered implementation capture could be accepted
+- Focused region comparison evidence: blocked for the same reason
+- Primary interactions checked statically: 12 navigation targets, routing mode controls, route reset, route diagnostic copy and HA diagnostic copy
+- Console errors checked: blocked without browser access
+- Automated checks: JavaScript syntax, build safety, navigation-to-section invariant, HA renderer output and regenerated live metrics passed
+
+### Remaining Blocker
+
+- P1: The current semantic color, feedback-edge, full-width AgentsRoom and Home Assistant changes have not been visually compared with the supplied screenshots at desktop and mobile sizes. A browser-rendered capture is required before visual acceptance.
 
 ## Tooling
 
@@ -52,4 +73,4 @@
 
 ## Final Result
 
-passed
+final result: blocked

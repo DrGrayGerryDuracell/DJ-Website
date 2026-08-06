@@ -7,6 +7,7 @@ import {
   renderVisualPulse,
   renderHermesChat,
   renderAgentsRoomSection,
+  renderHomeAssistantSection,
   renderSystemStatus,
   renderKpis,
   renderWebsiteSection,
@@ -507,7 +508,60 @@ function restoreAgentsRoomControls() {
 }
 
 function setupAgentsRoomControls() {
-  document.addEventListener("click", (event) => {
+  document.addEventListener("click", async (event) => {
+    const copyButton = event.target.closest("[data-network-copy]");
+    if (copyButton) {
+      const workspace = copyButton.closest("[data-network-workspace]");
+      const inspector = workspace?.querySelector("[data-network-inspector]");
+      const diagnostic = {
+        name: inspector?.querySelector("[data-network-inspector-name]")?.textContent || "n/a",
+        status: inspector?.querySelector("[data-network-inspector-status]")?.textContent || "n/a",
+        channel: inspector?.querySelector("[data-network-inspector-channel]")?.textContent || "n/a",
+        route: inspector?.querySelector("[data-network-inspector-route]")?.textContent || "n/a",
+        connections: inspector?.querySelector("[data-network-inspector-connections]")?.textContent || "n/a"
+      };
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(JSON.stringify(diagnostic, null, 2));
+        copied = true;
+      } catch {
+        copied = false;
+      }
+      copyButton.textContent = copied ? "Diagnose kopiert" : "Kopieren blockiert";
+      window.setTimeout(() => { copyButton.textContent = "Diagnose kopieren"; }, 1800);
+      return;
+    }
+
+    const resetButton = event.target.closest("[data-network-reset]");
+    if (resetButton) {
+      const workspace = resetButton.closest("[data-network-workspace]");
+      const activeView = workspace?.querySelector("[data-network-view]:not([hidden])");
+      activeView?.querySelectorAll(".is-muted, .is-highlighted").forEach((item) => item.classList.remove("is-muted", "is-highlighted"));
+      return;
+    }
+
+    const haCopyButton = event.target.closest("[data-ha-copy]");
+    if (haCopyButton) {
+      const snapshot = window.__CONTROL_DATA__?.agentsRoom || {};
+      const haData = {
+        generatedAt: window.__CONTROL_DATA__?.metadata?.generatedAt || null,
+        device: snapshot.devices?.find((item) => item.name === "Home Assistant") || null,
+        agent: snapshot.agents?.find((item) => item.name === "Heimdall") || null,
+        routes: snapshot.routing?.filter((item) => /Home Assistant|Heimdall/i.test(`${item.from} ${item.to} ${item.channel}`)) || [],
+        delegations: snapshot.delegations?.filter((item) => /Home Assistant|Heimdall|HA-/i.test(`${item.from} ${item.to} ${item.channel} ${item.task}`)) || []
+      };
+      let copied = false;
+      try {
+        await navigator.clipboard.writeText(JSON.stringify(haData, null, 2));
+        copied = true;
+      } catch {
+        copied = false;
+      }
+      haCopyButton.textContent = copied ? "HA-Diagnose kopiert" : "Kopieren blockiert";
+      window.setTimeout(() => { haCopyButton.textContent = "HA-Diagnose kopieren"; }, 1800);
+      return;
+    }
+
     const modeButton = event.target.closest("[data-network-mode]");
     if (modeButton) {
       setNetworkMode(modeButton.closest("[data-network-workspace]"), modeButton.getAttribute("data-network-mode"));
@@ -538,6 +592,7 @@ function renderDashboardView(data) {
   renderHermesChat(document.querySelector("[data-hermes-chat]"), data);
   renderKpis(document.querySelector("[data-kpis]"), data.overviewKpis);
   renderAgentsRoomSection(document.querySelector("[data-agentsroom-section]"), data.agentsRoom);
+  renderHomeAssistantSection(document.querySelector("[data-home-assistant-section]"), data);
   renderWebsiteSection(document.querySelector("[data-website-section]"), data.websiteMetrics);
   renderShopSection(document.querySelector("[data-shop-section]"), data.shopMetrics);
   renderCatalogUploadSection(document.querySelector("[data-catalog-upload-section]"), data.shopMetrics);

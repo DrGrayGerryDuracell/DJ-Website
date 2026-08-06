@@ -76,6 +76,8 @@ function buildTagPills(tags) {
 }
 
 function statusClass(status) {
+  if (status === "error" || status === "offline") return "is-error";
+  if (status === "warn" || status === "check") return "is-warn";
   if (status === "live") return "is-live";
   if (status === "connected") return "is-connected";
   if (status === "support") return "is-support";
@@ -83,6 +85,28 @@ function statusClass(status) {
   if (status === "active") return "is-active";
   if (status === "sync") return "is-sync";
   return "is-info";
+}
+
+const STATUS_GUIDE = [
+  { cls: "is-live", label: "Gruen", meaning: "Live, aktiv oder fehlerfrei" },
+  { cls: "is-connected", label: "Cyan", meaning: "Verbunden oder synchronisiert" },
+  { cls: "is-ready", label: "Gelb", meaning: "Bereit, wartet auf Arbeit" },
+  { cls: "is-warn", label: "Orange", meaning: "Pruefung oder Eingriff empfohlen" },
+  { cls: "is-error", label: "Rot", meaning: "Fehler, offline oder blockiert" }
+];
+
+function buildStatusGuide(compact = false) {
+  return `
+    <div class="status-guide${compact ? " is-compact" : ""}" aria-label="Bedeutung der Statusfarben">
+      ${STATUS_GUIDE.map((item) => `
+        <div class="status-guide-item">
+          <span class="status-dot ${item.cls}" aria-hidden="true"></span>
+          <strong>${item.label}</strong>
+          <span>${item.meaning}</span>
+        </div>
+      `).join("")}
+    </div>
+  `;
 }
 
 function buildFlowItems(items) {
@@ -246,6 +270,7 @@ function renderGraphView(agentsRoom, mode) {
 
   const positions = mode === "devices" ? deviceGraphPositions : agentGraphPositions;
   const markerId = `agentsroom-arrow-${mode}`;
+  const feedbackMarkerId = `agentsroom-feedback-arrow-${mode}`;
   const nodeNames = new Set(nodes.map((node) => node.name));
 
   const lineNodes = edges
@@ -268,6 +293,28 @@ function renderGraphView(agentsRoom, mode) {
     })
     .join("");
 
+  const feedbackNodes = mode === "agents"
+    ? edges
+        .filter((edge) => edge.from !== "Mensch" && positions.has(edge.from) && positions.has(edge.to) && nodeNames.has(edge.from) && nodeNames.has(edge.to))
+        .map((edge, index) => {
+          const source = positions.get(edge.to);
+          const target = positions.get(edge.from);
+          const x1 = source.x * 12;
+          const y1 = source.y * 6.5;
+          const x2 = target.x * 12;
+          const y2 = target.y * 6.5;
+          const bend = index % 2 === 0 ? 34 : -34;
+          const ctrlX = (x1 + x2) / 2;
+          const ctrlY = (y1 + y2) / 2 + bend;
+          return `
+            <g class="agentsroom-network-edge is-feedback" data-edge-from="${toGraphId(edge.to)}" data-edge-to="${toGraphId(edge.from)}">
+              <path d="M ${x1} ${y1} Q ${ctrlX} ${ctrlY}, ${x2} ${y2}" marker-end="url(#${feedbackMarkerId})" />
+            </g>
+          `;
+        })
+        .join("")
+    : "";
+
   const defaultName = mode === "devices" ? "Mac mini" : "Hermes";
   const nodeCards = nodes
     .map((node) => {
@@ -288,7 +335,7 @@ function renderGraphView(agentsRoom, mode) {
       (edge) => `
         <div class="agentsroom-network-legend-item" data-route-from="${toGraphId(edge.from)}" data-route-to="${toGraphId(edge.to)}">
           <span>${escapeHtml(edge.from)} → ${escapeHtml(edge.to)}</span>
-          <strong>${escapeHtml(edge.channel)}</strong>
+          <strong>${escapeHtml(edge.channel)}${mode === "agents" && edge.from !== "Mensch" ? " · Rueckmeldung ↩" : ""}</strong>
           <small class="status-pill ${statusClass(edge.status || edge.state)}">${escapeHtml(edge.statusLabel || edge.state || edge.status)}</small>
         </div>
       `
@@ -304,8 +351,12 @@ function renderGraphView(agentsRoom, mode) {
               <marker id="${markerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                 <path d="M 0 0 L 10 5 L 0 10 z" />
               </marker>
+              <marker id="${feedbackMarkerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
             </defs>
             ${lineNodes}
+            ${feedbackNodes}
           </svg>
           <div class="agentsroom-network-nodes">${nodeCards}</div>
         </div>
@@ -329,6 +380,10 @@ function buildRoutingWorkspace(agentsRoom) {
         </button>
         <p><span class="agentsroom-live-dot" aria-hidden="true"></span> Live-Snapshot · Auswahl zeigt Details</p>
       </div>
+      <div class="agentsroom-routing-key">
+        <span><i class="route-sample is-forward"></i> Auftrag / Delegation</span>
+        <span><i class="route-sample is-feedback"></i> Ergebnis / Rueckmeldung</span>
+      </div>
       <div class="agentsroom-network-stage">
         ${renderGraphView(agentsRoom, "agents")}
         ${renderGraphView(agentsRoom, "devices")}
@@ -344,6 +399,10 @@ function buildRoutingWorkspace(agentsRoom) {
         </dl>
         <h5>Verbindungen</h5>
         <p data-network-inspector-connections>${escapeHtml(defaultNode.connections?.join(" • ") || "Mensch → Hermes · Telegram")}</p>
+        <div class="agentsroom-inspector-actions">
+          <button type="button" class="action-btn" data-network-copy>Diagnose kopieren</button>
+          <button type="button" class="action-btn is-secondary" data-network-reset>Alle Routen zeigen</button>
+        </div>
       </aside>
     </div>
   `;
@@ -668,7 +727,7 @@ export function renderVisualPulse(container, dashboardData) {
           <span class="status-pill is-info">Stand: <strong>${escapeHtml(dashboardData.metadata?.generatedAtLabel || "n/a")}</strong></span>
         </div>
       </div>
-      <div class="pulse-command-score" aria-label="${agentScore} Prozent der Agenten aktiv oder verbunden">
+      <div class="pulse-command-score ${agentScore >= 80 ? "is-healthy" : agentScore >= 60 ? "is-warning" : "is-critical"}" aria-label="${agentScore} Prozent der Agenten aktiv oder verbunden">
         <svg viewBox="0 0 100 100" role="img" aria-hidden="true">
           <circle class="score-track" cx="50" cy="50" r="40"></circle>
           <circle class="score-value" cx="50" cy="50" r="40" style="stroke-dashoffset:${scoreOffset}"></circle>
@@ -731,8 +790,8 @@ export function renderAgentsRoomSection(container, agentsRoom) {
   const recentObligations = Array.isArray(agentsRoom?.recentObligations) ? agentsRoom.recentObligations : [];
   const metrics = agentsRoom?.metrics || {};
   const runtimeLiveData = [
-    { label: "Gateway", value: runtime.gatewayState?.gateway_state || "unbekannt", status: runtime.gatewayState?.gateway_state === "running" ? "live" : "support", statusLabel: runtime.gatewayState?.gateway_state === "running" ? "Aktiv" : "Pruefen" },
-    { label: "Telegram", value: runtime.gatewayState?.platforms?.telegram?.state || "unbekannt", status: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "connected" : "support", statusLabel: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "Verbunden" : "Pruefen" },
+    { label: "Gateway", value: runtime.gatewayState?.gateway_state || "unbekannt", status: runtime.gatewayState?.gateway_state === "running" ? "live" : "warn", statusLabel: runtime.gatewayState?.gateway_state === "running" ? "Aktiv" : "Pruefen" },
+    { label: "Telegram", value: runtime.gatewayState?.platforms?.telegram?.state || "unbekannt", status: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "connected" : "warn", statusLabel: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "Verbunden" : "Pruefen" },
     { label: "Lifecycle", value: runtime.gatewayLifecycle?.phase || "unbekannt", status: runtime.gatewayLifecycle?.phase === "running" ? "live" : "sync", statusLabel: runtime.gatewayLifecycle?.phase === "running" ? "Laufend" : "Sync" },
     { label: "Aktuelle Route", value: runtime.currentRouting?.displayName ? `${runtime.currentRouting.displayName} • ${String(runtime.currentRouting.sessionId || runtime.currentRouting.sessionKey || "").slice(-8)}` : "keine Route", status: runtime.currentRouting ? "connected" : "info", statusLabel: runtime.currentRouting ? "Route" : "Keine" },
     { label: "Aktive Sessions", value: String(runtime.counts?.sessions ?? 0), status: (runtime.counts?.sessions || 0) > 0 ? "live" : "info", statusLabel: "SQLite" },
@@ -756,6 +815,7 @@ export function renderAgentsRoomSection(container, agentsRoom) {
         <div><span>Gespräche</span><strong>${formatValue(metrics.conversationCount || conversations.length)}</strong></div>
         <div><span>Quellen</span><strong>${formatValue(metrics.sourceCount || sourceRegistry.length)}</strong></div>
       </div>
+      ${buildStatusGuide(true)}
     </article>
 
     <article class="panel agentsroom-panel agentsroom-panel-wide">
@@ -775,17 +835,17 @@ export function renderAgentsRoomSection(container, agentsRoom) {
         <div class="agentsroom-runtime-grid">${buildLiveData(runtimeLiveData)}</div>
       </article>
 
-      <article class="panel agentsroom-panel">
+      <article class="panel agentsroom-panel agentsroom-panel-wide">
         <h3>Routing</h3>
         <ul class="agentsroom-flow-list">${buildFlowItems(routing)}</ul>
       </article>
 
-      <article class="panel agentsroom-panel">
+      <article class="panel agentsroom-panel agentsroom-panel-wide">
         <h3>Agenten</h3>
         <div class="agentsroom-node-grid">${buildNodeCards(agents, "agent")}</div>
       </article>
 
-      <article class="panel agentsroom-panel">
+      <article class="panel agentsroom-panel agentsroom-panel-wide">
         <h3>Geräte & Live-Daten</h3>
         <div class="agentsroom-device-grid">${buildNodeCards(devices, "device")}</div>
         <h4>Direkte Gerätepfade</h4>
@@ -793,12 +853,12 @@ export function renderAgentsRoomSection(container, agentsRoom) {
         <div class="agentsroom-rail">${buildLiveData(liveData)}</div>
       </article>
 
-      <article class="panel agentsroom-panel">
+      <article class="panel agentsroom-panel agentsroom-panel-wide">
         <h3>Quellen & Vault</h3>
         <div class="agentsroom-source-grid">${buildSourceCards(sourceRegistry)}</div>
       </article>
 
-      <article class="panel agentsroom-panel">
+      <article class="panel agentsroom-panel agentsroom-panel-wide">
         <h3>Sessions</h3>
         <div class="agentsroom-session-grid">${buildSessionCards(sessions)}</div>
       </article>
@@ -838,6 +898,78 @@ export function renderAgentsRoomSection(container, agentsRoom) {
             })))}</div>
           </div>
         </div>
+      </article>
+    </div>
+  `;
+}
+
+export function renderHomeAssistantSection(container, dashboardData) {
+  if (!container) return;
+  const agentsRoom = dashboardData?.agentsRoom || {};
+  const haDevice = (agentsRoom.devices || []).find((item) => item.name === "Home Assistant") || {};
+  const macMini = (agentsRoom.devices || []).find((item) => item.name === "Mac mini") || {};
+  const heimdall = (agentsRoom.agents || []).find((item) => item.name === "Heimdall") || {};
+  const haRoutes = (agentsRoom.routing || []).filter((item) => /Home Assistant|Heimdall/i.test(`${item.from} ${item.to} ${item.channel}`));
+  const haTasks = (agentsRoom.delegations || []).filter((item) => /Home Assistant|Heimdall|HA-/i.test(`${item.from} ${item.to} ${item.channel} ${item.task}`));
+  const backupRoute = getDeviceRouteItems(agentsRoom.devices || []).find((item) => item.from === "Home Assistant" && item.to === "Mac mini");
+  const generatedAt = dashboardData?.metadata?.generatedAtLabel || "kein Zeitstempel";
+
+  container.innerHTML = `
+    <div class="ha-dashboard">
+      <article class="panel ha-command-card ha-wide">
+        <div>
+          <p class="eyebrow">HA / Zentralserver</p>
+          <h3>Home Assistant → Mac mini</h3>
+          <p>Der Mac mini bleibt das Backup-Ziel. Heimdall uebernimmt die HA-Pruefung, Jarvis delegiert und Hermes bleibt die zentrale Steuerstufe.</p>
+        </div>
+        <div class="ha-command-status">
+          <span class="status-pill ${statusClass(haDevice.status)}">HA: <strong>${escapeHtml(haDevice.statusLabel || "nicht gemeldet")}</strong></span>
+          <span class="status-pill ${backupRoute ? "is-live" : "is-warn"}">Backup-Pfad: <strong>${backupRoute ? "vorhanden" : "fehlt"}</strong></span>
+          <span class="status-pill ${statusClass(macMini.status)}">Mac mini: <strong>${escapeHtml(macMini.statusLabel || "nicht gemeldet")}</strong></span>
+        </div>
+        <div class="ha-actions">
+          <a class="action-btn" href="#agentsroom">Im Routing anzeigen</a>
+          <button type="button" class="action-btn is-secondary" data-ha-copy>HA-Diagnose kopieren</button>
+          <a class="action-btn is-secondary" href="#alerts">Warnungen pruefen</a>
+        </div>
+      </article>
+
+      <article class="panel">
+        <h3>Zustaendigkeit & Datenfluss</h3>
+        <ol class="ha-flow">
+          <li><strong>Hermes</strong><span>zentrale Steuerung und Operator-Eingang</span></li>
+          <li><strong>Jarvis</strong><span>delegiert HA-Aufgaben und Backup-Pruefung</span></li>
+          <li><strong>${escapeHtml(heimdall.name || "Heimdall")}</strong><span>${escapeHtml(heimdall.role || "HA-Agent nicht gemeldet")}</span></li>
+          <li><strong>Home Assistant</strong><span>${escapeHtml(haDevice.route || "Route nicht gemeldet")}</span></li>
+          <li><strong>Mac mini</strong><span>zentrales Backup-Ziel ueber SMB / Bridge</span></li>
+        </ol>
+      </article>
+
+      <article class="panel">
+        <h3>Live Snapshot</h3>
+        <div class="ha-kpi-grid">
+          <div><span>HA-Routen</span><strong>${haRoutes.length}</strong><small>aus AgentsRoom</small></div>
+          <div><span>HA-Aufgaben</span><strong>${haTasks.length}</strong><small>aktuelle Delegationen</small></div>
+          <div><span>Backup-Ziel</span><strong>${backupRoute ? "Mac mini" : "offen"}</strong><small>${escapeHtml(backupRoute?.channel || "kein Pfad")}</small></div>
+          <div><span>Datenstand</span><strong>${escapeHtml(generatedAt)}</strong><small>30-s-Dashboard-Snapshot</small></div>
+        </div>
+      </article>
+
+      <article class="panel ha-wide">
+        <div class="agentsroom-panel-head">
+          <div><h3>HA-Routen und Aufgaben</h3><p class="muted-line">Nur vorhandene Eintraege aus dem aktuellen Dashboard-Snapshot.</p></div>
+          <span class="status-pill ${backupRoute ? "is-live" : "is-warn"}">${backupRoute ? "Backup-Route vorhanden" : "Backup-Route pruefen"}</span>
+        </div>
+        <div class="ha-route-grid">
+          ${haRoutes.map((route) => `<article><span class="status-pill ${statusClass(route.status)}">${escapeHtml(route.statusLabel || route.status)}</span><strong>${escapeHtml(route.from)} → ${escapeHtml(route.to)}</strong><p>${escapeHtml(route.channel)} · ${escapeHtml(route.purpose || "")}</p></article>`).join("") || `<p class="muted-line">Keine HA-Agentenroute gemeldet.</p>`}
+          ${haTasks.map((task) => `<article><span class="status-pill ${statusClass(task.status)}">${escapeHtml(task.statusLabel || task.status)}</span><strong>${escapeHtml(task.from)} → ${escapeHtml(task.to)}</strong><p>${escapeHtml(task.task)}</p></article>`).join("") || `<p class="muted-line">Keine HA-Aufgabe gemeldet.</p>`}
+        </div>
+      </article>
+
+      <article class="panel ha-wide">
+        <h3>Statusfarben verstehen</h3>
+        <p class="muted-line">Farbe zeigt Handlungsbedarf, der Text nennt den technischen Zustand. Cyan ist Information, nicht Fehler.</p>
+        ${buildStatusGuide()}
       </article>
     </div>
   `;

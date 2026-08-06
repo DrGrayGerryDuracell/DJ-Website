@@ -1,4 +1,4 @@
-const CACHE_NAME = "dg-control-v4";
+const CACHE_NAME = "dg-control-v5";
 const APP_SHELL = [
   "/control/",
   "/control/index.html",

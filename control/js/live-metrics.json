@@ -1,16 +1,16 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T00:37:30.139Z",
-    "generatedAtLabel": "06.08.26, 02:37",
+    "generatedAt": "2026-08-06T02:52:19.034Z",
+    "generatedAtLabel": "06.08.26, 04:52",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
   "systemStatus": {
     "website": {
       "label": "Website",
-      "value": "Erreichbar",
-      "level": "ok"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "storeLinks": {
       "label": "Shop-Links",
@@ -19,12 +19,12 @@
     },
     "social": {
       "label": "Social-Profile",
-      "value": "2/2 TikTok erreichbar",
-      "level": "ok"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 02:37",
+      "value": "06.08.26, 04:52",
       "level": "info"
     }
   },
@@ -39,21 +39,21 @@
     {
       "id": "pagesOk",
       "label": "Seiten OK",
-      "value": 8,
-      "delta": "Live",
+      "value": 0,
+      "delta": "lokal nicht verifizierbar",
       "trend": "up"
     },
     {
       "id": "pagesFail",
       "label": "Seiten mit Fehler",
       "value": 0,
-      "delta": "Live",
+      "delta": "Umgebung",
       "trend": "neutral"
     },
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 385,
+      "value": 0,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -81,15 +81,15 @@
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 621,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
       "id": "tiktokProfiles",
       "label": "TikTok Profile erreichbar",
-      "value": 2,
-      "delta": "Live",
+      "value": 0,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 419,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 320,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 452,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 674,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 355,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 339,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 336,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 182,
+        "visitors": 0,
         "pageviews": 0
       }
     ],
@@ -161,36 +161,36 @@
       {
         "page": "/",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/index.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/bio.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/musik.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/videos.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       }
     ],
     "audiences": [
       {
-        "label": "Erreichbar",
-        "value": 100
+        "label": "Nicht verifizierbar",
+        "value": 0
       },
       {
-        "label": "Fehler",
+        "label": "Umgebung",
         "value": 0
       }
     ],
@@ -215,7 +215,7 @@
     "devices": [
       {
         "label": "2xx",
-        "value": 100
+        "value": 0
       },
       {
         "label": "3xx",
@@ -223,12 +223,12 @@
       },
       {
         "label": "4xx/5xx",
-        "value": 0
+        "value": 100
       }
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "385 ms",
+      "avgSession": "0 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     }
@@ -239,8 +239,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-06T00:37:30.139Z",
-      "checkedAtLabel": "06.08.26, 02:37"
+      "checkedAt": "2026-08-06T02:52:19.034Z",
+      "checkedAtLabel": "06.08.26, 04:52"
     },
     "catalog": {
       "totalItems": 167,
@@ -273,10 +273,10 @@
           "items": 10
         }
       ],
-      "storeVisibleProducts": 2,
+      "storeVisibleProducts": 3,
       "storeVisibleProductNames": [
         "Kein Mainstream. Hoodie",
-        "Zu wild fuer leise. Crop",
+        "Kein Mainstream. Hoodie",
         "Mrs. Dr. Gray Signature Hoodie"
       ],
       "uploadedCount": 3,
@@ -2800,7 +2800,7 @@
         "sourceLabel": "Shirtee-Linkcheck"
       },
       {
-        "name": "Zu wild fuer leise. Crop",
+        "name": "Kein Mainstream. Hoodie",
         "httpCode": 200,
         "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
         "statusLabel": "erreichbar",
@@ -2816,17 +2816,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 02:37",
+        "time": "06.08.26, 04:52",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "06.08.26, 02:37",
+        "time": "06.08.26, 04:52",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "06.08.26, 02:37",
+        "time": "06.08.26, 04:52",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -2835,45 +2835,45 @@
   "socialMetrics": {
     "links": [
       {
-        "platform": "TikTok Dr. Gray",
+        "platform": "TikTok Hauptseite · Dr. Gray & Mrs. Dr. Gray",
         "metricValue": 15,
         "valueLabel": "15 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil erreichbar",
-        "sourceLabel": "TikTok Profil-HTML • Code 209002"
+        "statusLabel": "Profil nicht bestaetigt",
+        "sourceLabel": "TikTok Profil-HTML"
       },
       {
-        "platform": "TikTok Mrs. Dr. Gray",
+        "platform": "TikTok Backup · Gray Afterhours",
         "metricValue": 10,
         "valueLabel": "10 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil erreichbar",
-        "sourceLabel": "TikTok Profil-HTML • Code 209002"
+        "statusLabel": "Profil nicht bestaetigt",
+        "sourceLabel": "TikTok Profil-HTML"
       },
       {
         "platform": "SoundCloud",
         "metricValue": 10,
-        "valueLabel": "621 Follower • 10 Linksignale",
-        "statusLabel": "32 Tracks",
+        "valueLabel": "10 Linksignale im Seiteninhalt",
+        "statusLabel": "Lokal nicht verifizierbar",
         "sourceLabel": "SoundCloud Public API"
       },
       {
         "platform": "Shop",
-        "metricValue": 2,
-        "valueLabel": "2 Produkte sichtbar • 3/3 gepruefte Produktlinks",
-        "statusLabel": "Alle Links erreichbar",
+        "metricValue": 3,
+        "valueLabel": "3 Produkte sichtbar • 3/3 gepruefte Produktlinks",
+        "statusLabel": "Alle geprueften Links erreichbar",
         "sourceLabel": "Shirtee-Linkcheck"
       }
     ],
-    "strongestPlatform": "TikTok Dr. Gray",
+    "strongestPlatform": "TikTok Hauptseite · Dr. Gray & Mrs. Dr. Gray",
     "routes": [
       {
         "from": "Website",
-        "to": "TikTok Dr. Gray",
+        "to": "TikTok Hauptseite",
         "channel": "Hero / CTA",
         "status": "live"
       },
       {
         "from": "Website",
-        "to": "TikTok Mrs. Dr. Gray",
+        "to": "TikTok Backup",
         "channel": "Hero / CTA",
         "status": "live"
       },
@@ -2881,7 +2881,7 @@
         "from": "Website",
         "to": "SoundCloud",
         "channel": "Player / Music",
-        "status": "live"
+        "status": "info"
       },
       {
         "from": "Instagram",
@@ -2918,17 +2918,17 @@
       {
         "label": "SoundCloud",
         "url": "https://soundcloud.com/drgray_sic",
-        "status": "live"
+        "status": "check"
       },
       {
-        "label": "TikTok Dr. Gray",
+        "label": "TikTok Hauptseite · Dr. Gray & Mrs. Dr. Gray",
         "url": "https://www.tiktok.com/@drgray_mrsdrgray",
-        "status": "live"
+        "status": "check"
       },
       {
-        "label": "TikTok Mrs. Dr. Gray",
+        "label": "TikTok Backup · Gray Afterhours",
         "url": "https://www.tiktok.com/@gray.afterhours",
-        "status": "live"
+        "status": "check"
       }
     ]
   },
@@ -2941,8 +2941,8 @@
       },
       {
         "metric": "HTTP Seitenchecks",
-        "value": "8/8 OK",
-        "state": "good"
+        "value": "lokal nicht verifizierbar",
+        "state": "info"
       },
       {
         "metric": "Shirtee-Linkchecks",
@@ -2950,13 +2950,13 @@
         "state": "good"
       }
     ],
-    "responseTime": "385 ms",
-    "uptime": "100% (Seitencheck)",
+    "responseTime": "0 ms",
+    "uptime": "lokal nicht verifizierbar",
     "externalChecks": [
       {
         "label": "Website Core-Pfade",
-        "status": "8/8 erreichbar",
-        "level": "ok"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       },
       {
         "label": "Shop Produktlinks",
@@ -2965,8 +2965,8 @@
       },
       {
         "label": "SoundCloud Profil",
-        "status": "OK",
-        "level": "ok"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       }
     ],
     "errorLog": []
@@ -3005,57 +3005,57 @@
     ],
     "weakSpots": [
       {
-        "item": "Produktlink-Verfuegbarkeit",
-        "note": "Nicht alle geprueften Shop-Links sind erreichbar."
+        "item": "Netzwerk-DNS",
+        "note": "Die Umgebung kann die Hauptdomain nicht aufloesen; das ist kein Site-Fehler."
       }
     ]
   },
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 02:37",
+      "time": "06.08.26, 04:52",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 02:37",
-      "type": "ok",
+      "time": "06.08.26, 04:52",
+      "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 02:37",
+      "time": "06.08.26, 04:52",
       "type": "check",
-      "text": "SoundCloud: Profilsignal abrufbar"
+      "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 02:37",
+      "time": "06.08.26, 04:52",
       "type": "check",
-      "text": "TikTok Profile: 2/2 erreichbar"
+      "text": "TikTok Profile: lokal nicht verifizierbar"
     }
   ],
   "alerts": [
     {
       "id": "AL-WEB",
-      "level": "ok",
-      "title": "Alle Seiten erreichbar",
-      "description": "Alle geprueften Kernseiten antworten mit HTTP 200.",
+      "level": "info",
+      "title": "Website lokal nicht verifizierbar",
+      "description": "Die Shell-Umgebung kann die Domain nicht aufloesen; das Dashboard zeigt deshalb keinen falschen Ausfall an.",
       "source": "Website Monitoring"
     },
     {
       "id": "AL-SHOP",
       "level": "ok",
-      "title": "Alle Shop-Links erreichbar",
-      "description": "Alle geprueften Produktlinks liefern einen OK-Status.",
+      "title": "Shop-Links erreichbar",
+      "description": "Alle geprueften Produktlinks sind erreichbar.",
       "source": "Shop Monitoring"
     },
     {
       "id": "AL-SOC",
-      "level": "ok",
-      "title": "SoundCloud Live-Profil erkannt",
-      "description": "621 Follower und 32 Tracks verifiziert.",
+      "level": "info",
+      "title": "SoundCloud lokal nicht verifizierbar",
+      "description": "Die lokale Umgebung kann keine stabilen SoundCloud-Metriken abrufen.",
       "source": "Social Monitoring"
     }
   ],
@@ -3086,13 +3086,13 @@
     },
     {
       "id": "qa-5",
-      "label": "TikTok Dr. Gray",
+      "label": "TikTok Hauptseite",
       "href": "https://www.tiktok.com/@drgray_mrsdrgray",
       "external": true
     },
     {
       "id": "qa-6",
-      "label": "TikTok Mrs. Dr. Gray",
+      "label": "TikTok Backup · Gray Afterhours",
       "href": "https://www.tiktok.com/@gray.afterhours",
       "external": true
     },
@@ -3585,7 +3585,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 02:37",
+        "time": "06.08.26, 04:52",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Alle Eingaben starten beim zentralen Telegram-Hub und gehen von dort in die Verteilung.",
@@ -3594,7 +3594,7 @@
       },
       {
         "topic": "Routing",
-        "time": "06.08.26, 02:37",
+        "time": "06.08.26, 04:52",
         "from": "Hermes",
         "to": "Jarvis",
         "summary": "Jarvis bekommt die Arbeitsstränge, sortiert sie und gibt sie an die Unteragenten weiter.",
@@ -3603,7 +3603,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 02:37",
+        "time": "06.08.26, 04:52",
         "from": "Jarvis",
         "to": "Argus",
         "summary": "Argus liefert Zweitbewertung und Diagnose, bevor etwas weiter eskaliert wird.",
@@ -3612,7 +3612,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 02:37",
+        "time": "06.08.26, 04:52",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Notizen und Vault-Kontext bleiben synchron, damit das Kontrollzentrum konsistent bleibt.",
@@ -3621,7 +3621,7 @@
       },
       {
         "topic": "Home Assistant",
-        "time": "06.08.26, 02:37",
+        "time": "06.08.26, 04:52",
         "from": "Jarvis",
         "to": "Heimdall",
         "summary": "HA-Backups und Device-Verbindungen werden fuer den Mac mini als Zentrale betrachtet.",
@@ -3630,7 +3630,7 @@
       },
       {
         "topic": "Engineering",
-        "time": "06.08.26, 02:37",
+        "time": "06.08.26, 04:52",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge haelt die technischen Pfade, Repos und Infrastruktur-Arbeiten zusammen.",
@@ -3706,13 +3706,13 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T02:32:47.180089",
+        "updated_at": "2026-08-06T04:47:49.887481",
         "platformCounts": {
           "telegram": 1
         }
       },
       "brainVaultState": {
-        "last_run_utc": "2026-08-06T00:07:54.005269",
+        "last_run_utc": "2026-08-06T02:37:54.420915",
         "last_added": 0,
         "processed_count": 269
       },
@@ -3813,7 +3813,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 02:32",
+        "detail": "Channels: 1 • updated 06.08.26, 04:47",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -3821,7 +3821,7 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run 2026-08-06T00:07:54.005269 • Added 0",
+        "detail": "Last run 2026-08-06T02:37:54.420915 • Added 0",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },
