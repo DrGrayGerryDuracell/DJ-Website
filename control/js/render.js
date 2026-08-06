@@ -1871,13 +1871,32 @@ export function renderContent(container, contentPerformance) {
               <span class="status-pill ${statusClass(entry.status)}">${escapeHtml(entry.statusLabel)}</span>
             </div>
             <p>${escapeHtml(entry.channel)}</p>
-            <button type="button" class="action-btn" data-control-dialog-kind="planner-entry" data-control-dialog-id="${escapeHtml(entry.id)}">Plan öffnen</button>
+            <div class="ha-room-actions">
+              <button type="button" class="action-btn" data-control-dialog-kind="planner-entry" data-control-dialog-id="${escapeHtml(entry.id)}">Plan öffnen</button>
+              <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: entry.id, status: "approved", owner: entry.channel }))}'>Freigeben</button>
+              <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: entry.id, status: "scheduled", owner: entry.channel }))}'>Einplanen</button>
+            </div>
           </article>
         `).join("")}
       </div>
-      <ul class="log-list">
-        ${planner.ideas.map((idea) => `<li><strong>${escapeHtml(idea.title)}</strong><span>${escapeHtml(idea.owner)}</span><p>${escapeHtml(idea.note)}</p></li>`).join("")}
-      </ul>
+      <div class="editor-card-grid">
+        ${planner.ideas.map((idea, index) => `
+          <article class="editor-card">
+            <div class="editor-card-head">
+              <div>
+                <strong>${escapeHtml(idea.title)}</strong>
+                <span>${escapeHtml(idea.owner)}</span>
+              </div>
+              <span class="status-pill ${statusClass(idea.state || "connected")}">${escapeHtml(idea.state || "Info")}</span>
+            </div>
+            <p>${escapeHtml(idea.note)}</p>
+            <div class="ha-room-actions">
+              <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: `idea-${index + 1}`, status: "approved", owner: idea.owner }))}'>Als Plan freigeben</button>
+              <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: `idea-${index + 1}`, status: "scheduled", owner: idea.owner }))}'>In Queue setzen</button>
+            </div>
+          </article>
+        `).join("")}
+      </div>
     </article>
   `;
 }
