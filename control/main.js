@@ -1237,6 +1237,20 @@ function setNetworkZoom(workspace, nextZoom) {
   });
 }
 
+function centerNetworkNode(workspace, node) {
+  const scrollArea = workspace?.querySelector("[data-network-view]:not([hidden]) .agentsroom-network-scroll");
+  if (!scrollArea || !node) return;
+  const scrollRect = scrollArea.getBoundingClientRect();
+  const nodeRect = node.getBoundingClientRect();
+  const deltaLeft = (nodeRect.left + nodeRect.width / 2) - (scrollRect.left + scrollRect.width / 2);
+  const deltaTop = (nodeRect.top + nodeRect.height / 2) - (scrollRect.top + scrollRect.height / 2);
+  scrollArea.scrollBy({
+    left: deltaLeft,
+    top: deltaTop,
+    behavior: "smooth"
+  });
+}
+
 function focusNetworkNode(workspace, mode, name) {
   if (!workspace || !name) return;
   const targetMode = ["agents", "devices", "vault"].includes(mode) ? mode : "agents";
@@ -1246,7 +1260,7 @@ function focusNetworkNode(workspace, mode, name) {
   const node = view?.querySelector(`[data-network-node="${nodeId}"]`);
   if (!node) return;
   updateNetworkInspector(workspace, node);
-  node.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
+  centerNetworkNode(workspace, node);
 }
 
 function setNetworkMode(workspace, mode) {
@@ -1275,7 +1289,45 @@ function restoreAgentsRoomControls() {
   setNetworkZoom(workspace, window.__CONTROL_NETWORK_ZOOM__ || 1);
 }
 
+function setupNetworkPanning() {
+  let active = null;
+
+  document.addEventListener("pointerdown", (event) => {
+    const scrollArea = event.target.closest(".agentsroom-network-scroll");
+    if (!scrollArea) return;
+    active = {
+      scrollArea,
+      pointerId: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      startLeft: scrollArea.scrollLeft,
+      startTop: scrollArea.scrollTop
+    };
+    scrollArea.classList.add("is-panning");
+    scrollArea.setPointerCapture?.(event.pointerId);
+  });
+
+  document.addEventListener("pointermove", (event) => {
+    if (!active || active.pointerId !== event.pointerId) return;
+    const deltaX = event.clientX - active.startX;
+    const deltaY = event.clientY - active.startY;
+    active.scrollArea.scrollLeft = active.startLeft - deltaX;
+    active.scrollArea.scrollTop = active.startTop - deltaY;
+  });
+
+  const stop = (event) => {
+    if (!active || (event && active.pointerId !== event.pointerId)) return;
+    active.scrollArea.classList.remove("is-panning");
+    active.scrollArea.releasePointerCapture?.(active.pointerId);
+    active = null;
+  };
+
+  document.addEventListener("pointerup", stop);
+  document.addEventListener("pointercancel", stop);
+ }
+
 function setupAgentsRoomControls() {
+  setupNetworkPanning();
   document.addEventListener("click", async (event) => {
     const copyButton = event.target.closest("[data-network-copy]");
     if (copyButton) {
@@ -1305,6 +1357,12 @@ function setupAgentsRoomControls() {
       const workspace = resetButton.closest("[data-network-workspace]");
       const activeView = workspace?.querySelector("[data-network-view]:not([hidden])");
       activeView?.querySelectorAll(".is-muted, .is-highlighted").forEach((item) => item.classList.remove("is-muted", "is-highlighted"));
+      setNetworkZoom(workspace, 1);
+      const selectedNode = activeView?.querySelector("[data-network-node].is-selected") || activeView?.querySelector("[data-network-node]");
+      if (selectedNode) {
+        updateNetworkInspector(workspace, selectedNode);
+        centerNetworkNode(workspace, selectedNode);
+      }
       return;
     }
 

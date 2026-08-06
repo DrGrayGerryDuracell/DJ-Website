@@ -728,6 +728,18 @@ a { color: inherit; text-decoration: none; }
   object-position: center top;
 }
 
+.agentsroom-node-media.is-icon {
+  display: grid;
+  place-items: center;
+  padding: 1rem;
+}
+
+.agentsroom-node-media.is-icon img {
+  height: 132px;
+  object-fit: contain;
+  object-position: center;
+}
+
 .agentsroom-node.has-media .agentsroom-node-head,
 .agentsroom-node.has-media p,
 .agentsroom-node.has-media .agentsroom-node-meta,
@@ -1006,24 +1018,57 @@ a { color: inherit; text-decoration: none; }
   display: none;
 }
 
+.agentsroom-network-meta {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 0.75rem;
+}
+
+.agentsroom-network-meta-card {
+  display: grid;
+  gap: 0.24rem;
+  padding: 0.72rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.agentsroom-network-meta-card span {
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.agentsroom-network-meta-card strong {
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
 .agentsroom-network-scroll {
   max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
+  max-height: min(76vh, 920px);
+  overflow: auto;
   overscroll-behavior-inline: contain;
   scrollbar-color: rgba(52, 228, 255, 0.38) rgba(255, 255, 255, 0.04);
+  cursor: grab;
+}
+
+.agentsroom-network-scroll.is-panning {
+  cursor: grabbing;
 }
 
 .agentsroom-network-zoom {
-  width: calc(1440px * var(--network-zoom, 1));
-  height: calc(780px * var(--network-zoom, 1));
+  width: calc(1640px * var(--network-zoom, 1));
+  height: calc(960px * var(--network-zoom, 1));
   transition: width 0.18s ease, height 0.18s ease;
 }
 
 .agentsroom-network {
   position: relative;
-  width: 1440px;
-  min-height: 780px;
+  width: 1640px;
+  min-height: 960px;
   transform: scale(var(--network-zoom, 1));
   transform-origin: top left;
   border-radius: 14px;
@@ -1103,10 +1148,10 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-network-node {
   position: absolute;
-  min-width: 154px;
-  max-width: 188px;
-  min-height: 78px;
-  padding: 0.75rem;
+  min-width: 142px;
+  max-width: 170px;
+  min-height: 72px;
+  padding: 0.68rem;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(10, 10, 13, 0.8);
@@ -1140,14 +1185,14 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-network-node strong {
   display: block;
-  font-size: 0.88rem;
+  font-size: 0.84rem;
   font-family: var(--font-display);
 }
 
 .agentsroom-network-node span {
   display: block;
   margin-top: 0.18rem;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
   color: var(--text-soft);
 }
 
@@ -1886,7 +1931,7 @@ a { color: inherit; text-decoration: none; }
 
 .social-registry-grid {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 0.75rem;
   margin-bottom: 0.9rem;
 }
@@ -1916,7 +1961,7 @@ a { color: inherit; text-decoration: none; }
 
 .social-route-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 0.65rem;
   margin-bottom: 0.9rem;
 }
@@ -2967,19 +3012,23 @@ a { color: inherit; text-decoration: none; }
     height: 64px;
   }
 
+  .agentsroom-network-meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .social-profile-body,
   .social-registry-body {
     padding: 0 0.85rem 0.85rem;
   }
 
   .agentsroom-network-zoom {
-    width: calc(1180px * var(--network-zoom, 1));
-    height: calc(720px * var(--network-zoom, 1));
+    width: calc(1480px * var(--network-zoom, 1));
+    height: calc(900px * var(--network-zoom, 1));
   }
 
   .agentsroom-network {
-    min-width: 1180px;
-    min-height: 720px;
+    min-width: 1480px;
+    min-height: 900px;
   }
 
   .agentsroom-network-toolbar {
@@ -3932,6 +3981,11 @@ a { color: inherit; text-decoration: none; }
 @media (max-width: 920px) {
   .pulse-summary-grid,
   .pulse-social-accounts {
+    grid-template-columns: 1fr;
+  }
+
+  .agentsroom-network-meta,
+  .social-route-grid {
     grid-template-columns: 1fr;
   }
 }

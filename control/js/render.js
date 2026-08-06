@@ -147,9 +147,9 @@ const PLATFORM_VISUALS = {
 };
 
 const GRAPH_CONFIG = {
-  agents: { width: 1440, height: 780 },
-  devices: { width: 1440, height: 780 },
-  vault: { width: 1440, height: 780 }
+  agents: { width: 1640, height: 920 },
+  devices: { width: 1640, height: 960 },
+  vault: { width: 1640, height: 920 }
 };
 
 const AGENT_NODE_ICONS = {
@@ -180,8 +180,8 @@ const DEVICE_NODE_ICONS = {
   Obsidian: "/assets/ui-icons/software/obsidian.png",
   StreamDeck: "/assets/ui-icons/devices/streamdeck.png",
   Rodecaster: "/assets/ui-icons/devices/rodecaster.png",
-  "TikTok Live Studio": "/assets/generated/dashboard-visuals/social-platform-analytics.png",
-  SoundCloud: "/assets/generated/dashboard-visuals/audio-publishing-streams.png"
+  "TikTok Live Studio": "/assets/ui-icons/platforms/tiktok.png",
+  SoundCloud: "/assets/ui-icons/platforms/soundcloud.png"
 };
 
 const VAULT_NODE_ICONS = {
@@ -219,6 +219,15 @@ function getOverviewIcon(kind) {
   if (kind === "homeAssistant") return DASHBOARD_VISUALS.homeAssistant;
   if (kind === "alerts") return DASHBOARD_VISUALS.alerts;
   return OVERVIEW_ICON_VISUALS[kind] || OVERVIEW_ICON_VISUALS.centralServer;
+}
+
+function inferVisualMode(image) {
+  const source = String(image || "");
+  if (!source) return "icon";
+  if (/\/ui-icons\//.test(source)) return "icon";
+  if (/avatars-|profile|operator-marten|agent-avatars/i.test(source)) return "photo";
+  if (/device-visuals|dashboard-visuals|uploads\/web-images/i.test(source)) return "photo";
+  return /^https?:\/\//i.test(source) ? "photo" : "icon";
 }
 
 function getGraphNodeIcon(mode, name) {
@@ -414,47 +423,47 @@ function toGraphId(value) {
 }
 
 const agentGraphPositions = new Map([
-  ["Mensch", { x: 8, y: 50, tone: "human", label: "Du / iPhone", detail: "Telegram Operator" }],
-  ["Hermes", { x: 22, y: 50, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
-  ["Argus", { x: 38, y: 23, tone: "support", label: "Argus", detail: "Vorprüfung / Review" }],
-  ["OpenClaw Gateway", { x: 38, y: 77, tone: "bridge", label: "OpenClaw", detail: "Queue / Broker" }],
-  ["Jarvis", { x: 58, y: 50, tone: "core", label: "Jarvis", detail: "Verteiler / Review" }],
-  ["Heimdall", { x: 79, y: 10, tone: "service", label: "Heimdall", detail: "Home Assistant" }],
-  ["Forge", { x: 79, y: 24, tone: "service", label: "Forge", detail: "Infra / Skills" }],
-  ["Sentinel", { x: 79, y: 38, tone: "service", label: "Sentinel", detail: "Health / Security" }],
-  ["Oracle", { x: 79, y: 52, tone: "service", label: "Oracle", detail: "Briefings" }],
-  ["Muse", { x: 79, y: 66, tone: "service", label: "Muse", detail: "Content / Audio" }],
-  ["Friday", { x: 79, y: 80, tone: "service", label: "Friday", detail: "Deep Repair" }],
-  ["Claude", { x: 95, y: 20, tone: "support", label: "Claude", detail: "Gegenprüfung" }],
-  ["Claude Code", { x: 95, y: 46, tone: "support", label: "Claude Code", detail: "Pair Coding" }],
-  ["Codex", { x: 95, y: 72, tone: "support", label: "Codex", detail: "Tests / Umsetzung" }]
+  ["Mensch", { x: 7, y: 50, tone: "human", label: "Du / iPhone", detail: "Telegram Operator" }],
+  ["Hermes", { x: 21, y: 50, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
+  ["Argus", { x: 36, y: 20, tone: "support", label: "Argus", detail: "Vorprüfung / Review" }],
+  ["OpenClaw Gateway", { x: 36, y: 80, tone: "bridge", label: "OpenClaw", detail: "Queue / Broker" }],
+  ["Jarvis", { x: 56, y: 50, tone: "core", label: "Jarvis", detail: "Verteiler / Review" }],
+  ["Heimdall", { x: 77, y: 8, tone: "service", label: "Heimdall", detail: "Home Assistant" }],
+  ["Forge", { x: 77, y: 23, tone: "service", label: "Forge", detail: "Infra / Skills" }],
+  ["Sentinel", { x: 77, y: 38, tone: "service", label: "Sentinel", detail: "Health / Security" }],
+  ["Oracle", { x: 77, y: 53, tone: "service", label: "Oracle", detail: "Briefings" }],
+  ["Muse", { x: 77, y: 68, tone: "service", label: "Muse", detail: "Content / Audio" }],
+  ["Friday", { x: 77, y: 83, tone: "service", label: "Friday", detail: "Deep Repair" }],
+  ["Claude", { x: 94, y: 18, tone: "support", label: "Claude", detail: "Gegenprüfung" }],
+  ["Claude Code", { x: 94, y: 48, tone: "support", label: "Claude Code", detail: "Pair Coding" }],
+  ["Codex", { x: 94, y: 78, tone: "support", label: "Codex", detail: "Tests / Umsetzung" }]
 ]);
 
 const deviceGraphPositions = new Map([
   ["Mac mini", { x: 48, y: 48, tone: "core", label: "Mac mini", detail: "Zentralserver / Hermes" }],
-  ["MacBook", { x: 13, y: 16, tone: "device", label: "MacBook", detail: "Arbeits- und Mirror-Node" }],
-  ["iMac", { x: 13, y: 38, tone: "device", label: "iMac", detail: "Operator-Station" }],
-  ["iPhone", { x: 13, y: 60, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
-  ["Home Assistant", { x: 28, y: 84, tone: "bridge", label: "Home Assistant", detail: "Backup / Automation" }],
-  ["GitHub", { x: 73, y: 16, tone: "service", label: "GitHub", detail: "Repo Sync" }],
-  ["Obsidian", { x: 82, y: 34, tone: "service", label: "Obsidian", detail: "Vault / Memory" }],
-  ["StreamDeck", { x: 73, y: 64, tone: "device", label: "StreamDeck", detail: "Actions" }],
-  ["Rodecaster", { x: 92, y: 26, tone: "device", label: "Rodecaster", detail: "Audio Routing" }],
-  ["TikTok Live Studio", { x: 92, y: 52, tone: "service", label: "TikTok Live", detail: "Live Publishing" }],
-  ["SoundCloud", { x: 92, y: 78, tone: "service", label: "SoundCloud", detail: "Music Publishing" }]
+  ["MacBook", { x: 12, y: 14, tone: "device", label: "MacBook", detail: "Arbeits- und Mirror-Node" }],
+  ["iMac", { x: 12, y: 36, tone: "device", label: "iMac", detail: "Operator-Station" }],
+  ["iPhone", { x: 12, y: 60, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
+  ["Home Assistant", { x: 28, y: 82, tone: "bridge", label: "Home Assistant", detail: "Backup / Automation" }],
+  ["GitHub", { x: 71, y: 14, tone: "service", label: "GitHub", detail: "Repo Sync" }],
+  ["Obsidian", { x: 82, y: 32, tone: "service", label: "Obsidian", detail: "Vault / Memory" }],
+  ["StreamDeck", { x: 71, y: 66, tone: "device", label: "StreamDeck", detail: "Actions" }],
+  ["Rodecaster", { x: 91, y: 24, tone: "device", label: "Rodecaster", detail: "Audio Routing" }],
+  ["TikTok Live Studio", { x: 91, y: 52, tone: "service", label: "TikTok Live", detail: "Live Publishing" }],
+  ["SoundCloud", { x: 91, y: 80, tone: "service", label: "SoundCloud", detail: "Music Publishing" }]
 ]);
 
 const vaultGraphPositions = new Map([
   ["Operator", { x: 7, y: 14, tone: "human", label: "Operator", detail: "Eingang / Telegram" }],
   ["Hermes", { x: 23, y: 14, tone: "core", label: "Hermes", detail: "Runtime / Thread" }],
-  ["Telegram Spool", { x: 23, y: 80, tone: "bridge", label: "Telegram Spool", detail: "Outbound Queue" }],
+  ["Telegram Spool", { x: 23, y: 82, tone: "bridge", label: "Telegram Spool", detail: "Outbound Queue" }],
   ["Channel Directory", { x: 43, y: 14, tone: "service", label: "Channel Directory", detail: "Routenregister" }],
-  ["Active Sessions", { x: 43, y: 80, tone: "service", label: "Active Sessions", detail: "Runtime Sessions" }],
-  ["Jarvis", { x: 63, y: 18, tone: "core", label: "Jarvis", detail: "Delegation / Review" }],
-  ["Argus Bridge", { x: 63, y: 80, tone: "support", label: "Argus Bridge", detail: "Zweitwertung" }],
+  ["Active Sessions", { x: 43, y: 82, tone: "service", label: "Active Sessions", detail: "Runtime Sessions" }],
+  ["Jarvis", { x: 63, y: 20, tone: "core", label: "Jarvis", detail: "Delegation / Review" }],
+  ["Argus Bridge", { x: 63, y: 82, tone: "support", label: "Argus Bridge", detail: "Zweitwertung" }],
   ["Brain Vault", { x: 81, y: 14, tone: "service", label: "Brain Vault", detail: "Persistentes Wissen" }],
   ["Obsidian", { x: 94, y: 42, tone: "service", label: "Obsidian", detail: "Graph / Memory" }],
-  ["GitHub", { x: 81, y: 80, tone: "service", label: "GitHub", detail: "Repo / Dokumentation" }]
+  ["GitHub", { x: 81, y: 82, tone: "service", label: "GitHub", detail: "Repo / Dokumentation" }]
 ]);
 
 function getGraphConfig(mode) {
@@ -473,7 +482,7 @@ function buildForwardPath(source, target, index, mode) {
   const { width } = getGraphConfig(mode);
   const deltaX = target.x - source.x;
   const bend = Math.max(54, Math.abs(deltaX) * 0.18);
-  const verticalShift = (index % 2 === 0 ? 1 : -1) * (28 + Math.floor(index / 2) * 18);
+  const verticalShift = (index % 2 === 0 ? 1 : -1) * (34 + Math.floor(index / 2) * 22);
   const laneX = Math.min(width - 120, Math.max(120, source.x + deltaX * 0.5));
   return `M ${source.x} ${source.y} C ${Math.min(laneX, source.x + bend)} ${source.y + verticalShift}, ${Math.max(laneX, target.x - bend)} ${target.y + verticalShift}, ${target.x} ${target.y}`;
 }
@@ -481,7 +490,7 @@ function buildForwardPath(source, target, index, mode) {
 function buildFeedbackPath(source, target, index, mode) {
   const { width } = getGraphConfig(mode);
   const deltaX = target.x - source.x;
-  const lift = 84 + index * 22;
+  const lift = 104 + index * 26;
   const laneX = Math.min(width - 130, Math.max(130, source.x + deltaX * 0.5));
   return `M ${source.x} ${source.y} C ${Math.max(laneX, source.x - 42)} ${source.y - lift}, ${Math.min(laneX, target.x + 42)} ${target.y - lift}, ${target.x} ${target.y}`;
 }
@@ -650,6 +659,24 @@ function renderGraphView(agentsRoom, mode) {
 
   return `
     <div class="agentsroom-network-view" data-network-view="${mode}"${mode === "devices" ? " hidden" : ""}>
+      <div class="agentsroom-network-meta">
+        <div class="agentsroom-network-meta-card">
+          <span>Knoten</span>
+          <strong>${nodes.length}</strong>
+        </div>
+        <div class="agentsroom-network-meta-card">
+          <span>Aufträge</span>
+          <strong>${edges.length}</strong>
+        </div>
+        <div class="agentsroom-network-meta-card">
+          <span>Rueckfluesse</span>
+          <strong>${mode === "devices" ? "direkt" : edges.filter((edge) => edge.feedback !== false && edge.from !== "Mensch" && edge.from !== "Operator").length}</strong>
+        </div>
+        <div class="agentsroom-network-meta-card">
+          <span>Leselogik</span>
+          <strong>${mode === "agents" ? "Hermes → Argus → Gateway → Jarvis" : mode === "devices" ? "Mac mini als Zentrale" : "Runtime → Brain → Graph"}</strong>
+        </div>
+      </div>
       <div class="agentsroom-network-scroll" tabindex="0" aria-label="${mode === "devices" ? "Gerätenetz horizontal erkunden" : "Agentenfluss horizontal erkunden"}">
         <div class="agentsroom-network-zoom" data-network-zoom-shell style="--network-zoom:1">
           <div class="agentsroom-network">
@@ -696,7 +723,7 @@ function buildRoutingWorkspace(agentsRoom) {
           <button type="button" class="agentsroom-zoom-btn" data-network-zoom-reset aria-label="Graph auf Standardzoom">100%</button>
           <button type="button" class="agentsroom-zoom-btn" data-network-zoom-in aria-label="Graph vergrößern">+</button>
         </div>
-        <p><span class="agentsroom-live-dot" aria-hidden="true"></span> Live-Snapshot · Auswahl zeigt Details</p>
+        <p><span class="agentsroom-live-dot" aria-hidden="true"></span> Live-Snapshot · Auswahl zeigt Details · Ziehen = Pan</p>
       </div>
       <div class="agentsroom-routing-key">
         <span><i class="route-sample is-forward"></i> Auftrag / Delegation</span>
@@ -720,7 +747,7 @@ function buildRoutingWorkspace(agentsRoom) {
         <p data-network-inspector-connections>${escapeHtml(defaultNode.connections?.join(" • ") || "Mensch → Hermes · Telegram")}</p>
         <div class="agentsroom-inspector-actions">
           <button type="button" class="action-btn" data-network-copy>Diagnose kopieren</button>
-          <button type="button" class="action-btn is-secondary" data-network-reset>Alle Routen zeigen</button>
+          <button type="button" class="action-btn is-secondary" data-network-reset>Ansicht zurücksetzen</button>
         </div>
       </aside>
     </div>
@@ -739,7 +766,7 @@ function buildNodeCards(items, kind = "agent") {
     .map(
       (item) => `
         <article class="agentsroom-node ${kind}${item.image ? " has-media" : ""}" role="button" tabindex="0" data-focus-mode="${kind === "device" ? "devices" : "agents"}" data-focus-name="${escapeHtml(item.name)}">
-          ${item.image ? `<div class="agentsroom-node-media"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}"></div>` : ""}
+          ${item.image ? `<div class="agentsroom-node-media is-${inferVisualMode(item.image)}"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}"></div>` : ""}
           <div class="agentsroom-node-head">
             <h4>${escapeHtml(item.name)}</h4>
             <span class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel || item.status)}</span>
