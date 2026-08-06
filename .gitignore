@@ -2,6 +2,7 @@
 .DS_Store
 .env
 .superdesign/tmp/
+artifacts/control-bridge/
 artifacts/qa/control-agentsroom-1440.png
 artifacts/qa/control-agentsroom-1440-v2.png
 artifacts/qa/control-agentsroom-390.jpg

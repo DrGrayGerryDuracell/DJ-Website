@@ -26,6 +26,7 @@ const NETWORK_ZOOM_MIN = 0.7;
 const NETWORK_ZOOM_MAX = 1.45;
 const NETWORK_ZOOM_STEP = 0.15;
 const CONTROL_DIALOG_STATE_KEY = "dg-control-dialog-state-v1";
+const CONTROL_API_BASE = "/api/control";
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -48,6 +49,102 @@ async function loadLiveMetrics() {
   } catch {
     return null;
   }
+}
+
+async function controlApi(path, options = {}) {
+  const response = await fetch(`${CONTROL_API_BASE}${path}`, {
+    ...options,
+    headers: {
+      "content-type": "application/json",
+      ...(options.headers || {})
+    }
+  });
+  const payload = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    throw new Error(payload?.message || payload?.stderr || `API Fehler ${response.status}`);
+  }
+  return payload;
+}
+
+async function loadControlBridge() {
+  try {
+    const [health, state] = await Promise.all([
+      controlApi("/health", { method: "GET", headers: {} }),
+      controlApi("/state", { method: "GET", headers: {} })
+    ]);
+    window.__CONTROL_BRIDGE__ = health;
+    window.__CONTROL_SERVER_STATE__ = state;
+    return { health, state };
+  } catch {
+    window.__CONTROL_BRIDGE__ = null;
+    window.__CONTROL_SERVER_STATE__ = null;
+    return null;
+  }
+}
+
+function hasControlBridge() {
+  return Boolean(window.__CONTROL_BRIDGE__?.ok);
+}
+
+function applyBridgeStateToData(data) {
+  if (!data || typeof data !== "object") {
+    return data;
+  }
+
+  const nextData = structuredClone(data);
+  const bridgeOnline = hasControlBridge();
+  const bridgeStatus = bridgeOnline ? "connected" : "warn";
+  const bridgeLabel = bridgeOnline ? "Lokale Bridge aktiv" : "Lokale Bridge fehlt";
+  const bridgeDetail = bridgeOnline
+    ? `${window.__CONTROL_BRIDGE__?.mode || "local-bridge"} · ${window.__CONTROL_BRIDGE__?.availableCommands?.length || 0} Befehle`
+    : "Dashboard laeuft im statischen Modus";
+
+  nextData.metadata = nextData.metadata || {};
+  nextData.metadata.bridge = {
+    state: bridgeStatus,
+    label: bridgeLabel,
+    detail: bridgeDetail,
+    updatedAt: window.__CONTROL_BRIDGE__?.updatedAt || null
+  };
+
+  nextData.systemStatus = Array.isArray(nextData.systemStatus) ? nextData.systemStatus : [];
+  const bridgeIndex = nextData.systemStatus.findIndex((item) => item.id === "control-bridge");
+  const bridgeEntry = {
+    id: "control-bridge",
+    label: "Control Bridge",
+    value: bridgeLabel,
+    detail: bridgeDetail,
+    status: bridgeStatus
+  };
+
+  if (bridgeIndex >= 0) {
+    nextData.systemStatus[bridgeIndex] = bridgeEntry;
+  } else {
+    nextData.systemStatus.unshift(bridgeEntry);
+  }
+
+  return nextData;
+}
+
+async function runBridgeCommand(command) {
+  return controlApi("/command", {
+    method: "POST",
+    body: JSON.stringify({ command })
+  });
+}
+
+async function queueHaAction(payload) {
+  return controlApi("/ha-queue", {
+    method: "POST",
+    body: JSON.stringify(payload)
+  });
+}
+
+async function writeHermesSpool(message, chatId) {
+  return controlApi("/hermes-spool", {
+    method: "POST",
+    body: JSON.stringify({ message, chatId })
+  });
 }
 
 function formatAnimatedValue(value, unit) {
@@ -446,20 +543,40 @@ function setupHermesChatActions() {
     } catch {
       // Clipboard ist nur ein Komfort-Fallback.
     }
-    let spoolCreated = true;
+    let sendStatus = "download";
     try {
-      downloadHermesSpoolFile(text, session);
+      if (hasControlBridge()) {
+        const chatId = session?.chat_id || session?.chatId || session?.id || null;
+        await writeHermesSpool(text, chatId);
+        sendStatus = "bridge";
+      } else {
+        downloadHermesSpoolFile(text, session);
+      }
     } catch {
-      // Download ist ein Komfort-Fallback; Queue bleibt erhalten.
-      spoolCreated = false;
+      try {
+        downloadHermesSpoolFile(text, session);
+        sendStatus = "download";
+      } catch {
+        sendStatus = "failed";
+      }
     }
     input.value = "";
     renderHermesChat(document.querySelector("[data-hermes-chat]"), data);
-    setHermesChatStatus(spoolCreated ? "Spool-Datei erzeugt" : "Spool-Download blockiert", spoolCreated ? "is-live" : "is-warn");
+    setHermesChatStatus(
+      sendStatus === "bridge"
+        ? "An Hermes-Bridge uebergeben"
+        : sendStatus === "download"
+          ? "Spool-Datei erzeugt"
+          : "Spool-Weitergabe blockiert",
+      sendStatus === "failed" ? "is-warn" : "is-live"
+    );
   });
 }
 
 function readControlDialogState() {
+  if (window.__CONTROL_SERVER_STATE__?.controls) {
+    return window.__CONTROL_SERVER_STATE__.controls;
+  }
   try {
     return JSON.parse(window.localStorage.getItem(CONTROL_DIALOG_STATE_KEY) || "{}");
   } catch {
@@ -476,12 +593,20 @@ function getControlToggleValue(kind, id, controlId, fallback = false) {
   return Boolean(state?.[kind]?.[id]?.[controlId] ?? fallback);
 }
 
-function setControlToggleValue(kind, id, controlId, value) {
-  const state = readControlDialogState();
+async function setControlToggleValue(kind, id, controlId, value) {
+  const serverState = window.__CONTROL_SERVER_STATE__?.controls ? structuredClone(window.__CONTROL_SERVER_STATE__.controls) : null;
+  const state = serverState || readControlDialogState();
   state[kind] = state[kind] || {};
   state[kind][id] = state[kind][id] || {};
   state[kind][id][controlId] = Boolean(value);
   writeControlDialogState(state);
+  if (hasControlBridge()) {
+    const response = await controlApi("/state", {
+      method: "POST",
+      body: JSON.stringify({ kind, id, controlId, value: Boolean(value) })
+    });
+    window.__CONTROL_SERVER_STATE__ = response.state;
+  }
 }
 
 function buildDialogPayload(data, kind, id) {
@@ -508,6 +633,15 @@ function buildDialogPayload(data, kind, id) {
         { title: "Geräte", items: room.devices.map((device) => `${device.name} • ${device.type} • ${device.stateLabel}`) }
       ],
       actions: [
+        {
+          type: "ha-queue",
+          label: "Raumaktion einreihen",
+          payload: {
+            room: room.id,
+            scenes: room.scenes,
+            devices: room.devices.map((device) => ({ id: device.id, name: device.name, type: device.type }))
+          }
+        },
         {
           type: "copy",
           label: "HA-Servicecall kopieren",
@@ -539,6 +673,11 @@ function buildDialogPayload(data, kind, id) {
       badges: [{ label: item.stateLabel, tone: item.state }],
       paragraphs: [`Zeitplan: ${item.cron}`, "Die UI ist vorbereitet für Start, Pause, Resume und manuelles Triggern."],
       actions: [
+        {
+          type: "ha-queue",
+          label: "Automation einreihen",
+          payload: { automation: item.id, label: item.label, cron: item.cron }
+        },
         {
           type: "copy",
           label: "Trigger-Kommando kopieren",
@@ -578,6 +717,9 @@ function buildDialogPayload(data, kind, id) {
       actions: [
         { type: "link", label: "Upload Queue CSV", href: "/artifacts/upload-queue/shirtee-upload-queue.csv" },
         { type: "link", label: "Batch Manifest", href: "/artifacts/upload-batches/manifest.json" },
+        { type: "bridge-command", label: "Queue erzeugen", command: "generate-upload-queue" },
+        { type: "bridge-command", label: "Batches erzeugen", command: "generate-upload-batches" },
+        { type: "bridge-command", label: "API-Request bauen", command: "generate-shirtee-api-request" },
         { type: "copy", label: "Queue-Befehl kopieren", value: "npm run generate:upload-queue\nnpm run generate:upload-batches\nnpm run generate:shirtee-api-request" }
       ],
       toggles: [
@@ -624,6 +766,15 @@ function buildDialogPayload(data, kind, id) {
       badges: [{ label: job.stateLabel, tone: job.state }],
       paragraphs: [`Owner: ${job.owner}`, "Vorbereitung für Run-now, Pause, Resume und Schedule-Editing im Dashboard."],
       actions: [
+        {
+          type: "bridge-command",
+          label: "Jetzt ausführen",
+          command: job.name === "sync-control-live"
+            ? "sync-control-live"
+            : job.name === "check-shirtee-links"
+              ? "check-links"
+              : "generate-upload-queue"
+        },
         {
           type: "copy",
           label: "Cron-Kommando kopieren",
@@ -714,10 +865,18 @@ function renderControlDialog(payload) {
         <div class="control-dialog-section">
           <h4>Aktionen</h4>
           <div class="action-grid compact">
-            ${actions.map((action) => action.type === "link"
-              ? `<a class="action-btn is-secondary" href="${escapeHtml(action.href)}">${escapeHtml(action.label)}</a>`
-              : `<button type="button" class="action-btn is-secondary" data-control-copy="${escapeHtml(action.value || "")}">${escapeHtml(action.label)}</button>`
-            ).join("")}
+            ${actions.map((action) => {
+              if (action.type === "link") {
+                return `<a class="action-btn is-secondary" href="${escapeHtml(action.href)}">${escapeHtml(action.label)}</a>`;
+              }
+              if (action.type === "bridge-command") {
+                return `<button type="button" class="action-btn is-secondary" data-control-command="${escapeHtml(action.command || "")}">${escapeHtml(action.label)}</button>`;
+              }
+              if (action.type === "ha-queue") {
+                return `<button type="button" class="action-btn is-secondary" data-control-ha='${escapeHtml(JSON.stringify(action.payload || {}))}'>${escapeHtml(action.label)}</button>`;
+              }
+              return `<button type="button" class="action-btn is-secondary" data-control-copy="${escapeHtml(action.value || "")}">${escapeHtml(action.label)}</button>`;
+            }).join("")}
           </div>
         </div>
       ` : ""}
@@ -772,7 +931,7 @@ function reopenCurrentDialog() {
 }
 
 function setupControlDialogActions() {
-  document.addEventListener("click", (event) => {
+  document.addEventListener("click", async (event) => {
     const closeTrigger = event.target.closest("[data-control-dialog-close]");
     if (closeTrigger) {
       closeControlDialog();
@@ -795,8 +954,57 @@ function setupControlDialogActions() {
       const { kind, id } = window.__CONTROL_DIALOG_CONTEXT__;
       const controlId = toggleTrigger.getAttribute("data-control-toggle");
       const nextValue = !toggleTrigger.classList.contains("is-active");
-      setControlToggleValue(kind, id, controlId, nextValue);
+      await setControlToggleValue(kind, id, controlId, nextValue);
       reopenCurrentDialog();
+      return;
+    }
+
+    const commandTrigger = event.target.closest("[data-control-command]");
+    if (commandTrigger) {
+      const command = commandTrigger.getAttribute("data-control-command");
+      const previous = commandTrigger.textContent;
+      commandTrigger.textContent = "Laeuft...";
+      try {
+        if (hasControlBridge()) {
+          await runBridgeCommand(command);
+          if (command === "sync-control-live") {
+            const nextLiveMetrics = await loadLiveMetrics();
+            if (nextLiveMetrics?.metadata) {
+              window.__CONTROL_DATA__ = nextLiveMetrics;
+              renderDashboardView(applyRangeToData(nextLiveMetrics, "live"));
+            }
+          }
+          commandTrigger.textContent = "Erledigt";
+        } else {
+          commandTrigger.textContent = "Bridge fehlt";
+        }
+      } catch {
+        commandTrigger.textContent = "Fehler";
+      }
+      window.setTimeout(() => {
+        commandTrigger.textContent = previous;
+      }, 1600);
+      return;
+    }
+
+    const haTrigger = event.target.closest("[data-control-ha]");
+    if (haTrigger) {
+      const previous = haTrigger.textContent;
+      haTrigger.textContent = "Eingereiht...";
+      try {
+        if (hasControlBridge()) {
+          const payload = JSON.parse(haTrigger.getAttribute("data-control-ha") || "{}");
+          await queueHaAction(payload);
+          haTrigger.textContent = "In Queue";
+        } else {
+          haTrigger.textContent = "Bridge fehlt";
+        }
+      } catch {
+        haTrigger.textContent = "Fehler";
+      }
+      window.setTimeout(() => {
+        haTrigger.textContent = previous;
+      }, 1600);
       return;
     }
 
@@ -1124,22 +1332,23 @@ function setupAppShell() {
 }
 
 function renderDashboardView(data) {
-  renderModeBadge(document.querySelector("[data-mode-badge]"), data.metadata);
-  renderVisualPulse(document.querySelector("[data-visual-pulse]"), data);
-  renderSystemStatus(document.querySelector("[data-system-status]"), data.systemStatus);
-  renderHermesChat(document.querySelector("[data-hermes-chat]"), data);
-  renderKpis(document.querySelector("[data-kpis]"), data.overviewKpis);
-  renderAgentsRoomSection(document.querySelector("[data-agentsroom-section]"), data.agentsRoom);
-  renderHomeAssistantSection(document.querySelector("[data-home-assistant-section]"), data);
-  renderWebsiteSection(document.querySelector("[data-website-section]"), data.websiteMetrics);
-  renderShopSection(document.querySelector("[data-shop-section]"), data.shopMetrics);
-  renderCatalogUploadSection(document.querySelector("[data-catalog-upload-section]"), data.shopMetrics);
-  renderActivity(document.querySelector("[data-activity-feed]"), data.activityFeed, data.shopMetrics.timeline);
-  renderPerformance(document.querySelector("[data-performance-section]"), data.performanceMetrics);
-  renderContent(document.querySelector("[data-content-section]"), data.contentPerformance);
-  renderSocial(document.querySelector("[data-social-section]"), data.socialMetrics);
-  renderAlerts(document.querySelector("[data-alerts]"), data.alerts);
-  renderQuickActions(document.querySelector("[data-quick-actions]"), data);
+  const viewData = applyBridgeStateToData(data);
+  renderModeBadge(document.querySelector("[data-mode-badge]"), viewData.metadata);
+  renderVisualPulse(document.querySelector("[data-visual-pulse]"), viewData);
+  renderSystemStatus(document.querySelector("[data-system-status]"), viewData.systemStatus);
+  renderHermesChat(document.querySelector("[data-hermes-chat]"), viewData);
+  renderKpis(document.querySelector("[data-kpis]"), viewData.overviewKpis);
+  renderAgentsRoomSection(document.querySelector("[data-agentsroom-section]"), viewData.agentsRoom);
+  renderHomeAssistantSection(document.querySelector("[data-home-assistant-section]"), viewData);
+  renderWebsiteSection(document.querySelector("[data-website-section]"), viewData.websiteMetrics);
+  renderShopSection(document.querySelector("[data-shop-section]"), viewData.shopMetrics);
+  renderCatalogUploadSection(document.querySelector("[data-catalog-upload-section]"), viewData.shopMetrics);
+  renderActivity(document.querySelector("[data-activity-feed]"), viewData.activityFeed, viewData.shopMetrics.timeline);
+  renderPerformance(document.querySelector("[data-performance-section]"), viewData.performanceMetrics);
+  renderContent(document.querySelector("[data-content-section]"), viewData.contentPerformance);
+  renderSocial(document.querySelector("[data-social-section]"), viewData.socialMetrics);
+  renderAlerts(document.querySelector("[data-alerts]"), viewData.alerts);
+  renderQuickActions(document.querySelector("[data-quick-actions]"), viewData);
   animateKpis();
   restoreControlDecks();
   restoreAgentsRoomControls();
@@ -1153,6 +1362,7 @@ async function initControlDashboard() {
     return;
   }
 
+  await loadControlBridge();
   const liveMetrics = await loadLiveMetrics();
   if (!liveMetrics || !liveMetrics.metadata) {
     throw new Error("Live-Daten konnten nicht geladen werden.");
@@ -1180,6 +1390,13 @@ async function initControlDashboard() {
     }
     refreshInFlight = true;
     try {
+      if (hasControlBridge()) {
+        try {
+          await runBridgeCommand("sync-control-live");
+        } catch (error) {
+          console.warn("sync-control-live fehlgeschlagen", error);
+        }
+      }
       const nextLiveMetrics = await loadLiveMetrics();
       if (!nextLiveMetrics || !nextLiveMetrics.metadata) {
         return;
@@ -1202,6 +1419,13 @@ async function initControlDashboard() {
     }
     refreshInFlight = true;
     try {
+      if (hasControlBridge()) {
+        try {
+          await runBridgeCommand("sync-control-live");
+        } catch {
+          // Polling bleibt best-effort, auch wenn der Bridge-Sync ausfaellt.
+        }
+      }
       const nextLiveMetrics = await loadLiveMetrics();
       if (nextLiveMetrics && nextLiveMetrics.metadata) {
         seedData = nextLiveMetrics;
