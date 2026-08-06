@@ -431,13 +431,13 @@ const agentGraphPositions = new Map([
 ]);
 
 const deviceGraphPositions = new Map([
-  ["Mac mini", { x: 50, y: 50, tone: "core", label: "Mac mini", detail: "Zentralserver / Hermes" }],
+  ["Mac mini", { x: 48, y: 48, tone: "core", label: "Mac mini", detail: "Zentralserver / Hermes" }],
   ["MacBook", { x: 13, y: 16, tone: "device", label: "MacBook", detail: "Arbeits- und Mirror-Node" }],
   ["iMac", { x: 13, y: 38, tone: "device", label: "iMac", detail: "Operator-Station" }],
   ["iPhone", { x: 13, y: 60, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
-  ["Home Assistant", { x: 32, y: 82, tone: "bridge", label: "Home Assistant", detail: "Backup / Automation" }],
+  ["Home Assistant", { x: 28, y: 84, tone: "bridge", label: "Home Assistant", detail: "Backup / Automation" }],
   ["GitHub", { x: 73, y: 16, tone: "service", label: "GitHub", detail: "Repo Sync" }],
-  ["Obsidian", { x: 73, y: 38, tone: "service", label: "Obsidian", detail: "Vault / Memory" }],
+  ["Obsidian", { x: 82, y: 34, tone: "service", label: "Obsidian", detail: "Vault / Memory" }],
   ["StreamDeck", { x: 73, y: 64, tone: "device", label: "StreamDeck", detail: "Actions" }],
   ["Rodecaster", { x: 92, y: 26, tone: "device", label: "Rodecaster", detail: "Audio Routing" }],
   ["TikTok Live Studio", { x: 92, y: 52, tone: "service", label: "TikTok Live", detail: "Live Publishing" }],
@@ -445,16 +445,16 @@ const deviceGraphPositions = new Map([
 ]);
 
 const vaultGraphPositions = new Map([
-  ["Operator", { x: 8, y: 16, tone: "human", label: "Operator", detail: "Eingang / Telegram" }],
-  ["Hermes", { x: 24, y: 16, tone: "core", label: "Hermes", detail: "Runtime / Thread" }],
-  ["Telegram Spool", { x: 24, y: 72, tone: "bridge", label: "Telegram Spool", detail: "Outbound Queue" }],
-  ["Channel Directory", { x: 43, y: 16, tone: "service", label: "Channel Directory", detail: "Routenregister" }],
-  ["Active Sessions", { x: 43, y: 72, tone: "service", label: "Active Sessions", detail: "Runtime Sessions" }],
-  ["Jarvis", { x: 62, y: 16, tone: "core", label: "Jarvis", detail: "Delegation / Review" }],
-  ["Argus Bridge", { x: 62, y: 72, tone: "support", label: "Argus Bridge", detail: "Zweitwertung" }],
-  ["Brain Vault", { x: 81, y: 16, tone: "service", label: "Brain Vault", detail: "Persistentes Wissen" }],
-  ["Obsidian", { x: 95, y: 44, tone: "service", label: "Obsidian", detail: "Graph / Memory" }],
-  ["GitHub", { x: 81, y: 72, tone: "service", label: "GitHub", detail: "Repo / Dokumentation" }]
+  ["Operator", { x: 7, y: 14, tone: "human", label: "Operator", detail: "Eingang / Telegram" }],
+  ["Hermes", { x: 23, y: 14, tone: "core", label: "Hermes", detail: "Runtime / Thread" }],
+  ["Telegram Spool", { x: 23, y: 80, tone: "bridge", label: "Telegram Spool", detail: "Outbound Queue" }],
+  ["Channel Directory", { x: 43, y: 14, tone: "service", label: "Channel Directory", detail: "Routenregister" }],
+  ["Active Sessions", { x: 43, y: 80, tone: "service", label: "Active Sessions", detail: "Runtime Sessions" }],
+  ["Jarvis", { x: 63, y: 18, tone: "core", label: "Jarvis", detail: "Delegation / Review" }],
+  ["Argus Bridge", { x: 63, y: 80, tone: "support", label: "Argus Bridge", detail: "Zweitwertung" }],
+  ["Brain Vault", { x: 81, y: 14, tone: "service", label: "Brain Vault", detail: "Persistentes Wissen" }],
+  ["Obsidian", { x: 94, y: 42, tone: "service", label: "Obsidian", detail: "Graph / Memory" }],
+  ["GitHub", { x: 81, y: 80, tone: "service", label: "GitHub", detail: "Repo / Dokumentation" }]
 ]);
 
 function getGraphConfig(mode) {
@@ -473,7 +473,7 @@ function buildForwardPath(source, target, index, mode) {
   const { width } = getGraphConfig(mode);
   const deltaX = target.x - source.x;
   const bend = Math.max(54, Math.abs(deltaX) * 0.18);
-  const verticalShift = (index % 2 === 0 ? 1 : -1) * (20 + Math.floor(index / 2) * 16);
+  const verticalShift = (index % 2 === 0 ? 1 : -1) * (28 + Math.floor(index / 2) * 18);
   const laneX = Math.min(width - 120, Math.max(120, source.x + deltaX * 0.5));
   return `M ${source.x} ${source.y} C ${Math.min(laneX, source.x + bend)} ${source.y + verticalShift}, ${Math.max(laneX, target.x - bend)} ${target.y + verticalShift}, ${target.x} ${target.y}`;
 }
@@ -481,7 +481,7 @@ function buildForwardPath(source, target, index, mode) {
 function buildFeedbackPath(source, target, index, mode) {
   const { width } = getGraphConfig(mode);
   const deltaX = target.x - source.x;
-  const lift = 68 + index * 18;
+  const lift = 84 + index * 22;
   const laneX = Math.min(width - 130, Math.max(130, source.x + deltaX * 0.5));
   return `M ${source.x} ${source.y} C ${Math.max(laneX, source.x - 42)} ${source.y - lift}, ${Math.min(laneX, target.x + 42)} ${target.y - lift}, ${target.x} ${target.y}`;
 }
@@ -1305,7 +1305,7 @@ export function renderHomeAssistantSection(container, dashboardData) {
 
   container.innerHTML = `
     <div class="ha-dashboard">
-      <article class="panel ha-command-card ha-wide">
+      <article class="panel ha-command-card ha-wide ha-zone-system">
         <div>
           <p class="eyebrow">HA / Zentralserver</p>
           <h3>Home Assistant → Mac mini</h3>
@@ -1323,7 +1323,7 @@ export function renderHomeAssistantSection(container, dashboardData) {
         </div>
       </article>
 
-      <article class="panel">
+      <article class="panel ha-zone-system">
         <h3>Zustaendigkeit & Datenfluss</h3>
         <ol class="ha-flow">
           <li><strong>Hermes</strong><span>zentrale Steuerung und Operator-Eingang</span></li>
@@ -1334,8 +1334,8 @@ export function renderHomeAssistantSection(container, dashboardData) {
         </ol>
       </article>
 
-      <article class="panel">
-        <h3>Live Snapshot</h3>
+      <article class="panel ha-zone-system">
+        <h3>Systemstatus</h3>
         <div class="ha-kpi-grid">
           <div><span>HA-Routen</span><strong>${haRoutes.length}</strong><small>aus AgentsRoom</small></div>
           <div><span>HA-Aufgaben</span><strong>${haTasks.length}</strong><small>aktuelle Delegationen</small></div>
@@ -1344,9 +1344,9 @@ export function renderHomeAssistantSection(container, dashboardData) {
         </div>
       </article>
 
-      <article class="panel ha-action-status-panel">
+      <article class="panel ha-action-status-panel ha-zone-queue">
         <div class="agentsroom-panel-head">
-          <div><h3>Action- & Queue-Status</h3><p class="muted-line">Direkte Dashboard-Aktionen und zuletzt gespeicherte Queue-Einträge.</p></div>
+          <div><h3>Queue & letzte Actions</h3><p class="muted-line">Direkte Dashboard-Aktionen und zuletzt gespeicherte Queue-Einträge.</p></div>
           <span class="status-pill ${queueSummary.queued > 0 ? "is-ready" : "is-info"}">${queueSummary.queued || 0} offen</span>
         </div>
         <div class="ha-action-status-line">
@@ -1363,7 +1363,7 @@ export function renderHomeAssistantSection(container, dashboardData) {
         </div>
       </article>
 
-      <article class="panel">
+      <article class="panel ha-zone-controls">
         <h3>HA-Komponenten</h3>
         <div class="ha-icon-strip">
           ${HA_ICON_STRIP.map((item) => `
@@ -1376,7 +1376,7 @@ export function renderHomeAssistantSection(container, dashboardData) {
         </div>
       </article>
 
-      <article class="panel ha-wide">
+      <article class="panel ha-wide ha-zone-controls">
         <div class="agentsroom-panel-head">
           <div><h3>Räume & Geräte</h3><p class="muted-line">Jeder Raum öffnet ein Steuer-Popup mit Geräten, Szenen und Adapter-Aktionen.</p></div>
           <span class="status-pill is-info">UI + Adapter</span>
@@ -1400,7 +1400,7 @@ export function renderHomeAssistantSection(container, dashboardData) {
         </div>
       </article>
 
-      <article class="panel ha-wide">
+      <article class="panel ha-wide ha-zone-controls">
         <div class="agentsroom-panel-head">
           <div><h3>Automationen & HA-Adapter</h3><p class="muted-line">Vorbereitung für echte Home-Assistant-Servicecalls, solange aktuell noch adapterbasiert.</p></div>
         </div>
@@ -1416,7 +1416,7 @@ export function renderHomeAssistantSection(container, dashboardData) {
         </div>
       </article>
 
-      <article class="panel ha-wide">
+      <article class="panel ha-wide ha-zone-queue">
         <div class="agentsroom-panel-head">
           <div><h3>HA-Routen und Aufgaben</h3><p class="muted-line">Nur vorhandene Eintraege aus dem aktuellen Dashboard-Snapshot.</p></div>
           <span class="status-pill ${backupRoute ? "is-live" : "is-warn"}">${backupRoute ? "Backup-Route vorhanden" : "Backup-Route pruefen"}</span>
@@ -1427,7 +1427,7 @@ export function renderHomeAssistantSection(container, dashboardData) {
         </div>
       </article>
 
-      <article class="panel ha-wide">
+      <article class="panel ha-wide ha-zone-controls">
         <h3>Statusfarben verstehen</h3>
         <p class="muted-line">Farbe zeigt Handlungsbedarf, der Text nennt den technischen Zustand. Cyan ist Information, nicht Fehler.</p>
         ${buildStatusGuide()}
@@ -1921,15 +1921,14 @@ export function renderSocial(container, socialMetrics) {
                 </div>
                 <div class="social-profile-body">
                   <div class="social-node-head">
-                    <div>
+                    <div class="social-profile-identity">
                       <strong>${escapeHtml(row.platform)}</strong>
                       <span class="social-node-title">${escapeHtml(row.displayName || "")}</span>
                     </div>
                     <span class="status-pill ${pickSocialStatusClass(row)}">${escapeHtml(formatSocialStatus(row.status, row.statusLabel))}</span>
                   </div>
-                  <p>${escapeHtml(row.handle || row.detail)}</p>
-                  <div class="social-node-value">${escapeHtml(String(row.value))}</div>
-                  <small>${escapeHtml(row.detail)}</small>
+                  <p class="social-profile-handle">${escapeHtml(row.handle || "Handle nicht gemeldet")}</p>
+                  <div class="social-profile-metric"><strong>${escapeHtml(String(row.value))}</strong><span>${escapeHtml(row.detail)}</span></div>
                   <div class="social-node-links">
                     ${row.verified ? `<span class="status-pill is-live">Verifiziert</span>` : ""}
                     ${row.profileUrl ? `<a href="${escapeHtml(row.profileUrl)}" target="_blank" rel="noopener noreferrer">Profil öffnen</a>` : ""}
@@ -1984,13 +1983,13 @@ export function renderSocial(container, socialMetrics) {
                 </div>
                 <div class="social-registry-body">
                   <div class="social-node-head">
-                    <div>
+                    <div class="social-profile-identity">
                       <strong>${escapeHtml(item.label)}</strong>
                       <span class="social-node-title">${escapeHtml(item.displayName || "")}</span>
                     </div>
                     <em class="status-pill ${item.status === "live" ? "is-ok" : item.status === "check" ? "is-warn" : "is-info"}">${item.status === "live" ? "Verbunden" : item.status === "check" ? "Pruefen" : item.status}</em>
                   </div>
-                  <p>${escapeHtml(item.handle || item.meta)}</p>
+                  <p class="social-profile-handle">${escapeHtml(item.handle || item.meta)}</p>
                   <a href="${item.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.url)}</a>
                   <small>${escapeHtml(item.note)}</small>
                   <div class="social-node-links">
