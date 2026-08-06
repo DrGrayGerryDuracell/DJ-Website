@@ -146,7 +146,6 @@ function activateSection(sectionId) {
 }
 
 function setupSectionVisibilityRouting() {
-  const links = document.querySelectorAll(".control-nav-link");
   const visibleSections = new Set(Array.from(document.querySelectorAll(".control-section")).map((section) => section.id));
 
   const resolveHashTarget = () => {
@@ -158,19 +157,27 @@ function setupSectionVisibilityRouting() {
   };
 
   activateSection(resolveHashTarget());
+  window.scrollTo(0, 0);
 
-  links.forEach((link) => {
-    link.addEventListener("click", () => {
-      const href = link.getAttribute("href") || "";
-      const id = href.replace(/^#/, "");
-      if (id && visibleSections.has(id)) {
-        activateSection(id);
-      }
-    });
+  document.addEventListener("click", (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    const id = String(link.getAttribute("href") || "").replace(/^#/, "");
+    if (!visibleSections.has(id)) return;
+    event.preventDefault();
+    window.history.pushState({ controlSection: id }, "", `#${id}`);
+    activateSection(id);
+    window.scrollTo(0, 0);
   });
 
   window.addEventListener("hashchange", () => {
     activateSection(resolveHashTarget());
+    window.scrollTo(0, 0);
+  });
+
+  window.addEventListener("popstate", () => {
+    activateSection(resolveHashTarget());
+    window.scrollTo(0, 0);
   });
 }
 
@@ -346,9 +353,8 @@ function writeHermesChatQueue(session, items) {
 }
 
 function formatHermesSpoolText(text, session) {
-  const chatId = session?.origin?.chat_id || "8720180667";
-  const target = session?.origin?.chat_name || "Marten";
-  return `An ${target} über Telegram (${chatId}):\n${text}\n`;
+  const target = session?.display_name || "Operator";
+  return `An ${target} über Telegram:\n${text}\n`;
 }
 
 function downloadHermesSpoolFile(text, session) {
@@ -439,6 +445,82 @@ function setupHermesChatActions() {
   });
 }
 
+function updateNetworkInspector(workspace, node) {
+  if (!workspace || !node) return;
+
+  const view = node.closest("[data-network-view]");
+  const selectedId = node.getAttribute("data-network-node") || "";
+  view?.querySelectorAll("[data-network-node]").forEach((item) => {
+    const isSelected = item === node;
+    item.classList.toggle("is-selected", isSelected);
+    item.setAttribute("aria-pressed", isSelected ? "true" : "false");
+  });
+
+  view?.querySelectorAll("[data-edge-from]").forEach((edge) => {
+    const connected = edge.getAttribute("data-edge-from") === selectedId || edge.getAttribute("data-edge-to") === selectedId;
+    edge.classList.toggle("is-highlighted", connected);
+    edge.classList.toggle("is-muted", !connected);
+  });
+
+  view?.querySelectorAll("[data-route-from]").forEach((route) => {
+    const connected = route.getAttribute("data-route-from") === selectedId || route.getAttribute("data-route-to") === selectedId;
+    route.classList.toggle("is-highlighted", connected);
+    route.classList.toggle("is-muted", !connected);
+  });
+
+  const setText = (selector, value) => {
+    const target = workspace.querySelector(selector);
+    if (target) target.textContent = value || "n/a";
+  };
+
+  setText("[data-network-inspector-name]", node.dataset.networkName);
+  setText("[data-network-inspector-role]", node.dataset.networkRole);
+  setText("[data-network-inspector-status]", node.dataset.networkStatus);
+  setText("[data-network-inspector-channel]", node.dataset.networkChannel);
+  setText("[data-network-inspector-route]", node.dataset.networkRoute);
+  setText("[data-network-inspector-connections]", node.dataset.networkConnections || "Keine direkte Verbindung im aktuellen Snapshot.");
+}
+
+function setNetworkMode(workspace, mode) {
+  if (!workspace) return;
+  const nextMode = mode === "devices" ? "devices" : "agents";
+  window.__CONTROL_NETWORK_MODE__ = nextMode;
+
+  workspace.querySelectorAll("[data-network-mode]").forEach((button) => {
+    const isActive = button.getAttribute("data-network-mode") === nextMode;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", isActive ? "true" : "false");
+  });
+
+  workspace.querySelectorAll("[data-network-view]").forEach((view) => {
+    view.hidden = view.getAttribute("data-network-view") !== nextMode;
+  });
+
+  const activeView = workspace.querySelector(`[data-network-view="${nextMode}"]`);
+  const selectedNode = activeView?.querySelector("[data-network-node].is-selected") || activeView?.querySelector("[data-network-node]");
+  updateNetworkInspector(workspace, selectedNode);
+}
+
+function restoreAgentsRoomControls() {
+  const workspace = document.querySelector("[data-network-workspace]");
+  setNetworkMode(workspace, window.__CONTROL_NETWORK_MODE__ || "agents");
+}
+
+function setupAgentsRoomControls() {
+  document.addEventListener("click", (event) => {
+    const modeButton = event.target.closest("[data-network-mode]");
+    if (modeButton) {
+      setNetworkMode(modeButton.closest("[data-network-workspace]"), modeButton.getAttribute("data-network-mode"));
+      return;
+    }
+
+    const node = event.target.closest("[data-network-node]");
+    if (node) {
+      updateNetworkInspector(node.closest("[data-network-workspace]"), node);
+    }
+  });
+}
+
 function setupAppShell() {
   if (!("serviceWorker" in navigator)) {
     return;
@@ -466,6 +548,7 @@ function renderDashboardView(data) {
   renderAlerts(document.querySelector("[data-alerts]"), data.alerts);
   renderQuickActions(document.querySelector("[data-quick-actions]"), data.quickActions);
   animateKpis();
+  restoreAgentsRoomControls();
 }
 
 async function initControlDashboard() {
@@ -513,6 +596,7 @@ async function initControlDashboard() {
   });
   setupAppShell();
   setupHermesChatActions();
+  setupAgentsRoomControls();
 
   window.setInterval(async () => {
     if (refreshInFlight) {

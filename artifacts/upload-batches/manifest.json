@@ -1,17 +1,10 @@
 {
-  "generatedAt": "2026-08-05T22:13:43.032Z",
+  "generatedAt": "2026-08-06T00:41:49.436Z",
   "batchSize": 20,
   "totals": {
-    "queue": 165,
+    "queue": 164,
     "ready": 0,
-    "pending": 1
+    "pending": 0
   },
-  "batches": [
-    {
-      "name": "pending-batch-01",
-      "type": "pending",
-      "itemCount": 1,
-      "csvPath": "/Users/jarvisgray/Documents/Codex/2026-08-05/da-ja-jetzt-alle-verbindungen-eigentlich/DJ-Website/artifacts/upload-batches/pending-batch-01.csv"
-    }
-  ]
+  "batches": []
 }

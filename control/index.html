@@ -48,25 +48,32 @@
         </div>
       </header>
 
-      <section class="control-pulse" data-control-pulse aria-label="Visual Pulse">
-        <div class="pulse-grid" data-visual-pulse></div>
-      </section>
-
       <section id="overview" class="control-section">
         <div class="section-head">
           <h2>Uebersicht</h2>
-          <p>Direkter Ueberblick ueber Website, Shop, Social und Warnungen.</p>
+          <p>Systemlage, Live-Signale und direkter Hermes-Zugriff auf einer Seite.</p>
         </div>
-        <ul class="status-list" data-system-status></ul>
-        <div class="overview-chat" data-hermes-chat></div>
-        <div class="kpi-grid" data-kpis></div>
+        <section class="control-pulse" data-control-pulse aria-label="Live Systemlage">
+          <div class="pulse-grid" data-visual-pulse></div>
+        </section>
+        <div class="overview-operations-grid">
+          <div class="overview-chat" data-hermes-chat></div>
+          <aside class="overview-snapshot" aria-label="Systemstatus und Kennzahlen">
+            <div class="overview-snapshot-head">
+              <p class="eyebrow">Live Snapshot</p>
+              <h3>Systemstatus</h3>
+            </div>
+            <ul class="status-list" data-system-status></ul>
+            <div class="overview-snapshot-head overview-kpi-head">
+              <p class="eyebrow">Kennzahlen</p>
+              <h3>Aktueller Stand</h3>
+            </div>
+            <div class="kpi-grid" data-kpis></div>
+          </aside>
+        </div>
       </section>
 
       <section id="agentsroom" class="control-section">
-        <div class="section-head">
-          <h2>AgentsRoom</h2>
-          <p>Routing, Agenten, Kommunikation und Geraete als eigene Kontrollansicht.</p>
-        </div>
         <div class="agentsroom-shell" data-agentsroom-section></div>
       </section>
 

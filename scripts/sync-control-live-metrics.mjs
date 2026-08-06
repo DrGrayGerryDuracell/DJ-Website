@@ -142,12 +142,38 @@ function maskLongDigits(value) {
 
 function sanitizeSnippet(value, maxLength = 140) {
   const text = maskLongDigits(String(value ?? "").replace(/\s+/g, " ").trim())
-    .replace(/password\s*[:=]\s*[^,;\]\}]+/gi, "password: [redacted]")
-    .replace(/token\s*[:=]\s*[^,;\]\}]+/gi, "token: [redacted]");
+    .replace(
+      /\b(password|passphrase|kennwort|token|api[-_ ]?key|client[-_ ]?secret|secret|authorization|bearer)\b[\s*_:-]{0,18}(?::|=|→|->|lautet|ist)\s*[`"'*]*[^\s`"',;)\]}]+/gi,
+      "$1: [redacted]"
+    )
+    .replace(/\b(?:sk|ghp|github_pat|xox[baprs])[-_][a-z0-9_-]{8,}\b/gi, "[redacted-token]")
+    .replace(/\/Users\/[^/\s]+\/[a-z0-9_./-]+/gi, "[local-path]");
   if (text.length <= maxLength) {
     return text;
   }
   return `${text.slice(0, Math.max(0, maxLength - 1)).trimEnd()}…`;
+}
+
+function safeRuntimeRoute(label) {
+  return `Hermes / ${label}`;
+}
+
+function toSafeSession(row, index) {
+  const source = String(row?.source || "session");
+  const isTelegram = source.toLowerCase().includes("telegram");
+  return {
+    name: isTelegram ? `Telegram Session ${index + 1}` : `Hermes Session ${index + 1}`,
+    role: isTelegram ? "Telegram Direktnachricht" : source,
+    route: `Session ${String(row?.id || index + 1).slice(-8)}`,
+    channel: row?.model || "n/a",
+    status: !row?.ended_at ? "live" : "connected",
+    statusLabel: !row?.ended_at ? "Live" : "Historisch",
+    tags: [
+      row?.message_count ? `${row.message_count} Nachrichten` : null,
+      row?.tool_call_count ? `${row.tool_call_count} Tools` : null,
+      row?.end_reason ? `Ende: ${sanitizeSnippet(row.end_reason, 42)}` : null
+    ].filter(Boolean)
+  };
 }
 
 function findLatestHermesSpoolFile() {
@@ -213,7 +239,9 @@ function buildHermesRuntimeSnapshot() {
 
   const delegationRows = sqliteQueryJson(
     hermesDbPath,
-    `select delegation_id, origin_session, state, dispatched_at, completed_at, updated_at, result_json, task_json
+    `select delegation_id, origin_session, state, dispatched_at, completed_at, updated_at,
+            length(coalesce(task_json, '')) as task_size,
+            length(coalesce(result_json, '')) as result_size
      from async_delegations
      order by updated_at desc
      limit 5;`
@@ -251,24 +279,25 @@ function buildHermesRuntimeSnapshot() {
   };
 
   const activeSessions = sessionRows.filter((row) => !row.ended_at && Number(row.archived || 0) === 0);
-  const activeTelegramSession = activeSessions.find((row) => String(row.source || "").includes("telegram")) || activeSessions[0] || sessionRows[0] || null;
+  const rawActiveTelegramSession = activeSessions.find((row) => String(row.source || "").includes("telegram")) || activeSessions[0] || sessionRows[0] || null;
   const latestDelegation = delegationRows[0] || null;
   const latestDelivery = deliveryRows[0] || null;
   const latestSpoolPath = findLatestHermesSpoolFile();
-  const latestSpoolPreview = latestSpoolPath ? sanitizeSnippet(readFileSync(latestSpoolPath, "utf8"), 180) : null;
+  const latestSpoolSize = latestSpoolPath ? readFileSync(latestSpoolPath, "utf8").length : 0;
+  const latestSpoolPreview = latestSpoolPath ? `Ausgehender Telegram-Spool vorhanden • ${latestSpoolSize} Zeichen` : null;
   const routingSession = routingRows
     .map((row) => {
       const entry = parseJsonMaybe(row.entry_json) || {};
       return {
-        sessionKey: row.session_key,
-        sessionId: entry.session_id || entry.session_key || null,
-        displayName: entry.display_name || entry.origin?.chat_name || entry.origin?.user_name || null,
+        sessionKey: "Telegram Direktnachricht",
+        sessionId: String(entry.session_id || "route").slice(-8),
+        displayName: "Operator",
         platform: entry.platform || entry.origin?.platform || null,
         chatType: entry.chat_type || entry.origin?.chat_type || null,
         updatedAt: formatBerlinDate(toEpochSeconds(row.updated_at)) || "n/a"
       };
     })
-    .filter((row) => row.sessionKey);
+    .filter((row) => row.platform || row.chatType);
   const currentRouting = routingSession[0] || null;
 
   const recentMessages = recentMessageRows
@@ -277,25 +306,30 @@ function buildHermesRuntimeSnapshot() {
       time: formatBerlinDate(Number(row.timestamp)) || "unbekannt",
       from: row.role || "message",
       to: row.tool_name || "Hermes",
-      summary: sanitizeSnippet(row.content),
+      summary: `${String(row.role || "Nachricht")} Aktivität • ${String(row.content || "").length} Zeichen${row.tool_name ? ` • Tool ${sanitizeSnippet(row.tool_name, 32)}` : ""}`,
       status: row.role === "assistant" ? "live" : row.role === "user" ? "connected" : "info",
       statusLabel: row.role === "assistant" ? "Assistant" : row.role === "user" ? "User" : "System"
     }))
     .filter((item) => item.summary.length > 0);
 
-  const recentSessions = sessionRows.map((row) => ({
-    name: row.title || row.profile_name || row.display_name || row.id,
-    role: row.source || "session",
-    route: row.session_key || row.id,
-    channel: row.model || "n/a",
-    status: !row.ended_at ? "live" : "connected",
-    statusLabel: !row.ended_at ? "Live" : "Historisch",
-    tags: [
-      row.message_count ? `${row.message_count} msgs` : null,
-      row.tool_call_count ? `${row.tool_call_count} tools` : null,
-      row.end_reason ? `Ende: ${row.end_reason}` : null
-    ].filter(Boolean)
-  }));
+  const recentSessions = sessionRows.map(toSafeSession);
+
+  const activeTelegramSession = rawActiveTelegramSession
+    ? {
+        id: String(rawActiveTelegramSession.id || "session").slice(-8),
+        source: String(rawActiveTelegramSession.source || "telegram"),
+        model: rawActiveTelegramSession.model || "n/a",
+        message_count: Number(rawActiveTelegramSession.message_count || 0),
+        tool_call_count: Number(rawActiveTelegramSession.tool_call_count || 0),
+        started_at: rawActiveTelegramSession.started_at || null,
+        ended_at: rawActiveTelegramSession.ended_at || null,
+        title: "Aktive Telegram-Session",
+        session_key: "Telegram Direktnachricht",
+        chat_type: rawActiveTelegramSession.chat_type || "dm",
+        display_name: "Operator",
+        profile_name: rawActiveTelegramSession.profile_name || "zentralserver"
+      }
+    : null;
 
   const sourceRegistry = [
     {
@@ -303,7 +337,7 @@ function buildHermesRuntimeSnapshot() {
       kind: "Runtime",
       state: counts.sessions > 0 ? "live" : "support",
       detail: `${counts.sessions} Sessions, ${counts.messages} Nachrichten, ${counts.delegations} Delegationen`,
-      route: hermesDbPath,
+      route: safeRuntimeRoute("state.db"),
       channel: "SQLite"
     },
     {
@@ -311,7 +345,7 @@ function buildHermesRuntimeSnapshot() {
       kind: "Bridge",
       state: gatewayState.gateway_state === "running" ? "live" : "support",
       detail: `Telegram ${gatewayState?.platforms?.telegram?.state || "unbekannt"} • Active Agents ${gatewayState?.active_agents ?? 0}`,
-      route: hermesGatewayStatePath,
+      route: safeRuntimeRoute("Gateway State"),
       channel: "JSON"
     },
     {
@@ -319,7 +353,7 @@ function buildHermesRuntimeSnapshot() {
       kind: "Delivery",
       state: latestSpoolPath ? "connected" : "support",
       detail: latestSpoolPreview || "Kein aktueller Nachrichtenspool gefunden",
-      route: latestSpoolPath || hermesCronOutputPath,
+      route: safeRuntimeRoute("Telegram Spool"),
       channel: "last_message_to_send.txt"
     },
     {
@@ -327,7 +361,7 @@ function buildHermesRuntimeSnapshot() {
       kind: "Routing",
       state: "connected",
       detail: `Channels: ${Object.keys(channelDirectory?.platforms || {}).length || 0} • updated ${formatBerlinDate(toEpochSeconds(channelDirectory.updated_at)) || channelDirectory.updated_at || "n/a"}`,
-      route: hermesChannelDirectoryPath,
+      route: safeRuntimeRoute("Channel Directory"),
       channel: "Directory"
     },
     {
@@ -335,15 +369,15 @@ function buildHermesRuntimeSnapshot() {
       kind: "Memory",
       state: "sync",
       detail: `Last run ${brainVaultState.last_run_utc || "n/a"} • Added ${brainVaultState.last_added ?? 0}`,
-      route: hermesBrainVaultStatePath,
+      route: safeRuntimeRoute("Brain Vault"),
       channel: "Vault"
     },
     {
       name: "Argus Bridge",
       kind: "Support",
       state: Number(argusBridgeState.warning_count || 0) > 0 ? "support" : "ready",
-      detail: `Warnings ${argusBridgeState.warning_count ?? 0} • ${argusBridgeState.last_warning || "kein Hinweis"}`,
-      route: hermesArgusBridgeStatePath,
+      detail: `Warnings ${argusBridgeState.warning_count ?? 0} • ${sanitizeSnippet(argusBridgeState.last_warning || "kein Hinweis", 80)}`,
+      route: safeRuntimeRoute("Argus Bridge"),
       channel: "Bridge"
     },
     {
@@ -351,26 +385,74 @@ function buildHermesRuntimeSnapshot() {
       kind: "Runtime",
       state: activeSessionsState?.entries?.length ? "live" : "sync",
       detail: `${activeSessionsState?.entries?.length || 0} aktive Runtime-Einträge`,
-      route: hermesActiveSessionsPath,
+      route: safeRuntimeRoute("Active Sessions"),
       channel: "JSON"
     }
   ];
 
   const runtime = {
-    gatewayState,
-    gatewayLifecycle,
-    channelDirectory,
-    brainVaultState,
-    argusBridgeState,
-    activeSessionsState,
+    gatewayState: {
+      gateway_state: gatewayState.gateway_state || "unknown",
+      restart_requested: Boolean(gatewayState.restart_requested),
+      active_agents: Number(gatewayState.active_agents || 0),
+      platforms: {
+        telegram: {
+          state: gatewayState?.platforms?.telegram?.state || "unknown",
+          updated_at: gatewayState?.platforms?.telegram?.updated_at || gatewayState.updated_at || null
+        }
+      },
+      updated_at: gatewayState.updated_at || null
+    },
+    gatewayLifecycle: {
+      phase: gatewayLifecycle.phase || gatewayLifecycle.state || "unknown",
+      updated_at: gatewayLifecycle.updated_at || gatewayLifecycle.updatedAt || null
+    },
+    channelDirectory: {
+      updated_at: channelDirectory.updated_at || null,
+      platformCounts: Object.fromEntries(
+        Object.entries(channelDirectory?.platforms || {}).map(([platform, entries]) => [platform, Array.isArray(entries) ? entries.length : 0])
+      )
+    },
+    brainVaultState: {
+      last_run_utc: brainVaultState.last_run_utc || null,
+      last_added: Number(brainVaultState.last_added || 0),
+      processed_count: Array.isArray(brainVaultState.processed_files) ? brainVaultState.processed_files.length : 0
+    },
+    argusBridgeState: {
+      warning_count: Number(argusBridgeState.warning_count || 0),
+      last_warning: sanitizeSnippet(argusBridgeState.last_warning || "kein Hinweis", 80)
+    },
+    activeSessionsState: {
+      count: Array.isArray(activeSessionsState?.entries) ? activeSessionsState.entries.length : 0
+    },
     counts,
     activeTelegramSession,
-    latestDelegation,
-    latestDelivery,
-    latestSpoolPath,
+    latestDelegation: latestDelegation
+      ? {
+          id: String(latestDelegation.delegation_id || "delegation").slice(-8),
+          state: latestDelegation.state || "unknown",
+          dispatched_at: latestDelegation.dispatched_at || null,
+          completed_at: latestDelegation.completed_at || null,
+          updated_at: latestDelegation.updated_at || null
+        }
+      : null,
+    latestDelivery: latestDelivery
+      ? {
+          id: String(latestDelivery.obligation_id || "delivery").slice(-8),
+          platform: latestDelivery.platform || "unknown",
+          state: latestDelivery.state || "unknown",
+          attempts: Number(latestDelivery.attempts || 0),
+          created_at: latestDelivery.created_at || null,
+          updated_at: latestDelivery.updated_at || null,
+          has_error: Boolean(latestDelivery.last_error)
+        }
+      : null,
+    latestSpoolPath: latestSpoolPath ? safeRuntimeRoute("Telegram Spool") : null,
     latestSpoolPreview,
-    routingRows,
-    stateMetaRows,
+    routingRows: routingSession,
+    stateMeta: {
+      entries: stateMetaRows.length
+    },
     currentRouting
   };
 
@@ -380,17 +462,17 @@ function buildHermesRuntimeSnapshot() {
     sessions: recentSessions,
     recentMessages,
     recentDelegations: delegationRows.map((row) => ({
-      from: row.origin_session || "Hermes",
+      from: "Hermes",
       to: "Async Delegation",
-      task: sanitizeSnippet(parseJsonMaybe(row.task_json)?.goal || parseJsonMaybe(row.task_json)?.task || parseJsonMaybe(row.result_json)?.summary || row.delegation_id),
+      task: `Auftrag ${String(row.delegation_id || "item").slice(-8)} • ${Number(row.task_size || 0)} Zeichen${Number(row.result_size || 0) ? ` • Ergebnis ${Number(row.result_size)} Zeichen` : ""}`,
       channel: row.state || "delegation",
       priority: Number(row.state === "error" ? 2 : 1) ? (row.state === "error" ? "P1" : "P0") : "P1",
       status: row.state === "error" ? "support" : "live",
       statusLabel: row.state === "error" ? "Error" : "Live"
     })),
     recentObligations: deliveryRows.map((row) => ({
-      label: row.obligation_id || row.session_key || "Obligation",
-      value: sanitizeSnippet(row.content || row.last_error || row.state || "n/a", 100),
+      label: `Delivery ${String(row.obligation_id || "item").slice(-8)}`,
+      value: `${row.platform || "Kanal"} • ${row.state || "unbekannt"} • ${String(row.content || "").length} Zeichen`,
       status: row.state === "delivered" ? "connected" : row.state === "error" ? "support" : "live",
       statusLabel: row.state === "delivered" ? "Delivered" : row.state === "error" ? "Error" : "Live"
     })),

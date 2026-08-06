@@ -1,28 +1,13 @@
 {
-  "generatedAt": "2026-08-05T22:13:42.585Z",
+  "generatedAt": "2026-08-06T00:41:42.309Z",
   "totals": {
     "all": 167,
-    "uploaded": 2,
-    "queue": 165,
+    "uploaded": 3,
+    "queue": 164,
     "ready": 0,
-    "pending": 1
+    "pending": 0
   },
   "queue": [
-    {
-      "id": "dr-hoodie-mainstream",
-      "title": "Kein Mainstream. Hoodie",
-      "line": "Dr. Gray",
-      "section": "men",
-      "sectionLabel": "Herren",
-      "catalogStatus": "In Vorbereitung",
-      "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
-      "hasImage": true,
-      "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-      "uploadState": "pending",
-      "uploadLabel": "Noch offen",
-      "verifiedLink": false,
-      "httpCode": 0
-    },
     {
       "id": "dr-shirt-raw",
       "title": "Treibend. Roh. Ehrlich. Tee",

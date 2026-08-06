@@ -109,18 +109,26 @@ function buildFlowItems(items) {
     .join("");
 }
 
-function buildDeviceLinks(devices) {
+function getDeviceRouteItems(devices) {
   const names = Array.isArray(devices) ? devices.map((device) => device.name) : [];
   const has = (name) => names.includes(name);
-  const items = [
-    has("Mac mini") && has("MacBook") ? { from: "Mac mini", to: "MacBook", channel: "SMB", state: "connected", note: "Mirror / Backup" } : null,
-    has("Mac mini") && has("iMac") ? { from: "Mac mini", to: "iMac", channel: "SMB", state: "connected", note: "Operator Sync" } : null,
+  return [
+    has("Mac mini") && has("MacBook") ? { from: "MacBook", to: "Mac mini", channel: "SMB", state: "connected", note: "Arbeitsdaten / Mirror" } : null,
+    has("Mac mini") && has("iMac") ? { from: "iMac", to: "Mac mini", channel: "SMB", state: "connected", note: "Operator Sync" } : null,
     has("Mac mini") && has("Home Assistant") ? { from: "Home Assistant", to: "Mac mini", channel: "SMB / Bridge", state: "live", note: "HA Backup" } : null,
     has("MacBook") && has("iMac") ? { from: "MacBook", to: "iMac", channel: "SMB", state: "connected", note: "Shared Work" } : null,
-    has("iPhone") ? { from: "iPhone", to: "Hermes", channel: "Telegram", state: "live", note: "Mobile Control" } : null,
+    has("iPhone") && has("Mac mini") ? { from: "iPhone", to: "Mac mini", channel: "Telegram / Hermes", state: "live", note: "Mobile Control" } : null,
     has("GitHub") ? { from: "GitHub", to: "Mac mini", channel: "Repo Sync", state: "connected", note: "Codebasis" } : null,
-    has("Obsidian") ? { from: "Obsidian", to: "Jarvis", channel: "Memory", state: "sync", note: "Vault Graph" } : null
+    has("Obsidian") ? { from: "Obsidian", to: "Mac mini", channel: "Vault Sync", state: "sync", note: "Jarvis Memory" } : null,
+    has("StreamDeck") && has("iMac") ? { from: "StreamDeck", to: "iMac", channel: "Actions", state: "ready", note: "Operator Hotkeys" } : null,
+    has("Rodecaster") && has("iMac") ? { from: "Rodecaster", to: "iMac", channel: "Audio", state: "ready", note: "Audio Routing" } : null,
+    has("TikTok Live Studio") && has("iMac") ? { from: "iMac", to: "TikTok Live Studio", channel: "Live Publishing", state: "ready", note: "TikTok Produktion" } : null,
+    has("SoundCloud") && has("Mac mini") ? { from: "Mac mini", to: "SoundCloud", channel: "Audio Publish", state: "live", note: "Music Publishing" } : null
   ].filter(Boolean);
+}
+
+function buildDeviceLinks(devices) {
+  const items = getDeviceRouteItems(devices);
 
   if (!items.length) {
     return `<p class="muted-line">Keine Gerätepfade vorhanden.</p>`;
@@ -140,153 +148,204 @@ function buildDeviceLinks(devices) {
     .join("");
 }
 
-function buildRoutingGraph(agentsRoom) {
+function toGraphId(value) {
+  return String(value || "node")
+    .normalize("NFKD")
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .toLowerCase();
+}
+
+const agentGraphPositions = new Map([
+  ["Mensch", { x: 7, y: 48, tone: "human", label: "Du / Operator", detail: "oberste Steuerstufe" }],
+  ["Hermes", { x: 23, y: 48, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
+  ["Jarvis", { x: 40, y: 48, tone: "core", label: "Jarvis", detail: "Orchestrierung" }],
+  ["OpenClaw Gateway", { x: 40, y: 80, tone: "bridge", label: "OpenClaw", detail: "Queue / Bridge" }],
+  ["Heimdall", { x: 60, y: 10, tone: "service", label: "Heimdall", detail: "Home Assistant" }],
+  ["Forge", { x: 60, y: 25, tone: "service", label: "Forge", detail: "Infra / Skills" }],
+  ["Sentinel", { x: 60, y: 40, tone: "service", label: "Sentinel", detail: "Health / Security" }],
+  ["Oracle", { x: 60, y: 55, tone: "service", label: "Oracle", detail: "Briefings" }],
+  ["Muse", { x: 60, y: 70, tone: "service", label: "Muse", detail: "Content / Audio" }],
+  ["Friday", { x: 60, y: 85, tone: "service", label: "Friday", detail: "Deep Repair" }],
+  ["Argus", { x: 79, y: 38, tone: "support", label: "Argus", detail: "Vorprüfung" }],
+  ["Claude", { x: 94, y: 24, tone: "support", label: "Claude", detail: "komplexe Eskalation" }],
+  ["Codex", { x: 94, y: 51, tone: "support", label: "Codex", detail: "Code-Eskalation" }]
+]);
+
+const deviceGraphPositions = new Map([
+  ["Mac mini", { x: 50, y: 48, tone: "core", label: "Mac mini", detail: "Zentralserver / Hermes" }],
+  ["MacBook", { x: 12, y: 20, tone: "device", label: "MacBook", detail: "Arbeits- und Mirror-Node" }],
+  ["iMac", { x: 12, y: 50, tone: "device", label: "iMac", detail: "Operator-Station" }],
+  ["iPhone", { x: 12, y: 80, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
+  ["Home Assistant", { x: 35, y: 86, tone: "bridge", label: "Home Assistant", detail: "Backup / Automation" }],
+  ["GitHub", { x: 70, y: 12, tone: "service", label: "GitHub", detail: "Repo Sync" }],
+  ["Obsidian", { x: 70, y: 34, tone: "service", label: "Obsidian", detail: "Vault / Memory" }],
+  ["StreamDeck", { x: 70, y: 76, tone: "device", label: "StreamDeck", detail: "Actions" }],
+  ["Rodecaster", { x: 91, y: 23, tone: "device", label: "Rodecaster", detail: "Audio Routing" }],
+  ["TikTok Live Studio", { x: 91, y: 52, tone: "service", label: "TikTok Live", detail: "Live Publishing" }],
+  ["SoundCloud", { x: 91, y: 80, tone: "service", label: "SoundCloud", detail: "Music Publishing" }]
+]);
+
+function buildAgentGraphEdges(agentsRoom) {
   const routing = Array.isArray(agentsRoom?.routing) ? agentsRoom.routing : [];
+  const agentNames = new Set((agentsRoom?.agents || []).map((agent) => agent.name));
+  const inferred = [
+    agentNames.has("Friday") ? { from: "Jarvis", to: "Friday", channel: "Deep Repair", purpose: "schwere Reparaturen", status: "ready", statusLabel: "Bereit" } : null,
+    agentNames.has("Claude") ? { from: "Argus", to: "Claude", channel: "Paid Escalation", purpose: "nur bei hoher Komplexität", status: "support", statusLabel: "Fallback" } : null,
+    agentNames.has("Codex") ? { from: "Argus", to: "Codex", channel: "Code Escalation", purpose: "nur bei Code-Umsetzung", status: "support", statusLabel: "Fallback" } : null
+  ].filter(Boolean);
+  return [...routing, ...inferred];
+}
+
+function buildGraphDataset(agentsRoom, mode) {
+  const agents = Array.isArray(agentsRoom?.agents) ? agentsRoom.agents : [];
   const devices = Array.isArray(agentsRoom?.devices) ? agentsRoom.devices : [];
-  if (!routing.length && !devices.length) {
-    return `<p class="muted-line">Keine Kommunikationsdaten vorhanden.</p>`;
+  const isDeviceMode = mode === "devices";
+  const edges = isDeviceMode ? getDeviceRouteItems(devices) : buildAgentGraphEdges(agentsRoom);
+  const positions = isDeviceMode ? deviceGraphPositions : agentGraphPositions;
+  const records = new Map((isDeviceMode ? devices : agents).map((item) => [item.name, item]));
+  if (!isDeviceMode) {
+    records.set("Mensch", { name: "Mensch", role: "Eigentümer und oberste Steuerstufe", route: "Du -> Hermes", channel: "Telegram", status: "live", statusLabel: "Live" });
   }
 
-  const statusToTone = {
-    live: "is-live",
-    connected: "is-connected",
-    support: "is-support",
-    ready: "is-ready",
-    active: "is-active",
-    sync: "is-sync"
-  };
+  const usedNames = new Set();
+  edges.forEach((edge) => {
+    usedNames.add(edge.from);
+    usedNames.add(edge.to);
+  });
 
-  const nodeMeta = new Map([
-    ["Mensch", { x: 6, y: 44, tone: "human", label: "Mensch", detail: "Telegram Input" }],
-    ["Hermes", { x: 20, y: 24, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
-    ["Jarvis", { x: 38, y: 30, tone: "core", label: "Jarvis", detail: "Verteiler" }],
-    ["Argus", { x: 56, y: 18, tone: "support", label: "Argus", detail: "Vorprüfung" }],
-    ["OpenClaw Gateway", { x: 34, y: 50, tone: "bridge", label: "OpenClaw", detail: "Broker / Queue" }],
-    ["Forge", { x: 56, y: 38, tone: "service", label: "Forge", detail: "Infra / Skills" }],
-    ["Sentinel", { x: 56, y: 58, tone: "service", label: "Sentinel", detail: "Logs / Security" }],
-    ["Oracle", { x: 74, y: 16, tone: "service", label: "Oracle", detail: "Briefings" }],
-    ["Muse", { x: 74, y: 34, tone: "service", label: "Muse", detail: "Content / Audio" }],
-    ["Heimdall", { x: 74, y: 52, tone: "device", label: "Heimdall", detail: "Home Assistant" }],
-    ["Friday", { x: 74, y: 70, tone: "service", label: "Friday", detail: "Deep Repair" }],
-    ["Claude", { x: 90, y: 24, tone: "support", label: "Claude", detail: "Escalation" }],
-    ["Codex", { x: 90, y: 42, tone: "support", label: "Codex", detail: "Implementation" }],
-    ["Mac mini", { x: 20, y: 70, tone: "device", label: "Mac mini", detail: "Zentralserver" }],
-    ["MacBook", { x: 6, y: 68, tone: "device", label: "MacBook", detail: "Mirror-Node" }],
-    ["iMac", { x: 6, y: 82, tone: "device", label: "iMac", detail: "Operator" }],
-    ["iPhone", { x: 18, y: 84, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
-    ["Home Assistant", { x: 38, y: 76, tone: "device", label: "Home Assistant", detail: "Automation" }],
-    ["GitHub", { x: 38, y: 86, tone: "device", label: "GitHub", detail: "Repo Sync" }],
-    ["Obsidian", { x: 56, y: 84, tone: "device", label: "Obsidian", detail: "Vault" }],
-    ["StreamDeck", { x: 74, y: 86, tone: "device", label: "StreamDeck", detail: "Hotkeys" }],
-    ["Rodecaster", { x: 90, y: 80, tone: "device", label: "Rodecaster", detail: "Audio" }],
-    ["TikTok Live Studio", { x: 90, y: 62, tone: "device", label: "TikTok Live", detail: "Publishing" }],
-    ["SoundCloud", { x: 90, y: 52, tone: "device", label: "SoundCloud", detail: "Music" }]
-  ]);
-
-  const usedNodes = new Map();
-  const deviceTargets = {
-    "Mac mini": "Hermes",
-    MacBook: "Hermes",
-    iMac: "Hermes",
-    iPhone: "Hermes",
-    "Home Assistant": "Mac mini",
-    GitHub: "Jarvis",
-    Obsidian: "Jarvis",
-    StreamDeck: "Jarvis",
-    Rodecaster: "Muse",
-    "TikTok Live Studio": "Muse",
-    SoundCloud: "Muse"
-  };
-
-  const deviceEdges = devices
-    .map((device) => {
-      const targetName = deviceTargets[device.name];
-      const source = nodeMeta.get(device.name);
-      const target = targetName ? nodeMeta.get(targetName) : null;
-      if (!source || !target) {
-        return null;
-      }
+  const nodes = Array.from(usedNames)
+    .map((name) => {
+      const position = positions.get(name);
+      if (!position) return null;
+      const record = records.get(name) || {};
+      const connections = edges
+        .filter((edge) => edge.from === name || edge.to === name)
+        .map((edge) => `${edge.from} → ${edge.to} · ${edge.channel}`);
       return {
-        from: device.name,
-        to: targetName,
-        channel: device.channel || "Device Link",
-        purpose: device.role || "Gerätepfad",
-        status: device.status || "connected",
-        statusLabel: device.statusLabel || "Verbunden"
+        name,
+        ...position,
+        role: record.role || position.detail,
+        route: record.route || connections[0] || "Keine Route",
+        channel: record.channel || "Routing",
+        status: record.status || "connected",
+        statusLabel: record.statusLabel || record.state || "Verbunden",
+        connections
       };
     })
     .filter(Boolean);
 
-  const combinedEdges = [...routing, ...deviceEdges];
+  return { edges, nodes };
+}
 
-  const edges = combinedEdges.map((item) => {
-    const source = nodeMeta.get(item.from) || nodeMeta.get(String(item.from).replace(/\s+/g, " "));
-    const target = nodeMeta.get(item.to) || nodeMeta.get(String(item.to).replace(/\s+/g, " "));
-    if (source) usedNodes.set(item.from, source);
-    if (target) usedNodes.set(item.to, target);
-    return { ...item, source, target };
-  });
+function renderGraphView(agentsRoom, mode) {
+  const { edges, nodes } = buildGraphDataset(agentsRoom, mode);
+  if (!edges.length || !nodes.length) {
+    return `<p class="muted-line">Keine Kommunikationsdaten vorhanden.</p>`;
+  }
 
-  const visibleNodes = Array.from(usedNodes.entries()).map(([name, meta]) => ({ name, ...meta }));
+  const positions = mode === "devices" ? deviceGraphPositions : agentGraphPositions;
+  const markerId = `agentsroom-arrow-${mode}`;
+  const nodeNames = new Set(nodes.map((node) => node.name));
 
   const lineNodes = edges
-    .filter((edge) => edge.source && edge.target)
+    .filter((edge) => positions.has(edge.from) && positions.has(edge.to) && nodeNames.has(edge.from) && nodeNames.has(edge.to))
     .map((edge) => {
-      const tone = statusToTone[edge.status] || "is-info";
-      const x1 = edge.source.x * 10;
-      const y1 = edge.source.y * 5.6;
-      const x2 = edge.target.x * 10;
-      const y2 = edge.target.y * 5.6;
+      const source = positions.get(edge.from);
+      const target = positions.get(edge.to);
+      const tone = statusClass(edge.status || edge.state);
+      const x1 = source.x * 12;
+      const y1 = source.y * 6.5;
+      const x2 = target.x * 12;
+      const y2 = target.y * 6.5;
       const ctrlX = (x1 + x2) / 2;
-      const ctrlY = Math.min(y1, y2) - Math.max(18, Math.abs(x1 - x2) * 0.08);
+      const ctrlY = y1 === y2 ? y1 - 24 : (y1 + y2) / 2;
       return `
-        <g class="agentsroom-network-edge ${tone}">
-          <path d="M ${x1} ${y1} C ${ctrlX} ${ctrlY}, ${ctrlX} ${ctrlY}, ${x2} ${y2}" />
-          <circle cx="${x2}" cy="${y2}" r="4" />
+        <g class="agentsroom-network-edge ${tone}" data-edge-from="${toGraphId(edge.from)}" data-edge-to="${toGraphId(edge.to)}">
+          <path d="M ${x1} ${y1} C ${ctrlX} ${ctrlY}, ${ctrlX} ${ctrlY}, ${x2} ${y2}" marker-end="url(#${markerId})" />
         </g>
       `;
     })
     .join("");
 
-  const nodeCards = visibleNodes
-    .map((node) => `
-      <div class="agentsroom-network-node ${node.tone}" style="left:${node.x}%; top:${node.y}%">
-        <strong>${escapeHtml(node.label)}</strong>
-        <span>${escapeHtml(node.detail)}</span>
-      </div>
-    `)
+  const defaultName = mode === "devices" ? "Mac mini" : "Hermes";
+  const nodeCards = nodes
+    .map((node) => {
+      const nodeId = toGraphId(node.name);
+      const isSelected = node.name === defaultName;
+      return `
+        <button type="button" class="agentsroom-network-node ${node.tone}${isSelected ? " is-selected" : ""}" style="left:${node.x}%; top:${node.y}%" data-network-node="${nodeId}" data-network-name="${escapeHtml(node.label)}" data-network-role="${escapeHtml(node.role)}" data-network-route="${escapeHtml(node.route)}" data-network-channel="${escapeHtml(node.channel)}" data-network-status="${escapeHtml(node.statusLabel)}" data-network-connections="${escapeHtml(node.connections.join(" • "))}" aria-pressed="${isSelected ? "true" : "false"}">
+          <span class="agentsroom-network-node-status ${statusClass(node.status)}">${escapeHtml(node.statusLabel)}</span>
+          <strong>${escapeHtml(node.label)}</strong>
+          <span>${escapeHtml(node.detail)}</span>
+        </button>
+      `;
+    })
     .join("");
 
   const legend = edges
-    .slice(0, 6)
     .map(
       (edge) => `
-        <div class="agentsroom-network-legend-item">
+        <div class="agentsroom-network-legend-item" data-route-from="${toGraphId(edge.from)}" data-route-to="${toGraphId(edge.to)}">
           <span>${escapeHtml(edge.from)} → ${escapeHtml(edge.to)}</span>
           <strong>${escapeHtml(edge.channel)}</strong>
+          <small class="status-pill ${statusClass(edge.status || edge.state)}">${escapeHtml(edge.statusLabel || edge.state || edge.status)}</small>
         </div>
       `
     )
     .join("");
 
   return `
-    <div class="agentsroom-network">
-      <svg class="agentsroom-network-svg" viewBox="0 0 1000 560" role="img" aria-label="Kommunikationsgraph der Agenten und Geräte">
-        <defs>
-          <linearGradient id="agentsroom-line-live" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(52, 228, 255, 0.95)" />
-            <stop offset="100%" stop-color="rgba(245, 200, 76, 0.95)" />
-          </linearGradient>
-          <linearGradient id="agentsroom-line-support" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="rgba(255, 79, 216, 0.95)" />
-            <stop offset="100%" stop-color="rgba(245, 200, 76, 0.75)" />
-          </linearGradient>
-        </defs>
-        ${lineNodes}
-      </svg>
-      <div class="agentsroom-network-nodes">${nodeCards}</div>
+    <div class="agentsroom-network-view" data-network-view="${mode}"${mode === "devices" ? " hidden" : ""}>
+      <div class="agentsroom-network-scroll" tabindex="0" aria-label="${mode === "devices" ? "Gerätenetz horizontal erkunden" : "Agentenfluss horizontal erkunden"}">
+        <div class="agentsroom-network">
+          <svg class="agentsroom-network-svg" viewBox="0 0 1200 650" role="img" aria-label="${mode === "devices" ? "Gerätenetz mit Mac mini als Zentralserver" : "Agenten-Orchestrierung von Operator über Hermes und Jarvis"}">
+            <defs>
+              <marker id="${markerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M 0 0 L 10 5 L 0 10 z" />
+              </marker>
+            </defs>
+            ${lineNodes}
+          </svg>
+          <div class="agentsroom-network-nodes">${nodeCards}</div>
+        </div>
+      </div>
+      <div class="agentsroom-network-legend">${legend}</div>
     </div>
-    <div class="agentsroom-network-legend">${legend}</div>
+  `;
+}
+
+function buildRoutingWorkspace(agentsRoom) {
+  const agentData = buildGraphDataset(agentsRoom, "agents");
+  const defaultNode = agentData.nodes.find((node) => node.name === "Hermes") || agentData.nodes[0] || {};
+  return `
+    <div class="agentsroom-network-workspace" data-network-workspace>
+      <div class="agentsroom-network-toolbar" role="tablist" aria-label="Routing Ansicht">
+        <button type="button" class="agentsroom-mode-btn is-active" role="tab" aria-selected="true" data-network-mode="agents">
+          Agentenfluss <span>${agentData.edges.length} Routen</span>
+        </button>
+        <button type="button" class="agentsroom-mode-btn" role="tab" aria-selected="false" data-network-mode="devices">
+          Gerätenetz <span>${getDeviceRouteItems(agentsRoom?.devices || []).length} Verbindungen</span>
+        </button>
+        <p><span class="agentsroom-live-dot" aria-hidden="true"></span> Live-Snapshot · Auswahl zeigt Details</p>
+      </div>
+      <div class="agentsroom-network-stage">
+        ${renderGraphView(agentsRoom, "agents")}
+        ${renderGraphView(agentsRoom, "devices")}
+      </div>
+      <aside class="agentsroom-network-inspector" data-network-inspector aria-live="polite">
+        <p class="agentsroom-eyebrow">Ausgewählter Knoten</p>
+        <h4 data-network-inspector-name>${escapeHtml(defaultNode.label || "Hermes")}</h4>
+        <p data-network-inspector-role>${escapeHtml(defaultNode.role || "Primär-Controller")}</p>
+        <dl>
+          <div><dt>Status</dt><dd data-network-inspector-status>${escapeHtml(defaultNode.statusLabel || "Live")}</dd></div>
+          <div><dt>Kanal</dt><dd data-network-inspector-channel>${escapeHtml(defaultNode.channel || "Routing")}</dd></div>
+          <div><dt>Route</dt><dd data-network-inspector-route>${escapeHtml(defaultNode.route || "Mensch → Hermes")}</dd></div>
+        </dl>
+        <h5>Verbindungen</h5>
+        <p data-network-inspector-connections>${escapeHtml(defaultNode.connections?.join(" • ") || "Mensch → Hermes · Telegram")}</p>
+      </aside>
+    </div>
   `;
 }
 
@@ -569,6 +628,15 @@ export function renderVisualPulse(container, dashboardData) {
 
   const trafficSeries = dashboardData.websiteMetrics.trafficSeries || [];
   const visitorsSparkline = buildSparkline(trafficSeries, "visitors");
+  const pageviewsSparkline = buildSparkline(trafficSeries, "pageviews");
+  const agentsRoom = dashboardData.agentsRoom || {};
+  const agents = Array.isArray(agentsRoom.agents) ? agentsRoom.agents : [];
+  const connectedAgents = agents.filter((agent) => ["live", "connected", "active", "sync"].includes(agent.status)).length;
+  const agentScore = Math.round((connectedAgents / Math.max(agents.length, 1)) * 100);
+  const scoreOffset = Math.round(251.2 * (1 - agentScore / 100));
+  const gatewayState = agentsRoom.runtime?.gatewayState?.gateway_state || "unbekannt";
+  const telegramState = agentsRoom.runtime?.gatewayState?.platforms?.telegram?.state || "unbekannt";
+  const systemReady = gatewayState === "running" && telegramState === "connected";
 
   const catalog = dashboardData.shopMetrics.catalog;
   const live = catalog.liveItems;
@@ -589,11 +657,37 @@ export function renderVisualPulse(container, dashboardData) {
     .join("");
 
   container.innerHTML = `
+    <article class="pulse-command">
+      <div class="pulse-command-copy">
+        <p class="pulse-eyebrow">Zentralserver / Live Control</p>
+        <h2>${systemReady ? "Hermes-Kern verbunden" : "Hermes-Kern prüfen"}</h2>
+        <p>Der Mac mini führt das System. Telegram liefert den Operator-Eingang, Hermes steuert und Jarvis verteilt an Agenten, Vault und Geräte.</p>
+        <div class="pulse-command-status">
+          <span class="status-pill ${gatewayState === "running" ? "is-live" : "is-warn"}">Gateway: <strong>${escapeHtml(gatewayState)}</strong></span>
+          <span class="status-pill ${telegramState === "connected" ? "is-connected" : "is-warn"}">Telegram: <strong>${escapeHtml(telegramState)}</strong></span>
+          <span class="status-pill is-info">Stand: <strong>${escapeHtml(dashboardData.metadata?.generatedAtLabel || "n/a")}</strong></span>
+        </div>
+      </div>
+      <div class="pulse-command-score" aria-label="${agentScore} Prozent der Agenten aktiv oder verbunden">
+        <svg viewBox="0 0 100 100" role="img" aria-hidden="true">
+          <circle class="score-track" cx="50" cy="50" r="40"></circle>
+          <circle class="score-value" cx="50" cy="50" r="40" style="stroke-dashoffset:${scoreOffset}"></circle>
+        </svg>
+        <strong>${agentScore}%</strong>
+        <span>Agenten online</span>
+      </div>
+      <div class="pulse-command-actions">
+        <div><span>Agenten</span><strong>${formatNumber(agents.length)}</strong></div>
+        <div><span>Routen</span><strong>${formatNumber(agentsRoom.metrics?.routeCount || 0)}</strong></div>
+        <div><span>Geräte</span><strong>${formatNumber(agentsRoom.metrics?.deviceCount || 0)}</strong></div>
+        <a class="action-btn" href="#agentsroom">Routing öffnen</a>
+      </div>
+    </article>
     <article class="pulse-card">
       <p class="pulse-eyebrow">Website</p>
-      <h3>Antwortzeiten im Blick</h3>
-      <div class="sparkline-wrap">${visitorsSparkline}</div>
-      <p class="pulse-copy">Seiten ok: <strong>${formatNumber(dashboardData.overviewKpis.find((kpi) => kpi.id === "pagesOk")?.value)}</strong></p>
+      <h3>Live Signal</h3>
+      <div class="sparkline-wrap signal-wave">${visitorsSparkline}${pageviewsSparkline}</div>
+      <p class="pulse-copy">Seiten ok: <strong>${formatNumber(dashboardData.overviewKpis.find((kpi) => kpi.id === "pagesOk")?.value)}</strong> · Quelle: HTTP Snapshot</p>
     </article>
     <article class="pulse-card">
       <p class="pulse-eyebrow">Shop</p>
@@ -650,8 +744,8 @@ export function renderAgentsRoomSection(container, agentsRoom) {
     <article class="agentsroom-hero">
       <div>
         <p class="agentsroom-eyebrow">AgentsRoom / Hermes Mesh</p>
-        <h3>Routing, Kommunikation und Geräte als eigene Kontrollansicht</h3>
-        <p class="muted-line">Mensch → Hermes per Telegram, Hermes → Jarvis zur Verteilung, Jarvis → Argus zur Vorprüfung. Zusätzlich sind die Geräte- und Servicepfade live sichtbar.</p>
+        <h3>Du steuerst Hermes. Hermes orchestriert das gesamte System.</h3>
+        <p class="muted-line">Der Agentenfluss und das Gerätenetz sind getrennt lesbar. Jede Richtung, jeder Kanal und jede Eskalation bleibt sichtbar, während der Mac mini als Zentralserver den technischen Mittelpunkt bildet.</p>
       </div>
       <div class="agentsroom-hero-stats">
         <div><span>Agenten</span><strong>${formatValue(metrics.agentCount || agents.length)}</strong></div>
@@ -667,12 +761,12 @@ export function renderAgentsRoomSection(container, agentsRoom) {
     <article class="panel agentsroom-panel agentsroom-panel-wide">
       <div class="agentsroom-panel-head">
         <div>
-          <h3>Kommunikationskarte</h3>
-          <p class="muted-line">Live-Pfade mit Richtung, Kanal und Eskalation. Hermes bleibt der zentrale Eingang, Jarvis verteilt, Argus prüft nach.</p>
+          <h3>Live Routing Map</h3>
+          <p class="muted-line">Agenten-Orchestrierung und Gerätenetz können einzeln untersucht werden. Klicke einen Knoten für Rolle, Status und direkte Verbindungen.</p>
         </div>
-        <span class="status-pill is-live">Live Graph</span>
+        <span class="status-pill is-live">30 s Snapshot</span>
       </div>
-      ${buildRoutingGraph(agentsRoom)}
+      ${buildRoutingWorkspace(agentsRoom)}
     </article>
 
     <div class="agentsroom-grid">
