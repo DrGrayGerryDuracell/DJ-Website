@@ -1,16 +1,16 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T08:33:24.600Z",
-    "generatedAtLabel": "06.08.26, 10:33",
+    "generatedAt": "2026-08-06T09:14:55.667Z",
+    "generatedAtLabel": "06.08.26, 11:14",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
   "systemStatus": {
     "website": {
       "label": "Website",
-      "value": "Lokal nicht verifizierbar",
-      "level": "info"
+      "value": "Erreichbar",
+      "level": "ok"
     },
     "storeLinks": {
       "label": "Shop-Links",
@@ -19,12 +19,12 @@
     },
     "social": {
       "label": "Social-Profile",
-      "value": "Lokal nicht verifizierbar",
-      "level": "info"
+      "value": "2/2 TikTok erreichbar",
+      "level": "ok"
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 10:33",
+      "value": "06.08.26, 11:14",
       "level": "info"
     }
   },
@@ -39,22 +39,22 @@
     {
       "id": "pagesOk",
       "label": "Seiten OK",
-      "value": null,
-      "delta": "lokal nicht verifizierbar",
+      "value": 8,
+      "delta": "Live",
       "trend": "up"
     },
     {
       "id": "pagesFail",
       "label": "Seiten mit Fehler",
       "value": 0,
-      "delta": "Umgebung",
+      "delta": "Live",
       "trend": "neutral"
     },
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": null,
-      "delta": "lokal nicht verifizierbar",
+      "value": 540,
+      "delta": "Live",
       "trend": "neutral"
     },
     {
@@ -81,15 +81,15 @@
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": null,
-      "delta": "lokal nicht verifizierbar",
+      "value": 622,
+      "delta": "Live",
       "trend": "neutral"
     },
     {
       "id": "tiktokProfiles",
       "label": "TikTok Profile erreichbar",
-      "value": null,
-      "delta": "lokal nicht verifizierbar",
+      "value": 2,
+      "delta": "Live",
       "trend": "neutral"
     },
     {
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 0,
+        "visitors": 706,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 0,
+        "visitors": 414,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 0,
+        "visitors": 386,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 0,
+        "visitors": 555,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 0,
+        "visitors": 561,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 0,
+        "visitors": 542,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 0,
+        "visitors": 583,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 0,
+        "visitors": 571,
         "pageviews": 0
       }
     ],
@@ -161,36 +161,36 @@
       {
         "page": "/",
         "views": 0,
-        "ctr": "0"
+        "ctr": "200"
       },
       {
         "page": "/index.html",
         "views": 0,
-        "ctr": "0"
+        "ctr": "200"
       },
       {
         "page": "/bio.html",
         "views": 0,
-        "ctr": "0"
+        "ctr": "200"
       },
       {
         "page": "/musik.html",
         "views": 0,
-        "ctr": "0"
+        "ctr": "200"
       },
       {
         "page": "/videos.html",
         "views": 0,
-        "ctr": "0"
+        "ctr": "200"
       }
     ],
     "audiences": [
       {
-        "label": "Nicht verifizierbar",
-        "value": 0
+        "label": "Erreichbar",
+        "value": 100
       },
       {
-        "label": "Umgebung",
+        "label": "Fehler",
         "value": 0
       }
     ],
@@ -215,7 +215,7 @@
     "devices": [
       {
         "label": "2xx",
-        "value": 0
+        "value": 100
       },
       {
         "label": "3xx",
@@ -223,12 +223,12 @@
       },
       {
         "label": "4xx/5xx",
-        "value": 100
+        "value": 0
       }
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "0 ms",
+      "avgSession": "540 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -236,13 +236,24 @@
       "pages": [
         {
           "id": "start",
-          "title": "Startseite",
+          "title": "Driven by Rhythm.<br><span>United by Emotion.</span>",
           "path": "/index.html",
           "status": "live",
           "statusLabel": "Live",
           "editor": "Hero, Intro, CTA",
           "route": "Website -> Hauptseite",
-          "note": "Schneller Eingriff für Headline, Intro und CTA-Zone."
+          "note": "Schneller Eingriff für Headline, Intro und CTA-Zone.",
+          "content": {
+            "eyebrow": "⚡ Driving Techno • Peak Time • Dark & Hypnotic",
+            "title": "Driven by Rhythm.<br><span>United by Emotion.</span>",
+            "lead": "Wir sind <strong>Dr. Gray & Mrs. Dr. Gray</strong> – ein DJ-Duo aus Köln mit einer gemeinsamen Leidenschaft für treibenden, dunklen und emotionalen Techno. 🖤🎧"
+          },
+          "contentSavedAt": "2026-08-06T09:13:45.612Z",
+          "contentMode": "file-override",
+          "eyebrow": "Live Control",
+          "lead": "Wir sind <strong>Dr. Gray & Mrs. Dr. Gray</strong> – ein DJ-Duo aus Köln mit einer gemeinsamen Leidenschaft für treibenden, dunklen und emotionalen Techno. 🖤🎧",
+          "lastAction": "website.save-page-content",
+          "updatedAt": "2026-08-06T09:13:45.612Z"
         },
         {
           "id": "bio",
@@ -252,7 +263,12 @@
           "statusLabel": "Verbunden",
           "editor": "Bio Blocks, Links, Profiltexte",
           "route": "Website -> Bio",
-          "note": "Texte, Module und Kontaktpfade für Bio-Seite."
+          "note": "Texte, Module und Kontaktpfade für Bio-Seite.",
+          "content": {
+            "eyebrow": "Bio | Duo, Beziehung, Szene",
+            "title": "Wir sind nicht nur ein Projekt. <span>Wir sind eine gemeinsame Handschrift.</span>",
+            "lead": "Unsere Geschichte beginnt nicht bei Zahlen, sondern bei uns. Aus Beziehung, Szene und einem gemeinsamen Puls ist eine Linie entstanden, die man in unseren Sets, Bildern und Statements sofort wiedererkennt."
+          }
         },
         {
           "id": "musik",
@@ -262,7 +278,12 @@
           "statusLabel": "Verbunden",
           "editor": "Releases, Player, Embeds",
           "route": "Website -> Musik",
-          "note": "SoundCloud, Releases und CTA-Bausteine."
+          "note": "SoundCloud, Releases und CTA-Bausteine.",
+          "content": {
+            "eyebrow": "Musik | Druck, Tiefe, Duo-Handschrift",
+            "title": "Hier hört man nicht nur Tracks. <span>Hier hört man uns.</span>",
+            "lead": "🎧 Unsere komplette Musik: Driving Techno, Peak Time, Dark & Hypnotic. Live auf SoundCloud, direkt von den Decks ins Ohr."
+          }
         },
         {
           "id": "shop",
@@ -272,7 +293,12 @@
           "statusLabel": "Live",
           "editor": "Produktmodule und Shop-CTA",
           "route": "Website -> Shop",
-          "note": "Shop-Teaser, Kategorien und Verlinkungen."
+          "note": "Shop-Teaser, Kategorien und Verlinkungen.",
+          "content": {
+            "eyebrow": "Shop | Merch als Nebenlinie zur Musik",
+            "title": "Music first. <span>Merch als Extension.</span>",
+            "lead": "Unsere Hauptsache bleibt Musik, Sets und Community. Der Shop ist eine kuratierte Nebenlinie: klare Kategorien, echte Produkte und direkter Weg vom Look in den Shirtee-Store."
+          }
         },
         {
           "id": "control",
@@ -282,7 +308,12 @@
           "statusLabel": "Live",
           "editor": "Sections, KPIs, Routing",
           "route": "Website -> Control",
-          "note": "Interne Workbench für Dashboard-Aufbau."
+          "note": "Interne Workbench für Dashboard-Aufbau.",
+          "content": {
+            "eyebrow": "Internes Dashboard",
+            "title": "Live Kontrolle &amp; Monitoring",
+            "lead": "Systemlage, Live-Signale und direkter Hermes-Zugriff auf einer Seite."
+          }
         }
       ]
     }
@@ -293,8 +324,8 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T08:33:24.600Z",
-      "checkedAtLabel": "06.08.26, 10:33"
+      "checkedAt": "2026-08-06T09:14:55.667Z",
+      "checkedAtLabel": "06.08.26, 11:14"
     },
     "catalog": {
       "totalItems": 167,
@@ -2854,7 +2885,15 @@
           "stateLabel": "Entwurf",
           "line": "Merch / Capsule",
           "task": "Mockup, Copy und Upload-Batch vorbereiten",
-          "priority": "P0"
+          "priority": "P0",
+          "catalogItemId": "dr-crew-pressuregrid",
+          "itemPreview": {
+            "title": "Pressure Grid Crewneck",
+            "slogan": "Technische Linien, klare Mitte, null Ablenkung.",
+            "copy": "Crewneck fuer die cleanere Dr.-Gray-Achse mit scharfem Frontclaim und optionalem Nackenprint. Ideal fuer Clubcrew, Warm-up und Travel-Fit.",
+            "href": "shop.html#herren-kollektion",
+            "status": "In Vorbereitung"
+          }
         },
         {
           "id": "drop-02",
@@ -2863,7 +2902,15 @@
           "stateLabel": "Uploadbereit",
           "line": "TikTok / Merch",
           "task": "Shirtee-Request erzeugen und Batch bauen",
-          "priority": "P1"
+          "priority": "P1",
+          "catalogItemId": "mrs-hoodie-serious",
+          "itemPreview": {
+            "title": "Mrs. Dr. Gray Signature Hoodie",
+            "slogan": "Das Logo fuehrt, der Spruch veredelt.",
+            "copy": "Sauber fuer Damen-Hoodie, Crop Hoodie und klassische Tee-Fits. Keine Fremdsymbole, nur Logo, Typo und eine klare Achse.",
+            "href": "https://www.shirtee.com/de/drgray-mrsdrgray/",
+            "status": "Live im Store"
+          }
         },
         {
           "id": "drop-03",
@@ -2872,7 +2919,15 @@
           "stateLabel": "Pruefung",
           "line": "Music / Merch",
           "task": "Store-Preview und Produkttext gegenprüfen",
-          "priority": "P1"
+          "priority": "P1",
+          "catalogItemId": "couple-rainproof-tee",
+          "itemPreview": {
+            "title": "Rainproof Couple Tee",
+            "slogan": "Naehe unter Druck, nicht unter Zucker.",
+            "copy": "Das Rain-Neon-Bild schiebt Couple-Energie in eine duestere Clubsprache. Perfekt fuer Shirt-Set, Hoodie-Set oder eine limitierte Night-Edition.",
+            "href": "shop.html#couple-edition",
+            "status": "Prioritaet"
+          }
         }
       ],
       "uploadSteps": [
@@ -2924,17 +2979,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "type": "info",
         "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "type": "info",
         "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "type": "info",
         "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
@@ -2949,11 +3004,11 @@
         "profileImage": null,
         "profileUrl": "https://www.tiktok.com/@drgray_mrsdrgray",
         "verified": false,
-        "status": "info",
+        "status": "live",
         "metricValue": 15,
         "valueLabel": "15 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil nicht bestaetigt",
-        "sourceLabel": "TikTok Profil-HTML"
+        "statusLabel": "Profil erreichbar",
+        "sourceLabel": "TikTok Profil-HTML • Code 209002"
       },
       {
         "platform": "TikTok Backup",
@@ -2962,23 +3017,23 @@
         "profileImage": null,
         "profileUrl": "https://www.tiktok.com/@gray.afterhours",
         "verified": false,
-        "status": "info",
+        "status": "live",
         "metricValue": 10,
         "valueLabel": "10 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil nicht bestaetigt",
-        "sourceLabel": "TikTok Profil-HTML"
+        "statusLabel": "Profil erreichbar",
+        "sourceLabel": "TikTok Profil-HTML • Code 209002"
       },
       {
         "platform": "SoundCloud",
-        "displayName": "drgray_sic",
+        "displayName": "Dr. Gray & Mrs. Dr. Gray",
         "handle": "@drgray_sic",
-        "profileImage": null,
+        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
         "profileUrl": "https://soundcloud.com/drgray_sic",
         "verified": false,
-        "status": "info",
+        "status": "live",
         "metricValue": 10,
-        "valueLabel": "10 Linksignale im Seiteninhalt",
-        "statusLabel": "Lokal nicht verifizierbar",
+        "valueLabel": "622 Follower • 10 Linksignale",
+        "statusLabel": "32 Tracks",
         "sourceLabel": "SoundCloud Public API"
       },
       {
@@ -3013,7 +3068,7 @@
         "from": "Website",
         "to": "SoundCloud",
         "channel": "Player / Music",
-        "status": "info"
+        "status": "live"
       },
       {
         "from": "Instagram",
@@ -3058,16 +3113,16 @@
       {
         "label": "SoundCloud",
         "url": "https://soundcloud.com/drgray_sic",
-        "status": "check",
-        "displayName": "drgray_sic",
+        "status": "live",
+        "displayName": "Dr. Gray & Mrs. Dr. Gray",
         "handle": "@drgray_sic",
-        "profileImage": null,
+        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
         "note": "Musik / Profilsignal"
       },
       {
         "label": "TikTok Hauptseite",
         "url": "https://www.tiktok.com/@drgray_mrsdrgray",
-        "status": "check",
+        "status": "live",
         "displayName": "Dr. Gray & Mrs. Dr. Gray",
         "handle": "@drgray_mrsdrgray",
         "profileImage": null,
@@ -3077,7 +3132,7 @@
       {
         "label": "TikTok Backup",
         "url": "https://www.tiktok.com/@gray.afterhours",
-        "status": "check",
+        "status": "live",
         "displayName": "Gray Afterhours",
         "handle": "@gray.afterhours",
         "profileImage": null,
@@ -3095,8 +3150,8 @@
       },
       {
         "metric": "HTTP Seitenchecks",
-        "value": "lokal nicht verifizierbar",
-        "state": "info"
+        "value": "8/8 OK",
+        "state": "good"
       },
       {
         "metric": "Shirtee-Linkchecks",
@@ -3104,13 +3159,13 @@
         "state": "info"
       }
     ],
-    "responseTime": "0 ms",
-    "uptime": "lokal nicht verifizierbar",
+    "responseTime": "540 ms",
+    "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
         "label": "Website Core-Pfade",
-        "status": "lokal nicht verifizierbar",
-        "level": "info"
+        "status": "8/8 erreichbar",
+        "level": "ok"
       },
       {
         "label": "Shop Produktlinks",
@@ -3119,8 +3174,8 @@
       },
       {
         "label": "SoundCloud Profil",
-        "status": "lokal nicht verifizierbar",
-        "level": "info"
+        "status": "OK",
+        "level": "ok"
       }
     ],
     "errorLog": []
@@ -3192,7 +3247,11 @@
           "title": "Performance Clip",
           "channel": "TikTok Hauptseite",
           "status": "ready",
-          "statusLabel": "Bereit"
+          "statusLabel": "Bereit",
+          "uploadState": "queued",
+          "uploadSavedAt": "2026-08-06T09:13:45.929Z",
+          "lastAction": "content.queue-upload",
+          "updatedAt": "2026-08-06T09:13:45.930Z"
         },
         {
           "id": "cal-02",
@@ -3248,10 +3307,6 @@
     },
     "weakSpots": [
       {
-        "item": "Netzwerk-DNS",
-        "note": "Die Umgebung kann die Hauptdomain nicht aufloesen; das ist kein Site-Fehler."
-      },
-      {
         "item": "Shop-Pruefung",
         "note": "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren."
       }
@@ -3260,35 +3315,35 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 10:33",
+      "time": "06.08.26, 11:14",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 10:33",
+      "time": "06.08.26, 11:14",
       "type": "check",
       "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 10:33",
+      "time": "06.08.26, 11:14",
       "type": "check",
-      "text": "SoundCloud: lokal nicht verifizierbar"
+      "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 10:33",
+      "time": "06.08.26, 11:14",
       "type": "check",
-      "text": "TikTok Profile: lokal nicht verifizierbar"
+      "text": "TikTok Profile: 2/2 erreichbar"
     }
   ],
   "alerts": [
     {
       "id": "AL-WEB",
-      "level": "info",
-      "title": "Website lokal nicht verifizierbar",
-      "description": "Die Shell-Umgebung kann die Domain nicht aufloesen; das Dashboard zeigt deshalb keinen falschen Ausfall an.",
+      "level": "ok",
+      "title": "Alle Seiten erreichbar",
+      "description": "Alle geprueften Kernseiten antworten mit HTTP 200.",
       "source": "Website Monitoring"
     },
     {
@@ -3300,9 +3355,9 @@
     },
     {
       "id": "AL-SOC",
-      "level": "info",
-      "title": "SoundCloud lokal nicht verifizierbar",
-      "description": "Die lokale Umgebung kann keine stabilen SoundCloud-Metriken abrufen.",
+      "level": "ok",
+      "title": "SoundCloud Live-Profil erkannt",
+      "description": "622 Follower und 32 Tracks verifiziert.",
       "source": "Social Monitoring"
     }
   ],
@@ -3385,15 +3440,37 @@
   ],
   "homeAssistantWorkbench": {
     "bridgeState": {
-      "updatedAt": "2026-08-06T08:02:26.889Z",
-      "controlGroups": [],
-      "controlGroupCount": 0
+      "updatedAt": "2026-08-06T09:13:59.753Z",
+      "controlGroups": [
+        "website-page",
+        "shop-draft",
+        "planner-entry",
+        "ha-runtime"
+      ],
+      "controlGroupCount": 4
     },
     "queueSummary": {
-      "updatedAt": null,
-      "total": 0,
-      "queued": 0,
-      "entries": []
+      "updatedAt": "2026-08-06T09:13:46.285Z",
+      "total": 1,
+      "queued": 1,
+      "entries": [
+        {
+          "id": "ha-1786007626285",
+          "createdAt": "2026-08-06T09:13:46.285Z",
+          "kind": "service-call",
+          "source": "control-dashboard",
+          "status": "queued",
+          "payload": {
+            "room": "wohnzimmer",
+            "domain": "light",
+            "service": "turn_on",
+            "entityId": "light.wohnzimmer",
+            "data": {
+              "entity_id": "light.wohnzimmer"
+            }
+          }
+        }
+      ]
     },
     "rooms": [
       {
@@ -3517,51 +3594,171 @@
   },
   "operationsWorkbench": {
     "controlBridge": {
-      "updatedAt": "2026-08-06T08:02:26.889Z",
-      "controlGroups": [],
-      "queuedHaActions": 0,
-      "latestHaAction": null,
-      "latestAction": {
-        "id": "action-1786002467236",
-        "action": "website.page-note",
+      "updatedAt": "2026-08-06T09:13:59.753Z",
+      "controlGroups": [
+        "website-page",
+        "shop-draft",
+        "planner-entry",
+        "ha-runtime"
+      ],
+      "queuedHaActions": 1,
+      "latestHaAction": {
+        "id": "ha-1786007626285",
+        "createdAt": "2026-08-06T09:13:46.285Z",
+        "kind": "service-call",
+        "source": "control-dashboard",
+        "status": "queued",
         "payload": {
-          "pageId": "page-test",
-          "note": "locked-from-dashboard"
+          "room": "wohnzimmer",
+          "domain": "light",
+          "service": "turn_on",
+          "entityId": "light.wohnzimmer",
+          "data": {
+            "entity_id": "light.wohnzimmer"
+          }
+        }
+      },
+      "latestAction": {
+        "id": "action-1786007626289",
+        "action": "ha.service-call",
+        "payload": {
+          "room": "wohnzimmer",
+          "domain": "light",
+          "service": "turn_on",
+          "entityId": "light.wohnzimmer",
+          "data": {
+            "entity_id": "light.wohnzimmer"
+          }
         },
-        "createdAt": "2026-08-06T07:47:47.236Z",
+        "createdAt": "2026-08-06T09:13:46.289Z",
         "status": "completed"
       }
     },
     "actionSummary": {
-      "total": 1,
+      "total": 7,
       "entries": [
         {
-          "id": "action-1786002467236",
-          "action": "website.page-note",
+          "id": "action-1786007626289",
+          "action": "ha.service-call",
           "payload": {
-            "pageId": "page-test",
-            "note": "locked-from-dashboard"
+            "room": "wohnzimmer",
+            "domain": "light",
+            "service": "turn_on",
+            "entityId": "light.wohnzimmer",
+            "data": {
+              "entity_id": "light.wohnzimmer"
+            }
           },
-          "createdAt": "2026-08-06T07:47:47.236Z",
+          "createdAt": "2026-08-06T09:13:46.289Z",
           "status": "completed",
-          "createdAtLabel": "06.08.26, 09:47"
+          "createdAtLabel": "06.08.26, 11:13"
+        },
+        {
+          "id": "action-1786007625930",
+          "action": "content.queue-upload",
+          "payload": {
+            "id": "cal-01",
+            "payload": {
+              "title": "Performance Clip",
+              "channel": "TikTok Hauptseite",
+              "slot": "Mo 19:00"
+            }
+          },
+          "createdAt": "2026-08-06T09:13:45.930Z",
+          "status": "completed",
+          "createdAtLabel": "06.08.26, 11:13"
+        },
+        {
+          "id": "action-1786007625612",
+          "action": "website.save-page-content",
+          "payload": {
+            "pageId": "start",
+            "fields": {
+              "eyebrow": "Live Control",
+              "title": "Driven by Rhythm.<br><span>United by Emotion.</span>",
+              "lead": "Wir sind <strong>Dr. Gray & Mrs. Dr. Gray</strong> – ein DJ-Duo aus Köln mit einer gemeinsamen Leidenschaft für treibenden, dunklen und emotionalen Techno. 🖤🎧"
+            }
+          },
+          "createdAt": "2026-08-06T09:13:45.612Z",
+          "status": "completed",
+          "createdAtLabel": "06.08.26, 11:13"
+        },
+        {
+          "id": "action-1786007624315",
+          "action": "shop.save-item",
+          "payload": {
+            "itemId": "dr-crew-pressuregrid",
+            "fields": {
+              "title": "Pressure Grid Crewneck",
+              "slogan": "Technische Linien, klare Mitte, null Ablenkung.",
+              "copy": "Crewneck fuer die cleanere Dr.-Gray-Achse mit scharfem Frontclaim und optionalem Nackenprint. Ideal fuer Clubcrew, Warm-up und Travel-Fit.",
+              "href": "shop.html#herren-kollektion",
+              "status": "In Vorbereitung"
+            }
+          },
+          "createdAt": "2026-08-06T09:13:44.315Z",
+          "status": "completed",
+          "createdAtLabel": "06.08.26, 11:13"
+        },
+        {
+          "id": "action-1786007110825",
+          "action": "website.save-page-content",
+          "payload": {
+            "pageId": "start",
+            "fields": {
+              "eyebrow": "QA 4174 Live",
+              "title": "Driven by Rhythm.<br><span>United by Emotion.</span>",
+              "lead": "Wir sind <strong>Dr. Gray & Mrs. Dr. Gray</strong> – ein DJ-Duo aus Köln mit einer gemeinsamen Leidenschaft für treibenden, dunklen und emotionalen Techno. 🖤🎧"
+            }
+          },
+          "createdAt": "2026-08-06T09:05:10.825Z",
+          "status": "completed",
+          "createdAtLabel": "06.08.26, 11:05"
+        },
+        {
+          "id": "action-1786007084749",
+          "action": "website.save-page-content",
+          "payload": {
+            "pageId": "index",
+            "fields": {
+              "eyebrow": "Probe"
+            }
+          },
+          "createdAt": "2026-08-06T09:04:44.749Z",
+          "status": "completed",
+          "createdAtLabel": "06.08.26, 11:04"
         }
       ]
     },
     "queueSummary": {
-      "updatedAt": null,
-      "total": 0,
-      "queued": 0,
-      "latest": null,
+      "updatedAt": "2026-08-06T09:13:46.285Z",
+      "total": 1,
+      "queued": 1,
+      "latest": {
+        "id": "ha-1786007626285",
+        "createdAt": "2026-08-06T09:13:46.285Z",
+        "kind": "service-call",
+        "source": "control-dashboard",
+        "status": "queued",
+        "payload": {
+          "room": "wohnzimmer",
+          "domain": "light",
+          "service": "turn_on",
+          "entityId": "light.wohnzimmer",
+          "data": {
+            "entity_id": "light.wohnzimmer"
+          }
+        }
+      },
       "lastCommand": {
-        "id": "command-1786003346889",
+        "id": "command-1786007639753",
         "command": "sync-control-live",
-        "createdAt": "2026-08-06T08:02:26.889Z",
+        "createdAt": "2026-08-06T09:13:59.753Z",
         "status": "completed"
       }
     },
     "schedulerSummary": {
-      "updatedAt": "2026-08-06T08:02:26.889Z",
+      "updatedAt": "2026-08-06T09:13:59.753Z",
       "entries": [
         {
           "id": "cron-live",
@@ -4154,7 +4351,7 @@
           "Public",
           "Music"
         ],
-        "image": "/assets/ui-icons/platforms/soundcloud.png"
+        "image": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg"
       }
     ],
     "delegations": [
@@ -4261,7 +4458,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4270,7 +4467,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
@@ -4279,7 +4476,7 @@
       },
       {
         "topic": "Broker",
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4288,7 +4485,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
@@ -4297,7 +4494,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
@@ -4306,7 +4503,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
@@ -4315,7 +4512,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
@@ -4324,7 +4521,7 @@
       },
       {
         "topic": "Rueckgabe",
-        "time": "06.08.26, 10:33",
+        "time": "06.08.26, 11:14",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
@@ -4400,13 +4597,13 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T10:33:09.939348",
+        "updated_at": "2026-08-06T11:13:11.584954",
         "platformCounts": {
           "telegram": 1
         }
       },
       "brainVaultState": {
-        "last_run_utc": "2026-08-06T08:07:55.827650",
+        "last_run_utc": "2026-08-06T09:07:56.000060",
         "last_added": 0,
         "processed_count": 269
       },
@@ -4418,8 +4615,8 @@
         "count": 0
       },
       "counts": {
-        "sessions": 1091,
-        "messages": 18686,
+        "sessions": 1092,
+        "messages": 18692,
         "delegations": 1,
         "obligations": 89,
         "routing": 1
@@ -4483,7 +4680,7 @@
         "name": "Hermes state.db",
         "kind": "Runtime",
         "state": "live",
-        "detail": "1091 Sessions, 18686 Nachrichten, 1 Delegationen",
+        "detail": "1092 Sessions, 18692 Nachrichten, 1 Delegationen",
         "route": "Hermes / state.db",
         "channel": "SQLite"
       },
@@ -4507,7 +4704,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 10:33",
+        "detail": "Channels: 1 • updated 06.08.26, 11:13",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -4515,7 +4712,7 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run 2026-08-06T08:07:55.827650 • Added 0",
+        "detail": "Last run 2026-08-06T09:07:56.000060 • Added 0",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },
@@ -4540,6 +4737,19 @@
       {
         "name": "Hermes Session 1",
         "role": "cron",
+        "route": "Session 6_110037",
+        "channel": "gemini-2.5-flash",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "6 Nachrichten",
+          "3 Tools",
+          "Ende: cron_complete"
+        ]
+      },
+      {
+        "name": "Hermes Session 2",
+        "role": "cron",
         "route": "Session 6_092028",
         "channel": "gemini-2.5-flash",
         "status": "connected",
@@ -4551,7 +4761,7 @@
         ]
       },
       {
-        "name": "Hermes Session 2",
+        "name": "Hermes Session 3",
         "role": "cron",
         "route": "Session 6_090026",
         "channel": "gemini-2.5-flash",
@@ -4564,7 +4774,7 @@
         ]
       },
       {
-        "name": "Hermes Session 3",
+        "name": "Hermes Session 4",
         "role": "cron",
         "route": "Session 5_230041",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -4577,7 +4787,7 @@
         ]
       },
       {
-        "name": "Hermes Session 4",
+        "name": "Hermes Session 5",
         "role": "cron",
         "route": "Session 5_223038",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -4590,7 +4800,7 @@
         ]
       },
       {
-        "name": "Telegram Session 5",
+        "name": "Telegram Session 6",
         "role": "Telegram Direktnachricht",
         "route": "Session 5_5fc1b4",
         "channel": "gemma4:12b-optimized",
@@ -4602,7 +4812,7 @@
         ]
       },
       {
-        "name": "Hermes Session 6",
+        "name": "Hermes Session 7",
         "role": "cron",
         "route": "Session 5_110037",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -4615,7 +4825,7 @@
         ]
       },
       {
-        "name": "Hermes Session 7",
+        "name": "Hermes Session 8",
         "role": "cron",
         "route": "Session 5_092028",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -4626,22 +4836,63 @@
           "6 Tools",
           "Ende: cron_complete"
         ]
-      },
-      {
-        "name": "Hermes Session 8",
-        "role": "cron",
-        "route": "Session 5_090026",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "9 Nachrichten",
-          "5 Tools",
-          "Ende: cron_complete"
-        ]
       }
     ],
     "recentMessages": [
+      {
+        "topic": "ASSISTANT • 6_110037",
+        "time": "06.08.26, 11:01",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 1762 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      },
+      {
+        "topic": "TOOL • 6_110037",
+        "time": "06.08.26, 11:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 7456 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "TOOL • 6_110037",
+        "time": "06.08.26, 11:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 4931 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "TOOL • 6_110037",
+        "time": "06.08.26, 11:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 4895 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "ASSISTANT • 6_110037",
+        "time": "06.08.26, 11:00",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 0 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      },
+      {
+        "topic": "USER • 6_110037",
+        "time": "06.08.26, 11:00",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 1516 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
       {
         "topic": "ASSISTANT • 6_092028",
         "time": "06.08.26, 09:20",
@@ -4677,60 +4928,6 @@
         "summary": "user Aktivität • 1582 Zeichen",
         "status": "connected",
         "statusLabel": "User"
-      },
-      {
-        "topic": "ASSISTANT • 6_090026",
-        "time": "06.08.26, 09:01",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 1550 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "TOOL • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 4251 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "TOOL • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 2449 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "TOOL • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 4861 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "TOOL • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 2985 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "ASSISTANT • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 0 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
       }
     ],
     "recentDelegations": [

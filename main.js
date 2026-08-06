@@ -8,6 +8,134 @@
   const navLinks = document.querySelector("#nav-links");
   let lastScrollTop = 0;
   let ticking = false;
+  const PAGE_OVERRIDE_MAP = {
+    "index.html": {
+      eyebrow: { selector: ".hero-content .eyebrow", mode: "text" },
+      title: { selector: ".hero-content h1", mode: "html" },
+      lead: { selector: ".bio-text p:first-of-type", mode: "html" }
+    },
+    "bio.html": {
+      eyebrow: { selector: ".hero-bio .eyebrow", mode: "text" },
+      title: { selector: ".hero-bio .page-title", mode: "html" },
+      lead: { selector: ".hero-bio .lead", mode: "text" }
+    },
+    "musik.html": {
+      eyebrow: { selector: ".hero-musik .eyebrow", mode: "text" },
+      title: { selector: ".hero-musik .page-title", mode: "html" },
+      lead: { selector: ".hero-musik .lead", mode: "text" }
+    },
+    "videos.html": {
+      eyebrow: { selector: ".hero-videos .eyebrow", mode: "text" },
+      title: { selector: ".hero-videos .page-title", mode: "html" },
+      lead: { selector: ".hero-videos .lead", mode: "text" }
+    },
+    "shop.html": {
+      eyebrow: { selector: ".hero-shop .eyebrow", mode: "text" },
+      title: { selector: ".hero-shop .page-title", mode: "html" },
+      lead: { selector: ".hero-shop .lead", mode: "text" }
+    },
+    "kontakt.html": {
+      eyebrow: { selector: ".hero-kontakt .eyebrow", mode: "text" },
+      title: { selector: ".hero-kontakt .page-title", mode: "html" },
+      lead: { selector: ".hero-kontakt .lead", mode: "text" }
+    }
+  };
+  const SOCIAL_OVERRIDE_KEYS = {
+    tiktokMain: {
+      hrefSelectors: [
+        '.live-banner-track a[href*="drgray_mrsdrgray"]',
+        'a[href*="drgray_mrsdrgray"]'
+      ]
+    },
+    tiktokBackup: {
+      hrefSelectors: [
+        'a[href*="gray.afterhours"]'
+      ]
+    },
+    soundcloud: {
+      hrefSelectors: [
+        'a[href*="soundcloud.com/drgray_sic"]'
+      ]
+    },
+    shop: {
+      hrefSelectors: [
+        'a[href*="shirtee.com/de/store/drgray-mrsdrgray"]'
+      ]
+    }
+  };
+
+  async function loadControlOverrides() {
+    try {
+      const response = await fetch("assets/data/control-overrides.json?t=" + Date.now(), { cache: "no-store" });
+      if (!response.ok) {
+        window.CONTROL_OVERRIDES = {};
+        return {};
+      }
+      const payload = await response.json();
+      window.CONTROL_OVERRIDES = payload && typeof payload === "object" ? payload : {};
+      return window.CONTROL_OVERRIDES;
+    } catch {
+      window.CONTROL_OVERRIDES = {};
+      return {};
+    }
+  }
+
+  function currentPageKey() {
+    const path = window.location.pathname || "/index.html";
+    const last = path.split("/").pop() || "index.html";
+    return last === "" ? "index.html" : last;
+  }
+
+  function applyNodeValue(node, value, mode) {
+    if (!node || value == null) {
+      return;
+    }
+    if (mode === "html") {
+      node.innerHTML = String(value);
+      return;
+    }
+    node.textContent = String(value);
+  }
+
+  function applyPublicPageOverrides() {
+    const pageKey = currentPageKey();
+    const config = PAGE_OVERRIDE_MAP[pageKey];
+    const pageId = pageKey === "index.html" ? "start" : pageKey.replace(/\.html$/i, "");
+    const pageOverrides = window.CONTROL_OVERRIDES?.pages?.[pageId] || null;
+    if (config && pageOverrides) {
+      Object.entries(config).forEach(function ([field, binding]) {
+        const node = document.querySelector(binding.selector);
+        applyNodeValue(node, pageOverrides[field], binding.mode);
+      });
+    }
+
+    Object.entries(SOCIAL_OVERRIDE_KEYS).forEach(function ([key, binding]) {
+      const profile = window.CONTROL_OVERRIDES?.socialAccounts?.[key];
+      if (!profile) {
+        return;
+      }
+      (binding.hrefSelectors || []).forEach(function (selector) {
+        document.querySelectorAll(selector).forEach(function (node) {
+          if (profile.url) {
+            node.setAttribute("href", profile.url);
+          }
+          if (profile.label && node.closest(".live-banner-track")) {
+            node.textContent = profile.label;
+          }
+        });
+      });
+    });
+  }
+
+  function mergeCatalogOverrides(items) {
+    const overrides = window.CONTROL_OVERRIDES?.shopItems || {};
+    return items.map(function (item) {
+      return {
+        ...item,
+        ...(overrides[item.id] || {})
+      };
+    });
+  }
 
   function setDynamicHeights() {
     if (header) {
@@ -272,6 +400,7 @@
     if (!catalog || !Array.isArray(catalog.items)) {
       return;
     }
+    const catalogItems = mergeCatalogOverrides(catalog.items);
 
     function uniqueIds(ids) {
       const seen = new Set();
@@ -310,7 +439,7 @@
 
     document.querySelectorAll("[data-merch-section]").forEach(function (container) {
       const section = container.getAttribute("data-merch-section");
-      const items = catalog.items.filter(function (item) {
+      const items = catalogItems.filter(function (item) {
         return item.section === section;
       });
       items.sort(function (a, b) {
@@ -331,7 +460,11 @@
       const mode = String(container.getAttribute("data-merch-spotlight") || "top").toLowerCase();
       const limit = Math.max(1, Number(container.getAttribute("data-merch-limit")) || 6);
       const spotlightIds = getSpotlightIds(mode);
-      const items = getItemsFromIds(spotlightIds).slice(0, limit);
+      const items = spotlightIds.map(function (id) {
+        return catalogItems.find(function (item) {
+          return item.id === id;
+        });
+      }).filter(Boolean).slice(0, limit);
 
       if (!items.length) {
         return;
@@ -422,9 +555,10 @@
     if (!catalog || !Array.isArray(catalog.items)) {
       return;
     }
+    const catalogItems = mergeCatalogOverrides(catalog.items);
 
     const unique = new Map();
-    catalog.items.forEach(function (item) {
+    catalogItems.forEach(function (item) {
       if (!Array.isArray(item.products)) {
         return;
       }
@@ -500,11 +634,13 @@
   }, { passive: true });
 
   window.addEventListener("load", setDynamicHeights);
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener("DOMContentLoaded", async function () {
     setDynamicHeights();
     if (header) {
       header.classList.remove("hide");
     }
+    await loadControlOverrides();
+    applyPublicPageOverrides();
     initMenu();
     initSoundCloudEmbeds();
     initMerchCatalog();

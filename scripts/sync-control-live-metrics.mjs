@@ -10,6 +10,7 @@ const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outPath = `${repoRoot}/control/js/live-metrics.json`;
 const catalogPath = `${repoRoot}/assets/data/merch-catalog.js`;
 const linkStatusPath = `${repoRoot}/assets/data/live-link-status.js`;
+const controlOverridesPath = `${repoRoot}/assets/data/control-overrides.json`;
 const uploadProgressPath = `${repoRoot}/artifacts/upload-queue/upload-progress-2026-04-01.md`;
 const controlBridgeStatePath = `${repoRoot}/artifacts/control-bridge/state.json`;
 const controlHaQueuePath = `${repoRoot}/artifacts/control-bridge/ha-command-queue.json`;
@@ -936,6 +937,16 @@ async function main() {
   const submittedIds = loadSubmittedIdsFromProgress();
   const bridgeState = readJsonFile(controlBridgeStatePath, { updatedAt: null, controls: {} });
   const haQueue = readJsonFile(controlHaQueuePath, { updatedAt: null, queue: [] });
+  const controlOverrides = readJsonFile(controlOverridesPath, {
+    updatedAt: null,
+    pages: {},
+    shopItems: {},
+    shopDrafts: {},
+    contentPlanner: { calendar: {}, ideas: {} },
+    socialAccounts: {},
+    homeAssistant: { lastServiceCalls: [] },
+    tiktokUploadQueue: []
+  });
   const haQueueEntries = Array.isArray(haQueue.queue) ? haQueue.queue : [];
   const queuedHaEntries = haQueueEntries.filter((entry) => entry.status === "queued");
   const bridgeControlGroups = Object.keys(bridgeState.controls || {});
@@ -946,6 +957,10 @@ async function main() {
   const websitePageState = bridgeState.controls?.["website-page"] || {};
   const shopDraftState = bridgeState.controls?.["shop-draft"] || {};
   const plannerEntryState = bridgeState.controls?.["planner-entry"] || {};
+  const pageOverrideState = controlOverrides.pages || {};
+  const shopItemOverrideState = controlOverrides.shopItems || {};
+  const socialAccountOverrideState = controlOverrides.socialAccounts || {};
+  const plannerOverrideState = controlOverrides.contentPlanner?.calendar || {};
   const haAutomationState = bridgeState.controls?.["ha-automation"] || {};
   const haRoomState = bridgeState.controls?.["ha-room"] || {};
   const subagentState = bridgeState.controls?.subagent || {};
@@ -987,6 +1002,7 @@ async function main() {
   );
 
   const items = Array.isArray(catalog?.items) ? catalog.items : [];
+  const catalogById = new Map(items.map((item) => [item.id, item]));
   const statusCount = {};
   const sectionCount = {};
   for (const item of items) {
@@ -1326,7 +1342,43 @@ async function main() {
           { id: "musik", title: "Musik", path: "/musik.html", status: "connected", statusLabel: "Verbunden", editor: "Releases, Player, Embeds", route: "Website -> Musik", note: "SoundCloud, Releases und CTA-Bausteine." },
           { id: "shop", title: "Shop", path: "/shop.html", status: "live", statusLabel: "Live", editor: "Produktmodule und Shop-CTA", route: "Website -> Shop", note: "Shop-Teaser, Kategorien und Verlinkungen." },
           { id: "control", title: "Control Dashboard", path: "/control/", status: "live", statusLabel: "Live", editor: "Sections, KPIs, Routing", route: "Website -> Control", note: "Interne Workbench für Dashboard-Aufbau." }
-        ].map((page) => mergeEntityState(page, websitePageState[page.id], { defaultStatus: page.status, defaultStatusLabel: page.statusLabel }))
+        ].map((page) => {
+          const defaultContent = {
+            start: {
+              eyebrow: "⚡ Driving Techno • Peak Time • Dark & Hypnotic",
+              title: "Driven by Rhythm.<br><span>United by Emotion.</span>",
+              lead: "Wir sind <strong>Dr. Gray & Mrs. Dr. Gray</strong> – ein DJ-Duo aus Köln mit einer gemeinsamen Leidenschaft für treibenden, dunklen und emotionalen Techno. 🖤🎧"
+            },
+            bio: {
+              eyebrow: "Bio | Duo, Beziehung, Szene",
+              title: "Wir sind nicht nur ein Projekt. <span>Wir sind eine gemeinsame Handschrift.</span>",
+              lead: "Unsere Geschichte beginnt nicht bei Zahlen, sondern bei uns. Aus Beziehung, Szene und einem gemeinsamen Puls ist eine Linie entstanden, die man in unseren Sets, Bildern und Statements sofort wiedererkennt."
+            },
+            musik: {
+              eyebrow: "Musik | Druck, Tiefe, Duo-Handschrift",
+              title: "Hier hört man nicht nur Tracks. <span>Hier hört man uns.</span>",
+              lead: "🎧 Unsere komplette Musik: Driving Techno, Peak Time, Dark & Hypnotic. Live auf SoundCloud, direkt von den Decks ins Ohr."
+            },
+            shop: {
+              eyebrow: "Shop | Merch als Nebenlinie zur Musik",
+              title: "Music first. <span>Merch als Extension.</span>",
+              lead: "Unsere Hauptsache bleibt Musik, Sets und Community. Der Shop ist eine kuratierte Nebenlinie: klare Kategorien, echte Produkte und direkter Weg vom Look in den Shirtee-Store."
+            },
+            control: {
+              eyebrow: "Internes Dashboard",
+              title: "Live Kontrolle &amp; Monitoring",
+              lead: "Systemlage, Live-Signale und direkter Hermes-Zugriff auf einer Seite."
+            }
+          }[page.id] || { eyebrow: "", title: "", lead: "" };
+          return mergeEntityState({
+            ...page,
+            content: {
+              eyebrow: pageOverrideState[page.id]?.eyebrow || defaultContent.eyebrow,
+              title: pageOverrideState[page.id]?.title || defaultContent.title,
+              lead: pageOverrideState[page.id]?.lead || defaultContent.lead
+            }
+          }, websitePageState[page.id], { defaultStatus: page.status, defaultStatusLabel: page.statusLabel });
+        })
       }
     },
     shopMetrics: {
@@ -1354,10 +1406,19 @@ async function main() {
       },
       workbench: {
         drafts: [
-          { id: "drop-01", title: "Club Night Capsule", state: "draft", stateLabel: "Entwurf", line: "Merch / Capsule", task: "Mockup, Copy und Upload-Batch vorbereiten", priority: "P0" },
-          { id: "drop-02", title: "Afterhours Neon", state: "ready", stateLabel: "Uploadbereit", line: "TikTok / Merch", task: "Shirtee-Request erzeugen und Batch bauen", priority: "P1" },
-          { id: "drop-03", title: "Sound Ritual", state: "submitted", stateLabel: "Pruefung", line: "Music / Merch", task: "Store-Preview und Produkttext gegenprüfen", priority: "P1" }
-        ].map((draft) => mergeEntityState(draft, shopDraftState[draft.id], { defaultState: draft.state, defaultLabel: draft.stateLabel })),
+          { id: "drop-01", title: "Club Night Capsule", state: "draft", stateLabel: "Entwurf", line: "Merch / Capsule", task: "Mockup, Copy und Upload-Batch vorbereiten", priority: "P0", catalogItemId: "dr-crew-pressuregrid" },
+          { id: "drop-02", title: "Afterhours Neon", state: "ready", stateLabel: "Uploadbereit", line: "TikTok / Merch", task: "Shirtee-Request erzeugen und Batch bauen", priority: "P1", catalogItemId: "mrs-hoodie-serious" },
+          { id: "drop-03", title: "Sound Ritual", state: "submitted", stateLabel: "Pruefung", line: "Music / Merch", task: "Store-Preview und Produkttext gegenprüfen", priority: "P1", catalogItemId: "couple-rainproof-tee" }
+        ].map((draft) => mergeEntityState({
+          ...draft,
+          itemPreview: {
+            title: shopItemOverrideState[draft.catalogItemId]?.title || catalogById.get(draft.catalogItemId)?.title || "",
+            slogan: shopItemOverrideState[draft.catalogItemId]?.slogan || catalogById.get(draft.catalogItemId)?.slogan || "",
+            copy: shopItemOverrideState[draft.catalogItemId]?.copy || catalogById.get(draft.catalogItemId)?.copy || "",
+            href: shopItemOverrideState[draft.catalogItemId]?.href || catalogById.get(draft.catalogItemId)?.href || "",
+            status: shopItemOverrideState[draft.catalogItemId]?.status || catalogById.get(draft.catalogItemId)?.status || ""
+          }
+        }, shopDraftState[draft.id], { defaultState: draft.state, defaultLabel: draft.stateLabel })),
         uploadSteps: [
           { id: "queue", label: "Upload Queue", status: "connected", statusLabel: "CSV bereit", note: "CSV / Queue aus Katalog ableiten" },
           { id: "batches", label: "Upload Batches", status: "ready", statusLabel: "Batch bereit", note: "Upload-Chargen vorbereiten" },
@@ -1387,10 +1448,10 @@ async function main() {
       ],
       officialAccounts: [
         { label: "Website", url: websiteBase, status: "live", displayName: "drgray-mrsdrgray.com", handle: "Hauptdomain", profileImage: null, note: "Kontrollpfad / Hauptdomain" },
-        { label: "Shirtee Store", url: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: shopEnvironmentIssue ? "check" : shopProblemCount === 0 ? "live" : "check", displayName: "Dr. Gray & Mrs. Dr. Gray Store", handle: "Shirtee", profileImage: null, note: "Store / Produktlinks" },
-        { label: "SoundCloud", url: "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "check" : "check", displayName: soundcloud.available ? soundcloud.user.full_name || soundcloud.user.username || "drgray_sic" : "drgray_sic", handle: soundcloud.available && soundcloud.user.permalink_url ? `@${String(soundcloud.user.permalink_url).split("/").pop()}` : "@drgray_sic", profileImage: soundcloud.available ? soundcloud.user.avatar_url || null : null, note: "Musik / Profilsignal" },
-        { label: "TikTok Hauptseite", url: "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: tiktokDr.displayName || "Dr. Gray & Mrs. Dr. Gray", handle: tiktokDr.username ? `@${tiktokDr.username}` : "@drgray_mrsdrgray", profileImage: tiktokDr.avatarUrl || null, verified: Boolean(tiktokDr.isVerified), note: "Hauptprofil" },
-        { label: "TikTok Backup", url: "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: tiktokMrs.displayName || "Gray Afterhours", handle: tiktokMrs.username ? `@${tiktokMrs.username}` : "@gray.afterhours", profileImage: tiktokMrs.avatarUrl || null, verified: Boolean(tiktokMrs.isVerified), note: "Backup-Profil" }
+        { label: "Shirtee Store", url: socialAccountOverrideState.shop?.url || liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: shopEnvironmentIssue ? "check" : shopProblemCount === 0 ? "live" : "check", displayName: socialAccountOverrideState.shop?.displayName || "Dr. Gray & Mrs. Dr. Gray Store", handle: socialAccountOverrideState.shop?.handle || "Shirtee", profileImage: socialAccountOverrideState.shop?.profileImage || null, note: socialAccountOverrideState.shop?.note || "Store / Produktlinks" },
+        { label: "SoundCloud", url: socialAccountOverrideState.soundcloud?.url || "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.soundcloud?.displayName || (soundcloud.available ? soundcloud.user.full_name || soundcloud.user.username || "drgray_sic" : "drgray_sic"), handle: socialAccountOverrideState.soundcloud?.handle || (soundcloud.available && soundcloud.user.permalink_url ? `@${String(soundcloud.user.permalink_url).split("/").pop()}` : "@drgray_sic"), profileImage: socialAccountOverrideState.soundcloud?.profileImage || (soundcloud.available ? soundcloud.user.avatar_url || null : null), note: socialAccountOverrideState.soundcloud?.note || "Musik / Profilsignal" },
+        { label: "TikTok Hauptseite", url: socialAccountOverrideState.tiktokMain?.url || "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokMain?.displayName || tiktokDr.displayName || "Dr. Gray & Mrs. Dr. Gray", handle: socialAccountOverrideState.tiktokMain?.handle || (tiktokDr.username ? `@${tiktokDr.username}` : "@drgray_mrsdrgray"), profileImage: socialAccountOverrideState.tiktokMain?.profileImage || tiktokDr.avatarUrl || null, verified: Boolean(tiktokDr.isVerified), note: socialAccountOverrideState.tiktokMain?.note || "Hauptprofil" },
+        { label: "TikTok Backup", url: socialAccountOverrideState.tiktokBackup?.url || "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokBackup?.displayName || tiktokMrs.displayName || "Gray Afterhours", handle: socialAccountOverrideState.tiktokBackup?.handle || (tiktokMrs.username ? `@${tiktokMrs.username}` : "@gray.afterhours"), profileImage: socialAccountOverrideState.tiktokBackup?.profileImage || tiktokMrs.avatarUrl || null, verified: Boolean(tiktokMrs.isVerified), note: socialAccountOverrideState.tiktokBackup?.note || "Backup-Profil" }
       ]
     },
     performanceMetrics: {
@@ -1433,7 +1494,7 @@ async function main() {
           { id: "cal-02", day: "Mi", slot: "21:00", title: "Afterhours Teaser", channel: "TikTok Backup", status: "draft", statusLabel: "Entwurf" },
           { id: "cal-03", day: "Fr", slot: "18:00", title: "Track Snippet + CTA", channel: "TikTok Hauptseite", status: "live", statusLabel: "Geplant" },
           { id: "cal-04", day: "So", slot: "20:00", title: "SoundCloud Drop Reminder", channel: "SoundCloud", status: "draft", statusLabel: "Entwurf" }
-        ].map((entry) => mergeEntityState(entry, plannerEntryState[entry.id], { defaultStatus: entry.status, defaultStatusLabel: entry.statusLabel })),
+        ].map((entry) => mergeEntityState({ ...entry, ...(plannerOverrideState[entry.id] || {}) }, plannerEntryState[entry.id], { defaultStatus: entry.status, defaultStatusLabel: entry.statusLabel })),
         ideas: [
           { id: "idea-01", title: "Studio POV", owner: "Muse", state: "ready", note: "Hook, Shotlist und Caption vorbereiten" },
           { id: "idea-02", title: "Merch + Music Combo", owner: "Jarvis", state: "draft", note: "Shop-Teaser mit Musikverweis kombinieren" },

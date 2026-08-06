@@ -2796,6 +2796,50 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.5;
 }
 
+.control-inline-form {
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.75rem;
+  padding: 0.9rem 0.95rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+    rgba(255, 255, 255, 0.02);
+}
+
+.control-inline-form label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--text-soft);
+  font-size: 0.84rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.control-inline-form input,
+.control-inline-form textarea,
+.control-inline-form select {
+  width: 100%;
+  min-height: 46px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 216, 109, 0.2);
+  background: rgba(0, 0, 0, 0.38);
+  color: var(--text);
+  padding: 0.7rem 0.8rem;
+  font: inherit;
+}
+
+.control-inline-form textarea {
+  min-height: 110px;
+  resize: vertical;
+}
+
+.control-inline-form-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
 .control-lock-form {
   margin-top: 1.1rem;
   display: grid;

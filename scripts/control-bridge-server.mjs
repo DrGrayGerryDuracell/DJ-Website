@@ -11,6 +11,7 @@ const host = process.env.HOST || "127.0.0.1";
 const stateDir = join(repoRoot, "artifacts", "control-bridge");
 const statePath = join(stateDir, "state.json");
 const haQueuePath = join(stateDir, "ha-command-queue.json");
+const overridesPath = join(repoRoot, "assets", "data", "control-overrides.json");
 
 const MIME_TYPES = {
   ".html": "text/html; charset=utf-8",
@@ -44,12 +45,18 @@ const ACTIONS = {
   "ha.toggle-device": async ({ entityId, nextState }) => ({ ok: true, entityId, nextState, mode: "queued-local" }),
   "ha.run-scene": async ({ room, scene }) => ({ ok: true, room, scene, mode: "queued-local" }),
   "ha.run-automation": async ({ automation, mode }) => ({ ok: true, automation, automationMode: mode, mode: "queued-local" }),
+  "ha.service-call": async (payload) => runHaServiceCall(payload),
   "website.page-status": async ({ pageId, status }) => ({ ok: true, pageId, status }),
   "website.page-note": async ({ pageId, note }) => ({ ok: true, pageId, note }),
   "website.page-lock": async ({ pageId, locked }) => ({ ok: true, pageId, locked: Boolean(locked) }),
+  "website.save-page-content": async ({ pageId, fields }) => savePageContent(pageId, fields),
   "shop.prepare-draft": async ({ draftId, stage }) => ({ ok: true, draftId, stage }),
   "shop.draft-status": async ({ draftId, status }) => ({ ok: true, draftId, status }),
+  "shop.save-item": async ({ itemId, fields }) => saveShopItem(itemId, fields),
   "content.plan-entry": async ({ id, status, owner }) => ({ ok: true, id, status, owner }),
+  "content.save-plan-entry": async ({ id, fields }) => savePlannerEntry(id, fields),
+  "content.queue-upload": async ({ id, payload }) => queueTikTokUpload(id, payload),
+  "social.save-account": async ({ accountId, fields }) => saveSocialAccount(accountId, fields),
   "ops.run-subagent": async ({ agentId, mode }) => ({ ok: true, agentId, mode }),
   "ops.vault-writeback": async ({ nodeId, mode }) => ({ ok: true, nodeId, mode })
 };
@@ -87,6 +94,15 @@ const ACTION_STATE_PATCHERS = {
       stateLabel: payload.mode === "pause" ? "Pausiert" : payload.mode === "run" ? "Aktiv" : "Verbunden"
     }
   }),
+  "ha.service-call": (payload, result) => ({
+    kind: "ha-runtime",
+    id: payload.room || payload.entityId || payload.service || "service-call",
+    patch: {
+      state: result.mode === "remote-ha" ? "live" : "ready",
+      stateLabel: result.mode === "remote-ha" ? "Servicecall gesendet" : "Queue gespeichert",
+      lastAction: "ha.service-call"
+    }
+  }),
   "website.page-status": (payload, result) => ({
     kind: "website-page",
     id: payload.pageId,
@@ -113,6 +129,18 @@ const ACTION_STATE_PATCHERS = {
       lastAction: result.action || "website.page-lock"
     }
   }),
+  "website.save-page-content": (payload, result) => ({
+    kind: "website-page",
+    id: payload.pageId,
+    patch: {
+      contentSavedAt: result.savedAt,
+      contentMode: result.mode,
+      ...Object.fromEntries(
+        Object.entries(payload.fields || {}).map(([key, value]) => [key, value])
+      ),
+      lastAction: result.action || "website.save-page-content"
+    }
+  }),
   "shop.prepare-draft": (payload, result) => ({
     kind: "shop-draft",
     id: payload.draftId,
@@ -131,6 +159,17 @@ const ACTION_STATE_PATCHERS = {
       lastAction: result.action || "shop.draft-status"
     }
   }),
+  "shop.save-item": (payload, result) => ({
+    kind: "shop-draft",
+    id: payload.itemId,
+    patch: {
+      contentSavedAt: result.savedAt,
+      ...Object.fromEntries(
+        Object.entries(payload.fields || {}).map(([key, value]) => [key, value])
+      ),
+      lastAction: result.action || "shop.save-item"
+    }
+  }),
   "content.plan-entry": (payload, result) => ({
     kind: "planner-entry",
     id: payload.id,
@@ -139,6 +178,37 @@ const ACTION_STATE_PATCHERS = {
       statusLabel: mapStatusLabel(payload.status),
       owner: payload.owner || null,
       lastAction: result.action || "content.plan-entry"
+    }
+  }),
+  "content.save-plan-entry": (payload, result) => ({
+    kind: "planner-entry",
+    id: payload.id,
+    patch: {
+      ...Object.fromEntries(
+        Object.entries(payload.fields || {}).map(([key, value]) => [key, value])
+      ),
+      contentSavedAt: result.savedAt,
+      lastAction: result.action || "content.save-plan-entry"
+    }
+  }),
+  "content.queue-upload": (payload, result) => ({
+    kind: "planner-entry",
+    id: payload.id,
+    patch: {
+      uploadState: result.mode === "queued-upload" ? "queued" : "draft",
+      uploadSavedAt: result.savedAt,
+      lastAction: result.action || "content.queue-upload"
+    }
+  }),
+  "social.save-account": (payload, result) => ({
+    kind: "social-account",
+    id: payload.accountId,
+    patch: {
+      ...Object.fromEntries(
+        Object.entries(payload.fields || {}).map(([key, value]) => [key, value])
+      ),
+      contentSavedAt: result.savedAt,
+      lastAction: result.action || "social.save-account"
     }
   }),
   "ops.run-subagent": (payload, result) => ({
@@ -173,6 +243,26 @@ function ensureStateFiles() {
   if (!existsSync(haQueuePath)) {
     writeFileSync(haQueuePath, JSON.stringify({ updatedAt: null, queue: [] }, null, 2), "utf8");
   }
+  if (!existsSync(overridesPath)) {
+    writeFileSync(
+      overridesPath,
+      JSON.stringify(
+        {
+          updatedAt: null,
+          pages: {},
+          shopItems: {},
+          shopDrafts: {},
+          contentPlanner: { calendar: {}, ideas: {} },
+          socialAccounts: {},
+          homeAssistant: { lastServiceCalls: [] },
+          tiktokUploadQueue: []
+        },
+        null,
+        2
+      ),
+      "utf8"
+    );
+  }
 }
 
 function readJson(filePath, fallback) {
@@ -186,6 +276,156 @@ function readJson(filePath, fallback) {
 function writeJson(filePath, value) {
   mkdirSync(dirname(filePath), { recursive: true });
   writeFileSync(filePath, JSON.stringify(value, null, 2), "utf8");
+}
+
+function readOverrides() {
+  return readJson(overridesPath, {
+    updatedAt: null,
+    pages: {},
+    shopItems: {},
+    shopDrafts: {},
+    contentPlanner: { calendar: {}, ideas: {} },
+    socialAccounts: {},
+    homeAssistant: { lastServiceCalls: [] },
+    tiktokUploadQueue: []
+  });
+}
+
+function writeOverrides(value) {
+  value.updatedAt = new Date().toISOString();
+  writeJson(overridesPath, value);
+}
+
+function cleanFields(fields) {
+  return Object.fromEntries(
+    Object.entries(fields || {}).filter(([, value]) => value !== undefined)
+  );
+}
+
+async function savePageContent(pageId, fields) {
+  if (!pageId) {
+    return { ok: false, error: "pageId ist erforderlich." };
+  }
+  const overrides = readOverrides();
+  overrides.pages = overrides.pages && typeof overrides.pages === "object" ? overrides.pages : {};
+  overrides.pages[pageId] = {
+    ...(overrides.pages[pageId] || {}),
+    ...cleanFields(fields),
+    updatedAt: new Date().toISOString()
+  };
+  writeOverrides(overrides);
+  return { ok: true, pageId, savedAt: overrides.pages[pageId].updatedAt, mode: "file-override" };
+}
+
+async function saveShopItem(itemId, fields) {
+  if (!itemId) {
+    return { ok: false, error: "itemId ist erforderlich." };
+  }
+  const overrides = readOverrides();
+  overrides.shopItems = overrides.shopItems && typeof overrides.shopItems === "object" ? overrides.shopItems : {};
+  overrides.shopItems[itemId] = {
+    ...(overrides.shopItems[itemId] || {}),
+    ...cleanFields(fields),
+    updatedAt: new Date().toISOString()
+  };
+  writeOverrides(overrides);
+  return { ok: true, itemId, savedAt: overrides.shopItems[itemId].updatedAt, mode: "file-override" };
+}
+
+async function savePlannerEntry(id, fields) {
+  if (!id) {
+    return { ok: false, error: "id ist erforderlich." };
+  }
+  const overrides = readOverrides();
+  overrides.contentPlanner = overrides.contentPlanner && typeof overrides.contentPlanner === "object" ? overrides.contentPlanner : { calendar: {}, ideas: {} };
+  overrides.contentPlanner.calendar = overrides.contentPlanner.calendar && typeof overrides.contentPlanner.calendar === "object" ? overrides.contentPlanner.calendar : {};
+  overrides.contentPlanner.calendar[id] = {
+    ...(overrides.contentPlanner.calendar[id] || {}),
+    ...cleanFields(fields),
+    updatedAt: new Date().toISOString()
+  };
+  writeOverrides(overrides);
+  return { ok: true, id, savedAt: overrides.contentPlanner.calendar[id].updatedAt, mode: "file-override" };
+}
+
+async function saveSocialAccount(accountId, fields) {
+  if (!accountId) {
+    return { ok: false, error: "accountId ist erforderlich." };
+  }
+  const overrides = readOverrides();
+  overrides.socialAccounts = overrides.socialAccounts && typeof overrides.socialAccounts === "object" ? overrides.socialAccounts : {};
+  overrides.socialAccounts[accountId] = {
+    ...(overrides.socialAccounts[accountId] || {}),
+    ...cleanFields(fields),
+    updatedAt: new Date().toISOString()
+  };
+  writeOverrides(overrides);
+  return { ok: true, accountId, savedAt: overrides.socialAccounts[accountId].updatedAt, mode: "file-override" };
+}
+
+async function queueTikTokUpload(id, payload) {
+  const overrides = readOverrides();
+  overrides.tiktokUploadQueue = Array.isArray(overrides.tiktokUploadQueue) ? overrides.tiktokUploadQueue : [];
+  const entry = {
+    id: `tt-upload-${Date.now()}`,
+    plannerId: id || null,
+    createdAt: new Date().toISOString(),
+    status: "queued",
+    payload: payload || null
+  };
+  overrides.tiktokUploadQueue.push(entry);
+  overrides.tiktokUploadQueue = overrides.tiktokUploadQueue.slice(-40);
+  writeOverrides(overrides);
+  return { ok: true, id, savedAt: entry.createdAt, mode: "queued-upload", queued: entry };
+}
+
+async function runHaServiceCall(payload) {
+  const queue = readJson(haQueuePath, { updatedAt: null, queue: [] });
+  const queuedEntry = {
+    id: `ha-${Date.now()}`,
+    createdAt: new Date().toISOString(),
+    kind: "service-call",
+    source: "control-dashboard",
+    status: "queued",
+    payload
+  };
+
+  const haUrl = String(process.env.HOME_ASSISTANT_URL || "").trim().replace(/\/$/, "");
+  const haToken = String(process.env.HOME_ASSISTANT_TOKEN || "").trim();
+  const domain = String(payload?.domain || "").trim();
+  const service = String(payload?.service || "").trim();
+
+  if (haUrl && haToken && domain && service) {
+    const response = await fetch(`${haUrl}/api/services/${domain}/${service}`, {
+      method: "POST",
+      headers: {
+        authorization: `Bearer ${haToken}`,
+        "content-type": "application/json"
+      },
+      body: JSON.stringify(payload?.data || {})
+    });
+    if (!response.ok) {
+      return { ok: false, error: `HA Servicecall fehlgeschlagen (${response.status})` };
+    }
+    const overrides = readOverrides();
+    overrides.homeAssistant = overrides.homeAssistant && typeof overrides.homeAssistant === "object" ? overrides.homeAssistant : { lastServiceCalls: [] };
+    overrides.homeAssistant.lastServiceCalls = Array.isArray(overrides.homeAssistant.lastServiceCalls) ? overrides.homeAssistant.lastServiceCalls : [];
+    overrides.homeAssistant.lastServiceCalls.push({
+      createdAt: queuedEntry.createdAt,
+      domain,
+      service,
+      entityId: payload?.entityId || null,
+      mode: "remote-ha"
+    });
+    overrides.homeAssistant.lastServiceCalls = overrides.homeAssistant.lastServiceCalls.slice(-24);
+    writeOverrides(overrides);
+    return { ok: true, mode: "remote-ha", domain, service, savedAt: queuedEntry.createdAt };
+  }
+
+  queue.queue.push(queuedEntry);
+  queue.updatedAt = new Date().toISOString();
+  writeJson(haQueuePath, queue);
+  return { ok: true, mode: "queued-local", savedAt: queuedEntry.createdAt, queued: queuedEntry };
 }
 
 function mapStatusLabel(value) {

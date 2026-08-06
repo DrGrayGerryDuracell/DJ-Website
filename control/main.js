@@ -52,13 +52,37 @@ async function loadLiveMetrics() {
 }
 
 async function controlApi(path, options = {}) {
-  const response = await fetch(`${CONTROL_API_BASE}${path}`, {
+  const requestUrl = `${CONTROL_API_BASE}${path}`;
+  const requestOptions = {
     ...options,
     headers: {
       "content-type": "application/json",
       ...(options.headers || {})
     }
-  });
+  };
+  let response;
+
+  if (typeof window.fetch === "function") {
+    response = await window.fetch(requestUrl, requestOptions);
+  } else {
+    response = await new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open(requestOptions.method || "GET", requestUrl, true);
+      Object.entries(requestOptions.headers || {}).forEach(([key, value]) => {
+        xhr.setRequestHeader(key, value);
+      });
+      xhr.onload = () => {
+        resolve({
+          ok: xhr.status >= 200 && xhr.status < 300,
+          status: xhr.status,
+          json: async () => JSON.parse(xhr.responseText || "{}")
+        });
+      };
+      xhr.onerror = () => reject(new Error("XHR request failed"));
+      xhr.send(requestOptions.body || null);
+    });
+  }
+
   const payload = await response.json().catch(() => ({}));
   if (!response.ok) {
     throw new Error(payload?.message || payload?.stderr || `API Fehler ${response.status}`);
@@ -211,14 +235,17 @@ function setupNavigation() {
   document.querySelectorAll(".control-nav-link").forEach((link) => {
     link.addEventListener("click", () => {
       closeNav();
+      closeControlDialog();
     });
     link.addEventListener("touchend", () => {
       closeNav();
+      closeControlDialog();
     });
   });
 
   window.addEventListener("hashchange", () => {
     closeNav();
+    closeControlDialog();
   });
 
   document.addEventListener("click", (event) => {
@@ -685,6 +712,29 @@ function buildDialogPayload(data, kind, id) {
           }, null, 2)
         }
       ],
+      forms: [
+        {
+          action: "ha.service-call",
+          submitLabel: "Servicecall senden",
+          payloadBase: { room: room.id },
+          fields: [
+            {
+              name: "domain",
+              label: "Domain",
+              type: "select",
+              value: room.devices.find((device) => device.type === "Light") ? "light" : "switch",
+              options: [
+                { value: "light", label: "Light" },
+                { value: "switch", label: "Switch" },
+                { value: "scene", label: "Scene" },
+                { value: "media_player", label: "Media Player" }
+              ]
+            },
+            { name: "service", label: "Service", type: "text", value: "toggle" },
+            { name: "entityId", label: "Entity ID", type: "text", value: room.devices[0]?.id || "" }
+          ]
+        }
+      ],
       toggles: room.devices
         .filter((device) => ["Light", "Switch", "Media"].includes(device.type))
         .map((device) => ({
@@ -756,6 +806,18 @@ function buildDialogPayload(data, kind, id) {
         { type: "control-action", label: "Draft-Lock aktivieren", action: "website.page-lock", payload: { pageId: page.id, locked: true } },
         { type: "copy", label: "Editor-Notiz kopieren", value: `${page.title}\n${page.path}\n${page.editor}\n${page.note}` }
       ],
+      forms: [
+        {
+          action: "website.save-page-content",
+          submitLabel: "Seite speichern",
+          payloadBase: { pageId: page.id },
+          fields: [
+            { name: "eyebrow", label: "Eyebrow", type: "text", value: page.content?.eyebrow || "" },
+            { name: "title", label: "Titel", type: "textarea", rows: 3, value: page.content?.title || "" },
+            { name: "lead", label: "Lead / Intro", type: "textarea", rows: 5, value: page.content?.lead || "" }
+          ]
+        }
+      ],
       toggles: [{ id: "draft-lock", label: "Bearbeitungsmodus", value: getControlToggleValue(kind, id, "draft-lock", true), onLabel: "Entwurf", offLabel: "Nur Lesen" }]
     };
   }
@@ -778,6 +840,20 @@ function buildDialogPayload(data, kind, id) {
         { type: "control-action", label: "Status freigeben", action: "shop.draft-status", payload: { draftId: draft.id, status: "approved" } },
         { type: "copy", label: "Queue-Befehl kopieren", value: "npm run generate:upload-queue\nnpm run generate:upload-batches\nnpm run generate:shirtee-api-request" }
       ],
+      forms: draft.catalogItemId ? [
+        {
+          action: "shop.save-item",
+          submitLabel: "Produktdaten speichern",
+          payloadBase: { itemId: draft.catalogItemId },
+          fields: [
+            { name: "title", label: "Titel", type: "text", value: draft.itemPreview?.title || "" },
+            { name: "slogan", label: "Slogan", type: "textarea", rows: 3, value: draft.itemPreview?.slogan || "" },
+            { name: "copy", label: "Copy", type: "textarea", rows: 5, value: draft.itemPreview?.copy || "" },
+            { name: "href", label: "Ziel-URL", type: "url", value: draft.itemPreview?.href || "" },
+            { name: "status", label: "Status", type: "text", value: draft.itemPreview?.status || "" }
+          ]
+        }
+      ] : [],
       toggles: [
         { id: "copy-ready", label: "Copy fertig", value: getControlToggleValue(kind, id, "copy-ready", draft.state !== "draft"), onLabel: "Ja", offLabel: "Nein" },
         { id: "upload-ready", label: "Upload bereit", value: getControlToggleValue(kind, id, "upload-ready", draft.state === "ready"), onLabel: "Ja", offLabel: "Nein" }
@@ -832,6 +908,21 @@ function buildDialogPayload(data, kind, id) {
           type: "copy",
           label: "Content-Brief kopieren",
           value: `${entry.title}\nKanal: ${entry.channel}\nSlot: ${entry.day} ${entry.slot}\nStatus: ${entry.statusLabel}`
+        },
+        { type: "control-action", label: "TikTok Upload einreihen", action: "content.queue-upload", payload: { id: entry.id, payload: { title: entry.title, channel: entry.channel, slot: `${entry.day} ${entry.slot}` } } }
+      ],
+      forms: [
+        {
+          action: "content.save-plan-entry",
+          submitLabel: "Plan speichern",
+          payloadBase: { id: entry.id },
+          fields: [
+            { name: "title", label: "Titel", type: "text", value: entry.title || "" },
+            { name: "day", label: "Tag", type: "text", value: entry.day || "" },
+            { name: "slot", label: "Uhrzeit", type: "text", value: entry.slot || "" },
+            { name: "channel", label: "Kanal", type: "text", value: entry.channel || "" },
+            { name: "status", label: "Status", type: "text", value: entry.status || "" }
+          ]
         }
       ],
       toggles: [
@@ -872,6 +963,30 @@ function buildDialogPayload(data, kind, id) {
         ...(account.url ? [{ type: "link", label: "Eintrag öffnen", href: account.url }] : []),
         { type: "link", label: "Social Bereich öffnen", href: "#social" },
         { type: "copy", label: "Registry Daten kopieren", value: `${account.label}\n${account.displayName || ""}\n${account.handle || ""}\n${account.url || ""}\n${account.note || ""}` }
+      ],
+      forms: [
+        {
+          action: "social.save-account",
+          submitLabel: "Social-Daten speichern",
+          payloadBase: {
+            accountId: account.label === "TikTok Hauptseite"
+              ? "tiktokMain"
+              : account.label === "TikTok Backup"
+                ? "tiktokBackup"
+                : account.label === "SoundCloud"
+                  ? "soundcloud"
+                  : account.label === "Shirtee Store"
+                    ? "shop"
+                    : "website"
+          },
+          fields: [
+            { name: "displayName", label: "Anzeigename", type: "text", value: account.displayName || "" },
+            { name: "handle", label: "Handle", type: "text", value: account.handle || "" },
+            { name: "url", label: "URL", type: "url", value: account.url || "" },
+            { name: "note", label: "Notiz", type: "textarea", rows: 3, value: account.note || "" },
+            { name: "profileImage", label: "Profilbild-URL", type: "url", value: account.profileImage || "" }
+          ]
+        }
       ]
     };
   }
@@ -987,6 +1102,7 @@ function renderControlDialog(payload) {
   const lists = Array.isArray(payload.lists) ? payload.lists : [];
   const toggles = Array.isArray(payload.toggles) ? payload.toggles : [];
   const actions = Array.isArray(payload.actions) ? payload.actions : [];
+  const forms = Array.isArray(payload.forms) ? payload.forms : [];
   return `
     <div class="control-dialog-head">
       <p class="eyebrow">${escapeHtml(payload.subtitle || "Workbench")}</p>
@@ -1026,6 +1142,44 @@ function renderControlDialog(payload) {
               return `<button type="button" class="action-btn is-secondary" data-control-copy="${escapeHtml(action.value || "")}">${escapeHtml(action.label)}</button>`;
             }).join("")}
           </div>
+        </div>
+      ` : ""}
+      ${forms.length ? `
+        <div class="control-dialog-section">
+          <h4>Bearbeiten</h4>
+          ${forms.map((form) => `
+            <form class="control-inline-form" data-control-form-action="${escapeHtml(form.action || "")}" data-control-form-base='${escapeHtml(JSON.stringify(form.payloadBase || {}))}'>
+              ${(form.fields || []).map((field) => {
+                if (field.type === "textarea") {
+                  return `
+                    <label>
+                      <span>${escapeHtml(field.label)}</span>
+                      <textarea name="${escapeHtml(field.name)}" rows="${escapeHtml(String(field.rows || 4))}" placeholder="${escapeHtml(field.placeholder || "")}">${escapeHtml(field.value || "")}</textarea>
+                    </label>
+                  `;
+                }
+                if (field.type === "select") {
+                  return `
+                    <label>
+                      <span>${escapeHtml(field.label)}</span>
+                      <select name="${escapeHtml(field.name)}">
+                        ${(field.options || []).map((option) => `<option value="${escapeHtml(option.value)}"${option.value === field.value ? " selected" : ""}>${escapeHtml(option.label)}</option>`).join("")}
+                      </select>
+                    </label>
+                  `;
+                }
+                return `
+                  <label>
+                    <span>${escapeHtml(field.label)}</span>
+                    <input type="${escapeHtml(field.type || "text")}" name="${escapeHtml(field.name)}" value="${escapeHtml(field.value || "")}" placeholder="${escapeHtml(field.placeholder || "")}">
+                  </label>
+                `;
+              }).join("")}
+              <div class="control-inline-form-actions">
+                <button type="submit" class="action-btn">${escapeHtml(form.submitLabel || "Speichern")}</button>
+              </div>
+            </form>
+          `).join("")}
         </div>
       ` : ""}
       ${toggles.length ? `
@@ -1083,6 +1237,25 @@ function updateHaActionStatus(message, tone = "info") {
   document.querySelectorAll("[data-ha-action-status]").forEach((target) => {
     target.textContent = message;
     target.className = `status-pill is-${tone}`;
+  });
+}
+
+function bindControlDialogTriggers() {
+  document.querySelectorAll("[data-control-dialog-kind][data-control-dialog-id]").forEach((trigger) => {
+    if (trigger.dataset.controlDialogBound === "true") {
+      return;
+    }
+    trigger.dataset.controlDialogBound = "true";
+    trigger.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      const kind = trigger.getAttribute("data-control-dialog-kind");
+      const id = trigger.getAttribute("data-control-dialog-id");
+      const payload = buildDialogPayload(window.__CONTROL_DATA__ || {}, kind, id);
+      if (payload) {
+        openControlDialog(payload, { kind, id });
+      }
+    });
   });
 }
 
@@ -1213,6 +1386,66 @@ function setupControlDialogActions() {
         }, 1400);
       }).catch(() => {});
     }
+  });
+
+  document.addEventListener("submit", async (event) => {
+    const form = event.target.closest("[data-control-form-action]");
+    if (!form) {
+      return;
+    }
+    event.preventDefault();
+    const submitButton = form.querySelector('button[type="submit"]');
+    const previous = submitButton?.textContent || "Speichern";
+    if (submitButton) {
+      submitButton.textContent = "Speichert...";
+      submitButton.disabled = true;
+    }
+
+    try {
+      const action = form.getAttribute("data-control-form-action");
+      const payloadBase = JSON.parse(form.getAttribute("data-control-form-base") || "{}");
+      const formData = new FormData(form);
+      const fields = {};
+      for (const [key, value] of formData.entries()) {
+        fields[key] = String(value || "").trim();
+      }
+      const payload = action === "ha.service-call"
+        ? {
+            ...payloadBase,
+            domain: fields.domain,
+            service: fields.service,
+            entityId: fields.entityId,
+            data: fields.entityId ? { entity_id: fields.entityId } : {}
+          }
+        : {
+            ...payloadBase,
+            fields
+          };
+
+      const result = await runControlAction(action, payload);
+      updateHaActionStatus(`Letzte Action: ${action} erfolgreich${result.mode ? ` (${result.mode})` : ""}`, "live");
+      const nextLiveMetrics = await loadLiveMetrics();
+      if (nextLiveMetrics?.metadata) {
+        window.__CONTROL_DATA__ = nextLiveMetrics;
+        renderDashboardView(applyRangeToData(nextLiveMetrics, "live"));
+      }
+      reopenCurrentDialog();
+      if (submitButton) {
+        submitButton.textContent = "Gespeichert";
+      }
+    } catch (error) {
+      updateHaActionStatus(`Speichern fehlgeschlagen: ${error.message || "unbekannter Fehler"}`, "error");
+      if (submitButton) {
+        submitButton.textContent = "Fehler";
+      }
+    }
+
+    window.setTimeout(() => {
+      if (submitButton) {
+        submitButton.textContent = previous;
+        submitButton.disabled = false;
+      }
+    }, 1800);
   });
 
   document.addEventListener("keydown", (event) => {
@@ -1604,6 +1837,7 @@ function renderDashboardView(data) {
   animateKpis();
   restoreControlDecks();
   restoreAgentsRoomControls();
+  bindControlDialogTriggers();
   if (!document.querySelector("[data-control-dialog]")?.hidden) {
     reopenCurrentDialog();
   }
