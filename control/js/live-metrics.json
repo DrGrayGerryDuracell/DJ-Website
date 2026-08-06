@@ -1,7 +1,7 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T09:15:24.391Z",
+    "generatedAt": "2026-08-06T09:15:54.338Z",
     "generatedAtLabel": "06.08.26, 11:15",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 348,
+      "value": 276,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 540,
+        "visitors": 464,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 303,
+        "visitors": 252,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 310,
+        "visitors": 256,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 320,
+        "visitors": 293,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 319,
+        "visitors": 232,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 312,
+        "visitors": 248,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 371,
+        "visitors": 246,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 311,
+        "visitors": 218,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "348 ms",
+      "avgSession": "276 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -324,7 +324,7 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T09:15:24.391Z",
+      "checkedAt": "2026-08-06T09:15:54.338Z",
       "checkedAtLabel": "06.08.26, 11:15"
     },
     "catalog": {
@@ -3159,7 +3159,7 @@
         "state": "info"
       }
     ],
-    "responseTime": "348 ms",
+    "responseTime": "276 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3440,7 +3440,7 @@
   ],
   "homeAssistantWorkbench": {
     "bridgeState": {
-      "updatedAt": "2026-08-06T09:14:56.031Z",
+      "updatedAt": "2026-08-06T09:15:24.754Z",
       "controlGroups": [
         "website-page",
         "shop-draft",
@@ -3594,7 +3594,7 @@
   },
   "operationsWorkbench": {
     "controlBridge": {
-      "updatedAt": "2026-08-06T09:14:56.031Z",
+      "updatedAt": "2026-08-06T09:15:24.754Z",
       "controlGroups": [
         "website-page",
         "shop-draft",
@@ -3751,14 +3751,14 @@
         }
       },
       "lastCommand": {
-        "id": "command-1786007696031",
+        "id": "command-1786007724754",
         "command": "sync-control-live",
-        "createdAt": "2026-08-06T09:14:56.031Z",
+        "createdAt": "2026-08-06T09:15:24.754Z",
         "status": "completed"
       }
     },
     "schedulerSummary": {
-      "updatedAt": "2026-08-06T09:14:56.031Z",
+      "updatedAt": "2026-08-06T09:15:24.754Z",
       "entries": [
         {
           "id": "cron-live",
