@@ -22,6 +22,9 @@ import {
 } from "./js/render.js?v=20260806d";
 
 const LIVE_REFRESH_MS = 30000;
+const NETWORK_ZOOM_MIN = 0.7;
+const NETWORK_ZOOM_MAX = 1.45;
+const NETWORK_ZOOM_STEP = 0.15;
 
 async function loadLiveMetrics() {
   try {
@@ -482,6 +485,68 @@ function updateNetworkInspector(workspace, node) {
   setText("[data-network-inspector-connections]", node.dataset.networkConnections || "Keine direkte Verbindung im aktuellen Snapshot.");
 }
 
+function setDeckPanel(deck, panelId) {
+  if (!deck || !panelId) return;
+  const deckId = deck.getAttribute("data-control-deck") || "default";
+  window.__CONTROL_DECK_STATE__ = window.__CONTROL_DECK_STATE__ || {};
+  window.__CONTROL_DECK_STATE__[deckId] = panelId;
+
+  deck.querySelectorAll("[data-deck-panel]").forEach((button) => {
+    const isActive = button.getAttribute("data-deck-panel") === panelId;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-selected", isActive ? "true" : "false");
+  });
+
+  deck.querySelectorAll("[data-deck-panel-content]").forEach((panel) => {
+    const isActive = panel.getAttribute("data-deck-panel-content") === panelId;
+    panel.classList.toggle("is-active", isActive);
+    panel.hidden = !isActive;
+  });
+}
+
+function restoreControlDecks() {
+  document.querySelectorAll("[data-control-deck]").forEach((deck) => {
+    const deckId = deck.getAttribute("data-control-deck") || "default";
+    const defaultPanel = deck.getAttribute("data-default-panel") || deck.querySelector("[data-deck-panel]")?.getAttribute("data-deck-panel");
+    const savedPanel = window.__CONTROL_DECK_STATE__?.[deckId] || defaultPanel;
+    setDeckPanel(deck, savedPanel);
+  });
+}
+
+function setNetworkZoom(workspace, nextZoom) {
+  if (!workspace) return;
+  const zoom = Math.min(NETWORK_ZOOM_MAX, Math.max(NETWORK_ZOOM_MIN, Number(nextZoom) || 1));
+  window.__CONTROL_NETWORK_ZOOM__ = zoom;
+
+  workspace.querySelectorAll("[data-network-zoom-shell]").forEach((shell) => {
+    shell.style.setProperty("--network-zoom", String(zoom));
+  });
+
+  workspace.querySelectorAll("[data-network-zoom-reset]").forEach((button) => {
+    button.textContent = `${Math.round(zoom * 100)}%`;
+  });
+
+  workspace.querySelectorAll("[data-network-zoom-out]").forEach((button) => {
+    button.disabled = zoom <= NETWORK_ZOOM_MIN;
+  });
+
+  workspace.querySelectorAll("[data-network-zoom-in]").forEach((button) => {
+    button.disabled = zoom >= NETWORK_ZOOM_MAX;
+  });
+}
+
+function focusNetworkNode(workspace, mode, name) {
+  if (!workspace || !name) return;
+  const targetMode = ["agents", "devices", "vault"].includes(mode) ? mode : "agents";
+  setNetworkMode(workspace, targetMode);
+  const nodeId = String(name).toLowerCase().replace(/[^a-z0-9]+/g, "-");
+  const view = workspace.querySelector(`[data-network-view="${targetMode}"]`);
+  const node = view?.querySelector(`[data-network-node="${nodeId}"]`);
+  if (!node) return;
+  updateNetworkInspector(workspace, node);
+  node.scrollIntoView({ block: "center", inline: "center", behavior: "smooth" });
+}
+
 function setNetworkMode(workspace, mode) {
   if (!workspace) return;
   const nextMode = ["agents", "devices", "vault"].includes(mode) ? mode : "agents";
@@ -505,6 +570,7 @@ function setNetworkMode(workspace, mode) {
 function restoreAgentsRoomControls() {
   const workspace = document.querySelector("[data-network-workspace]");
   setNetworkMode(workspace, window.__CONTROL_NETWORK_MODE__ || "agents");
+  setNetworkZoom(workspace, window.__CONTROL_NETWORK_ZOOM__ || 1);
 }
 
 function setupAgentsRoomControls() {
@@ -568,10 +634,67 @@ function setupAgentsRoomControls() {
       return;
     }
 
+    const zoomOutButton = event.target.closest("[data-network-zoom-out]");
+    if (zoomOutButton) {
+      setNetworkZoom(zoomOutButton.closest("[data-network-workspace]"), (window.__CONTROL_NETWORK_ZOOM__ || 1) - NETWORK_ZOOM_STEP);
+      return;
+    }
+
+    const zoomInButton = event.target.closest("[data-network-zoom-in]");
+    if (zoomInButton) {
+      setNetworkZoom(zoomInButton.closest("[data-network-workspace]"), (window.__CONTROL_NETWORK_ZOOM__ || 1) + NETWORK_ZOOM_STEP);
+      return;
+    }
+
+    const zoomResetButton = event.target.closest("[data-network-zoom-reset]");
+    if (zoomResetButton) {
+      setNetworkZoom(zoomResetButton.closest("[data-network-workspace]"), 1);
+      return;
+    }
+
+    const targetModeButton = event.target.closest("[data-network-target-mode]");
+    if (targetModeButton) {
+      const deck = document.querySelector('[data-control-deck="agentsroom"]');
+      setDeckPanel(deck, "topology");
+      const workspace = targetModeButton.closest(".control-deck")?.querySelector("[data-network-workspace]") || document.querySelector("[data-network-workspace]");
+      setNetworkMode(workspace, targetModeButton.getAttribute("data-network-target-mode"));
+      window.location.hash = "#agentsroom";
+      return;
+    }
+
+    const deckButton = event.target.closest("[data-deck-panel]");
+    if (deckButton) {
+      const deck = deckButton.closest("[data-control-deck]");
+      setDeckPanel(deck, deckButton.getAttribute("data-deck-panel"));
+      return;
+    }
+
+    const focusCard = event.target.closest("[data-focus-mode][data-focus-name]");
+    if (focusCard) {
+      const deck = document.querySelector('[data-control-deck="agentsroom"]');
+      setDeckPanel(deck, "topology");
+      const workspace = document.querySelector("[data-network-workspace]");
+      focusNetworkNode(workspace, focusCard.getAttribute("data-focus-mode"), focusCard.getAttribute("data-focus-name"));
+      window.location.hash = "#agentsroom";
+      return;
+    }
+
     const node = event.target.closest("[data-network-node]");
     if (node) {
       updateNetworkInspector(node.closest("[data-network-workspace]"), node);
     }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" && event.key !== " ") return;
+    const focusCard = event.target.closest("[data-focus-mode][data-focus-name]");
+    if (!focusCard) return;
+    event.preventDefault();
+    const deck = document.querySelector('[data-control-deck="agentsroom"]');
+    setDeckPanel(deck, "topology");
+    const workspace = document.querySelector("[data-network-workspace]");
+    focusNetworkNode(workspace, focusCard.getAttribute("data-focus-mode"), focusCard.getAttribute("data-focus-name"));
+    window.location.hash = "#agentsroom";
   });
 }
 
@@ -617,6 +740,7 @@ function renderDashboardView(data) {
   renderAlerts(document.querySelector("[data-alerts]"), data.alerts);
   renderQuickActions(document.querySelector("[data-quick-actions]"), data.quickActions);
   animateKpis();
+  restoreControlDecks();
   restoreAgentsRoomControls();
 }
 

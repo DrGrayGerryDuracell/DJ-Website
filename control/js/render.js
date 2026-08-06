@@ -228,35 +228,45 @@ function buildOverviewCommandCards(dashboardData) {
       value: gatewayState === "running" ? "Mac mini / Hermes stabil" : "Zentralserver pruefen",
       detail: `Gateway ${gatewayState} · Telegram ${telegramState}`,
       status: gatewayState === "running" && telegramState === "connected" ? "live" : "warn",
-      image: getOverviewIcon("centralServer")
+      image: getOverviewIcon("centralServer"),
+      href: "#agentsroom",
+      action: "Zentrale öffnen"
     },
     {
       title: "Kommunikation",
       value: `${formatValue(agentsRoom.metrics?.routeCount || 0)} aktive Routen`,
       detail: `${formatValue(agentsRoom.metrics?.delegationCount || 0)} Delegationen · ${formatValue(agentsRoom.metrics?.conversationCount || 0)} Gespraeche`,
       status: (agentsRoom.metrics?.routeCount || 0) > 0 ? "connected" : "warn",
-      image: getOverviewIcon("communication")
+      image: getOverviewIcon("communication"),
+      href: "#agentsroom",
+      action: "Routing öffnen"
     },
     {
       title: "Vault / Memory",
       value: vaultSource?.detail || "Brain Vault nicht gemeldet",
       detail: vaultSource?.route || "Vault-Verbindungen pruefen",
       status: vaultSource?.state || "warn",
-      image: getOverviewIcon("vault")
+      image: getOverviewIcon("vault"),
+      href: "#agentsroom",
+      action: "Vault Graph öffnen"
     },
     {
       title: "HA Backup",
       value: backupRoutePresent ? "Mac mini als Ziel aktiv" : "Backup-Pfad fehlt",
       detail: backupRoutePresent ? "Home Assistant -> Mac mini ueber SMB / Bridge" : "Heimdall / HA Route offen",
       status: backupRoutePresent ? "live" : "warn",
-      image: getOverviewIcon("homeAssistant")
+      image: getOverviewIcon("homeAssistant"),
+      href: "#home-assistant",
+      action: "HA öffnen"
     },
     {
       title: "Warnungen",
       value: warningCount > 0 ? `${warningCount} Punkte mit Bedarf` : "Keine offenen Warnungen",
       detail: warningCount > 0 ? "Prio in Warnungen und Technik pruefen" : "Systemzustand im Snapshot ruhig",
       status: warningCount > 0 ? "warn" : "live",
-      image: getOverviewIcon("alerts")
+      image: getOverviewIcon("alerts"),
+      href: "#alerts",
+      action: "Warnungen öffnen"
     }
   ];
 
@@ -265,7 +275,7 @@ function buildOverviewCommandCards(dashboardData) {
       ${cards
         .map(
           (card) => `
-            <article class="pulse-summary-card">
+            <a class="pulse-summary-card pulse-summary-card-link" href="${card.href}">
               <div class="pulse-summary-media">
                 <img src="${card.image}" alt="${escapeHtml(card.title)}">
               </div>
@@ -276,8 +286,9 @@ function buildOverviewCommandCards(dashboardData) {
                 </div>
                 <strong>${escapeHtml(card.value)}</strong>
                 <p>${escapeHtml(card.detail)}</p>
+                <span class="pulse-summary-action">${escapeHtml(card.action)}</span>
               </div>
-            </article>
+            </a>
           `
         )
         .join("")}
@@ -603,20 +614,22 @@ function renderGraphView(agentsRoom, mode) {
   return `
     <div class="agentsroom-network-view" data-network-view="${mode}"${mode === "devices" ? " hidden" : ""}>
       <div class="agentsroom-network-scroll" tabindex="0" aria-label="${mode === "devices" ? "Gerätenetz horizontal erkunden" : "Agentenfluss horizontal erkunden"}">
-        <div class="agentsroom-network">
-          <svg class="agentsroom-network-svg" viewBox="0 0 1200 650" role="img" aria-label="${mode === "devices" ? "Geraetenetz mit Mac mini als Zentralserver" : mode === "vault" ? "Vault-Graph mit Runtime, Brain Vault und Obsidian-Verbindungen" : "Agenten-Orchestrierung von Operator ueber Hermes und Jarvis"}">
-            <defs>
-              <marker id="${markerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" />
-              </marker>
-              <marker id="${feedbackMarkerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
-                <path d="M 0 0 L 10 5 L 0 10 z" />
-              </marker>
-            </defs>
-            ${lineNodes}
-            ${feedbackNodes}
-          </svg>
-          <div class="agentsroom-network-nodes">${nodeCards}</div>
+        <div class="agentsroom-network-zoom" data-network-zoom-shell style="--network-zoom:1">
+          <div class="agentsroom-network">
+            <svg class="agentsroom-network-svg" viewBox="0 0 1200 650" role="img" aria-label="${mode === "devices" ? "Geraetenetz mit Mac mini als Zentralserver" : mode === "vault" ? "Vault-Graph mit Runtime, Brain Vault und Obsidian-Verbindungen" : "Agenten-Orchestrierung von Operator ueber Hermes und Jarvis"}">
+              <defs>
+                <marker id="${markerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" />
+                </marker>
+                <marker id="${feedbackMarkerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" />
+                </marker>
+              </defs>
+              ${lineNodes}
+              ${feedbackNodes}
+            </svg>
+            <div class="agentsroom-network-nodes">${nodeCards}</div>
+          </div>
         </div>
       </div>
       <div class="agentsroom-network-legend">${legend}</div>
@@ -641,6 +654,11 @@ function buildRoutingWorkspace(agentsRoom) {
         <button type="button" class="agentsroom-mode-btn" role="tab" aria-selected="false" data-network-mode="vault">
           Vault Graph <span>${vaultData.edges.length} Knotenpfade</span>
         </button>
+        <div class="agentsroom-zoom-controls" aria-label="Graph Zoom">
+          <button type="button" class="agentsroom-zoom-btn" data-network-zoom-out aria-label="Graph verkleinern">−</button>
+          <button type="button" class="agentsroom-zoom-btn" data-network-zoom-reset aria-label="Graph auf Standardzoom">100%</button>
+          <button type="button" class="agentsroom-zoom-btn" data-network-zoom-in aria-label="Graph vergrößern">+</button>
+        </div>
         <p><span class="agentsroom-live-dot" aria-hidden="true"></span> Live-Snapshot · Auswahl zeigt Details</p>
       </div>
       <div class="agentsroom-routing-key">
@@ -672,6 +690,10 @@ function buildRoutingWorkspace(agentsRoom) {
   `;
 }
 
+function buildDeckButton(id, label, meta, active = false) {
+  return `<button type="button" class="control-deck-tab${active ? " is-active" : ""}" data-deck-panel="${id}" aria-selected="${active ? "true" : "false"}"><strong>${label}</strong><span>${meta}</span></button>`;
+}
+
 function buildNodeCards(items, kind = "agent") {
   if (!Array.isArray(items) || !items.length) {
     return `<p class="muted-line">Keine Daten vorhanden.</p>`;
@@ -679,7 +701,7 @@ function buildNodeCards(items, kind = "agent") {
   return items
     .map(
       (item) => `
-        <article class="agentsroom-node ${kind}${item.image ? " has-media" : ""}">
+        <article class="agentsroom-node ${kind}${item.image ? " has-media" : ""}" role="button" tabindex="0" data-focus-mode="${kind === "device" ? "devices" : "agents"}" data-focus-name="${escapeHtml(item.name)}">
           ${item.image ? `<div class="agentsroom-node-media"><img src="${escapeHtml(item.image)}" alt="${escapeHtml(item.name)}"></div>` : ""}
           <div class="agentsroom-node-head">
             <h4>${escapeHtml(item.name)}</h4>
@@ -721,7 +743,7 @@ function buildSourceCards(items) {
   return items
     .map(
       (item) => `
-        <article class="agentsroom-source-card">
+        <article class="agentsroom-source-card" role="button" tabindex="0" data-focus-mode="vault" data-focus-name="${escapeHtml(item.name)}">
           <div class="agentsroom-node-head">
             <h4>${escapeHtml(item.name)}</h4>
             <span class="status-pill ${statusClass(item.state)}">${escapeHtml(item.kind || item.state)}</span>
@@ -744,7 +766,7 @@ function buildSessionCards(items) {
   return items
     .map(
       (item) => `
-        <article class="agentsroom-session-card">
+        <article class="agentsroom-session-card" role="button" tabindex="0" data-focus-mode="vault" data-focus-name="${escapeHtml(item.name)}">
           <div class="agentsroom-node-head">
             <h4>${escapeHtml(item.name)}</h4>
             <span class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel || item.status)}</span>
@@ -1096,107 +1118,130 @@ export function renderAgentsRoomSection(container, agentsRoom) {
       </div>
     </article>
 
-    <article class="panel agentsroom-panel agentsroom-panel-wide">
-      <div class="agentsroom-panel-head">
-        <div>
-          <h3>Live Routing Map</h3>
-          <p class="muted-line">Agenten-Orchestrierung und Gerätenetz können einzeln untersucht werden. Klicke einen Knoten für Rolle, Status und direkte Verbindungen.</p>
-        </div>
-        <span class="status-pill is-live">30 s Snapshot</span>
+    <section class="control-deck agentsroom-deck" data-control-deck="agentsroom" data-default-panel="topology">
+      <div class="control-deck-tabs" role="tablist" aria-label="AgentsRoom Bereiche">
+        ${buildDeckButton("topology", "Topologie", "Graphen, Flüsse, Rollen", true)}
+        ${buildDeckButton("agents", "Agenten", `${agents.length} Rollen und Delegationen`)}
+        ${buildDeckButton("devices", "Geräte", `${devices.length} Geräte und Pfade`)}
+        ${buildDeckButton("vault", "Vault", `${sourceRegistry.length} Quellen und Sessions`)}
+        ${buildDeckButton("activity", "Aktivität", `${conversations.length} Gespräche und Logs`)}
       </div>
-      ${buildStatusGuide(true)}
-      ${buildRoutingWorkspace(agentsRoom)}
-    </article>
 
-    <article class="panel agentsroom-panel agentsroom-panel-wide">
-      <h3>Topologie visuell lesen</h3>
-      <div class="agentsroom-visual-strip">
-        <article class="agentsroom-visual-card">
-          <img src="${getDashboardVisual("communication")}" alt="Hermes Steuerung">
-          <div><strong>Hermes Mesh</strong><span>Operator, Hermes, Jarvis und Delegationen auf einen Blick.</span></div>
+      <div class="control-deck-panel is-active" data-deck-panel-content="topology">
+        <article class="panel agentsroom-panel agentsroom-panel-wide">
+          <div class="agentsroom-panel-head">
+            <div>
+              <h3>Live Routing Map</h3>
+              <p class="muted-line">Jeder Graph ist getrennt lesbar. Knoten zeigen Status, Richtung und direkte Verbindungen ohne Mischansicht.</p>
+            </div>
+            <span class="status-pill is-live">30 s Snapshot</span>
+          </div>
+          ${buildStatusGuide(true)}
+          ${buildRoutingWorkspace(agentsRoom)}
         </article>
-        <article class="agentsroom-visual-card">
-          <img src="${getDashboardVisual("homeAssistant")}" alt="Geraetenetz">
-          <div><strong>Geraetenetz</strong><span>Mac mini, Macs, Home Assistant und Publishing-Pfade.</span></div>
+
+        <article class="panel agentsroom-panel agentsroom-panel-wide">
+          <h3>Topologie visuell lesen</h3>
+          <div class="agentsroom-visual-strip">
+            <button type="button" class="agentsroom-visual-card agentsroom-visual-action" data-network-target-mode="agents">
+              <img src="${getDashboardVisual("communication")}" alt="Hermes Steuerung">
+              <div><strong>Hermes Mesh</strong><span>Operator, Hermes, Jarvis und Delegationen.</span></div>
+            </button>
+            <button type="button" class="agentsroom-visual-card agentsroom-visual-action" data-network-target-mode="devices">
+              <img src="${getDashboardVisual("homeAssistant")}" alt="Geraetenetz">
+              <div><strong>Geraetenetz</strong><span>Mac mini, Macs, Home Assistant und Publishing-Pfade.</span></div>
+            </button>
+            <button type="button" class="agentsroom-visual-card agentsroom-visual-action" data-network-target-mode="vault">
+              <img src="${getDashboardVisual("vault")}" alt="Vault Graph">
+              <div><strong>Vault Graph</strong><span>Brain Vault, Obsidian, Sessions und Rueckfluesse.</span></div>
+            </button>
+          </div>
         </article>
-        <article class="agentsroom-visual-card">
-          <img src="${getDashboardVisual("vault")}" alt="Vault Graph">
-          <div><strong>Vault Graph</strong><span>Brain Vault, Obsidian, Session-Layer und Rueckfluesse.</span></div>
+
+        <article class="panel agentsroom-panel agentsroom-panel-wide">
+          <h3>Live Hermes Runtime</h3>
+          <div class="agentsroom-runtime-grid">${buildLiveData(runtimeLiveData)}</div>
+          <h4>Routing</h4>
+          <ul class="agentsroom-flow-list">${buildFlowItems(routing)}</ul>
         </article>
       </div>
-    </article>
 
-    <div class="agentsroom-grid">
-      <article class="panel agentsroom-panel agentsroom-panel-wide">
-        <h3>Live Hermes Runtime</h3>
-        <div class="agentsroom-runtime-grid">${buildLiveData(runtimeLiveData)}</div>
-      </article>
-
-      <article class="panel agentsroom-panel agentsroom-panel-wide">
-        <h3>Routing</h3>
-        <ul class="agentsroom-flow-list">${buildFlowItems(routing)}</ul>
-      </article>
-
-      <article class="panel agentsroom-panel agentsroom-panel-wide">
-        <h3>Agenten</h3>
-        <div class="agentsroom-node-grid">${buildNodeCards(agents, "agent")}</div>
-      </article>
-
-      <article class="panel agentsroom-panel agentsroom-panel-wide">
-        <h3>Geräte & Live-Daten</h3>
-        <div class="agentsroom-device-grid">${buildNodeCards(devices, "device")}</div>
-        <h4>Direkte Gerätepfade</h4>
-        <ul class="agentsroom-device-link-list">${buildDeviceLinks(devices)}</ul>
-        <div class="agentsroom-rail">${buildLiveData(liveData)}</div>
-      </article>
-
-      <article class="panel agentsroom-panel agentsroom-panel-wide">
-        <h3>Quellen & Vault</h3>
-        <div class="agentsroom-source-grid">${buildSourceCards(sourceRegistry)}</div>
-      </article>
-
-      <article class="panel agentsroom-panel agentsroom-panel-wide">
-        <h3>Sessions</h3>
-        <div class="agentsroom-session-grid">${buildSessionCards(sessions)}</div>
-      </article>
-
-      <article class="panel agentsroom-panel agentsroom-panel-wide">
-        <h3>Delegationen, Aufgaben und Gesprächslog</h3>
-        <div class="agentsroom-delegation-wrap">
-          <div>
-            <h4>Delegationen</h4>
-            <div class="agentsroom-task-grid">${buildDelegationCards(delegations)}</div>
-          </div>
-          <div>
-            <h4>Live-Gesprächslog</h4>
-            <div class="agentsroom-conversation-grid">${buildConversationFeed(conversations)}</div>
-          </div>
+      <div class="control-deck-panel" data-deck-panel-content="agents" hidden>
+        <div class="agentsroom-grid">
+          <article class="panel agentsroom-panel agentsroom-panel-wide">
+            <h3>Agenten</h3>
+            <div class="agentsroom-node-grid">${buildNodeCards(agents, "agent")}</div>
+          </article>
+          <article class="panel agentsroom-panel agentsroom-panel-wide">
+            <h3>Delegationen, Aufgaben und Gesprächslog</h3>
+            <div class="agentsroom-delegation-wrap">
+              <div>
+                <h4>Delegationen</h4>
+                <div class="agentsroom-task-grid">${buildDelegationCards(delegations)}</div>
+              </div>
+              <div>
+                <h4>Live-Gesprächslog</h4>
+                <div class="agentsroom-conversation-grid">${buildConversationFeed(conversations)}</div>
+              </div>
+            </div>
+          </article>
         </div>
-      </article>
+      </div>
 
-      <article class="panel agentsroom-panel agentsroom-panel-wide">
-        <h3>Hermes Live Nachrichten</h3>
-        <div class="agentsroom-message-grid">${buildMessageCards(recentMessages)}</div>
-        <div class="agentsroom-delegation-wrap">
-          <div>
-            <h4>Aktuelle Delegationen</h4>
-            <div class="agentsroom-task-grid">${buildDelegationCards(recentDelegations)}</div>
-          </div>
-          <div>
-            <h4>Delivery Obligations</h4>
-            <div class="agentsroom-conversation-grid">${buildConversationFeed(recentObligations.map((item) => ({
-              topic: item.label,
-              time: "",
-              from: "Hermes",
-              to: item.label,
-              summary: item.value,
-              status: item.status,
-              statusLabel: item.statusLabel
-            })))}</div>
-          </div>
+      <div class="control-deck-panel" data-deck-panel-content="devices" hidden>
+        <div class="agentsroom-grid">
+          <article class="panel agentsroom-panel agentsroom-panel-wide">
+            <h3>Geräte & Live-Daten</h3>
+            <div class="agentsroom-device-grid">${buildNodeCards(devices, "device")}</div>
+            <h4>Direkte Gerätepfade</h4>
+            <ul class="agentsroom-device-link-list">${buildDeviceLinks(devices)}</ul>
+            <div class="agentsroom-rail">${buildLiveData(liveData)}</div>
+          </article>
         </div>
-      </article>
-    </div>
+      </div>
+
+      <div class="control-deck-panel" data-deck-panel-content="vault" hidden>
+        <div class="agentsroom-grid">
+          <article class="panel agentsroom-panel agentsroom-panel-wide">
+            <h3>Quellen & Vault</h3>
+            <div class="agentsroom-source-grid">${buildSourceCards(sourceRegistry)}</div>
+          </article>
+          <article class="panel agentsroom-panel agentsroom-panel-wide">
+            <h3>Sessions</h3>
+            <div class="agentsroom-session-grid">${buildSessionCards(sessions)}</div>
+          </article>
+        </div>
+      </div>
+
+      <div class="control-deck-panel" data-deck-panel-content="activity" hidden>
+        <div class="agentsroom-grid">
+          <article class="panel agentsroom-panel agentsroom-panel-wide">
+            <h3>Hermes Live Nachrichten</h3>
+            <div class="agentsroom-message-grid">${buildMessageCards(recentMessages)}</div>
+          </article>
+          <article class="panel agentsroom-panel agentsroom-panel-wide">
+            <div class="agentsroom-delegation-wrap">
+              <div>
+                <h4>Aktuelle Delegationen</h4>
+                <div class="agentsroom-task-grid">${buildDelegationCards(recentDelegations)}</div>
+              </div>
+              <div>
+                <h4>Delivery Obligations</h4>
+                <div class="agentsroom-conversation-grid">${buildConversationFeed(recentObligations.map((item) => ({
+                  topic: item.label,
+                  time: "",
+                  from: "Hermes",
+                  to: item.label,
+                  summary: item.value,
+                  status: item.status,
+                  statusLabel: item.statusLabel
+                })))}</div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
   `;
 }
 
