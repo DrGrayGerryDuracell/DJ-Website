@@ -633,11 +633,16 @@ function buildDialogPayload(data, kind, id) {
   if (kind === "ha-room") {
     const room = haRooms.find((item) => item.id === id);
     if (!room) return null;
+    const primarySwitch = room.devices.find((device) => ["Light", "Switch", "Media"].includes(device.type));
+    const nextScene = room.scenes[0] || "standard";
     return {
       title: room.title,
       subtitle: "Home-Assistant Raumsteuerung",
       badges: [{ label: room.statusLabel, tone: room.status }],
-      paragraphs: [`${room.devices.length} Geräte und ${room.scenes.length} Szenen. Aktionen laufen derzeit über einen lokalen Adapterpfad, bis echte HA-Servicecalls direkt angebunden sind.`],
+      paragraphs: [
+        `${room.devices.length} Geräte und ${room.scenes.length} Szenen. Aktionen laufen derzeit über einen lokalen Adapterpfad, bis echte HA-Servicecalls direkt angebunden sind.`,
+        room.activeScene ? `Aktive Szene laut Dashboard: ${room.activeScene}` : "Noch keine aktive Szene aus der Bridge zurückgemeldet."
+      ],
       lists: [
         { title: "Szenen", items: room.scenes },
         { title: "Geräte", items: room.devices.map((device) => `${device.name} • ${device.type} • ${device.stateLabel}`) }
@@ -645,15 +650,21 @@ function buildDialogPayload(data, kind, id) {
       actions: [
         {
           type: "ha-action",
-          label: "Szene Abend",
+          label: `Szene ${nextScene}`,
           action: "ha.run-scene",
-          payload: { room: room.id, scene: "abend" }
+          payload: { room: room.id, scene: nextScene }
         },
         {
           type: "ha-action",
-          label: "Alle Lichter aus",
+          label: primarySwitch ? `${primarySwitch.name} ausschalten` : "Alle Lichter aus",
           action: "ha.toggle-device",
-          payload: { room: room.id, entityId: "group.lights", nextState: "off" }
+          payload: { room: room.id, entityId: primarySwitch?.id || "group.lights", nextState: "off" }
+        },
+        {
+          type: "ha-action",
+          label: primarySwitch ? `${primarySwitch.name} einschalten` : "Primärgerät einschalten",
+          action: "ha.toggle-device",
+          payload: { room: room.id, entityId: primarySwitch?.id || "group.lights", nextState: "on" }
         },
         {
           type: "ha-queue",

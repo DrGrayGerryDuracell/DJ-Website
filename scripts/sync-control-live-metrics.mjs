@@ -108,6 +108,31 @@ function mergeEntityState(entity, controlState, options = {}) {
   return merged;
 }
 
+function mergeHaRoomState(room, controlState) {
+  if (!controlState || typeof controlState !== "object") {
+    return room;
+  }
+  const nextRoom = mergeEntityState(room, controlState, { defaultState: room.status, defaultLabel: room.statusLabel });
+  nextRoom.status = nextRoom.state || room.status;
+  nextRoom.statusLabel = nextRoom.stateLabel || room.statusLabel;
+  nextRoom.devices = (room.devices || []).map((device) => {
+    const nextValue = controlState[`device:${device.id}`];
+    const nextLabel = controlState[`deviceLabel:${device.id}`];
+    if (nextValue == null && nextLabel == null) {
+      return device;
+    }
+    return {
+      ...device,
+      state: nextValue ?? device.state,
+      stateLabel: nextLabel ?? device.stateLabel
+    };
+  });
+  if (controlState.activeSceneLabel) {
+    nextRoom.activeScene = controlState.activeSceneLabel;
+  }
+  return nextRoom;
+}
+
 function classifyFetchIssue(error) {
   const message = String(error?.message || error || "");
   const code = String(error?.cause?.code || error?.code || "").toUpperCase();
@@ -922,6 +947,7 @@ async function main() {
   const shopDraftState = bridgeState.controls?.["shop-draft"] || {};
   const plannerEntryState = bridgeState.controls?.["planner-entry"] || {};
   const haAutomationState = bridgeState.controls?.["ha-automation"] || {};
+  const haRoomState = bridgeState.controls?.["ha-room"] || {};
   const subagentState = bridgeState.controls?.subagent || {};
   const vaultNodeState = bridgeState.controls?.["vault-node"] || {};
   const schedulerEntries = [
@@ -1514,7 +1540,7 @@ async function main() {
           ],
           scenes: ["Night Entry", "Silent Mode"]
         }
-      ],
+      ].map((room) => mergeHaRoomState(room, haRoomState[room.id])),
       automations: [
         { id: "ha-backup", label: "HA Backup -> Mac mini", state: "live", stateLabel: "Aktiv", cron: "03:30 täglich" },
         { id: "ha-morning", label: "Morning Boot", state: "ready", stateLabel: "Bereit", cron: "08:00 täglich" },

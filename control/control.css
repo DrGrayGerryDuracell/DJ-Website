@@ -3885,6 +3885,13 @@ a { color: inherit; text-decoration: none; }
   min-height: 0;
 }
 
+.ha-room-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.55rem;
+  margin-top: 0.75rem;
+}
+
 .action-btn[disabled] {
   cursor: not-allowed;
   color: var(--text-soft);

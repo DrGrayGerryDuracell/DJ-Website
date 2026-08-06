@@ -55,6 +55,28 @@ const ACTIONS = {
 };
 
 const ACTION_STATE_PATCHERS = {
+  "ha.toggle-device": (payload, result) => ({
+    kind: "ha-room",
+    id: payload.room,
+    patch: {
+      [`device:${payload.entityId}`]: payload.nextState,
+      [`deviceLabel:${payload.entityId}`]: payload.nextState === "on" ? "An" : payload.nextState === "off" ? "Aus" : mapStatusLabel(payload.nextState),
+      state: payload.nextState === "off" ? "connected" : "live",
+      stateLabel: payload.nextState === "off" ? "Verbunden" : "Live",
+      lastAction: result.action || "ha.toggle-device"
+    }
+  }),
+  "ha.run-scene": (payload, result) => ({
+    kind: "ha-room",
+    id: payload.room,
+    patch: {
+      activeScene: payload.scene,
+      activeSceneLabel: String(payload.scene || "").trim() || "Szene",
+      state: "live",
+      stateLabel: "Live",
+      lastAction: result.action || "ha.run-scene"
+    }
+  }),
   "ha.run-automation": (payload, result) => ({
     kind: "ha-automation",
     id: payload.automation,

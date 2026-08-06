@@ -1418,10 +1418,14 @@ export function renderHomeAssistantSection(container, dashboardData) {
                 </div>
                 <span class="status-pill ${statusClass(room.status)}">${escapeHtml(room.statusLabel)}</span>
               </div>
+              ${room.activeScene ? `<p class="muted-line">Aktive Szene: <strong>${escapeHtml(room.activeScene)}</strong></p>` : ""}
               <div class="ha-room-device-list">
                 ${room.devices.slice(0, 3).map((device) => `<span>${escapeHtml(device.name)} · ${escapeHtml(device.stateLabel)}</span>`).join("")}
               </div>
-              <button type="button" class="action-btn" data-control-dialog-kind="ha-room" data-control-dialog-id="${escapeHtml(room.id)}">Raum steuern</button>
+              <div class="ha-room-actions">
+                <button type="button" class="action-btn" data-control-dialog-kind="ha-room" data-control-dialog-id="${escapeHtml(room.id)}">Raum steuern</button>
+                ${room.scenes[0] ? `<button type="button" class="action-btn is-secondary" data-control-action="ha.run-scene" data-control-payload='${escapeHtml(JSON.stringify({ room: room.id, scene: room.scenes[0] }))}'>${escapeHtml(room.scenes[0])}</button>` : ""}
+              </div>
             </article>
           `).join("")}
         </div>
