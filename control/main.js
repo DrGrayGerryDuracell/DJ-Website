@@ -619,6 +619,7 @@ async function setControlToggleValue(kind, id, controlId, value) {
 function buildDialogPayload(data, kind, id) {
   const websitePages = data?.websiteMetrics?.workbench?.pages || [];
   const shopDrafts = data?.shopMetrics?.workbench?.drafts || [];
+  const shopUploadSteps = data?.shopMetrics?.workbench?.uploadSteps || [];
   const plannerCalendar = data?.contentPerformance?.planner?.calendar || [];
   const plannerChannels = data?.contentPerformance?.planner?.channels || [];
   const haRooms = data?.homeAssistantWorkbench?.rooms || [];
@@ -626,6 +627,8 @@ function buildDialogPayload(data, kind, id) {
   const cronJobs = data?.operationsWorkbench?.cronJobs || [];
   const subagents = data?.operationsWorkbench?.subagents || [];
   const vaultNodes = data?.operationsWorkbench?.vaultNodes || [];
+  const socialLinks = data?.socialMetrics?.links || [];
+  const socialAccounts = data?.socialMetrics?.officialAccounts || [];
 
   if (kind === "ha-room") {
     const room = haRooms.find((item) => item.id === id);
@@ -771,6 +774,32 @@ function buildDialogPayload(data, kind, id) {
     };
   }
 
+  if (kind === "upload-step") {
+    const step = shopUploadSteps.find((entry) => entry.id === id);
+    if (!step) return null;
+    const commandMap = {
+      queue: "generate-upload-queue",
+      batches: "generate-upload-batches",
+      api: "generate-shirtee-api-request"
+    };
+    const hrefMap = {
+      queue: "/artifacts/upload-queue/shirtee-upload-queue.csv",
+      batches: "/artifacts/upload-batches/manifest.json",
+      api: "/artifacts/requests/shirtee-api-request.md"
+    };
+    return {
+      title: step.label,
+      subtitle: "Upload Pipeline / Artifact",
+      badges: [{ label: step.statusLabel, tone: step.status }],
+      paragraphs: [step.note, "Diese Stufe kann direkt aus dem Dashboard ausgelöst oder als Artefakt geöffnet werden."],
+      actions: [
+        { type: "bridge-command", label: "Schritt ausführen", command: commandMap[step.id] || "sync-control-live" },
+        { type: "link", label: "Artefakt öffnen", href: hrefMap[step.id] || "/artifacts/" },
+        { type: "copy", label: "Schrittbeschreibung kopieren", value: `${step.label}\n${step.note}\nStatus: ${step.statusLabel}` }
+      ]
+    };
+  }
+
   if (kind === "planner-entry") {
     const entry = plannerCalendar.find((item) => item.id === id);
     if (!entry) return null;
@@ -797,6 +826,41 @@ function buildDialogPayload(data, kind, id) {
       toggles: [
         { id: "script", label: "Script fertig", value: getControlToggleValue(kind, id, "script", entry.status !== "draft"), onLabel: "Fertig", offLabel: "Offen" },
         { id: "upload", label: "Upload freigegeben", value: getControlToggleValue(kind, id, "upload", false), onLabel: "Freigegeben", offLabel: "Blockiert" }
+      ]
+    };
+  }
+
+  if (kind === "social-profile") {
+    const row = socialLinks.find((entry) => entry.platform === id);
+    if (!row) return null;
+    return {
+      title: row.platform,
+      subtitle: row.handle || "Social Profil",
+      badges: [{ label: row.statusLabel || row.status || "Info", tone: row.status || "info" }],
+      paragraphs: [
+        row.valueLabel || "Kein Live-Wert gemeldet.",
+        row.sourceLabel || "Quelle nicht gemeldet."
+      ],
+      actions: [
+        ...(row.profileUrl ? [{ type: "link", label: "Profil öffnen", href: row.profileUrl }] : []),
+        { type: "link", label: "Social Bereich öffnen", href: "#social" },
+        { type: "copy", label: "Profilstatus kopieren", value: `${row.platform}\n${row.handle || ""}\n${row.valueLabel || ""}\n${row.statusLabel || row.status || ""}` }
+      ]
+    };
+  }
+
+  if (kind === "social-account") {
+    const account = socialAccounts.find((entry) => entry.label === id);
+    if (!account) return null;
+    return {
+      title: account.label,
+      subtitle: account.handle || account.displayName || "Registry Eintrag",
+      badges: [{ label: account.status === "live" ? "Verbunden" : account.status === "check" ? "Pruefen" : account.status || "Info", tone: account.status || "info" }],
+      paragraphs: [account.note || "Keine Zusatznotiz vorhanden.", account.url || "Keine URL gemeldet."],
+      actions: [
+        ...(account.url ? [{ type: "link", label: "Eintrag öffnen", href: account.url }] : []),
+        { type: "link", label: "Social Bereich öffnen", href: "#social" },
+        { type: "copy", label: "Registry Daten kopieren", value: `${account.label}\n${account.displayName || ""}\n${account.handle || ""}\n${account.url || ""}\n${account.note || ""}` }
       ]
     };
   }
@@ -925,7 +989,8 @@ function renderControlDialog(payload) {
           <div class="action-grid compact">
             ${actions.map((action) => {
               if (action.type === "link") {
-                return `<a class="action-btn is-secondary" href="${escapeHtml(action.href)}">${escapeHtml(action.label)}</a>`;
+                const external = /^(https?:)?\/\//.test(action.href || "") || String(action.href || "").startsWith("/artifacts/");
+                return `<a class="action-btn is-secondary" href="${escapeHtml(action.href)}"${external ? ' target="_blank" rel="noopener noreferrer"' : ""}>${escapeHtml(action.label)}</a>`;
               }
               if (action.type === "bridge-command") {
                 return `<button type="button" class="action-btn is-secondary" data-control-command="${escapeHtml(action.command || "")}">${escapeHtml(action.label)}</button>`;

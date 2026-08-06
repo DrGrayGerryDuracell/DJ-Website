@@ -1639,6 +1639,7 @@ export function renderShopSection(container, shopMetrics) {
             <span class="status-pill ${statusClass(step.status)}">${escapeHtml(step.statusLabel)}</span>
             <strong>${escapeHtml(step.label)}</strong>
             <p>${escapeHtml(step.note)}</p>
+            <button type="button" class="action-btn is-secondary" data-control-dialog-kind="upload-step" data-control-dialog-id="${escapeHtml(step.id)}">Schritt öffnen</button>
           </article>
         `).join("")}
       </div>
@@ -1959,6 +1960,7 @@ export function renderSocial(container, socialMetrics) {
                   <div class="social-node-links">
                     ${row.verified ? `<span class="status-pill is-live">Verifiziert</span>` : ""}
                     ${row.profileUrl ? `<a href="${escapeHtml(row.profileUrl)}" target="_blank" rel="noopener noreferrer">Profil öffnen</a>` : ""}
+                    <button type="button" class="action-btn is-secondary" data-control-dialog-kind="social-profile" data-control-dialog-id="${escapeHtml(row.platform)}">Details</button>
                   </div>
                 </div>
               </article>
@@ -2021,6 +2023,7 @@ export function renderSocial(container, socialMetrics) {
                   <small>${escapeHtml(item.note)}</small>
                   <div class="social-node-links">
                     ${item.verified ? `<span class="status-pill is-live">Verifiziert</span>` : ""}
+                    <button type="button" class="action-btn is-secondary" data-control-dialog-kind="social-account" data-control-dialog-id="${escapeHtml(item.label)}">Details</button>
                   </div>
                 </div>
               </article>
