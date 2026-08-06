@@ -4,22 +4,22 @@ window.LIVE_LINK_STATUS = {
     "dr-hoodie-mainstream": {
       "sourceHref": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
       "finalUrl": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
-      "httpCode": 200,
-      "verified": true,
+      "httpCode": 0,
+      "verified": false,
       "fallbackHref": "https://www.shirtee.com/de/store/drgray-mrsdrgray/"
     },
     "mrs-crop-wild": {
       "sourceHref": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
       "finalUrl": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
-      "httpCode": 200,
-      "verified": true,
+      "httpCode": 0,
+      "verified": false,
       "fallbackHref": "https://www.shirtee.com/de/store/drgray-mrsdrgray/"
     },
     "mrs-hoodie-serious": {
       "sourceHref": "https://www.shirtee.com/de/drgray-mrsdrgray/",
       "finalUrl": "https://www.shirtee.com/de/drgray-mrsdrgray/",
-      "httpCode": 200,
-      "verified": true,
+      "httpCode": 0,
+      "verified": false,
       "fallbackHref": "https://www.shirtee.com/de/store/drgray-mrsdrgray/"
     }
   }
