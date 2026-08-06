@@ -1,13 +1,114 @@
 {
-  "generatedAt": "2026-08-06T09:54:02.221Z",
+  "generatedAt": "2026-08-06T10:15:17.180Z",
   "policyVersion": "2026-08-06",
-  "latestPlanPath": "/Users/jarvisgray/TikTok-DJ-Content/analytics/generated/content_plan_2026-08-02.json",
+  "latestPlanPath": "~/TikTok-DJ-Content/analytics/generated/content_plan_2026-08-02.json",
   "referenceState": {
-    "ready": false,
-    "pairPortraitCount": 0,
+    "ready": true,
+    "pairPortraitCount": 8,
     "sourceClipCount": 0,
-    "sourcePhotoCount": 0,
+    "sourcePhotoCount": 9,
+    "brandGraphicsCount": 2,
     "approvedSongCount": 0
+  },
+  "brandAssets": [
+    {
+      "id": "brand-1",
+      "path": "~/TikTok-DJ-Content/references/branding/dr-gray-logo.jpg",
+      "label": "Dr. Gray Logo"
+    },
+    {
+      "id": "brand-2",
+      "path": "~/TikTok-DJ-Content/references/branding/mrs-dr-gray-logo.jpg",
+      "label": "Mrs. Dr. Gray Logo"
+    }
+  ],
+  "soundcloudSnapshot": {
+    "totalTracks": 31,
+    "lastUpdated": "2026-07-29T16:30:00Z",
+    "latestTracks": [
+      {
+        "title": "Mrs.Dr.Gray - Learning to Destroy",
+        "date": "2026-07-20",
+        "plays": 310,
+        "likes": 24,
+        "comments": 3,
+        "type": "mrsdrgray_solo",
+        "genres": [
+          "Techno",
+          "Driving Techno"
+        ],
+        "url": "https://soundcloud.com/drgray_sic/mrs-dr-gray-learning-to"
+      },
+      {
+        "title": "Dr.Gray – Goodbye My Friend (The Last TikTok Set for Andy Tauchert)",
+        "date": "2026-07-12",
+        "plays": 567,
+        "likes": 41,
+        "comments": 6,
+        "type": "drgray_set",
+        "genres": [
+          "Techno",
+          "Peak Time",
+          "Driving Techno"
+        ],
+        "url": "https://soundcloud.com/drgray_sic/dr-gray-goodbye-my-friend-the"
+      },
+      {
+        "title": "Mrs. Dr. Gray – No Escape",
+        "date": "2026-07-09",
+        "plays": 386,
+        "likes": 31,
+        "comments": 6,
+        "type": "mrsdrgray_solo",
+        "genres": [
+          "Techno",
+          "Dark Techno",
+          "Driving"
+        ],
+        "url": "https://soundcloud.com/drgray_sic/mrs-dr-gray-no-escape"
+      }
+    ],
+    "strongestTrack": {
+      "title": "Love is Techno Part I",
+      "plays": 14927,
+      "likes": 564,
+      "date": "2025-07-20",
+      "url": "https://soundcloud.com/drgray_sic/love-is-techno-part-i"
+    }
+  },
+  "contentDirection": {
+    "currentAngle": "Couple-Techno mit Driving-, Emotional- und Afterhours-Linie",
+    "pillars": [
+      "Driving Techno",
+      "Emotional B2B",
+      "Couple Identity",
+      "Afterhours / Neon",
+      "Peak Time / Dark Hypnotic"
+    ],
+    "recentHooks": [
+      "Driving techno opener for late Cologne floors",
+      "Emotional B2B sequence with rising tension every 8 bars",
+      "Sunset-to-afterhours transition reel with a hard cut at the drop",
+      "Minimal voiceover set teaser for TikTok and SoundCloud",
+      "Couple-brand identity clip: two perspectives, one signal"
+    ],
+    "recurringHashtags": [
+      "#techno",
+      "#afterhours",
+      "#drgray",
+      "#b2b",
+      "#koeln",
+      "#drivingtechno",
+      "#djlife",
+      "#tiktokdj"
+    ],
+    "genres": [
+      "Techno",
+      "Driving Techno",
+      "Peak Time",
+      "Melodic Techno",
+      "Dark Techno"
+    ]
   },
   "suggestions": [
     {
@@ -15,8 +116,8 @@
       "title": "Driving techno opener for late Cologne floors",
       "channel": "TikTok Hauptseite",
       "scheduledFor": "Mon 15s clip",
-      "status": "warn",
-      "statusLabel": "Referenzen fehlen",
+      "status": "ready",
+      "statusLabel": "Referenzen komplett",
       "hook": "Driving techno opener for late Cologne floors",
       "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
       "hashtags": [
@@ -29,7 +130,7 @@
       "videoRequired": true,
       "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
       "audioSource": "own-sound",
-      "sourceAssetHint": null,
+      "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-desk-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
       "policyVersion": "2026-08-06"
@@ -39,8 +140,8 @@
       "title": "Emotional B2B sequence with rising tension every 8 bars",
       "channel": "TikTok Backup",
       "scheduledFor": "Tue 3 hooks",
-      "status": "warn",
-      "statusLabel": "Referenzen fehlen",
+      "status": "ready",
+      "statusLabel": "Referenzen komplett",
       "hook": "Emotional B2B sequence with rising tension every 8 bars",
       "caption": "Emotional pressure, clean groove, no compromise. Driving Techno | Emotional | B2B | Köln ❤️",
       "hashtags": [
@@ -53,7 +154,7 @@
       "videoRequired": true,
       "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
       "audioSource": "own-sound",
-      "sourceAssetHint": null,
+      "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-neon-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
       "policyVersion": "2026-08-06"
@@ -63,8 +164,8 @@
       "title": "Sunset-to-afterhours transition reel with a hard cut at the drop",
       "channel": "SoundCloud",
       "scheduledFor": "Wed 8s loop",
-      "status": "warn",
-      "statusLabel": "Referenzen fehlen",
+      "status": "ready",
+      "statusLabel": "Referenzen komplett",
       "hook": "Sunset-to-afterhours transition reel with a hard cut at the drop",
       "caption": "Two minds, one pulse. New set energy from the Hermes pipeline.",
       "hashtags": [
@@ -77,7 +178,7 @@
       "videoRequired": true,
       "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
       "audioSource": "own-sound",
-      "sourceAssetHint": null,
+      "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-outdoor-dog-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
       "policyVersion": "2026-08-06"
@@ -87,8 +188,8 @@
       "title": "Minimal voiceover set teaser for TikTok and SoundCloud",
       "channel": "TikTok Hauptseite",
       "scheduledFor": "Thu card",
-      "status": "warn",
-      "statusLabel": "Referenzen fehlen",
+      "status": "ready",
+      "statusLabel": "Referenzen komplett",
       "hook": "Minimal voiceover set teaser for TikTok and SoundCloud",
       "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
       "hashtags": [
@@ -101,7 +202,7 @@
       "videoRequired": true,
       "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
       "audioSource": "own-sound",
-      "sourceAssetHint": null,
+      "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-pair-preview-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
       "policyVersion": "2026-08-06"
@@ -111,8 +212,8 @@
       "title": "Couple-brand identity clip: two perspectives, one signal",
       "channel": "TikTok Backup",
       "scheduledFor": "Fri caption pack",
-      "status": "warn",
-      "statusLabel": "Referenzen fehlen",
+      "status": "ready",
+      "statusLabel": "Referenzen komplett",
       "hook": "Couple-brand identity clip: two perspectives, one signal",
       "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
       "hashtags": [
@@ -125,7 +226,7 @@
       "videoRequired": true,
       "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
       "audioSource": "own-sound",
-      "sourceAssetHint": null,
+      "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-drive-bw-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
       "policyVersion": "2026-08-06"

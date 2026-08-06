@@ -2,6 +2,13 @@
   "version": "2026-08-06",
   "identity": {
     "brand": "Dr. Gray & Mrs. Dr. Gray",
+    "publicNamesOnly": true,
+    "publicAliases": {
+      "primary": "Dr. Gray",
+      "pairProject": "Dr. Gray & Mrs. Dr. Gray",
+      "secondary": "Mrs. Dr. Gray"
+    },
+    "forbidLegalNamesInPublicContent": true,
     "pairRequired": true,
     "faceLock": {
       "enabled": true,

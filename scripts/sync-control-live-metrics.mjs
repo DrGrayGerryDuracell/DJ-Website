@@ -15,6 +15,7 @@ const uploadProgressPath = `${repoRoot}/artifacts/upload-queue/upload-progress-2
 const controlBridgeStatePath = `${repoRoot}/artifacts/control-bridge/state.json`;
 const controlHaQueuePath = `${repoRoot}/artifacts/control-bridge/ha-command-queue.json`;
 const contentSuggestionPath = `${repoRoot}/artifacts/content-suggestions/latest.json`;
+const tracksPath = `${repoRoot}/assets/data/tracks.json`;
 
 const USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
 const websiteBase = "https://drgray-mrsdrgray.com";
@@ -1060,9 +1061,13 @@ async function main() {
   const contentSuggestions = readJsonFile(contentSuggestionPath, {
     generatedAt: null,
     referenceState: {},
+    brandAssets: [],
+    soundcloudSnapshot: {},
+    contentDirection: {},
     suggestions: [],
     constraints: {}
   });
+  const trackData = readJsonFile(tracksPath, { tracks: [], totalTracks: 0, lastUpdated: null });
   const contentRuntime = readHermesContentRuntime();
   const haQueueEntries = Array.isArray(haQueue.queue) ? haQueue.queue : [];
   const queuedHaEntries = haQueueEntries.filter((entry) => entry.status === "queued");
@@ -1356,14 +1361,20 @@ async function main() {
       platform: "SoundCloud",
       displayName: soundcloud.available ? soundcloud.user.full_name || soundcloud.user.username || "drgray_sic" : "drgray_sic",
       handle: soundcloud.available && soundcloud.user.permalink_url ? `@${String(soundcloud.user.permalink_url).split("/").pop()}` : "@drgray_sic",
-      profileImage: soundcloud.available ? soundcloud.user.avatar_url || null : null,
+      profileImage: soundcloud.available ? soundcloud.user.avatar_url || null : "/assets/generated/brand/dr-gray-logo.jpg",
       profileUrl: soundcloud.available ? soundcloud.user.permalink_url : "https://soundcloud.com/drgray_sic",
       verified: Boolean(soundcloud.available && soundcloud.user.verified),
       status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "info" : "check",
       metricValue: hrefCounts.soundcloud,
-      valueLabel: soundcloud.available ? `${soundcloud.user.followers_count.toLocaleString("de-DE")} Follower • ${hrefCounts.soundcloud} Linksignale` : `${hrefCounts.soundcloud} Linksignale im Seiteninhalt`,
-      statusLabel: soundcloud.available ? `${soundcloud.user.track_count} Tracks` : "Lokal nicht verifizierbar",
-      sourceLabel: "SoundCloud Public API"
+      valueLabel: soundcloud.available
+        ? `${soundcloud.user.followers_count.toLocaleString("de-DE")} Follower • ${hrefCounts.soundcloud} Linksignale`
+        : `${Number(contentSuggestions.soundcloudSnapshot?.totalTracks || trackData.totalTracks || 0)} Tracks im Cache • ${hrefCounts.soundcloud} Linksignale`,
+      statusLabel: soundcloud.available
+        ? `${soundcloud.user.track_count} Tracks`
+        : contentSuggestions.soundcloudSnapshot?.lastUpdated
+          ? `Cache ${formatBerlinDate(toEpochSeconds(contentSuggestions.soundcloudSnapshot.lastUpdated)) || "aktualisiert"}`
+          : "Lokal nicht verifizierbar",
+      sourceLabel: soundcloud.available ? "SoundCloud Public API" : "SoundCloud Cache / Website Sync"
     },
     {
       platform: "Shop",
@@ -1383,6 +1394,10 @@ async function main() {
   const socialStrongest = [...socialRows]
     .filter((row) => typeof row.metricValue === "number")
     .sort((a, b) => b.metricValue - a.metricValue)[0];
+  const directionPillars = Array.isArray(contentSuggestions.contentDirection?.pillars) ? contentSuggestions.contentDirection.pillars : [];
+  const directionHooks = Array.isArray(contentSuggestions.contentDirection?.recentHooks) ? contentSuggestions.contentDirection.recentHooks : [];
+  const soundcloudHighlights = Array.isArray(contentSuggestions.soundcloudSnapshot?.latestTracks) ? contentSuggestions.soundcloudSnapshot.latestTracks : [];
+  const brandAssets = Array.isArray(contentSuggestions.brandAssets) ? contentSuggestions.brandAssets : [];
 
   const agentsRoom = {
     metrics: {
@@ -1681,12 +1696,22 @@ async function main() {
         { label: "SoundCloud Links im Seiteninhalt", value: String(hrefCounts.soundcloud) },
         { label: "Shop Links im Seiteninhalt", value: String(hrefCounts.shop) }
       ],
+      contentDirection: {
+        currentAngle: contentSuggestions.contentDirection?.currentAngle || "Couple-Techno mit Performance-, Emotional- und Afterhours-Linie",
+        pillars: directionPillars,
+        recentHooks: directionHooks,
+        hashtags: Array.isArray(contentSuggestions.contentDirection?.recurringHashtags) ? contentSuggestions.contentDirection.recurringHashtags : [],
+        genres: Array.isArray(contentSuggestions.contentDirection?.genres) ? contentSuggestions.contentDirection.genres : [],
+        brandAssets,
+        soundcloudHighlights,
+        soundcloudStrongest: contentSuggestions.soundcloudSnapshot?.strongestTrack || null
+      },
       officialAccounts: [
         { label: "Website", url: websiteBase, status: "live", displayName: "drgray-mrsdrgray.com", handle: "Hauptdomain", profileImage: null, note: "Kontrollpfad / Hauptdomain" },
         { label: "Shirtee Store", url: socialAccountOverrideState.shop?.url || liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: shopEnvironmentIssue ? "check" : shopProblemCount === 0 ? "live" : "check", displayName: socialAccountOverrideState.shop?.displayName || "Dr. Gray & Mrs. Dr. Gray Store", handle: socialAccountOverrideState.shop?.handle || "Shirtee", profileImage: socialAccountOverrideState.shop?.profileImage || null, note: socialAccountOverrideState.shop?.note || "Store / Produktlinks" },
-        { label: "SoundCloud", url: socialAccountOverrideState.soundcloud?.url || "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.soundcloud?.displayName || (soundcloud.available ? soundcloud.user.full_name || soundcloud.user.username || "drgray_sic" : "drgray_sic"), handle: socialAccountOverrideState.soundcloud?.handle || (soundcloud.available && soundcloud.user.permalink_url ? `@${String(soundcloud.user.permalink_url).split("/").pop()}` : "@drgray_sic"), profileImage: socialAccountOverrideState.soundcloud?.profileImage || (soundcloud.available ? soundcloud.user.avatar_url || null : null), note: socialAccountOverrideState.soundcloud?.note || "Musik / Profilsignal" },
-        { label: "TikTok Hauptseite", url: socialAccountOverrideState.tiktokMain?.url || "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokMain?.displayName || tiktokDr.displayName || "Dr. Gray & Mrs. Dr. Gray", handle: socialAccountOverrideState.tiktokMain?.handle || (tiktokDr.username ? `@${tiktokDr.username}` : "@drgray_mrsdrgray"), profileImage: socialAccountOverrideState.tiktokMain?.profileImage || tiktokDr.avatarUrl || null, verified: Boolean(tiktokDr.isVerified), note: socialAccountOverrideState.tiktokMain?.note || "Hauptprofil" },
-        { label: "TikTok Backup", url: socialAccountOverrideState.tiktokBackup?.url || "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokBackup?.displayName || tiktokMrs.displayName || "Gray Afterhours", handle: socialAccountOverrideState.tiktokBackup?.handle || (tiktokMrs.username ? `@${tiktokMrs.username}` : "@gray.afterhours"), profileImage: socialAccountOverrideState.tiktokBackup?.profileImage || tiktokMrs.avatarUrl || null, verified: Boolean(tiktokMrs.isVerified), note: socialAccountOverrideState.tiktokBackup?.note || "Backup-Profil" }
+        { label: "SoundCloud", url: socialAccountOverrideState.soundcloud?.url || "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.soundcloud?.displayName || (soundcloud.available ? soundcloud.user.full_name || soundcloud.user.username || "drgray_sic" : "drgray_sic"), handle: socialAccountOverrideState.soundcloud?.handle || (soundcloud.available && soundcloud.user.permalink_url ? `@${String(soundcloud.user.permalink_url).split("/").pop()}` : "@drgray_sic"), profileImage: socialAccountOverrideState.soundcloud?.profileImage || (soundcloud.available ? soundcloud.user.avatar_url || null : "/assets/generated/brand/dr-gray-logo.jpg"), note: socialAccountOverrideState.soundcloud?.note || "Musik / Profilsignal" },
+        { label: "TikTok Hauptseite", url: socialAccountOverrideState.tiktokMain?.url || "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokMain?.displayName || tiktokDr.displayName || "Dr. Gray & Mrs. Dr. Gray", handle: socialAccountOverrideState.tiktokMain?.handle || (tiktokDr.username ? `@${tiktokDr.username}` : "@drgray_mrsdrgray"), profileImage: socialAccountOverrideState.tiktokMain?.profileImage || tiktokDr.avatarUrl || "/assets/generated/brand/dr-gray-logo.jpg", verified: Boolean(tiktokDr.isVerified), note: socialAccountOverrideState.tiktokMain?.note || "Hauptprofil" },
+        { label: "TikTok Backup", url: socialAccountOverrideState.tiktokBackup?.url || "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokBackup?.displayName || tiktokMrs.displayName || "Gray Afterhours", handle: socialAccountOverrideState.tiktokBackup?.handle || (tiktokMrs.username ? `@${tiktokMrs.username}` : "@gray.afterhours"), profileImage: socialAccountOverrideState.tiktokBackup?.profileImage || tiktokMrs.avatarUrl || "/assets/generated/brand/mrs-dr-gray-logo.jpg", verified: Boolean(tiktokMrs.isVerified), note: socialAccountOverrideState.tiktokBackup?.note || "Backup-Profil" }
       ]
     },
     performanceMetrics: {
@@ -1751,6 +1776,9 @@ async function main() {
         uploadQueue: uploadQueueRows,
         suggestionPackages: Array.isArray(contentSuggestions.suggestions) ? contentSuggestions.suggestions : [],
         referenceState: contentSuggestions.referenceState || {},
+        brandAssets,
+        soundcloudSnapshot: contentSuggestions.soundcloudSnapshot || {},
+        contentDirection: contentSuggestions.contentDirection || {},
         constraints: contentSuggestions.constraints || {},
         approvalCommands: [
           "POSTEN",

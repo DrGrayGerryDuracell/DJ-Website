@@ -1821,7 +1821,10 @@ export function renderPerformance(container, performanceMetrics) {
 export function renderContent(container, contentPerformance) {
   const strongest = contentPerformance.strongestSections[0] || null;
   const planner = contentPerformance.planner || { channels: [], calendar: [], ideas: [] };
-  const workflow = contentPerformance.workflow || { queueSummary: [], generatedCaptions: [], uploadQueue: [], runtimeNotes: [], approvalCommands: [], suggestionPackages: [], referenceState: {}, constraints: {} };
+  const workflow = contentPerformance.workflow || { queueSummary: [], generatedCaptions: [], uploadQueue: [], runtimeNotes: [], approvalCommands: [], suggestionPackages: [], referenceState: {}, constraints: {}, brandAssets: [], soundcloudSnapshot: {}, contentDirection: {} };
+  const brandAssets = Array.isArray(workflow.brandAssets) ? workflow.brandAssets : [];
+  const contentDirection = workflow.contentDirection || {};
+  const soundcloudSnapshot = workflow.soundcloudSnapshot || {};
   container.innerHTML = `
     <article class="panel">
       <div class="section-banner">
@@ -1911,7 +1914,69 @@ export function renderContent(container, contentPerformance) {
         <li><span>Paar-Referenzen</span><strong class="status-pill ${workflow.referenceState?.ready ? "is-live" : "is-warn"}">${workflow.referenceState?.ready ? "bereit" : "fehlen"}</strong></li>
         <li><span>Source Clips</span><strong>${escapeHtml(String(workflow.referenceState?.sourceClipCount ?? 0))}</strong></li>
         <li><span>Source Fotos</span><strong>${escapeHtml(String(workflow.referenceState?.sourcePhotoCount ?? 0))}</strong></li>
+        <li><span>Brand Assets</span><strong>${escapeHtml(String(workflow.referenceState?.brandGraphicsCount ?? brandAssets.length ?? 0))}</strong></li>
         <li><span>Approved Songs</span><strong>${escapeHtml(String(workflow.referenceState?.approvedSongCount ?? 0))}</strong></li>
+      </ul>
+    </article>
+    <article class="panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Brand & Richtung</p>
+          <h3>Logos, Themenlinie und SoundCloud-Stand</h3>
+        </div>
+        <div class="section-banner-chips">
+          <span class="status-pill is-live">Couple Ready: <strong>${workflow.referenceState?.ready ? "Ja" : "Nein"}</strong></span>
+          ${soundcloudSnapshot.totalTracks != null ? `<span class="status-pill is-connected">Tracks: <strong>${escapeHtml(String(soundcloudSnapshot.totalTracks))}</strong></span>` : ""}
+        </div>
+      </div>
+      ${brandAssets.length ? `
+        <div class="social-profile-grid">
+          ${brandAssets.map((item) => `
+            <article class="social-profile-card">
+              <div class="social-profile-media is-photo">
+                <img src="${/mrs/i.test(item.label) ? "/assets/generated/brand/mrs-dr-gray-logo.jpg" : "/assets/generated/brand/dr-gray-logo.jpg"}" alt="${escapeHtml(item.label)}">
+              </div>
+              <div class="social-profile-body">
+                <div class="social-node-head">
+                  <div class="social-profile-identity">
+                    <strong>${escapeHtml(item.label)}</strong>
+                    <span class="social-node-title">Brand Graphic</span>
+                  </div>
+                  <span class="status-pill is-connected">Registriert</span>
+                </div>
+                <p class="social-profile-handle">Logo / Branding</p>
+              </div>
+            </article>
+          `).join("")}
+        </div>
+      ` : ""}
+      <div class="editor-card-grid">
+        <article class="editor-card">
+          <div class="editor-card-head">
+            <div>
+              <strong>Aktuelle Richtung</strong>
+              <span>${escapeHtml(contentDirection.currentAngle || "Content-Linie wird aus eurem Material aufgebaut.")}</span>
+            </div>
+            <span class="status-pill is-live">Live</span>
+          </div>
+          <p>${escapeHtml(contentDirection.currentAngle || "Keine Linie hinterlegt.")}</p>
+          <small>${escapeHtml((contentDirection.pillars || []).join(" • "))}</small>
+        </article>
+        <article class="editor-card">
+          <div class="editor-card-head">
+            <div>
+              <strong>Stärkster SoundCloud-Track</strong>
+              <span>${escapeHtml(soundcloudSnapshot.strongestTrack?.date || "n/a")}</span>
+            </div>
+            <span class="status-pill is-ready">${escapeHtml(soundcloudSnapshot.strongestTrack ? `${soundcloudSnapshot.strongestTrack.plays} Plays` : "Cache")}</span>
+          </div>
+          <p>${escapeHtml(soundcloudSnapshot.strongestTrack?.title || "Kein Track-Snapshot hinterlegt.")}</p>
+          <small>${escapeHtml(soundcloudSnapshot.strongestTrack?.url || "")}</small>
+        </article>
+      </div>
+      <ul class="status-list compact">
+        ${(contentDirection.recentHooks || []).slice(0, 4).map((item, index) => `<li><span>Hook ${index + 1}</span><strong>${escapeHtml(item)}</strong></li>`).join("")}
+        ${(contentDirection.genres || []).slice(0, 4).map((item, index) => `<li><span>Genre ${index + 1}</span><strong>${escapeHtml(item)}</strong></li>`).join("")}
       </ul>
     </article>
     <article class="panel">
@@ -2075,6 +2140,7 @@ export function renderSocial(container, socialMetrics) {
   const liveProfiles = socialMetrics.links.filter((row) => /erreichbar|verbunden|live/i.test(`${row.statusLabel || ""} ${row.status || ""}`)).length;
   const contentSignals = socialMetrics.links.reduce((sum, row) => sum + Number(row.metricValue || 0), 0);
   const soundcloudRow = socialMetrics.links.find((row) => /soundcloud/i.test(row.platform || ""));
+  const direction = socialMetrics.contentDirection || {};
   const summaryCards = [
     { label: "Staerkster Kanal", value: strongest, meta: "Routing / Fokus", status: "live" },
     { label: "Live Profile", value: `${liveProfiles}/${socialMetrics.links.length}`, meta: "aktuell bestaetigt", status: liveProfiles >= 2 ? "connected" : "warn" },
@@ -2173,6 +2239,30 @@ export function renderSocial(container, socialMetrics) {
           )
           .join("")}
       </div>
+      <div class="editor-card-grid">
+        <article class="editor-card">
+          <div class="editor-card-head">
+            <div>
+              <strong>Aktuelle Content-Linie</strong>
+              <span>${escapeHtml(direction.currentAngle || "nicht erfasst")}</span>
+            </div>
+            <span class="status-pill is-connected">Richtung</span>
+          </div>
+          <p>${escapeHtml(direction.currentAngle || "Keine Content-Richtung hinterlegt.")}</p>
+          <small>${escapeHtml((direction.pillars || []).join(" • "))}</small>
+        </article>
+        <article class="editor-card">
+          <div class="editor-card-head">
+            <div>
+              <strong>SoundCloud Fokus</strong>
+              <span>${escapeHtml(direction.soundcloudStrongest?.date || "n/a")}</span>
+            </div>
+            <span class="status-pill is-live">${escapeHtml(direction.soundcloudStrongest ? `${direction.soundcloudStrongest.plays} Plays` : "kein Snapshot")}</span>
+          </div>
+          <p>${escapeHtml(direction.soundcloudStrongest?.title || "Kein Track-Highlight erkannt.")}</p>
+          <small>${escapeHtml((direction.genres || []).join(" • "))}</small>
+        </article>
+      </div>
       <table class="data-table">
         <thead><tr><th>Plattform</th><th>${hasLiveValues ? "Live-Wert" : "Klicks"}</th><th>${hasLiveValues ? "Status" : "CTR"}</th></tr></thead>
         <tbody>
@@ -2225,6 +2315,7 @@ export function renderSocial(container, socialMetrics) {
       </div>
       <ul class="status-list compact">
         ${socialMetrics.comparisons.map((item) => `<li><span>${item.label}</span><strong>${item.value}</strong></li>`).join("")}
+        ${(direction.hashtags || []).slice(0, 4).map((item, index) => `<li><span>Hashtag ${index + 1}</span><strong>${escapeHtml(item)}</strong></li>`).join("")}
       </ul>
       <p class="muted-line">SoundCloud bleibt als Quelle sichtbar, auch wenn das Profil aktuell kein Live-Signal liefert.</p>
     </article>

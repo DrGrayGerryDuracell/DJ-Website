@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T09:54:54.162Z",
-    "generatedAtLabel": "06.08.26, 11:54",
+    "generatedAt": "2026-08-06T10:15:17.801Z",
+    "generatedAtLabel": "06.08.26, 12:15",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 11:54",
+      "value": "06.08.26, 12:15",
       "level": "info"
     }
   },
@@ -324,8 +324,8 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T09:54:54.162Z",
-      "checkedAtLabel": "06.08.26, 11:54"
+      "checkedAt": "2026-08-06T10:15:17.801Z",
+      "checkedAtLabel": "06.08.26, 12:15"
     },
     "catalog": {
       "totalItems": 167,
@@ -2979,17 +2979,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "type": "info",
         "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "type": "info",
         "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "type": "info",
         "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
@@ -3027,14 +3027,14 @@
         "platform": "SoundCloud",
         "displayName": "drgray_sic",
         "handle": "@drgray_sic",
-        "profileImage": null,
+        "profileImage": "/assets/generated/brand/dr-gray-logo.jpg",
         "profileUrl": "https://soundcloud.com/drgray_sic",
         "verified": false,
         "status": "info",
         "metricValue": 10,
-        "valueLabel": "10 Linksignale im Seiteninhalt",
-        "statusLabel": "Lokal nicht verifizierbar",
-        "sourceLabel": "SoundCloud Public API"
+        "valueLabel": "31 Tracks im Cache • 10 Linksignale",
+        "statusLabel": "Cache 29.07.26, 18:30",
+        "sourceLabel": "SoundCloud Cache / Website Sync"
       },
       {
         "platform": "Shop",
@@ -3091,6 +3091,102 @@
         "value": "8"
       }
     ],
+    "contentDirection": {
+      "currentAngle": "Couple-Techno mit Driving-, Emotional- und Afterhours-Linie",
+      "pillars": [
+        "Driving Techno",
+        "Emotional B2B",
+        "Couple Identity",
+        "Afterhours / Neon",
+        "Peak Time / Dark Hypnotic"
+      ],
+      "recentHooks": [
+        "Driving techno opener for late Cologne floors",
+        "Emotional B2B sequence with rising tension every 8 bars",
+        "Sunset-to-afterhours transition reel with a hard cut at the drop",
+        "Minimal voiceover set teaser for TikTok and SoundCloud",
+        "Couple-brand identity clip: two perspectives, one signal"
+      ],
+      "hashtags": [
+        "#techno",
+        "#afterhours",
+        "#drgray",
+        "#b2b",
+        "#koeln",
+        "#drivingtechno",
+        "#djlife",
+        "#tiktokdj"
+      ],
+      "genres": [
+        "Techno",
+        "Driving Techno",
+        "Peak Time",
+        "Melodic Techno",
+        "Dark Techno"
+      ],
+      "brandAssets": [
+        {
+          "id": "brand-1",
+          "path": "~/TikTok-DJ-Content/references/branding/dr-gray-logo.jpg",
+          "label": "Dr. Gray Logo"
+        },
+        {
+          "id": "brand-2",
+          "path": "~/TikTok-DJ-Content/references/branding/mrs-dr-gray-logo.jpg",
+          "label": "Mrs. Dr. Gray Logo"
+        }
+      ],
+      "soundcloudHighlights": [
+        {
+          "title": "Mrs.Dr.Gray - Learning to Destroy",
+          "date": "2026-07-20",
+          "plays": 310,
+          "likes": 24,
+          "comments": 3,
+          "type": "mrsdrgray_solo",
+          "genres": [
+            "Techno",
+            "Driving Techno"
+          ],
+          "url": "https://soundcloud.com/drgray_sic/mrs-dr-gray-learning-to"
+        },
+        {
+          "title": "Dr.Gray – Goodbye My Friend (The Last TikTok Set for Andy Tauchert)",
+          "date": "2026-07-12",
+          "plays": 567,
+          "likes": 41,
+          "comments": 6,
+          "type": "drgray_set",
+          "genres": [
+            "Techno",
+            "Peak Time",
+            "Driving Techno"
+          ],
+          "url": "https://soundcloud.com/drgray_sic/dr-gray-goodbye-my-friend-the"
+        },
+        {
+          "title": "Mrs. Dr. Gray – No Escape",
+          "date": "2026-07-09",
+          "plays": 386,
+          "likes": 31,
+          "comments": 6,
+          "type": "mrsdrgray_solo",
+          "genres": [
+            "Techno",
+            "Dark Techno",
+            "Driving"
+          ],
+          "url": "https://soundcloud.com/drgray_sic/mrs-dr-gray-no-escape"
+        }
+      ],
+      "soundcloudStrongest": {
+        "title": "Love is Techno Part I",
+        "plays": 14927,
+        "likes": 564,
+        "date": "2025-07-20",
+        "url": "https://soundcloud.com/drgray_sic/love-is-techno-part-i"
+      }
+    },
     "officialAccounts": [
       {
         "label": "Website",
@@ -3116,7 +3212,7 @@
         "status": "check",
         "displayName": "drgray_sic",
         "handle": "@drgray_sic",
-        "profileImage": null,
+        "profileImage": "/assets/generated/brand/dr-gray-logo.jpg",
         "note": "Musik / Profilsignal"
       },
       {
@@ -3125,7 +3221,7 @@
         "status": "check",
         "displayName": "Dr. Gray & Mrs. Dr. Gray",
         "handle": "@drgray_mrsdrgray",
-        "profileImage": null,
+        "profileImage": "/assets/generated/brand/dr-gray-logo.jpg",
         "verified": false,
         "note": "Hauptprofil"
       },
@@ -3135,7 +3231,7 @@
         "status": "check",
         "displayName": "Gray Afterhours",
         "handle": "@gray.afterhours",
-        "profileImage": null,
+        "profileImage": "/assets/generated/brand/mrs-dr-gray-logo.jpg",
         "verified": false,
         "note": "Backup-Profil"
       }
@@ -3388,7 +3484,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:54"
+          "createdAt": "06.08.26, 12:15"
         },
         {
           "id": "hermes-test_2026-08-02T06-26-57",
@@ -3401,7 +3497,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:54"
+          "createdAt": "06.08.26, 12:15"
         },
         {
           "id": "hermes-test_2026-08-02T06-25-50",
@@ -3414,7 +3510,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:54"
+          "createdAt": "06.08.26, 12:15"
         },
         {
           "id": "hermes-test_2026-08-02T06-25-16",
@@ -3427,7 +3523,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:54"
+          "createdAt": "06.08.26, 12:15"
         },
         {
           "id": "hermes-test_2026-08-02T06-24-31",
@@ -3440,7 +3536,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:54"
+          "createdAt": "06.08.26, 12:15"
         },
         {
           "id": "hermes-test_2026-08-02T06-24-06",
@@ -3453,7 +3549,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:54"
+          "createdAt": "06.08.26, 12:15"
         }
       ]
     },
@@ -3559,8 +3655,8 @@
           "title": "Driving techno opener for late Cologne floors",
           "channel": "TikTok Hauptseite",
           "scheduledFor": "Mon 15s clip",
-          "status": "warn",
-          "statusLabel": "Referenzen fehlen",
+          "status": "ready",
+          "statusLabel": "Referenzen komplett",
           "hook": "Driving techno opener for late Cologne floors",
           "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
           "hashtags": [
@@ -3573,7 +3669,7 @@
           "videoRequired": true,
           "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
           "audioSource": "own-sound",
-          "sourceAssetHint": null,
+          "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-desk-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
           "policyVersion": "2026-08-06"
@@ -3583,8 +3679,8 @@
           "title": "Emotional B2B sequence with rising tension every 8 bars",
           "channel": "TikTok Backup",
           "scheduledFor": "Tue 3 hooks",
-          "status": "warn",
-          "statusLabel": "Referenzen fehlen",
+          "status": "ready",
+          "statusLabel": "Referenzen komplett",
           "hook": "Emotional B2B sequence with rising tension every 8 bars",
           "caption": "Emotional pressure, clean groove, no compromise. Driving Techno | Emotional | B2B | Köln ❤️",
           "hashtags": [
@@ -3597,7 +3693,7 @@
           "videoRequired": true,
           "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
           "audioSource": "own-sound",
-          "sourceAssetHint": null,
+          "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-neon-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
           "policyVersion": "2026-08-06"
@@ -3607,8 +3703,8 @@
           "title": "Sunset-to-afterhours transition reel with a hard cut at the drop",
           "channel": "SoundCloud",
           "scheduledFor": "Wed 8s loop",
-          "status": "warn",
-          "statusLabel": "Referenzen fehlen",
+          "status": "ready",
+          "statusLabel": "Referenzen komplett",
           "hook": "Sunset-to-afterhours transition reel with a hard cut at the drop",
           "caption": "Two minds, one pulse. New set energy from the Hermes pipeline.",
           "hashtags": [
@@ -3621,7 +3717,7 @@
           "videoRequired": true,
           "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
           "audioSource": "own-sound",
-          "sourceAssetHint": null,
+          "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-outdoor-dog-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
           "policyVersion": "2026-08-06"
@@ -3631,8 +3727,8 @@
           "title": "Minimal voiceover set teaser for TikTok and SoundCloud",
           "channel": "TikTok Hauptseite",
           "scheduledFor": "Thu card",
-          "status": "warn",
-          "statusLabel": "Referenzen fehlen",
+          "status": "ready",
+          "statusLabel": "Referenzen komplett",
           "hook": "Minimal voiceover set teaser for TikTok and SoundCloud",
           "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
           "hashtags": [
@@ -3645,7 +3741,7 @@
           "videoRequired": true,
           "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
           "audioSource": "own-sound",
-          "sourceAssetHint": null,
+          "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-pair-preview-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
           "policyVersion": "2026-08-06"
@@ -3655,8 +3751,8 @@
           "title": "Couple-brand identity clip: two perspectives, one signal",
           "channel": "TikTok Backup",
           "scheduledFor": "Fri caption pack",
-          "status": "warn",
-          "statusLabel": "Referenzen fehlen",
+          "status": "ready",
+          "statusLabel": "Referenzen komplett",
           "hook": "Couple-brand identity clip: two perspectives, one signal",
           "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
           "hashtags": [
@@ -3669,18 +3765,119 @@
           "videoRequired": true,
           "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
           "audioSource": "own-sound",
-          "sourceAssetHint": null,
+          "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-drive-bw-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
           "policyVersion": "2026-08-06"
         }
       ],
       "referenceState": {
-        "ready": false,
-        "pairPortraitCount": 0,
+        "ready": true,
+        "pairPortraitCount": 8,
         "sourceClipCount": 0,
-        "sourcePhotoCount": 0,
+        "sourcePhotoCount": 9,
+        "brandGraphicsCount": 2,
         "approvedSongCount": 0
+      },
+      "brandAssets": [
+        {
+          "id": "brand-1",
+          "path": "~/TikTok-DJ-Content/references/branding/dr-gray-logo.jpg",
+          "label": "Dr. Gray Logo"
+        },
+        {
+          "id": "brand-2",
+          "path": "~/TikTok-DJ-Content/references/branding/mrs-dr-gray-logo.jpg",
+          "label": "Mrs. Dr. Gray Logo"
+        }
+      ],
+      "soundcloudSnapshot": {
+        "totalTracks": 31,
+        "lastUpdated": "2026-07-29T16:30:00Z",
+        "latestTracks": [
+          {
+            "title": "Mrs.Dr.Gray - Learning to Destroy",
+            "date": "2026-07-20",
+            "plays": 310,
+            "likes": 24,
+            "comments": 3,
+            "type": "mrsdrgray_solo",
+            "genres": [
+              "Techno",
+              "Driving Techno"
+            ],
+            "url": "https://soundcloud.com/drgray_sic/mrs-dr-gray-learning-to"
+          },
+          {
+            "title": "Dr.Gray – Goodbye My Friend (The Last TikTok Set for Andy Tauchert)",
+            "date": "2026-07-12",
+            "plays": 567,
+            "likes": 41,
+            "comments": 6,
+            "type": "drgray_set",
+            "genres": [
+              "Techno",
+              "Peak Time",
+              "Driving Techno"
+            ],
+            "url": "https://soundcloud.com/drgray_sic/dr-gray-goodbye-my-friend-the"
+          },
+          {
+            "title": "Mrs. Dr. Gray – No Escape",
+            "date": "2026-07-09",
+            "plays": 386,
+            "likes": 31,
+            "comments": 6,
+            "type": "mrsdrgray_solo",
+            "genres": [
+              "Techno",
+              "Dark Techno",
+              "Driving"
+            ],
+            "url": "https://soundcloud.com/drgray_sic/mrs-dr-gray-no-escape"
+          }
+        ],
+        "strongestTrack": {
+          "title": "Love is Techno Part I",
+          "plays": 14927,
+          "likes": 564,
+          "date": "2025-07-20",
+          "url": "https://soundcloud.com/drgray_sic/love-is-techno-part-i"
+        }
+      },
+      "contentDirection": {
+        "currentAngle": "Couple-Techno mit Driving-, Emotional- und Afterhours-Linie",
+        "pillars": [
+          "Driving Techno",
+          "Emotional B2B",
+          "Couple Identity",
+          "Afterhours / Neon",
+          "Peak Time / Dark Hypnotic"
+        ],
+        "recentHooks": [
+          "Driving techno opener for late Cologne floors",
+          "Emotional B2B sequence with rising tension every 8 bars",
+          "Sunset-to-afterhours transition reel with a hard cut at the drop",
+          "Minimal voiceover set teaser for TikTok and SoundCloud",
+          "Couple-brand identity clip: two perspectives, one signal"
+        ],
+        "recurringHashtags": [
+          "#techno",
+          "#afterhours",
+          "#drgray",
+          "#b2b",
+          "#koeln",
+          "#drivingtechno",
+          "#djlife",
+          "#tiktokdj"
+        ],
+        "genres": [
+          "Techno",
+          "Driving Techno",
+          "Peak Time",
+          "Melodic Techno",
+          "Dark Techno"
+        ]
       },
       "constraints": {
         "pairRequired": true,
@@ -3697,7 +3894,7 @@
       "runtimeNotes": [
         "Uploadpfad kann nach Freigabe vom Dashboard oder Telegram aus weiterlaufen.",
         "6 Edit-Briefs mit CapCut-Plan gefunden.",
-        "Referenz-Manifest ist noch unvollstaendig. Ohne Paar-Referenzen duerfen keine finalen Real-Portrait-Drafts freigegeben werden.",
+        "Referenz-Manifest ist fuer Paar-Content bereit.",
         "Derzeit keine offene Upload-Warteschlange im Dashboard."
       ]
     },
@@ -3719,25 +3916,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 11:54",
+      "time": "06.08.26, 12:15",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 11:54",
+      "time": "06.08.26, 12:15",
       "type": "check",
       "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 11:54",
+      "time": "06.08.26, 12:15",
       "type": "check",
       "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 11:54",
+      "time": "06.08.26, 12:15",
       "type": "check",
       "text": "TikTok Profile: lokal nicht verifizierbar"
     }
@@ -4862,7 +5059,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4871,7 +5068,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
@@ -4880,7 +5077,7 @@
       },
       {
         "topic": "Broker",
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4889,7 +5086,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
@@ -4898,7 +5095,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
@@ -4907,7 +5104,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
@@ -4916,7 +5113,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
@@ -4925,7 +5122,7 @@
       },
       {
         "topic": "Rueckgabe",
-        "time": "06.08.26, 11:54",
+        "time": "06.08.26, 12:15",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
@@ -5001,13 +5198,13 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T11:53:11.792942",
+        "updated_at": "2026-08-06T12:13:12.462407",
         "platformCounts": {
           "telegram": 1
         }
       },
       "brainVaultState": {
-        "last_run_utc": "2026-08-06T09:37:56.104950",
+        "last_run_utc": "2026-08-06T10:07:56.229265",
         "last_added": 0,
         "processed_count": 269
       },
@@ -5019,8 +5216,8 @@
         "count": 0
       },
       "counts": {
-        "sessions": 1092,
-        "messages": 18692,
+        "sessions": 1093,
+        "messages": 18699,
         "delegations": 1,
         "obligations": 89,
         "routing": 1
@@ -5084,7 +5281,7 @@
         "name": "Hermes state.db",
         "kind": "Runtime",
         "state": "live",
-        "detail": "1092 Sessions, 18692 Nachrichten, 1 Delegationen",
+        "detail": "1093 Sessions, 18699 Nachrichten, 1 Delegationen",
         "route": "Hermes / state.db",
         "channel": "SQLite"
       },
@@ -5108,7 +5305,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 11:53",
+        "detail": "Channels: 1 • updated 06.08.26, 12:13",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -5116,7 +5313,7 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run 2026-08-06T09:37:56.104950 • Added 0",
+        "detail": "Last run 2026-08-06T10:07:56.229265 • Added 0",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },
@@ -5141,6 +5338,19 @@
       {
         "name": "Hermes Session 1",
         "role": "cron",
+        "route": "Session 6_120042",
+        "channel": "gemini-2.5-flash",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "7 Nachrichten",
+          "4 Tools",
+          "Ende: cron_complete"
+        ]
+      },
+      {
+        "name": "Hermes Session 2",
+        "role": "cron",
         "route": "Session 6_110037",
         "channel": "gemini-2.5-flash",
         "status": "connected",
@@ -5152,7 +5362,7 @@
         ]
       },
       {
-        "name": "Hermes Session 2",
+        "name": "Hermes Session 3",
         "role": "cron",
         "route": "Session 6_092028",
         "channel": "gemini-2.5-flash",
@@ -5165,7 +5375,7 @@
         ]
       },
       {
-        "name": "Hermes Session 3",
+        "name": "Hermes Session 4",
         "role": "cron",
         "route": "Session 6_090026",
         "channel": "gemini-2.5-flash",
@@ -5178,7 +5388,7 @@
         ]
       },
       {
-        "name": "Hermes Session 4",
+        "name": "Hermes Session 5",
         "role": "cron",
         "route": "Session 5_230041",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -5191,7 +5401,7 @@
         ]
       },
       {
-        "name": "Hermes Session 5",
+        "name": "Hermes Session 6",
         "role": "cron",
         "route": "Session 5_223038",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -5204,7 +5414,7 @@
         ]
       },
       {
-        "name": "Telegram Session 6",
+        "name": "Telegram Session 7",
         "role": "Telegram Direktnachricht",
         "route": "Session 5_5fc1b4",
         "channel": "gemma4:12b-optimized",
@@ -5216,7 +5426,7 @@
         ]
       },
       {
-        "name": "Hermes Session 7",
+        "name": "Hermes Session 8",
         "role": "cron",
         "route": "Session 5_110037",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -5227,22 +5437,72 @@
           "20 Tools",
           "Ende: cron_complete"
         ]
-      },
-      {
-        "name": "Hermes Session 8",
-        "role": "cron",
-        "route": "Session 5_092028",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "12 Nachrichten",
-          "6 Tools",
-          "Ende: cron_complete"
-        ]
       }
     ],
     "recentMessages": [
+      {
+        "topic": "ASSISTANT • 6_120042",
+        "time": "06.08.26, 12:02",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 2197 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      },
+      {
+        "topic": "TOOL • 6_120042",
+        "time": "06.08.26, 12:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 3603 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "TOOL • 6_120042",
+        "time": "06.08.26, 12:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 3518 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "TOOL • 6_120042",
+        "time": "06.08.26, 12:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 3317 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "TOOL • 6_120042",
+        "time": "06.08.26, 12:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 4603 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "ASSISTANT • 6_120042",
+        "time": "06.08.26, 12:00",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 0 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      },
+      {
+        "topic": "USER • 6_120042",
+        "time": "06.08.26, 12:00",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 1371 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
       {
         "topic": "ASSISTANT • 6_110037",
         "time": "06.08.26, 11:01",
@@ -5269,69 +5529,6 @@
         "summary": "tool Aktivität • 4931 Zeichen • Tool web_search",
         "status": "info",
         "statusLabel": "System"
-      },
-      {
-        "topic": "TOOL • 6_110037",
-        "time": "06.08.26, 11:00",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 4895 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "ASSISTANT • 6_110037",
-        "time": "06.08.26, 11:00",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 0 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "USER • 6_110037",
-        "time": "06.08.26, 11:00",
-        "from": "user",
-        "to": "Hermes",
-        "summary": "user Aktivität • 1516 Zeichen",
-        "status": "connected",
-        "statusLabel": "User"
-      },
-      {
-        "topic": "ASSISTANT • 6_092028",
-        "time": "06.08.26, 09:20",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 1144 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "TOOL • 6_092028",
-        "time": "06.08.26, 09:20",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 3298 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "ASSISTANT • 6_092028",
-        "time": "06.08.26, 09:20",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 0 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "USER • 6_092028",
-        "time": "06.08.26, 09:20",
-        "from": "user",
-        "to": "Hermes",
-        "summary": "user Aktivität • 1582 Zeichen",
-        "status": "connected",
-        "statusLabel": "User"
       }
     ],
     "recentDelegations": [
