@@ -1100,6 +1100,10 @@ export function renderVisualPulse(container, dashboardData) {
       <h3>Live Signal</h3>
       <div class="sparkline-wrap signal-wave">${visitorsSparkline}${pageviewsSparkline}</div>
       <p class="pulse-copy">Seiten ok: <strong>${formatNumber(dashboardData.overviewKpis.find((kpi) => kpi.id === "pagesOk")?.value)}</strong> · Quelle: HTTP Snapshot</p>
+      <div class="ha-room-actions">
+        <a class="action-btn is-secondary" href="#website">Website öffnen</a>
+        <button type="button" class="action-btn is-secondary" data-control-command="sync-control-live">Neu prüfen</button>
+      </div>
     </article>
     <article class="pulse-card">
       <p class="pulse-eyebrow">Shop</p>
@@ -1113,6 +1117,10 @@ export function renderVisualPulse(container, dashboardData) {
           ${toStatusCount("Upload", upload, "is-upload")}
           ${toStatusCount("Konzept", concept, "is-concept")}
         </div>
+      </div>
+      <div class="ha-room-actions">
+        <a class="action-btn is-secondary" href="#shop">Shop öffnen</a>
+        <button type="button" class="action-btn is-secondary" data-control-command="generate-upload-queue">Queue bauen</button>
       </div>
     </article>
     <article class="pulse-card">
@@ -1132,6 +1140,10 @@ export function renderVisualPulse(container, dashboardData) {
           .join("")}
       </div>
       <p class="pulse-copy">Stärkster Kanal: <strong>${dashboardData.socialMetrics.strongestPlatform || socialTop[0]?.platform || "nicht erfasst"}</strong></p>
+      <div class="ha-room-actions">
+        <a class="action-btn is-secondary" href="#social">Social öffnen</a>
+        <a class="action-btn is-secondary" href="#content">Content öffnen</a>
+      </div>
     </article>
   `;
 }
@@ -2097,7 +2109,8 @@ export function renderAlerts(container, alerts) {
         ${alerts
           .map((alert) => {
             const cls = alert.level === "warn" ? "is-warn" : alert.level === "ok" ? "is-ok" : "is-info";
-            return `<article class="alert-card ${cls}"><h4>${alert.title}</h4><p>${alert.description}</p><span>${alert.source}</span></article>`;
+            const href = /Website/i.test(alert.source || "") ? "#website" : /Shop/i.test(alert.source || "") ? "#shop" : /Social/i.test(alert.source || "") ? "#social" : "#operations";
+            return `<article class="alert-card ${cls}"><h4>${alert.title}</h4><p>${alert.description}</p><span>${alert.source}</span><div class="ha-room-actions"><a class="action-btn is-secondary" href="${href}">Bereich öffnen</a></div></article>`;
           })
           .join("")}
       </div>
