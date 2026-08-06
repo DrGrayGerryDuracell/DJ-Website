@@ -76,13 +76,13 @@ function buildTagPills(tags) {
 }
 
 function statusClass(status) {
-  if (status === "error" || status === "offline") return "is-error";
-  if (status === "warn" || status === "check") return "is-warn";
+  if (status === "error" || status === "offline" || status === "blocked") return "is-error";
+  if (status === "warn" || status === "check" || status === "draft") return "is-warn";
   if (status === "live") return "is-live";
-  if (status === "connected") return "is-connected";
-  if (status === "support") return "is-support";
-  if (status === "ready") return "is-ready";
-  if (status === "active") return "is-active";
+  if (status === "connected" || status === "submitted") return "is-connected";
+  if (status === "support" || status === "adapter") return "is-support";
+  if (status === "ready" || status === "planned") return "is-ready";
+  if (status === "active" || status === "enabled") return "is-active";
   if (status === "sync") return "is-sync";
   return "is-info";
 }
@@ -110,11 +110,11 @@ function buildStatusGuide(compact = false) {
 }
 
 function statusNarrative(status) {
-  if (status === "error" || status === "offline") return "Akuter Fehler";
-  if (status === "warn" || status === "check") return "Pruefung noetig";
+  if (status === "error" || status === "offline" || status === "blocked") return "Akuter Fehler";
+  if (status === "warn" || status === "check" || status === "draft") return "Pruefung noetig";
   if (status === "live" || status === "active") return "Stabil";
-  if (status === "connected" || status === "sync") return "Verknuepft";
-  if (status === "ready" || status === "support") return "Bereit";
+  if (status === "connected" || status === "sync" || status === "submitted") return "Verknuepft";
+  if (status === "ready" || status === "support" || status === "planned") return "Bereit";
   return "Info";
 }
 
@@ -144,6 +144,12 @@ const PLATFORM_VISUALS = {
   website: "/assets/generated/dashboard-visuals/website-structure-monitoring.png",
   shop: "/assets/generated/dashboard-visuals/shop-commerce-catalog.png",
   social: "/assets/generated/dashboard-visuals/social-platform-analytics.png"
+};
+
+const GRAPH_CONFIG = {
+  agents: { width: 1440, height: 780 },
+  devices: { width: 1440, height: 780 },
+  vault: { width: 1440, height: 780 }
 };
 
 const AGENT_NODE_ICONS = {
@@ -207,6 +213,11 @@ function getDashboardVisual(kind) {
 }
 
 function getOverviewIcon(kind) {
+  if (kind === "centralServer") return DASHBOARD_VISUALS.centralServer;
+  if (kind === "communication") return DASHBOARD_VISUALS.communication;
+  if (kind === "vault") return DASHBOARD_VISUALS.vault;
+  if (kind === "homeAssistant") return DASHBOARD_VISUALS.homeAssistant;
+  if (kind === "alerts") return DASHBOARD_VISUALS.alerts;
   return OVERVIEW_ICON_VISUALS[kind] || OVERVIEW_ICON_VISUALS.centralServer;
 }
 
@@ -403,48 +414,77 @@ function toGraphId(value) {
 }
 
 const agentGraphPositions = new Map([
-  ["Mensch", { x: 7, y: 50, tone: "human", label: "Du / iPhone", detail: "Telegram Operator" }],
-  ["Hermes", { x: 21, y: 50, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
-  ["Argus", { x: 37, y: 26, tone: "support", label: "Argus", detail: "Vorprüfung / Review" }],
-  ["OpenClaw Gateway", { x: 37, y: 74, tone: "bridge", label: "OpenClaw", detail: "Queue / Broker" }],
-  ["Jarvis", { x: 56, y: 50, tone: "core", label: "Jarvis", detail: "Verteiler / Review" }],
-  ["Heimdall", { x: 76, y: 12, tone: "service", label: "Heimdall", detail: "Home Assistant" }],
-  ["Forge", { x: 76, y: 26, tone: "service", label: "Forge", detail: "Infra / Skills" }],
-  ["Sentinel", { x: 76, y: 40, tone: "service", label: "Sentinel", detail: "Health / Security" }],
-  ["Oracle", { x: 76, y: 54, tone: "service", label: "Oracle", detail: "Briefings" }],
-  ["Muse", { x: 76, y: 68, tone: "service", label: "Muse", detail: "Content / Audio" }],
-  ["Friday", { x: 76, y: 82, tone: "service", label: "Friday", detail: "Deep Repair" }],
-  ["Claude", { x: 94, y: 22, tone: "support", label: "Claude", detail: "Gegenprüfung" }],
-  ["Claude Code", { x: 94, y: 46, tone: "support", label: "Claude Code", detail: "Pair Coding" }],
-  ["Codex", { x: 94, y: 70, tone: "support", label: "Codex", detail: "Tests / Umsetzung" }]
+  ["Mensch", { x: 8, y: 50, tone: "human", label: "Du / iPhone", detail: "Telegram Operator" }],
+  ["Hermes", { x: 22, y: 50, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
+  ["Argus", { x: 38, y: 23, tone: "support", label: "Argus", detail: "Vorprüfung / Review" }],
+  ["OpenClaw Gateway", { x: 38, y: 77, tone: "bridge", label: "OpenClaw", detail: "Queue / Broker" }],
+  ["Jarvis", { x: 58, y: 50, tone: "core", label: "Jarvis", detail: "Verteiler / Review" }],
+  ["Heimdall", { x: 79, y: 10, tone: "service", label: "Heimdall", detail: "Home Assistant" }],
+  ["Forge", { x: 79, y: 24, tone: "service", label: "Forge", detail: "Infra / Skills" }],
+  ["Sentinel", { x: 79, y: 38, tone: "service", label: "Sentinel", detail: "Health / Security" }],
+  ["Oracle", { x: 79, y: 52, tone: "service", label: "Oracle", detail: "Briefings" }],
+  ["Muse", { x: 79, y: 66, tone: "service", label: "Muse", detail: "Content / Audio" }],
+  ["Friday", { x: 79, y: 80, tone: "service", label: "Friday", detail: "Deep Repair" }],
+  ["Claude", { x: 95, y: 20, tone: "support", label: "Claude", detail: "Gegenprüfung" }],
+  ["Claude Code", { x: 95, y: 46, tone: "support", label: "Claude Code", detail: "Pair Coding" }],
+  ["Codex", { x: 95, y: 72, tone: "support", label: "Codex", detail: "Tests / Umsetzung" }]
 ]);
 
 const deviceGraphPositions = new Map([
-  ["Mac mini", { x: 50, y: 48, tone: "core", label: "Mac mini", detail: "Zentralserver / Hermes" }],
-  ["MacBook", { x: 12, y: 20, tone: "device", label: "MacBook", detail: "Arbeits- und Mirror-Node" }],
-  ["iMac", { x: 12, y: 50, tone: "device", label: "iMac", detail: "Operator-Station" }],
-  ["iPhone", { x: 12, y: 80, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
-  ["Home Assistant", { x: 35, y: 86, tone: "bridge", label: "Home Assistant", detail: "Backup / Automation" }],
-  ["GitHub", { x: 70, y: 12, tone: "service", label: "GitHub", detail: "Repo Sync" }],
-  ["Obsidian", { x: 70, y: 34, tone: "service", label: "Obsidian", detail: "Vault / Memory" }],
-  ["StreamDeck", { x: 70, y: 76, tone: "device", label: "StreamDeck", detail: "Actions" }],
-  ["Rodecaster", { x: 91, y: 23, tone: "device", label: "Rodecaster", detail: "Audio Routing" }],
-  ["TikTok Live Studio", { x: 91, y: 52, tone: "service", label: "TikTok Live", detail: "Live Publishing" }],
-  ["SoundCloud", { x: 91, y: 80, tone: "service", label: "SoundCloud", detail: "Music Publishing" }]
+  ["Mac mini", { x: 50, y: 50, tone: "core", label: "Mac mini", detail: "Zentralserver / Hermes" }],
+  ["MacBook", { x: 13, y: 16, tone: "device", label: "MacBook", detail: "Arbeits- und Mirror-Node" }],
+  ["iMac", { x: 13, y: 38, tone: "device", label: "iMac", detail: "Operator-Station" }],
+  ["iPhone", { x: 13, y: 60, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
+  ["Home Assistant", { x: 32, y: 82, tone: "bridge", label: "Home Assistant", detail: "Backup / Automation" }],
+  ["GitHub", { x: 73, y: 16, tone: "service", label: "GitHub", detail: "Repo Sync" }],
+  ["Obsidian", { x: 73, y: 38, tone: "service", label: "Obsidian", detail: "Vault / Memory" }],
+  ["StreamDeck", { x: 73, y: 64, tone: "device", label: "StreamDeck", detail: "Actions" }],
+  ["Rodecaster", { x: 92, y: 26, tone: "device", label: "Rodecaster", detail: "Audio Routing" }],
+  ["TikTok Live Studio", { x: 92, y: 52, tone: "service", label: "TikTok Live", detail: "Live Publishing" }],
+  ["SoundCloud", { x: 92, y: 78, tone: "service", label: "SoundCloud", detail: "Music Publishing" }]
 ]);
 
 const vaultGraphPositions = new Map([
-  ["Operator", { x: 8, y: 18, tone: "human", label: "Operator", detail: "Eingang / Telegram" }],
-  ["Hermes", { x: 24, y: 18, tone: "core", label: "Hermes", detail: "Runtime / Thread" }],
-  ["Telegram Spool", { x: 24, y: 56, tone: "bridge", label: "Telegram Spool", detail: "Outbound Queue" }],
-  ["Channel Directory", { x: 43, y: 18, tone: "service", label: "Channel Directory", detail: "Routenregister" }],
-  ["Active Sessions", { x: 43, y: 56, tone: "service", label: "Active Sessions", detail: "Runtime Sessions" }],
-  ["Jarvis", { x: 62, y: 18, tone: "core", label: "Jarvis", detail: "Delegation / Review" }],
-  ["Argus Bridge", { x: 62, y: 56, tone: "support", label: "Argus Bridge", detail: "Zweitwertung" }],
-  ["Brain Vault", { x: 80, y: 18, tone: "service", label: "Brain Vault", detail: "Persistentes Wissen" }],
-  ["Obsidian", { x: 95, y: 42, tone: "service", label: "Obsidian", detail: "Graph / Memory" }],
-  ["GitHub", { x: 80, y: 78, tone: "service", label: "GitHub", detail: "Repo / Dokumentation" }]
+  ["Operator", { x: 8, y: 16, tone: "human", label: "Operator", detail: "Eingang / Telegram" }],
+  ["Hermes", { x: 24, y: 16, tone: "core", label: "Hermes", detail: "Runtime / Thread" }],
+  ["Telegram Spool", { x: 24, y: 72, tone: "bridge", label: "Telegram Spool", detail: "Outbound Queue" }],
+  ["Channel Directory", { x: 43, y: 16, tone: "service", label: "Channel Directory", detail: "Routenregister" }],
+  ["Active Sessions", { x: 43, y: 72, tone: "service", label: "Active Sessions", detail: "Runtime Sessions" }],
+  ["Jarvis", { x: 62, y: 16, tone: "core", label: "Jarvis", detail: "Delegation / Review" }],
+  ["Argus Bridge", { x: 62, y: 72, tone: "support", label: "Argus Bridge", detail: "Zweitwertung" }],
+  ["Brain Vault", { x: 81, y: 16, tone: "service", label: "Brain Vault", detail: "Persistentes Wissen" }],
+  ["Obsidian", { x: 95, y: 44, tone: "service", label: "Obsidian", detail: "Graph / Memory" }],
+  ["GitHub", { x: 81, y: 72, tone: "service", label: "GitHub", detail: "Repo / Dokumentation" }]
 ]);
+
+function getGraphConfig(mode) {
+  return GRAPH_CONFIG[mode] || GRAPH_CONFIG.agents;
+}
+
+function graphPoint(position, mode) {
+  const { width, height } = getGraphConfig(mode);
+  return {
+    x: (position.x / 100) * width,
+    y: (position.y / 100) * height
+  };
+}
+
+function buildForwardPath(source, target, index, mode) {
+  const { width } = getGraphConfig(mode);
+  const deltaX = target.x - source.x;
+  const bend = Math.max(54, Math.abs(deltaX) * 0.18);
+  const verticalShift = (index % 2 === 0 ? 1 : -1) * (20 + Math.floor(index / 2) * 16);
+  const laneX = Math.min(width - 120, Math.max(120, source.x + deltaX * 0.5));
+  return `M ${source.x} ${source.y} C ${Math.min(laneX, source.x + bend)} ${source.y + verticalShift}, ${Math.max(laneX, target.x - bend)} ${target.y + verticalShift}, ${target.x} ${target.y}`;
+}
+
+function buildFeedbackPath(source, target, index, mode) {
+  const { width } = getGraphConfig(mode);
+  const deltaX = target.x - source.x;
+  const lift = 68 + index * 18;
+  const laneX = Math.min(width - 130, Math.max(130, source.x + deltaX * 0.5));
+  return `M ${source.x} ${source.y} C ${Math.max(laneX, source.x - 42)} ${source.y - lift}, ${Math.min(laneX, target.x + 42)} ${target.y - lift}, ${target.x} ${target.y}`;
+}
 
 function buildAgentGraphEdges(agentsRoom) {
   const routing = Array.isArray(agentsRoom?.routing) ? agentsRoom.routing : [];
@@ -545,26 +585,21 @@ function renderGraphView(agentsRoom, mode) {
     return `<p class="muted-line">Keine Kommunikationsdaten vorhanden.</p>`;
   }
 
-  const positions = mode === "devices" ? deviceGraphPositions : agentGraphPositions;
+  const positions = mode === "devices" ? deviceGraphPositions : mode === "vault" ? vaultGraphPositions : agentGraphPositions;
+  const { width, height } = getGraphConfig(mode);
   const markerId = `agentsroom-arrow-${mode}`;
   const feedbackMarkerId = `agentsroom-feedback-arrow-${mode}`;
   const nodeNames = new Set(nodes.map((node) => node.name));
 
   const lineNodes = edges
     .filter((edge) => positions.has(edge.from) && positions.has(edge.to) && nodeNames.has(edge.from) && nodeNames.has(edge.to))
-    .map((edge) => {
-      const source = positions.get(edge.from);
-      const target = positions.get(edge.to);
+    .map((edge, index) => {
+      const source = graphPoint(positions.get(edge.from), mode);
+      const target = graphPoint(positions.get(edge.to), mode);
       const tone = statusClass(edge.status || edge.state);
-      const x1 = source.x * 12;
-      const y1 = source.y * 6.5;
-      const x2 = target.x * 12;
-      const y2 = target.y * 6.5;
-      const ctrlX = (x1 + x2) / 2;
-      const ctrlY = y1 === y2 ? y1 - 24 : (y1 + y2) / 2;
       return `
         <g class="agentsroom-network-edge ${tone}" data-edge-from="${toGraphId(edge.from)}" data-edge-to="${toGraphId(edge.to)}">
-          <path d="M ${x1} ${y1} C ${ctrlX} ${ctrlY}, ${ctrlX} ${ctrlY}, ${x2} ${y2}" marker-end="url(#${markerId})" />
+          <path d="${buildForwardPath(source, target, index, mode)}" marker-end="url(#${markerId})" />
         </g>
       `;
     })
@@ -574,18 +609,11 @@ function renderGraphView(agentsRoom, mode) {
     ? edges
         .filter((edge) => edge.feedback !== false && edge.from !== "Mensch" && edge.from !== "Operator" && positions.has(edge.from) && positions.has(edge.to) && nodeNames.has(edge.from) && nodeNames.has(edge.to))
         .map((edge, index) => {
-          const source = positions.get(edge.to);
-          const target = positions.get(edge.from);
-          const x1 = source.x * 12;
-          const y1 = source.y * 6.5;
-          const x2 = target.x * 12;
-          const y2 = target.y * 6.5;
-          const bend = index % 2 === 0 ? 34 : -34;
-          const ctrlX = (x1 + x2) / 2;
-          const ctrlY = (y1 + y2) / 2 + bend;
+          const source = graphPoint(positions.get(edge.to), mode);
+          const target = graphPoint(positions.get(edge.from), mode);
           return `
             <g class="agentsroom-network-edge is-feedback" data-edge-from="${toGraphId(edge.to)}" data-edge-to="${toGraphId(edge.from)}">
-              <path d="M ${x1} ${y1} Q ${ctrlX} ${ctrlY}, ${x2} ${y2}" marker-end="url(#${feedbackMarkerId})" />
+              <path d="${buildFeedbackPath(source, target, index, mode)}" marker-end="url(#${feedbackMarkerId})" />
             </g>
           `;
         })
@@ -625,7 +653,7 @@ function renderGraphView(agentsRoom, mode) {
       <div class="agentsroom-network-scroll" tabindex="0" aria-label="${mode === "devices" ? "Gerätenetz horizontal erkunden" : "Agentenfluss horizontal erkunden"}">
         <div class="agentsroom-network-zoom" data-network-zoom-shell style="--network-zoom:1">
           <div class="agentsroom-network">
-            <svg class="agentsroom-network-svg" viewBox="0 0 1200 650" role="img" aria-label="${mode === "devices" ? "Geraetenetz mit Mac mini als Zentralserver" : mode === "vault" ? "Vault-Graph mit Runtime, Brain Vault und Obsidian-Verbindungen" : "Agenten-Orchestrierung von Operator ueber Hermes und Jarvis"}">
+            <svg class="agentsroom-network-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="${mode === "devices" ? "Geraetenetz mit Mac mini als Zentralserver" : mode === "vault" ? "Vault-Graph mit Runtime, Brain Vault und Obsidian-Verbindungen" : "Agenten-Orchestrierung von Operator ueber Hermes und Jarvis"}">
               <defs>
                 <marker id="${markerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" />
@@ -1257,6 +1285,7 @@ export function renderAgentsRoomSection(container, agentsRoom) {
 export function renderHomeAssistantSection(container, dashboardData) {
   if (!container) return;
   const agentsRoom = dashboardData?.agentsRoom || {};
+  const workbench = dashboardData?.homeAssistantWorkbench || { rooms: [], automations: [] };
   const haDevice = (agentsRoom.devices || []).find((item) => item.name === "Home Assistant") || {};
   const macMini = (agentsRoom.devices || []).find((item) => item.name === "Mac mini") || {};
   const heimdall = (agentsRoom.agents || []).find((item) => item.name === "Heimdall") || {};
@@ -1321,6 +1350,46 @@ export function renderHomeAssistantSection(container, dashboardData) {
 
       <article class="panel ha-wide">
         <div class="agentsroom-panel-head">
+          <div><h3>Räume & Geräte</h3><p class="muted-line">Jeder Raum öffnet ein Steuer-Popup mit Geräten, Szenen und Adapter-Aktionen.</p></div>
+          <span class="status-pill is-info">UI + Adapter</span>
+        </div>
+        <div class="ha-room-grid">
+          ${workbench.rooms.map((room) => `
+            <article class="ha-room-card">
+              <div class="ha-room-head">
+                <div>
+                  <strong>${escapeHtml(room.title)}</strong>
+                  <span>${escapeHtml(`${room.devices.length} Geräte • ${room.scenes.length} Szenen`)}</span>
+                </div>
+                <span class="status-pill ${statusClass(room.status)}">${escapeHtml(room.statusLabel)}</span>
+              </div>
+              <div class="ha-room-device-list">
+                ${room.devices.slice(0, 3).map((device) => `<span>${escapeHtml(device.name)} · ${escapeHtml(device.stateLabel)}</span>`).join("")}
+              </div>
+              <button type="button" class="action-btn" data-control-dialog-kind="ha-room" data-control-dialog-id="${escapeHtml(room.id)}">Raum steuern</button>
+            </article>
+          `).join("")}
+        </div>
+      </article>
+
+      <article class="panel ha-wide">
+        <div class="agentsroom-panel-head">
+          <div><h3>Automationen & HA-Adapter</h3><p class="muted-line">Vorbereitung für echte Home-Assistant-Servicecalls, solange aktuell noch adapterbasiert.</p></div>
+        </div>
+        <div class="ha-route-grid">
+          ${workbench.automations.map((item) => `
+            <article>
+              <span class="status-pill ${statusClass(item.state)}">${escapeHtml(item.stateLabel)}</span>
+              <strong>${escapeHtml(item.label)}</strong>
+              <p>${escapeHtml(item.cron)}</p>
+              <button type="button" class="action-btn is-secondary" data-control-dialog-kind="ha-automation" data-control-dialog-id="${escapeHtml(item.id)}">Automation öffnen</button>
+            </article>
+          `).join("")}
+        </div>
+      </article>
+
+      <article class="panel ha-wide">
+        <div class="agentsroom-panel-head">
           <div><h3>HA-Routen und Aufgaben</h3><p class="muted-line">Nur vorhandene Eintraege aus dem aktuellen Dashboard-Snapshot.</p></div>
           <span class="status-pill ${backupRoute ? "is-live" : "is-warn"}">${backupRoute ? "Backup-Route vorhanden" : "Backup-Route pruefen"}</span>
         </div>
@@ -1363,6 +1432,7 @@ export function renderKpis(container, kpis) {
 }
 
 export function renderWebsiteSection(container, metrics) {
+  const workbench = metrics.workbench || { pages: [] };
   const statusChips = [
     { label: "Erreichbar", value: metrics.audiences?.find((item) => item.label === "Erreichbar")?.value ?? 0, tone: "is-ok" },
     { label: "Fehler", value: metrics.audiences?.find((item) => item.label === "Fehler")?.value ?? 0, tone: "is-warn" },
@@ -1411,10 +1481,38 @@ export function renderWebsiteSection(container, metrics) {
         <div><span>Button-CTR</span><strong>${metrics.engagement.buttonCtr}</strong></div>
       </div>
     </article>
+    <article class="panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Website Workbench</p>
+          <h3>Seiten bearbeiten</h3>
+        </div>
+        <div class="section-banner-chips">
+          <span class="status-pill is-connected">Editor-Pfade: <strong>${workbench.pages.length}</strong></span>
+        </div>
+      </div>
+      <div class="editor-card-grid">
+        ${workbench.pages.map((page) => `
+          <article class="editor-card">
+            <div class="editor-card-head">
+              <div>
+                <strong>${escapeHtml(page.title)}</strong>
+                <span>${escapeHtml(page.path)}</span>
+              </div>
+              <span class="status-pill ${statusClass(page.status)}">${escapeHtml(page.statusLabel)}</span>
+            </div>
+            <p>${escapeHtml(page.editor)}</p>
+            <small>${escapeHtml(page.note)}</small>
+            <button type="button" class="action-btn" data-control-dialog-kind="website-page" data-control-dialog-id="${escapeHtml(page.id)}">Editor öffnen</button>
+          </article>
+        `).join("")}
+      </div>
+    </article>
   `;
 }
 
 export function renderShopSection(container, shopMetrics) {
+  const workbench = shopMetrics.workbench || { drafts: [], uploadSteps: [] };
   const sectionSummary = shopMetrics.catalog.sections
     .map((row) => `<span>${row.label}: <strong>${row.items}</strong></span>`)
     .join("");
@@ -1456,6 +1554,39 @@ export function renderShopSection(container, shopMetrics) {
         </tbody>
       </table>
       <p class="muted-line">Hinweis: Umsatz- und Bestellzahlen werden erst angezeigt, sobald eine echte Shop-API angebunden ist.</p>
+    </article>
+    <article class="panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Shop Workbench</p>
+          <h3>Artikel, Drops und Upload-Pipeline</h3>
+        </div>
+      </div>
+      <div class="editor-card-grid">
+        ${workbench.drafts.map((draft) => `
+          <article class="editor-card">
+            <div class="editor-card-head">
+              <div>
+                <strong>${escapeHtml(draft.title)}</strong>
+                <span>${escapeHtml(draft.line)}</span>
+              </div>
+              <span class="status-pill ${statusClass(draft.state)}">${escapeHtml(draft.stateLabel)}</span>
+            </div>
+            <p>${escapeHtml(draft.task)}</p>
+            <small>${escapeHtml(draft.priority)}</small>
+            <button type="button" class="action-btn" data-control-dialog-kind="shop-draft" data-control-dialog-id="${escapeHtml(draft.id)}">Artikel öffnen</button>
+          </article>
+        `).join("")}
+      </div>
+      <div class="ha-route-grid">
+        ${workbench.uploadSteps.map((step) => `
+          <article>
+            <span class="status-pill ${statusClass(step.status)}">${escapeHtml(step.statusLabel)}</span>
+            <strong>${escapeHtml(step.label)}</strong>
+            <p>${escapeHtml(step.note)}</p>
+          </article>
+        `).join("")}
+      </div>
     </article>
   `;
 }
@@ -1606,6 +1737,7 @@ export function renderPerformance(container, performanceMetrics) {
 
 export function renderContent(container, contentPerformance) {
   const strongest = contentPerformance.strongestSections[0] || null;
+  const planner = contentPerformance.planner || { channels: [], calendar: [], ideas: [] };
   container.innerHTML = `
     <article class="panel">
       <div class="section-banner">
@@ -1636,6 +1768,44 @@ export function renderContent(container, contentPerformance) {
       </table>
       <ul class="log-list">
         ${contentPerformance.weakSpots.map((item) => `<li><strong>${item.item}</strong><p>${item.note}</p></li>`).join("")}
+      </ul>
+    </article>
+    <article class="panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Content Planner</p>
+          <h3>TikTok, SoundCloud und Redaktionsplanung</h3>
+        </div>
+      </div>
+      <div class="planner-channel-grid">
+        ${planner.channels.map((channel) => `
+          <article class="social-summary-card">
+            <div class="social-summary-head">
+              <span>${escapeHtml(channel.label)}</span>
+              <span class="status-pill ${statusClass(channel.status)}">${escapeHtml(channel.statusLabel)}</span>
+            </div>
+            <strong>${escapeHtml(channel.handle)}</strong>
+            <p>${escapeHtml(channel.cadence)}</p>
+          </article>
+        `).join("")}
+      </div>
+      <div class="planner-calendar-grid">
+        ${planner.calendar.map((entry) => `
+          <article class="editor-card">
+            <div class="editor-card-head">
+              <div>
+                <strong>${escapeHtml(entry.title)}</strong>
+                <span>${escapeHtml(`${entry.day} • ${entry.slot}`)}</span>
+              </div>
+              <span class="status-pill ${statusClass(entry.status)}">${escapeHtml(entry.statusLabel)}</span>
+            </div>
+            <p>${escapeHtml(entry.channel)}</p>
+            <button type="button" class="action-btn" data-control-dialog-kind="planner-entry" data-control-dialog-id="${escapeHtml(entry.id)}">Plan öffnen</button>
+          </article>
+        `).join("")}
+      </div>
+      <ul class="log-list">
+        ${planner.ideas.map((idea) => `<li><strong>${escapeHtml(idea.title)}</strong><span>${escapeHtml(idea.owner)}</span><p>${escapeHtml(idea.note)}</p></li>`).join("")}
       </ul>
     </article>
   `;
@@ -1844,10 +2014,10 @@ export function renderAlerts(container, alerts) {
   `;
 }
 
-export function renderQuickActions(container, actions) {
-  const validActions = Array.isArray(actions)
-    ? actions.filter((item) => item && typeof item.href === "string" && item.href.trim() && typeof item.label === "string" && item.label.trim())
-    : [];
+export function renderQuickActions(container, dashboardData) {
+  const actions = Array.isArray(dashboardData?.quickActions) ? dashboardData.quickActions : [];
+  const operations = dashboardData?.operationsWorkbench || { cronJobs: [], subagents: [], vaultNodes: [] };
+  const validActions = actions.filter((item) => item && typeof item.href === "string" && item.href.trim() && typeof item.label === "string" && item.label.trim());
   const grouped = {
     live: validActions.slice(0, 4),
     social: validActions.slice(4, 7),
@@ -1876,6 +2046,50 @@ export function renderQuickActions(container, actions) {
       ${renderGroup("Direkt", grouped.live)}
       ${renderGroup("Social", grouped.social)}
       ${renderGroup("Administration", grouped.admin)}
+    </article>
+    <article class="panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Operations</p>
+          <h3>Cronjobs, Subagenten und Vault Stewardship</h3>
+        </div>
+      </div>
+      <div class="ha-route-grid">
+        ${operations.cronJobs.map((job) => `
+          <article>
+            <span class="status-pill ${statusClass(job.state)}">${escapeHtml(job.stateLabel)}</span>
+            <strong>${escapeHtml(job.name)}</strong>
+            <p>${escapeHtml(`${job.schedule} • ${job.owner}`)}</p>
+            <button type="button" class="action-btn is-secondary" data-control-dialog-kind="cron-job" data-control-dialog-id="${escapeHtml(job.id)}">Cronjob öffnen</button>
+          </article>
+        `).join("")}
+      </div>
+      <div class="editor-card-grid">
+        ${operations.subagents.map((agent) => `
+          <article class="editor-card">
+            <div class="editor-card-head">
+              <div>
+                <strong>${escapeHtml(agent.name)}</strong>
+                <span>${escapeHtml(agent.mode)}</span>
+              </div>
+              <span class="status-pill ${statusClass(agent.state)}">${escapeHtml(agent.state)}</span>
+            </div>
+            <p>${escapeHtml(agent.llm)}</p>
+            <small>${escapeHtml(`Fallback: ${agent.fallback}`)}</small>
+            <button type="button" class="action-btn" data-control-dialog-kind="subagent" data-control-dialog-id="${escapeHtml(agent.id)}">Agent öffnen</button>
+          </article>
+        `).join("")}
+      </div>
+      <div class="ha-route-grid">
+        ${operations.vaultNodes.map((node) => `
+          <article>
+            <span class="status-pill ${statusClass(node.state)}">${escapeHtml(node.stateLabel)}</span>
+            <strong>${escapeHtml(node.name)}</strong>
+            <p>${escapeHtml(`${node.role} • Steward: ${node.steward}`)}</p>
+            <button type="button" class="action-btn is-secondary" data-control-dialog-kind="vault-node" data-control-dialog-id="${escapeHtml(node.id)}">Vault öffnen</button>
+          </article>
+        `).join("")}
+      </div>
     </article>
   `;
 }

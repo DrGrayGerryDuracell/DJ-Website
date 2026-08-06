@@ -42,6 +42,10 @@ html, body {
   font-family: var(--font-body);
 }
 
+body.dialog-open {
+  overflow: hidden;
+}
+
 a { color: inherit; text-decoration: none; }
 
 :focus-visible {
@@ -140,6 +144,180 @@ a { color: inherit; text-decoration: none; }
   width: min(100%, var(--max));
   margin: 0 auto;
   padding: 1.2rem 1.2rem 3rem;
+}
+
+.control-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: grid;
+  place-items: center;
+  padding: 1.25rem;
+}
+
+.control-dialog[hidden] {
+  display: none;
+}
+
+.control-dialog-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 6, 10, 0.72);
+  backdrop-filter: blur(10px);
+}
+
+.control-dialog-card {
+  position: relative;
+  z-index: 1;
+  width: min(780px, 100%);
+  max-height: min(88vh, 980px);
+  overflow: auto;
+  padding: 1.15rem;
+  border-radius: 18px;
+  border: 1px solid rgba(52, 228, 255, 0.18);
+  background:
+    radial-gradient(circle at top right, rgba(52, 228, 255, 0.08), transparent 28%),
+    radial-gradient(circle at top left, rgba(245, 200, 76, 0.08), transparent 28%),
+    rgba(10, 12, 16, 0.96);
+  box-shadow: var(--shadow);
+}
+
+.control-dialog-close {
+  position: sticky;
+  top: 0;
+  float: right;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  color: var(--text);
+  font: inherit;
+  font-size: 1.4rem;
+  cursor: pointer;
+}
+
+.control-dialog-head h3 {
+  margin: 0.2rem 0 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 2.4vw, 2rem);
+}
+
+.control-dialog-content {
+  display: grid;
+  gap: 1rem;
+  margin-top: 0.8rem;
+}
+
+.control-dialog-section h4 {
+  margin: 0 0 0.55rem;
+  color: var(--gold-strong);
+}
+
+.control-toggle-grid,
+.editor-card-grid,
+.planner-calendar-grid,
+.planner-channel-grid,
+.ha-room-grid {
+  display: grid;
+  gap: 0.8rem;
+}
+
+.control-toggle-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.control-toggle-card,
+.editor-card,
+.ha-room-card {
+  padding: 0.9rem 0.95rem;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015)),
+    rgba(255, 255, 255, 0.02);
+}
+
+.control-toggle-card {
+  text-align: left;
+  cursor: pointer;
+  color: inherit;
+  font: inherit;
+}
+
+.control-toggle-card.is-active {
+  border-color: rgba(81, 207, 156, 0.3);
+  box-shadow: 0 0 0 1px rgba(81, 207, 156, 0.08), 0 0 18px rgba(81, 207, 156, 0.12);
+}
+
+.control-toggle-card strong,
+.control-toggle-card span {
+  display: block;
+}
+
+.control-toggle-card span {
+  margin-top: 0.24rem;
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+.editor-card-grid,
+.ha-room-grid {
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+}
+
+.planner-calendar-grid {
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  margin-top: 0.9rem;
+}
+
+.planner-channel-grid {
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  margin-bottom: 0.9rem;
+}
+
+.editor-card-head,
+.ha-room-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  gap: 0.6rem;
+}
+
+.editor-card-head strong,
+.ha-room-head strong {
+  display: block;
+  font-size: 1rem;
+}
+
+.editor-card-head span,
+.ha-room-head span {
+  display: block;
+  color: var(--text-soft);
+  font-size: 0.78rem;
+}
+
+.editor-card p,
+.ha-room-card p {
+  margin: 0.55rem 0 0;
+  color: var(--text-soft);
+}
+
+.editor-card small {
+  display: block;
+  margin: 0.45rem 0 0.75rem;
+  color: var(--text-soft);
+}
+
+.ha-room-device-list {
+  display: grid;
+  gap: 0.35rem;
+  margin: 0.7rem 0 0.85rem;
+}
+
+.ha-room-device-list span {
+  color: var(--text-soft);
+  font-size: 0.82rem;
 }
 
 .control-topbar {
@@ -837,15 +1015,15 @@ a { color: inherit; text-decoration: none; }
 }
 
 .agentsroom-network-zoom {
-  width: calc(1200px * var(--network-zoom, 1));
-  height: calc(650px * var(--network-zoom, 1));
+  width: calc(1440px * var(--network-zoom, 1));
+  height: calc(780px * var(--network-zoom, 1));
   transition: width 0.18s ease, height 0.18s ease;
 }
 
 .agentsroom-network {
   position: relative;
-  width: 1200px;
-  min-height: 650px;
+  width: 1440px;
+  min-height: 780px;
   transform: scale(var(--network-zoom, 1));
   transform-origin: top left;
   border-radius: 14px;
@@ -925,9 +1103,9 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-network-node {
   position: absolute;
-  min-width: 144px;
-  max-width: 180px;
-  min-height: 72px;
+  min-width: 154px;
+  max-width: 188px;
+  min-height: 78px;
   padding: 0.75rem;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -1016,7 +1194,7 @@ a { color: inherit; text-decoration: none; }
   margin-top: 0.75rem;
   display: grid;
   gap: 0.5rem;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .agentsroom-network-legend-item {
@@ -1578,7 +1756,7 @@ a { color: inherit; text-decoration: none; }
 
 .social-summary-grid {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.75rem;
   margin-bottom: 0.9rem;
 }
@@ -1630,7 +1808,7 @@ a { color: inherit; text-decoration: none; }
 .social-profile-card,
 .social-registry-card {
   display: grid;
-  grid-template-columns: 108px minmax(0, 1fr);
+  grid-template-columns: 92px minmax(0, 1fr);
   gap: 0.8rem;
   overflow: hidden;
   border-radius: 14px;
@@ -1644,8 +1822,8 @@ a { color: inherit; text-decoration: none; }
 .social-registry-media {
   display: grid;
   place-items: center;
-  padding: 0.8rem;
-  min-height: 156px;
+  padding: 0.65rem;
+  min-height: 132px;
   background:
     radial-gradient(circle at top, rgba(52, 228, 255, 0.12), transparent 42%),
     rgba(0, 0, 0, 0.25);
@@ -1670,7 +1848,7 @@ a { color: inherit; text-decoration: none; }
 
 .social-profile-media.is-photo img,
 .social-registry-media.is-photo img {
-  min-height: 132px;
+  min-height: 116px;
 }
 
 .social-profile-body,
@@ -1738,7 +1916,7 @@ a { color: inherit; text-decoration: none; }
 
 .social-route-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0.65rem;
   margin-bottom: 0.9rem;
 }
@@ -2675,11 +2853,11 @@ a { color: inherit; text-decoration: none; }
   }
   .social-profile-media,
   .social-registry-media {
-    min-height: 160px;
+    min-height: 140px;
   }
   .social-profile-media.is-photo img,
   .social-registry-media.is-photo img {
-    min-height: 164px;
+    min-height: 136px;
   }
   .social-profile-media.is-icon,
   .social-registry-media.is-icon {
@@ -2794,9 +2972,14 @@ a { color: inherit; text-decoration: none; }
     padding: 0 0.85rem 0.85rem;
   }
 
+  .agentsroom-network-zoom {
+    width: calc(1180px * var(--network-zoom, 1));
+    height: calc(720px * var(--network-zoom, 1));
+  }
+
   .agentsroom-network {
-    min-width: 980px;
-    min-height: 620px;
+    min-width: 1180px;
+    min-height: 720px;
   }
 
   .agentsroom-network-toolbar {

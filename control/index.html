@@ -137,7 +137,7 @@
           <h2>Social</h2>
           <p>Verifizierte Profile, Plattformstatus und Quellenvergleich.</p>
         </div>
-        <div class="panel-grid two" data-social-section></div>
+        <div class="panel-grid" data-social-section></div>
       </section>
 
       <section id="alerts" class="control-section">
@@ -156,6 +156,14 @@
         <div class="action-grid" data-quick-actions></div>
       </section>
     </main>
+  </div>
+
+  <div class="control-dialog" data-control-dialog hidden aria-hidden="true">
+    <div class="control-dialog-backdrop" data-control-dialog-close></div>
+    <div class="control-dialog-card" role="dialog" aria-modal="true" aria-labelledby="control-dialog-title">
+      <button type="button" class="control-dialog-close" data-control-dialog-close aria-label="Popup schliessen">×</button>
+      <div class="control-dialog-body" data-control-dialog-body></div>
+    </div>
   </div>
 
   <script type="module" src="/control/main.js?v=20260806d"></script>

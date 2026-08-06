@@ -25,6 +25,16 @@ const LIVE_REFRESH_MS = 30000;
 const NETWORK_ZOOM_MIN = 0.7;
 const NETWORK_ZOOM_MAX = 1.45;
 const NETWORK_ZOOM_STEP = 0.15;
+const CONTROL_DIALOG_STATE_KEY = "dg-control-dialog-state-v1";
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
 
 async function loadLiveMetrics() {
   try {
@@ -449,6 +459,276 @@ function setupHermesChatActions() {
   });
 }
 
+function readControlDialogState() {
+  try {
+    return JSON.parse(window.localStorage.getItem(CONTROL_DIALOG_STATE_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+
+function writeControlDialogState(nextState) {
+  window.localStorage.setItem(CONTROL_DIALOG_STATE_KEY, JSON.stringify(nextState));
+}
+
+function getControlToggleValue(kind, id, controlId, fallback = false) {
+  const state = readControlDialogState();
+  return Boolean(state?.[kind]?.[id]?.[controlId] ?? fallback);
+}
+
+function setControlToggleValue(kind, id, controlId, value) {
+  const state = readControlDialogState();
+  state[kind] = state[kind] || {};
+  state[kind][id] = state[kind][id] || {};
+  state[kind][id][controlId] = Boolean(value);
+  writeControlDialogState(state);
+}
+
+function buildDialogPayload(data, kind, id) {
+  const websitePages = data?.websiteMetrics?.workbench?.pages || [];
+  const shopDrafts = data?.shopMetrics?.workbench?.drafts || [];
+  const plannerCalendar = data?.contentPerformance?.planner?.calendar || [];
+  const plannerChannels = data?.contentPerformance?.planner?.channels || [];
+  const haRooms = data?.homeAssistantWorkbench?.rooms || [];
+  const haAutomations = data?.homeAssistantWorkbench?.automations || [];
+  const cronJobs = data?.operationsWorkbench?.cronJobs || [];
+  const subagents = data?.operationsWorkbench?.subagents || [];
+  const vaultNodes = data?.operationsWorkbench?.vaultNodes || [];
+
+  if (kind === "ha-room") {
+    const room = haRooms.find((item) => item.id === id);
+    if (!room) return null;
+    return {
+      title: room.title,
+      subtitle: "Home-Assistant Raumsteuerung",
+      badges: [{ label: room.statusLabel, tone: room.status }],
+      paragraphs: [`${room.devices.length} Geräte und ${room.scenes.length} Szenen. Aktionen laufen derzeit über einen lokalen Adapterpfad, bis echte HA-Servicecalls direkt angebunden sind.`],
+      lists: [
+        { title: "Szenen", items: room.scenes },
+        { title: "Geräte", items: room.devices.map((device) => `${device.name} • ${device.type} • ${device.stateLabel}`) }
+      ],
+      toggles: room.devices
+        .filter((device) => ["Light", "Switch", "Media"].includes(device.type))
+        .map((device) => ({
+          id: device.id,
+          label: device.name,
+          value: getControlToggleValue(kind, id, device.id, device.state === "on"),
+          onLabel: "An",
+          offLabel: "Aus"
+        }))
+    };
+  }
+
+  if (kind === "ha-automation") {
+    const item = haAutomations.find((entry) => entry.id === id);
+    if (!item) return null;
+    return {
+      title: item.label,
+      subtitle: "Automation / Cron / Adapter",
+      badges: [{ label: item.stateLabel, tone: item.state }],
+      paragraphs: [`Zeitplan: ${item.cron}`, "Die UI ist vorbereitet für Start, Pause, Resume und manuelles Triggern."],
+      toggles: [{ id: "enabled", label: "Automation aktiv", value: getControlToggleValue(kind, id, "enabled", item.state === "live"), onLabel: "Aktiv", offLabel: "Pausiert" }]
+    };
+  }
+
+  if (kind === "website-page") {
+    const page = websitePages.find((entry) => entry.id === id);
+    if (!page) return null;
+    return {
+      title: page.title,
+      subtitle: page.path,
+      badges: [{ label: page.statusLabel, tone: page.status }],
+      paragraphs: [page.note, `Editor-Fokus: ${page.editor}`],
+      lists: [{ title: "Bearbeitungsfelder", items: page.editor.split(",").map((item) => item.trim()) }],
+      toggles: [{ id: "draft-lock", label: "Bearbeitungsmodus", value: getControlToggleValue(kind, id, "draft-lock", true), onLabel: "Entwurf", offLabel: "Nur Lesen" }]
+    };
+  }
+
+  if (kind === "shop-draft") {
+    const draft = shopDrafts.find((entry) => entry.id === id);
+    if (!draft) return null;
+    return {
+      title: draft.title,
+      subtitle: draft.line,
+      badges: [{ label: draft.stateLabel, tone: draft.state }],
+      paragraphs: [draft.task, `Priorität: ${draft.priority}`],
+      toggles: [
+        { id: "copy-ready", label: "Copy fertig", value: getControlToggleValue(kind, id, "copy-ready", draft.state !== "draft"), onLabel: "Ja", offLabel: "Nein" },
+        { id: "upload-ready", label: "Upload bereit", value: getControlToggleValue(kind, id, "upload-ready", draft.state === "ready"), onLabel: "Ja", offLabel: "Nein" }
+      ]
+    };
+  }
+
+  if (kind === "planner-entry") {
+    const entry = plannerCalendar.find((item) => item.id === id);
+    if (!entry) return null;
+    const channel = plannerChannels.find((item) => item.label === entry.channel);
+    return {
+      title: entry.title,
+      subtitle: `${entry.day} • ${entry.slot} • ${entry.channel}`,
+      badges: [{ label: entry.statusLabel, tone: entry.status }],
+      paragraphs: [channel ? `Kanal: ${channel.handle} • ${channel.cadence}` : "Kanalinfo nicht gefunden."],
+      toggles: [
+        { id: "script", label: "Script fertig", value: getControlToggleValue(kind, id, "script", entry.status !== "draft"), onLabel: "Fertig", offLabel: "Offen" },
+        { id: "upload", label: "Upload freigegeben", value: getControlToggleValue(kind, id, "upload", false), onLabel: "Freigegeben", offLabel: "Blockiert" }
+      ]
+    };
+  }
+
+  if (kind === "cron-job") {
+    const job = cronJobs.find((entry) => entry.id === id);
+    if (!job) return null;
+    return {
+      title: job.name,
+      subtitle: `Cronjob • ${job.schedule}`,
+      badges: [{ label: job.stateLabel, tone: job.state }],
+      paragraphs: [`Owner: ${job.owner}`, "Vorbereitung für Run-now, Pause, Resume und Schedule-Editing im Dashboard."],
+      toggles: [{ id: "enabled", label: "Cronjob aktiv", value: getControlToggleValue(kind, id, "enabled", job.state === "live"), onLabel: "Aktiv", offLabel: "Pausiert" }]
+    };
+  }
+
+  if (kind === "subagent") {
+    const agent = subagents.find((entry) => entry.id === id);
+    if (!agent) return null;
+    return {
+      title: agent.name,
+      subtitle: agent.mode,
+      badges: [{ label: agent.state, tone: agent.state }],
+      paragraphs: [`Primärstrategie: ${agent.llm}`, `Fallback: ${agent.fallback}`],
+      toggles: [
+        { id: "cloud-first", label: "Cloud LLM zuerst", value: getControlToggleValue(kind, id, "cloud-first", true), onLabel: "Aktiv", offLabel: "Aus" },
+        { id: "argus-first", label: "Argus Review zuerst", value: getControlToggleValue(kind, id, "argus-first", true), onLabel: "Aktiv", offLabel: "Aus" }
+      ]
+    };
+  }
+
+  if (kind === "vault-node") {
+    const node = vaultNodes.find((entry) => entry.id === id);
+    if (!node) return null;
+    return {
+      title: node.name,
+      subtitle: node.role,
+      badges: [{ label: node.stateLabel, tone: node.state }],
+      paragraphs: [`Steward: ${node.steward}`, "Vorbereitung für Pflege, Writeback und Lernregeln mit Cloud-LLM-sparendem Pfad."],
+      toggles: [
+        { id: "writeback", label: "Writeback aktiv", value: getControlToggleValue(kind, id, "writeback", node.id !== "vault-learning"), onLabel: "Aktiv", offLabel: "Aus" },
+        { id: "summary-only", label: "Nur verdichtet speichern", value: getControlToggleValue(kind, id, "summary-only", true), onLabel: "Ja", offLabel: "Nein" }
+      ]
+    };
+  }
+
+  return null;
+}
+
+function renderControlDialog(payload) {
+  const badges = Array.isArray(payload.badges) ? payload.badges : [];
+  const paragraphs = Array.isArray(payload.paragraphs) ? payload.paragraphs : [];
+  const lists = Array.isArray(payload.lists) ? payload.lists : [];
+  const toggles = Array.isArray(payload.toggles) ? payload.toggles : [];
+  return `
+    <div class="control-dialog-head">
+      <p class="eyebrow">${escapeHtml(payload.subtitle || "Workbench")}</p>
+      <h3 id="control-dialog-title">${escapeHtml(payload.title || "Detail")}</h3>
+      <div class="section-banner-chips">
+        ${badges.map((badge) => `<span class="status-pill ${badge.tone ? `is-${badge.tone}` : "is-info"}">${escapeHtml(badge.label)}</span>`).join("")}
+      </div>
+    </div>
+    <div class="control-dialog-content">
+      ${paragraphs.map((line) => `<p>${escapeHtml(line)}</p>`).join("")}
+      ${lists.map((list) => `
+        <div class="control-dialog-section">
+          <h4>${escapeHtml(list.title)}</h4>
+          <ul class="log-list">
+            ${(list.items || []).map((item) => `<li><p>${escapeHtml(item)}</p></li>`).join("")}
+          </ul>
+        </div>
+      `).join("")}
+      ${toggles.length ? `
+        <div class="control-dialog-section">
+          <h4>Steuerung</h4>
+          <div class="control-toggle-grid">
+            ${toggles.map((toggle) => `
+              <button type="button" class="control-toggle-card${toggle.value ? " is-active" : ""}" data-control-toggle="${escapeHtml(toggle.id)}">
+                <strong>${escapeHtml(toggle.label)}</strong>
+                <span>${escapeHtml(toggle.value ? toggle.onLabel : toggle.offLabel)}</span>
+              </button>
+            `).join("")}
+          </div>
+        </div>
+      ` : ""}
+    </div>
+  `;
+}
+
+function openControlDialog(payload, context) {
+  const dialog = document.querySelector("[data-control-dialog]");
+  const body = document.querySelector("[data-control-dialog-body]");
+  if (!dialog || !body || !payload) return;
+  window.__CONTROL_DIALOG_CONTEXT__ = context || null;
+  body.innerHTML = renderControlDialog(payload);
+  dialog.hidden = false;
+  dialog.setAttribute("aria-hidden", "false");
+  document.body.classList.add("dialog-open");
+}
+
+function closeControlDialog() {
+  const dialog = document.querySelector("[data-control-dialog]");
+  const body = document.querySelector("[data-control-dialog-body]");
+  if (!dialog || !body) return;
+  dialog.hidden = true;
+  dialog.setAttribute("aria-hidden", "true");
+  body.innerHTML = "";
+  document.body.classList.remove("dialog-open");
+  window.__CONTROL_DIALOG_CONTEXT__ = null;
+}
+
+function reopenCurrentDialog() {
+  const context = window.__CONTROL_DIALOG_CONTEXT__;
+  if (!context) return;
+  const payload = buildDialogPayload(window.__CONTROL_DATA__ || {}, context.kind, context.id);
+  if (!payload) {
+    closeControlDialog();
+    return;
+  }
+  openControlDialog(payload, context);
+}
+
+function setupControlDialogActions() {
+  document.addEventListener("click", (event) => {
+    const closeTrigger = event.target.closest("[data-control-dialog-close]");
+    if (closeTrigger) {
+      closeControlDialog();
+      return;
+    }
+
+    const openTrigger = event.target.closest("[data-control-dialog-kind][data-control-dialog-id]");
+    if (openTrigger) {
+      const kind = openTrigger.getAttribute("data-control-dialog-kind");
+      const id = openTrigger.getAttribute("data-control-dialog-id");
+      const payload = buildDialogPayload(window.__CONTROL_DATA__ || {}, kind, id);
+      if (payload) {
+        openControlDialog(payload, { kind, id });
+      }
+      return;
+    }
+
+    const toggleTrigger = event.target.closest("[data-control-toggle]");
+    if (toggleTrigger && window.__CONTROL_DIALOG_CONTEXT__) {
+      const { kind, id } = window.__CONTROL_DIALOG_CONTEXT__;
+      const controlId = toggleTrigger.getAttribute("data-control-toggle");
+      const nextValue = !toggleTrigger.classList.contains("is-active");
+      setControlToggleValue(kind, id, controlId, nextValue);
+      reopenCurrentDialog();
+    }
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeControlDialog();
+    }
+  });
+}
+
 function updateNetworkInspector(workspace, node) {
   if (!workspace || !node) return;
 
@@ -483,6 +763,29 @@ function updateNetworkInspector(workspace, node) {
   setText("[data-network-inspector-channel]", node.dataset.networkChannel);
   setText("[data-network-inspector-route]", node.dataset.networkRoute);
   setText("[data-network-inspector-connections]", node.dataset.networkConnections || "Keine direkte Verbindung im aktuellen Snapshot.");
+}
+
+function highlightNetworkRoute(workspace, fromId, toId) {
+  if (!workspace || !fromId || !toId) return;
+  const activeView = workspace.querySelector("[data-network-view]:not([hidden])");
+  if (!activeView) return;
+
+  activeView.querySelectorAll("[data-edge-from]").forEach((edge) => {
+    const match = edge.getAttribute("data-edge-from") === fromId && edge.getAttribute("data-edge-to") === toId;
+    edge.classList.toggle("is-highlighted", match);
+    edge.classList.toggle("is-muted", !match);
+  });
+
+  activeView.querySelectorAll("[data-route-from]").forEach((route) => {
+    const match = route.getAttribute("data-route-from") === fromId && route.getAttribute("data-route-to") === toId;
+    route.classList.toggle("is-highlighted", match);
+    route.classList.toggle("is-muted", !match);
+  });
+
+  const targetNode = activeView.querySelector(`[data-network-node="${toId}"]`) || activeView.querySelector(`[data-network-node="${fromId}"]`);
+  if (targetNode) {
+    updateNetworkInspector(workspace, targetNode);
+  }
 }
 
 function setDeckPanel(deck, panelId) {
@@ -603,6 +906,13 @@ function setupAgentsRoomControls() {
       const workspace = resetButton.closest("[data-network-workspace]");
       const activeView = workspace?.querySelector("[data-network-view]:not([hidden])");
       activeView?.querySelectorAll(".is-muted, .is-highlighted").forEach((item) => item.classList.remove("is-muted", "is-highlighted"));
+      return;
+    }
+
+    const routeCard = event.target.closest("[data-route-from][data-route-to]");
+    if (routeCard) {
+      const workspace = routeCard.closest("[data-network-workspace]");
+      highlightNetworkRoute(workspace, routeCard.getAttribute("data-route-from"), routeCard.getAttribute("data-route-to"));
       return;
     }
 
@@ -738,10 +1048,13 @@ function renderDashboardView(data) {
   renderContent(document.querySelector("[data-content-section]"), data.contentPerformance);
   renderSocial(document.querySelector("[data-social-section]"), data.socialMetrics);
   renderAlerts(document.querySelector("[data-alerts]"), data.alerts);
-  renderQuickActions(document.querySelector("[data-quick-actions]"), data.quickActions);
+  renderQuickActions(document.querySelector("[data-quick-actions]"), data);
   animateKpis();
   restoreControlDecks();
   restoreAgentsRoomControls();
+  if (!document.querySelector("[data-control-dialog]")?.hidden) {
+    reopenCurrentDialog();
+  }
 }
 
 async function initControlDashboard() {
@@ -790,6 +1103,7 @@ async function initControlDashboard() {
   setupAppShell();
   setupHermesChatActions();
   setupAgentsRoomControls();
+  setupControlDialogActions();
 
   window.setInterval(async () => {
     if (refreshInFlight) {

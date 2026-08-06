@@ -1205,6 +1205,15 @@ async function main() {
         avgSession: `${avgResponse} ms`,
         bounceRate: "nicht gemessen",
         buttonCtr: "nicht gemessen"
+      },
+      workbench: {
+        pages: [
+          { id: "start", title: "Startseite", path: "/index.html", status: "live", statusLabel: "Live", editor: "Hero, Intro, CTA", route: "Website -> Hauptseite", note: "Schneller Eingriff für Headline, Intro und CTA-Zone." },
+          { id: "bio", title: "Bio", path: "/bio.html", status: "connected", statusLabel: "Verbunden", editor: "Bio Blocks, Links, Profiltexte", route: "Website -> Bio", note: "Texte, Module und Kontaktpfade für Bio-Seite." },
+          { id: "musik", title: "Musik", path: "/musik.html", status: "connected", statusLabel: "Verbunden", editor: "Releases, Player, Embeds", route: "Website -> Musik", note: "SoundCloud, Releases und CTA-Bausteine." },
+          { id: "shop", title: "Shop", path: "/shop.html", status: "live", statusLabel: "Live", editor: "Produktmodule und Shop-CTA", route: "Website -> Shop", note: "Shop-Teaser, Kategorien und Verlinkungen." },
+          { id: "control", title: "Control Dashboard", path: "/control/", status: "live", statusLabel: "Live", editor: "Sections, KPIs, Routing", route: "Website -> Control", note: "Interne Workbench für Dashboard-Aufbau." }
+        ]
       }
     },
     shopMetrics: {
@@ -1229,6 +1238,18 @@ async function main() {
         readyCount,
         pendingCount,
         itemStates: catalogItemStates
+      },
+      workbench: {
+        drafts: [
+          { id: "drop-01", title: "Club Night Capsule", state: "draft", stateLabel: "Entwurf", line: "Merch / Capsule", task: "Mockup, Copy und Upload-Batch vorbereiten", priority: "P0" },
+          { id: "drop-02", title: "Afterhours Neon", state: "ready", stateLabel: "Uploadbereit", line: "TikTok / Merch", task: "Shirtee-Request erzeugen und Batch bauen", priority: "P1" },
+          { id: "drop-03", title: "Sound Ritual", state: "submitted", stateLabel: "Pruefung", line: "Music / Merch", task: "Store-Preview und Produkttext gegenprüfen", priority: "P1" }
+        ],
+        uploadSteps: [
+          { id: "queue", label: "Upload Queue", status: "connected", statusLabel: "CSV bereit", note: "CSV / Queue aus Katalog ableiten" },
+          { id: "batches", label: "Upload Batches", status: "ready", statusLabel: "Batch bereit", note: "Upload-Chargen vorbereiten" },
+          { id: "api", label: "Shirtee API Request", status: "support", statusLabel: "Adapter", note: "Request erzeugen, sobald API komplett steht" }
+        ]
       },
       topProducts,
       timeline: externalResults.slice(0, 8).map((entry, index) => ({
@@ -1288,6 +1309,24 @@ async function main() {
         { name: "Shop Links", clicks: hrefCounts.shop, rate: "Live-Linkcount" },
         { name: "SoundCloud Links", clicks: hrefCounts.soundcloud, rate: "Live-Linkcount" }
       ],
+      planner: {
+        channels: [
+          { id: "tt-main", label: "TikTok Hauptseite", handle: "@drgray_mrsdrgray", status: "live", statusLabel: "Verbunden", cadence: "4 Posts / Woche" },
+          { id: "tt-backup", label: "TikTok Backup", handle: "@gray.afterhours", status: "connected", statusLabel: "Verbunden", cadence: "2 Posts / Woche" },
+          { id: "sc", label: "SoundCloud", handle: "@drgray_sic", status: "live", statusLabel: "Live", cadence: "Releases / Clips" }
+        ],
+        calendar: [
+          { id: "cal-01", day: "Mo", slot: "19:00", title: "Performance Clip", channel: "TikTok Hauptseite", status: "ready", statusLabel: "Bereit" },
+          { id: "cal-02", day: "Mi", slot: "21:00", title: "Afterhours Teaser", channel: "TikTok Backup", status: "draft", statusLabel: "Entwurf" },
+          { id: "cal-03", day: "Fr", slot: "18:00", title: "Track Snippet + CTA", channel: "TikTok Hauptseite", status: "live", statusLabel: "Geplant" },
+          { id: "cal-04", day: "So", slot: "20:00", title: "SoundCloud Drop Reminder", channel: "SoundCloud", status: "draft", statusLabel: "Entwurf" }
+        ],
+        ideas: [
+          { id: "idea-01", title: "Studio POV", owner: "Muse", state: "ready", note: "Hook, Shotlist und Caption vorbereiten" },
+          { id: "idea-02", title: "Merch + Music Combo", owner: "Jarvis", state: "draft", note: "Shop-Teaser mit Musikverweis kombinieren" },
+          { id: "idea-03", title: "Home Setup Reel", owner: "Heimdall", state: "support", note: "Smart-Home / DJ-Setup als Behind-the-scenes" }
+        ]
+      },
       weakSpots: [
         ...(pageProblemCount > 0 ? [{ item: "Seitenverfuegbarkeit", note: "Mindestens ein Seitenpfad antwortet nicht mit HTTP 200." }] : []),
         ...(shopProblemCount > 0 ? [{ item: "Produktlink-Verfuegbarkeit", note: "Nicht alle geprueften Shop-Links sind erreichbar." }] : []),
@@ -1337,6 +1376,68 @@ async function main() {
       { id: "qa-9", label: "Live-Daten neu laden", href: "#reload", external: false },
       { id: "qa-10", label: "Abmelden", href: "#logout", external: false }
     ],
+    homeAssistantWorkbench: {
+      rooms: [
+        {
+          id: "wohnzimmer",
+          title: "Wohnzimmer",
+          status: "live",
+          statusLabel: "Live",
+          devices: [
+            { id: "wohnzimmer-licht", name: "Deckenlicht", type: "Light", state: "on", stateLabel: "An" },
+            { id: "wohnzimmer-lampe", name: "Ambient Lampe", type: "Light", state: "off", stateLabel: "Aus" },
+            { id: "wohnzimmer-tv", name: "Apple TV", type: "Media", state: "idle", stateLabel: "Bereit" }
+          ],
+          scenes: ["DJ Warmup", "Afterhours", "Cleanup"]
+        },
+        {
+          id: "studio",
+          title: "Studio",
+          status: "connected",
+          statusLabel: "Verbunden",
+          devices: [
+            { id: "studio-pult", name: "Desk Light", type: "Light", state: "on", stateLabel: "An" },
+            { id: "studio-sensor", name: "Air Sensor", type: "Sensor", state: "ok", stateLabel: "Stabil" },
+            { id: "studio-switch", name: "Audio Power", type: "Switch", state: "off", stateLabel: "Aus" }
+          ],
+          scenes: ["Recording", "Stream", "Night Work"]
+        },
+        {
+          id: "flur",
+          title: "Flur / Eingang",
+          status: "ready",
+          statusLabel: "Bereit",
+          devices: [
+            { id: "flur-light", name: "Entry Light", type: "Light", state: "off", stateLabel: "Aus" },
+            { id: "flur-motion", name: "Motion Sensor", type: "Sensor", state: "armed", stateLabel: "Aktiv" }
+          ],
+          scenes: ["Night Entry", "Silent Mode"]
+        }
+      ],
+      automations: [
+        { id: "ha-backup", label: "HA Backup -> Mac mini", state: "live", stateLabel: "Aktiv", cron: "03:30 täglich" },
+        { id: "ha-morning", label: "Morning Boot", state: "ready", stateLabel: "Bereit", cron: "08:00 täglich" },
+        { id: "ha-stream", label: "Stream Prep", state: "connected", stateLabel: "Verbunden", cron: "manuell / Szene" }
+      ]
+    },
+    operationsWorkbench: {
+      cronJobs: [
+        { id: "cron-live", name: "sync-control-live", schedule: "*/30 * * * *", state: "live", stateLabel: "Aktiv", owner: "Hermes" },
+        { id: "cron-shop", name: "check-shirtee-links", schedule: "0 */4 * * *", state: "ready", stateLabel: "Bereit", owner: "Jarvis" },
+        { id: "cron-upload", name: "generate-upload-queue", schedule: "15 2 * * *", state: "connected", stateLabel: "Verbunden", owner: "Forge" }
+      ],
+      subagents: [
+        { id: "sub-forge", name: "Forge", mode: "Infrastructure", llm: "Cloud LLM first", fallback: "Codex", state: "live" },
+        { id: "sub-sentinel", name: "Sentinel", mode: "Monitoring", llm: "Cloud LLM first", fallback: "Claude", state: "live" },
+        { id: "sub-muse", name: "Muse", mode: "Content", llm: "Cloud LLM first", fallback: "Claude Code", state: "ready" },
+        { id: "sub-heimdall", name: "Heimdall", mode: "Home Assistant", llm: "Cloud LLM first", fallback: "Codex", state: "connected" }
+      ],
+      vaultNodes: [
+        { id: "vault-brain", name: "Brain Vault", role: "Persistentes Wissen", state: "sync", stateLabel: "Sync", steward: "Memory Agent" },
+        { id: "vault-obsidian", name: "Obsidian Graph", role: "Knoten und Beziehungen", state: "connected", stateLabel: "Verbunden", steward: "Jarvis" },
+        { id: "vault-learning", name: "Experience Loop", role: "Erfahrungen -> Regeln -> Kontext", state: "support", stateLabel: "Adapter", steward: "Hermes" }
+      ]
+    },
     agentsRoom
   };
 
