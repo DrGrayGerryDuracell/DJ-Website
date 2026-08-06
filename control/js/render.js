@@ -109,6 +109,85 @@ function buildStatusGuide(compact = false) {
   `;
 }
 
+function statusNarrative(status) {
+  if (status === "error" || status === "offline") return "Akuter Fehler";
+  if (status === "warn" || status === "check") return "Pruefung noetig";
+  if (status === "live" || status === "active") return "Stabil";
+  if (status === "connected" || status === "sync") return "Verknuepft";
+  if (status === "ready" || status === "support") return "Bereit";
+  return "Info";
+}
+
+function buildOverviewCommandCards(dashboardData) {
+  const agentsRoom = dashboardData.agentsRoom || {};
+  const gatewayState = agentsRoom.runtime?.gatewayState?.gateway_state || "unbekannt";
+  const telegramState = agentsRoom.runtime?.gatewayState?.platforms?.telegram?.state || "unbekannt";
+  const warningCount = Number(dashboardData.overviewKpis.find((kpi) => kpi.id === "warnings")?.value || 0);
+  const backupRoutePresent = getDeviceRouteItems(agentsRoom.devices || []).some((item) => item.from === "Home Assistant" && item.to === "Mac mini");
+  const vaultSource = (agentsRoom.sourceRegistry || []).find((item) => /Brain Vault/i.test(item.name || ""));
+  const cards = [
+    {
+      title: "Zentralserver",
+      value: gatewayState === "running" ? "Mac mini / Hermes stabil" : "Zentralserver pruefen",
+      detail: `Gateway ${gatewayState} · Telegram ${telegramState}`,
+      status: gatewayState === "running" && telegramState === "connected" ? "live" : "warn",
+      image: "/assets/uploads/web-images/controller-laser-green-2026.jpg"
+    },
+    {
+      title: "Kommunikation",
+      value: `${formatValue(agentsRoom.metrics?.routeCount || 0)} aktive Routen`,
+      detail: `${formatValue(agentsRoom.metrics?.delegationCount || 0)} Delegationen · ${formatValue(agentsRoom.metrics?.conversationCount || 0)} Gespraeche`,
+      status: (agentsRoom.metrics?.routeCount || 0) > 0 ? "connected" : "warn",
+      image: "/assets/uploads/web-images/controller-decks-closeup-2026.jpg"
+    },
+    {
+      title: "Vault / Memory",
+      value: vaultSource?.detail || "Brain Vault nicht gemeldet",
+      detail: vaultSource?.route || "Vault-Verbindungen pruefen",
+      status: vaultSource?.state || "warn",
+      image: "/assets/uploads/posters/live-room-collage-2026.jpg"
+    },
+    {
+      title: "HA Backup",
+      value: backupRoutePresent ? "Mac mini als Ziel aktiv" : "Backup-Pfad fehlt",
+      detail: backupRoutePresent ? "Home Assistant -> Mac mini ueber SMB / Bridge" : "Heimdall / HA Route offen",
+      status: backupRoutePresent ? "live" : "warn",
+      image: "/assets/images/flx10-gold.png"
+    },
+    {
+      title: "Warnungen",
+      value: warningCount > 0 ? `${warningCount} Punkte mit Bedarf` : "Keine offenen Warnungen",
+      detail: warningCount > 0 ? "Prio in Warnungen und Technik pruefen" : "Systemzustand im Snapshot ruhig",
+      status: warningCount > 0 ? "warn" : "live",
+      image: "/assets/uploads/posters/club-red-stage.jpg"
+    }
+  ];
+
+  return `
+    <div class="pulse-summary-grid">
+      ${cards
+        .map(
+          (card) => `
+            <article class="pulse-summary-card">
+              <div class="pulse-summary-media">
+                <img src="${card.image}" alt="${escapeHtml(card.title)}">
+              </div>
+              <div class="pulse-summary-body">
+                <div class="pulse-summary-head">
+                  <span>${escapeHtml(card.title)}</span>
+                  <small class="status-pill ${statusClass(card.status)}">${statusNarrative(card.status)}</small>
+                </div>
+                <strong>${escapeHtml(card.value)}</strong>
+                <p>${escapeHtml(card.detail)}</p>
+              </div>
+            </article>
+          `
+        )
+        .join("")}
+    </div>
+  `;
+}
+
 function buildFlowItems(items) {
   if (!Array.isArray(items) || !items.length) {
     return `<p class="muted-line">Keine Routing-Daten vorhanden.</p>`;
@@ -210,6 +289,19 @@ const deviceGraphPositions = new Map([
   ["SoundCloud", { x: 91, y: 80, tone: "service", label: "SoundCloud", detail: "Music Publishing" }]
 ]);
 
+const vaultGraphPositions = new Map([
+  ["Operator", { x: 8, y: 18, tone: "human", label: "Operator", detail: "Eingang / Telegram" }],
+  ["Hermes", { x: 24, y: 18, tone: "core", label: "Hermes", detail: "Runtime / Thread" }],
+  ["Telegram Spool", { x: 24, y: 56, tone: "bridge", label: "Telegram Spool", detail: "Outbound Queue" }],
+  ["Channel Directory", { x: 43, y: 18, tone: "service", label: "Channel Directory", detail: "Routenregister" }],
+  ["Active Sessions", { x: 43, y: 56, tone: "service", label: "Active Sessions", detail: "Runtime Sessions" }],
+  ["Jarvis", { x: 62, y: 18, tone: "core", label: "Jarvis", detail: "Delegation / Review" }],
+  ["Argus Bridge", { x: 62, y: 56, tone: "support", label: "Argus Bridge", detail: "Zweitwertung" }],
+  ["Brain Vault", { x: 80, y: 18, tone: "service", label: "Brain Vault", detail: "Persistentes Wissen" }],
+  ["Obsidian", { x: 95, y: 42, tone: "service", label: "Obsidian", detail: "Graph / Memory" }],
+  ["GitHub", { x: 80, y: 78, tone: "service", label: "GitHub", detail: "Repo / Dokumentation" }]
+]);
+
 function buildAgentGraphEdges(agentsRoom) {
   const routing = Array.isArray(agentsRoom?.routing) ? agentsRoom.routing : [];
   const agentNames = new Set((agentsRoom?.agents || []).map((agent) => agent.name));
@@ -221,15 +313,48 @@ function buildAgentGraphEdges(agentsRoom) {
   return [...routing, ...inferred];
 }
 
+function buildVaultGraphEdges(agentsRoom) {
+  const runtime = agentsRoom?.runtime || {};
+  const sourceRegistry = Array.isArray(agentsRoom?.sourceRegistry) ? agentsRoom.sourceRegistry : [];
+  const hasSource = (pattern) => sourceRegistry.find((item) => pattern.test(item.name || ""));
+  const telegramConnected = runtime.gatewayState?.platforms?.telegram?.state === "connected";
+  const brainVault = hasSource(/Brain Vault/i);
+  const activeSessions = hasSource(/Active Sessions/i);
+  const channelDirectory = hasSource(/Channel Directory/i);
+  const argusBridge = hasSource(/Argus Bridge/i);
+
+  return [
+    { from: "Operator", to: "Hermes", channel: "Telegram", purpose: "menschlicher Eingang", status: telegramConnected ? "live" : "warn", statusLabel: telegramConnected ? "Live" : "Pruefen" },
+    { from: "Hermes", to: "Telegram Spool", channel: "Queue", purpose: "Nachrichten ausgehend puffern", status: runtime.latestSpoolPath ? "connected" : "warn", statusLabel: runtime.latestSpoolPath ? "Verbunden" : "Pruefen" },
+    { from: "Hermes", to: "Channel Directory", channel: "Routing", purpose: "Kanaele und Ziele abgleichen", status: channelDirectory?.state || "connected", statusLabel: channelDirectory?.kind || "Routing" },
+    { from: "Hermes", to: "Active Sessions", channel: "Runtime", purpose: "aktive Sitzungen tracken", status: activeSessions?.state || "live", statusLabel: activeSessions?.kind || "Runtime" },
+    { from: "Hermes", to: "Jarvis", channel: "Control", purpose: "Aufgaben verteilen", status: "live", statusLabel: "Live" },
+    { from: "Jarvis", to: "Brain Vault", channel: "Memory Sync", purpose: "Wissen verdichten", status: brainVault?.state || "sync", statusLabel: brainVault?.kind || "Memory" },
+    { from: "Brain Vault", to: "Obsidian", channel: "Graph", purpose: "Knoten und Beziehungen spiegeln", status: "sync", statusLabel: "Sync" },
+    { from: "Jarvis", to: "Argus Bridge", channel: "Review", purpose: "Zweitbewertung und Diagnose", status: argusBridge?.state || "support", statusLabel: argusBridge?.kind || "Support" },
+    { from: "GitHub", to: "Brain Vault", channel: "Repo Context", purpose: "Code und Dokumentation zufuehren", status: "connected", statusLabel: "Verbunden" }
+  ];
+}
+
 function buildGraphDataset(agentsRoom, mode) {
   const agents = Array.isArray(agentsRoom?.agents) ? agentsRoom.agents : [];
   const devices = Array.isArray(agentsRoom?.devices) ? agentsRoom.devices : [];
+  const sourceRegistry = Array.isArray(agentsRoom?.sourceRegistry) ? agentsRoom.sourceRegistry : [];
   const isDeviceMode = mode === "devices";
-  const edges = isDeviceMode ? getDeviceRouteItems(devices) : buildAgentGraphEdges(agentsRoom);
-  const positions = isDeviceMode ? deviceGraphPositions : agentGraphPositions;
-  const records = new Map((isDeviceMode ? devices : agents).map((item) => [item.name, item]));
-  if (!isDeviceMode) {
+  const isVaultMode = mode === "vault";
+  const edges = isVaultMode ? buildVaultGraphEdges(agentsRoom) : isDeviceMode ? getDeviceRouteItems(devices) : buildAgentGraphEdges(agentsRoom);
+  const positions = isVaultMode ? vaultGraphPositions : isDeviceMode ? deviceGraphPositions : agentGraphPositions;
+  const records = new Map((isVaultMode ? sourceRegistry : isDeviceMode ? devices : agents).map((item) => [item.name, item]));
+  if (!isDeviceMode && !isVaultMode) {
     records.set("Mensch", { name: "Mensch", role: "Eigentümer und oberste Steuerstufe", route: "Du -> Hermes", channel: "Telegram", status: "live", statusLabel: "Live" });
+  }
+  if (isVaultMode) {
+    records.set("Operator", { name: "Operator", role: "Menschlicher Eingang ueber Telegram", route: "Operator -> Hermes", channel: "Telegram", status: "live", statusLabel: "Live" });
+    records.set("Hermes", { name: "Hermes", role: "Runtime und Thread-Steuerung", route: "Hermes / state.db", channel: "Runtime", status: "live", statusLabel: "Live" });
+    records.set("Jarvis", { name: "Jarvis", role: "Delegation und Verteilung", route: "Hermes -> Jarvis", channel: "Control", status: "live", statusLabel: "Live" });
+    records.set("Brain Vault", { name: "Brain Vault", role: "Persistente Wissensbasis", route: "Hermes / Brain Vault", channel: "Vault", status: "sync", statusLabel: "Sync" });
+    records.set("Obsidian", { name: "Obsidian", role: "Graph und Live-Memory", route: "Vault -> Graph", channel: "Memory", status: "sync", statusLabel: "Sync" });
+    records.set("GitHub", { name: "GitHub", role: "Repo- und Kontextquelle", route: "GitHub -> Repo", channel: "Repo", status: "connected", statusLabel: "Verbunden" });
   }
 
   const usedNames = new Set();
@@ -293,9 +418,9 @@ function renderGraphView(agentsRoom, mode) {
     })
     .join("");
 
-  const feedbackNodes = mode === "agents"
+  const feedbackNodes = mode !== "devices"
     ? edges
-        .filter((edge) => edge.from !== "Mensch" && positions.has(edge.from) && positions.has(edge.to) && nodeNames.has(edge.from) && nodeNames.has(edge.to))
+        .filter((edge) => edge.from !== "Mensch" && edge.from !== "Operator" && positions.has(edge.from) && positions.has(edge.to) && nodeNames.has(edge.from) && nodeNames.has(edge.to))
         .map((edge, index) => {
           const source = positions.get(edge.to);
           const target = positions.get(edge.from);
@@ -315,7 +440,7 @@ function renderGraphView(agentsRoom, mode) {
         .join("")
     : "";
 
-  const defaultName = mode === "devices" ? "Mac mini" : "Hermes";
+  const defaultName = mode === "devices" ? "Mac mini" : mode === "vault" ? "Brain Vault" : "Hermes";
   const nodeCards = nodes
     .map((node) => {
       const nodeId = toGraphId(node.name);
@@ -346,7 +471,7 @@ function renderGraphView(agentsRoom, mode) {
     <div class="agentsroom-network-view" data-network-view="${mode}"${mode === "devices" ? " hidden" : ""}>
       <div class="agentsroom-network-scroll" tabindex="0" aria-label="${mode === "devices" ? "Gerätenetz horizontal erkunden" : "Agentenfluss horizontal erkunden"}">
         <div class="agentsroom-network">
-          <svg class="agentsroom-network-svg" viewBox="0 0 1200 650" role="img" aria-label="${mode === "devices" ? "Gerätenetz mit Mac mini als Zentralserver" : "Agenten-Orchestrierung von Operator über Hermes und Jarvis"}">
+          <svg class="agentsroom-network-svg" viewBox="0 0 1200 650" role="img" aria-label="${mode === "devices" ? "Geraetenetz mit Mac mini als Zentralserver" : mode === "vault" ? "Vault-Graph mit Runtime, Brain Vault und Obsidian-Verbindungen" : "Agenten-Orchestrierung von Operator ueber Hermes und Jarvis"}">
             <defs>
               <marker id="${markerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                 <path d="M 0 0 L 10 5 L 0 10 z" />
@@ -368,6 +493,8 @@ function renderGraphView(agentsRoom, mode) {
 
 function buildRoutingWorkspace(agentsRoom) {
   const agentData = buildGraphDataset(agentsRoom, "agents");
+  const deviceData = buildGraphDataset(agentsRoom, "devices");
+  const vaultData = buildGraphDataset(agentsRoom, "vault");
   const defaultNode = agentData.nodes.find((node) => node.name === "Hermes") || agentData.nodes[0] || {};
   return `
     <div class="agentsroom-network-workspace" data-network-workspace>
@@ -376,7 +503,10 @@ function buildRoutingWorkspace(agentsRoom) {
           Agentenfluss <span>${agentData.edges.length} Routen</span>
         </button>
         <button type="button" class="agentsroom-mode-btn" role="tab" aria-selected="false" data-network-mode="devices">
-          Gerätenetz <span>${getDeviceRouteItems(agentsRoom?.devices || []).length} Verbindungen</span>
+          Geraetenetz <span>${deviceData.edges.length} Verbindungen</span>
+        </button>
+        <button type="button" class="agentsroom-mode-btn" role="tab" aria-selected="false" data-network-mode="vault">
+          Vault Graph <span>${vaultData.edges.length} Knotenpfade</span>
         </button>
         <p><span class="agentsroom-live-dot" aria-hidden="true"></span> Live-Snapshot · Auswahl zeigt Details</p>
       </div>
@@ -387,6 +517,7 @@ function buildRoutingWorkspace(agentsRoom) {
       <div class="agentsroom-network-stage">
         ${renderGraphView(agentsRoom, "agents")}
         ${renderGraphView(agentsRoom, "devices")}
+        ${renderGraphView(agentsRoom, "vault")}
       </div>
       <aside class="agentsroom-network-inspector" data-network-inspector aria-live="polite">
         <p class="agentsroom-eyebrow">Ausgewählter Knoten</p>
@@ -705,6 +836,7 @@ export function renderVisualPulse(container, dashboardData) {
   const uploadDeg = Math.round((upload / Math.max(catalog.totalItems, 1)) * 360);
 
   const socialTop = dashboardData.socialMetrics.links.slice(0, 4);
+  const officialAccounts = Array.isArray(dashboardData.socialMetrics.officialAccounts) ? dashboardData.socialMetrics.officialAccounts.slice(0, 4) : [];
   const socialMax = Math.max(...socialTop.map((item) => Number(item.metricValue ?? item.clicks ?? 0)), 1);
   const socialBars = socialTop
     .map((item) => {
@@ -742,6 +874,7 @@ export function renderVisualPulse(container, dashboardData) {
         <a class="action-btn" href="#agentsroom">Routing öffnen</a>
       </div>
     </article>
+    ${buildOverviewCommandCards(dashboardData)}
     <article class="pulse-card">
       <p class="pulse-eyebrow">Website</p>
       <h3>Live Signal</h3>
@@ -766,6 +899,18 @@ export function renderVisualPulse(container, dashboardData) {
       <p class="pulse-eyebrow">Social</p>
       <h3>Plattformstatus</h3>
       <div class="social-mini">${socialBars}</div>
+      <div class="pulse-social-accounts">
+        ${officialAccounts
+          .map(
+            (item) => `
+              <div class="pulse-social-account">
+                <strong>${escapeHtml(item.label)}</strong>
+                <span>${escapeHtml(item.status === "live" ? "Verbunden" : item.status === "check" ? "Pruefen" : item.status)}</span>
+              </div>
+            `
+          )
+          .join("")}
+      </div>
       <p class="pulse-copy">Stärkster Kanal: <strong>${dashboardData.socialMetrics.strongestPlatform || socialTop[0]?.platform || "nicht erfasst"}</strong></p>
     </article>
   `;
@@ -816,6 +961,20 @@ export function renderAgentsRoomSection(container, agentsRoom) {
         <div><span>Quellen</span><strong>${formatValue(metrics.sourceCount || sourceRegistry.length)}</strong></div>
       </div>
       ${buildStatusGuide(true)}
+      <div class="agentsroom-visual-strip">
+        <article class="agentsroom-visual-card">
+          <img src="/assets/uploads/web-images/controller-laser-green-2026.jpg" alt="Hermes Steuerung">
+          <div><strong>Hermes Mesh</strong><span>Operator, Hermes, Jarvis und Delegationen auf einen Blick.</span></div>
+        </article>
+        <article class="agentsroom-visual-card">
+          <img src="/assets/uploads/web-images/controller-decks-closeup-2026.jpg" alt="Geraetenetz">
+          <div><strong>Geraetenetz</strong><span>Mac mini, Macs, Home Assistant und Publishing-Pfade.</span></div>
+        </article>
+        <article class="agentsroom-visual-card">
+          <img src="/assets/uploads/posters/live-room-collage-2026.jpg" alt="Vault Graph">
+          <div><strong>Vault Graph</strong><span>Brain Vault, Obsidian, Session-Layer und Rueckfluesse.</span></div>
+        </article>
+      </div>
     </article>
 
     <article class="panel agentsroom-panel agentsroom-panel-wide">
@@ -984,10 +1143,11 @@ export function renderSystemStatus(container, systemStatus) {
 export function renderKpis(container, kpis) {
   container.innerHTML = kpis
     .map((kpi) => {
-      const value = formatValue(kpi.value, kpi.unit);
+      const unverified = /nicht verifizierbar/i.test(String(kpi.delta || ""));
+      const value = unverified ? "n/v" : formatValue(kpi.value, kpi.unit);
       const isNumeric = typeof kpi.value === "number" && Number.isFinite(kpi.value);
       return `
-        <article class="kpi-card">
+        <article class="kpi-card${unverified ? " is-unverified" : ""}">
           <span class="kpi-label">${kpi.label}</span>
           <strong class="kpi-value" data-kpi-value="${isNumeric ? Number(kpi.value) : 0}" data-kpi-unit="${kpi.unit || ""}" data-kpi-animate="${isNumeric ? "true" : "false"}">${value}</strong>
           <span class="kpi-delta ${trendClass(kpi.trend)}">${kpi.delta}</span>

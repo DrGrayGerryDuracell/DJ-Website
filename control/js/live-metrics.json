@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T02:52:19.034Z",
-    "generatedAtLabel": "06.08.26, 04:52",
+    "generatedAt": "2026-08-06T03:16:26.567Z",
+    "generatedAtLabel": "06.08.26, 05:16",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 04:52",
+      "value": "06.08.26, 05:16",
       "level": "info"
     }
   },
@@ -39,7 +39,7 @@
     {
       "id": "pagesOk",
       "label": "Seiten OK",
-      "value": 0,
+      "value": null,
       "delta": "lokal nicht verifizierbar",
       "trend": "up"
     },
@@ -53,8 +53,8 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 0,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
@@ -88,7 +88,7 @@
     {
       "id": "tiktokProfiles",
       "label": "TikTok Profile erreichbar",
-      "value": 0,
+      "value": null,
       "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
@@ -239,8 +239,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-06T02:52:19.034Z",
-      "checkedAtLabel": "06.08.26, 04:52"
+      "checkedAt": "2026-08-06T03:16:26.567Z",
+      "checkedAtLabel": "06.08.26, 05:16"
     },
     "catalog": {
       "totalItems": 167,
@@ -2816,17 +2816,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 04:52",
+        "time": "06.08.26, 05:16",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "06.08.26, 04:52",
+        "time": "06.08.26, 05:16",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "06.08.26, 04:52",
+        "time": "06.08.26, 05:16",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3013,25 +3013,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 04:52",
+      "time": "06.08.26, 05:16",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 04:52",
+      "time": "06.08.26, 05:16",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 04:52",
+      "time": "06.08.26, 05:16",
       "type": "check",
       "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 04:52",
+      "time": "06.08.26, 05:16",
       "type": "check",
       "text": "TikTok Profile: lokal nicht verifizierbar"
     }
@@ -3585,7 +3585,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 04:52",
+        "time": "06.08.26, 05:16",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Alle Eingaben starten beim zentralen Telegram-Hub und gehen von dort in die Verteilung.",
@@ -3594,7 +3594,7 @@
       },
       {
         "topic": "Routing",
-        "time": "06.08.26, 04:52",
+        "time": "06.08.26, 05:16",
         "from": "Hermes",
         "to": "Jarvis",
         "summary": "Jarvis bekommt die Arbeitsstränge, sortiert sie und gibt sie an die Unteragenten weiter.",
@@ -3603,7 +3603,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 04:52",
+        "time": "06.08.26, 05:16",
         "from": "Jarvis",
         "to": "Argus",
         "summary": "Argus liefert Zweitbewertung und Diagnose, bevor etwas weiter eskaliert wird.",
@@ -3612,7 +3612,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 04:52",
+        "time": "06.08.26, 05:16",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Notizen und Vault-Kontext bleiben synchron, damit das Kontrollzentrum konsistent bleibt.",
@@ -3621,7 +3621,7 @@
       },
       {
         "topic": "Home Assistant",
-        "time": "06.08.26, 04:52",
+        "time": "06.08.26, 05:16",
         "from": "Jarvis",
         "to": "Heimdall",
         "summary": "HA-Backups und Device-Verbindungen werden fuer den Mac mini als Zentrale betrachtet.",
@@ -3630,7 +3630,7 @@
       },
       {
         "topic": "Engineering",
-        "time": "06.08.26, 04:52",
+        "time": "06.08.26, 05:16",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge haelt die technischen Pfade, Repos und Infrastruktur-Arbeiten zusammen.",
@@ -3706,13 +3706,13 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T04:47:49.887481",
+        "updated_at": "2026-08-06T05:12:49.976010",
         "platformCounts": {
           "telegram": 1
         }
       },
       "brainVaultState": {
-        "last_run_utc": "2026-08-06T02:37:54.420915",
+        "last_run_utc": "2026-08-06T03:07:54.556164",
         "last_added": 0,
         "processed_count": 269
       },
@@ -3813,7 +3813,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 04:47",
+        "detail": "Channels: 1 • updated 06.08.26, 05:12",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -3821,7 +3821,7 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run 2026-08-06T02:37:54.420915 • Added 0",
+        "detail": "Last run 2026-08-06T03:07:54.556164 • Added 0",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },

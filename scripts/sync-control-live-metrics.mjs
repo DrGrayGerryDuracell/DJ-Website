@@ -1097,14 +1097,14 @@ async function main() {
     },
     overviewKpis: [
       { id: "pagesChecked", label: "Gepruefte Seiten", value: pageChecks.length, delta: "Live", trend: "neutral" },
-      { id: "pagesOk", label: "Seiten OK", value: pageOk, delta: pageEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: pageProblemCount === 0 ? "up" : "neutral" },
+      { id: "pagesOk", label: "Seiten OK", value: pageEnvironmentIssue ? null : pageOk, delta: pageEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: pageProblemCount === 0 ? "up" : "neutral" },
       { id: "pagesFail", label: "Seiten mit Fehler", value: pageProblemCount, delta: pageEnvironmentIssue ? "Umgebung" : "Live", trend: pageProblemCount > 0 ? "down" : "neutral" },
-      { id: "responseAvg", label: "Ø Antwortzeit (ms)", value: avgResponse, delta: "Live", trend: "neutral" },
+      { id: "responseAvg", label: "Ø Antwortzeit (ms)", value: pageEnvironmentIssue ? null : avgResponse, delta: pageEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: "neutral" },
       { id: "merchItems", label: "Merch Artikel gesamt", value: items.length, delta: "Katalog", trend: "neutral" },
       { id: "shopLinks", label: "Shop-Links geprueft", value: shopChecked, delta: "Shirtee", trend: "neutral" },
-      { id: "shopLinksOk", label: "Shop-Links OK", value: shopLive, delta: shopEnvironmentIssue ? "lokal nicht verifizierbar" : "Shirtee", trend: shopProblemCount === 0 ? "up" : "neutral" },
+      { id: "shopLinksOk", label: "Shop-Links OK", value: shopEnvironmentIssue ? null : shopLive, delta: shopEnvironmentIssue ? "lokal nicht verifizierbar" : "Shirtee", trend: shopProblemCount === 0 ? "up" : "neutral" },
       { id: "soundcloudFollowers", label: "SoundCloud Follower", value: soundcloud.available ? soundcloud.user.followers_count : null, delta: soundcloudEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: "neutral" },
-      { id: "tiktokProfiles", label: "TikTok Profile erreichbar", value: [tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length, delta: tiktokEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: "neutral" },
+      { id: "tiktokProfiles", label: "TikTok Profile erreichbar", value: tiktokEnvironmentIssue ? null : [tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length, delta: tiktokEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: "neutral" },
       { id: "siteTiktokLinks", label: "TikTok Links auf Website", value: hrefCounts.tiktok, delta: "Inhalt", trend: "neutral" },
       { id: "siteShopLinks", label: "Shop Links auf Website", value: hrefCounts.shop, delta: "Inhalt", trend: "neutral" },
       { id: "warnings", label: "Offene Warnungen", value: warningCount, delta: "Pruefstatus", trend: warningCount > 0 ? "down" : "neutral" }

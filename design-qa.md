@@ -48,6 +48,7 @@
 8. Status colors were changed to a semantic green, cyan, yellow, orange and red scale with visible explanations.
 9. Agent routing gained separate forward and feedback paths; muted routes remain readable.
 10. AgentsRoom data panels were widened and a dedicated Home Assistant workspace was added.
+11. The overview gained a first-glance command summary, unverified KPIs now show `n/v`, AgentsRoom gained a third Vault Graph mode, and tablet/iPad layout was compacted with softer active navigation states.
 
 ## Current Verification Run
 

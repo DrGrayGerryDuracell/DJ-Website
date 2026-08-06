@@ -484,7 +484,7 @@ function updateNetworkInspector(workspace, node) {
 
 function setNetworkMode(workspace, mode) {
   if (!workspace) return;
-  const nextMode = mode === "devices" ? "devices" : "agents";
+  const nextMode = ["agents", "devices", "vault"].includes(mode) ? mode : "agents";
   window.__CONTROL_NETWORK_MODE__ = nextMode;
 
   workspace.querySelectorAll("[data-network-mode]").forEach((button) => {
