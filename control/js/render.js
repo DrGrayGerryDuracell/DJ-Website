@@ -423,47 +423,47 @@ function toGraphId(value) {
 }
 
 const agentGraphPositions = new Map([
-  ["Mensch", { x: 7, y: 50, tone: "human", label: "Du / iPhone", detail: "Telegram Operator" }],
-  ["Hermes", { x: 21, y: 50, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
-  ["Argus", { x: 36, y: 20, tone: "support", label: "Argus", detail: "Vorprüfung / Review" }],
-  ["OpenClaw Gateway", { x: 36, y: 80, tone: "bridge", label: "OpenClaw", detail: "Queue / Broker" }],
-  ["Jarvis", { x: 56, y: 50, tone: "core", label: "Jarvis", detail: "Verteiler / Review" }],
-  ["Heimdall", { x: 77, y: 8, tone: "service", label: "Heimdall", detail: "Home Assistant" }],
-  ["Forge", { x: 77, y: 23, tone: "service", label: "Forge", detail: "Infra / Skills" }],
-  ["Sentinel", { x: 77, y: 38, tone: "service", label: "Sentinel", detail: "Health / Security" }],
-  ["Oracle", { x: 77, y: 53, tone: "service", label: "Oracle", detail: "Briefings" }],
-  ["Muse", { x: 77, y: 68, tone: "service", label: "Muse", detail: "Content / Audio" }],
-  ["Friday", { x: 77, y: 83, tone: "service", label: "Friday", detail: "Deep Repair" }],
-  ["Claude", { x: 94, y: 18, tone: "support", label: "Claude", detail: "Gegenprüfung" }],
-  ["Claude Code", { x: 94, y: 48, tone: "support", label: "Claude Code", detail: "Pair Coding" }],
-  ["Codex", { x: 94, y: 78, tone: "support", label: "Codex", detail: "Tests / Umsetzung" }]
+  ["Mensch", { x: 6, y: 50, tone: "human", label: "Du / iPhone", detail: "Telegram Operator" }],
+  ["Hermes", { x: 18, y: 50, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
+  ["Argus", { x: 31, y: 18, tone: "support", label: "Argus", detail: "Vorprüfung / Review" }],
+  ["OpenClaw Gateway", { x: 31, y: 82, tone: "bridge", label: "OpenClaw", detail: "Queue / Broker" }],
+  ["Jarvis", { x: 48, y: 50, tone: "core", label: "Jarvis", detail: "Verteiler / Review" }],
+  ["Heimdall", { x: 69, y: 10, tone: "service", label: "Heimdall", detail: "Home Assistant" }],
+  ["Forge", { x: 69, y: 24, tone: "service", label: "Forge", detail: "Infra / Skills" }],
+  ["Sentinel", { x: 69, y: 38, tone: "service", label: "Sentinel", detail: "Health / Security" }],
+  ["Oracle", { x: 69, y: 52, tone: "service", label: "Oracle", detail: "Briefings" }],
+  ["Muse", { x: 69, y: 66, tone: "service", label: "Muse", detail: "Content / Audio" }],
+  ["Friday", { x: 69, y: 80, tone: "service", label: "Friday", detail: "Deep Repair" }],
+  ["Claude", { x: 90, y: 18, tone: "support", label: "Claude", detail: "Gegenprüfung" }],
+  ["Claude Code", { x: 90, y: 50, tone: "support", label: "Claude Code", detail: "Pair Coding" }],
+  ["Codex", { x: 90, y: 82, tone: "support", label: "Codex", detail: "Tests / Umsetzung" }]
 ]);
 
 const deviceGraphPositions = new Map([
-  ["Mac mini", { x: 48, y: 48, tone: "core", label: "Mac mini", detail: "Zentralserver / Hermes" }],
-  ["MacBook", { x: 12, y: 14, tone: "device", label: "MacBook", detail: "Arbeits- und Mirror-Node" }],
-  ["iMac", { x: 12, y: 36, tone: "device", label: "iMac", detail: "Operator-Station" }],
-  ["iPhone", { x: 12, y: 60, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
-  ["Home Assistant", { x: 28, y: 82, tone: "bridge", label: "Home Assistant", detail: "Backup / Automation" }],
-  ["GitHub", { x: 71, y: 14, tone: "service", label: "GitHub", detail: "Repo Sync" }],
-  ["Obsidian", { x: 82, y: 32, tone: "service", label: "Obsidian", detail: "Vault / Memory" }],
-  ["StreamDeck", { x: 71, y: 66, tone: "device", label: "StreamDeck", detail: "Actions" }],
-  ["Rodecaster", { x: 91, y: 24, tone: "device", label: "Rodecaster", detail: "Audio Routing" }],
-  ["TikTok Live Studio", { x: 91, y: 52, tone: "service", label: "TikTok Live", detail: "Live Publishing" }],
-  ["SoundCloud", { x: 91, y: 80, tone: "service", label: "SoundCloud", detail: "Music Publishing" }]
+  ["Mac mini", { x: 47, y: 50, tone: "core", label: "Mac mini", detail: "Zentralserver / Hermes" }],
+  ["MacBook", { x: 10, y: 12, tone: "device", label: "MacBook", detail: "Arbeits- und Mirror-Node" }],
+  ["iMac", { x: 10, y: 34, tone: "device", label: "iMac", detail: "Operator-Station" }],
+  ["iPhone", { x: 10, y: 60, tone: "device", label: "iPhone", detail: "Telegram Mobile" }],
+  ["Home Assistant", { x: 25, y: 84, tone: "bridge", label: "Home Assistant", detail: "Backup / Automation" }],
+  ["GitHub", { x: 70, y: 12, tone: "service", label: "GitHub", detail: "Repo Sync" }],
+  ["Obsidian", { x: 81, y: 32, tone: "service", label: "Obsidian", detail: "Vault / Memory" }],
+  ["StreamDeck", { x: 70, y: 68, tone: "device", label: "StreamDeck", detail: "Actions" }],
+  ["Rodecaster", { x: 92, y: 24, tone: "device", label: "Rodecaster", detail: "Audio Routing" }],
+  ["TikTok Live Studio", { x: 92, y: 52, tone: "service", label: "TikTok Live", detail: "Live Publishing" }],
+  ["SoundCloud", { x: 92, y: 80, tone: "service", label: "SoundCloud", detail: "Music Publishing" }]
 ]);
 
 const vaultGraphPositions = new Map([
-  ["Operator", { x: 7, y: 14, tone: "human", label: "Operator", detail: "Eingang / Telegram" }],
+  ["Operator", { x: 8, y: 14, tone: "human", label: "Operator", detail: "Eingang / Telegram" }],
   ["Hermes", { x: 23, y: 14, tone: "core", label: "Hermes", detail: "Runtime / Thread" }],
   ["Telegram Spool", { x: 23, y: 82, tone: "bridge", label: "Telegram Spool", detail: "Outbound Queue" }],
-  ["Channel Directory", { x: 43, y: 14, tone: "service", label: "Channel Directory", detail: "Routenregister" }],
-  ["Active Sessions", { x: 43, y: 82, tone: "service", label: "Active Sessions", detail: "Runtime Sessions" }],
-  ["Jarvis", { x: 63, y: 20, tone: "core", label: "Jarvis", detail: "Delegation / Review" }],
-  ["Argus Bridge", { x: 63, y: 82, tone: "support", label: "Argus Bridge", detail: "Zweitwertung" }],
-  ["Brain Vault", { x: 81, y: 14, tone: "service", label: "Brain Vault", detail: "Persistentes Wissen" }],
-  ["Obsidian", { x: 94, y: 42, tone: "service", label: "Obsidian", detail: "Graph / Memory" }],
-  ["GitHub", { x: 81, y: 82, tone: "service", label: "GitHub", detail: "Repo / Dokumentation" }]
+  ["Channel Directory", { x: 41, y: 14, tone: "service", label: "Channel Directory", detail: "Routenregister" }],
+  ["Active Sessions", { x: 41, y: 82, tone: "service", label: "Active Sessions", detail: "Runtime Sessions" }],
+  ["Jarvis", { x: 59, y: 20, tone: "core", label: "Jarvis", detail: "Delegation / Review" }],
+  ["Argus Bridge", { x: 59, y: 82, tone: "support", label: "Argus Bridge", detail: "Zweitwertung" }],
+  ["Brain Vault", { x: 79, y: 14, tone: "service", label: "Brain Vault", detail: "Persistentes Wissen" }],
+  ["Obsidian", { x: 93, y: 44, tone: "service", label: "Obsidian", detail: "Graph / Memory" }],
+  ["GitHub", { x: 79, y: 82, tone: "service", label: "GitHub", detail: "Repo / Dokumentation" }]
 ]);
 
 function getGraphConfig(mode) {

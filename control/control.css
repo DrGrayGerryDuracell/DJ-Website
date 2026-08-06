@@ -1060,15 +1060,15 @@ a { color: inherit; text-decoration: none; }
 }
 
 .agentsroom-network-zoom {
-  width: calc(1640px * var(--network-zoom, 1));
-  height: calc(960px * var(--network-zoom, 1));
+  width: calc(1820px * var(--network-zoom, 1));
+  height: calc(1040px * var(--network-zoom, 1));
   transition: width 0.18s ease, height 0.18s ease;
 }
 
 .agentsroom-network {
   position: relative;
-  width: 1640px;
-  min-height: 960px;
+  width: 1820px;
+  min-height: 1040px;
   transform: scale(var(--network-zoom, 1));
   transform-origin: top left;
   border-radius: 14px;
@@ -1148,10 +1148,10 @@ a { color: inherit; text-decoration: none; }
 
 .agentsroom-network-node {
   position: absolute;
-  min-width: 142px;
-  max-width: 170px;
-  min-height: 72px;
-  padding: 0.68rem;
+  min-width: 132px;
+  max-width: 154px;
+  min-height: 74px;
+  padding: 0.62rem;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.12);
   background: rgba(10, 10, 13, 0.8);
@@ -3782,38 +3782,38 @@ a { color: inherit; text-decoration: none; }
 /* Task 4: compact social cards and operational HA zones. */
 .social-profile-grid,
 .social-registry-grid {
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
 }
 
 .social-profile-card,
 .social-registry-card {
-  grid-template-columns: 1fr;
-  gap: 0;
+  grid-template-columns: 104px minmax(0, 1fr);
+  gap: 0.8rem;
   overflow: hidden;
 }
 
 .social-profile-media,
 .social-registry-media {
-  min-height: 118px;
+  min-height: 136px;
   padding: 0.55rem;
-  border-radius: 14px 14px 0 0;
+  border-radius: 14px 0 0 14px;
 }
 
 .social-profile-media.is-photo img,
 .social-registry-media.is-photo img {
-  min-height: 108px;
+  min-height: 120px;
 }
 
 .social-profile-media.is-icon img,
 .social-registry-media.is-icon img {
-  width: 58px;
-  height: 58px;
+  width: 62px;
+  height: 62px;
 }
 
 .social-profile-body,
 .social-registry-body {
   gap: 0.42rem;
-  padding: 0.8rem 0.85rem 0.9rem;
+  padding: 0.82rem 0.9rem 0.9rem 0;
 }
 
 .social-profile-identity {
@@ -3924,6 +3924,16 @@ a { color: inherit; text-decoration: none; }
   .social-registry-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .agentsroom-network-zoom {
+    width: calc(1680px * var(--network-zoom, 1));
+    height: calc(980px * var(--network-zoom, 1));
+  }
+
+  .agentsroom-network {
+    min-width: 1680px;
+    min-height: 980px;
+  }
 }
 
 @media (max-width: 760px) {
@@ -3939,6 +3949,22 @@ a { color: inherit; text-decoration: none; }
   .social-profile-grid,
   .social-registry-grid {
     grid-template-columns: 1fr;
+  }
+
+  .social-profile-card,
+  .social-registry-card {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .social-profile-media,
+  .social-registry-media {
+    border-radius: 14px 14px 0 0;
+  }
+
+  .social-profile-body,
+  .social-registry-body {
+    padding: 0.8rem 0.85rem 0.9rem;
   }
 }
 
