@@ -649,6 +649,9 @@ function buildDialogPayload(data, kind, id) {
   const shopUploadSteps = data?.shopMetrics?.workbench?.uploadSteps || [];
   const plannerCalendar = data?.contentPerformance?.planner?.calendar || [];
   const plannerChannels = data?.contentPerformance?.planner?.channels || [];
+  const plannerIdeas = data?.contentPerformance?.planner?.ideas || [];
+  const plannerDrafts = data?.contentPerformance?.planner?.drafts || [];
+  const contentWorkflow = data?.contentPerformance?.workflow || {};
   const haRooms = data?.homeAssistantWorkbench?.rooms || [];
   const haAutomations = data?.homeAssistantWorkbench?.automations || [];
   const cronJobs = data?.operationsWorkbench?.cronJobs || [];
@@ -891,11 +894,37 @@ function buildDialogPayload(data, kind, id) {
     const entry = plannerCalendar.find((item) => item.id === id);
     if (!entry) return null;
     const channel = plannerChannels.find((item) => item.label === entry.channel);
+    const relatedDraft = plannerDrafts.find((item) => String(item.title || "").toLowerCase() === String(entry.title || "").toLowerCase());
+    const uploadQueueEntry = (contentWorkflow.uploadQueue || []).find((item) => item.plannerId === entry.id || item.id === entry.queueId);
     return {
       title: entry.title,
       subtitle: `${entry.day} • ${entry.slot} • ${entry.channel}`,
       badges: [{ label: entry.statusLabel, tone: entry.status }],
-      paragraphs: [channel ? `Kanal: ${channel.handle} • ${channel.cadence}` : "Kanalinfo nicht gefunden."],
+      paragraphs: [
+        channel ? `Kanal: ${channel.handle} • ${channel.cadence}` : "Kanalinfo nicht gefunden.",
+        entry.caption ? `Caption: ${entry.caption}` : "Noch keine Caption im Eintrag gespeichert.",
+        entry.hook ? `Hook: ${entry.hook}` : "Noch kein Hook im Eintrag gespeichert."
+      ],
+      lists: [
+        {
+          title: "Produktionsstatus",
+          items: [
+            `Owner: ${entry.owner || "nicht gesetzt"}`,
+            `Format: ${entry.assetType || entry.format || "offen"}`,
+            `Freigabe: ${entry.approvalStateLabel || entry.approvalState || "offen"}`,
+            `Upload: ${entry.uploadStateLabel || entry.uploadState || "offen"}`
+          ]
+        },
+        ...(relatedDraft ? [{
+          title: "Edit Brief",
+          items: [
+            `Dauer: ${relatedDraft.duration || "n/a"}`,
+            `Overlays: ${relatedDraft.overlays}`,
+            `Subtitles: ${relatedDraft.subtitles}`,
+            relatedDraft.capcut
+          ]
+        }] : [])
+      ],
       actions: [
         {
           type: "link",
@@ -904,12 +933,18 @@ function buildDialogPayload(data, kind, id) {
         },
         { type: "control-action", label: "Plan freigeben", action: "content.plan-entry", payload: { id: entry.id, status: "approved", owner: channel?.handle || "dashboard" } },
         { type: "control-action", label: "Status einplanen", action: "content.plan-entry", payload: { id: entry.id, status: "scheduled", owner: channel?.handle || "dashboard" } },
+        ...(uploadQueueEntry ? [{
+          type: "control-action",
+          label: "Upload bestaetigen",
+          action: "content.confirm-upload",
+          payload: { uploadId: uploadQueueEntry.id, plannerId: entry.id, status: "confirmed", note: "Dashboard bestaetigt" }
+        }] : []),
         {
           type: "copy",
           label: "Content-Brief kopieren",
-          value: `${entry.title}\nKanal: ${entry.channel}\nSlot: ${entry.day} ${entry.slot}\nStatus: ${entry.statusLabel}`
+          value: `${entry.title}\nKanal: ${entry.channel}\nSlot: ${entry.day} ${entry.slot}\nStatus: ${entry.statusLabel}\nCaption: ${entry.caption || "-"}\nHook: ${entry.hook || "-"}`
         },
-        { type: "control-action", label: "TikTok Upload einreihen", action: "content.queue-upload", payload: { id: entry.id, payload: { title: entry.title, channel: entry.channel, slot: `${entry.day} ${entry.slot}` } } }
+        { type: "control-action", label: "TikTok Upload einreihen", action: "content.queue-upload", payload: { id: entry.id, payload: { title: entry.title, channel: entry.channel, slot: `${entry.day} ${entry.slot}`, caption: entry.caption || "", hook: entry.hook || "" } } }
       ],
       forms: [
         {
@@ -921,13 +956,51 @@ function buildDialogPayload(data, kind, id) {
             { name: "day", label: "Tag", type: "text", value: entry.day || "" },
             { name: "slot", label: "Uhrzeit", type: "text", value: entry.slot || "" },
             { name: "channel", label: "Kanal", type: "text", value: entry.channel || "" },
-            { name: "status", label: "Status", type: "text", value: entry.status || "" }
+            { name: "status", label: "Status", type: "text", value: entry.status || "" },
+            { name: "caption", label: "Caption", type: "textarea", rows: 4, value: entry.caption || "" },
+            { name: "hashtags", label: "Hashtags", type: "textarea", rows: 3, value: entry.hashtags || "" },
+            { name: "hook", label: "Hook / Idee", type: "textarea", rows: 3, value: entry.hook || "" },
+            { name: "assetType", label: "Asset-Typ", type: "text", value: entry.assetType || "" },
+            { name: "assetSource", label: "Asset-Quelle", type: "text", value: entry.assetSource || "" },
+            { name: "approvalState", label: "Freigabezustand", type: "text", value: entry.approvalState || "" }
           ]
         }
       ],
       toggles: [
         { id: "script", label: "Script fertig", value: getControlToggleValue(kind, id, "script", entry.status !== "draft"), onLabel: "Fertig", offLabel: "Offen" },
         { id: "upload", label: "Upload freigegeben", value: getControlToggleValue(kind, id, "upload", false), onLabel: "Freigegeben", offLabel: "Blockiert" }
+      ]
+    };
+  }
+
+  if (kind === "planner-idea") {
+    const idea = plannerIdeas.find((item) => item.id === id);
+    if (!idea) return null;
+    return {
+      title: idea.title,
+      subtitle: `Idee • ${idea.owner || "Hermes"}`,
+      badges: [{ label: idea.stateLabel || idea.state || "Info", tone: idea.state || "info" }],
+      paragraphs: [
+        idea.note || "Keine Detailnotiz vorhanden.",
+        "Ideen koennen hier konkretisiert, an Hermes uebergeben und anschliessend als Plan-Eintrag freigegeben werden."
+      ],
+      actions: [
+        { type: "control-action", label: "Als Plan freigeben", action: "content.plan-entry", payload: { id: idea.id, status: "approved", owner: idea.owner || "Hermes" } },
+        { type: "control-action", label: "In Upload-Queue setzen", action: "content.plan-entry", payload: { id: idea.id, status: "scheduled", owner: idea.owner || "Hermes" } },
+        { type: "copy", label: "Ideen-Brief kopieren", value: `${idea.title}\nOwner: ${idea.owner || "Hermes"}\nStatus: ${idea.stateLabel || idea.state || "Info"}\n${idea.note || ""}` }
+      ],
+      forms: [
+        {
+          action: "content.save-idea",
+          submitLabel: "Idee speichern",
+          payloadBase: { id: idea.id },
+          fields: [
+            { name: "title", label: "Titel", type: "text", value: idea.title || "" },
+            { name: "owner", label: "Owner", type: "text", value: idea.owner || "" },
+            { name: "state", label: "Status", type: "text", value: idea.state || "" },
+            { name: "note", label: "Notiz", type: "textarea", rows: 5, value: idea.note || "" }
+          ]
+        }
       ]
     };
   }

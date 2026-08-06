@@ -3906,6 +3906,36 @@ a { color: inherit; text-decoration: none; }
 
 .ha-dashboard > .ha-zone-system { grid-column: span 4; }
 .ha-dashboard > .ha-command-card.ha-zone-system { grid-column: 1 / -1; }
+
+.content-ops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.content-runtime-card {
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 1rem 1.05rem;
+}
+
+.content-runtime-card h4 {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-display);
+  font-size: 1rem;
+}
+
+.content-runtime-card .muted-line {
+  margin-top: 0.7rem;
+}
+
+@media (max-width: 980px) {
+  .content-ops-grid {
+    grid-template-columns: 1fr;
+  }
+}
 .ha-dashboard > .ha-zone-queue { grid-column: span 6; }
 .ha-dashboard > .ha-wide.ha-zone-queue { grid-column: 1 / -1; }
 .ha-dashboard > .ha-zone-controls { grid-column: span 6; }

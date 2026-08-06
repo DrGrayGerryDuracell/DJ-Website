@@ -55,7 +55,9 @@ const ACTIONS = {
   "shop.save-item": async ({ itemId, fields }) => saveShopItem(itemId, fields),
   "content.plan-entry": async ({ id, status, owner }) => ({ ok: true, id, status, owner }),
   "content.save-plan-entry": async ({ id, fields }) => savePlannerEntry(id, fields),
+  "content.save-idea": async ({ id, fields }) => savePlannerIdea(id, fields),
   "content.queue-upload": async ({ id, payload }) => queueTikTokUpload(id, payload),
+  "content.confirm-upload": async ({ uploadId, status, note }) => confirmTikTokUpload(uploadId, status, note),
   "social.save-account": async ({ accountId, fields }) => saveSocialAccount(accountId, fields),
   "ops.run-subagent": async ({ agentId, mode }) => ({ ok: true, agentId, mode }),
   "ops.vault-writeback": async ({ nodeId, mode }) => ({ ok: true, nodeId, mode })
@@ -191,13 +193,42 @@ const ACTION_STATE_PATCHERS = {
       lastAction: result.action || "content.save-plan-entry"
     }
   }),
+  "content.save-idea": (payload, result) => ({
+    kind: "planner-idea",
+    id: payload.id,
+    patch: {
+      ...Object.fromEntries(
+        Object.entries(payload.fields || {}).map(([key, value]) => [key, value])
+      ),
+      contentSavedAt: result.savedAt,
+      lastAction: result.action || "content.save-idea"
+    }
+  }),
   "content.queue-upload": (payload, result) => ({
     kind: "planner-entry",
     id: payload.id,
     patch: {
       uploadState: result.mode === "queued-upload" ? "queued" : "draft",
+      uploadStateLabel: result.mode === "queued-upload" ? "Wartet auf Freigabe" : "Entwurf",
+      queueStatus: result.queued?.status || "queued",
+      queueStatusLabel: mapStatusLabel(result.queued?.status || "queued"),
+      queueId: result.queued?.id || null,
       uploadSavedAt: result.savedAt,
       lastAction: result.action || "content.queue-upload"
+    }
+  }),
+  "content.confirm-upload": (payload, result) => ({
+    kind: "planner-entry",
+    id: result.plannerId || payload.plannerId || "content-upload",
+    patch: {
+      uploadState: result.queueStatus || payload.status || "confirmed",
+      uploadStateLabel: mapStatusLabel(result.queueStatus || payload.status || "confirmed"),
+      queueStatus: result.queueStatus || payload.status || "confirmed",
+      queueStatusLabel: mapStatusLabel(result.queueStatus || payload.status || "confirmed"),
+      queueNote: payload.note || "",
+      queueId: payload.uploadId || null,
+      uploadSavedAt: result.savedAt,
+      lastAction: result.action || "content.confirm-upload"
     }
   }),
   "social.save-account": (payload, result) => ({
@@ -252,7 +283,7 @@ function ensureStateFiles() {
           pages: {},
           shopItems: {},
           shopDrafts: {},
-          contentPlanner: { calendar: {}, ideas: {} },
+          contentPlanner: { calendar: {}, ideas: {}, drafts: {} },
           socialAccounts: {},
           homeAssistant: { lastServiceCalls: [] },
           tiktokUploadQueue: []
@@ -284,7 +315,7 @@ function readOverrides() {
     pages: {},
     shopItems: {},
     shopDrafts: {},
-    contentPlanner: { calendar: {}, ideas: {} },
+    contentPlanner: { calendar: {}, ideas: {}, drafts: {} },
     socialAccounts: {},
     homeAssistant: { lastServiceCalls: [] },
     tiktokUploadQueue: []
@@ -337,7 +368,7 @@ async function savePlannerEntry(id, fields) {
     return { ok: false, error: "id ist erforderlich." };
   }
   const overrides = readOverrides();
-  overrides.contentPlanner = overrides.contentPlanner && typeof overrides.contentPlanner === "object" ? overrides.contentPlanner : { calendar: {}, ideas: {} };
+  overrides.contentPlanner = overrides.contentPlanner && typeof overrides.contentPlanner === "object" ? overrides.contentPlanner : { calendar: {}, ideas: {}, drafts: {} };
   overrides.contentPlanner.calendar = overrides.contentPlanner.calendar && typeof overrides.contentPlanner.calendar === "object" ? overrides.contentPlanner.calendar : {};
   overrides.contentPlanner.calendar[id] = {
     ...(overrides.contentPlanner.calendar[id] || {}),
@@ -346,6 +377,22 @@ async function savePlannerEntry(id, fields) {
   };
   writeOverrides(overrides);
   return { ok: true, id, savedAt: overrides.contentPlanner.calendar[id].updatedAt, mode: "file-override" };
+}
+
+async function savePlannerIdea(id, fields) {
+  if (!id) {
+    return { ok: false, error: "id ist erforderlich." };
+  }
+  const overrides = readOverrides();
+  overrides.contentPlanner = overrides.contentPlanner && typeof overrides.contentPlanner === "object" ? overrides.contentPlanner : { calendar: {}, ideas: {}, drafts: {} };
+  overrides.contentPlanner.ideas = overrides.contentPlanner.ideas && typeof overrides.contentPlanner.ideas === "object" ? overrides.contentPlanner.ideas : {};
+  overrides.contentPlanner.ideas[id] = {
+    ...(overrides.contentPlanner.ideas[id] || {}),
+    ...cleanFields(fields),
+    updatedAt: new Date().toISOString()
+  };
+  writeOverrides(overrides);
+  return { ok: true, id, savedAt: overrides.contentPlanner.ideas[id].updatedAt, mode: "file-override" };
 }
 
 async function saveSocialAccount(accountId, fields) {
@@ -377,6 +424,34 @@ async function queueTikTokUpload(id, payload) {
   overrides.tiktokUploadQueue = overrides.tiktokUploadQueue.slice(-40);
   writeOverrides(overrides);
   return { ok: true, id, savedAt: entry.createdAt, mode: "queued-upload", queued: entry };
+}
+
+async function confirmTikTokUpload(uploadId, status = "confirmed", note = "") {
+  if (!uploadId) {
+    return { ok: false, error: "uploadId ist erforderlich." };
+  }
+  const overrides = readOverrides();
+  overrides.tiktokUploadQueue = Array.isArray(overrides.tiktokUploadQueue) ? overrides.tiktokUploadQueue : [];
+  const index = overrides.tiktokUploadQueue.findIndex((entry) => entry.id === uploadId);
+  if (index === -1) {
+    return { ok: false, error: "Upload-Queue Eintrag nicht gefunden." };
+  }
+  const nextEntry = {
+    ...overrides.tiktokUploadQueue[index],
+    status,
+    note: String(note || "").trim(),
+    confirmedAt: new Date().toISOString()
+  };
+  overrides.tiktokUploadQueue[index] = nextEntry;
+  writeOverrides(overrides);
+  return {
+    ok: true,
+    uploadId,
+    plannerId: nextEntry.plannerId || null,
+    queueStatus: nextEntry.status,
+    savedAt: nextEntry.confirmedAt,
+    mode: "queue-confirmed"
+  };
 }
 
 async function runHaServiceCall(payload) {
@@ -439,6 +514,9 @@ function mapStatusLabel(value) {
     scheduled: "Eingeplant",
     submitted: "Pruefung",
     uploaded: "Hochgeladen",
+    queued: "Wartet",
+    confirmed: "Bestaetigt",
+    hold: "Halten",
     pending: "Offen",
     warn: "Pruefen",
     support: "Support",

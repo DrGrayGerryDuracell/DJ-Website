@@ -1,16 +1,16 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T09:15:54.338Z",
-    "generatedAtLabel": "06.08.26, 11:15",
+    "generatedAt": "2026-08-06T09:37:41.587Z",
+    "generatedAtLabel": "06.08.26, 11:37",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
   "systemStatus": {
     "website": {
       "label": "Website",
-      "value": "Erreichbar",
-      "level": "ok"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "storeLinks": {
       "label": "Shop-Links",
@@ -19,12 +19,12 @@
     },
     "social": {
       "label": "Social-Profile",
-      "value": "2/2 TikTok erreichbar",
-      "level": "ok"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 11:15",
+      "value": "06.08.26, 11:37",
       "level": "info"
     }
   },
@@ -39,22 +39,22 @@
     {
       "id": "pagesOk",
       "label": "Seiten OK",
-      "value": 8,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "up"
     },
     {
       "id": "pagesFail",
       "label": "Seiten mit Fehler",
       "value": 0,
-      "delta": "Live",
+      "delta": "Umgebung",
       "trend": "neutral"
     },
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 276,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
@@ -81,15 +81,15 @@
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 622,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
       "id": "tiktokProfiles",
       "label": "TikTok Profile erreichbar",
-      "value": 2,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 464,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 252,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 256,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 293,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 232,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 248,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 246,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 218,
+        "visitors": 0,
         "pageviews": 0
       }
     ],
@@ -161,36 +161,36 @@
       {
         "page": "/",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/index.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/bio.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/musik.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/videos.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       }
     ],
     "audiences": [
       {
-        "label": "Erreichbar",
-        "value": 100
+        "label": "Nicht verifizierbar",
+        "value": 0
       },
       {
-        "label": "Fehler",
+        "label": "Umgebung",
         "value": 0
       }
     ],
@@ -215,7 +215,7 @@
     "devices": [
       {
         "label": "2xx",
-        "value": 100
+        "value": 0
       },
       {
         "label": "3xx",
@@ -223,12 +223,12 @@
       },
       {
         "label": "4xx/5xx",
-        "value": 0
+        "value": 100
       }
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "276 ms",
+      "avgSession": "0 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -324,8 +324,8 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T09:15:54.338Z",
-      "checkedAtLabel": "06.08.26, 11:15"
+      "checkedAt": "2026-08-06T09:37:41.587Z",
+      "checkedAtLabel": "06.08.26, 11:37"
     },
     "catalog": {
       "totalItems": 167,
@@ -2979,17 +2979,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "type": "info",
         "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "type": "info",
         "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "type": "info",
         "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
@@ -3004,11 +3004,11 @@
         "profileImage": null,
         "profileUrl": "https://www.tiktok.com/@drgray_mrsdrgray",
         "verified": false,
-        "status": "live",
+        "status": "info",
         "metricValue": 15,
         "valueLabel": "15 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil erreichbar",
-        "sourceLabel": "TikTok Profil-HTML • Code 209002"
+        "statusLabel": "Profil nicht bestaetigt",
+        "sourceLabel": "TikTok Profil-HTML"
       },
       {
         "platform": "TikTok Backup",
@@ -3017,23 +3017,23 @@
         "profileImage": null,
         "profileUrl": "https://www.tiktok.com/@gray.afterhours",
         "verified": false,
-        "status": "live",
+        "status": "info",
         "metricValue": 10,
         "valueLabel": "10 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil erreichbar",
-        "sourceLabel": "TikTok Profil-HTML • Code 209002"
+        "statusLabel": "Profil nicht bestaetigt",
+        "sourceLabel": "TikTok Profil-HTML"
       },
       {
         "platform": "SoundCloud",
-        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "displayName": "drgray_sic",
         "handle": "@drgray_sic",
-        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
+        "profileImage": null,
         "profileUrl": "https://soundcloud.com/drgray_sic",
         "verified": false,
-        "status": "live",
+        "status": "info",
         "metricValue": 10,
-        "valueLabel": "622 Follower • 10 Linksignale",
-        "statusLabel": "32 Tracks",
+        "valueLabel": "10 Linksignale im Seiteninhalt",
+        "statusLabel": "Lokal nicht verifizierbar",
         "sourceLabel": "SoundCloud Public API"
       },
       {
@@ -3068,7 +3068,7 @@
         "from": "Website",
         "to": "SoundCloud",
         "channel": "Player / Music",
-        "status": "live"
+        "status": "info"
       },
       {
         "from": "Instagram",
@@ -3113,16 +3113,16 @@
       {
         "label": "SoundCloud",
         "url": "https://soundcloud.com/drgray_sic",
-        "status": "live",
-        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "status": "check",
+        "displayName": "drgray_sic",
         "handle": "@drgray_sic",
-        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
+        "profileImage": null,
         "note": "Musik / Profilsignal"
       },
       {
         "label": "TikTok Hauptseite",
         "url": "https://www.tiktok.com/@drgray_mrsdrgray",
-        "status": "live",
+        "status": "check",
         "displayName": "Dr. Gray & Mrs. Dr. Gray",
         "handle": "@drgray_mrsdrgray",
         "profileImage": null,
@@ -3132,7 +3132,7 @@
       {
         "label": "TikTok Backup",
         "url": "https://www.tiktok.com/@gray.afterhours",
-        "status": "live",
+        "status": "check",
         "displayName": "Gray Afterhours",
         "handle": "@gray.afterhours",
         "profileImage": null,
@@ -3150,8 +3150,8 @@
       },
       {
         "metric": "HTTP Seitenchecks",
-        "value": "8/8 OK",
-        "state": "good"
+        "value": "lokal nicht verifizierbar",
+        "state": "info"
       },
       {
         "metric": "Shirtee-Linkchecks",
@@ -3159,13 +3159,13 @@
         "state": "info"
       }
     ],
-    "responseTime": "276 ms",
-    "uptime": "100% (Seitencheck)",
+    "responseTime": "0 ms",
+    "uptime": "lokal nicht verifizierbar",
     "externalChecks": [
       {
         "label": "Website Core-Pfade",
-        "status": "8/8 erreichbar",
-        "level": "ok"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       },
       {
         "label": "Shop Produktlinks",
@@ -3174,8 +3174,8 @@
       },
       {
         "label": "SoundCloud Profil",
-        "status": "OK",
-        "level": "ok"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       }
     ],
     "errorLog": []
@@ -3220,7 +3220,8 @@
           "handle": "@drgray_mrsdrgray",
           "status": "live",
           "statusLabel": "Verbunden",
-          "cadence": "4 Posts / Woche"
+          "cadence": "4 Posts / Woche",
+          "note": "Primärer TikTok-Kanal fuer Performance und Haupt-Brand."
         },
         {
           "id": "tt-backup",
@@ -3228,7 +3229,8 @@
           "handle": "@gray.afterhours",
           "status": "connected",
           "statusLabel": "Verbunden",
-          "cadence": "2 Posts / Woche"
+          "cadence": "2 Posts / Woche",
+          "note": "Backup- und Atmosphaeren-Kanal fuer Afterhours Material."
         },
         {
           "id": "sc",
@@ -3236,7 +3238,8 @@
           "handle": "@drgray_sic",
           "status": "live",
           "statusLabel": "Live",
-          "cadence": "Releases / Clips"
+          "cadence": "Releases / Clips",
+          "note": "Audio- und Release-Pfad fuer lange Inhalte und Drops."
         }
       ],
       "calendar": [
@@ -3248,7 +3251,20 @@
           "channel": "TikTok Hauptseite",
           "status": "ready",
           "statusLabel": "Bereit",
+          "owner": "Hermes",
+          "format": "Video",
+          "approvalState": "review",
           "uploadState": "queued",
+          "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+          "hashtags": "#techno #afterhours #drgray #b2b #koeln",
+          "hook": "Driving techno opener for late Cologne floors",
+          "assetType": "Video",
+          "assetSource": "Hermes / Dashboard",
+          "approvalStateLabel": "Support",
+          "uploadStateLabel": "Pruefen",
+          "queueId": null,
+          "queueNote": "",
+          "channelHandle": "@drgray_mrsdrgray",
           "uploadSavedAt": "2026-08-06T09:13:45.929Z",
           "lastAction": "content.queue-upload",
           "updatedAt": "2026-08-06T09:13:45.930Z"
@@ -3260,7 +3276,21 @@
           "title": "Afterhours Teaser",
           "channel": "TikTok Backup",
           "status": "draft",
-          "statusLabel": "Entwurf"
+          "statusLabel": "Entwurf",
+          "owner": "Muse",
+          "format": "Video",
+          "approvalState": "draft",
+          "uploadState": "draft",
+          "caption": "Emotional pressure, clean groove, no compromise. Driving Techno | Emotional | B2B | Köln ❤️",
+          "hashtags": "#drivingtechno #djlife #tiktokdj #soundcloud #afterhours",
+          "hook": "Emotional B2B sequence with rising tension every 8 bars",
+          "assetType": "Video",
+          "assetSource": "Hermes / Dashboard",
+          "approvalStateLabel": "Pruefen",
+          "uploadStateLabel": "Pruefen",
+          "queueId": null,
+          "queueNote": "",
+          "channelHandle": "@gray.afterhours"
         },
         {
           "id": "cal-03",
@@ -3269,7 +3299,21 @@
           "title": "Track Snippet + CTA",
           "channel": "TikTok Hauptseite",
           "status": "live",
-          "statusLabel": "Geplant"
+          "statusLabel": "Geplant",
+          "owner": "Jarvis",
+          "format": "Video",
+          "approvalState": "approved",
+          "uploadState": "queued",
+          "caption": "Two minds, one pulse. New set energy from the Hermes pipeline.",
+          "hashtags": "#coupleenergy #technofamily #b2b #musiccontent #hermes",
+          "hook": "Sunset-to-afterhours transition reel with a hard cut at the drop",
+          "assetType": "Video",
+          "assetSource": "Hermes / Dashboard",
+          "approvalStateLabel": "Verbunden",
+          "uploadStateLabel": "Pruefen",
+          "queueId": null,
+          "queueNote": "",
+          "channelHandle": "@drgray_mrsdrgray"
         },
         {
           "id": "cal-04",
@@ -3278,72 +3322,296 @@
           "title": "SoundCloud Drop Reminder",
           "channel": "SoundCloud",
           "status": "draft",
-          "statusLabel": "Entwurf"
+          "statusLabel": "Entwurf",
+          "owner": "Oracle",
+          "format": "Audio / Card",
+          "approvalState": "draft",
+          "uploadState": "draft",
+          "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+          "hashtags": "#techno #afterhours #drgray #b2b #koeln",
+          "hook": "Minimal voiceover set teaser for TikTok and SoundCloud",
+          "assetType": "Audio / Card",
+          "assetSource": "Hermes / Dashboard",
+          "approvalStateLabel": "Pruefen",
+          "uploadStateLabel": "Pruefen",
+          "queueId": null,
+          "queueNote": "",
+          "channelHandle": "@drgray_sic"
         }
       ],
       "ideas": [
         {
-          "id": "idea-01",
-          "title": "Studio POV",
+          "id": "idea-1",
+          "title": "Driving techno opener for late Cologne floors",
           "owner": "Muse",
           "state": "ready",
           "note": "Hook, Shotlist und Caption vorbereiten"
         },
         {
-          "id": "idea-02",
-          "title": "Merch + Music Combo",
+          "id": "idea-2",
+          "title": "Emotional B2B sequence with rising tension every 8 bars",
           "owner": "Jarvis",
           "state": "draft",
           "note": "Shop-Teaser mit Musikverweis kombinieren"
         },
         {
-          "id": "idea-03",
-          "title": "Home Setup Reel",
+          "id": "idea-3",
+          "title": "Sunset-to-afterhours transition reel with a hard cut at the drop",
           "owner": "Heimdall",
           "state": "support",
-          "note": "Smart-Home / DJ-Setup als Behind-the-scenes"
+          "note": "Live-System oder Setup als Storyline aufziehen"
+        },
+        {
+          "id": "idea-4",
+          "title": "Minimal voiceover set teaser for TikTok and SoundCloud",
+          "owner": "Oracle",
+          "state": "support",
+          "note": "Live-System oder Setup als Storyline aufziehen"
+        },
+        {
+          "id": "idea-5",
+          "title": "Couple-brand identity clip: two perspectives, one signal",
+          "owner": "Hermes",
+          "state": "support",
+          "note": "Live-System oder Setup als Storyline aufziehen"
         }
+      ],
+      "drafts": [
+        {
+          "id": "hermes-test_2026-08-02T06-27-44",
+          "title": "hermes_test",
+          "caption": "Zwei Köpfe, ein Puls. Neue Set-Energie aus der Hermes-Pipeline.",
+          "duration": "2s",
+          "overlays": 1,
+          "subtitles": 1,
+          "capcut": "CapCut bereit",
+          "sourceFile": "/private/tmp/hermes-test.mp4",
+          "status": "ready",
+          "statusLabel": "Editierbar",
+          "createdAt": "06.08.26, 11:37"
+        },
+        {
+          "id": "hermes-test_2026-08-02T06-26-57",
+          "title": "hermes_test",
+          "caption": "Zwei Köpfe, ein Puls. Neue Set-Energie aus der Hermes-Pipeline.",
+          "duration": "2s",
+          "overlays": 1,
+          "subtitles": 1,
+          "capcut": "CapCut bereit",
+          "sourceFile": "/private/tmp/hermes-test.mp4",
+          "status": "ready",
+          "statusLabel": "Editierbar",
+          "createdAt": "06.08.26, 11:37"
+        },
+        {
+          "id": "hermes-test_2026-08-02T06-25-50",
+          "title": "hermes_test",
+          "caption": "Zwei Köpfe, ein Puls. Neue Set-Energie aus der Hermes-Pipeline.",
+          "duration": "2s",
+          "overlays": 1,
+          "subtitles": 1,
+          "capcut": "CapCut bereit",
+          "sourceFile": "/private/tmp/hermes-test.mp4",
+          "status": "ready",
+          "statusLabel": "Editierbar",
+          "createdAt": "06.08.26, 11:37"
+        },
+        {
+          "id": "hermes-test_2026-08-02T06-25-16",
+          "title": "hermes_test",
+          "caption": "Zwei Köpfe, ein Puls. Neue Set-Energie aus der Hermes-Pipeline.",
+          "duration": "2s",
+          "overlays": 1,
+          "subtitles": 1,
+          "capcut": "CapCut bereit",
+          "sourceFile": "/private/tmp/hermes-test.mp4",
+          "status": "ready",
+          "statusLabel": "Editierbar",
+          "createdAt": "06.08.26, 11:37"
+        },
+        {
+          "id": "hermes-test_2026-08-02T06-24-31",
+          "title": "hermes_test",
+          "caption": "Zwei Köpfe, ein Puls. Neue Set-Energie aus der Hermes-Pipeline.",
+          "duration": "2s",
+          "overlays": 1,
+          "subtitles": 1,
+          "capcut": "CapCut bereit",
+          "sourceFile": "/private/tmp/hermes-test.mp4",
+          "status": "ready",
+          "statusLabel": "Editierbar",
+          "createdAt": "06.08.26, 11:37"
+        },
+        {
+          "id": "hermes-test_2026-08-02T06-24-06",
+          "title": "hermes_test",
+          "caption": "Zwei Köpfe, ein Puls. Neue Set-Energie aus der Hermes-Pipeline.",
+          "duration": "2s",
+          "overlays": 1,
+          "subtitles": 1,
+          "capcut": "CapCut bereit",
+          "sourceFile": "/private/tmp/hermes-test.mp4",
+          "status": "ready",
+          "statusLabel": "Editierbar",
+          "createdAt": "06.08.26, 11:37"
+        }
+      ]
+    },
+    "workflow": {
+      "queueSummary": [
+        {
+          "id": "raw",
+          "label": "Rohmaterial",
+          "value": 0,
+          "status": "info",
+          "note": "Video-, Audio- und Quellen-Inbox"
+        },
+        {
+          "id": "approval",
+          "label": "Freigabe",
+          "value": 0,
+          "status": "connected",
+          "note": "Wartet auf Telegram- oder Dashboard-Freigabe"
+        },
+        {
+          "id": "edit",
+          "label": "Nachbearbeitung",
+          "value": 0,
+          "status": "connected",
+          "note": "Ruecklauf fuer Schnitt oder Caption-Fix"
+        },
+        {
+          "id": "scheduled",
+          "label": "Geplant",
+          "value": 0,
+          "status": "connected",
+          "note": "Liegt zur spaeteren Ausspielung bereit"
+        },
+        {
+          "id": "processed",
+          "label": "Verarbeitet",
+          "value": 0,
+          "status": "info",
+          "note": "Bereits durch die Pipeline gelaufen"
+        },
+        {
+          "id": "rejected",
+          "label": "Abgelehnt",
+          "value": 0,
+          "status": "info",
+          "note": "Nicht freigegebene oder verworfene Inhalte"
+        }
+      ],
+      "generatedCaptions": [
+        {
+          "id": "caption-1",
+          "title": "Caption 1",
+          "text": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+          "hashtags": [
+            "#techno",
+            "#afterhours",
+            "#drgray",
+            "#b2b",
+            "#koeln"
+          ]
+        },
+        {
+          "id": "caption-2",
+          "title": "Caption 2",
+          "text": "Emotional pressure, clean groove, no compromise. Driving Techno | Emotional | B2B | Köln ❤️",
+          "hashtags": [
+            "#drivingtechno",
+            "#djlife",
+            "#tiktokdj",
+            "#soundcloud",
+            "#afterhours"
+          ]
+        },
+        {
+          "id": "caption-3",
+          "title": "Caption 3",
+          "text": "Two minds, one pulse. New set energy from the Hermes pipeline.",
+          "hashtags": [
+            "#coupleenergy",
+            "#technofamily",
+            "#b2b",
+            "#musiccontent",
+            "#hermes"
+          ]
+        }
+      ],
+      "latestPublish": {
+        "status": "no_content",
+        "statusLabel": "Aktualisiert",
+        "file": "unbekannt",
+        "caption": "",
+        "createdAt": "02.08.26, 03:48"
+      },
+      "latestGenerator": {
+        "generatedAt": "02.08.26, 04:50",
+        "ideaCount": 5,
+        "captionCount": 3
+      },
+      "uploadQueue": [],
+      "approvalCommands": [
+        "POSTEN",
+        "BEARBEITEN",
+        "PLANEN YYYY-MM-DD HH:MM",
+        "ABLEHNEN"
+      ],
+      "runtimeNotes": [
+        "Uploadpfad kann nach Freigabe vom Dashboard oder Telegram aus weiterlaufen.",
+        "6 Edit-Briefs mit CapCut-Plan gefunden.",
+        "Derzeit keine offene Upload-Warteschlange im Dashboard."
       ]
     },
     "weakSpots": [
       {
+        "item": "Netzwerk-DNS",
+        "note": "Die Umgebung kann die Hauptdomain nicht aufloesen; das ist kein Site-Fehler."
+      },
+      {
         "item": "Shop-Pruefung",
         "note": "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren."
+      },
+      {
+        "item": "Content Inbox leer",
+        "note": "Es liegt derzeit kein neues Rohmaterial in `~/TikTok-DJ-Content` fuer die Pipeline."
       }
     ]
   },
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 11:15",
+      "time": "06.08.26, 11:37",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 11:15",
+      "time": "06.08.26, 11:37",
       "type": "check",
       "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 11:15",
+      "time": "06.08.26, 11:37",
       "type": "check",
-      "text": "SoundCloud: Profilsignal abrufbar"
+      "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 11:15",
+      "time": "06.08.26, 11:37",
       "type": "check",
-      "text": "TikTok Profile: 2/2 erreichbar"
+      "text": "TikTok Profile: lokal nicht verifizierbar"
     }
   ],
   "alerts": [
     {
       "id": "AL-WEB",
-      "level": "ok",
-      "title": "Alle Seiten erreichbar",
-      "description": "Alle geprueften Kernseiten antworten mit HTTP 200.",
+      "level": "info",
+      "title": "Website lokal nicht verifizierbar",
+      "description": "Die Shell-Umgebung kann die Domain nicht aufloesen; das Dashboard zeigt deshalb keinen falschen Ausfall an.",
       "source": "Website Monitoring"
     },
     {
@@ -3355,9 +3623,9 @@
     },
     {
       "id": "AL-SOC",
-      "level": "ok",
-      "title": "SoundCloud Live-Profil erkannt",
-      "description": "622 Follower und 32 Tracks verifiziert.",
+      "level": "info",
+      "title": "SoundCloud lokal nicht verifizierbar",
+      "description": "Die lokale Umgebung kann keine stabilen SoundCloud-Metriken abrufen.",
       "source": "Social Monitoring"
     }
   ],
@@ -3440,7 +3708,7 @@
   ],
   "homeAssistantWorkbench": {
     "bridgeState": {
-      "updatedAt": "2026-08-06T09:15:24.754Z",
+      "updatedAt": "2026-08-06T09:15:54.729Z",
       "controlGroups": [
         "website-page",
         "shop-draft",
@@ -3594,7 +3862,7 @@
   },
   "operationsWorkbench": {
     "controlBridge": {
-      "updatedAt": "2026-08-06T09:15:24.754Z",
+      "updatedAt": "2026-08-06T09:15:54.729Z",
       "controlGroups": [
         "website-page",
         "shop-draft",
@@ -3751,14 +4019,14 @@
         }
       },
       "lastCommand": {
-        "id": "command-1786007724754",
+        "id": "command-1786007754729",
         "command": "sync-control-live",
-        "createdAt": "2026-08-06T09:15:24.754Z",
+        "createdAt": "2026-08-06T09:15:54.729Z",
         "status": "completed"
       }
     },
     "schedulerSummary": {
-      "updatedAt": "2026-08-06T09:15:24.754Z",
+      "updatedAt": "2026-08-06T09:15:54.729Z",
       "entries": [
         {
           "id": "cron-live",
@@ -4351,7 +4619,7 @@
           "Public",
           "Music"
         ],
-        "image": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg"
+        "image": "/assets/ui-icons/platforms/soundcloud.png"
       }
     ],
     "delegations": [
@@ -4458,7 +4726,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4467,7 +4735,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
@@ -4476,7 +4744,7 @@
       },
       {
         "topic": "Broker",
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4485,7 +4753,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
@@ -4494,7 +4762,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
@@ -4503,7 +4771,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
@@ -4512,7 +4780,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
@@ -4521,7 +4789,7 @@
       },
       {
         "topic": "Rueckgabe",
-        "time": "06.08.26, 11:15",
+        "time": "06.08.26, 11:37",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
@@ -4597,7 +4865,7 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T11:13:11.584954",
+        "updated_at": "2026-08-06T11:33:11.612114",
         "platformCounts": {
           "telegram": 1
         }
@@ -4704,7 +4972,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 11:13",
+        "detail": "Channels: 1 • updated 06.08.26, 11:33",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },

@@ -1821,6 +1821,7 @@ export function renderPerformance(container, performanceMetrics) {
 export function renderContent(container, contentPerformance) {
   const strongest = contentPerformance.strongestSections[0] || null;
   const planner = contentPerformance.planner || { channels: [], calendar: [], ideas: [] };
+  const workflow = contentPerformance.workflow || { queueSummary: [], generatedCaptions: [], uploadQueue: [], runtimeNotes: [], approvalCommands: [] };
   container.innerHTML = `
     <article class="panel">
       <div class="section-banner">
@@ -1856,6 +1857,102 @@ export function renderContent(container, contentPerformance) {
     <article class="panel">
       <div class="section-banner">
         <div>
+          <p class="eyebrow">Hermes Content Runtime</p>
+          <h3>Pipeline, Freigaben und Produktionsstand</h3>
+        </div>
+        <div class="section-banner-chips">
+          ${workflow.latestGenerator ? `<span class="status-pill is-connected">Generator: <strong>${escapeHtml(workflow.latestGenerator.generatedAt)}</strong></span>` : ""}
+          ${workflow.latestPublish ? `<span class="status-pill ${statusClass(workflow.latestPublish.status === "published_local" ? "warn" : "live")}">${escapeHtml(workflow.latestPublish.statusLabel)}</span>` : ""}
+        </div>
+      </div>
+      <div class="social-summary-grid">
+        ${(workflow.queueSummary || [])
+          .map((item) => `
+            <article class="social-summary-card">
+              <div class="social-summary-head">
+                <span>${escapeHtml(item.label)}</span>
+                <span class="status-pill ${statusClass(item.status)}">${statusNarrative(item.status)}</span>
+              </div>
+              <strong>${escapeHtml(String(item.value))}</strong>
+              <p>${escapeHtml(item.note)}</p>
+            </article>
+          `)
+          .join("")}
+      </div>
+      <div class="content-ops-grid">
+        <article class="content-runtime-card">
+          <h4>Letzter Publish-Lauf</h4>
+          ${
+            workflow.latestPublish
+              ? `<ul class="status-list compact">
+                  <li><span>Status</span><strong class="status-pill ${statusClass(workflow.latestPublish.status === "published_local" ? "warn" : "live")}">${escapeHtml(workflow.latestPublish.statusLabel)}</strong></li>
+                  <li><span>Datei</span><strong>${escapeHtml(workflow.latestPublish.file)}</strong></li>
+                  <li><span>Zeit</span><strong>${escapeHtml(workflow.latestPublish.createdAt)}</strong></li>
+                </ul>
+                <p class="muted-line">${escapeHtml(workflow.latestPublish.caption || "Keine Caption gespeichert.")}</p>`
+              : `<p class="muted-line">Noch kein Publish-Lauf erkannt.</p>`
+          }
+        </article>
+        <article class="content-runtime-card">
+          <h4>Freigabe-Kommandos</h4>
+          <div class="section-banner-chips">
+            ${(workflow.approvalCommands || []).map((item) => `<span class="status-pill is-info">${escapeHtml(item)}</span>`).join("")}
+          </div>
+          <ul class="log-list compact">
+            ${(workflow.runtimeNotes || []).map((note) => `<li><p>${escapeHtml(note)}</p></li>`).join("")}
+          </ul>
+        </article>
+      </div>
+    </article>
+    <article class="panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Vorschlaege</p>
+          <h3>Hermes-Captions, Ideen und Edit-Briefs</h3>
+        </div>
+      </div>
+      <div class="editor-card-grid">
+        ${(workflow.generatedCaptions || [])
+          .map(
+            (item) => `
+              <article class="editor-card">
+                <div class="editor-card-head">
+                  <div>
+                    <strong>${escapeHtml(item.title)}</strong>
+                    <span>Auto-Vorschlag</span>
+                  </div>
+                  <span class="status-pill is-connected">Caption</span>
+                </div>
+                <p>${escapeHtml(item.text)}</p>
+                <small>${escapeHtml((item.hashtags || []).join(" "))}</small>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+      <div class="editor-card-grid">
+        ${(planner.drafts || [])
+          .map(
+            (draft) => `
+              <article class="editor-card">
+                <div class="editor-card-head">
+                  <div>
+                    <strong>${escapeHtml(draft.title)}</strong>
+                    <span>${escapeHtml(draft.createdAt || "")}</span>
+                  </div>
+                  <span class="status-pill ${statusClass(draft.status)}">${escapeHtml(draft.statusLabel)}</span>
+                </div>
+                <p>${escapeHtml(draft.caption || "Keine Caption gespeichert.")}</p>
+                <small>${escapeHtml(`${draft.duration} • ${draft.capcut} • ${draft.sourceFile}`)}</small>
+              </article>
+            `
+          )
+          .join("")}
+      </div>
+    </article>
+    <article class="panel">
+      <div class="section-banner">
+        <div>
           <p class="eyebrow">Content Planner</p>
           <h3>TikTok, SoundCloud und Redaktionsplanung</h3>
         </div>
@@ -1883,16 +1980,18 @@ export function renderContent(container, contentPerformance) {
               <span class="status-pill ${statusClass(entry.status)}">${escapeHtml(entry.statusLabel)}</span>
             </div>
             <p>${escapeHtml(entry.channel)}</p>
+            <small>${escapeHtml(entry.caption || entry.hook || "Noch kein Produktionsbrief hinterlegt.")}</small>
             <div class="ha-room-actions">
               <button type="button" class="action-btn" data-control-dialog-kind="planner-entry" data-control-dialog-id="${escapeHtml(entry.id)}">Plan öffnen</button>
               <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: entry.id, status: "approved", owner: entry.channel }))}'>Freigeben</button>
               <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: entry.id, status: "scheduled", owner: entry.channel }))}'>Einplanen</button>
+              ${entry.queueId ? `<button type="button" class="action-btn is-secondary" data-control-action="content.confirm-upload" data-control-payload='${escapeHtml(JSON.stringify({ uploadId: entry.queueId, plannerId: entry.id, status: "confirmed", note: "Dashboard bestaetigt" }))}'>Upload bestätigen</button>` : ""}
             </div>
           </article>
         `).join("")}
       </div>
       <div class="editor-card-grid">
-        ${planner.ideas.map((idea, index) => `
+        ${planner.ideas.map((idea) => `
           <article class="editor-card">
             <div class="editor-card-head">
               <div>
@@ -1903,12 +2002,32 @@ export function renderContent(container, contentPerformance) {
             </div>
             <p>${escapeHtml(idea.note)}</p>
             <div class="ha-room-actions">
-              <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: `idea-${index + 1}`, status: "approved", owner: idea.owner }))}'>Als Plan freigeben</button>
-              <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: `idea-${index + 1}`, status: "scheduled", owner: idea.owner }))}'>In Queue setzen</button>
+              <button type="button" class="action-btn" data-control-dialog-kind="planner-idea" data-control-dialog-id="${escapeHtml(idea.id)}">Idee öffnen</button>
+              <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: idea.id, status: "approved", owner: idea.owner }))}'>Als Plan freigeben</button>
+              <button type="button" class="action-btn is-secondary" data-control-action="content.plan-entry" data-control-payload='${escapeHtml(JSON.stringify({ id: idea.id, status: "scheduled", owner: idea.owner }))}'>In Queue setzen</button>
             </div>
           </article>
         `).join("")}
       </div>
+      ${workflow.uploadQueue?.length ? `
+        <div class="control-dialog-section">
+          <h4>Upload-Warteschlange</h4>
+          <table class="data-table">
+            <thead><tr><th>Titel</th><th>Kanal</th><th>Status</th><th>Zeit</th><th>Aktion</th></tr></thead>
+            <tbody>
+              ${workflow.uploadQueue.map((item) => `
+                <tr>
+                  <td>${escapeHtml(item.title)}</td>
+                  <td>${escapeHtml(item.channel)}</td>
+                  <td><span class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel)}</span></td>
+                  <td>${escapeHtml(item.createdAt)}</td>
+                  <td><button type="button" class="action-btn is-secondary" data-control-action="content.confirm-upload" data-control-payload='${escapeHtml(JSON.stringify({ uploadId: item.id, plannerId: item.plannerId, status: "confirmed", note: "Dashboard bestaetigt" }))}'>Bestätigen</button></td>
+                </tr>
+              `).join("")}
+            </tbody>
+          </table>
+        </div>
+      ` : ""}
     </article>
   `;
 }

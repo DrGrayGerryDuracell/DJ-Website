@@ -26,6 +26,10 @@ const hermesBrainVaultStatePath = join(hermesProfileRoot, "state", "brain_vault_
 const hermesArgusBridgeStatePath = join(hermesProfileRoot, "state", "argus_bridge_state.json");
 const hermesActiveSessionsPath = join(hermesProfileRoot, "runtime", "active_sessions.json");
 const hermesCronOutputPath = join(hermesProfileRoot, "cron", "output");
+const hermesContentRoot = join(process.env.HOME || "/Users/jarvisgray", "TikTok-DJ-Content");
+const hermesContentGeneratedPath = join(hermesContentRoot, "analytics", "generated");
+const hermesContentEditBriefPath = join(hermesContentGeneratedPath, "edit_briefs");
+const hermesContentLogsPath = join(hermesContentRoot, "analytics");
 const corePages = [
   "/",
   "/index.html",
@@ -56,6 +60,9 @@ function normalizeStateValue(value, fallback = "connected") {
     uploaded: "live",
     approved: "connected",
     scheduled: "ready",
+    queued: "warn",
+    confirmed: "connected",
+    hold: "warn",
     review: "support",
     draft: "warn",
     submitted: "support",
@@ -79,6 +86,9 @@ function normalizeStateLabel(value, fallback = "Verbunden") {
     uploaded: "Hochgeladen",
     approved: "Freigegeben",
     scheduled: "Eingeplant",
+    queued: "Wartet",
+    confirmed: "Bestaetigt",
+    hold: "Warten",
     review: "Review",
     draft: "Entwurf",
     submitted: "Pruefung",
@@ -181,6 +191,105 @@ function readJsonFile(filePath, fallback = null) {
   } catch {
     return fallback;
   }
+}
+
+function listFiles(dirPath, matcher = () => true) {
+  try {
+    if (!existsSync(dirPath)) {
+      return [];
+    }
+    return readdirSync(dirPath, { withFileTypes: true })
+      .filter((entry) => entry.isFile() && matcher(entry.name))
+      .map((entry) => join(dirPath, entry.name));
+  } catch {
+    return [];
+  }
+}
+
+function latestFile(dirPath, matcher = () => true) {
+  return listFiles(dirPath, matcher)
+    .map((filePath) => ({ filePath, mtimeMs: statSync(filePath).mtimeMs }))
+    .sort((a, b) => b.mtimeMs - a.mtimeMs)[0]?.filePath || null;
+}
+
+function readJsonLines(filePath, limit = 20) {
+  if (!existsSync(filePath)) {
+    return [];
+  }
+  try {
+    return readFileSync(filePath, "utf8")
+      .split("\n")
+      .map((line) => line.trim())
+      .filter(Boolean)
+      .slice(-limit)
+      .map((line) => {
+        try {
+          return JSON.parse(line);
+        } catch {
+          return null;
+        }
+      })
+      .filter(Boolean);
+  } catch {
+    return [];
+  }
+}
+
+function countFilesInDir(dirPath, matcher = () => true) {
+  return listFiles(dirPath, matcher).length;
+}
+
+function readHermesContentRuntime() {
+  const queueDirs = {
+    raw: join(hermesContentRoot, "raw"),
+    approvalPending: join(hermesContentRoot, "approval_pending"),
+    needsEdit: join(hermesContentRoot, "needs_edit"),
+    scheduled: join(hermesContentRoot, "scheduled"),
+    processed: join(hermesContentRoot, "processed"),
+    rejected: join(hermesContentRoot, "rejected")
+  };
+  const queueCounts = Object.fromEntries(
+    Object.entries(queueDirs).map(([key, dirPath]) => [key, countFilesInDir(dirPath)])
+  );
+  const latestPlanPath = latestFile(hermesContentGeneratedPath, (name) => /^content_plan_.*\.json$/i.test(name));
+  const latestPlan = latestPlanPath ? readJsonFile(latestPlanPath, {}) : {};
+  const latestEditBriefPaths = listFiles(hermesContentEditBriefPath, (name) => name.endsWith(".json"))
+    .map((filePath) => ({ filePath, mtimeMs: statSync(filePath).mtimeMs }))
+    .sort((a, b) => b.mtimeMs - a.mtimeMs)
+    .slice(0, 6);
+  const latestEditBriefs = latestEditBriefPaths.map(({ filePath }) => {
+    const data = readJsonFile(filePath, {});
+    const plan = data.plan && typeof data.plan === "object" ? data.plan : data;
+    const format = plan.format && typeof plan.format === "object" ? plan.format : {};
+    return {
+      id: String(filePath).split("/").pop()?.replace(/\.json$/i, "") || `brief-${Date.now()}`,
+      title: plan.title || data.metadata?.track_name || "Edit Brief",
+      caption: plan.caption || data.metadata?.caption || "",
+      orientation: format.orientation || (format.height > format.width ? "portrait" : "unknown"),
+      durationSeconds: safeNumber(plan.duration_seconds),
+      overlays: Array.isArray(plan.overlays) ? plan.overlays.length : 0,
+      subtitles: Array.isArray(plan.subtitles) ? plan.subtitles.length : 0,
+      capcutAvailable: Boolean(plan.backend?.capcut_available || data.backend?.capcut_available),
+      sourceFile: plan.source_file || data.file || null,
+      createdAt: data.ts || null
+    };
+  });
+  const generatorRuns = readJsonLines(join(hermesContentLogsPath, "content_generator.log.jsonl"), 6);
+  const publishRuns = readJsonLines(join(hermesContentLogsPath, "publish.log.jsonl"), 6);
+  const editRuns = readJsonLines(join(hermesContentLogsPath, "edit_requests.log.jsonl"), 6);
+  const latestPublish = publishRuns[publishRuns.length - 1] || null;
+  const latestGenerator = generatorRuns[generatorRuns.length - 1] || null;
+  const latestEditRequest = editRuns[editRuns.length - 1] || null;
+  return {
+    queueCounts,
+    latestPlan,
+    latestPlanPath,
+    latestEditBriefs,
+    latestPublish,
+    latestGenerator,
+    latestEditRequest,
+    generatorRuns
+  };
 }
 
 function sqliteQueryJson(dbPath, query, fallback = []) {
@@ -942,11 +1051,12 @@ async function main() {
     pages: {},
     shopItems: {},
     shopDrafts: {},
-    contentPlanner: { calendar: {}, ideas: {} },
+    contentPlanner: { calendar: {}, ideas: {}, drafts: {} },
     socialAccounts: {},
     homeAssistant: { lastServiceCalls: [] },
     tiktokUploadQueue: []
   });
+  const contentRuntime = readHermesContentRuntime();
   const haQueueEntries = Array.isArray(haQueue.queue) ? haQueue.queue : [];
   const queuedHaEntries = haQueueEntries.filter((entry) => entry.status === "queued");
   const bridgeControlGroups = Object.keys(bridgeState.controls || {});
@@ -957,10 +1067,14 @@ async function main() {
   const websitePageState = bridgeState.controls?.["website-page"] || {};
   const shopDraftState = bridgeState.controls?.["shop-draft"] || {};
   const plannerEntryState = bridgeState.controls?.["planner-entry"] || {};
+  const plannerIdeaState = bridgeState.controls?.["planner-idea"] || {};
   const pageOverrideState = controlOverrides.pages || {};
   const shopItemOverrideState = controlOverrides.shopItems || {};
   const socialAccountOverrideState = controlOverrides.socialAccounts || {};
   const plannerOverrideState = controlOverrides.contentPlanner?.calendar || {};
+  const plannerIdeaOverrideState = controlOverrides.contentPlanner?.ideas || {};
+  const plannerDraftOverrideState = controlOverrides.contentPlanner?.drafts || {};
+  const tiktokUploadQueue = Array.isArray(controlOverrides.tiktokUploadQueue) ? controlOverrides.tiktokUploadQueue : [];
   const haAutomationState = bridgeState.controls?.["ha-automation"] || {};
   const haRoomState = bridgeState.controls?.["ha-room"] || {};
   const subagentState = bridgeState.controls?.subagent || {};
@@ -1083,6 +1197,120 @@ async function main() {
   const tiktokEnvironmentIssue = [tiktokDr, tiktokMrs].some((entry) => entry.error === "network_unavailable");
   const soundcloudEnvironmentIssue = !soundcloud.available && ["network_unavailable", "client_id_nicht_gefunden"].includes(soundcloud.error || "");
   const warningCount = pageProblemCount + shopProblemCount + (soundcloud.available || soundcloudEnvironmentIssue ? 0 : 1);
+  const contentQueueCounts = contentRuntime.queueCounts;
+  const contentQueueSummary = [
+    { id: "raw", label: "Rohmaterial", value: contentQueueCounts.raw || 0, status: (contentQueueCounts.raw || 0) > 0 ? "connected" : "info", note: "Video-, Audio- und Quellen-Inbox" },
+    { id: "approval", label: "Freigabe", value: contentQueueCounts.approvalPending || 0, status: (contentQueueCounts.approvalPending || 0) > 0 ? "warn" : "connected", note: "Wartet auf Telegram- oder Dashboard-Freigabe" },
+    { id: "edit", label: "Nachbearbeitung", value: contentQueueCounts.needsEdit || 0, status: (contentQueueCounts.needsEdit || 0) > 0 ? "warn" : "connected", note: "Ruecklauf fuer Schnitt oder Caption-Fix" },
+    { id: "scheduled", label: "Geplant", value: contentQueueCounts.scheduled || 0, status: (contentQueueCounts.scheduled || 0) > 0 ? "ready" : "connected", note: "Liegt zur spaeteren Ausspielung bereit" },
+    { id: "processed", label: "Verarbeitet", value: contentQueueCounts.processed || 0, status: (contentQueueCounts.processed || 0) > 0 ? "live" : "info", note: "Bereits durch die Pipeline gelaufen" },
+    { id: "rejected", label: "Abgelehnt", value: contentQueueCounts.rejected || 0, status: (contentQueueCounts.rejected || 0) > 0 ? "support" : "info", note: "Nicht freigegebene oder verworfene Inhalte" }
+  ];
+  const latestGeneratorRun = contentRuntime.latestGenerator || {};
+  const latestPlan = contentRuntime.latestPlan && typeof contentRuntime.latestPlan === "object" ? contentRuntime.latestPlan : {};
+  const generatedCaptions = Array.isArray(latestPlan.daily_captions) ? latestPlan.daily_captions : Array.isArray(latestGeneratorRun.daily_captions) ? latestGeneratorRun.daily_captions : [];
+  const generatedIdeas = Array.isArray(latestPlan.set_ideas) ? latestPlan.set_ideas : Array.isArray(latestGeneratorRun.set_ideas) ? latestGeneratorRun.set_ideas : [];
+  const latestPublish = contentRuntime.latestPublish || null;
+  const uploadQueueRows = tiktokUploadQueue.map((entry, index) => ({
+    id: entry.id || `queue-${index + 1}`,
+    plannerId: entry.plannerId || null,
+    title: entry.payload?.title || entry.payload?.caption || `Upload ${index + 1}`,
+    channel: entry.payload?.channel || "TikTok",
+    slot: entry.payload?.slot || "offen",
+    status: normalizeStateValue(entry.status || "queued", "warn"),
+    statusLabel: normalizeStateLabel(entry.status || "queued", "Wartet"),
+    createdAt: formatBerlinDate(toEpochSeconds(entry.createdAt)) || generatedAtLabel,
+    note: entry.note || "",
+    queuePayload: entry.payload || {}
+  }));
+  const plannerChannels = [
+    {
+      id: "tt-main",
+      label: "TikTok Hauptseite",
+      handle: "@drgray_mrsdrgray",
+      status: latestPublish?.status === "published_local" ? "warn" : "live",
+      statusLabel: latestPublish?.status === "published_local" ? "API/Freigabe pruefen" : "Verbunden",
+      cadence: "4 Posts / Woche",
+      note: "Primärer TikTok-Kanal fuer Performance und Haupt-Brand."
+    },
+    {
+      id: "tt-backup",
+      label: "TikTok Backup",
+      handle: "@gray.afterhours",
+      status: "connected",
+      statusLabel: "Verbunden",
+      cadence: "2 Posts / Woche",
+      note: "Backup- und Atmosphaeren-Kanal fuer Afterhours Material."
+    },
+    {
+      id: "sc",
+      label: "SoundCloud",
+      handle: "@drgray_sic",
+      status: "live",
+      statusLabel: "Live",
+      cadence: "Releases / Clips",
+      note: "Audio- und Release-Pfad fuer lange Inhalte und Drops."
+    }
+  ];
+  const plannerCalendarRows = [
+    { id: "cal-01", day: "Mo", slot: "19:00", title: "Performance Clip", channel: "TikTok Hauptseite", status: "ready", statusLabel: "Bereit", owner: "Hermes", format: "Video", approvalState: "review", uploadState: "draft" },
+    { id: "cal-02", day: "Mi", slot: "21:00", title: "Afterhours Teaser", channel: "TikTok Backup", status: "draft", statusLabel: "Entwurf", owner: "Muse", format: "Video", approvalState: "draft", uploadState: "draft" },
+    { id: "cal-03", day: "Fr", slot: "18:00", title: "Track Snippet + CTA", channel: "TikTok Hauptseite", status: "live", statusLabel: "Geplant", owner: "Jarvis", format: "Video", approvalState: "approved", uploadState: "queued" },
+    { id: "cal-04", day: "So", slot: "20:00", title: "SoundCloud Drop Reminder", channel: "SoundCloud", status: "draft", statusLabel: "Entwurf", owner: "Oracle", format: "Audio / Card", approvalState: "draft", uploadState: "draft" }
+  ].map((entry, index) => {
+    const captionPack = generatedCaptions[index] || generatedCaptions[0] || null;
+    const queueEntry = uploadQueueRows.find((row) => row.plannerId === entry.id);
+    return mergeEntityState(
+      {
+        ...entry,
+        caption: plannerOverrideState[entry.id]?.caption || captionPack?.text || "",
+        hashtags: plannerOverrideState[entry.id]?.hashtags || (captionPack?.hashtags || []).join(" "),
+        hook: plannerOverrideState[entry.id]?.hook || generatedIdeas[index] || "",
+        assetType: plannerOverrideState[entry.id]?.assetType || entry.format,
+        assetSource: plannerOverrideState[entry.id]?.assetSource || "Hermes / Dashboard",
+        approvalState: plannerOverrideState[entry.id]?.approvalState || entry.approvalState,
+        approvalStateLabel: normalizeStateLabel(plannerOverrideState[entry.id]?.approvalState || entry.approvalState, "Entwurf"),
+        uploadState: queueEntry?.status || plannerOverrideState[entry.id]?.uploadState || entry.uploadState,
+        uploadStateLabel: queueEntry?.statusLabel || normalizeStateLabel(plannerOverrideState[entry.id]?.uploadState || entry.uploadState, "Entwurf"),
+        queueId: queueEntry?.id || plannerOverrideState[entry.id]?.queueId || null,
+        queueNote: queueEntry?.note || plannerOverrideState[entry.id]?.queueNote || "",
+        channelHandle: plannerChannels.find((channel) => channel.label === entry.channel)?.handle || ""
+      },
+      plannerEntryState[entry.id],
+      { defaultStatus: entry.status, defaultStatusLabel: entry.statusLabel }
+    );
+  });
+  const plannerIdeaRows = (generatedIdeas.length ? generatedIdeas : ["Studio POV", "Merch + Music Combo", "Home Setup Reel"]).slice(0, 6).map((title, index) => {
+    const id = `idea-${index + 1}`;
+    const defaultIdea = {
+      id,
+      title,
+      owner: ["Muse", "Jarvis", "Heimdall", "Oracle", "Hermes", "Argus"][index] || "Hermes",
+      state: index === 0 ? "ready" : index === 1 ? "draft" : "support",
+      note: index === 0 ? "Hook, Shotlist und Caption vorbereiten" : index === 1 ? "Shop-Teaser mit Musikverweis kombinieren" : "Live-System oder Setup als Storyline aufziehen"
+    };
+    return mergeEntityState(
+      {
+        ...defaultIdea,
+        ...(plannerIdeaOverrideState[id] || {})
+      },
+      plannerIdeaState[id],
+      { defaultState: defaultIdea.state, defaultLabel: normalizeStateLabel(defaultIdea.state, "Info") }
+    );
+  });
+  const draftPackages = contentRuntime.latestEditBriefs.map((brief, index) => ({
+    id: brief.id || `brief-${index + 1}`,
+    title: brief.title || `Edit Brief ${index + 1}`,
+    caption: brief.caption || "",
+    duration: brief.durationSeconds != null ? `${brief.durationSeconds}s` : "n/a",
+    overlays: brief.overlays,
+    subtitles: brief.subtitles,
+    capcut: brief.capcutAvailable ? "CapCut bereit" : "CapCut fehlt",
+    sourceFile: brief.sourceFile || "keine Quelle",
+    status: brief.capcutAvailable ? "ready" : "support",
+    statusLabel: brief.capcutAvailable ? "Editierbar" : "Backend pruefen",
+    createdAt: formatBerlinDate(toEpochSeconds(brief.createdAt)) || generatedAtLabel
+  }));
 
   const socialRows = [
     {
@@ -1484,21 +1712,52 @@ async function main() {
         { name: "SoundCloud Links", clicks: hrefCounts.soundcloud, rate: "Live-Linkcount" }
       ],
       planner: {
-        channels: [
-          { id: "tt-main", label: "TikTok Hauptseite", handle: "@drgray_mrsdrgray", status: "live", statusLabel: "Verbunden", cadence: "4 Posts / Woche" },
-          { id: "tt-backup", label: "TikTok Backup", handle: "@gray.afterhours", status: "connected", statusLabel: "Verbunden", cadence: "2 Posts / Woche" },
-          { id: "sc", label: "SoundCloud", handle: "@drgray_sic", status: "live", statusLabel: "Live", cadence: "Releases / Clips" }
+        channels: plannerChannels,
+        calendar: plannerCalendarRows,
+        ideas: plannerIdeaRows,
+        drafts: draftPackages
+      },
+      workflow: {
+        queueSummary: contentQueueSummary,
+        generatedCaptions: generatedCaptions.slice(0, 4).map((entry, index) => ({
+          id: `caption-${index + 1}`,
+          title: `Caption ${entry.number || index + 1}`,
+          text: entry.text || "",
+          hashtags: Array.isArray(entry.hashtags) ? entry.hashtags : []
+        })),
+        latestPublish: latestPublish
+          ? {
+              status: latestPublish.status || "unknown",
+              statusLabel: latestPublish.status === "published_local" ? "Nur lokal archiviert" : normalizeStateLabel(latestPublish.status, "Aktualisiert"),
+              file: latestPublish.file || "unbekannt",
+              caption: latestPublish.metadata?.caption || "",
+              createdAt: formatBerlinDate(toEpochSeconds(latestPublish.ts)) || generatedAtLabel
+            }
+          : null,
+        latestGenerator: latestGeneratorRun
+          ? {
+              generatedAt: formatBerlinDate(toEpochSeconds(latestGeneratorRun.generated_at)) || generatedAtLabel,
+              ideaCount: Array.isArray(latestGeneratorRun.set_ideas) ? latestGeneratorRun.set_ideas.length : generatedIdeas.length,
+              captionCount: Array.isArray(latestGeneratorRun.daily_captions) ? latestGeneratorRun.daily_captions.length : generatedCaptions.length
+            }
+          : null,
+        uploadQueue: uploadQueueRows,
+        approvalCommands: [
+          "POSTEN",
+          "BEARBEITEN",
+          "PLANEN YYYY-MM-DD HH:MM",
+          "ABLEHNEN"
         ],
-        calendar: [
-          { id: "cal-01", day: "Mo", slot: "19:00", title: "Performance Clip", channel: "TikTok Hauptseite", status: "ready", statusLabel: "Bereit" },
-          { id: "cal-02", day: "Mi", slot: "21:00", title: "Afterhours Teaser", channel: "TikTok Backup", status: "draft", statusLabel: "Entwurf" },
-          { id: "cal-03", day: "Fr", slot: "18:00", title: "Track Snippet + CTA", channel: "TikTok Hauptseite", status: "live", statusLabel: "Geplant" },
-          { id: "cal-04", day: "So", slot: "20:00", title: "SoundCloud Drop Reminder", channel: "SoundCloud", status: "draft", statusLabel: "Entwurf" }
-        ].map((entry) => mergeEntityState({ ...entry, ...(plannerOverrideState[entry.id] || {}) }, plannerEntryState[entry.id], { defaultStatus: entry.status, defaultStatusLabel: entry.statusLabel })),
-        ideas: [
-          { id: "idea-01", title: "Studio POV", owner: "Muse", state: "ready", note: "Hook, Shotlist und Caption vorbereiten" },
-          { id: "idea-02", title: "Merch + Music Combo", owner: "Jarvis", state: "draft", note: "Shop-Teaser mit Musikverweis kombinieren" },
-          { id: "idea-03", title: "Home Setup Reel", owner: "Heimdall", state: "support", note: "Smart-Home / DJ-Setup als Behind-the-scenes" }
+        runtimeNotes: [
+          latestPublish?.status === "published_local"
+            ? "TikTok Upload lief zuletzt nur lokal durch. API-Token oder Freigabeweg muessen noch sauber produktiv verdrahtet werden."
+            : "Uploadpfad kann nach Freigabe vom Dashboard oder Telegram aus weiterlaufen.",
+          contentRuntime.latestEditBriefs.length
+            ? `${contentRuntime.latestEditBriefs.length} Edit-Briefs mit CapCut-Plan gefunden.`
+            : "Noch keine Edit-Briefs im Generatorpfad vorhanden.",
+          tiktokUploadQueue.length
+            ? `${tiktokUploadQueue.length} Upload-Eintraege warten oder wurden bereits bestaetigt.`
+            : "Derzeit keine offene Upload-Warteschlange im Dashboard."
         ]
       },
       weakSpots: [
@@ -1506,7 +1765,11 @@ async function main() {
         ...(shopProblemCount > 0 ? [{ item: "Produktlink-Verfuegbarkeit", note: "Nicht alle geprueften Shop-Links sind erreichbar." }] : []),
         ...(pageEnvironmentIssue ? [{ item: "Netzwerk-DNS", note: "Die Umgebung kann die Hauptdomain nicht aufloesen; das ist kein Site-Fehler." }] : []),
         ...(shopEnvironmentIssue ? [{ item: "Shop-Pruefung", note: "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren." }] : []),
-        ...(hrefCounts.contact === 0 ? [{ item: "Kontakt-CTA", note: "Keine Kontakt-Links im Seiteninhalt erkannt." }] : [])
+        ...(hrefCounts.contact === 0 ? [{ item: "Kontakt-CTA", note: "Keine Kontakt-Links im Seiteninhalt erkannt." }] : []),
+        ...(latestPublish?.status === "published_local" ? [{ item: "TikTok Direct Post", note: "Der letzte Lauf wurde nur lokal als Erfolg markiert. Vor echtem Upload muessen produktive API-Credentials und Statusabfrage sauber stehen." }] : []),
+        ...((contentQueueCounts.raw || 0) === 0 && (contentQueueCounts.approvalPending || 0) === 0 && (contentQueueCounts.scheduled || 0) === 0
+          ? [{ item: "Content Inbox leer", note: "Es liegt derzeit kein neues Rohmaterial in `~/TikTok-DJ-Content` fuer die Pipeline." }]
+          : [])
       ]
     },
     activityFeed: [
