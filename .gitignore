@@ -1,6 +1,7 @@
 *.log
 .DS_Store
 .env
+.worktrees/
 .superdesign/tmp/
 artifacts/control-bridge/
 artifacts/qa/control-agentsroom-1440.png
