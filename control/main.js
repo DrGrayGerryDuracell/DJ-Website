@@ -140,6 +140,13 @@ async function queueHaAction(payload) {
   });
 }
 
+async function runHaAction(action, payload) {
+  return controlApi("/action", {
+    method: "POST",
+    body: JSON.stringify({ action, payload })
+  });
+}
+
 async function writeHermesSpool(message, chatId) {
   return controlApi("/hermes-spool", {
     method: "POST",
@@ -634,6 +641,18 @@ function buildDialogPayload(data, kind, id) {
       ],
       actions: [
         {
+          type: "ha-action",
+          label: "Szene Abend",
+          action: "ha.run-scene",
+          payload: { room: room.id, scene: "abend" }
+        },
+        {
+          type: "ha-action",
+          label: "Alle Lichter aus",
+          action: "ha.toggle-device",
+          payload: { room: room.id, entityId: "group.lights", nextState: "off" }
+        },
+        {
           type: "ha-queue",
           label: "Raumaktion einreihen",
           payload: {
@@ -673,6 +692,24 @@ function buildDialogPayload(data, kind, id) {
       badges: [{ label: item.stateLabel, tone: item.state }],
       paragraphs: [`Zeitplan: ${item.cron}`, "Die UI ist vorbereitet für Start, Pause, Resume und manuelles Triggern."],
       actions: [
+        {
+          type: "ha-action",
+          label: "Jetzt starten",
+          action: "ha.run-automation",
+          payload: { automation: item.id, mode: "run-now" }
+        },
+        {
+          type: "ha-action",
+          label: "Pausieren",
+          action: "ha.run-automation",
+          payload: { automation: item.id, mode: "pause" }
+        },
+        {
+          type: "ha-action",
+          label: "Fortsetzen",
+          action: "ha.run-automation",
+          payload: { automation: item.id, mode: "resume" }
+        },
         {
           type: "ha-queue",
           label: "Automation einreihen",
@@ -875,6 +912,9 @@ function renderControlDialog(payload) {
               if (action.type === "ha-queue") {
                 return `<button type="button" class="action-btn is-secondary" data-control-ha='${escapeHtml(JSON.stringify(action.payload || {}))}'>${escapeHtml(action.label)}</button>`;
               }
+              if (action.type === "ha-action") {
+                return `<button type="button" class="action-btn is-secondary" data-control-action="${escapeHtml(action.action || "")}" data-control-payload='${escapeHtml(JSON.stringify(action.payload || {}))}'>${escapeHtml(action.label)}</button>`;
+              }
               return `<button type="button" class="action-btn is-secondary" data-control-copy="${escapeHtml(action.value || "")}">${escapeHtml(action.label)}</button>`;
             }).join("")}
           </div>
@@ -928,6 +968,14 @@ function reopenCurrentDialog() {
     return;
   }
   openControlDialog(payload, context);
+}
+
+function updateHaActionStatus(message, tone = "info") {
+  window.__CONTROL_HA_ACTION_STATUS__ = { message, tone };
+  document.querySelectorAll("[data-ha-action-status]").forEach((target) => {
+    target.textContent = message;
+    target.className = `status-pill is-${tone}`;
+  });
 }
 
 function setupControlDialogActions() {
@@ -987,6 +1035,27 @@ function setupControlDialogActions() {
       return;
     }
 
+    const actionTrigger = event.target.closest("[data-control-action]");
+    if (actionTrigger) {
+      const previous = actionTrigger.textContent;
+      actionTrigger.textContent = "Wird ausgeführt...";
+      try {
+        const action = actionTrigger.getAttribute("data-control-action");
+        const payload = JSON.parse(actionTrigger.getAttribute("data-control-payload") || "{}");
+        const result = await runHaAction(action, payload);
+        const detail = result.mode ? ` (${result.mode})` : "";
+        actionTrigger.textContent = "Ausgeführt";
+        updateHaActionStatus(`Letzte Action: ${action} erfolgreich${detail}`, "live");
+      } catch (error) {
+        actionTrigger.textContent = "Fehler";
+        updateHaActionStatus(`Letzte Action fehlgeschlagen: ${error.message || "unbekannter Fehler"}`, "error");
+      }
+      window.setTimeout(() => {
+        actionTrigger.textContent = previous;
+      }, 1800);
+      return;
+    }
+
     const haTrigger = event.target.closest("[data-control-ha]");
     if (haTrigger) {
       const previous = haTrigger.textContent;
@@ -996,6 +1065,7 @@ function setupControlDialogActions() {
           const payload = JSON.parse(haTrigger.getAttribute("data-control-ha") || "{}");
           await queueHaAction(payload);
           haTrigger.textContent = "In Queue";
+          updateHaActionStatus("Letzte Action: Queue-Eintrag erstellt", "ready");
         } else {
           haTrigger.textContent = "Bridge fehlt";
         }

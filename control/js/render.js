@@ -1286,6 +1286,10 @@ export function renderHomeAssistantSection(container, dashboardData) {
   if (!container) return;
   const agentsRoom = dashboardData?.agentsRoom || {};
   const workbench = dashboardData?.homeAssistantWorkbench || { rooms: [], automations: [] };
+  const queueSummary = workbench.queueSummary || { total: 0, queued: 0, entries: [] };
+  const queueEntries = Array.isArray(queueSummary.entries) ? queueSummary.entries : [];
+  const latestQueueEntry = queueEntries[0];
+  const latestAction = window.__CONTROL_HA_ACTION_STATUS__;
   const haDevice = (agentsRoom.devices || []).find((item) => item.name === "Home Assistant") || {};
   const macMini = (agentsRoom.devices || []).find((item) => item.name === "Mac mini") || {};
   const heimdall = (agentsRoom.agents || []).find((item) => item.name === "Heimdall") || {};
@@ -1332,6 +1336,25 @@ export function renderHomeAssistantSection(container, dashboardData) {
           <div><span>HA-Aufgaben</span><strong>${haTasks.length}</strong><small>aktuelle Delegationen</small></div>
           <div><span>Backup-Ziel</span><strong>${backupRoute ? "Mac mini" : "offen"}</strong><small>${escapeHtml(backupRoute?.channel || "kein Pfad")}</small></div>
           <div><span>Datenstand</span><strong>${escapeHtml(generatedAt)}</strong><small>30-s-Dashboard-Snapshot</small></div>
+        </div>
+      </article>
+
+      <article class="panel ha-action-status-panel">
+        <div class="agentsroom-panel-head">
+          <div><h3>Action- & Queue-Status</h3><p class="muted-line">Direkte Dashboard-Aktionen und zuletzt gespeicherte Queue-Einträge.</p></div>
+          <span class="status-pill ${queueSummary.queued > 0 ? "is-ready" : "is-info"}">${queueSummary.queued || 0} offen</span>
+        </div>
+        <div class="ha-action-status-line">
+          <strong>Letzter Action-Status</strong>
+          <span class="status-pill ${latestAction ? `is-${escapeHtml(latestAction.tone)}` : statusClass(latestQueueEntry?.status)}" data-ha-action-status>${escapeHtml(latestAction?.message || (latestQueueEntry ? `Queue: ${latestQueueEntry.status || "unbekannt"}` : "Noch keine Action im Snapshot"))}</span>
+        </div>
+        <div class="ha-queue-list" aria-label="Letzte Home-Assistant Queue-Einträge">
+          ${queueEntries.map((entry) => `
+            <article>
+              <div><strong>${escapeHtml(entry.automation || entry.room || entry.kind || "HA-Action")}</strong><span>${escapeHtml(entry.requestedState || entry.source || "Dashboard-Anfrage")}</span></div>
+              <span class="status-pill ${statusClass(entry.status)}">${escapeHtml(entry.status || "unbekannt")}</span>
+            </article>
+          `).join("") || `<p class="muted-line">Keine Queue-Einträge im aktuellen Snapshot.</p>`}
         </div>
       </article>
 

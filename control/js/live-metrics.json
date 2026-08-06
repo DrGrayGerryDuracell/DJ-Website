@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T07:08:04.234Z",
-    "generatedAtLabel": "06.08.26, 09:08",
+    "generatedAt": "2026-08-06T07:33:35.129Z",
+    "generatedAtLabel": "06.08.26, 09:33",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 09:08",
+      "value": "06.08.26, 09:33",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 332,
+      "value": 327,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 441,
+        "visitors": 489,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 368,
+        "visitors": 288,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 303,
+        "visitors": 320,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 354,
+        "visitors": 362,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 388,
+        "visitors": 306,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 295,
+        "visitors": 325,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 328,
+        "visitors": 345,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 176,
+        "visitors": 178,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "332 ms",
+      "avgSession": "327 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T07:08:04.234Z",
-      "checkedAtLabel": "06.08.26, 09:08"
+      "checkedAt": "2026-08-06T07:33:35.129Z",
+      "checkedAtLabel": "06.08.26, 09:33"
     },
     "catalog": {
       "totalItems": 167,
@@ -2924,17 +2924,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "type": "info",
         "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "type": "info",
         "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "type": "info",
         "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
@@ -3104,7 +3104,7 @@
         "state": "info"
       }
     ],
-    "responseTime": "332 ms",
+    "responseTime": "327 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3256,25 +3256,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 09:08",
+      "time": "06.08.26, 09:33",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 09:08",
+      "time": "06.08.26, 09:33",
       "type": "check",
       "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 09:08",
+      "time": "06.08.26, 09:33",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 09:08",
+      "time": "06.08.26, 09:33",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -4175,7 +4175,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4184,7 +4184,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
@@ -4193,7 +4193,7 @@
       },
       {
         "topic": "Broker",
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4202,7 +4202,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
@@ -4211,7 +4211,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
@@ -4220,7 +4220,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
@@ -4229,7 +4229,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
@@ -4238,7 +4238,7 @@
       },
       {
         "topic": "Rueckgabe",
-        "time": "06.08.26, 09:08",
+        "time": "06.08.26, 09:33",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
@@ -4314,7 +4314,7 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T09:03:05.027233",
+        "updated_at": "2026-08-06T09:33:06.921993",
         "platformCounts": {
           "telegram": 1
         }
@@ -4332,8 +4332,8 @@
         "count": 0
       },
       "counts": {
-        "sessions": 1090,
-        "messages": 18682,
+        "sessions": 1091,
+        "messages": 18686,
         "delegations": 1,
         "obligations": 89,
         "routing": 1
@@ -4397,7 +4397,7 @@
         "name": "Hermes state.db",
         "kind": "Runtime",
         "state": "live",
-        "detail": "1090 Sessions, 18682 Nachrichten, 1 Delegationen",
+        "detail": "1091 Sessions, 18686 Nachrichten, 1 Delegationen",
         "route": "Hermes / state.db",
         "channel": "SQLite"
       },
@@ -4421,7 +4421,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 09:03",
+        "detail": "Channels: 1 • updated 06.08.26, 09:33",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -4454,6 +4454,19 @@
       {
         "name": "Hermes Session 1",
         "role": "cron",
+        "route": "Session 6_092028",
+        "channel": "gemini-2.5-flash",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "4 Nachrichten",
+          "1 Tools",
+          "Ende: cron_complete"
+        ]
+      },
+      {
+        "name": "Hermes Session 2",
+        "role": "cron",
         "route": "Session 6_090026",
         "channel": "gemini-2.5-flash",
         "status": "connected",
@@ -4465,7 +4478,7 @@
         ]
       },
       {
-        "name": "Hermes Session 2",
+        "name": "Hermes Session 3",
         "role": "cron",
         "route": "Session 5_230041",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -4478,7 +4491,7 @@
         ]
       },
       {
-        "name": "Hermes Session 3",
+        "name": "Hermes Session 4",
         "role": "cron",
         "route": "Session 5_223038",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -4491,7 +4504,7 @@
         ]
       },
       {
-        "name": "Telegram Session 4",
+        "name": "Telegram Session 5",
         "role": "Telegram Direktnachricht",
         "route": "Session 5_5fc1b4",
         "channel": "gemma4:12b-optimized",
@@ -4503,7 +4516,7 @@
         ]
       },
       {
-        "name": "Hermes Session 5",
+        "name": "Hermes Session 6",
         "role": "cron",
         "route": "Session 5_110037",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -4516,7 +4529,7 @@
         ]
       },
       {
-        "name": "Hermes Session 6",
+        "name": "Hermes Session 7",
         "role": "cron",
         "route": "Session 5_092028",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -4529,7 +4542,7 @@
         ]
       },
       {
-        "name": "Hermes Session 7",
+        "name": "Hermes Session 8",
         "role": "cron",
         "route": "Session 5_090026",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -4540,22 +4553,45 @@
           "5 Tools",
           "Ende: cron_complete"
         ]
-      },
-      {
-        "name": "Hermes Session 8",
-        "role": "cron",
-        "route": "Session 4_230035",
-        "channel": "gemini-2.5-flash",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "6 Nachrichten",
-          "2 Tools",
-          "Ende: cron_complete"
-        ]
       }
     ],
     "recentMessages": [
+      {
+        "topic": "ASSISTANT • 6_092028",
+        "time": "06.08.26, 09:20",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 1144 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      },
+      {
+        "topic": "TOOL • 6_092028",
+        "time": "06.08.26, 09:20",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 3298 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "ASSISTANT • 6_092028",
+        "time": "06.08.26, 09:20",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 0 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      },
+      {
+        "topic": "USER • 6_092028",
+        "time": "06.08.26, 09:20",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 1582 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
       {
         "topic": "ASSISTANT • 6_090026",
         "time": "06.08.26, 09:01",
@@ -4604,42 +4640,6 @@
       {
         "topic": "ASSISTANT • 6_090026",
         "time": "06.08.26, 09:00",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 0 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "USER • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "user",
-        "to": "Hermes",
-        "summary": "user Aktivität • 1594 Zeichen",
-        "status": "connected",
-        "statusLabel": "User"
-      },
-      {
-        "topic": "ASSISTANT • 5_230041",
-        "time": "05.08.26, 23:01",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 520 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "TOOL • 5_230041",
-        "time": "05.08.26, 23:01",
-        "from": "tool",
-        "to": "patch",
-        "summary": "tool Aktivität • 696 Zeichen • Tool patch",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "ASSISTANT • 5_230041",
-        "time": "05.08.26, 23:01",
         "from": "assistant",
         "to": "Hermes",
         "summary": "assistant Aktivität • 0 Zeichen",
