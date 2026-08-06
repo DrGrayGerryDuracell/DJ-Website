@@ -43,6 +43,7 @@ const COMMANDS = {
 const ACTIONS = {
   "ha.toggle-device": async ({ entityId, nextState }) => ({ ok: true, entityId, nextState, mode: "queued-local" }),
   "ha.run-scene": async ({ room, scene }) => ({ ok: true, room, scene, mode: "queued-local" }),
+  "ha.run-automation": async ({ automation, mode }) => ({ ok: true, automation, automationMode: mode, mode: "queued-local" }),
   "content.plan-entry": async ({ id, status, owner }) => ({ ok: true, id, status, owner }),
   "website.page-note": async ({ pageId, note }) => ({ ok: true, pageId, note }),
   "shop.prepare-draft": async ({ draftId, stage }) => ({ ok: true, draftId, stage }),
