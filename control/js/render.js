@@ -1562,7 +1562,11 @@ export function renderWebsiteSection(container, metrics) {
             </div>
             <p>${escapeHtml(page.editor)}</p>
             <small>${escapeHtml(page.note)}</small>
-            <button type="button" class="action-btn" data-control-dialog-kind="website-page" data-control-dialog-id="${escapeHtml(page.id)}">Editor öffnen</button>
+            <div class="ha-room-actions">
+              <button type="button" class="action-btn" data-control-dialog-kind="website-page" data-control-dialog-id="${escapeHtml(page.id)}">Editor öffnen</button>
+              <button type="button" class="action-btn is-secondary" data-control-action="website.page-status" data-control-payload='${escapeHtml(JSON.stringify({ pageId: page.id, status: "review" }))}'>Review</button>
+              <a class="action-btn is-secondary" href="${escapeHtml(page.path)}">Öffnen</a>
+            </div>
           </article>
         `).join("")}
       </div>
@@ -1633,7 +1637,11 @@ export function renderShopSection(container, shopMetrics) {
             </div>
             <p>${escapeHtml(draft.task)}</p>
             <small>${escapeHtml(draft.priority)}</small>
-            <button type="button" class="action-btn" data-control-dialog-kind="shop-draft" data-control-dialog-id="${escapeHtml(draft.id)}">Artikel öffnen</button>
+            <div class="ha-room-actions">
+              <button type="button" class="action-btn" data-control-dialog-kind="shop-draft" data-control-dialog-id="${escapeHtml(draft.id)}">Artikel öffnen</button>
+              <button type="button" class="action-btn is-secondary" data-control-action="shop.prepare-draft" data-control-payload='${escapeHtml(JSON.stringify({ draftId: draft.id, stage: "batch-prepared" }))}'>Batch</button>
+              <button type="button" class="action-btn is-secondary" data-control-action="shop.draft-status" data-control-payload='${escapeHtml(JSON.stringify({ draftId: draft.id, status: "approved" }))}'>Freigeben</button>
+            </div>
           </article>
         `).join("")}
       </div>
@@ -1643,7 +1651,10 @@ export function renderShopSection(container, shopMetrics) {
             <span class="status-pill ${statusClass(step.status)}">${escapeHtml(step.statusLabel)}</span>
             <strong>${escapeHtml(step.label)}</strong>
             <p>${escapeHtml(step.note)}</p>
-            <button type="button" class="action-btn is-secondary" data-control-dialog-kind="upload-step" data-control-dialog-id="${escapeHtml(step.id)}">Schritt öffnen</button>
+            <div class="ha-room-actions">
+              <button type="button" class="action-btn is-secondary" data-control-dialog-kind="upload-step" data-control-dialog-id="${escapeHtml(step.id)}">Schritt öffnen</button>
+              <button type="button" class="action-btn" data-control-command="${escapeHtml(step.id === "queue" ? "generate-upload-queue" : step.id === "batches" ? "generate-upload-batches" : "generate-shirtee-api-request")}">Run now</button>
+            </div>
           </article>
         `).join("")}
       </div>
