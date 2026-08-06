@@ -159,6 +159,7 @@ const AGENT_NODE_ICONS = {
   Sentinel: "/assets/ui-icons/agents/sentinel.png",
   "OpenClaw Gateway": "/assets/ui-icons/software/openclaw.png",
   Claude: "/assets/ui-icons/software/claude.png",
+  "Claude Code": "/assets/ui-icons/software/claude.png",
   Codex: "/assets/ui-icons/software/codex.png",
   Friday: "/assets/ui-icons/status/reparieren.png"
 };
@@ -402,19 +403,20 @@ function toGraphId(value) {
 }
 
 const agentGraphPositions = new Map([
-  ["Mensch", { x: 7, y: 48, tone: "human", label: "Du / Operator", detail: "oberste Steuerstufe" }],
-  ["Hermes", { x: 23, y: 48, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
-  ["Jarvis", { x: 40, y: 48, tone: "core", label: "Jarvis", detail: "Orchestrierung" }],
-  ["OpenClaw Gateway", { x: 40, y: 80, tone: "bridge", label: "OpenClaw", detail: "Queue / Bridge" }],
-  ["Heimdall", { x: 60, y: 10, tone: "service", label: "Heimdall", detail: "Home Assistant" }],
-  ["Forge", { x: 60, y: 25, tone: "service", label: "Forge", detail: "Infra / Skills" }],
-  ["Sentinel", { x: 60, y: 40, tone: "service", label: "Sentinel", detail: "Health / Security" }],
-  ["Oracle", { x: 60, y: 55, tone: "service", label: "Oracle", detail: "Briefings" }],
-  ["Muse", { x: 60, y: 70, tone: "service", label: "Muse", detail: "Content / Audio" }],
-  ["Friday", { x: 60, y: 85, tone: "service", label: "Friday", detail: "Deep Repair" }],
-  ["Argus", { x: 79, y: 38, tone: "support", label: "Argus", detail: "Vorprüfung" }],
-  ["Claude", { x: 94, y: 24, tone: "support", label: "Claude", detail: "komplexe Eskalation" }],
-  ["Codex", { x: 94, y: 51, tone: "support", label: "Codex", detail: "Code-Eskalation" }]
+  ["Mensch", { x: 7, y: 50, tone: "human", label: "Du / iPhone", detail: "Telegram Operator" }],
+  ["Hermes", { x: 21, y: 50, tone: "core", label: "Hermes", detail: "Primär-Controller" }],
+  ["Argus", { x: 37, y: 26, tone: "support", label: "Argus", detail: "Vorprüfung / Review" }],
+  ["OpenClaw Gateway", { x: 37, y: 74, tone: "bridge", label: "OpenClaw", detail: "Queue / Broker" }],
+  ["Jarvis", { x: 56, y: 50, tone: "core", label: "Jarvis", detail: "Verteiler / Review" }],
+  ["Heimdall", { x: 76, y: 12, tone: "service", label: "Heimdall", detail: "Home Assistant" }],
+  ["Forge", { x: 76, y: 26, tone: "service", label: "Forge", detail: "Infra / Skills" }],
+  ["Sentinel", { x: 76, y: 40, tone: "service", label: "Sentinel", detail: "Health / Security" }],
+  ["Oracle", { x: 76, y: 54, tone: "service", label: "Oracle", detail: "Briefings" }],
+  ["Muse", { x: 76, y: 68, tone: "service", label: "Muse", detail: "Content / Audio" }],
+  ["Friday", { x: 76, y: 82, tone: "service", label: "Friday", detail: "Deep Repair" }],
+  ["Claude", { x: 94, y: 22, tone: "support", label: "Claude", detail: "Gegenprüfung" }],
+  ["Claude Code", { x: 94, y: 46, tone: "support", label: "Claude Code", detail: "Pair Coding" }],
+  ["Codex", { x: 94, y: 70, tone: "support", label: "Codex", detail: "Tests / Umsetzung" }]
 ]);
 
 const deviceGraphPositions = new Map([
@@ -449,10 +451,17 @@ function buildAgentGraphEdges(agentsRoom) {
   const agentNames = new Set((agentsRoom?.agents || []).map((agent) => agent.name));
   const inferred = [
     agentNames.has("Friday") ? { from: "Jarvis", to: "Friday", channel: "Deep Repair", purpose: "schwere Reparaturen", status: "ready", statusLabel: "Bereit" } : null,
-    agentNames.has("Claude") ? { from: "Argus", to: "Claude", channel: "Paid Escalation", purpose: "nur bei hoher Komplexität", status: "support", statusLabel: "Fallback" } : null,
-    agentNames.has("Codex") ? { from: "Argus", to: "Codex", channel: "Code Escalation", purpose: "nur bei Code-Umsetzung", status: "support", statusLabel: "Fallback" } : null
+    agentNames.has("Claude") ? { from: "Jarvis", to: "Claude", channel: "Counter Check", purpose: "nur bei hoher Komplexität", status: "support", statusLabel: "Fallback" } : null,
+    agentNames.has("Claude Code") ? { from: "Jarvis", to: "Claude Code", channel: "Pair Coding", purpose: "nur bei aufwendiger Codierung", status: "support", statusLabel: "Fallback" } : null,
+    agentNames.has("Codex") ? { from: "Jarvis", to: "Codex", channel: "Code Escalation", purpose: "nur bei Tests und Umsetzung", status: "support", statusLabel: "Fallback" } : null
   ].filter(Boolean);
-  return [...routing, ...inferred];
+  const seen = new Set();
+  return [...routing, ...inferred].filter((edge) => {
+    const key = `${edge.from}|${edge.to}|${edge.channel}`;
+    if (seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
 }
 
 function buildVaultGraphEdges(agentsRoom) {
@@ -563,7 +572,7 @@ function renderGraphView(agentsRoom, mode) {
 
   const feedbackNodes = mode !== "devices"
     ? edges
-        .filter((edge) => edge.from !== "Mensch" && edge.from !== "Operator" && positions.has(edge.from) && positions.has(edge.to) && nodeNames.has(edge.from) && nodeNames.has(edge.to))
+        .filter((edge) => edge.feedback !== false && edge.from !== "Mensch" && edge.from !== "Operator" && positions.has(edge.from) && positions.has(edge.to) && nodeNames.has(edge.from) && nodeNames.has(edge.to))
         .map((edge, index) => {
           const source = positions.get(edge.to);
           const target = positions.get(edge.from);
@@ -604,7 +613,7 @@ function renderGraphView(agentsRoom, mode) {
       (edge) => `
         <div class="agentsroom-network-legend-item" data-route-from="${toGraphId(edge.from)}" data-route-to="${toGraphId(edge.to)}">
           <span>${escapeHtml(edge.from)} → ${escapeHtml(edge.to)}</span>
-          <strong>${escapeHtml(edge.channel)}${mode === "agents" && edge.from !== "Mensch" ? " · Rueckmeldung ↩" : ""}</strong>
+          <strong>${escapeHtml(edge.channel)}${mode === "agents" && edge.feedback !== false && edge.from !== "Mensch" ? " · Rueckmeldung ↩" : ""}</strong>
           <small class="status-pill ${statusClass(edge.status || edge.state)}">${escapeHtml(edge.statusLabel || edge.state || edge.status)}</small>
         </div>
       `
@@ -1009,7 +1018,7 @@ export function renderVisualPulse(container, dashboardData) {
       <div class="pulse-command-copy">
         <p class="pulse-eyebrow">Zentralserver / Live Control</p>
         <h2>${systemReady ? "Hermes-Kern verbunden" : "Hermes-Kern prüfen"}</h2>
-        <p>Der Mac mini führt das System. Telegram liefert den Operator-Eingang, Hermes steuert und Jarvis verteilt an Agenten, Vault und Geräte.</p>
+        <p>Der Mac mini führt das System. Telegram liefert den Operator-Eingang, Hermes startet, Argus prüft vor, OpenClaw übergibt an Jarvis und Hermes antwortet am Ende zurück.</p>
         <div class="pulse-command-status">
           <span class="status-pill ${gatewayState === "running" ? "is-live" : "is-warn"}">Gateway: <strong>${escapeHtml(gatewayState)}</strong></span>
           <span class="status-pill ${telegramState === "connected" ? "is-connected" : "is-warn"}">Telegram: <strong>${escapeHtml(telegramState)}</strong></span>
@@ -1105,7 +1114,7 @@ export function renderAgentsRoomSection(container, agentsRoom) {
       <div>
         <p class="agentsroom-eyebrow">AgentsRoom / Hermes Mesh</p>
         <h3>Du steuerst Hermes. Hermes orchestriert das gesamte System.</h3>
-        <p class="muted-line">Der Agentenfluss und das Gerätenetz sind getrennt lesbar. Jede Richtung, jeder Kanal und jede Eskalation bleibt sichtbar, während der Mac mini als Zentralserver den technischen Mittelpunkt bildet.</p>
+        <p class="muted-line">Der Agentenfluss und das Gerätenetz sind getrennt lesbar. Sichtbar bleibt: du über Telegram zu Hermes, dann Argus-Prüfung, OpenClaw-Übergabe, Jarvis-Verteilung, Subagenten-Review und die Rückgabe an Hermes.</p>
       </div>
       <div class="agentsroom-hero-stats">
         <div><span>Agenten</span><strong>${formatValue(metrics.agentCount || agents.length)}</strong></div>
@@ -1145,7 +1154,7 @@ export function renderAgentsRoomSection(container, agentsRoom) {
           <div class="agentsroom-visual-strip">
             <button type="button" class="agentsroom-visual-card agentsroom-visual-action" data-network-target-mode="agents">
               <img src="${getDashboardVisual("communication")}" alt="Hermes Steuerung">
-              <div><strong>Hermes Mesh</strong><span>Operator, Hermes, Jarvis und Delegationen.</span></div>
+              <div><strong>Hermes Mesh</strong><span>Telegram, Argus, OpenClaw, Jarvis und die Rueckgabe an dich.</span></div>
             </button>
             <button type="button" class="agentsroom-visual-card agentsroom-visual-action" data-network-target-mode="devices">
               <img src="${getDashboardVisual("homeAssistant")}" alt="Geraetenetz">
@@ -1153,7 +1162,7 @@ export function renderAgentsRoomSection(container, agentsRoom) {
             </button>
             <button type="button" class="agentsroom-visual-card agentsroom-visual-action" data-network-target-mode="vault">
               <img src="${getDashboardVisual("vault")}" alt="Vault Graph">
-              <div><strong>Vault Graph</strong><span>Brain Vault, Obsidian, Sessions und Rueckfluesse.</span></div>
+              <div><strong>Vault Graph</strong><span>Brain Vault, Obsidian, Sessions, Review und Wissens-Rueckfluss.</span></div>
             </button>
           </div>
         </article>

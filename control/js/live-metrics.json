@@ -1,16 +1,16 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T04:27:01.806Z",
-    "generatedAtLabel": "06.08.26, 06:27",
+    "generatedAt": "2026-08-06T06:24:49.515Z",
+    "generatedAtLabel": "06.08.26, 08:24",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
   "systemStatus": {
     "website": {
       "label": "Website",
-      "value": "Erreichbar",
-      "level": "ok"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "storeLinks": {
       "label": "Shop-Links",
@@ -19,12 +19,12 @@
     },
     "social": {
       "label": "Social-Profile",
-      "value": "2/2 TikTok erreichbar",
-      "level": "ok"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 06:27",
+      "value": "06.08.26, 08:24",
       "level": "info"
     }
   },
@@ -39,22 +39,22 @@
     {
       "id": "pagesOk",
       "label": "Seiten OK",
-      "value": 8,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "up"
     },
     {
       "id": "pagesFail",
       "label": "Seiten mit Fehler",
       "value": 0,
-      "delta": "Live",
+      "delta": "Umgebung",
       "trend": "neutral"
     },
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 178,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
@@ -81,15 +81,15 @@
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 621,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
       "id": "tiktokProfiles",
       "label": "TikTok Profile erreichbar",
-      "value": 2,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 277,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 138,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 190,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 170,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 183,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 152,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 142,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 175,
+        "visitors": 0,
         "pageviews": 0
       }
     ],
@@ -161,36 +161,36 @@
       {
         "page": "/",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/index.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/bio.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/musik.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/videos.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       }
     ],
     "audiences": [
       {
-        "label": "Erreichbar",
-        "value": 100
+        "label": "Nicht verifizierbar",
+        "value": 0
       },
       {
-        "label": "Fehler",
+        "label": "Umgebung",
         "value": 0
       }
     ],
@@ -215,7 +215,7 @@
     "devices": [
       {
         "label": "2xx",
-        "value": 100
+        "value": 0
       },
       {
         "label": "3xx",
@@ -223,12 +223,12 @@
       },
       {
         "label": "4xx/5xx",
-        "value": 0
+        "value": 100
       }
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "178 ms",
+      "avgSession": "0 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     }
@@ -239,8 +239,8 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T04:27:01.806Z",
-      "checkedAtLabel": "06.08.26, 06:27"
+      "checkedAt": "2026-08-06T06:24:49.515Z",
+      "checkedAtLabel": "06.08.26, 08:24"
     },
     "catalog": {
       "totalItems": 167,
@@ -2816,17 +2816,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 06:27",
+        "time": "06.08.26, 08:24",
         "type": "info",
         "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 06:27",
+        "time": "06.08.26, 08:24",
         "type": "info",
         "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 06:27",
+        "time": "06.08.26, 08:24",
         "type": "info",
         "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
@@ -2841,11 +2841,11 @@
         "profileImage": null,
         "profileUrl": "https://www.tiktok.com/@drgray_mrsdrgray",
         "verified": false,
-        "status": "live",
+        "status": "info",
         "metricValue": 15,
         "valueLabel": "15 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil erreichbar",
-        "sourceLabel": "TikTok Profil-HTML • Code 209002"
+        "statusLabel": "Profil nicht bestaetigt",
+        "sourceLabel": "TikTok Profil-HTML"
       },
       {
         "platform": "TikTok Backup",
@@ -2854,23 +2854,23 @@
         "profileImage": null,
         "profileUrl": "https://www.tiktok.com/@gray.afterhours",
         "verified": false,
-        "status": "live",
+        "status": "info",
         "metricValue": 10,
         "valueLabel": "10 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil erreichbar",
-        "sourceLabel": "TikTok Profil-HTML • Code 209002"
+        "statusLabel": "Profil nicht bestaetigt",
+        "sourceLabel": "TikTok Profil-HTML"
       },
       {
         "platform": "SoundCloud",
-        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "displayName": "drgray_sic",
         "handle": "@drgray_sic",
-        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
+        "profileImage": null,
         "profileUrl": "https://soundcloud.com/drgray_sic",
         "verified": false,
-        "status": "live",
+        "status": "info",
         "metricValue": 10,
-        "valueLabel": "621 Follower • 10 Linksignale",
-        "statusLabel": "32 Tracks",
+        "valueLabel": "10 Linksignale im Seiteninhalt",
+        "statusLabel": "Lokal nicht verifizierbar",
         "sourceLabel": "SoundCloud Public API"
       },
       {
@@ -2905,7 +2905,7 @@
         "from": "Website",
         "to": "SoundCloud",
         "channel": "Player / Music",
-        "status": "live"
+        "status": "info"
       },
       {
         "from": "Instagram",
@@ -2950,16 +2950,16 @@
       {
         "label": "SoundCloud",
         "url": "https://soundcloud.com/drgray_sic",
-        "status": "live",
-        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "status": "check",
+        "displayName": "drgray_sic",
         "handle": "@drgray_sic",
-        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
+        "profileImage": null,
         "note": "Musik / Profilsignal"
       },
       {
         "label": "TikTok Hauptseite",
         "url": "https://www.tiktok.com/@drgray_mrsdrgray",
-        "status": "live",
+        "status": "check",
         "displayName": "Dr. Gray & Mrs. Dr. Gray",
         "handle": "@drgray_mrsdrgray",
         "profileImage": null,
@@ -2969,7 +2969,7 @@
       {
         "label": "TikTok Backup",
         "url": "https://www.tiktok.com/@gray.afterhours",
-        "status": "live",
+        "status": "check",
         "displayName": "Gray Afterhours",
         "handle": "@gray.afterhours",
         "profileImage": null,
@@ -2987,8 +2987,8 @@
       },
       {
         "metric": "HTTP Seitenchecks",
-        "value": "8/8 OK",
-        "state": "good"
+        "value": "lokal nicht verifizierbar",
+        "state": "info"
       },
       {
         "metric": "Shirtee-Linkchecks",
@@ -2996,13 +2996,13 @@
         "state": "info"
       }
     ],
-    "responseTime": "178 ms",
-    "uptime": "100% (Seitencheck)",
+    "responseTime": "0 ms",
+    "uptime": "lokal nicht verifizierbar",
     "externalChecks": [
       {
         "label": "Website Core-Pfade",
-        "status": "8/8 erreichbar",
-        "level": "ok"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       },
       {
         "label": "Shop Produktlinks",
@@ -3011,8 +3011,8 @@
       },
       {
         "label": "SoundCloud Profil",
-        "status": "OK",
-        "level": "ok"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       }
     ],
     "errorLog": []
@@ -3051,6 +3051,10 @@
     ],
     "weakSpots": [
       {
+        "item": "Netzwerk-DNS",
+        "note": "Die Umgebung kann die Hauptdomain nicht aufloesen; das ist kein Site-Fehler."
+      },
+      {
         "item": "Shop-Pruefung",
         "note": "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren."
       }
@@ -3059,35 +3063,35 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 06:27",
+      "time": "06.08.26, 08:24",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 06:27",
+      "time": "06.08.26, 08:24",
       "type": "check",
       "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 06:27",
+      "time": "06.08.26, 08:24",
       "type": "check",
-      "text": "SoundCloud: Profilsignal abrufbar"
+      "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 06:27",
+      "time": "06.08.26, 08:24",
       "type": "check",
-      "text": "TikTok Profile: 2/2 erreichbar"
+      "text": "TikTok Profile: lokal nicht verifizierbar"
     }
   ],
   "alerts": [
     {
       "id": "AL-WEB",
-      "level": "ok",
-      "title": "Alle Seiten erreichbar",
-      "description": "Alle geprueften Kernseiten antworten mit HTTP 200.",
+      "level": "info",
+      "title": "Website lokal nicht verifizierbar",
+      "description": "Die Shell-Umgebung kann die Domain nicht aufloesen; das Dashboard zeigt deshalb keinen falschen Ausfall an.",
       "source": "Website Monitoring"
     },
     {
@@ -3099,9 +3103,9 @@
     },
     {
       "id": "AL-SOC",
-      "level": "ok",
-      "title": "SoundCloud Live-Profil erkannt",
-      "description": "621 Follower und 32 Tracks verifiziert.",
+      "level": "info",
+      "title": "SoundCloud lokal nicht verifizierbar",
+      "description": "Die lokale Umgebung kann keine stabilen SoundCloud-Metriken abrufen.",
       "source": "Social Monitoring"
     }
   ],
@@ -3169,11 +3173,11 @@
   ],
   "agentsRoom": {
     "metrics": {
-      "agentCount": 12,
-      "routeCount": 9,
+      "agentCount": 13,
+      "routeCount": 15,
       "deviceCount": 11,
-      "liveCount": 8,
-      "delegationCount": 8,
+      "liveCount": 10,
+      "delegationCount": 11,
       "conversationCount": 10,
       "sourceCount": 7
     },
@@ -3181,32 +3185,44 @@
       {
         "from": "Mensch",
         "to": "Hermes",
-        "channel": "Telegram",
-        "purpose": "oberste Steuerstufe",
+        "channel": "Telegram / iPhone",
+        "purpose": "Operator-Eingang und Startsignal",
         "status": "live",
-        "statusLabel": "Live"
+        "statusLabel": "Live",
+        "feedback": false
       },
       {
         "from": "Hermes",
-        "to": "Jarvis",
-        "channel": "Orchestrierung",
-        "purpose": "verteilen und sortieren",
-        "status": "live",
-        "statusLabel": "Live"
-      },
-      {
-        "from": "Jarvis",
         "to": "Argus",
         "channel": "Vorpruefung",
-        "purpose": "Diagnose und Zweitbewertung",
+        "purpose": "erstes Review auf Logik, Risiko und Korrektheit",
         "status": "support",
-        "statusLabel": "Support"
+        "statusLabel": "Support",
+        "feedback": false
+      },
+      {
+        "from": "Argus",
+        "to": "Hermes",
+        "channel": "Review Return",
+        "purpose": "Rueckgabe mit Korrekturhinweisen",
+        "status": "support",
+        "statusLabel": "Support",
+        "feedback": false
       },
       {
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "channel": "Queue / Bridge",
-        "purpose": "Delegation und Zwischenablage",
+        "purpose": "Auftrag an Broker und Delegationsschicht uebergeben",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "feedback": false
+      },
+      {
+        "from": "OpenClaw Gateway",
+        "to": "Jarvis",
+        "channel": "Broker -> Verteiler",
+        "purpose": "Jarvis uebernimmt Verteilung und Arbeitsplanung",
         "status": "connected",
         "statusLabel": "Verbunden"
       },
@@ -3246,44 +3262,80 @@
         "from": "Jarvis",
         "to": "Heimdall",
         "channel": "Home Assistant",
-        "purpose": "Smart Home und Automationen",
+        "purpose": "Smart Home, Automationen und HA-Backups",
         "status": "connected",
         "statusLabel": "Verbunden"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Friday",
+        "channel": "Deep Repair",
+        "purpose": "schwere Reparaturen und technische Ausnahmefaelle",
+        "status": "ready",
+        "statusLabel": "Bereit"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Claude",
+        "channel": "Counter Check",
+        "purpose": "nur bei hoher Komplexitaet und Reasoning-Bedarf",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Claude Code",
+        "channel": "Pair Coding",
+        "purpose": "nur bei groesseren Coding-Aufgaben und Refactors",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Codex",
+        "channel": "Code Escalation",
+        "purpose": "nur fuer Umsetzung, Tests und Tool-Arbeit",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Hermes",
+        "channel": "Review Return",
+        "purpose": "gepruefte Ergebnisse zurueck an Hermes liefern",
+        "status": "live",
+        "statusLabel": "Live",
+        "feedback": false
+      },
+      {
+        "from": "Hermes",
+        "to": "Mensch",
+        "channel": "Telegram Reply",
+        "purpose": "Ergebnis an dich zurueckgeben",
+        "status": "live",
+        "statusLabel": "Live",
+        "feedback": false
       }
     ],
     "agents": [
       {
         "name": "Hermes",
-        "role": "Primär-Controller und Telegram-Hub",
-        "route": "Mensch -> Hermes",
-        "channel": "Control / Review",
+        "role": "Primär-Controller, Telegram-Hub und Rückkanal",
+        "route": "Mensch -> Hermes -> Mensch",
+        "channel": "Control / Telegram",
         "status": "live",
         "statusLabel": "Live",
         "tags": [
           "Telegram",
           "Control",
-          "Review"
+          "Reply"
         ],
         "image": "/assets/generated/agent-avatars/hermes.png"
       },
       {
-        "name": "Jarvis",
-        "role": "Organizer und Verteiler",
-        "route": "Hermes -> Jarvis",
-        "channel": "Routing",
-        "status": "live",
-        "statusLabel": "Live",
-        "tags": [
-          "Delegation",
-          "Graph",
-          "Queue"
-        ],
-        "image": "/assets/generated/agent-avatars/jarvis.png"
-      },
-      {
         "name": "Argus",
-        "role": "Vorpruefung und Diagnose",
-        "route": "Jarvis -> Argus",
+        "role": "Apple-nahe Vorpruefung, Diagnose und Gegencheck",
+        "route": "Hermes -> Argus -> Hermes",
         "channel": "Checks",
         "status": "support",
         "statusLabel": "Support",
@@ -3296,8 +3348,8 @@
       },
       {
         "name": "OpenClaw Gateway",
-        "role": "Broker und Bridge-Schicht",
-        "route": "Hermes -> Gateway",
+        "role": "Broker, Queue und Uebergabe an Jarvis",
+        "route": "Hermes -> Gateway -> Jarvis",
         "channel": "Queue",
         "status": "connected",
         "statusLabel": "Verbunden",
@@ -3306,6 +3358,20 @@
           "Queue",
           "Delegation"
         ]
+      },
+      {
+        "name": "Jarvis",
+        "role": "OpenClaw-Verteiler, Review und Subagenten-Orchestrierung",
+        "route": "Gateway -> Jarvis -> Hermes",
+        "channel": "Routing / Review",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "Delegation",
+          "Review",
+          "Graph"
+        ],
+        "image": "/assets/generated/agent-avatars/jarvis.png"
       },
       {
         "name": "Forge",
@@ -3365,7 +3431,7 @@
       },
       {
         "name": "Heimdall",
-        "role": "Home Assistant und Smart Home",
+        "role": "Home Assistant, Smart Home und HA-Backups",
         "route": "Jarvis -> Heimdall",
         "channel": "Home",
         "status": "connected",
@@ -3392,11 +3458,11 @@
       },
       {
         "name": "Claude",
-        "role": "High trust, Nachpruefung und komplexe Arbeit",
-        "route": "Escalation",
+        "role": "High-trust Gegenpruefung und komplexes Reasoning",
+        "route": "Jarvis -> Claude",
         "channel": "Claude",
         "status": "support",
-        "statusLabel": "Support",
+        "statusLabel": "Fallback",
         "tags": [
           "Escalation",
           "Review",
@@ -3404,15 +3470,28 @@
         ]
       },
       {
-        "name": "Codex",
-        "role": "Code-ausfuehrende Eskalationsschicht",
-        "route": "Escalation",
-        "channel": "Codex",
+        "name": "Claude Code",
+        "role": "Aufwendige Implementierung, Refactor und Pair Coding",
+        "route": "Jarvis -> Claude Code",
+        "channel": "Claude Code",
         "status": "support",
-        "statusLabel": "Support",
+        "statusLabel": "Fallback",
         "tags": [
           "Code",
-          "Fixes",
+          "Refactor",
+          "Pairing"
+        ]
+      },
+      {
+        "name": "Codex",
+        "role": "Code-Ausführung, Tests und technische Umsetzung",
+        "route": "Jarvis -> Codex",
+        "channel": "Codex",
+        "status": "support",
+        "statusLabel": "Fallback",
+        "tags": [
+          "Code",
+          "Tests",
           "Implementation"
         ]
       }
@@ -3570,43 +3649,43 @@
           "Public",
           "Music"
         ],
-        "image": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg"
+        "image": "/assets/generated/dashboard-visuals/audio-publishing-streams.png"
       }
     ],
     "delegations": [
       {
         "from": "Hermes",
-        "to": "Jarvis",
-        "task": "Eingaben priorisieren und in Arbeitsstränge verteilen",
-        "channel": "Telegram",
-        "priority": "P0",
-        "status": "live",
-        "statusLabel": "Live"
-      },
-      {
-        "from": "Jarvis",
         "to": "Argus",
-        "task": "Zweitbewertung fuer Risko, Logik und Korrektheit",
+        "task": "Erste Vorpruefung auf Logik, Risiko und Qualitaet anstoßen",
         "channel": "Checks",
-        "priority": "P1",
+        "priority": "P0",
         "status": "support",
         "statusLabel": "Support"
       },
       {
-        "from": "Jarvis",
-        "to": "Heimdall",
-        "task": "HA-Backups und Smart-Home-Status prüfen",
-        "channel": "Home Assistant",
-        "priority": "P1",
-        "status": "live",
-        "statusLabel": "Live"
+        "from": "Argus",
+        "to": "Hermes",
+        "task": "Gegencheck und Korrekturrichtung an Hermes zurueckgeben",
+        "channel": "Review",
+        "priority": "P0",
+        "status": "support",
+        "statusLabel": "Support"
       },
       {
         "from": "Hermes",
         "to": "OpenClaw Gateway",
-        "task": "Queue und Bridge fuer Delegationen offen halten",
+        "task": "Auftrag in Broker, Queue und Delegationsschicht uebergeben",
         "channel": "Bridge",
-        "priority": "P1",
+        "priority": "P0",
+        "status": "connected",
+        "statusLabel": "Verbunden"
+      },
+      {
+        "from": "OpenClaw Gateway",
+        "to": "Jarvis",
+        "task": "Arbeitsstrang an Jarvis zur Verteilung in Subagenten übergeben",
+        "channel": "Queue",
+        "priority": "P0",
         "status": "connected",
         "statusLabel": "Verbunden"
       },
@@ -3630,6 +3709,15 @@
       },
       {
         "from": "Jarvis",
+        "to": "Heimdall",
+        "task": "HA-Backups, Home-Status und Device-Verbindungen prüfen",
+        "channel": "Home Assistant",
+        "priority": "P1",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "from": "Jarvis",
         "to": "Muse",
         "task": "Content und Audio fuer Social-Aktionen vorbereiten",
         "channel": "Media",
@@ -3639,88 +3727,130 @@
       },
       {
         "from": "Jarvis",
-        "to": "Friday",
-        "task": "Schwere Reparaturen und Deep-Work-Fixes sammeln",
-        "channel": "Repair",
+        "to": "Claude",
+        "task": "Komplexe Loesungen gegenpruefen, wenn die Standardkette nicht reicht",
+        "channel": "Reasoning",
         "priority": "P2",
-        "status": "ready",
-        "statusLabel": "Bereit"
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Claude Code",
+        "task": "Groessere Coding-Pakete mit Pair-Coding und Refactor-Hilfe unterstuetzen",
+        "channel": "Coding",
+        "priority": "P2",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Codex",
+        "task": "Umsetzung, Tests und technische Tool-Ausführung übernehmen",
+        "channel": "Implementation",
+        "priority": "P2",
+        "status": "support",
+        "statusLabel": "Fallback"
       }
     ],
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 06:27",
+        "time": "06.08.26, 08:24",
         "from": "Mensch",
         "to": "Hermes",
-        "summary": "Alle Eingaben starten beim zentralen Telegram-Hub und gehen von dort in die Verteilung.",
-        "status": "live",
-        "statusLabel": "Live"
-      },
-      {
-        "topic": "Routing",
-        "time": "06.08.26, 06:27",
-        "from": "Hermes",
-        "to": "Jarvis",
-        "summary": "Jarvis bekommt die Arbeitsstränge, sortiert sie und gibt sie an die Unteragenten weiter.",
+        "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
         "status": "live",
         "statusLabel": "Live"
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 06:27",
-        "from": "Jarvis",
+        "time": "06.08.26, 08:24",
+        "from": "Hermes",
         "to": "Argus",
-        "summary": "Argus liefert Zweitbewertung und Diagnose, bevor etwas weiter eskaliert wird.",
+        "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
         "status": "support",
         "statusLabel": "Support"
       },
       {
-        "topic": "Speicher",
-        "time": "06.08.26, 06:27",
-        "from": "Jarvis",
-        "to": "Obsidian",
-        "summary": "Notizen und Vault-Kontext bleiben synchron, damit das Kontrollzentrum konsistent bleibt.",
-        "status": "sync",
-        "statusLabel": "Sync"
+        "topic": "Broker",
+        "time": "06.08.26, 08:24",
+        "from": "Hermes",
+        "to": "OpenClaw Gateway",
+        "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
+        "status": "connected",
+        "statusLabel": "Verbunden"
       },
       {
-        "topic": "Home Assistant",
-        "time": "06.08.26, 06:27",
-        "from": "Jarvis",
-        "to": "Heimdall",
-        "summary": "HA-Backups und Device-Verbindungen werden fuer den Mac mini als Zentrale betrachtet.",
+        "topic": "Verteilung",
+        "time": "06.08.26, 08:24",
+        "from": "OpenClaw Gateway",
+        "to": "Jarvis",
+        "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
         "status": "live",
         "statusLabel": "Live"
       },
       {
-        "topic": "Engineering",
-        "time": "06.08.26, 06:27",
+        "topic": "Subagenten",
+        "time": "06.08.26, 08:24",
         "from": "Jarvis",
         "to": "Forge",
-        "summary": "Forge haelt die technischen Pfade, Repos und Infrastruktur-Arbeiten zusammen.",
+        "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
         "status": "ready",
         "statusLabel": "Bereit"
+      },
+      {
+        "topic": "Escalation",
+        "time": "06.08.26, 08:24",
+        "from": "Jarvis",
+        "to": "Claude Code",
+        "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "topic": "Speicher",
+        "time": "06.08.26, 08:24",
+        "from": "Jarvis",
+        "to": "Obsidian",
+        "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
+        "status": "sync",
+        "statusLabel": "Sync"
+      },
+      {
+        "topic": "Rueckgabe",
+        "time": "06.08.26, 08:24",
+        "from": "Jarvis",
+        "to": "Hermes",
+        "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
+        "status": "live",
+        "statusLabel": "Live"
       }
     ],
     "liveData": [
       {
         "label": "Telegram",
-        "value": "Mensch -> Hermes",
+        "value": "Du / iPhone -> Hermes",
         "status": "live",
         "statusLabel": "Live"
       },
       {
-        "label": "Routing",
-        "value": "Hermes -> Jarvis",
+        "label": "Argus Check",
+        "value": "Hermes -> Argus -> Hermes",
+        "status": "support",
+        "statusLabel": "Support"
+      },
+      {
+        "label": "Broker",
+        "value": "Hermes -> OpenClaw -> Jarvis",
         "status": "connected",
         "statusLabel": "Verbunden"
       },
       {
-        "label": "Vorpruefung",
-        "value": "Jarvis -> Argus",
-        "status": "support",
-        "statusLabel": "Support"
+        "label": "Subagenten",
+        "value": "Jarvis -> Fachagenten -> Jarvis",
+        "status": "live",
+        "statusLabel": "Live"
       },
       {
         "label": "HA-Bruecke",
@@ -3729,28 +3859,22 @@
         "statusLabel": "Live"
       },
       {
-        "label": "Repo Sync",
-        "value": "GitHub -> Codebasis",
-        "status": "connected",
-        "statusLabel": "Verbunden"
-      },
-      {
         "label": "Memory Sync",
-        "value": "Obsidian -> Graph",
+        "value": "Jarvis -> Brain Vault / Obsidian",
         "status": "sync",
         "statusLabel": "Sync"
       },
       {
-        "label": "Audio",
-        "value": "Rodecaster -> Output",
-        "status": "ready",
-        "statusLabel": "Bereit"
+        "label": "Coding Fallback",
+        "value": "Jarvis -> Claude / Claude Code / Codex",
+        "status": "support",
+        "statusLabel": "Fallback"
       },
       {
-        "label": "Live Content",
-        "value": "TikTok / SoundCloud",
-        "status": "ready",
-        "statusLabel": "Bereit"
+        "label": "Rueckkanal",
+        "value": "Hermes -> Du",
+        "status": "live",
+        "statusLabel": "Live"
       }
     ],
     "runtime": {
@@ -3771,13 +3895,13 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T06:22:54.377754",
+        "updated_at": "2026-08-06T08:23:01.627024",
         "platformCounts": {
           "telegram": 1
         }
       },
       "brainVaultState": {
-        "last_run_utc": "2026-08-06T04:07:54.836051",
+        "last_run_utc": "2026-08-06T06:07:55.390392",
         "last_added": 0,
         "processed_count": 269
       },
@@ -3878,7 +4002,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 06:22",
+        "detail": "Channels: 1 • updated 06.08.26, 08:23",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -3886,7 +4010,7 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run 2026-08-06T04:07:54.836051 • Added 0",
+        "detail": "Last run 2026-08-06T06:07:55.390392 • Added 0",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },

@@ -951,6 +951,9 @@ async function main() {
   const hrefCounts = parseHrefCounts();
   const storeVisibleProducts = shirteeStore.productCount > 0 ? shirteeStore.productCount : shopLive;
   const storeVisibleProductNames = shirteeStore.productNames.length ? shirteeStore.productNames : topProducts.map((row) => row.name).slice(0, 6);
+  const tiktokEnvironmentIssue = [tiktokDr, tiktokMrs].some((entry) => entry.error === "network_unavailable");
+  const soundcloudEnvironmentIssue = !soundcloud.available && ["network_unavailable", "client_id_nicht_gefunden"].includes(soundcloud.error || "");
+  const warningCount = pageProblemCount + shopProblemCount + (soundcloud.available || soundcloudEnvironmentIssue ? 0 : 1);
 
   const socialRows = [
     {
@@ -1017,43 +1020,47 @@ async function main() {
     .filter((row) => typeof row.metricValue === "number")
     .sort((a, b) => b.metricValue - a.metricValue)[0];
 
-  const tiktokEnvironmentIssue = [tiktokDr, tiktokMrs].some((entry) => entry.error === "network_unavailable");
-  const soundcloudEnvironmentIssue = !soundcloud.available && ["network_unavailable", "client_id_nicht_gefunden"].includes(soundcloud.error || "");
-  const warningCount = pageProblemCount + shopProblemCount + (soundcloud.available || soundcloudEnvironmentIssue ? 0 : 1);
-
   const agentsRoom = {
     metrics: {
-      agentCount: 12,
-      routeCount: 9,
+      agentCount: 13,
+      routeCount: 15,
       deviceCount: 11,
-      liveCount: 8,
-      delegationCount: 8,
-      conversationCount: 6
+      liveCount: 10,
+      delegationCount: 11,
+      conversationCount: 8
     },
     routing: [
-      { from: "Mensch", to: "Hermes", channel: "Telegram", purpose: "oberste Steuerstufe", status: "live", statusLabel: "Live" },
-      { from: "Hermes", to: "Jarvis", channel: "Orchestrierung", purpose: "verteilen und sortieren", status: "live", statusLabel: "Live" },
-      { from: "Jarvis", to: "Argus", channel: "Vorpruefung", purpose: "Diagnose und Zweitbewertung", status: "support", statusLabel: "Support" },
-      { from: "Hermes", to: "OpenClaw Gateway", channel: "Queue / Bridge", purpose: "Delegation und Zwischenablage", status: "connected", statusLabel: "Verbunden" },
+      { from: "Mensch", to: "Hermes", channel: "Telegram / iPhone", purpose: "Operator-Eingang und Startsignal", status: "live", statusLabel: "Live", feedback: false },
+      { from: "Hermes", to: "Argus", channel: "Vorpruefung", purpose: "erstes Review auf Logik, Risiko und Korrektheit", status: "support", statusLabel: "Support", feedback: false },
+      { from: "Argus", to: "Hermes", channel: "Review Return", purpose: "Rueckgabe mit Korrekturhinweisen", status: "support", statusLabel: "Support", feedback: false },
+      { from: "Hermes", to: "OpenClaw Gateway", channel: "Queue / Bridge", purpose: "Auftrag an Broker und Delegationsschicht uebergeben", status: "connected", statusLabel: "Verbunden", feedback: false },
+      { from: "OpenClaw Gateway", to: "Jarvis", channel: "Broker -> Verteiler", purpose: "Jarvis uebernimmt Verteilung und Arbeitsplanung", status: "connected", statusLabel: "Verbunden" },
       { from: "Jarvis", to: "Forge", channel: "Infra / Skills / Server", purpose: "Engineering und Umsetzung", status: "live", statusLabel: "Live" },
       { from: "Jarvis", to: "Sentinel", channel: "Logs / Health / Security", purpose: "Monitoring und Sicherheit", status: "live", statusLabel: "Live" },
       { from: "Jarvis", to: "Oracle", channel: "Briefings", purpose: "Kontext, Wetter und News", status: "ready", statusLabel: "Bereit" },
       { from: "Jarvis", to: "Muse", channel: "Content / Audio / Social", purpose: "Content und Media", status: "ready", statusLabel: "Bereit" },
-      { from: "Jarvis", to: "Heimdall", channel: "Home Assistant", purpose: "Smart Home und Automationen", status: "connected", statusLabel: "Verbunden" }
+      { from: "Jarvis", to: "Heimdall", channel: "Home Assistant", purpose: "Smart Home, Automationen und HA-Backups", status: "connected", statusLabel: "Verbunden" },
+      { from: "Jarvis", to: "Friday", channel: "Deep Repair", purpose: "schwere Reparaturen und technische Ausnahmefaelle", status: "ready", statusLabel: "Bereit" },
+      { from: "Jarvis", to: "Claude", channel: "Counter Check", purpose: "nur bei hoher Komplexitaet und Reasoning-Bedarf", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Claude Code", channel: "Pair Coding", purpose: "nur bei groesseren Coding-Aufgaben und Refactors", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Codex", channel: "Code Escalation", purpose: "nur fuer Umsetzung, Tests und Tool-Arbeit", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Hermes", channel: "Review Return", purpose: "gepruefte Ergebnisse zurueck an Hermes liefern", status: "live", statusLabel: "Live", feedback: false },
+      { from: "Hermes", to: "Mensch", channel: "Telegram Reply", purpose: "Ergebnis an dich zurueckgeben", status: "live", statusLabel: "Live", feedback: false }
     ],
     agents: [
-      { name: "Hermes", role: "Primär-Controller und Telegram-Hub", route: "Mensch -> Hermes", channel: "Control / Review", status: "live", statusLabel: "Live", tags: ["Telegram", "Control", "Review"], image: "/assets/generated/agent-avatars/hermes.png" },
-      { name: "Jarvis", role: "Organizer und Verteiler", route: "Hermes -> Jarvis", channel: "Routing", status: "live", statusLabel: "Live", tags: ["Delegation", "Graph", "Queue"], image: "/assets/generated/agent-avatars/jarvis.png" },
-      { name: "Argus", role: "Vorpruefung und Diagnose", route: "Jarvis -> Argus", channel: "Checks", status: "support", statusLabel: "Support", tags: ["Audit", "Second Pass", "Safety"], image: "/assets/generated/agent-avatars/argus.png" },
-      { name: "OpenClaw Gateway", role: "Broker und Bridge-Schicht", route: "Hermes -> Gateway", channel: "Queue", status: "connected", statusLabel: "Verbunden", tags: ["Bridge", "Queue", "Delegation"] },
+      { name: "Hermes", role: "Primär-Controller, Telegram-Hub und Rückkanal", route: "Mensch -> Hermes -> Mensch", channel: "Control / Telegram", status: "live", statusLabel: "Live", tags: ["Telegram", "Control", "Reply"], image: "/assets/generated/agent-avatars/hermes.png" },
+      { name: "Argus", role: "Apple-nahe Vorpruefung, Diagnose und Gegencheck", route: "Hermes -> Argus -> Hermes", channel: "Checks", status: "support", statusLabel: "Support", tags: ["Audit", "Second Pass", "Safety"], image: "/assets/generated/agent-avatars/argus.png" },
+      { name: "OpenClaw Gateway", role: "Broker, Queue und Uebergabe an Jarvis", route: "Hermes -> Gateway -> Jarvis", channel: "Queue", status: "connected", statusLabel: "Verbunden", tags: ["Bridge", "Queue", "Delegation"] },
+      { name: "Jarvis", role: "OpenClaw-Verteiler, Review und Subagenten-Orchestrierung", route: "Gateway -> Jarvis -> Hermes", channel: "Routing / Review", status: "live", statusLabel: "Live", tags: ["Delegation", "Review", "Graph"], image: "/assets/generated/agent-avatars/jarvis.png" },
       { name: "Forge", role: "OpenClaw Infra, Skills und Server", route: "Jarvis -> Forge", channel: "Engineering", status: "live", statusLabel: "Live", tags: ["Infra", "Skills", "Server"], image: "/assets/generated/agent-avatars/forge.png" },
       { name: "Sentinel", role: "Monitoring, Logs und Security", route: "Jarvis -> Sentinel", channel: "Watch", status: "live", statusLabel: "Live", tags: ["Logs", "Health", "Security"], image: "/assets/generated/agent-avatars/sentinel.png" },
       { name: "Oracle", role: "Briefings, Wetter und News", route: "Jarvis -> Oracle", channel: "Briefings", status: "ready", statusLabel: "Bereit", tags: ["Briefing", "Weather", "News"], image: "/assets/generated/agent-avatars/oracle.png" },
       { name: "Muse", role: "TikTok, SoundCloud und Content", route: "Jarvis -> Muse", channel: "Media", status: "ready", statusLabel: "Bereit", tags: ["Content", "Audio", "Social"], image: "/assets/generated/agent-avatars/muse.png" },
-      { name: "Heimdall", role: "Home Assistant und Smart Home", route: "Jarvis -> Heimdall", channel: "Home", status: "connected", statusLabel: "Verbunden", tags: ["HA", "Scenes", "Devices"], image: "/assets/generated/agent-avatars/heimdall.png" },
+      { name: "Heimdall", role: "Home Assistant, Smart Home und HA-Backups", route: "Jarvis -> Heimdall", channel: "Home", status: "connected", statusLabel: "Verbunden", tags: ["HA", "Scenes", "Devices"], image: "/assets/generated/agent-avatars/heimdall.png" },
       { name: "Friday", role: "Schwere Reparaturen und Deep Work", route: "Jarvis -> Friday", channel: "Repair", status: "ready", statusLabel: "Bereit", tags: ["Deep Work", "Fixes", "Review"] },
-      { name: "Claude", role: "High trust, Nachpruefung und komplexe Arbeit", route: "Escalation", channel: "Claude", status: "support", statusLabel: "Support", tags: ["Escalation", "Review", "Reasoning"] },
-      { name: "Codex", role: "Code-ausfuehrende Eskalationsschicht", route: "Escalation", channel: "Codex", status: "support", statusLabel: "Support", tags: ["Code", "Fixes", "Implementation"] }
+      { name: "Claude", role: "High-trust Gegenpruefung und komplexes Reasoning", route: "Jarvis -> Claude", channel: "Claude", status: "support", statusLabel: "Fallback", tags: ["Escalation", "Review", "Reasoning"] },
+      { name: "Claude Code", role: "Aufwendige Implementierung, Refactor und Pair Coding", route: "Jarvis -> Claude Code", channel: "Claude Code", status: "support", statusLabel: "Fallback", tags: ["Code", "Refactor", "Pairing"] },
+      { name: "Codex", role: "Code-Ausführung, Tests und technische Umsetzung", route: "Jarvis -> Codex", channel: "Codex", status: "support", statusLabel: "Fallback", tags: ["Code", "Tests", "Implementation"] }
     ],
     devices: [
       { name: "Mac mini", role: "Zentralserver", route: "Mac mini -> alles", channel: "SMB / Host", status: "connected", statusLabel: "Verbunden", tags: ["Zentrale", "SMB", "HA"], image: "/assets/generated/device-visuals/mac-mini-central-server.png" },
@@ -1069,32 +1076,37 @@ async function main() {
       { name: "SoundCloud", role: "Music Publishing", route: "SoundCloud -> Public", channel: "Audio", status: "live", statusLabel: "Live", tags: ["Audio", "Public", "Music"], image: soundcloud.available ? soundcloud.user.avatar_url || "/assets/generated/dashboard-visuals/audio-publishing-streams.png" : "/assets/generated/dashboard-visuals/audio-publishing-streams.png" }
     ],
     delegations: [
-      { from: "Hermes", to: "Jarvis", task: "Eingaben priorisieren und in Arbeitsstränge verteilen", channel: "Telegram", priority: "P0", status: "live", statusLabel: "Live" },
-      { from: "Jarvis", to: "Argus", task: "Zweitbewertung fuer Risko, Logik und Korrektheit", channel: "Checks", priority: "P1", status: "support", statusLabel: "Support" },
-      { from: "Jarvis", to: "Heimdall", task: "HA-Backups und Smart-Home-Status prüfen", channel: "Home Assistant", priority: "P1", status: "live", statusLabel: "Live" },
-      { from: "Hermes", to: "OpenClaw Gateway", task: "Queue und Bridge fuer Delegationen offen halten", channel: "Bridge", priority: "P1", status: "connected", statusLabel: "Verbunden" },
+      { from: "Hermes", to: "Argus", task: "Erste Vorpruefung auf Logik, Risiko und Qualitaet anstoßen", channel: "Checks", priority: "P0", status: "support", statusLabel: "Support" },
+      { from: "Argus", to: "Hermes", task: "Gegencheck und Korrekturrichtung an Hermes zurueckgeben", channel: "Review", priority: "P0", status: "support", statusLabel: "Support" },
+      { from: "Hermes", to: "OpenClaw Gateway", task: "Auftrag in Broker, Queue und Delegationsschicht uebergeben", channel: "Bridge", priority: "P0", status: "connected", statusLabel: "Verbunden" },
+      { from: "OpenClaw Gateway", to: "Jarvis", task: "Arbeitsstrang an Jarvis zur Verteilung in Subagenten übergeben", channel: "Queue", priority: "P0", status: "connected", statusLabel: "Verbunden" },
       { from: "Jarvis", to: "Forge", task: "Repo, Infrastruktur und Fixes bereitstellen", channel: "Engineering", priority: "P0", status: "live", statusLabel: "Live" },
       { from: "Jarvis", to: "Sentinel", task: "Logs, Health und Security kontinuierlich ueberwachen", channel: "Monitoring", priority: "P0", status: "live", statusLabel: "Live" },
+      { from: "Jarvis", to: "Heimdall", task: "HA-Backups, Home-Status und Device-Verbindungen prüfen", channel: "Home Assistant", priority: "P1", status: "live", statusLabel: "Live" },
       { from: "Jarvis", to: "Muse", task: "Content und Audio fuer Social-Aktionen vorbereiten", channel: "Media", priority: "P2", status: "ready", statusLabel: "Bereit" },
-      { from: "Jarvis", to: "Friday", task: "Schwere Reparaturen und Deep-Work-Fixes sammeln", channel: "Repair", priority: "P2", status: "ready", statusLabel: "Bereit" }
+      { from: "Jarvis", to: "Claude", task: "Komplexe Loesungen gegenpruefen, wenn die Standardkette nicht reicht", channel: "Reasoning", priority: "P2", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Claude Code", task: "Groessere Coding-Pakete mit Pair-Coding und Refactor-Hilfe unterstuetzen", channel: "Coding", priority: "P2", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Codex", task: "Umsetzung, Tests und technische Tool-Ausführung übernehmen", channel: "Implementation", priority: "P2", status: "support", statusLabel: "Fallback" }
     ],
     conversations: [
-      { topic: "Kontrollkette", time: generatedAtLabel, from: "Mensch", to: "Hermes", summary: "Alle Eingaben starten beim zentralen Telegram-Hub und gehen von dort in die Verteilung.", status: "live", statusLabel: "Live" },
-      { topic: "Routing", time: generatedAtLabel, from: "Hermes", to: "Jarvis", summary: "Jarvis bekommt die Arbeitsstränge, sortiert sie und gibt sie an die Unteragenten weiter.", status: "live", statusLabel: "Live" },
-      { topic: "Vorpruefung", time: generatedAtLabel, from: "Jarvis", to: "Argus", summary: "Argus liefert Zweitbewertung und Diagnose, bevor etwas weiter eskaliert wird.", status: "support", statusLabel: "Support" },
-      { topic: "Speicher", time: generatedAtLabel, from: "Jarvis", to: "Obsidian", summary: "Notizen und Vault-Kontext bleiben synchron, damit das Kontrollzentrum konsistent bleibt.", status: "sync", statusLabel: "Sync" },
-      { topic: "Home Assistant", time: generatedAtLabel, from: "Jarvis", to: "Heimdall", summary: "HA-Backups und Device-Verbindungen werden fuer den Mac mini als Zentrale betrachtet.", status: "live", statusLabel: "Live" },
-      { topic: "Engineering", time: generatedAtLabel, from: "Jarvis", to: "Forge", summary: "Forge haelt die technischen Pfade, Repos und Infrastruktur-Arbeiten zusammen.", status: "ready", statusLabel: "Bereit" }
+      { topic: "Kontrollkette", time: generatedAtLabel, from: "Mensch", to: "Hermes", summary: "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.", status: "live", statusLabel: "Live" },
+      { topic: "Vorpruefung", time: generatedAtLabel, from: "Hermes", to: "Argus", summary: "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.", status: "support", statusLabel: "Support" },
+      { topic: "Broker", time: generatedAtLabel, from: "Hermes", to: "OpenClaw Gateway", summary: "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.", status: "connected", statusLabel: "Verbunden" },
+      { topic: "Verteilung", time: generatedAtLabel, from: "OpenClaw Gateway", to: "Jarvis", summary: "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.", status: "live", statusLabel: "Live" },
+      { topic: "Subagenten", time: generatedAtLabel, from: "Jarvis", to: "Forge", summary: "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.", status: "ready", statusLabel: "Bereit" },
+      { topic: "Escalation", time: generatedAtLabel, from: "Jarvis", to: "Claude Code", summary: "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.", status: "support", statusLabel: "Fallback" },
+      { topic: "Speicher", time: generatedAtLabel, from: "Jarvis", to: "Obsidian", summary: "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.", status: "sync", statusLabel: "Sync" },
+      { topic: "Rueckgabe", time: generatedAtLabel, from: "Jarvis", to: "Hermes", summary: "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.", status: "live", statusLabel: "Live" }
     ],
     liveData: [
-      { label: "Telegram", value: "Mensch -> Hermes", status: "live", statusLabel: "Live" },
-      { label: "Routing", value: "Hermes -> Jarvis", status: "connected", statusLabel: "Verbunden" },
-      { label: "Vorpruefung", value: "Jarvis -> Argus", status: "support", statusLabel: "Support" },
+      { label: "Telegram", value: "Du / iPhone -> Hermes", status: "live", statusLabel: "Live" },
+      { label: "Argus Check", value: "Hermes -> Argus -> Hermes", status: "support", statusLabel: "Support" },
+      { label: "Broker", value: "Hermes -> OpenClaw -> Jarvis", status: "connected", statusLabel: "Verbunden" },
+      { label: "Subagenten", value: "Jarvis -> Fachagenten -> Jarvis", status: "live", statusLabel: "Live" },
       { label: "HA-Bruecke", value: "Jarvis -> Heimdall", status: "live", statusLabel: "Live" },
-      { label: "Repo Sync", value: "GitHub -> Codebasis", status: "connected", statusLabel: "Verbunden" },
-      { label: "Memory Sync", value: "Obsidian -> Graph", status: "sync", statusLabel: "Sync" },
-      { label: "Audio", value: "Rodecaster -> Output", status: "ready", statusLabel: "Bereit" },
-      { label: "Live Content", value: "TikTok / SoundCloud", status: "ready", statusLabel: "Bereit" }
+      { label: "Memory Sync", value: "Jarvis -> Brain Vault / Obsidian", status: "sync", statusLabel: "Sync" },
+      { label: "Coding Fallback", value: "Jarvis -> Claude / Claude Code / Codex", status: "support", statusLabel: "Fallback" },
+      { label: "Rueckkanal", value: "Hermes -> Du", status: "live", statusLabel: "Live" }
     ]
   };
 
