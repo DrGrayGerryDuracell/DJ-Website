@@ -2133,7 +2133,10 @@ export function renderQuickActions(container, dashboardData) {
             <span class="status-pill ${statusClass(job.state)}">${escapeHtml(job.stateLabel)}</span>
             <strong>${escapeHtml(job.name)}</strong>
             <p>${escapeHtml(`${job.schedule} • ${job.owner}`)}</p>
-            <button type="button" class="action-btn is-secondary" data-control-dialog-kind="cron-job" data-control-dialog-id="${escapeHtml(job.id)}">Cronjob öffnen</button>
+            <div class="ha-room-actions">
+              <button type="button" class="action-btn is-secondary" data-control-dialog-kind="cron-job" data-control-dialog-id="${escapeHtml(job.id)}">Cronjob öffnen</button>
+              <button type="button" class="action-btn" data-control-command="${escapeHtml(job.name === "sync-control-live" ? "sync-control-live" : job.name === "check-shirtee-links" ? "check-links" : "generate-upload-queue")}">Run now</button>
+            </div>
           </article>
         `).join("")}
       </div>
@@ -2149,7 +2152,10 @@ export function renderQuickActions(container, dashboardData) {
             </div>
             <p>${escapeHtml(agent.llm)}</p>
             <small>${escapeHtml(`Fallback: ${agent.fallback}`)}</small>
-            <button type="button" class="action-btn" data-control-dialog-kind="subagent" data-control-dialog-id="${escapeHtml(agent.id)}">Agent öffnen</button>
+            <div class="ha-room-actions">
+              <button type="button" class="action-btn" data-control-dialog-kind="subagent" data-control-dialog-id="${escapeHtml(agent.id)}">Agent öffnen</button>
+              <button type="button" class="action-btn is-secondary" data-control-action="ops.run-subagent" data-control-payload='${escapeHtml(JSON.stringify({ agentId: agent.id, mode: "cloud-first" }))}'>Cloud-first</button>
+            </div>
           </article>
         `).join("")}
       </div>
@@ -2159,7 +2165,10 @@ export function renderQuickActions(container, dashboardData) {
             <span class="status-pill ${statusClass(node.state)}">${escapeHtml(node.stateLabel)}</span>
             <strong>${escapeHtml(node.name)}</strong>
             <p>${escapeHtml(`${node.role} • Steward: ${node.steward}`)}</p>
-            <button type="button" class="action-btn is-secondary" data-control-dialog-kind="vault-node" data-control-dialog-id="${escapeHtml(node.id)}">Vault öffnen</button>
+            <div class="ha-room-actions">
+              <button type="button" class="action-btn is-secondary" data-control-dialog-kind="vault-node" data-control-dialog-id="${escapeHtml(node.id)}">Vault öffnen</button>
+              <button type="button" class="action-btn" data-control-action="ops.vault-writeback" data-control-payload='${escapeHtml(JSON.stringify({ nodeId: node.id, mode: "writeback" }))}'>Writeback</button>
+            </div>
           </article>
         `).join("")}
       </div>

@@ -879,29 +879,40 @@ function buildDialogPayload(data, kind, id) {
   if (kind === "cron-job") {
     const job = cronJobs.find((entry) => entry.id === id);
     if (!job) return null;
+    const command = job.name === "sync-control-live"
+      ? "sync-control-live"
+      : job.name === "check-shirtee-links"
+        ? "check-links"
+        : "generate-upload-queue";
+    const commandLabel = job.name === "sync-control-live"
+      ? "npm run sync:control-live"
+      : job.name === "check-shirtee-links"
+        ? "npm run check:links"
+        : "npm run generate:upload-queue";
     return {
       title: job.name,
       subtitle: `Cronjob • ${job.schedule}`,
       badges: [{ label: job.stateLabel, tone: job.state }],
-      paragraphs: [`Owner: ${job.owner}`, "Vorbereitung für Run-now, Pause, Resume und Schedule-Editing im Dashboard."],
+      paragraphs: [
+        `Owner: ${job.owner}`,
+        `Status im Dashboard: ${job.stateLabel}`,
+        "Run-now und Aktiv/Pause laufen bereits über Bridge-State und Dashboard-Sync."
+      ],
       actions: [
         {
           type: "bridge-command",
           label: "Jetzt ausführen",
-          command: job.name === "sync-control-live"
-            ? "sync-control-live"
-            : job.name === "check-shirtee-links"
-              ? "check-links"
-              : "generate-upload-queue"
+          command
         },
         {
           type: "copy",
           label: "Cron-Kommando kopieren",
-          value: job.name === "sync-control-live"
-            ? "npm run sync:control-live"
-            : job.name === "check-shirtee-links"
-              ? "npm run check:links"
-              : "npm run generate:upload-queue"
+          value: commandLabel
+        },
+        {
+          type: "bridge-command",
+          label: "Live-Daten danach neu bauen",
+          command: "sync-control-live"
         }
       ],
       toggles: [{ id: "enabled", label: "Cronjob aktiv", value: getControlToggleValue(kind, id, "enabled", job.state === "live"), onLabel: "Aktiv", offLabel: "Pausiert" }]
