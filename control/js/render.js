@@ -188,6 +188,29 @@ function buildOverviewCommandCards(dashboardData) {
   `;
 }
 
+function getSocialVisual(label) {
+  const key = String(label || "").toLowerCase();
+  if (key.includes("hauptseite")) {
+    return "/assets/images/drgray.jpg";
+  }
+  if (key.includes("backup") || key.includes("afterhours")) {
+    return "/assets/images/mrsdrgray.jpg";
+  }
+  if (key.includes("soundcloud")) {
+    return "/assets/uploads/web-images/controller-decks-closeup-2026.jpg";
+  }
+  if (key.includes("shirtee") || key.includes("shop")) {
+    return "/assets/images/shirtee-crop-live.png";
+  }
+  if (key.includes("website")) {
+    return "/assets/images/logo1.png";
+  }
+  if (key.includes("tiktok")) {
+    return "/assets/images/tiktok-futuristic-cover.png";
+  }
+  return "/assets/uploads/posters/live-room-collage-2026.jpg";
+}
+
 function buildFlowItems(items) {
   if (!Array.isArray(items) || !items.length) {
     return `<p class="muted-line">Keine Routing-Daten vorhanden.</p>`;
@@ -848,6 +871,7 @@ export function renderVisualPulse(container, dashboardData) {
     .join("");
 
   container.innerHTML = `
+    ${buildOverviewCommandCards(dashboardData)}
     <article class="pulse-command">
       <div class="pulse-command-copy">
         <p class="pulse-eyebrow">Zentralserver / Live Control</p>
@@ -874,7 +898,6 @@ export function renderVisualPulse(container, dashboardData) {
         <a class="action-btn" href="#agentsroom">Routing öffnen</a>
       </div>
     </article>
-    ${buildOverviewCommandCards(dashboardData)}
     <article class="pulse-card">
       <p class="pulse-eyebrow">Website</p>
       <h3>Live Signal</h3>
@@ -960,7 +983,22 @@ export function renderAgentsRoomSection(container, agentsRoom) {
         <div><span>Gespräche</span><strong>${formatValue(metrics.conversationCount || conversations.length)}</strong></div>
         <div><span>Quellen</span><strong>${formatValue(metrics.sourceCount || sourceRegistry.length)}</strong></div>
       </div>
+    </article>
+
+    <article class="panel agentsroom-panel agentsroom-panel-wide">
+      <div class="agentsroom-panel-head">
+        <div>
+          <h3>Live Routing Map</h3>
+          <p class="muted-line">Agenten-Orchestrierung und Gerätenetz können einzeln untersucht werden. Klicke einen Knoten für Rolle, Status und direkte Verbindungen.</p>
+        </div>
+        <span class="status-pill is-live">30 s Snapshot</span>
+      </div>
       ${buildStatusGuide(true)}
+      ${buildRoutingWorkspace(agentsRoom)}
+    </article>
+
+    <article class="panel agentsroom-panel agentsroom-panel-wide">
+      <h3>Topologie visuell lesen</h3>
       <div class="agentsroom-visual-strip">
         <article class="agentsroom-visual-card">
           <img src="/assets/uploads/web-images/controller-laser-green-2026.jpg" alt="Hermes Steuerung">
@@ -975,17 +1013,6 @@ export function renderAgentsRoomSection(container, agentsRoom) {
           <div><strong>Vault Graph</strong><span>Brain Vault, Obsidian, Session-Layer und Rueckfluesse.</span></div>
         </article>
       </div>
-    </article>
-
-    <article class="panel agentsroom-panel agentsroom-panel-wide">
-      <div class="agentsroom-panel-head">
-        <div>
-          <h3>Live Routing Map</h3>
-          <p class="muted-line">Agenten-Orchestrierung und Gerätenetz können einzeln untersucht werden. Klicke einen Knoten für Rolle, Status und direkte Verbindungen.</p>
-        </div>
-        <span class="status-pill is-live">30 s Snapshot</span>
-      </div>
-      ${buildRoutingWorkspace(agentsRoom)}
     </article>
 
     <div class="agentsroom-grid">
@@ -1448,6 +1475,31 @@ export function renderSocial(container, socialMetrics) {
   };
   const strongest = socialMetrics.strongestPlatform || socialMetrics.links.find((row) => Number(row.metricValue ?? row.clicks ?? 0) > 0)?.platform || "nicht erfasst";
   const routes = Array.isArray(socialMetrics.routes) ? socialMetrics.routes : [];
+  const officialAccounts = Array.isArray(socialMetrics.officialAccounts) ? socialMetrics.officialAccounts : [];
+  const liveProfiles = socialMetrics.links.filter((row) => /erreichbar|verbunden|live/i.test(`${row.statusLabel || ""} ${row.status || ""}`)).length;
+  const contentSignals = socialMetrics.links.reduce((sum, row) => sum + Number(row.metricValue || 0), 0);
+  const soundcloudRow = socialMetrics.links.find((row) => /soundcloud/i.test(row.platform || ""));
+  const summaryCards = [
+    { label: "Staerkster Kanal", value: strongest, meta: "Routing / Fokus", status: "live" },
+    { label: "Live Profile", value: `${liveProfiles}/${socialMetrics.links.length}`, meta: "aktuell bestaetigt", status: liveProfiles >= 2 ? "connected" : "warn" },
+    { label: "SoundCloud", value: soundcloudRow?.valueLabel || "nicht verfuegbar", meta: soundcloudRow?.statusLabel || "kein Live-Signal", status: /lokal nicht verifizierbar/i.test(soundcloudRow?.statusLabel || "") ? "warn" : "live" },
+    { label: "Linksignale", value: formatValue(contentSignals), meta: "Website / Inhalt", status: "connected" }
+  ];
+  const profileCards = socialMetrics.links.map((row) => ({
+    ...row,
+    image: getSocialVisual(row.platform),
+    value: row.valueLabel || row.metricValue || row.clicks || "0",
+    detail: row.sourceLabel || "Live-Check"
+  }));
+  const registryCards = officialAccounts.map((item) => {
+    const related = socialMetrics.links.find((row) => item.label.includes("TikTok Hauptseite") ? /hauptseite/i.test(row.platform || "") : item.label.includes("TikTok Backup") ? /backup/i.test(row.platform || "") : item.label === "SoundCloud" ? /soundcloud/i.test(row.platform || "") : null);
+    return {
+      ...item,
+      image: getSocialVisual(item.label),
+      meta: related?.valueLabel || (item.label === "Website" ? "Kontrollpfad / Hauptdomain" : item.label === "Shirtee Store" ? "Store / Produktlinks" : item.label === "SoundCloud" ? "Musik / Profilsignal" : "Profil / Kanal"),
+      note: related?.sourceLabel || item.url
+    };
+  });
 
   container.innerHTML = `
     <article class="panel">
@@ -1461,22 +1513,40 @@ export function renderSocial(container, socialMetrics) {
           <span class="status-pill is-warn">Signal geprüft</span>
         </div>
       </div>
-      <div class="social-network">
-        ${socialMetrics.links
-          .map((row) => {
-            const value = row.valueLabel || row.metricValue || row.clicks || 0;
-            return `
-              <article class="social-node">
-                <div class="social-node-head">
-                  <strong>${escapeHtml(row.platform)}</strong>
-                  <span class="status-pill ${pickSocialStatusClass(row)}">${escapeHtml(row.statusLabel || row.status || "check")}</span>
+      <div class="social-summary-grid">
+        ${summaryCards
+          .map(
+            (card) => `
+              <article class="social-summary-card">
+                <div class="social-summary-head">
+                  <span>${escapeHtml(card.label)}</span>
+                  <span class="status-pill ${statusClass(card.status)}">${statusNarrative(card.status)}</span>
                 </div>
-                <p>${escapeHtml(row.sourceLabel || "Live-Check")}</p>
-                <div class="social-node-value">${escapeHtml(String(value))}</div>
-                <small>${escapeHtml(row.url || "")}</small>
+                <strong>${escapeHtml(card.value)}</strong>
+                <p>${escapeHtml(card.meta)}</p>
               </article>
-            `;
-          })
+            `
+          )
+          .join("")}
+      </div>
+      <div class="social-profile-grid">
+        ${profileCards
+          .map(
+            (row) => `
+              <article class="social-profile-card">
+                <img src="${row.image}" alt="${escapeHtml(row.platform)}">
+                <div class="social-profile-body">
+                  <div class="social-node-head">
+                    <strong>${escapeHtml(row.platform)}</strong>
+                    <span class="status-pill ${pickSocialStatusClass(row)}">${escapeHtml(row.statusLabel || row.status || "check")}</span>
+                  </div>
+                  <p>${escapeHtml(row.detail)}</p>
+                  <div class="social-node-value">${escapeHtml(String(row.value))}</div>
+                  <small>${escapeHtml(row.url || "")}</small>
+                </div>
+              </article>
+            `
+          )
           .join("")}
       </div>
       <div class="social-route-grid">
@@ -1513,14 +1583,26 @@ export function renderSocial(container, socialMetrics) {
           <h3>Verifizierte Accounts und Vergleich</h3>
         </div>
       </div>
-      <ul class="account-list">
-        ${socialMetrics.officialAccounts
+      <div class="social-registry-grid">
+        ${registryCards
           .map(
-            (item) =>
-              `<li><span>${item.label}</span><a href="${item.url}" target="_blank" rel="noopener noreferrer">${item.url}</a><em class="status-pill ${item.status === "live" ? "is-ok" : item.status === "check" ? "is-warn" : "is-info"}">${item.status === "live" ? "Verbunden" : item.status === "check" ? "Pruefen" : item.status}</em></li>`
+            (item) => `
+              <article class="social-registry-card">
+                <img src="${item.image}" alt="${escapeHtml(item.label)}">
+                <div class="social-registry-body">
+                  <div class="social-node-head">
+                    <strong>${escapeHtml(item.label)}</strong>
+                    <em class="status-pill ${item.status === "live" ? "is-ok" : item.status === "check" ? "is-warn" : "is-info"}">${item.status === "live" ? "Verbunden" : item.status === "check" ? "Pruefen" : item.status}</em>
+                  </div>
+                  <p>${escapeHtml(item.meta)}</p>
+                  <a href="${item.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.url)}</a>
+                  <small>${escapeHtml(item.note)}</small>
+                </div>
+              </article>
+            `
           )
           .join("")}
-      </ul>
+      </div>
       <ul class="status-list compact">
         ${socialMetrics.comparisons.map((item) => `<li><span>${item.label}</span><strong>${item.value}</strong></li>`).join("")}
       </ul>
