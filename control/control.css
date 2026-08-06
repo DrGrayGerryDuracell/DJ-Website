@@ -1806,6 +1806,159 @@ a { color: inherit; text-decoration: none; }
   margin-bottom: 0.9rem;
 }
 
+.social-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(320px, 0.95fr);
+  gap: 0.85rem;
+  margin-bottom: 0.9rem;
+}
+
+.social-couple-card,
+.social-brand-card,
+.social-track-card {
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.02)),
+    rgba(8, 10, 14, 0.9);
+  box-shadow: var(--shadow-soft);
+}
+
+.social-couple-card {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  overflow: hidden;
+}
+
+.social-couple-media {
+  background:
+    radial-gradient(circle at top, rgba(52, 228, 255, 0.18), transparent 40%),
+    rgba(5, 7, 10, 0.88);
+}
+
+.social-couple-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.social-couple-copy {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0.95rem 1rem;
+}
+
+.social-couple-copy h4 {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.42rem;
+}
+
+.social-couple-copy p {
+  margin: 0;
+  color: var(--text-soft);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+
+.social-inline-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.38rem;
+}
+
+.social-production-inline {
+  display: grid;
+  gap: 0.15rem;
+  padding: 0.72rem 0.8rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 216, 109, 0.16);
+  background: rgba(255, 216, 109, 0.06);
+}
+
+.social-production-inline span {
+  color: var(--text-soft);
+  font-size: 0.8rem;
+}
+
+.social-focus-stack {
+  display: grid;
+  gap: 0.85rem;
+}
+
+.social-brand-card,
+.social-track-card {
+  padding: 0.9rem 0.95rem;
+}
+
+.social-brand-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.45rem;
+  margin-bottom: 0.75rem;
+}
+
+.social-brand-head strong {
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+}
+
+.social-brand-strip {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.social-brand-logo {
+  margin: 0;
+  display: grid;
+  gap: 0.45rem;
+  justify-items: center;
+  padding: 0.7rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.025);
+}
+
+.social-brand-logo img {
+  display: block;
+  width: 100%;
+  max-width: 92px;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.social-brand-logo figcaption {
+  color: var(--text-soft);
+  font-size: 0.76rem;
+  text-align: center;
+}
+
+.social-track-list {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.social-track-item {
+  display: grid;
+  gap: 0.18rem;
+  padding: 0.68rem 0.75rem;
+  border-radius: 12px;
+  border: 1px solid rgba(52, 228, 255, 0.12);
+  background: rgba(52, 228, 255, 0.04);
+}
+
+.social-track-item span,
+.social-track-item small {
+  color: var(--text-soft);
+}
+
+.social-track-item small {
+  font-size: 0.76rem;
+}
+
 .social-summary-card {
   padding: 0.85rem 0.9rem;
   border-radius: 14px;
@@ -2933,6 +3086,9 @@ a { color: inherit; text-decoration: none; }
   .agentsroom-network-legend {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+  .social-hero-grid {
+    grid-template-columns: 1fr;
+  }
   .social-route-grid {
     grid-template-columns: 1fr;
   }
@@ -2940,9 +3096,15 @@ a { color: inherit; text-decoration: none; }
   .social-registry-card {
     grid-template-columns: 1fr;
   }
+  .social-couple-card {
+    grid-template-columns: 1fr;
+  }
   .social-profile-media,
   .social-registry-media {
     min-height: 140px;
+  }
+  .social-couple-media {
+    min-height: 220px;
   }
   .social-profile-media.is-photo img,
   .social-registry-media.is-photo img {
@@ -3033,6 +3195,10 @@ a { color: inherit; text-decoration: none; }
   .social-summary-grid,
   .social-profile-grid {
     grid-template-columns: 1fr;
+  }
+
+  .social-brand-strip {
+    grid-template-columns: 1fr 1fr;
   }
 
   .social-profile-card,
@@ -4029,6 +4195,10 @@ a { color: inherit; text-decoration: none; }
 
   .social-profile-grid,
   .social-registry-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .social-brand-strip {
     grid-template-columns: 1fr;
   }
 

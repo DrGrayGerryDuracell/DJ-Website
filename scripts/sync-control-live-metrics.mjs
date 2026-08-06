@@ -5,6 +5,7 @@ import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
 import vm from "node:vm";
+import { getTikTokTokenStatus, resolveTikTokAccessToken } from "./tiktok-oauth-manager.mjs";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const outPath = `${repoRoot}/control/js/live-metrics.json`;
@@ -906,15 +907,56 @@ async function getTikTokProfileFromApi(accessToken) {
   };
 }
 
-async function getTikTokProfile(uniqueId, accessToken) {
-  if (typeof accessToken === "string" && accessToken.trim().length > 0) {
-    const apiProfile = await getTikTokProfileFromApi(accessToken.trim());
+async function getTikTokProfile(uniqueId, tokenSession) {
+  const accessToken = typeof tokenSession?.accessToken === "string" ? tokenSession.accessToken.trim() : "";
+  const tokenSource = tokenSession?.source || "missing";
+  const tokenDiagnostics = tokenSession?.diagnostics || "Kein Token";
+
+  if (accessToken.length > 0) {
+    const apiProfile = await getTikTokProfileFromApi(accessToken);
     if (apiProfile.available) {
-      return apiProfile;
+      return {
+        ...apiProfile,
+        tokenSource,
+        tokenDiagnostics
+      };
     }
   }
 
-  return getTikTokProfileFallback(uniqueId);
+  return {
+    ...(await getTikTokProfileFallback(uniqueId)),
+    tokenSource,
+    tokenDiagnostics
+  };
+}
+
+async function safeResolveTikTokToken(accountKey) {
+  try {
+    return await resolveTikTokAccessToken(accountKey);
+  } catch (error) {
+    return {
+      accessToken: "",
+      source: "error",
+      refreshed: false,
+      accountKey,
+      diagnostics: error instanceof Error ? error.message : String(error)
+    };
+  }
+}
+
+function formatTikTokSourceLabel(profile) {
+  const sourceLabel = profile.source === "tiktok-api-v2" ? "TikTok API v2 OAuth" : "TikTok Profil-HTML";
+  const tokenLabel =
+    profile.tokenSource === "refresh-token"
+      ? "Refresh aktiv"
+      : profile.tokenSource === "token-store"
+        ? "Token Store"
+        : profile.tokenSource === "env-access-token"
+          ? "Env Token"
+          : profile.tokenSource === "error"
+            ? "Tokenfehler"
+            : "kein OAuth";
+  return `${sourceLabel} • ${tokenLabel}${profile.statusCode != null ? ` • Code ${profile.statusCode}` : ""}${profile.likes != null ? ` • Likes ${profile.likes.toLocaleString("de-DE")}` : ""}`;
 }
 
 async function getSoundCloudClientId() {
@@ -1100,13 +1142,19 @@ async function main() {
     return { ...job, state: enabled === false ? "warn" : job.defaultState, stateLabel: enabled === false ? "Pausiert" : job.defaultLabel };
   });
 
-  const [pageChecks, soundcloud, tiktokDr, tiktokMrs, shirteeStore] = await Promise.all([
+  const [pageChecks, soundcloud, tiktokDrToken, tiktokMrsToken, shirteeStore] = await Promise.all([
     Promise.all(corePages.map((path) => checkPage(path))),
     getSoundCloudProfile(),
-    getTikTokProfile("drgray_mrsdrgray", process.env.TIKTOK_DR_ACCESS_TOKEN),
-    getTikTokProfile("gray.afterhours", process.env.TIKTOK_MRS_ACCESS_TOKEN),
+    safeResolveTikTokToken("dr"),
+    safeResolveTikTokToken("mrs"),
     getShirteeStoreOverview()
   ]);
+  const [tiktokDr, tiktokMrs] = await Promise.all([
+    getTikTokProfile("drgray_mrsdrgray", tiktokDrToken),
+    getTikTokProfile("gray.afterhours", tiktokMrsToken)
+  ]);
+  const tiktokDrStatus = getTikTokTokenStatus("dr");
+  const tiktokMrsStatus = getTikTokTokenStatus("mrs");
 
   const now = new Date();
   const generatedAtIso = now.toISOString();
@@ -1338,8 +1386,8 @@ async function main() {
         tiktokDr.followers != null
           ? `${tiktokDr.followers.toLocaleString("de-DE")} Follower • ${tiktokDr.videos != null ? `${tiktokDr.videos} Videos` : `${hrefCounts.tiktokDr} Linksignale`}`
           : `${hrefCounts.tiktokDr} Linksignale im Seiteninhalt`,
-      statusLabel: tiktokDr.canonical ? "Profil erreichbar" : "Profil nicht bestaetigt",
-      sourceLabel: `${tiktokDr.source === "tiktok-api-v2" ? "TikTok API v2 OAuth" : "TikTok Profil-HTML"}${tiktokDr.statusCode != null ? ` • Code ${tiktokDr.statusCode}` : ""}${tiktokDr.likes != null ? ` • Likes ${tiktokDr.likes.toLocaleString("de-DE")}` : ""}`
+      statusLabel: tiktokDr.source === "tiktok-api-v2" ? "Live API aktiv" : tiktokDr.canonical ? "HTML-Fallback aktiv" : "Profil nicht bestaetigt",
+      sourceLabel: formatTikTokSourceLabel(tiktokDr)
     },
     {
       platform: "TikTok Backup",
@@ -1354,8 +1402,8 @@ async function main() {
         tiktokMrs.followers != null
           ? `${tiktokMrs.followers.toLocaleString("de-DE")} Follower • ${tiktokMrs.videos != null ? `${tiktokMrs.videos} Videos` : `${hrefCounts.tiktokMrs} Linksignale`}`
           : `${hrefCounts.tiktokMrs} Linksignale im Seiteninhalt`,
-      statusLabel: tiktokMrs.canonical ? "Profil erreichbar" : "Profil nicht bestaetigt",
-      sourceLabel: `${tiktokMrs.source === "tiktok-api-v2" ? "TikTok API v2 OAuth" : "TikTok Profil-HTML"}${tiktokMrs.statusCode != null ? ` • Code ${tiktokMrs.statusCode}` : ""}${tiktokMrs.likes != null ? ` • Likes ${tiktokMrs.likes.toLocaleString("de-DE")}` : ""}`
+      statusLabel: tiktokMrs.source === "tiktok-api-v2" ? "Live API aktiv" : tiktokMrs.canonical ? "HTML-Fallback aktiv" : "Profil nicht bestaetigt",
+      sourceLabel: formatTikTokSourceLabel(tiktokMrs)
     },
     {
       platform: "SoundCloud",
@@ -1694,7 +1742,9 @@ async function main() {
       comparisons: [
         { label: "TikTok Links im Seiteninhalt", value: String(hrefCounts.tiktok) },
         { label: "SoundCloud Links im Seiteninhalt", value: String(hrefCounts.soundcloud) },
-        { label: "Shop Links im Seiteninhalt", value: String(hrefCounts.shop) }
+        { label: "Shop Links im Seiteninhalt", value: String(hrefCounts.shop) },
+        { label: "TikTok OAuth Hauptseite", value: tiktokDrStatus.tokenFresh || tiktokDr.source === "tiktok-api-v2" ? "aktiv" : tiktokDr.tokenDiagnostics || "fehlt" },
+        { label: "TikTok OAuth Backup", value: tiktokMrsStatus.tokenFresh || tiktokMrs.source === "tiktok-api-v2" ? "aktiv" : tiktokMrs.tokenDiagnostics || "fehlt" }
       ],
       contentDirection: {
         currentAngle: contentSuggestions.contentDirection?.currentAngle || "Couple-Techno mit Performance-, Emotional- und Afterhours-Linie",
@@ -1704,14 +1754,17 @@ async function main() {
         genres: Array.isArray(contentSuggestions.contentDirection?.genres) ? contentSuggestions.contentDirection.genres : [],
         brandAssets,
         soundcloudHighlights,
-        soundcloudStrongest: contentSuggestions.soundcloudSnapshot?.strongestTrack || null
+        soundcloudStrongest: contentSuggestions.soundcloudSnapshot?.strongestTrack || null,
+        coupleAliases: contentSuggestions.coupleAliases || {},
+        pairHero: contentSuggestions.pairHero || null,
+        productionRun: contentSuggestions.productionRun || null
       },
       officialAccounts: [
         { label: "Website", url: websiteBase, status: "live", displayName: "drgray-mrsdrgray.com", handle: "Hauptdomain", profileImage: null, note: "Kontrollpfad / Hauptdomain" },
         { label: "Shirtee Store", url: socialAccountOverrideState.shop?.url || liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", status: shopEnvironmentIssue ? "check" : shopProblemCount === 0 ? "live" : "check", displayName: socialAccountOverrideState.shop?.displayName || "Dr. Gray & Mrs. Dr. Gray Store", handle: socialAccountOverrideState.shop?.handle || "Shirtee", profileImage: socialAccountOverrideState.shop?.profileImage || null, note: socialAccountOverrideState.shop?.note || "Store / Produktlinks" },
         { label: "SoundCloud", url: socialAccountOverrideState.soundcloud?.url || "https://soundcloud.com/drgray_sic", status: soundcloud.available ? "live" : soundcloudEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.soundcloud?.displayName || (soundcloud.available ? soundcloud.user.full_name || soundcloud.user.username || "drgray_sic" : "drgray_sic"), handle: socialAccountOverrideState.soundcloud?.handle || (soundcloud.available && soundcloud.user.permalink_url ? `@${String(soundcloud.user.permalink_url).split("/").pop()}` : "@drgray_sic"), profileImage: socialAccountOverrideState.soundcloud?.profileImage || (soundcloud.available ? soundcloud.user.avatar_url || null : "/assets/generated/brand/dr-gray-logo.jpg"), note: socialAccountOverrideState.soundcloud?.note || "Musik / Profilsignal" },
-        { label: "TikTok Hauptseite", url: socialAccountOverrideState.tiktokMain?.url || "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokMain?.displayName || tiktokDr.displayName || "Dr. Gray & Mrs. Dr. Gray", handle: socialAccountOverrideState.tiktokMain?.handle || (tiktokDr.username ? `@${tiktokDr.username}` : "@drgray_mrsdrgray"), profileImage: socialAccountOverrideState.tiktokMain?.profileImage || tiktokDr.avatarUrl || "/assets/generated/brand/dr-gray-logo.jpg", verified: Boolean(tiktokDr.isVerified), note: socialAccountOverrideState.tiktokMain?.note || "Hauptprofil" },
-        { label: "TikTok Backup", url: socialAccountOverrideState.tiktokBackup?.url || "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokBackup?.displayName || tiktokMrs.displayName || "Gray Afterhours", handle: socialAccountOverrideState.tiktokBackup?.handle || (tiktokMrs.username ? `@${tiktokMrs.username}` : "@gray.afterhours"), profileImage: socialAccountOverrideState.tiktokBackup?.profileImage || tiktokMrs.avatarUrl || "/assets/generated/brand/mrs-dr-gray-logo.jpg", verified: Boolean(tiktokMrs.isVerified), note: socialAccountOverrideState.tiktokBackup?.note || "Backup-Profil" }
+        { label: "TikTok Hauptseite", url: socialAccountOverrideState.tiktokMain?.url || "https://www.tiktok.com/@drgray_mrsdrgray", status: tiktokDr.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokMain?.displayName || tiktokDr.displayName || "Dr. Gray & Mrs. Dr. Gray", handle: socialAccountOverrideState.tiktokMain?.handle || (tiktokDr.username ? `@${tiktokDr.username}` : "@drgray_mrsdrgray"), profileImage: socialAccountOverrideState.tiktokMain?.profileImage || tiktokDr.avatarUrl || "/assets/generated/brand/dr-gray-logo.jpg", verified: Boolean(tiktokDr.isVerified), note: socialAccountOverrideState.tiktokMain?.note || (tiktokDr.source === "tiktok-api-v2" ? "Hauptprofil · Live API" : `Hauptprofil · ${tiktokDr.tokenDiagnostics || "HTML-Fallback"}`) },
+        { label: "TikTok Backup", url: socialAccountOverrideState.tiktokBackup?.url || "https://www.tiktok.com/@gray.afterhours", status: tiktokMrs.canonical ? "live" : tiktokEnvironmentIssue ? "check" : "check", displayName: socialAccountOverrideState.tiktokBackup?.displayName || tiktokMrs.displayName || "Gray Afterhours", handle: socialAccountOverrideState.tiktokBackup?.handle || (tiktokMrs.username ? `@${tiktokMrs.username}` : "@gray.afterhours"), profileImage: socialAccountOverrideState.tiktokBackup?.profileImage || tiktokMrs.avatarUrl || "/assets/generated/brand/mrs-dr-gray-logo.jpg", verified: Boolean(tiktokMrs.isVerified), note: socialAccountOverrideState.tiktokBackup?.note || (tiktokMrs.source === "tiktok-api-v2" ? "Backup-Profil · Live API" : `Backup-Profil · ${tiktokMrs.tokenDiagnostics || "HTML-Fallback"}`) }
       ]
     },
     performanceMetrics: {
@@ -1779,6 +1832,7 @@ async function main() {
         brandAssets,
         soundcloudSnapshot: contentSuggestions.soundcloudSnapshot || {},
         contentDirection: contentSuggestions.contentDirection || {},
+        productionRun: contentSuggestions.productionRun || null,
         constraints: contentSuggestions.constraints || {},
         approvalCommands: [
           "POSTEN",

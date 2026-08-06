@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T10:15:17.801Z",
-    "generatedAtLabel": "06.08.26, 12:15",
+    "generatedAt": "2026-08-06T10:31:31.580Z",
+    "generatedAtLabel": "06.08.26, 12:31",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 12:15",
+      "value": "06.08.26, 12:31",
       "level": "info"
     }
   },
@@ -324,8 +324,8 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T10:15:17.801Z",
-      "checkedAtLabel": "06.08.26, 12:15"
+      "checkedAt": "2026-08-06T10:31:31.580Z",
+      "checkedAtLabel": "06.08.26, 12:31"
     },
     "catalog": {
       "totalItems": 167,
@@ -2979,17 +2979,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "type": "info",
         "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "type": "info",
         "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "type": "info",
         "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
@@ -3008,7 +3008,7 @@
         "metricValue": 15,
         "valueLabel": "15 Linksignale im Seiteninhalt",
         "statusLabel": "Profil nicht bestaetigt",
-        "sourceLabel": "TikTok Profil-HTML"
+        "sourceLabel": "TikTok Profil-HTML • kein OAuth"
       },
       {
         "platform": "TikTok Backup",
@@ -3021,7 +3021,7 @@
         "metricValue": 10,
         "valueLabel": "10 Linksignale im Seiteninhalt",
         "statusLabel": "Profil nicht bestaetigt",
-        "sourceLabel": "TikTok Profil-HTML"
+        "sourceLabel": "TikTok Profil-HTML • kein OAuth"
       },
       {
         "platform": "SoundCloud",
@@ -3089,6 +3089,14 @@
       {
         "label": "Shop Links im Seiteninhalt",
         "value": "8"
+      },
+      {
+        "label": "TikTok OAuth Hauptseite",
+        "value": "Kein Access-/Refresh-Token konfiguriert"
+      },
+      {
+        "label": "TikTok OAuth Backup",
+        "value": "Kein Access-/Refresh-Token konfiguriert"
       }
     ],
     "contentDirection": {
@@ -3185,6 +3193,79 @@
         "likes": 564,
         "date": "2025-07-20",
         "url": "https://soundcloud.com/drgray_sic/love-is-techno-part-i"
+      },
+      "coupleAliases": {
+        "primary": "Dr. Gray & Mrs. Dr. Gray",
+        "drGray": "Dr. Gray",
+        "mrsDrGray": "Mrs. Dr. Gray"
+      },
+      "pairHero": "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-sun-portrait-01.jpg",
+      "productionRun": {
+        "id": "couple-launch-2026-08-06",
+        "title": "Couple-Techno Launch Run",
+        "status": "ready",
+        "statusLabel": "Produktionslauf bereit",
+        "channel": "TikTok Hauptseite",
+        "performerAliases": {
+          "primary": "Dr. Gray & Mrs. Dr. Gray",
+          "drGray": "Dr. Gray",
+          "mrsDrGray": "Mrs. Dr. Gray"
+        },
+        "pairHero": "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-sun-portrait-01.jpg",
+        "logos": [
+          "~/TikTok-DJ-Content/references/branding/dr-gray-logo.jpg",
+          "~/TikTok-DJ-Content/references/branding/mrs-dr-gray-logo.jpg"
+        ],
+        "audio": {
+          "title": "Love is Techno Part I",
+          "url": "https://soundcloud.com/drgray_sic/love-is-techno-part-i",
+          "note": "Eigener Sound bevorzugt, sonst trendiger Techno nur nach manueller Freigabe."
+        },
+        "shotPlan": [
+          "0-3s: Paar-Hook im Close-Up, direkt in Kamera, starker erster Frame.",
+          "3-8s: schneller Cut auf Bewegung / Setup / Nachtaufnahme mit On-Video-Text.",
+          "8-14s: Couple Energy oder B2B-Moment, Beat-Sync und Lichtwechsel.",
+          "14-20s: Logo- oder Track-CTA, klarer Abschluss fuer Kommentare / Follow."
+        ],
+        "editRules": [
+          "Immer 9:16, TikTok safe-area beachten.",
+          "Nur echte Referenzen, keine Veraenderung der Gesichtsgrundstruktur.",
+          "Video muss ultra-realistisch aussehen, kein KI-Look.",
+          "Texteinblendungen kurz, druckvoll und beat-synchron."
+        ],
+        "references": {
+          "pairPortraitCount": 8,
+          "sourcePhotoCount": 9,
+          "brandGraphicsCount": 2
+        },
+        "captions": [
+          {
+            "title": "Driving techno opener for late Cologne floors",
+            "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+            "hashtags": [
+              "#techno",
+              "#afterhours",
+              "#drgray",
+              "#b2b",
+              "#koeln"
+            ]
+          },
+          {
+            "title": "Emotional B2B sequence with rising tension every 8 bars",
+            "caption": "Emotional pressure, clean groove, no compromise. Driving Techno | Emotional | B2B | Köln ❤️",
+            "hashtags": [
+              "#drivingtechno",
+              "#djlife",
+              "#tiktokdj",
+              "#soundcloud",
+              "#afterhours"
+            ]
+          }
+        ],
+        "approval": {
+          "required": true,
+          "route": "Hermes -> Dashboard/Telegram -> manuelle Freigabe"
+        }
       }
     },
     "officialAccounts": [
@@ -3223,7 +3304,7 @@
         "handle": "@drgray_mrsdrgray",
         "profileImage": "/assets/generated/brand/dr-gray-logo.jpg",
         "verified": false,
-        "note": "Hauptprofil"
+        "note": "Hauptprofil · Kein Access-/Refresh-Token konfiguriert"
       },
       {
         "label": "TikTok Backup",
@@ -3233,7 +3314,7 @@
         "handle": "@gray.afterhours",
         "profileImage": "/assets/generated/brand/mrs-dr-gray-logo.jpg",
         "verified": false,
-        "note": "Backup-Profil"
+        "note": "Backup-Profil · Kein Access-/Refresh-Token konfiguriert"
       }
     ]
   },
@@ -3484,7 +3565,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 12:15"
+          "createdAt": "06.08.26, 12:31"
         },
         {
           "id": "hermes-test_2026-08-02T06-26-57",
@@ -3497,7 +3578,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 12:15"
+          "createdAt": "06.08.26, 12:31"
         },
         {
           "id": "hermes-test_2026-08-02T06-25-50",
@@ -3510,7 +3591,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 12:15"
+          "createdAt": "06.08.26, 12:31"
         },
         {
           "id": "hermes-test_2026-08-02T06-25-16",
@@ -3523,7 +3604,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 12:15"
+          "createdAt": "06.08.26, 12:31"
         },
         {
           "id": "hermes-test_2026-08-02T06-24-31",
@@ -3536,7 +3617,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 12:15"
+          "createdAt": "06.08.26, 12:31"
         },
         {
           "id": "hermes-test_2026-08-02T06-24-06",
@@ -3549,7 +3630,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 12:15"
+          "createdAt": "06.08.26, 12:31"
         }
       ]
     },
@@ -3672,7 +3753,17 @@
           "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-desk-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
-          "policyVersion": "2026-08-06"
+          "policyVersion": "2026-08-06",
+          "delivery": {
+            "platform": "TikTok",
+            "aspectRatio": "9:16",
+            "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+            "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+          },
+          "visualSources": [
+            "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-desk-01.jpg",
+            "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-sun-portrait-01.jpg"
+          ]
         },
         {
           "id": "auto-draft-2",
@@ -3696,7 +3787,17 @@
           "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-neon-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
-          "policyVersion": "2026-08-06"
+          "policyVersion": "2026-08-06",
+          "delivery": {
+            "platform": "TikTok",
+            "aspectRatio": "9:16",
+            "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+            "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+          },
+          "visualSources": [
+            "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-neon-01.jpg",
+            "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-cologne-night-01.jpg"
+          ]
         },
         {
           "id": "auto-draft-3",
@@ -3720,7 +3821,17 @@
           "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-outdoor-dog-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
-          "policyVersion": "2026-08-06"
+          "policyVersion": "2026-08-06",
+          "delivery": {
+            "platform": "TikTok",
+            "aspectRatio": "9:16",
+            "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+            "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+          },
+          "visualSources": [
+            "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-outdoor-dog-01.jpg",
+            "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-playful-sofa-01.jpg"
+          ]
         },
         {
           "id": "auto-draft-4",
@@ -3744,7 +3855,17 @@
           "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-pair-preview-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
-          "policyVersion": "2026-08-06"
+          "policyVersion": "2026-08-06",
+          "delivery": {
+            "platform": "TikTok",
+            "aspectRatio": "9:16",
+            "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+            "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+          },
+          "visualSources": [
+            "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-pair-preview-01.jpg",
+            "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-bw-close-01.jpg"
+          ]
         },
         {
           "id": "auto-draft-5",
@@ -3768,7 +3889,17 @@
           "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-drive-bw-01.jpg",
           "editHint": "Hermes edit plan generated from Telegram approval.",
           "approvalPath": "telegram+dashboard",
-          "policyVersion": "2026-08-06"
+          "policyVersion": "2026-08-06",
+          "delivery": {
+            "platform": "TikTok",
+            "aspectRatio": "9:16",
+            "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+            "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+          },
+          "visualSources": [
+            "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-drive-bw-01.jpg",
+            "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-rain-neon-01.jpg"
+          ]
         }
       ],
       "referenceState": {
@@ -3879,6 +4010,73 @@
           "Dark Techno"
         ]
       },
+      "productionRun": {
+        "id": "couple-launch-2026-08-06",
+        "title": "Couple-Techno Launch Run",
+        "status": "ready",
+        "statusLabel": "Produktionslauf bereit",
+        "channel": "TikTok Hauptseite",
+        "performerAliases": {
+          "primary": "Dr. Gray & Mrs. Dr. Gray",
+          "drGray": "Dr. Gray",
+          "mrsDrGray": "Mrs. Dr. Gray"
+        },
+        "pairHero": "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-sun-portrait-01.jpg",
+        "logos": [
+          "~/TikTok-DJ-Content/references/branding/dr-gray-logo.jpg",
+          "~/TikTok-DJ-Content/references/branding/mrs-dr-gray-logo.jpg"
+        ],
+        "audio": {
+          "title": "Love is Techno Part I",
+          "url": "https://soundcloud.com/drgray_sic/love-is-techno-part-i",
+          "note": "Eigener Sound bevorzugt, sonst trendiger Techno nur nach manueller Freigabe."
+        },
+        "shotPlan": [
+          "0-3s: Paar-Hook im Close-Up, direkt in Kamera, starker erster Frame.",
+          "3-8s: schneller Cut auf Bewegung / Setup / Nachtaufnahme mit On-Video-Text.",
+          "8-14s: Couple Energy oder B2B-Moment, Beat-Sync und Lichtwechsel.",
+          "14-20s: Logo- oder Track-CTA, klarer Abschluss fuer Kommentare / Follow."
+        ],
+        "editRules": [
+          "Immer 9:16, TikTok safe-area beachten.",
+          "Nur echte Referenzen, keine Veraenderung der Gesichtsgrundstruktur.",
+          "Video muss ultra-realistisch aussehen, kein KI-Look.",
+          "Texteinblendungen kurz, druckvoll und beat-synchron."
+        ],
+        "references": {
+          "pairPortraitCount": 8,
+          "sourcePhotoCount": 9,
+          "brandGraphicsCount": 2
+        },
+        "captions": [
+          {
+            "title": "Driving techno opener for late Cologne floors",
+            "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+            "hashtags": [
+              "#techno",
+              "#afterhours",
+              "#drgray",
+              "#b2b",
+              "#koeln"
+            ]
+          },
+          {
+            "title": "Emotional B2B sequence with rising tension every 8 bars",
+            "caption": "Emotional pressure, clean groove, no compromise. Driving Techno | Emotional | B2B | Köln ❤️",
+            "hashtags": [
+              "#drivingtechno",
+              "#djlife",
+              "#tiktokdj",
+              "#soundcloud",
+              "#afterhours"
+            ]
+          }
+        ],
+        "approval": {
+          "required": true,
+          "route": "Hermes -> Dashboard/Telegram -> manuelle Freigabe"
+        }
+      },
       "constraints": {
         "pairRequired": true,
         "faceLock": true,
@@ -3916,25 +4114,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 12:15",
+      "time": "06.08.26, 12:31",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 12:15",
+      "time": "06.08.26, 12:31",
       "type": "check",
       "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 12:15",
+      "time": "06.08.26, 12:31",
       "type": "check",
       "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 12:15",
+      "time": "06.08.26, 12:31",
       "type": "check",
       "text": "TikTok Profile: lokal nicht verifizierbar"
     }
@@ -5059,7 +5257,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -5068,7 +5266,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
@@ -5077,7 +5275,7 @@
       },
       {
         "topic": "Broker",
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -5086,7 +5284,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
@@ -5095,7 +5293,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
@@ -5104,7 +5302,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
@@ -5113,7 +5311,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
@@ -5122,7 +5320,7 @@
       },
       {
         "topic": "Rueckgabe",
-        "time": "06.08.26, 12:15",
+        "time": "06.08.26, 12:31",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
@@ -5198,7 +5396,7 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T12:13:12.462407",
+        "updated_at": "2026-08-06T12:28:13.219669",
         "platformCounts": {
           "telegram": 1
         }
@@ -5305,7 +5503,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 12:13",
+        "detail": "Channels: 1 • updated 06.08.26, 12:28",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },

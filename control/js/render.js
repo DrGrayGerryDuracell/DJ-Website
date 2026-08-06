@@ -1825,6 +1825,7 @@ export function renderContent(container, contentPerformance) {
   const brandAssets = Array.isArray(workflow.brandAssets) ? workflow.brandAssets : [];
   const contentDirection = workflow.contentDirection || {};
   const soundcloudSnapshot = workflow.soundcloudSnapshot || {};
+  const productionRun = workflow.productionRun || {};
   container.innerHTML = `
     <article class="panel">
       <div class="section-banner">
@@ -1917,6 +1918,17 @@ export function renderContent(container, contentPerformance) {
         <li><span>Brand Assets</span><strong>${escapeHtml(String(workflow.referenceState?.brandGraphicsCount ?? brandAssets.length ?? 0))}</strong></li>
         <li><span>Approved Songs</span><strong>${escapeHtml(String(workflow.referenceState?.approvedSongCount ?? 0))}</strong></li>
       </ul>
+      ${productionRun?.title ? `
+        <article class="content-runtime-card">
+          <h4>Aktiver Couple-Produktionslauf</h4>
+          <ul class="status-list compact">
+            <li><span>Titel</span><strong>${escapeHtml(productionRun.title)}</strong></li>
+            <li><span>Kanal</span><strong>${escapeHtml(productionRun.channel || "TikTok")}</strong></li>
+            <li><span>Status</span><strong class="status-pill ${statusClass(productionRun.status || "ready")}">${escapeHtml(productionRun.statusLabel || productionRun.status || "bereit")}</strong></li>
+          </ul>
+          <p class="muted-line">${escapeHtml((productionRun.shotPlan || []).slice(0, 3).join(" · "))}</p>
+        </article>
+      ` : ""}
     </article>
     <article class="panel">
       <div class="section-banner">
@@ -2141,6 +2153,11 @@ export function renderSocial(container, socialMetrics) {
   const contentSignals = socialMetrics.links.reduce((sum, row) => sum + Number(row.metricValue || 0), 0);
   const soundcloudRow = socialMetrics.links.find((row) => /soundcloud/i.test(row.platform || ""));
   const direction = socialMetrics.contentDirection || {};
+  const brandAssets = Array.isArray(direction.brandAssets) ? direction.brandAssets : [];
+  const trackHighlights = Array.isArray(direction.soundcloudHighlights) ? direction.soundcloudHighlights.slice(0, 3) : [];
+  const coupleAliases = direction.coupleAliases || {};
+  const productionRun = direction.productionRun || {};
+  const coupleLine = coupleAliases.primary || "Dr. Gray & Mrs. Dr. Gray";
   const summaryCards = [
     { label: "Staerkster Kanal", value: strongest, meta: "Routing / Fokus", status: "live" },
     { label: "Live Profile", value: `${liveProfiles}/${socialMetrics.links.length}`, meta: "aktuell bestaetigt", status: liveProfiles >= 2 ? "connected" : "warn" },
@@ -2168,6 +2185,7 @@ export function renderSocial(container, socialMetrics) {
       note: related?.sourceLabel || item.url
     };
   });
+  const pairHero = direction.pairHero || profileCards.find((item) => item.imageMode === "photo")?.image || registryCards.find((item) => item.imageMode === "photo")?.image || brandAssets[0]?.path || "/assets/generated/brand/dr-gray-logo.jpg";
 
   container.innerHTML = `
     <article class="panel">
@@ -2179,6 +2197,58 @@ export function renderSocial(container, socialMetrics) {
         <div class="section-banner-chips">
           <span class="status-pill is-live">Stärkster Kanal: <strong>${escapeHtml(strongest)}</strong></span>
           <span class="status-pill is-connected">Live-Profile: <strong>${liveProfiles}/${socialMetrics.links.length}</strong></span>
+        </div>
+      </div>
+      <div class="social-hero-grid">
+        <article class="social-couple-card">
+          <div class="social-couple-media">
+            <img src="${escapeHtml(pairHero)}" alt="${escapeHtml(coupleLine)}">
+          </div>
+          <div class="social-couple-copy">
+            <p class="eyebrow">Couple Line</p>
+            <h4>${escapeHtml(coupleLine)}</h4>
+            <p>${escapeHtml(direction.currentAngle || "Couple-Techno Linie wird aus Referenzen, Logos und Track-Signalen aufgebaut.")}</p>
+            <div class="social-inline-pills">
+              ${(direction.pillars || []).slice(0, 4).map((item) => `<span class="status-pill is-connected">${escapeHtml(item)}</span>`).join("")}
+            </div>
+            ${productionRun?.title ? `
+              <div class="social-production-inline">
+                <strong>${escapeHtml(productionRun.title)}</strong>
+                <span>${escapeHtml(productionRun.statusLabel || "Produktionslauf")}</span>
+              </div>
+            ` : ""}
+          </div>
+        </article>
+        <div class="social-focus-stack">
+          <article class="social-brand-card">
+            <div class="social-brand-head">
+              <strong>Brand Assets</strong>
+              <span class="status-pill is-connected">${brandAssets.length} Logos</span>
+            </div>
+            <div class="social-brand-strip">
+              ${brandAssets.map((item) => `
+                <figure class="social-brand-logo">
+                  <img src="${escapeHtml(item.path)}" alt="${escapeHtml(item.label)}">
+                  <figcaption>${escapeHtml(item.label)}</figcaption>
+                </figure>
+              `).join("")}
+            </div>
+          </article>
+          <article class="social-track-card">
+            <div class="social-brand-head">
+              <strong>Track Highlights</strong>
+              <span class="status-pill is-live">${escapeHtml(soundcloudRow?.statusLabel || "Live")}</span>
+            </div>
+            <div class="social-track-list">
+              ${trackHighlights.length ? trackHighlights.map((item) => `
+                <div class="social-track-item">
+                  <strong>${escapeHtml(item.title || "Track")}</strong>
+                  <span>${escapeHtml(item.date || "n/a")}</span>
+                  <small>${escapeHtml(`${item.plays || 0} Plays · ${(item.genres || []).slice(0, 2).join(" • ")}`)}</small>
+                </div>
+              `).join("") : `<p class="muted-line">Keine Track-Highlights im Snapshot.</p>`}
+            </div>
+          </article>
         </div>
       </div>
       <div class="social-summary-grid">
@@ -2262,6 +2332,19 @@ export function renderSocial(container, socialMetrics) {
           <p>${escapeHtml(direction.soundcloudStrongest?.title || "Kein Track-Highlight erkannt.")}</p>
           <small>${escapeHtml((direction.genres || []).join(" • "))}</small>
         </article>
+        ${productionRun?.title ? `
+          <article class="editor-card">
+            <div class="editor-card-head">
+              <div>
+                <strong>Produktionslauf</strong>
+                <span>${escapeHtml(productionRun.channel || "TikTok")}</span>
+              </div>
+              <span class="status-pill ${statusClass(productionRun.status || "ready")}">${escapeHtml(productionRun.statusLabel || productionRun.status || "bereit")}</span>
+            </div>
+            <p>${escapeHtml((productionRun.shotPlan || []).slice(0, 2).join(" · "))}</p>
+            <small>${escapeHtml((productionRun.editRules || []).slice(0, 2).join(" • "))}</small>
+          </article>
+        ` : ""}
       </div>
       <table class="data-table">
         <thead><tr><th>Plattform</th><th>${hasLiveValues ? "Live-Wert" : "Klicks"}</th><th>${hasLiveValues ? "Status" : "CTR"}</th></tr></thead>

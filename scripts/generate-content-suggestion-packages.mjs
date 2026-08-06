@@ -101,6 +101,12 @@ function main() {
     recurringHashtags: uniqueStrings(captions.flatMap((entry) => Array.isArray(entry.hashtags) ? entry.hashtags : [])).slice(0, 8),
     genres: topGenres
   };
+  const pairHero = pairPortraits[0] || sourcePhotos[0] || null;
+  const coupleAliases = {
+    primary: "Dr. Gray & Mrs. Dr. Gray",
+    drGray: "Dr. Gray",
+    mrsDrGray: "Mrs. Dr. Gray"
+  };
 
   const referenceState = {
     ready: pairPortraits.length > 0 && Boolean(references.martinFaceReference) && Boolean(references.mrsFaceReference),
@@ -135,15 +141,72 @@ function main() {
         sourceAssetHint: publicPath(sourceClips[index] || sourcePhotos[index] || null),
         editHint: plan.notes?.[0] || "Mit Effekten, Schnitten, Uebergaengen und On-Video-Text ausarbeiten.",
         approvalPath: "telegram+dashboard",
-        policyVersion: policy.version || null
+        policyVersion: policy.version || null,
+        delivery: {
+          platform: "TikTok",
+          aspectRatio: "9:16",
+          framingRule: "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+          editRule: "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+        },
+        visualSources: uniqueStrings([
+          publicPath(sourceClips[index] || null),
+          publicPath(sourcePhotos[index] || null),
+          publicPath(pairPortraits[index] || pairHero || null)
+        ]).slice(0, 3)
       };
     });
+
+  const productionRun = {
+    id: `couple-launch-${new Date().toISOString().slice(0, 10)}`,
+    title: "Couple-Techno Launch Run",
+    status: referenceState.ready ? "ready" : "warn",
+    statusLabel: referenceState.ready ? "Produktionslauf bereit" : "Referenzen unvollstaendig",
+    channel: "TikTok Hauptseite",
+    performerAliases: coupleAliases,
+    pairHero: publicPath(pairHero),
+    logos: brandGraphics.map((path) => publicPath(path)).filter(Boolean),
+    audio: strongestTrack
+      ? {
+          title: strongestTrack.title,
+          url: strongestTrack.url || null,
+          note: "Eigener Sound bevorzugt, sonst trendiger Techno nur nach manueller Freigabe."
+        }
+      : null,
+    shotPlan: [
+      "0-3s: Paar-Hook im Close-Up, direkt in Kamera, starker erster Frame.",
+      "3-8s: schneller Cut auf Bewegung / Setup / Nachtaufnahme mit On-Video-Text.",
+      "8-14s: Couple Energy oder B2B-Moment, Beat-Sync und Lichtwechsel.",
+      "14-20s: Logo- oder Track-CTA, klarer Abschluss fuer Kommentare / Follow."
+    ],
+    editRules: [
+      "Immer 9:16, TikTok safe-area beachten.",
+      "Nur echte Referenzen, keine Veraenderung der Gesichtsgrundstruktur.",
+      "Video muss ultra-realistisch aussehen, kein KI-Look.",
+      "Texteinblendungen kurz, druckvoll und beat-synchron."
+    ],
+    references: {
+      pairPortraitCount: pairPortraits.length,
+      sourcePhotoCount: sourcePhotos.length,
+      brandGraphicsCount: brandGraphics.length
+    },
+    captions: suggestions.slice(0, 2).map((entry) => ({
+      title: entry.title,
+      caption: entry.caption,
+      hashtags: entry.hashtags
+    })),
+    approval: {
+      required: true,
+      route: "Hermes -> Dashboard/Telegram -> manuelle Freigabe"
+    }
+  };
 
   const payload = {
     generatedAt: new Date().toISOString(),
     policyVersion: policy.version || null,
     latestPlanPath: publicPath(latestPlanPath),
     referenceState,
+    coupleAliases,
+    pairHero: publicPath(pairHero),
     brandAssets: brandGraphics.map((path, index) => ({
       id: `brand-${index + 1}`,
       path: publicPath(path),
@@ -173,6 +236,7 @@ function main() {
         : null
     },
     contentDirection,
+    productionRun,
     suggestions,
     constraints: {
       pairRequired: Boolean(policy?.identity?.pairRequired),

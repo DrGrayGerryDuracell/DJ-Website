@@ -12,6 +12,7 @@
     "check:links": "bash scripts/check-shirtee-links.sh",
     "check:live-links": "node scripts/sync-live-link-status.mjs",
     "sync:control-live": "node scripts/sync-control-live-metrics.mjs",
+    "tiktok:oauth": "node scripts/tiktok-oauth-manager.mjs",
     "generate:content-suggestions": "node scripts/generate-content-suggestion-packages.mjs",
     "generate:upload-queue": "node scripts/generate-upload-queue.mjs",
     "generate:upload-batches": "node scripts/prepare-shirtee-upload-batches.mjs",

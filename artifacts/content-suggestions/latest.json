@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-06T10:15:17.180Z",
+  "generatedAt": "2026-08-06T10:31:31.360Z",
   "policyVersion": "2026-08-06",
   "latestPlanPath": "~/TikTok-DJ-Content/analytics/generated/content_plan_2026-08-02.json",
   "referenceState": {
@@ -10,6 +10,12 @@
     "brandGraphicsCount": 2,
     "approvedSongCount": 0
   },
+  "coupleAliases": {
+    "primary": "Dr. Gray & Mrs. Dr. Gray",
+    "drGray": "Dr. Gray",
+    "mrsDrGray": "Mrs. Dr. Gray"
+  },
+  "pairHero": "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-sun-portrait-01.jpg",
   "brandAssets": [
     {
       "id": "brand-1",
@@ -110,6 +116,73 @@
       "Dark Techno"
     ]
   },
+  "productionRun": {
+    "id": "couple-launch-2026-08-06",
+    "title": "Couple-Techno Launch Run",
+    "status": "ready",
+    "statusLabel": "Produktionslauf bereit",
+    "channel": "TikTok Hauptseite",
+    "performerAliases": {
+      "primary": "Dr. Gray & Mrs. Dr. Gray",
+      "drGray": "Dr. Gray",
+      "mrsDrGray": "Mrs. Dr. Gray"
+    },
+    "pairHero": "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-sun-portrait-01.jpg",
+    "logos": [
+      "~/TikTok-DJ-Content/references/branding/dr-gray-logo.jpg",
+      "~/TikTok-DJ-Content/references/branding/mrs-dr-gray-logo.jpg"
+    ],
+    "audio": {
+      "title": "Love is Techno Part I",
+      "url": "https://soundcloud.com/drgray_sic/love-is-techno-part-i",
+      "note": "Eigener Sound bevorzugt, sonst trendiger Techno nur nach manueller Freigabe."
+    },
+    "shotPlan": [
+      "0-3s: Paar-Hook im Close-Up, direkt in Kamera, starker erster Frame.",
+      "3-8s: schneller Cut auf Bewegung / Setup / Nachtaufnahme mit On-Video-Text.",
+      "8-14s: Couple Energy oder B2B-Moment, Beat-Sync und Lichtwechsel.",
+      "14-20s: Logo- oder Track-CTA, klarer Abschluss fuer Kommentare / Follow."
+    ],
+    "editRules": [
+      "Immer 9:16, TikTok safe-area beachten.",
+      "Nur echte Referenzen, keine Veraenderung der Gesichtsgrundstruktur.",
+      "Video muss ultra-realistisch aussehen, kein KI-Look.",
+      "Texteinblendungen kurz, druckvoll und beat-synchron."
+    ],
+    "references": {
+      "pairPortraitCount": 8,
+      "sourcePhotoCount": 9,
+      "brandGraphicsCount": 2
+    },
+    "captions": [
+      {
+        "title": "Driving techno opener for late Cologne floors",
+        "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+        "hashtags": [
+          "#techno",
+          "#afterhours",
+          "#drgray",
+          "#b2b",
+          "#koeln"
+        ]
+      },
+      {
+        "title": "Emotional B2B sequence with rising tension every 8 bars",
+        "caption": "Emotional pressure, clean groove, no compromise. Driving Techno | Emotional | B2B | Köln ❤️",
+        "hashtags": [
+          "#drivingtechno",
+          "#djlife",
+          "#tiktokdj",
+          "#soundcloud",
+          "#afterhours"
+        ]
+      }
+    ],
+    "approval": {
+      "required": true,
+      "route": "Hermes -> Dashboard/Telegram -> manuelle Freigabe"
+    }
+  },
   "suggestions": [
     {
       "id": "auto-draft-1",
@@ -133,7 +206,17 @@
       "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-desk-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
-      "policyVersion": "2026-08-06"
+      "policyVersion": "2026-08-06",
+      "delivery": {
+        "platform": "TikTok",
+        "aspectRatio": "9:16",
+        "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+        "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+      },
+      "visualSources": [
+        "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-desk-01.jpg",
+        "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-sun-portrait-01.jpg"
+      ]
     },
     {
       "id": "auto-draft-2",
@@ -157,7 +240,17 @@
       "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-neon-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
-      "policyVersion": "2026-08-06"
+      "policyVersion": "2026-08-06",
+      "delivery": {
+        "platform": "TikTok",
+        "aspectRatio": "9:16",
+        "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+        "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+      },
+      "visualSources": [
+        "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-neon-01.jpg",
+        "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-cologne-night-01.jpg"
+      ]
     },
     {
       "id": "auto-draft-3",
@@ -181,7 +274,17 @@
       "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-outdoor-dog-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
-      "policyVersion": "2026-08-06"
+      "policyVersion": "2026-08-06",
+      "delivery": {
+        "platform": "TikTok",
+        "aspectRatio": "9:16",
+        "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+        "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+      },
+      "visualSources": [
+        "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-outdoor-dog-01.jpg",
+        "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-playful-sofa-01.jpg"
+      ]
     },
     {
       "id": "auto-draft-4",
@@ -205,7 +308,17 @@
       "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-pair-preview-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
-      "policyVersion": "2026-08-06"
+      "policyVersion": "2026-08-06",
+      "delivery": {
+        "platform": "TikTok",
+        "aspectRatio": "9:16",
+        "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+        "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+      },
+      "visualSources": [
+        "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-pair-preview-01.jpg",
+        "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-bw-close-01.jpg"
+      ]
     },
     {
       "id": "auto-draft-5",
@@ -229,7 +342,17 @@
       "sourceAssetHint": "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-drive-bw-01.jpg",
       "editHint": "Hermes edit plan generated from Telegram approval.",
       "approvalPath": "telegram+dashboard",
-      "policyVersion": "2026-08-06"
+      "policyVersion": "2026-08-06",
+      "delivery": {
+        "platform": "TikTok",
+        "aspectRatio": "9:16",
+        "framingRule": "Close, medium und full-body Shots immer vertikal und safe-area fuer TikTok.",
+        "editRule": "Keine KI-Gesichtsveraenderung, reale Textur und echte Gesichtsstruktur behalten."
+      },
+      "visualSources": [
+        "~/TikTok-DJ-Content/references/source-photos/drgray/drgray-drive-bw-01.jpg",
+        "~/TikTok-DJ-Content/references/pair-portraits/drgray-mrsdrgray/pair-rain-neon-01.jpg"
+      ]
     }
   ],
   "constraints": {
