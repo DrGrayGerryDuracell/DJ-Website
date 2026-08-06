@@ -54,6 +54,95 @@ const ACTIONS = {
   "ops.vault-writeback": async ({ nodeId, mode }) => ({ ok: true, nodeId, mode })
 };
 
+const ACTION_STATE_PATCHERS = {
+  "ha.run-automation": (payload, result) => ({
+    kind: "ha-automation",
+    id: payload.automation,
+    patch: {
+      enabled: payload.mode !== "pause",
+      lastMode: payload.mode,
+      state: payload.mode === "pause" ? "warn" : payload.mode === "run" ? "live" : "connected",
+      stateLabel: payload.mode === "pause" ? "Pausiert" : payload.mode === "run" ? "Aktiv" : "Verbunden"
+    }
+  }),
+  "website.page-status": (payload, result) => ({
+    kind: "website-page",
+    id: payload.pageId,
+    patch: {
+      status: payload.status,
+      statusLabel: mapStatusLabel(payload.status),
+      lastAction: result.action || "website.page-status"
+    }
+  }),
+  "website.page-note": (payload, result) => ({
+    kind: "website-page",
+    id: payload.pageId,
+    patch: {
+      note: String(payload.note || "").trim(),
+      lastAction: result.action || "website.page-note"
+    }
+  }),
+  "website.page-lock": (payload, result) => ({
+    kind: "website-page",
+    id: payload.pageId,
+    patch: {
+      draftLock: Boolean(payload.locked),
+      lockLabel: Boolean(payload.locked) ? "Gesperrt" : "Offen",
+      lastAction: result.action || "website.page-lock"
+    }
+  }),
+  "shop.prepare-draft": (payload, result) => ({
+    kind: "shop-draft",
+    id: payload.draftId,
+    patch: {
+      stage: payload.stage,
+      stageLabel: mapStageLabel(payload.stage),
+      lastAction: result.action || "shop.prepare-draft"
+    }
+  }),
+  "shop.draft-status": (payload, result) => ({
+    kind: "shop-draft",
+    id: payload.draftId,
+    patch: {
+      state: payload.status,
+      stateLabel: mapStatusLabel(payload.status),
+      lastAction: result.action || "shop.draft-status"
+    }
+  }),
+  "content.plan-entry": (payload, result) => ({
+    kind: "planner-entry",
+    id: payload.id,
+    patch: {
+      status: payload.status,
+      statusLabel: mapStatusLabel(payload.status),
+      owner: payload.owner || null,
+      lastAction: result.action || "content.plan-entry"
+    }
+  }),
+  "ops.run-subagent": (payload, result) => ({
+    kind: "subagent",
+    id: payload.agentId,
+    patch: {
+      mode: payload.mode,
+      modeLabel: mapModeLabel(payload.mode),
+      state: payload.mode === "argus-first" ? "support" : "live",
+      stateLabel: payload.mode === "argus-first" ? "Argus zuerst" : "Cloud-first",
+      lastAction: result.action || "ops.run-subagent"
+    }
+  }),
+  "ops.vault-writeback": (payload, result) => ({
+    kind: "vault-node",
+    id: payload.nodeId,
+    patch: {
+      mode: payload.mode,
+      modeLabel: mapModeLabel(payload.mode),
+      state: payload.mode === "summary-only" ? "connected" : "sync",
+      stateLabel: payload.mode === "summary-only" ? "Summary-only" : "Writeback",
+      lastAction: result.action || "ops.vault-writeback"
+    }
+  })
+};
+
 function ensureStateFiles() {
   mkdirSync(stateDir, { recursive: true });
   if (!existsSync(statePath)) {
@@ -75,6 +164,62 @@ function readJson(filePath, fallback) {
 function writeJson(filePath, value) {
   mkdirSync(dirname(filePath), { recursive: true });
   writeFileSync(filePath, JSON.stringify(value, null, 2), "utf8");
+}
+
+function mapStatusLabel(value) {
+  const lookup = {
+    live: "Live",
+    connected: "Verbunden",
+    ready: "Bereit",
+    draft: "Entwurf",
+    review: "Review",
+    approved: "Freigegeben",
+    scheduled: "Eingeplant",
+    submitted: "Pruefung",
+    uploaded: "Hochgeladen",
+    pending: "Offen",
+    warn: "Pruefen",
+    support: "Support",
+    sync: "Sync"
+  };
+  return lookup[String(value || "").toLowerCase()] || String(value || "Aktualisiert");
+}
+
+function mapStageLabel(value) {
+  const lookup = {
+    "batch-prepared": "Batch bereit",
+    queue: "Queue",
+    draft: "Entwurf",
+    review: "Review",
+    live: "Live"
+  };
+  return lookup[String(value || "").toLowerCase()] || String(value || "Aktualisiert");
+}
+
+function mapModeLabel(value) {
+  const lookup = {
+    "cloud-first": "Cloud-first",
+    "argus-first": "Argus zuerst",
+    writeback: "Writeback",
+    "summary-only": "Summary-only",
+    run: "Ausfuehren",
+    pause: "Pausieren"
+  };
+  return lookup[String(value || "").toLowerCase()] || String(value || "Aktualisiert");
+}
+
+function applyControlStatePatch(state, kind, id, patch) {
+  if (!kind || !id || !patch || typeof patch !== "object") {
+    return state;
+  }
+  state.controls = state.controls && typeof state.controls === "object" ? state.controls : {};
+  state.controls[kind] = state.controls[kind] && typeof state.controls[kind] === "object" ? state.controls[kind] : {};
+  state.controls[kind][id] = {
+    ...(state.controls[kind][id] || {}),
+    ...patch,
+    updatedAt: new Date().toISOString()
+  };
+  return state;
 }
 
 function json(response, statusCode, payload) {
@@ -144,6 +289,13 @@ async function runAction(name, payload) {
     const result = await action(payload);
     if (!result.ok) return result;
     const state = readJson(statePath, { updatedAt: null, controls: {}, actions: [], commands: [] });
+    const patcher = ACTION_STATE_PATCHERS[name];
+    if (patcher) {
+      const nextPatch = patcher(payload, { ...result, action: name });
+      if (nextPatch?.kind && nextPatch?.id && nextPatch?.patch) {
+        applyControlStatePatch(state, nextPatch.kind, nextPatch.id, nextPatch.patch);
+      }
+    }
     state.actions = Array.isArray(state.actions) ? state.actions : [];
     state.actions.push({
       id: `action-${Date.now()}`,

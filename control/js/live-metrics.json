@@ -1,16 +1,16 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T08:11:34.250Z",
-    "generatedAtLabel": "06.08.26, 10:11",
+    "generatedAt": "2026-08-06T08:21:30.812Z",
+    "generatedAtLabel": "06.08.26, 10:21",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
   "systemStatus": {
     "website": {
       "label": "Website",
-      "value": "Erreichbar",
-      "level": "ok"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "storeLinks": {
       "label": "Shop-Links",
@@ -19,12 +19,12 @@
     },
     "social": {
       "label": "Social-Profile",
-      "value": "2/2 TikTok erreichbar",
-      "level": "ok"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 10:11",
+      "value": "06.08.26, 10:21",
       "level": "info"
     }
   },
@@ -39,22 +39,22 @@
     {
       "id": "pagesOk",
       "label": "Seiten OK",
-      "value": 8,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "up"
     },
     {
       "id": "pagesFail",
       "label": "Seiten mit Fehler",
       "value": 0,
-      "delta": "Live",
+      "delta": "Umgebung",
       "trend": "neutral"
     },
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 210,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
@@ -81,15 +81,15 @@
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 622,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
       "id": "tiktokProfiles",
       "label": "TikTok Profile erreichbar",
-      "value": 2,
-      "delta": "Live",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "neutral"
     },
     {
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 341,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 208,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 196,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 170,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 181,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 192,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 201,
+        "visitors": 0,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 187,
+        "visitors": 0,
         "pageviews": 0
       }
     ],
@@ -161,36 +161,36 @@
       {
         "page": "/",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/index.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/bio.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/musik.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       },
       {
         "page": "/videos.html",
         "views": 0,
-        "ctr": "200"
+        "ctr": "0"
       }
     ],
     "audiences": [
       {
-        "label": "Erreichbar",
-        "value": 100
+        "label": "Nicht verifizierbar",
+        "value": 0
       },
       {
-        "label": "Fehler",
+        "label": "Umgebung",
         "value": 0
       }
     ],
@@ -215,7 +215,7 @@
     "devices": [
       {
         "label": "2xx",
-        "value": 100
+        "value": 0
       },
       {
         "label": "3xx",
@@ -223,12 +223,12 @@
       },
       {
         "label": "4xx/5xx",
-        "value": 0
+        "value": 100
       }
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "210 ms",
+      "avgSession": "0 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T08:11:34.250Z",
-      "checkedAtLabel": "06.08.26, 10:11"
+      "checkedAt": "2026-08-06T08:21:30.812Z",
+      "checkedAtLabel": "06.08.26, 10:21"
     },
     "catalog": {
       "totalItems": 167,
@@ -2924,17 +2924,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "type": "info",
         "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "type": "info",
         "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "type": "info",
         "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
@@ -2949,11 +2949,11 @@
         "profileImage": null,
         "profileUrl": "https://www.tiktok.com/@drgray_mrsdrgray",
         "verified": false,
-        "status": "live",
+        "status": "info",
         "metricValue": 15,
         "valueLabel": "15 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil erreichbar",
-        "sourceLabel": "TikTok Profil-HTML • Code 209002"
+        "statusLabel": "Profil nicht bestaetigt",
+        "sourceLabel": "TikTok Profil-HTML"
       },
       {
         "platform": "TikTok Backup",
@@ -2962,23 +2962,23 @@
         "profileImage": null,
         "profileUrl": "https://www.tiktok.com/@gray.afterhours",
         "verified": false,
-        "status": "live",
+        "status": "info",
         "metricValue": 10,
         "valueLabel": "10 Linksignale im Seiteninhalt",
-        "statusLabel": "Profil erreichbar",
-        "sourceLabel": "TikTok Profil-HTML • Code 209002"
+        "statusLabel": "Profil nicht bestaetigt",
+        "sourceLabel": "TikTok Profil-HTML"
       },
       {
         "platform": "SoundCloud",
-        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "displayName": "drgray_sic",
         "handle": "@drgray_sic",
-        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
+        "profileImage": null,
         "profileUrl": "https://soundcloud.com/drgray_sic",
         "verified": false,
-        "status": "live",
+        "status": "info",
         "metricValue": 10,
-        "valueLabel": "622 Follower • 10 Linksignale",
-        "statusLabel": "32 Tracks",
+        "valueLabel": "10 Linksignale im Seiteninhalt",
+        "statusLabel": "Lokal nicht verifizierbar",
         "sourceLabel": "SoundCloud Public API"
       },
       {
@@ -3013,7 +3013,7 @@
         "from": "Website",
         "to": "SoundCloud",
         "channel": "Player / Music",
-        "status": "live"
+        "status": "info"
       },
       {
         "from": "Instagram",
@@ -3058,16 +3058,16 @@
       {
         "label": "SoundCloud",
         "url": "https://soundcloud.com/drgray_sic",
-        "status": "live",
-        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "status": "check",
+        "displayName": "drgray_sic",
         "handle": "@drgray_sic",
-        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
+        "profileImage": null,
         "note": "Musik / Profilsignal"
       },
       {
         "label": "TikTok Hauptseite",
         "url": "https://www.tiktok.com/@drgray_mrsdrgray",
-        "status": "live",
+        "status": "check",
         "displayName": "Dr. Gray & Mrs. Dr. Gray",
         "handle": "@drgray_mrsdrgray",
         "profileImage": null,
@@ -3077,7 +3077,7 @@
       {
         "label": "TikTok Backup",
         "url": "https://www.tiktok.com/@gray.afterhours",
-        "status": "live",
+        "status": "check",
         "displayName": "Gray Afterhours",
         "handle": "@gray.afterhours",
         "profileImage": null,
@@ -3095,8 +3095,8 @@
       },
       {
         "metric": "HTTP Seitenchecks",
-        "value": "8/8 OK",
-        "state": "good"
+        "value": "lokal nicht verifizierbar",
+        "state": "info"
       },
       {
         "metric": "Shirtee-Linkchecks",
@@ -3104,13 +3104,13 @@
         "state": "info"
       }
     ],
-    "responseTime": "210 ms",
-    "uptime": "100% (Seitencheck)",
+    "responseTime": "0 ms",
+    "uptime": "lokal nicht verifizierbar",
     "externalChecks": [
       {
         "label": "Website Core-Pfade",
-        "status": "8/8 erreichbar",
-        "level": "ok"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       },
       {
         "label": "Shop Produktlinks",
@@ -3119,8 +3119,8 @@
       },
       {
         "label": "SoundCloud Profil",
-        "status": "OK",
-        "level": "ok"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       }
     ],
     "errorLog": []
@@ -3248,6 +3248,10 @@
     },
     "weakSpots": [
       {
+        "item": "Netzwerk-DNS",
+        "note": "Die Umgebung kann die Hauptdomain nicht aufloesen; das ist kein Site-Fehler."
+      },
+      {
         "item": "Shop-Pruefung",
         "note": "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren."
       }
@@ -3256,35 +3260,35 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 10:11",
+      "time": "06.08.26, 10:21",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 10:11",
+      "time": "06.08.26, 10:21",
       "type": "check",
       "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 10:11",
+      "time": "06.08.26, 10:21",
       "type": "check",
-      "text": "SoundCloud: Profilsignal abrufbar"
+      "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 10:11",
+      "time": "06.08.26, 10:21",
       "type": "check",
-      "text": "TikTok Profile: 2/2 erreichbar"
+      "text": "TikTok Profile: lokal nicht verifizierbar"
     }
   ],
   "alerts": [
     {
       "id": "AL-WEB",
-      "level": "ok",
-      "title": "Alle Seiten erreichbar",
-      "description": "Alle geprueften Kernseiten antworten mit HTTP 200.",
+      "level": "info",
+      "title": "Website lokal nicht verifizierbar",
+      "description": "Die Shell-Umgebung kann die Domain nicht aufloesen; das Dashboard zeigt deshalb keinen falschen Ausfall an.",
       "source": "Website Monitoring"
     },
     {
@@ -3296,9 +3300,9 @@
     },
     {
       "id": "AL-SOC",
-      "level": "ok",
-      "title": "SoundCloud Live-Profil erkannt",
-      "description": "622 Follower und 32 Tracks verifiziert.",
+      "level": "info",
+      "title": "SoundCloud lokal nicht verifizierbar",
+      "description": "Die lokale Umgebung kann keine stabilen SoundCloud-Metriken abrufen.",
       "source": "Social Monitoring"
     }
   ],
@@ -4150,7 +4154,7 @@
           "Public",
           "Music"
         ],
-        "image": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg"
+        "image": "/assets/ui-icons/platforms/soundcloud.png"
       }
     ],
     "delegations": [
@@ -4257,7 +4261,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4266,7 +4270,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
@@ -4275,7 +4279,7 @@
       },
       {
         "topic": "Broker",
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4284,7 +4288,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
@@ -4293,7 +4297,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
@@ -4302,7 +4306,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
@@ -4311,7 +4315,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
@@ -4320,7 +4324,7 @@
       },
       {
         "topic": "Rueckgabe",
-        "time": "06.08.26, 10:11",
+        "time": "06.08.26, 10:21",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
@@ -4396,7 +4400,7 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T10:08:08.451599",
+        "updated_at": "2026-08-06T10:18:08.951559",
         "platformCounts": {
           "telegram": 1
         }
@@ -4503,7 +4507,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 10:08",
+        "detail": "Channels: 1 • updated 06.08.26, 10:18",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },

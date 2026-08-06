@@ -1024,6 +1024,13 @@ function setupControlDialogActions() {
       const controlId = toggleTrigger.getAttribute("data-control-toggle");
       const nextValue = !toggleTrigger.classList.contains("is-active");
       await setControlToggleValue(kind, id, controlId, nextValue);
+      if (hasControlBridge()) {
+        const nextLiveMetrics = await loadLiveMetrics();
+        if (nextLiveMetrics?.metadata) {
+          window.__CONTROL_DATA__ = nextLiveMetrics;
+          renderDashboardView(applyRangeToData(nextLiveMetrics, "live"));
+        }
+      }
       reopenCurrentDialog();
       return;
     }

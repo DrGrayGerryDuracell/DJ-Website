@@ -46,6 +46,68 @@ function toPercent(part, total) {
   return Math.round((part / total) * 100);
 }
 
+function normalizeStateValue(value, fallback = "connected") {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (!normalized) return fallback;
+  const alias = {
+    active: "live",
+    ok: "live",
+    uploaded: "live",
+    approved: "connected",
+    scheduled: "ready",
+    review: "support",
+    draft: "warn",
+    submitted: "support",
+    paused: "warn"
+  };
+  return alias[normalized] || normalized;
+}
+
+function normalizeStateLabel(value, fallback = "Verbunden") {
+  const normalized = normalizeStateValue(value, "");
+  const lookup = {
+    live: "Live",
+    connected: "Verbunden",
+    ready: "Bereit",
+    warn: "Pruefen",
+    support: "Support",
+    sync: "Sync",
+    info: "Info",
+    error: "Fehler",
+    active: "Aktiv",
+    uploaded: "Hochgeladen",
+    approved: "Freigegeben",
+    scheduled: "Eingeplant",
+    review: "Review",
+    draft: "Entwurf",
+    submitted: "Pruefung",
+    paused: "Pausiert"
+  };
+  return lookup[normalized] || lookup[String(value || "").trim().toLowerCase()] || fallback;
+}
+
+function mergeEntityState(entity, controlState, options = {}) {
+  if (!controlState || typeof controlState !== "object") {
+    return entity;
+  }
+  const stateValue = controlState.state || controlState.status;
+  const merged = {
+    ...entity,
+    ...controlState
+  };
+  if (stateValue) {
+    merged.state = normalizeStateValue(stateValue, entity.state || options.defaultState || "connected");
+    merged.stateLabel = controlState.stateLabel || controlState.statusLabel || normalizeStateLabel(stateValue, entity.stateLabel || options.defaultLabel || "Verbunden");
+  } else if (controlState.statusLabel && !merged.stateLabel) {
+    merged.stateLabel = controlState.statusLabel;
+  }
+  if (controlState.status && !merged.status) {
+    merged.status = normalizeStateValue(controlState.status, entity.status || options.defaultStatus || "connected");
+    merged.statusLabel = controlState.statusLabel || normalizeStateLabel(controlState.status, entity.statusLabel || options.defaultStatusLabel || "Verbunden");
+  }
+  return merged;
+}
+
 function classifyFetchIssue(error) {
   const message = String(error?.message || error || "");
   const code = String(error?.cause?.code || error?.code || "").toUpperCase();
@@ -856,6 +918,12 @@ async function main() {
   const bridgeCommands = Array.isArray(bridgeState.commands) ? bridgeState.commands : [];
   const formatActionTime = (value) => value ? new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short", timeZone: "Europe/Berlin" }).format(new Date(value)) : "unbekannt";
   const cronControlState = bridgeState.controls?.["cron-job"] || {};
+  const websitePageState = bridgeState.controls?.["website-page"] || {};
+  const shopDraftState = bridgeState.controls?.["shop-draft"] || {};
+  const plannerEntryState = bridgeState.controls?.["planner-entry"] || {};
+  const haAutomationState = bridgeState.controls?.["ha-automation"] || {};
+  const subagentState = bridgeState.controls?.subagent || {};
+  const vaultNodeState = bridgeState.controls?.["vault-node"] || {};
   const schedulerEntries = [
     { id: "cron-live", name: "sync-control-live", defaultState: "live", defaultLabel: "Aktiv" },
     { id: "cron-shop", name: "check-shirtee-links", defaultState: "ready", defaultLabel: "Bereit" },
@@ -1232,7 +1300,7 @@ async function main() {
           { id: "musik", title: "Musik", path: "/musik.html", status: "connected", statusLabel: "Verbunden", editor: "Releases, Player, Embeds", route: "Website -> Musik", note: "SoundCloud, Releases und CTA-Bausteine." },
           { id: "shop", title: "Shop", path: "/shop.html", status: "live", statusLabel: "Live", editor: "Produktmodule und Shop-CTA", route: "Website -> Shop", note: "Shop-Teaser, Kategorien und Verlinkungen." },
           { id: "control", title: "Control Dashboard", path: "/control/", status: "live", statusLabel: "Live", editor: "Sections, KPIs, Routing", route: "Website -> Control", note: "Interne Workbench für Dashboard-Aufbau." }
-        ]
+        ].map((page) => mergeEntityState(page, websitePageState[page.id], { defaultStatus: page.status, defaultStatusLabel: page.statusLabel }))
       }
     },
     shopMetrics: {
@@ -1263,7 +1331,7 @@ async function main() {
           { id: "drop-01", title: "Club Night Capsule", state: "draft", stateLabel: "Entwurf", line: "Merch / Capsule", task: "Mockup, Copy und Upload-Batch vorbereiten", priority: "P0" },
           { id: "drop-02", title: "Afterhours Neon", state: "ready", stateLabel: "Uploadbereit", line: "TikTok / Merch", task: "Shirtee-Request erzeugen und Batch bauen", priority: "P1" },
           { id: "drop-03", title: "Sound Ritual", state: "submitted", stateLabel: "Pruefung", line: "Music / Merch", task: "Store-Preview und Produkttext gegenprüfen", priority: "P1" }
-        ],
+        ].map((draft) => mergeEntityState(draft, shopDraftState[draft.id], { defaultState: draft.state, defaultLabel: draft.stateLabel })),
         uploadSteps: [
           { id: "queue", label: "Upload Queue", status: "connected", statusLabel: "CSV bereit", note: "CSV / Queue aus Katalog ableiten" },
           { id: "batches", label: "Upload Batches", status: "ready", statusLabel: "Batch bereit", note: "Upload-Chargen vorbereiten" },
@@ -1339,7 +1407,7 @@ async function main() {
           { id: "cal-02", day: "Mi", slot: "21:00", title: "Afterhours Teaser", channel: "TikTok Backup", status: "draft", statusLabel: "Entwurf" },
           { id: "cal-03", day: "Fr", slot: "18:00", title: "Track Snippet + CTA", channel: "TikTok Hauptseite", status: "live", statusLabel: "Geplant" },
           { id: "cal-04", day: "So", slot: "20:00", title: "SoundCloud Drop Reminder", channel: "SoundCloud", status: "draft", statusLabel: "Entwurf" }
-        ],
+        ].map((entry) => mergeEntityState(entry, plannerEntryState[entry.id], { defaultStatus: entry.status, defaultStatusLabel: entry.statusLabel })),
         ideas: [
           { id: "idea-01", title: "Studio POV", owner: "Muse", state: "ready", note: "Hook, Shotlist und Caption vorbereiten" },
           { id: "idea-02", title: "Merch + Music Combo", owner: "Jarvis", state: "draft", note: "Shop-Teaser mit Musikverweis kombinieren" },
@@ -1451,7 +1519,7 @@ async function main() {
         { id: "ha-backup", label: "HA Backup -> Mac mini", state: "live", stateLabel: "Aktiv", cron: "03:30 täglich" },
         { id: "ha-morning", label: "Morning Boot", state: "ready", stateLabel: "Bereit", cron: "08:00 täglich" },
         { id: "ha-stream", label: "Stream Prep", state: "connected", stateLabel: "Verbunden", cron: "manuell / Szene" }
-      ]
+      ].map((automation) => mergeEntityState(automation, haAutomationState[automation.id], { defaultState: automation.state, defaultLabel: automation.stateLabel }))
     },
     operationsWorkbench: {
       controlBridge: {
@@ -1486,12 +1554,12 @@ async function main() {
         { id: "sub-sentinel", name: "Sentinel", mode: "Monitoring", llm: "Cloud LLM first", fallback: "Claude", state: "live" },
         { id: "sub-muse", name: "Muse", mode: "Content", llm: "Cloud LLM first", fallback: "Claude Code", state: "ready" },
         { id: "sub-heimdall", name: "Heimdall", mode: "Home Assistant", llm: "Cloud LLM first", fallback: "Codex", state: "connected" }
-      ],
+      ].map((agent) => mergeEntityState(agent, subagentState[agent.id], { defaultState: agent.state, defaultLabel: normalizeStateLabel(agent.state, "Verbunden") })),
       vaultNodes: [
         { id: "vault-brain", name: "Brain Vault", role: "Persistentes Wissen", state: "sync", stateLabel: "Sync", steward: "Memory Agent" },
         { id: "vault-obsidian", name: "Obsidian Graph", role: "Knoten und Beziehungen", state: "connected", stateLabel: "Verbunden", steward: "Jarvis" },
         { id: "vault-learning", name: "Experience Loop", role: "Erfahrungen -> Regeln -> Kontext", state: "support", stateLabel: "Adapter", steward: "Hermes" }
-      ]
+      ].map((node) => mergeEntityState(node, vaultNodeState[node.id], { defaultState: node.state, defaultLabel: node.stateLabel }))
     },
     agentsRoom
   };
