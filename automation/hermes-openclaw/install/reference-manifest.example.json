@@ -1,0 +1,25 @@
+{
+  "martinFaceReference": "/Users/jarvisgray/TikTok-DJ-Content/references/faces/martin-main.png",
+  "mrsFaceReference": "/Users/jarvisgray/TikTok-DJ-Content/references/faces/mrs-main.png",
+  "pairPortraits": [
+    "/Users/jarvisgray/TikTok-DJ-Content/references/pair/pair-01.png",
+    "/Users/jarvisgray/TikTok-DJ-Content/references/pair/pair-02.png"
+  ],
+  "sourceClips": [
+    "/Users/jarvisgray/TikTok-DJ-Content/references/source-clips/live-set-01.mp4"
+  ],
+  "sourcePhotos": [
+    "/Users/jarvisgray/TikTok-DJ-Content/references/source-photos/studio-01.jpg"
+  ],
+  "brandGraphics": [
+    "/Users/jarvisgray/TikTok-DJ-Content/references/branding/logo-mark.png"
+  ],
+  "approvedSongs": [
+    {
+      "title": "Own Sound 01",
+      "type": "own-sound",
+      "path": "/Users/jarvisgray/TikTok-DJ-Content/references/audio/own-sound-01.wav"
+    }
+  ],
+  "voiceNotes": []
+}

@@ -1821,7 +1821,7 @@ export function renderPerformance(container, performanceMetrics) {
 export function renderContent(container, contentPerformance) {
   const strongest = contentPerformance.strongestSections[0] || null;
   const planner = contentPerformance.planner || { channels: [], calendar: [], ideas: [] };
-  const workflow = contentPerformance.workflow || { queueSummary: [], generatedCaptions: [], uploadQueue: [], runtimeNotes: [], approvalCommands: [] };
+  const workflow = contentPerformance.workflow || { queueSummary: [], generatedCaptions: [], uploadQueue: [], runtimeNotes: [], approvalCommands: [], suggestionPackages: [], referenceState: {}, constraints: {} };
   container.innerHTML = `
     <article class="panel">
       <div class="section-banner">
@@ -1898,11 +1898,21 @@ export function renderContent(container, contentPerformance) {
           <div class="section-banner-chips">
             ${(workflow.approvalCommands || []).map((item) => `<span class="status-pill is-info">${escapeHtml(item)}</span>`).join("")}
           </div>
+          <div class="ha-room-actions">
+            <button type="button" class="action-btn" data-control-command="generate-content-suggestions">Auto-Drafts generieren</button>
+            <button type="button" class="action-btn is-secondary" data-control-command="sync-control-live">Live-Daten neu laden</button>
+          </div>
           <ul class="log-list compact">
             ${(workflow.runtimeNotes || []).map((note) => `<li><p>${escapeHtml(note)}</p></li>`).join("")}
           </ul>
         </article>
       </div>
+      <ul class="status-list compact">
+        <li><span>Paar-Referenzen</span><strong class="status-pill ${workflow.referenceState?.ready ? "is-live" : "is-warn"}">${workflow.referenceState?.ready ? "bereit" : "fehlen"}</strong></li>
+        <li><span>Source Clips</span><strong>${escapeHtml(String(workflow.referenceState?.sourceClipCount ?? 0))}</strong></li>
+        <li><span>Source Fotos</span><strong>${escapeHtml(String(workflow.referenceState?.sourcePhotoCount ?? 0))}</strong></li>
+        <li><span>Approved Songs</span><strong>${escapeHtml(String(workflow.referenceState?.approvedSongCount ?? 0))}</strong></li>
+      </ul>
     </article>
     <article class="panel">
       <div class="section-banner">
@@ -1911,6 +1921,23 @@ export function renderContent(container, contentPerformance) {
           <h3>Hermes-Captions, Ideen und Edit-Briefs</h3>
         </div>
       </div>
+      ${(workflow.suggestionPackages || []).length ? `
+        <div class="editor-card-grid">
+          ${workflow.suggestionPackages.map((item) => `
+            <article class="editor-card">
+              <div class="editor-card-head">
+                <div>
+                  <strong>${escapeHtml(item.title)}</strong>
+                  <span>${escapeHtml(`${item.channel} • ${item.scheduledFor}`)}</span>
+                </div>
+                <span class="status-pill ${statusClass(item.status)}">${escapeHtml(item.statusLabel)}</span>
+              </div>
+              <p>${escapeHtml(item.caption || item.hook || "Noch kein Text hinterlegt.")}</p>
+              <small>${escapeHtml(`${item.audioSource || "audio offen"} • ${item.editHint || "edit offen"}`)}</small>
+            </article>
+          `).join("")}
+        </div>
+      ` : ""}
       <div class="editor-card-grid">
         ${(workflow.generatedCaptions || [])
           .map(

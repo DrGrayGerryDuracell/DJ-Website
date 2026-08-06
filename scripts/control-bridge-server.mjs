@@ -34,6 +34,7 @@ const COMMANDS = {
   "sync-control-live": { cmd: process.execPath, args: [join(repoRoot, "scripts/sync-control-live-metrics.mjs")] },
   verify: { cmd: process.execPath, args: [join(repoRoot, "scripts/verify-build-safety.mjs")] },
   "check-live-links": { cmd: process.execPath, args: [join(repoRoot, "scripts/sync-live-link-status.mjs")] },
+  "generate-content-suggestions": { cmd: process.execPath, args: [join(repoRoot, "scripts/generate-content-suggestion-packages.mjs")] },
   "generate-upload-queue": { cmd: process.execPath, args: [join(repoRoot, "scripts/generate-upload-queue.mjs")] },
   "generate-upload-batches": { cmd: process.execPath, args: [join(repoRoot, "scripts/prepare-shirtee-upload-batches.mjs")] },
   "generate-shirtee-api-request": { cmd: process.execPath, args: [join(repoRoot, "scripts/generate-shirtee-api-request.mjs")] },

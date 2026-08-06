@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T09:37:41.587Z",
-    "generatedAtLabel": "06.08.26, 11:37",
+    "generatedAt": "2026-08-06T09:54:54.162Z",
+    "generatedAtLabel": "06.08.26, 11:54",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 11:37",
+      "value": "06.08.26, 11:54",
       "level": "info"
     }
   },
@@ -324,8 +324,8 @@
       "okLinks": 0,
       "failLinks": 0,
       "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T09:37:41.587Z",
-      "checkedAtLabel": "06.08.26, 11:37"
+      "checkedAt": "2026-08-06T09:54:54.162Z",
+      "checkedAtLabel": "06.08.26, 11:54"
     },
     "catalog": {
       "totalItems": 167,
@@ -2979,17 +2979,17 @@
     ],
     "timeline": [
       {
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "type": "info",
         "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "type": "info",
         "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "type": "info",
         "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
@@ -3388,7 +3388,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:37"
+          "createdAt": "06.08.26, 11:54"
         },
         {
           "id": "hermes-test_2026-08-02T06-26-57",
@@ -3401,7 +3401,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:37"
+          "createdAt": "06.08.26, 11:54"
         },
         {
           "id": "hermes-test_2026-08-02T06-25-50",
@@ -3414,7 +3414,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:37"
+          "createdAt": "06.08.26, 11:54"
         },
         {
           "id": "hermes-test_2026-08-02T06-25-16",
@@ -3427,7 +3427,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:37"
+          "createdAt": "06.08.26, 11:54"
         },
         {
           "id": "hermes-test_2026-08-02T06-24-31",
@@ -3440,7 +3440,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:37"
+          "createdAt": "06.08.26, 11:54"
         },
         {
           "id": "hermes-test_2026-08-02T06-24-06",
@@ -3453,7 +3453,7 @@
           "sourceFile": "/private/tmp/hermes-test.mp4",
           "status": "ready",
           "statusLabel": "Editierbar",
-          "createdAt": "06.08.26, 11:37"
+          "createdAt": "06.08.26, 11:54"
         }
       ]
     },
@@ -3553,6 +3553,141 @@
         "captionCount": 3
       },
       "uploadQueue": [],
+      "suggestionPackages": [
+        {
+          "id": "auto-draft-1",
+          "title": "Driving techno opener for late Cologne floors",
+          "channel": "TikTok Hauptseite",
+          "scheduledFor": "Mon 15s clip",
+          "status": "warn",
+          "statusLabel": "Referenzen fehlen",
+          "hook": "Driving techno opener for late Cologne floors",
+          "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+          "hashtags": [
+            "#techno",
+            "#afterhours",
+            "#drgray",
+            "#b2b",
+            "#koeln"
+          ],
+          "videoRequired": true,
+          "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+          "audioSource": "own-sound",
+          "sourceAssetHint": null,
+          "editHint": "Hermes edit plan generated from Telegram approval.",
+          "approvalPath": "telegram+dashboard",
+          "policyVersion": "2026-08-06"
+        },
+        {
+          "id": "auto-draft-2",
+          "title": "Emotional B2B sequence with rising tension every 8 bars",
+          "channel": "TikTok Backup",
+          "scheduledFor": "Tue 3 hooks",
+          "status": "warn",
+          "statusLabel": "Referenzen fehlen",
+          "hook": "Emotional B2B sequence with rising tension every 8 bars",
+          "caption": "Emotional pressure, clean groove, no compromise. Driving Techno | Emotional | B2B | Köln ❤️",
+          "hashtags": [
+            "#drivingtechno",
+            "#djlife",
+            "#tiktokdj",
+            "#soundcloud",
+            "#afterhours"
+          ],
+          "videoRequired": true,
+          "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+          "audioSource": "own-sound",
+          "sourceAssetHint": null,
+          "editHint": "Hermes edit plan generated from Telegram approval.",
+          "approvalPath": "telegram+dashboard",
+          "policyVersion": "2026-08-06"
+        },
+        {
+          "id": "auto-draft-3",
+          "title": "Sunset-to-afterhours transition reel with a hard cut at the drop",
+          "channel": "SoundCloud",
+          "scheduledFor": "Wed 8s loop",
+          "status": "warn",
+          "statusLabel": "Referenzen fehlen",
+          "hook": "Sunset-to-afterhours transition reel with a hard cut at the drop",
+          "caption": "Two minds, one pulse. New set energy from the Hermes pipeline.",
+          "hashtags": [
+            "#coupleenergy",
+            "#technofamily",
+            "#b2b",
+            "#musiccontent",
+            "#hermes"
+          ],
+          "videoRequired": true,
+          "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+          "audioSource": "own-sound",
+          "sourceAssetHint": null,
+          "editHint": "Hermes edit plan generated from Telegram approval.",
+          "approvalPath": "telegram+dashboard",
+          "policyVersion": "2026-08-06"
+        },
+        {
+          "id": "auto-draft-4",
+          "title": "Minimal voiceover set teaser for TikTok and SoundCloud",
+          "channel": "TikTok Hauptseite",
+          "scheduledFor": "Thu card",
+          "status": "warn",
+          "statusLabel": "Referenzen fehlen",
+          "hook": "Minimal voiceover set teaser for TikTok and SoundCloud",
+          "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+          "hashtags": [
+            "#techno",
+            "#afterhours",
+            "#drgray",
+            "#b2b",
+            "#koeln"
+          ],
+          "videoRequired": true,
+          "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+          "audioSource": "own-sound",
+          "sourceAssetHint": null,
+          "editHint": "Hermes edit plan generated from Telegram approval.",
+          "approvalPath": "telegram+dashboard",
+          "policyVersion": "2026-08-06"
+        },
+        {
+          "id": "auto-draft-5",
+          "title": "Couple-brand identity clip: two perspectives, one signal",
+          "channel": "TikTok Backup",
+          "scheduledFor": "Fri caption pack",
+          "status": "warn",
+          "statusLabel": "Referenzen fehlen",
+          "hook": "Couple-brand identity clip: two perspectives, one signal",
+          "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+          "hashtags": [
+            "#techno",
+            "#afterhours",
+            "#drgray",
+            "#b2b",
+            "#koeln"
+          ],
+          "videoRequired": true,
+          "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+          "audioSource": "own-sound",
+          "sourceAssetHint": null,
+          "editHint": "Hermes edit plan generated from Telegram approval.",
+          "approvalPath": "telegram+dashboard",
+          "policyVersion": "2026-08-06"
+        }
+      ],
+      "referenceState": {
+        "ready": false,
+        "pairPortraitCount": 0,
+        "sourceClipCount": 0,
+        "sourcePhotoCount": 0,
+        "approvedSongCount": 0
+      },
+      "constraints": {
+        "pairRequired": true,
+        "faceLock": true,
+        "videoOnly": true,
+        "ultraRealistic": true
+      },
       "approvalCommands": [
         "POSTEN",
         "BEARBEITEN",
@@ -3562,6 +3697,7 @@
       "runtimeNotes": [
         "Uploadpfad kann nach Freigabe vom Dashboard oder Telegram aus weiterlaufen.",
         "6 Edit-Briefs mit CapCut-Plan gefunden.",
+        "Referenz-Manifest ist noch unvollstaendig. Ohne Paar-Referenzen duerfen keine finalen Real-Portrait-Drafts freigegeben werden.",
         "Derzeit keine offene Upload-Warteschlange im Dashboard."
       ]
     },
@@ -3583,25 +3719,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 11:37",
+      "time": "06.08.26, 11:54",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 11:37",
+      "time": "06.08.26, 11:54",
       "type": "check",
       "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 11:37",
+      "time": "06.08.26, 11:54",
       "type": "check",
       "text": "SoundCloud: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 11:37",
+      "time": "06.08.26, 11:54",
       "type": "check",
       "text": "TikTok Profile: lokal nicht verifizierbar"
     }
@@ -4726,7 +4862,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4735,7 +4871,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
@@ -4744,7 +4880,7 @@
       },
       {
         "topic": "Broker",
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4753,7 +4889,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
@@ -4762,7 +4898,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
@@ -4771,7 +4907,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
@@ -4780,7 +4916,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
@@ -4789,7 +4925,7 @@
       },
       {
         "topic": "Rueckgabe",
-        "time": "06.08.26, 11:37",
+        "time": "06.08.26, 11:54",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
@@ -4865,13 +5001,13 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T11:33:11.612114",
+        "updated_at": "2026-08-06T11:53:11.792942",
         "platformCounts": {
           "telegram": 1
         }
       },
       "brainVaultState": {
-        "last_run_utc": "2026-08-06T09:07:56.000060",
+        "last_run_utc": "2026-08-06T09:37:56.104950",
         "last_added": 0,
         "processed_count": 269
       },
@@ -4972,7 +5108,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 11:33",
+        "detail": "Channels: 1 • updated 06.08.26, 11:53",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -4980,7 +5116,7 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run 2026-08-06T09:07:56.000060 • Added 0",
+        "detail": "Last run 2026-08-06T09:37:56.104950 • Added 0",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },

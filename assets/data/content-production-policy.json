@@ -1,0 +1,73 @@
+{
+  "version": "2026-08-06",
+  "identity": {
+    "brand": "Dr. Gray & Mrs. Dr. Gray",
+    "pairRequired": true,
+    "faceLock": {
+      "enabled": true,
+      "rule": "core-face-structure-must-remain-intact",
+      "allow": ["expression", "gesture", "lighting", "camera-angle", "styling"],
+      "deny": ["face-swap-look", "age-shift", "identity-drift", "ai-portrait-look", "skin-smoothing-look"]
+    }
+  },
+  "video": {
+    "required": true,
+    "formats": ["mp4"],
+    "orientation": "9:16",
+    "style": "ultra-realistic",
+    "forbidSyntheticLook": true,
+    "mustInclude": [
+      "visible-real-camera-motion-or-realistic-stabilized-shot",
+      "cutting-or-transitions",
+      "overlay-text",
+      "soundtrack"
+    ],
+    "editing": {
+      "transitionsRequired": true,
+      "effectsAllowed": ["motion-blur", "light-leak", "strobe-safe-glow", "speed-ramp", "zoom-cut", "overlay-text"],
+      "effectsForbidden": ["plastic-skin", "cgi-face", "cartoon-look", "obvious-generative-warping"]
+    }
+  },
+  "audio": {
+    "sources": ["own-sound", "trending-techno"],
+    "preferOwnSound": true,
+    "fallbackToTrendingTechno": true
+  },
+  "approval": {
+    "required": true,
+    "beforeUpload": true,
+    "channels": ["telegram", "dashboard"]
+  },
+  "scheduling": {
+    "cadence": {
+      "tiktokMainPerWeek": 4,
+      "tiktokBackupPerWeek": 2,
+      "soundcloudSupportPerWeek": 1
+    },
+    "defaultSlots": [
+      "Mon 19:00",
+      "Wed 21:00",
+      "Fri 18:00",
+      "Sun 20:00"
+    ]
+  },
+  "referenceAssets": {
+    "manifestPath": "~/TikTok-DJ-Content/references/reference-manifest.json",
+    "requiredKeys": [
+      "pairPortraits",
+      "martinFaceReference",
+      "mrsFaceReference"
+    ],
+    "optionalKeys": [
+      "sourceClips",
+      "sourcePhotos",
+      "brandGraphics",
+      "approvedSongs",
+      "voiceNotes"
+    ]
+  },
+  "copy": {
+    "tone": ["dark", "driving", "emotional", "pair-energy", "cologne-afterhours"],
+    "mustProduce": ["hook", "caption", "hashtags", "posting-note", "editing-note"]
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "generatedAt": "2026-08-06T09:54:02.221Z",
+  "policyVersion": "2026-08-06",
+  "latestPlanPath": "/Users/jarvisgray/TikTok-DJ-Content/analytics/generated/content_plan_2026-08-02.json",
+  "referenceState": {
+    "ready": false,
+    "pairPortraitCount": 0,
+    "sourceClipCount": 0,
+    "sourcePhotoCount": 0,
+    "approvedSongCount": 0
+  },
+  "suggestions": [
+    {
+      "id": "auto-draft-1",
+      "title": "Driving techno opener for late Cologne floors",
+      "channel": "TikTok Hauptseite",
+      "scheduledFor": "Mon 15s clip",
+      "status": "warn",
+      "statusLabel": "Referenzen fehlen",
+      "hook": "Driving techno opener for late Cologne floors",
+      "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+      "hashtags": [
+        "#techno",
+        "#afterhours",
+        "#drgray",
+        "#b2b",
+        "#koeln"
+      ],
+      "videoRequired": true,
+      "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+      "audioSource": "own-sound",
+      "sourceAssetHint": null,
+      "editHint": "Hermes edit plan generated from Telegram approval.",
+      "approvalPath": "telegram+dashboard",
+      "policyVersion": "2026-08-06"
+    },
+    {
+      "id": "auto-draft-2",
+      "title": "Emotional B2B sequence with rising tension every 8 bars",
+      "channel": "TikTok Backup",
+      "scheduledFor": "Tue 3 hooks",
+      "status": "warn",
+      "statusLabel": "Referenzen fehlen",
+      "hook": "Emotional B2B sequence with rising tension every 8 bars",
+      "caption": "Emotional pressure, clean groove, no compromise. Driving Techno | Emotional | B2B | Köln ❤️",
+      "hashtags": [
+        "#drivingtechno",
+        "#djlife",
+        "#tiktokdj",
+        "#soundcloud",
+        "#afterhours"
+      ],
+      "videoRequired": true,
+      "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+      "audioSource": "own-sound",
+      "sourceAssetHint": null,
+      "editHint": "Hermes edit plan generated from Telegram approval.",
+      "approvalPath": "telegram+dashboard",
+      "policyVersion": "2026-08-06"
+    },
+    {
+      "id": "auto-draft-3",
+      "title": "Sunset-to-afterhours transition reel with a hard cut at the drop",
+      "channel": "SoundCloud",
+      "scheduledFor": "Wed 8s loop",
+      "status": "warn",
+      "statusLabel": "Referenzen fehlen",
+      "hook": "Sunset-to-afterhours transition reel with a hard cut at the drop",
+      "caption": "Two minds, one pulse. New set energy from the Hermes pipeline.",
+      "hashtags": [
+        "#coupleenergy",
+        "#technofamily",
+        "#b2b",
+        "#musiccontent",
+        "#hermes"
+      ],
+      "videoRequired": true,
+      "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+      "audioSource": "own-sound",
+      "sourceAssetHint": null,
+      "editHint": "Hermes edit plan generated from Telegram approval.",
+      "approvalPath": "telegram+dashboard",
+      "policyVersion": "2026-08-06"
+    },
+    {
+      "id": "auto-draft-4",
+      "title": "Minimal voiceover set teaser for TikTok and SoundCloud",
+      "channel": "TikTok Hauptseite",
+      "scheduledFor": "Thu card",
+      "status": "warn",
+      "statusLabel": "Referenzen fehlen",
+      "hook": "Minimal voiceover set teaser for TikTok and SoundCloud",
+      "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+      "hashtags": [
+        "#techno",
+        "#afterhours",
+        "#drgray",
+        "#b2b",
+        "#koeln"
+      ],
+      "videoRequired": true,
+      "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+      "audioSource": "own-sound",
+      "sourceAssetHint": null,
+      "editHint": "Hermes edit plan generated from Telegram approval.",
+      "approvalPath": "telegram+dashboard",
+      "policyVersion": "2026-08-06"
+    },
+    {
+      "id": "auto-draft-5",
+      "title": "Couple-brand identity clip: two perspectives, one signal",
+      "channel": "TikTok Backup",
+      "scheduledFor": "Fri caption pack",
+      "status": "warn",
+      "statusLabel": "Referenzen fehlen",
+      "hook": "Couple-brand identity clip: two perspectives, one signal",
+      "caption": "Dr.Gray & Mrs.Dr.Gray - Techno from Cologne // Sunday night drive mode.",
+      "hashtags": [
+        "#techno",
+        "#afterhours",
+        "#drgray",
+        "#b2b",
+        "#koeln"
+      ],
+      "videoRequired": true,
+      "realismRule": "Ultra-realistisch, kein KI-Look, Gesichtsstruktur bleibt fix.",
+      "audioSource": "own-sound",
+      "sourceAssetHint": null,
+      "editHint": "Hermes edit plan generated from Telegram approval.",
+      "approvalPath": "telegram+dashboard",
+      "policyVersion": "2026-08-06"
+    }
+  ],
+  "constraints": {
+    "pairRequired": true,
+    "faceLock": true,
+    "videoOnly": true,
+    "ultraRealistic": true
+  }
+}

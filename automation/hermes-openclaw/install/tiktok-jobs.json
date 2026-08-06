@@ -1,0 +1,67 @@
+{
+  "jobs": [
+    {
+      "id": "tiktok-content-orchestrator",
+      "name": "TikTok Content Orchestrator",
+      "description": "Generate recurring ultra-realistic content drafts and schedules",
+      "schedule": "0 */3 * * *",
+      "command": "python3 ~/.hermes/scripts/hermes_content_orchestrator.py",
+      "enabled": true,
+      "notifications": {
+        "telegram": false
+      },
+      "timeout_seconds": 180
+    },
+    {
+      "id": "tiktok-content-ingestion",
+      "name": "TikTok Content Ingestion Monitor",
+      "description": "Monitor raw folder for new content and validate",
+      "schedule": "*/30 * * * *",
+      "command": "python3 ~/.hermes/scripts/tiktok_content_ingest.py",
+      "enabled": true,
+      "notifications": {
+        "telegram": false
+      },
+      "timeout_seconds": 120
+    },
+    {
+      "id": "tiktok-daily-publish",
+      "name": "TikTok Daily Publisher",
+      "description": "Publish approved and due TikTok content after status polling",
+      "schedule": "0 18 * * *",
+      "command": "python3 ~/.hermes/scripts/tiktok_publish_daily.py",
+      "enabled": true,
+      "notifications": {
+        "telegram": true,
+        "email": false
+      },
+      "timeout_seconds": 420,
+      "retry_on_failure": true,
+      "retry_count": 3
+    },
+    {
+      "id": "tiktok-soundcloud-sync",
+      "name": "TikTok to SoundCloud Sync",
+      "description": "Sync published TikTok videos to SoundCloud",
+      "schedule": "0 20 * * *",
+      "command": "python3 ~/.hermes/scripts/tiktok_soundcloud_sync.py",
+      "enabled": true,
+      "notifications": {
+        "telegram": true
+      },
+      "timeout_seconds": 600
+    },
+    {
+      "id": "tiktok-analytics-weekly",
+      "name": "TikTok Weekly Analytics Report",
+      "description": "Generate weekly performance report and update Vault",
+      "schedule": "0 8 * * 1",
+      "command": "python3 ~/.hermes/scripts/tiktok_analytics_report.py",
+      "enabled": true,
+      "notifications": {
+        "telegram": true
+      },
+      "timeout_seconds": 600
+    }
+  ]
+}

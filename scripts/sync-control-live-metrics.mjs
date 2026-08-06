@@ -14,6 +14,7 @@ const controlOverridesPath = `${repoRoot}/assets/data/control-overrides.json`;
 const uploadProgressPath = `${repoRoot}/artifacts/upload-queue/upload-progress-2026-04-01.md`;
 const controlBridgeStatePath = `${repoRoot}/artifacts/control-bridge/state.json`;
 const controlHaQueuePath = `${repoRoot}/artifacts/control-bridge/ha-command-queue.json`;
+const contentSuggestionPath = `${repoRoot}/artifacts/content-suggestions/latest.json`;
 
 const USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
 const websiteBase = "https://drgray-mrsdrgray.com";
@@ -1056,6 +1057,12 @@ async function main() {
     homeAssistant: { lastServiceCalls: [] },
     tiktokUploadQueue: []
   });
+  const contentSuggestions = readJsonFile(contentSuggestionPath, {
+    generatedAt: null,
+    referenceState: {},
+    suggestions: [],
+    constraints: {}
+  });
   const contentRuntime = readHermesContentRuntime();
   const haQueueEntries = Array.isArray(haQueue.queue) ? haQueue.queue : [];
   const queuedHaEntries = haQueueEntries.filter((entry) => entry.status === "queued");
@@ -1742,6 +1749,9 @@ async function main() {
             }
           : null,
         uploadQueue: uploadQueueRows,
+        suggestionPackages: Array.isArray(contentSuggestions.suggestions) ? contentSuggestions.suggestions : [],
+        referenceState: contentSuggestions.referenceState || {},
+        constraints: contentSuggestions.constraints || {},
         approvalCommands: [
           "POSTEN",
           "BEARBEITEN",
@@ -1755,6 +1765,9 @@ async function main() {
           contentRuntime.latestEditBriefs.length
             ? `${contentRuntime.latestEditBriefs.length} Edit-Briefs mit CapCut-Plan gefunden.`
             : "Noch keine Edit-Briefs im Generatorpfad vorhanden.",
+          contentSuggestions.referenceState?.ready
+            ? "Referenz-Manifest ist fuer Paar-Content bereit."
+            : "Referenz-Manifest ist noch unvollstaendig. Ohne Paar-Referenzen duerfen keine finalen Real-Portrait-Drafts freigegeben werden.",
           tiktokUploadQueue.length
             ? `${tiktokUploadQueue.length} Upload-Eintraege warten oder wurden bereits bestaetigt.`
             : "Derzeit keine offene Upload-Warteschlange im Dashboard."
