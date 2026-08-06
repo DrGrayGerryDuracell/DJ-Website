@@ -130,8 +130,89 @@ const DASHBOARD_VISUALS = {
   audio: "/assets/generated/dashboard-visuals/audio-publishing-streams.png"
 };
 
+const OVERVIEW_ICON_VISUALS = {
+  centralServer: "/assets/ui-icons/devices/mac-mini.png",
+  communication: "/assets/ui-icons/communication/telegram.png",
+  vault: "/assets/ui-icons/infrastructure/vault-graph.png",
+  homeAssistant: "/assets/ui-icons/software/home-assistant.png",
+  alerts: "/assets/ui-icons/status/warnung.png"
+};
+
+const PLATFORM_VISUALS = {
+  tiktok: "/assets/ui-icons/platforms/tiktok.png",
+  soundcloud: "/assets/ui-icons/platforms/soundcloud.png",
+  website: "/assets/generated/dashboard-visuals/website-structure-monitoring.png",
+  shop: "/assets/generated/dashboard-visuals/shop-commerce-catalog.png",
+  social: "/assets/generated/dashboard-visuals/social-platform-analytics.png"
+};
+
+const AGENT_NODE_ICONS = {
+  Mensch: "/assets/ui-icons/agents/operator-marten.png",
+  Operator: "/assets/ui-icons/agents/operator-marten.png",
+  Hermes: "/assets/ui-icons/agents/hermes.png",
+  Jarvis: "/assets/ui-icons/agents/jarvis.png",
+  Heimdall: "/assets/ui-icons/agents/heimdall.png",
+  Muse: "/assets/ui-icons/agents/muse.png",
+  Argus: "/assets/ui-icons/agents/argus.png",
+  Oracle: "/assets/ui-icons/agents/oracle.png",
+  Forge: "/assets/ui-icons/agents/forge.png",
+  Sentinel: "/assets/ui-icons/agents/sentinel.png",
+  "OpenClaw Gateway": "/assets/ui-icons/software/openclaw.png",
+  Claude: "/assets/ui-icons/software/claude.png",
+  Codex: "/assets/ui-icons/software/codex.png",
+  Friday: "/assets/ui-icons/status/reparieren.png"
+};
+
+const DEVICE_NODE_ICONS = {
+  "Mac mini": "/assets/ui-icons/devices/mac-mini.png",
+  MacBook: "/assets/ui-icons/devices/macbook.png",
+  iMac: "/assets/ui-icons/devices/imac.png",
+  iPhone: "/assets/ui-icons/devices/iphone.png",
+  "Home Assistant": "/assets/ui-icons/software/home-assistant.png",
+  GitHub: "/assets/ui-icons/software/github.png",
+  Obsidian: "/assets/ui-icons/software/obsidian.png",
+  StreamDeck: "/assets/ui-icons/devices/streamdeck.png",
+  Rodecaster: "/assets/ui-icons/devices/rodecaster.png",
+  "TikTok Live Studio": "/assets/generated/dashboard-visuals/social-platform-analytics.png",
+  SoundCloud: "/assets/generated/dashboard-visuals/audio-publishing-streams.png"
+};
+
+const VAULT_NODE_ICONS = {
+  Operator: "/assets/ui-icons/agents/operator-marten.png",
+  Hermes: "/assets/ui-icons/agents/hermes.png",
+  "Telegram Spool": "/assets/ui-icons/communication/telegram.png",
+  "Channel Directory": "/assets/ui-icons/infrastructure/repo-sync.png",
+  "Active Sessions": "/assets/ui-icons/status/live.png",
+  Jarvis: "/assets/ui-icons/agents/jarvis.png",
+  "Argus Bridge": "/assets/ui-icons/agents/argus.png",
+  "Brain Vault": "/assets/ui-icons/infrastructure/vault-graph.png",
+  Obsidian: "/assets/ui-icons/software/obsidian.png",
+  GitHub: "/assets/ui-icons/software/github.png"
+};
+
+const HA_ICON_STRIP = [
+  { label: "Home Assistant", detail: "Automationen", image: "/assets/ui-icons/software/home-assistant.png" },
+  { label: "Zigbee2MQTT", detail: "Bridge", image: "/assets/ui-icons/home-assistant/zigbee2mqtt.png" },
+  { label: "Haus", detail: "Wohnung", image: "/assets/ui-icons/home-assistant/haus.png" },
+  { label: "Licht", detail: "Szenen", image: "/assets/ui-icons/home-assistant/licht.png" },
+  { label: "Sensor", detail: "Status", image: "/assets/ui-icons/home-assistant/sensor.png" },
+  { label: "Sicherheit", detail: "Alarm", image: "/assets/ui-icons/home-assistant/sicherheit.png" },
+  { label: "Backup", detail: "Mac mini", image: "/assets/ui-icons/infrastructure/backup.png" },
+  { label: "SMB", detail: "Bridge", image: "/assets/ui-icons/infrastructure/smb.png" }
+];
+
 function getDashboardVisual(kind) {
   return DASHBOARD_VISUALS[kind] || DASHBOARD_VISUALS.centralServer;
+}
+
+function getOverviewIcon(kind) {
+  return OVERVIEW_ICON_VISUALS[kind] || OVERVIEW_ICON_VISUALS.centralServer;
+}
+
+function getGraphNodeIcon(mode, name) {
+  if (mode === "devices") return DEVICE_NODE_ICONS[name] || null;
+  if (mode === "vault") return VAULT_NODE_ICONS[name] || null;
+  return AGENT_NODE_ICONS[name] || null;
 }
 
 function buildOverviewCommandCards(dashboardData) {
@@ -147,35 +228,35 @@ function buildOverviewCommandCards(dashboardData) {
       value: gatewayState === "running" ? "Mac mini / Hermes stabil" : "Zentralserver pruefen",
       detail: `Gateway ${gatewayState} · Telegram ${telegramState}`,
       status: gatewayState === "running" && telegramState === "connected" ? "live" : "warn",
-      image: getDashboardVisual("centralServer")
+      image: getOverviewIcon("centralServer")
     },
     {
       title: "Kommunikation",
       value: `${formatValue(agentsRoom.metrics?.routeCount || 0)} aktive Routen`,
       detail: `${formatValue(agentsRoom.metrics?.delegationCount || 0)} Delegationen · ${formatValue(agentsRoom.metrics?.conversationCount || 0)} Gespraeche`,
       status: (agentsRoom.metrics?.routeCount || 0) > 0 ? "connected" : "warn",
-      image: getDashboardVisual("communication")
+      image: getOverviewIcon("communication")
     },
     {
       title: "Vault / Memory",
       value: vaultSource?.detail || "Brain Vault nicht gemeldet",
       detail: vaultSource?.route || "Vault-Verbindungen pruefen",
       status: vaultSource?.state || "warn",
-      image: getDashboardVisual("vault")
+      image: getOverviewIcon("vault")
     },
     {
       title: "HA Backup",
       value: backupRoutePresent ? "Mac mini als Ziel aktiv" : "Backup-Pfad fehlt",
       detail: backupRoutePresent ? "Home Assistant -> Mac mini ueber SMB / Bridge" : "Heimdall / HA Route offen",
       status: backupRoutePresent ? "live" : "warn",
-      image: getDashboardVisual("homeAssistant")
+      image: getOverviewIcon("homeAssistant")
     },
     {
       title: "Warnungen",
       value: warningCount > 0 ? `${warningCount} Punkte mit Bedarf` : "Keine offenen Warnungen",
       detail: warningCount > 0 ? "Prio in Warnungen und Technik pruefen" : "Systemzustand im Snapshot ruhig",
       status: warningCount > 0 ? "warn" : "live",
-      image: getDashboardVisual("alerts")
+      image: getOverviewIcon("alerts")
     }
   ];
 
@@ -207,18 +288,26 @@ function buildOverviewCommandCards(dashboardData) {
 function getSocialVisual(label) {
   const key = String(label || "").toLowerCase();
   if (key.includes("website")) {
-    return getDashboardVisual("website");
+    return PLATFORM_VISUALS.website;
   }
   if (key.includes("soundcloud")) {
-    return getDashboardVisual("audio");
+    return PLATFORM_VISUALS.soundcloud;
   }
   if (key.includes("shirtee") || key.includes("shop")) {
-    return getDashboardVisual("shop");
+    return PLATFORM_VISUALS.shop;
   }
   if (key.includes("tiktok") || key.includes("hauptseite") || key.includes("backup") || key.includes("afterhours")) {
-    return getDashboardVisual("social");
+    return PLATFORM_VISUALS.tiktok;
   }
-  return getDashboardVisual("social");
+  return PLATFORM_VISUALS.social;
+}
+
+function getSocialMediaAsset(row, fallbackLabel) {
+  const remoteProfile = row?.profileImage && /^https?:\/\//i.test(row.profileImage) ? row.profileImage : null;
+  if (remoteProfile) {
+    return { image: remoteProfile, mode: "photo" };
+  }
+  return { image: getSocialVisual(row?.platform || fallbackLabel), mode: "icon" };
 }
 
 function formatSocialStatus(status, statusLabel) {
@@ -416,6 +505,7 @@ function buildGraphDataset(agentsRoom, mode) {
       return {
         name,
         ...position,
+        icon: getGraphNodeIcon(mode, name),
         role: record.role || position.detail,
         route: record.route || connections[0] || "Keine Route",
         channel: record.channel || "Routing",
@@ -490,6 +580,7 @@ function renderGraphView(agentsRoom, mode) {
       return `
         <button type="button" class="agentsroom-network-node ${node.tone}${isSelected ? " is-selected" : ""}" style="left:${node.x}%; top:${node.y}%" data-network-node="${nodeId}" data-network-name="${escapeHtml(node.label)}" data-network-role="${escapeHtml(node.role)}" data-network-route="${escapeHtml(node.route)}" data-network-channel="${escapeHtml(node.channel)}" data-network-status="${escapeHtml(node.statusLabel)}" data-network-connections="${escapeHtml(node.connections.join(" • "))}" aria-pressed="${isSelected ? "true" : "false"}">
           <span class="agentsroom-network-node-status ${statusClass(node.status)}">${escapeHtml(node.statusLabel)}</span>
+          ${node.icon ? `<span class="agentsroom-network-node-icon"><img src="${escapeHtml(node.icon)}" alt=""></span>` : ""}
           <strong>${escapeHtml(node.label)}</strong>
           <span>${escapeHtml(node.detail)}</span>
         </button>
@@ -1161,6 +1252,19 @@ export function renderHomeAssistantSection(container, dashboardData) {
         </div>
       </article>
 
+      <article class="panel">
+        <h3>HA-Komponenten</h3>
+        <div class="ha-icon-strip">
+          ${HA_ICON_STRIP.map((item) => `
+            <article class="ha-icon-card">
+              <span class="ha-icon-card-media"><img src="${item.image}" alt=""></span>
+              <strong>${escapeHtml(item.label)}</strong>
+              <span>${escapeHtml(item.detail)}</span>
+            </article>
+          `).join("")}
+        </div>
+      </article>
+
       <article class="panel ha-wide">
         <div class="agentsroom-panel-head">
           <div><h3>HA-Routen und Aufgaben</h3><p class="muted-line">Nur vorhandene Eintraege aus dem aktuellen Dashboard-Snapshot.</p></div>
@@ -1505,17 +1609,23 @@ export function renderSocial(container, socialMetrics) {
     { label: "SoundCloud", value: soundcloudRow?.valueLabel || "nicht verfuegbar", meta: soundcloudRow?.statusLabel || "kein Live-Signal", status: /lokal nicht verifizierbar/i.test(soundcloudRow?.statusLabel || "") ? "warn" : "live" },
     { label: "Linksignale", value: formatValue(contentSignals), meta: "Website / Inhalt", status: "connected" }
   ];
-  const profileCards = socialMetrics.links.map((row) => ({
-    ...row,
-    image: row.profileImage || getSocialVisual(row.platform),
-    value: row.valueLabel || row.metricValue || row.clicks || "0",
-    detail: row.sourceLabel || "Live-Check"
-  }));
+  const profileCards = socialMetrics.links.map((row) => {
+    const media = getSocialMediaAsset(row, row.platform);
+    return {
+      ...row,
+      image: media.image,
+      imageMode: media.mode,
+      value: row.valueLabel || row.metricValue || row.clicks || "0",
+      detail: row.sourceLabel || "Live-Check"
+    };
+  });
   const registryCards = officialAccounts.map((item) => {
     const related = socialMetrics.links.find((row) => item.label.includes("TikTok Hauptseite") ? /hauptseite/i.test(row.platform || "") : item.label.includes("TikTok Backup") ? /backup/i.test(row.platform || "") : item.label === "SoundCloud" ? /soundcloud/i.test(row.platform || "") : null);
+    const media = getSocialMediaAsset({ profileImage: item.profileImage || related?.profileImage, platform: item.label }, item.label);
     return {
       ...item,
-      image: item.profileImage || related?.profileImage || getSocialVisual(item.label),
+      image: media.image,
+      imageMode: media.mode,
       meta: related?.valueLabel || item.note || (item.label === "Website" ? "Kontrollpfad / Hauptdomain" : item.label === "Shirtee Store" ? "Store / Produktlinks" : item.label === "SoundCloud" ? "Musik / Profilsignal" : "Profil / Kanal"),
       note: related?.sourceLabel || item.url
     };
@@ -1554,7 +1664,9 @@ export function renderSocial(container, socialMetrics) {
           .map(
             (row) => `
               <article class="social-profile-card">
-                <img src="${row.image}" alt="${escapeHtml(row.platform)}">
+                <div class="social-profile-media ${row.imageMode === "icon" ? "is-icon" : "is-photo"}">
+                  <img src="${row.image}" alt="${escapeHtml(row.platform)}">
+                </div>
                 <div class="social-profile-body">
                   <div class="social-node-head">
                     <div>
@@ -1615,7 +1727,9 @@ export function renderSocial(container, socialMetrics) {
           .map(
             (item) => `
               <article class="social-registry-card">
-                <img src="${item.image}" alt="${escapeHtml(item.label)}">
+                <div class="social-registry-media ${item.imageMode === "icon" ? "is-icon" : "is-photo"}">
+                  <img src="${item.image}" alt="${escapeHtml(item.label)}">
+                </div>
                 <div class="social-registry-body">
                   <div class="social-node-head">
                     <div>

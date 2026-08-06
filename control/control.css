@@ -823,6 +823,24 @@ a { color: inherit; text-decoration: none; }
   transition: border-color 0.18s ease, box-shadow 0.18s ease, opacity 0.18s ease;
 }
 
+.agentsroom-network-node-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  margin: 0 0 0.35rem;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.agentsroom-network-node-icon img {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+}
+
 .agentsroom-network-node strong {
   display: block;
   font-size: 0.88rem;
@@ -1178,14 +1196,21 @@ a { color: inherit; text-decoration: none; }
 }
 
 .pulse-summary-media {
+  display: grid;
+  place-items: center;
   height: 92px;
+  padding: 1rem;
+  background:
+    radial-gradient(circle at top, rgba(52, 228, 255, 0.12), transparent 45%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.015));
 }
 
 .pulse-summary-media img {
   display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 14px rgba(52, 228, 255, 0.18));
 }
 
 .pulse-summary-body {
@@ -1445,7 +1470,7 @@ a { color: inherit; text-decoration: none; }
 .social-profile-card,
 .social-registry-card {
   display: grid;
-  grid-template-columns: 156px minmax(0, 1fr);
+  grid-template-columns: 132px minmax(0, 1fr);
   gap: 0.8rem;
   overflow: hidden;
   border-radius: 14px;
@@ -1455,13 +1480,37 @@ a { color: inherit; text-decoration: none; }
     rgba(255, 255, 255, 0.03);
 }
 
-.social-profile-card img,
-.social-registry-card img {
+.social-profile-media,
+.social-registry-media {
+  display: grid;
+  place-items: center;
+  padding: 0.9rem;
+  min-height: 180px;
+  background:
+    radial-gradient(circle at top, rgba(52, 228, 255, 0.12), transparent 42%),
+    rgba(0, 0, 0, 0.25);
+}
+
+.social-profile-media img,
+.social-registry-media img {
   width: 100%;
   height: 100%;
-  min-height: 180px;
   object-fit: cover;
-  background: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+.social-profile-media.is-icon img,
+.social-registry-media.is-icon img {
+  width: 78px;
+  height: 78px;
+  object-fit: contain;
+  border-radius: 0;
+  filter: drop-shadow(0 0 16px rgba(52, 228, 255, 0.16));
+}
+
+.social-profile-media.is-photo img,
+.social-registry-media.is-photo img {
+  min-height: 148px;
 }
 
 .social-profile-body,
@@ -2464,9 +2513,17 @@ a { color: inherit; text-decoration: none; }
   .social-registry-card {
     grid-template-columns: 1fr;
   }
-  .social-profile-card img,
-  .social-registry-card img {
+  .social-profile-media,
+  .social-registry-media {
+    min-height: 160px;
+  }
+  .social-profile-media.is-photo img,
+  .social-registry-media.is-photo img {
     min-height: 164px;
+  }
+  .social-profile-media.is-icon,
+  .social-registry-media.is-icon {
+    min-height: 132px;
   }
   .social-profile-body,
   .social-registry-body {
@@ -2556,9 +2613,20 @@ a { color: inherit; text-decoration: none; }
     grid-template-columns: 1fr;
   }
 
-  .social-profile-card img,
-  .social-registry-card img {
+  .social-profile-media,
+  .social-registry-media {
+    min-height: 144px;
+  }
+
+  .social-profile-media.is-photo img,
+  .social-registry-media.is-photo img {
     min-height: 180px;
+  }
+
+  .social-profile-media.is-icon img,
+  .social-registry-media.is-icon img {
+    width: 64px;
+    height: 64px;
   }
 
   .social-profile-body,
@@ -3142,6 +3210,50 @@ a { color: inherit; text-decoration: none; }
   overflow-wrap: anywhere;
   font-family: var(--font-display);
   font-size: 1.15rem;
+}
+
+.ha-icon-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.65rem;
+}
+
+.ha-icon-card {
+  display: grid;
+  justify-items: start;
+  gap: 0.35rem;
+  padding: 0.8rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  background:
+    linear-gradient(135deg, rgba(81, 207, 156, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(255, 255, 255, 0.025);
+}
+
+.ha-icon-card-media {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(7, 9, 12, 0.56);
+}
+
+.ha-icon-card-media img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+
+.ha-icon-card strong {
+  font-size: 0.92rem;
+}
+
+.ha-icon-card span:last-child {
+  color: var(--text-soft);
+  font-size: 0.76rem;
 }
 
 .ha-route-grid {
