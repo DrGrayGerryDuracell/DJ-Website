@@ -37,6 +37,10 @@ function isSessionValid(session) {
   return Date.now() < Number(session.expiresAt);
 }
 
+function isLocalDevelopmentHost() {
+  return ["localhost", "127.0.0.1", "::1"].includes(window.location.hostname);
+}
+
 export function clearControlSession() {
   localStorage.removeItem(controlAuthConfig.storageKey);
 }
@@ -53,7 +57,7 @@ export async function establishControlSession(passphrase) {
 }
 
 export function hasValidControlSession() {
-  if (!controlAuthConfig.enabled) {
+  if (!controlAuthConfig.enabled || isLocalDevelopmentHost()) {
     return true;
   }
   return isSessionValid(getSessionData());
@@ -67,4 +71,3 @@ export function ensureControlAccess() {
   window.location.replace(`/control-login.html?next=${next}`);
   return false;
 }
-

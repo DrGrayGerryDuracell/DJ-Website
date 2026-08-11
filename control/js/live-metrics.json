@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-04-01T11:42:31.874Z",
-    "generatedAtLabel": "01.04.26, 13:42",
+    "generatedAt": "2026-08-06T07:08:04.234Z",
+    "generatedAtLabel": "06.08.26, 09:08",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -14,8 +14,8 @@
     },
     "storeLinks": {
       "label": "Shop-Links",
-      "value": "3/3 erreichbar",
-      "level": "ok"
+      "value": "Lokal nicht verifizierbar",
+      "level": "info"
     },
     "social": {
       "label": "Social-Profile",
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "01.04.26, 13:42",
+      "value": "06.08.26, 09:08",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 553,
+      "value": 332,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -74,14 +74,14 @@
     {
       "id": "shopLinksOk",
       "label": "Shop-Links OK",
-      "value": 3,
-      "delta": "Shirtee",
+      "value": null,
+      "delta": "lokal nicht verifizierbar",
       "trend": "up"
     },
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 501,
+      "value": 622,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -95,14 +95,14 @@
     {
       "id": "siteTiktokLinks",
       "label": "TikTok Links auf Website",
-      "value": 28,
+      "value": 25,
       "delta": "Inhalt",
       "trend": "neutral"
     },
     {
       "id": "siteShopLinks",
       "label": "Shop Links auf Website",
-      "value": 10,
+      "value": 8,
       "delta": "Inhalt",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 633,
+        "visitors": 441,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 494,
+        "visitors": 368,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 527,
+        "visitors": 303,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 491,
+        "visitors": 354,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 535,
+        "visitors": 388,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 621,
+        "visitors": 295,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 591,
+        "visitors": 328,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 530,
+        "visitors": 176,
         "pageviews": 0
       }
     ],
@@ -197,19 +197,19 @@
     "sources": [
       {
         "label": "TikTok Links",
-        "value": 28
+        "value": 25
       },
       {
         "label": "SoundCloud Links",
-        "value": 13
-      },
-      {
-        "label": "Shop Links",
         "value": 10
       },
       {
+        "label": "Shop Links",
+        "value": 8
+      },
+      {
         "label": "Kontakt Links",
-        "value": 15
+        "value": 18
       }
     ],
     "devices": [
@@ -228,19 +228,73 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "553 ms",
+      "avgSession": "332 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
+    },
+    "workbench": {
+      "pages": [
+        {
+          "id": "start",
+          "title": "Startseite",
+          "path": "/index.html",
+          "status": "live",
+          "statusLabel": "Live",
+          "editor": "Hero, Intro, CTA",
+          "route": "Website -> Hauptseite",
+          "note": "Schneller Eingriff für Headline, Intro und CTA-Zone."
+        },
+        {
+          "id": "bio",
+          "title": "Bio",
+          "path": "/bio.html",
+          "status": "connected",
+          "statusLabel": "Verbunden",
+          "editor": "Bio Blocks, Links, Profiltexte",
+          "route": "Website -> Bio",
+          "note": "Texte, Module und Kontaktpfade für Bio-Seite."
+        },
+        {
+          "id": "musik",
+          "title": "Musik",
+          "path": "/musik.html",
+          "status": "connected",
+          "statusLabel": "Verbunden",
+          "editor": "Releases, Player, Embeds",
+          "route": "Website -> Musik",
+          "note": "SoundCloud, Releases und CTA-Bausteine."
+        },
+        {
+          "id": "shop",
+          "title": "Shop",
+          "path": "/shop.html",
+          "status": "live",
+          "statusLabel": "Live",
+          "editor": "Produktmodule und Shop-CTA",
+          "route": "Website -> Shop",
+          "note": "Shop-Teaser, Kategorien und Verlinkungen."
+        },
+        {
+          "id": "control",
+          "title": "Control Dashboard",
+          "path": "/control/",
+          "status": "live",
+          "statusLabel": "Live",
+          "editor": "Sections, KPIs, Routing",
+          "route": "Website -> Control",
+          "note": "Interne Workbench für Dashboard-Aufbau."
+        }
+      ]
     }
   },
   "shopMetrics": {
     "linkHealth": {
       "checkedLinks": 3,
-      "okLinks": 3,
+      "okLinks": 0,
       "failLinks": 0,
-      "reachabilityRate": "100%",
-      "checkedAt": "2026-04-01T11:42:31.874Z",
-      "checkedAtLabel": "01.04.26, 13:42"
+      "reachabilityRate": "nicht verifizierbar",
+      "checkedAt": "2026-08-06T07:08:04.234Z",
+      "checkedAtLabel": "06.08.26, 09:08"
     },
     "catalog": {
       "totalItems": 167,
@@ -273,16 +327,16 @@
           "items": 10
         }
       ],
-      "storeVisibleProducts": 3,
+      "storeVisibleProducts": 0,
       "storeVisibleProductNames": [
         "Kein Mainstream. Hoodie",
-        "Zu wild fuer leise. Crop",
+        "Kein Mainstream. Hoodie",
         "Mrs. Dr. Gray Signature Hoodie"
       ],
-      "uploadedCount": 3,
+      "uploadedCount": 2,
       "submittedCount": 164,
       "readyCount": 0,
-      "pendingCount": 0,
+      "pendingCount": 1,
       "itemStates": [
         {
           "id": "dr-hoodie-mainstream",
@@ -294,10 +348,10 @@
           "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-          "uploadState": "uploaded",
-          "uploadLabel": "Bereits hochgeladen",
-          "verifiedLink": true,
-          "httpCode": 200
+          "uploadState": "pending",
+          "uploadLabel": "Noch offen",
+          "verifiedLink": false,
+          "httpCode": 0
         },
         {
           "id": "dr-shirt-raw",
@@ -696,13 +750,13 @@
           "section": "women",
           "sectionLabel": "Damen",
           "catalogStatus": "Live im Store",
-          "href": "https://www.shirtee.com/de/gy1dj4cqvmh36/",
+          "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
           "hasImage": true,
           "imageSrc": "https://media-1.ams3.digitaloceanspaces.com/media_cache/catalog/product/si320/8/K/j/a/8KjaVS1TWZpQy5ud.png",
           "uploadState": "uploaded",
           "uploadLabel": "Bereits hochgeladen",
-          "verifiedLink": true,
-          "httpCode": 200
+          "verifiedLink": false,
+          "httpCode": 0
         },
         {
           "id": "mrs-dress-liebe",
@@ -731,8 +785,8 @@
           "imageSrc": "https://media-1.ams3.digitaloceanspaces.com/media_cache/catalog/product/si320/L/B/e/q/LBeqn1swlODc4BJU.png",
           "uploadState": "uploaded",
           "uploadLabel": "Bereits hochgeladen",
-          "verifiedLink": true,
-          "httpCode": 200
+          "verifiedLink": false,
+          "httpCode": 0
         },
         {
           "id": "mrs-top-afterglow",
@@ -2791,118 +2845,244 @@
         }
       ]
     },
+    "workbench": {
+      "drafts": [
+        {
+          "id": "drop-01",
+          "title": "Club Night Capsule",
+          "state": "draft",
+          "stateLabel": "Entwurf",
+          "line": "Merch / Capsule",
+          "task": "Mockup, Copy und Upload-Batch vorbereiten",
+          "priority": "P0"
+        },
+        {
+          "id": "drop-02",
+          "title": "Afterhours Neon",
+          "state": "ready",
+          "stateLabel": "Uploadbereit",
+          "line": "TikTok / Merch",
+          "task": "Shirtee-Request erzeugen und Batch bauen",
+          "priority": "P1"
+        },
+        {
+          "id": "drop-03",
+          "title": "Sound Ritual",
+          "state": "submitted",
+          "stateLabel": "Pruefung",
+          "line": "Music / Merch",
+          "task": "Store-Preview und Produkttext gegenprüfen",
+          "priority": "P1"
+        }
+      ],
+      "uploadSteps": [
+        {
+          "id": "queue",
+          "label": "Upload Queue",
+          "status": "connected",
+          "statusLabel": "CSV bereit",
+          "note": "CSV / Queue aus Katalog ableiten"
+        },
+        {
+          "id": "batches",
+          "label": "Upload Batches",
+          "status": "ready",
+          "statusLabel": "Batch bereit",
+          "note": "Upload-Chargen vorbereiten"
+        },
+        {
+          "id": "api",
+          "label": "Shirtee API Request",
+          "status": "support",
+          "statusLabel": "Adapter",
+          "note": "Request erzeugen, sobald API komplett steht"
+        }
+      ]
+    },
     "topProducts": [
       {
         "name": "Kein Mainstream. Hoodie",
-        "httpCode": 200,
+        "httpCode": 0,
         "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
-        "statusLabel": "erreichbar",
+        "statusLabel": "Fehler",
         "sourceLabel": "Shirtee-Linkcheck"
       },
       {
-        "name": "Zu wild fuer leise. Crop",
-        "httpCode": 200,
-        "href": "https://www.shirtee.com/de/gy1dj4cqvmh36/",
-        "statusLabel": "erreichbar",
+        "name": "Kein Mainstream. Hoodie",
+        "httpCode": 0,
+        "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
+        "statusLabel": "Fehler",
         "sourceLabel": "Shirtee-Linkcheck"
       },
       {
         "name": "Mrs. Dr. Gray Signature Hoodie",
-        "httpCode": 200,
+        "httpCode": 0,
         "href": "https://www.shirtee.com/de/drgray-mrsdrgray/",
-        "statusLabel": "erreichbar",
+        "statusLabel": "Fehler",
         "sourceLabel": "Shirtee-Linkcheck"
       }
     ],
     "timeline": [
       {
-        "time": "01.04.26, 13:42",
-        "type": "ok",
-        "detail": "Shop-Link 1: HTTP 200"
+        "time": "06.08.26, 09:08",
+        "type": "info",
+        "detail": "Shop-Link 1: lokal nicht verifizierbar"
       },
       {
-        "time": "01.04.26, 13:42",
-        "type": "ok",
-        "detail": "Shop-Link 2: HTTP 200"
+        "time": "06.08.26, 09:08",
+        "type": "info",
+        "detail": "Shop-Link 2: lokal nicht verifizierbar"
       },
       {
-        "time": "01.04.26, 13:42",
-        "type": "ok",
-        "detail": "Shop-Link 3: HTTP 200"
+        "time": "06.08.26, 09:08",
+        "type": "info",
+        "detail": "Shop-Link 3: lokal nicht verifizierbar"
       }
     ]
   },
   "socialMetrics": {
     "links": [
       {
-        "platform": "TikTok Dr. Gray",
-        "metricValue": 17,
-        "valueLabel": "17 Linksignale im Seiteninhalt",
+        "platform": "TikTok Hauptseite",
+        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "handle": "@drgray_mrsdrgray",
+        "profileImage": null,
+        "profileUrl": "https://www.tiktok.com/@drgray_mrsdrgray",
+        "verified": false,
+        "status": "live",
+        "metricValue": 15,
+        "valueLabel": "15 Linksignale im Seiteninhalt",
         "statusLabel": "Profil erreichbar",
         "sourceLabel": "TikTok Profil-HTML • Code 209002"
       },
       {
-        "platform": "TikTok Mrs. Dr. Gray",
-        "metricValue": 11,
-        "valueLabel": "11 Linksignale im Seiteninhalt",
+        "platform": "TikTok Backup",
+        "displayName": "Gray Afterhours",
+        "handle": "@gray.afterhours",
+        "profileImage": null,
+        "profileUrl": "https://www.tiktok.com/@gray.afterhours",
+        "verified": false,
+        "status": "live",
+        "metricValue": 10,
+        "valueLabel": "10 Linksignale im Seiteninhalt",
         "statusLabel": "Profil erreichbar",
         "sourceLabel": "TikTok Profil-HTML • Code 209002"
       },
       {
         "platform": "SoundCloud",
-        "metricValue": 13,
-        "valueLabel": "501 Follower • 13 Linksignale",
-        "statusLabel": "25 Tracks",
+        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "handle": "@drgray_sic",
+        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
+        "profileUrl": "https://soundcloud.com/drgray_sic",
+        "verified": false,
+        "status": "live",
+        "metricValue": 10,
+        "valueLabel": "622 Follower • 10 Linksignale",
+        "statusLabel": "32 Tracks",
         "sourceLabel": "SoundCloud Public API"
       },
       {
         "platform": "Shop",
-        "metricValue": 3,
-        "valueLabel": "3 Produkte sichtbar • 3/3 gepruefte Produktlinks",
-        "statusLabel": "Alle geprueften Links erreichbar",
+        "displayName": "Shirtee Store",
+        "handle": "Store / Merch",
+        "profileImage": null,
+        "profileUrl": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
+        "verified": false,
+        "status": "warn",
+        "metricValue": 0,
+        "valueLabel": "0 Produkte sichtbar • 0/3 gepruefte Produktlinks",
+        "statusLabel": "3 Links fehlerhaft",
         "sourceLabel": "Shirtee-Linkcheck"
       }
     ],
-    "strongestPlatform": "TikTok Dr. Gray",
+    "strongestPlatform": "TikTok Hauptseite",
+    "routes": [
+      {
+        "from": "Website",
+        "to": "TikTok Hauptseite",
+        "channel": "Hero / CTA",
+        "status": "live"
+      },
+      {
+        "from": "Website",
+        "to": "TikTok Backup",
+        "channel": "Hero / CTA",
+        "status": "live"
+      },
+      {
+        "from": "Website",
+        "to": "SoundCloud",
+        "channel": "Player / Music",
+        "status": "live"
+      },
+      {
+        "from": "Instagram",
+        "to": "nicht genutzt",
+        "channel": "kein Kanal",
+        "status": "info"
+      }
+    ],
     "comparisons": [
       {
         "label": "TikTok Links im Seiteninhalt",
-        "value": "28"
+        "value": "25"
       },
       {
         "label": "SoundCloud Links im Seiteninhalt",
-        "value": "13"
+        "value": "10"
       },
       {
         "label": "Shop Links im Seiteninhalt",
-        "value": "10"
+        "value": "8"
       }
     ],
     "officialAccounts": [
       {
         "label": "Website",
         "url": "https://drgray-mrsdrgray.com",
-        "status": "live"
+        "status": "live",
+        "displayName": "drgray-mrsdrgray.com",
+        "handle": "Hauptdomain",
+        "profileImage": null,
+        "note": "Kontrollpfad / Hauptdomain"
       },
       {
         "label": "Shirtee Store",
         "url": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
-        "status": "live"
+        "status": "check",
+        "displayName": "Dr. Gray & Mrs. Dr. Gray Store",
+        "handle": "Shirtee",
+        "profileImage": null,
+        "note": "Store / Produktlinks"
       },
       {
         "label": "SoundCloud",
         "url": "https://soundcloud.com/drgray_sic",
-        "status": "live"
+        "status": "live",
+        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "handle": "@drgray_sic",
+        "profileImage": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg",
+        "note": "Musik / Profilsignal"
       },
       {
-        "label": "TikTok Dr. Gray",
-        "url": "https://www.tiktok.com/@dr.gray.sic",
-        "status": "live"
+        "label": "TikTok Hauptseite",
+        "url": "https://www.tiktok.com/@drgray_mrsdrgray",
+        "status": "live",
+        "displayName": "Dr. Gray & Mrs. Dr. Gray",
+        "handle": "@drgray_mrsdrgray",
+        "profileImage": null,
+        "verified": false,
+        "note": "Hauptprofil"
       },
       {
-        "label": "TikTok Mrs. Dr. Gray",
-        "url": "https://www.tiktok.com/@ktina1986",
-        "status": "live"
+        "label": "TikTok Backup",
+        "url": "https://www.tiktok.com/@gray.afterhours",
+        "status": "live",
+        "displayName": "Gray Afterhours",
+        "handle": "@gray.afterhours",
+        "profileImage": null,
+        "verified": false,
+        "note": "Backup-Profil"
       }
     ]
   },
@@ -2911,7 +3091,7 @@
       {
         "metric": "Core Web Vitals",
         "value": "nicht verbunden",
-        "state": "warn"
+        "state": "info"
       },
       {
         "metric": "HTTP Seitenchecks",
@@ -2920,11 +3100,11 @@
       },
       {
         "metric": "Shirtee-Linkchecks",
-        "value": "3/3 OK",
-        "state": "good"
+        "value": "lokal nicht verifizierbar",
+        "state": "info"
       }
     ],
-    "responseTime": "553 ms",
+    "responseTime": "332 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -2934,8 +3114,8 @@
       },
       {
         "label": "Shop Produktlinks",
-        "status": "3/3 erreichbar",
-        "level": "ok"
+        "status": "lokal nicht verifizierbar",
+        "level": "info"
       },
       {
         "label": "SoundCloud Profil",
@@ -2963,44 +3143,138 @@
     "ctas": [
       {
         "name": "TikTok Links",
-        "clicks": 28,
+        "clicks": 25,
         "rate": "Live-Linkcount"
       },
       {
         "name": "Shop Links",
-        "clicks": 10,
+        "clicks": 8,
         "rate": "Live-Linkcount"
       },
       {
         "name": "SoundCloud Links",
-        "clicks": 13,
+        "clicks": 10,
         "rate": "Live-Linkcount"
       }
     ],
-    "weakSpots": []
+    "planner": {
+      "channels": [
+        {
+          "id": "tt-main",
+          "label": "TikTok Hauptseite",
+          "handle": "@drgray_mrsdrgray",
+          "status": "live",
+          "statusLabel": "Verbunden",
+          "cadence": "4 Posts / Woche"
+        },
+        {
+          "id": "tt-backup",
+          "label": "TikTok Backup",
+          "handle": "@gray.afterhours",
+          "status": "connected",
+          "statusLabel": "Verbunden",
+          "cadence": "2 Posts / Woche"
+        },
+        {
+          "id": "sc",
+          "label": "SoundCloud",
+          "handle": "@drgray_sic",
+          "status": "live",
+          "statusLabel": "Live",
+          "cadence": "Releases / Clips"
+        }
+      ],
+      "calendar": [
+        {
+          "id": "cal-01",
+          "day": "Mo",
+          "slot": "19:00",
+          "title": "Performance Clip",
+          "channel": "TikTok Hauptseite",
+          "status": "ready",
+          "statusLabel": "Bereit"
+        },
+        {
+          "id": "cal-02",
+          "day": "Mi",
+          "slot": "21:00",
+          "title": "Afterhours Teaser",
+          "channel": "TikTok Backup",
+          "status": "draft",
+          "statusLabel": "Entwurf"
+        },
+        {
+          "id": "cal-03",
+          "day": "Fr",
+          "slot": "18:00",
+          "title": "Track Snippet + CTA",
+          "channel": "TikTok Hauptseite",
+          "status": "live",
+          "statusLabel": "Geplant"
+        },
+        {
+          "id": "cal-04",
+          "day": "So",
+          "slot": "20:00",
+          "title": "SoundCloud Drop Reminder",
+          "channel": "SoundCloud",
+          "status": "draft",
+          "statusLabel": "Entwurf"
+        }
+      ],
+      "ideas": [
+        {
+          "id": "idea-01",
+          "title": "Studio POV",
+          "owner": "Muse",
+          "state": "ready",
+          "note": "Hook, Shotlist und Caption vorbereiten"
+        },
+        {
+          "id": "idea-02",
+          "title": "Merch + Music Combo",
+          "owner": "Jarvis",
+          "state": "draft",
+          "note": "Shop-Teaser mit Musikverweis kombinieren"
+        },
+        {
+          "id": "idea-03",
+          "title": "Home Setup Reel",
+          "owner": "Heimdall",
+          "state": "support",
+          "note": "Smart-Home / DJ-Setup als Behind-the-scenes"
+        }
+      ]
+    },
+    "weakSpots": [
+      {
+        "item": "Shop-Pruefung",
+        "note": "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren."
+      }
+    ]
   },
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "01.04.26, 13:42",
+      "time": "06.08.26, 09:08",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "01.04.26, 13:42",
+      "time": "06.08.26, 09:08",
       "type": "check",
-      "text": "Shop-Linkcheck: 3/3 erreichbar"
+      "text": "Shop-Linkcheck: lokal nicht verifizierbar"
     },
     {
       "id": "EVT-3",
-      "time": "01.04.26, 13:42",
+      "time": "06.08.26, 09:08",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "01.04.26, 13:42",
+      "time": "06.08.26, 09:08",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3015,16 +3289,16 @@
     },
     {
       "id": "AL-SHOP",
-      "level": "ok",
-      "title": "Shop-Links erreichbar",
-      "description": "Alle geprueften Produktlinks sind erreichbar.",
+      "level": "info",
+      "title": "Shop lokal nicht verifizierbar",
+      "description": "Die lokale Umgebung kann die Shirtee-Links nicht testen; der Status bleibt deshalb neutral.",
       "source": "Shop Monitoring"
     },
     {
       "id": "AL-SOC",
       "level": "ok",
       "title": "SoundCloud Live-Profil erkannt",
-      "description": "501 Follower und 25 Tracks verifiziert.",
+      "description": "622 Follower und 32 Tracks verifiziert.",
       "source": "Social Monitoring"
     }
   ],
@@ -3055,14 +3329,14 @@
     },
     {
       "id": "qa-5",
-      "label": "TikTok Dr. Gray",
-      "href": "https://www.tiktok.com/@dr.gray.sic",
+      "label": "TikTok Hauptseite",
+      "href": "https://www.tiktok.com/@drgray_mrsdrgray",
       "external": true
     },
     {
       "id": "qa-6",
-      "label": "TikTok Mrs. Dr. Gray",
-      "href": "https://www.tiktok.com/@ktina1986",
+      "label": "TikTok Backup · Gray Afterhours",
+      "href": "https://www.tiktok.com/@gray.afterhours",
       "external": true
     },
     {
@@ -3089,5 +3363,1315 @@
       "href": "#logout",
       "external": false
     }
-  ]
+  ],
+  "homeAssistantWorkbench": {
+    "rooms": [
+      {
+        "id": "wohnzimmer",
+        "title": "Wohnzimmer",
+        "status": "live",
+        "statusLabel": "Live",
+        "devices": [
+          {
+            "id": "wohnzimmer-licht",
+            "name": "Deckenlicht",
+            "type": "Light",
+            "state": "on",
+            "stateLabel": "An"
+          },
+          {
+            "id": "wohnzimmer-lampe",
+            "name": "Ambient Lampe",
+            "type": "Light",
+            "state": "off",
+            "stateLabel": "Aus"
+          },
+          {
+            "id": "wohnzimmer-tv",
+            "name": "Apple TV",
+            "type": "Media",
+            "state": "idle",
+            "stateLabel": "Bereit"
+          }
+        ],
+        "scenes": [
+          "DJ Warmup",
+          "Afterhours",
+          "Cleanup"
+        ]
+      },
+      {
+        "id": "studio",
+        "title": "Studio",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "devices": [
+          {
+            "id": "studio-pult",
+            "name": "Desk Light",
+            "type": "Light",
+            "state": "on",
+            "stateLabel": "An"
+          },
+          {
+            "id": "studio-sensor",
+            "name": "Air Sensor",
+            "type": "Sensor",
+            "state": "ok",
+            "stateLabel": "Stabil"
+          },
+          {
+            "id": "studio-switch",
+            "name": "Audio Power",
+            "type": "Switch",
+            "state": "off",
+            "stateLabel": "Aus"
+          }
+        ],
+        "scenes": [
+          "Recording",
+          "Stream",
+          "Night Work"
+        ]
+      },
+      {
+        "id": "flur",
+        "title": "Flur / Eingang",
+        "status": "ready",
+        "statusLabel": "Bereit",
+        "devices": [
+          {
+            "id": "flur-light",
+            "name": "Entry Light",
+            "type": "Light",
+            "state": "off",
+            "stateLabel": "Aus"
+          },
+          {
+            "id": "flur-motion",
+            "name": "Motion Sensor",
+            "type": "Sensor",
+            "state": "armed",
+            "stateLabel": "Aktiv"
+          }
+        ],
+        "scenes": [
+          "Night Entry",
+          "Silent Mode"
+        ]
+      }
+    ],
+    "automations": [
+      {
+        "id": "ha-backup",
+        "label": "HA Backup -> Mac mini",
+        "state": "live",
+        "stateLabel": "Aktiv",
+        "cron": "03:30 täglich"
+      },
+      {
+        "id": "ha-morning",
+        "label": "Morning Boot",
+        "state": "ready",
+        "stateLabel": "Bereit",
+        "cron": "08:00 täglich"
+      },
+      {
+        "id": "ha-stream",
+        "label": "Stream Prep",
+        "state": "connected",
+        "stateLabel": "Verbunden",
+        "cron": "manuell / Szene"
+      }
+    ]
+  },
+  "operationsWorkbench": {
+    "cronJobs": [
+      {
+        "id": "cron-live",
+        "name": "sync-control-live",
+        "schedule": "*/30 * * * *",
+        "state": "live",
+        "stateLabel": "Aktiv",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-shop",
+        "name": "check-shirtee-links",
+        "schedule": "0 */4 * * *",
+        "state": "ready",
+        "stateLabel": "Bereit",
+        "owner": "Jarvis"
+      },
+      {
+        "id": "cron-upload",
+        "name": "generate-upload-queue",
+        "schedule": "15 2 * * *",
+        "state": "connected",
+        "stateLabel": "Verbunden",
+        "owner": "Forge"
+      }
+    ],
+    "subagents": [
+      {
+        "id": "sub-forge",
+        "name": "Forge",
+        "mode": "Infrastructure",
+        "llm": "Cloud LLM first",
+        "fallback": "Codex",
+        "state": "live"
+      },
+      {
+        "id": "sub-sentinel",
+        "name": "Sentinel",
+        "mode": "Monitoring",
+        "llm": "Cloud LLM first",
+        "fallback": "Claude",
+        "state": "live"
+      },
+      {
+        "id": "sub-muse",
+        "name": "Muse",
+        "mode": "Content",
+        "llm": "Cloud LLM first",
+        "fallback": "Claude Code",
+        "state": "ready"
+      },
+      {
+        "id": "sub-heimdall",
+        "name": "Heimdall",
+        "mode": "Home Assistant",
+        "llm": "Cloud LLM first",
+        "fallback": "Codex",
+        "state": "connected"
+      }
+    ],
+    "vaultNodes": [
+      {
+        "id": "vault-brain",
+        "name": "Brain Vault",
+        "role": "Persistentes Wissen",
+        "state": "sync",
+        "stateLabel": "Sync",
+        "steward": "Memory Agent"
+      },
+      {
+        "id": "vault-obsidian",
+        "name": "Obsidian Graph",
+        "role": "Knoten und Beziehungen",
+        "state": "connected",
+        "stateLabel": "Verbunden",
+        "steward": "Jarvis"
+      },
+      {
+        "id": "vault-learning",
+        "name": "Experience Loop",
+        "role": "Erfahrungen -> Regeln -> Kontext",
+        "state": "support",
+        "stateLabel": "Adapter",
+        "steward": "Hermes"
+      }
+    ]
+  },
+  "agentsRoom": {
+    "metrics": {
+      "agentCount": 13,
+      "routeCount": 15,
+      "deviceCount": 11,
+      "liveCount": 10,
+      "delegationCount": 11,
+      "conversationCount": 10,
+      "sourceCount": 7
+    },
+    "routing": [
+      {
+        "from": "Mensch",
+        "to": "Hermes",
+        "channel": "Telegram / iPhone",
+        "purpose": "Operator-Eingang und Startsignal",
+        "status": "live",
+        "statusLabel": "Live",
+        "feedback": false
+      },
+      {
+        "from": "Hermes",
+        "to": "Argus",
+        "channel": "Vorpruefung",
+        "purpose": "erstes Review auf Logik, Risiko und Korrektheit",
+        "status": "support",
+        "statusLabel": "Support",
+        "feedback": false
+      },
+      {
+        "from": "Argus",
+        "to": "Hermes",
+        "channel": "Review Return",
+        "purpose": "Rueckgabe mit Korrekturhinweisen",
+        "status": "support",
+        "statusLabel": "Support",
+        "feedback": false
+      },
+      {
+        "from": "Hermes",
+        "to": "OpenClaw Gateway",
+        "channel": "Queue / Bridge",
+        "purpose": "Auftrag an Broker und Delegationsschicht uebergeben",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "feedback": false
+      },
+      {
+        "from": "OpenClaw Gateway",
+        "to": "Jarvis",
+        "channel": "Broker -> Verteiler",
+        "purpose": "Jarvis uebernimmt Verteilung und Arbeitsplanung",
+        "status": "connected",
+        "statusLabel": "Verbunden"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Forge",
+        "channel": "Infra / Skills / Server",
+        "purpose": "Engineering und Umsetzung",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Sentinel",
+        "channel": "Logs / Health / Security",
+        "purpose": "Monitoring und Sicherheit",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Oracle",
+        "channel": "Briefings",
+        "purpose": "Kontext, Wetter und News",
+        "status": "ready",
+        "statusLabel": "Bereit"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Muse",
+        "channel": "Content / Audio / Social",
+        "purpose": "Content und Media",
+        "status": "ready",
+        "statusLabel": "Bereit"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Heimdall",
+        "channel": "Home Assistant",
+        "purpose": "Smart Home, Automationen und HA-Backups",
+        "status": "connected",
+        "statusLabel": "Verbunden"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Friday",
+        "channel": "Deep Repair",
+        "purpose": "schwere Reparaturen und technische Ausnahmefaelle",
+        "status": "ready",
+        "statusLabel": "Bereit"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Claude",
+        "channel": "Counter Check",
+        "purpose": "nur bei hoher Komplexitaet und Reasoning-Bedarf",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Claude Code",
+        "channel": "Pair Coding",
+        "purpose": "nur bei groesseren Coding-Aufgaben und Refactors",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Codex",
+        "channel": "Code Escalation",
+        "purpose": "nur fuer Umsetzung, Tests und Tool-Arbeit",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Hermes",
+        "channel": "Review Return",
+        "purpose": "gepruefte Ergebnisse zurueck an Hermes liefern",
+        "status": "live",
+        "statusLabel": "Live",
+        "feedback": false
+      },
+      {
+        "from": "Hermes",
+        "to": "Mensch",
+        "channel": "Telegram Reply",
+        "purpose": "Ergebnis an dich zurueckgeben",
+        "status": "live",
+        "statusLabel": "Live",
+        "feedback": false
+      }
+    ],
+    "agents": [
+      {
+        "name": "Hermes",
+        "role": "Primär-Controller, Telegram-Hub und Rückkanal",
+        "route": "Mensch -> Hermes -> Mensch",
+        "channel": "Control / Telegram",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "Telegram",
+          "Control",
+          "Reply"
+        ],
+        "image": "/assets/generated/agent-avatars/hermes.png"
+      },
+      {
+        "name": "Argus",
+        "role": "Apple-nahe Vorpruefung, Diagnose und Gegencheck",
+        "route": "Hermes -> Argus -> Hermes",
+        "channel": "Checks",
+        "status": "support",
+        "statusLabel": "Support",
+        "tags": [
+          "Audit",
+          "Second Pass",
+          "Safety"
+        ],
+        "image": "/assets/generated/agent-avatars/argus.png"
+      },
+      {
+        "name": "OpenClaw Gateway",
+        "role": "Broker, Queue und Uebergabe an Jarvis",
+        "route": "Hermes -> Gateway -> Jarvis",
+        "channel": "Queue",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "tags": [
+          "Bridge",
+          "Queue",
+          "Delegation"
+        ]
+      },
+      {
+        "name": "Jarvis",
+        "role": "OpenClaw-Verteiler, Review und Subagenten-Orchestrierung",
+        "route": "Gateway -> Jarvis -> Hermes",
+        "channel": "Routing / Review",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "Delegation",
+          "Review",
+          "Graph"
+        ],
+        "image": "/assets/generated/agent-avatars/jarvis.png"
+      },
+      {
+        "name": "Forge",
+        "role": "OpenClaw Infra, Skills und Server",
+        "route": "Jarvis -> Forge",
+        "channel": "Engineering",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "Infra",
+          "Skills",
+          "Server"
+        ],
+        "image": "/assets/generated/agent-avatars/forge.png"
+      },
+      {
+        "name": "Sentinel",
+        "role": "Monitoring, Logs und Security",
+        "route": "Jarvis -> Sentinel",
+        "channel": "Watch",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "Logs",
+          "Health",
+          "Security"
+        ],
+        "image": "/assets/generated/agent-avatars/sentinel.png"
+      },
+      {
+        "name": "Oracle",
+        "role": "Briefings, Wetter und News",
+        "route": "Jarvis -> Oracle",
+        "channel": "Briefings",
+        "status": "ready",
+        "statusLabel": "Bereit",
+        "tags": [
+          "Briefing",
+          "Weather",
+          "News"
+        ],
+        "image": "/assets/generated/agent-avatars/oracle.png"
+      },
+      {
+        "name": "Muse",
+        "role": "TikTok, SoundCloud und Content",
+        "route": "Jarvis -> Muse",
+        "channel": "Media",
+        "status": "ready",
+        "statusLabel": "Bereit",
+        "tags": [
+          "Content",
+          "Audio",
+          "Social"
+        ],
+        "image": "/assets/generated/agent-avatars/muse.png"
+      },
+      {
+        "name": "Heimdall",
+        "role": "Home Assistant, Smart Home und HA-Backups",
+        "route": "Jarvis -> Heimdall",
+        "channel": "Home",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "tags": [
+          "HA",
+          "Scenes",
+          "Devices"
+        ],
+        "image": "/assets/generated/agent-avatars/heimdall.png"
+      },
+      {
+        "name": "Friday",
+        "role": "Schwere Reparaturen und Deep Work",
+        "route": "Jarvis -> Friday",
+        "channel": "Repair",
+        "status": "ready",
+        "statusLabel": "Bereit",
+        "tags": [
+          "Deep Work",
+          "Fixes",
+          "Review"
+        ]
+      },
+      {
+        "name": "Claude",
+        "role": "High-trust Gegenpruefung und komplexes Reasoning",
+        "route": "Jarvis -> Claude",
+        "channel": "Claude",
+        "status": "support",
+        "statusLabel": "Fallback",
+        "tags": [
+          "Escalation",
+          "Review",
+          "Reasoning"
+        ]
+      },
+      {
+        "name": "Claude Code",
+        "role": "Aufwendige Implementierung, Refactor und Pair Coding",
+        "route": "Jarvis -> Claude Code",
+        "channel": "Claude Code",
+        "status": "support",
+        "statusLabel": "Fallback",
+        "tags": [
+          "Code",
+          "Refactor",
+          "Pairing"
+        ]
+      },
+      {
+        "name": "Codex",
+        "role": "Code-Ausführung, Tests und technische Umsetzung",
+        "route": "Jarvis -> Codex",
+        "channel": "Codex",
+        "status": "support",
+        "statusLabel": "Fallback",
+        "tags": [
+          "Code",
+          "Tests",
+          "Implementation"
+        ]
+      }
+    ],
+    "devices": [
+      {
+        "name": "Mac mini",
+        "role": "Zentralserver",
+        "route": "Mac mini -> alles",
+        "channel": "SMB / Host",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "tags": [
+          "Zentrale",
+          "SMB",
+          "HA"
+        ],
+        "image": "/assets/generated/device-visuals/mac-mini-central-server.png"
+      },
+      {
+        "name": "MacBook",
+        "role": "Arbeits- und Mirror-Node",
+        "route": "MacBook -> Hermes",
+        "channel": "Mirror",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "tags": [
+          "Mirror",
+          "Review",
+          "Remote"
+        ],
+        "image": "/assets/generated/device-visuals/macbook-mirror-node.png"
+      },
+      {
+        "name": "iMac",
+        "role": "Operator-Station",
+        "route": "iMac -> Control",
+        "channel": "Operator",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "iMac",
+          "Dashboard",
+          "Control"
+        ],
+        "image": "/assets/generated/device-visuals/imac-operator-station.png"
+      },
+      {
+        "name": "iPhone",
+        "role": "Telegram / Mobile Companion",
+        "route": "iPhone -> Hermes",
+        "channel": "Telegram",
+        "status": "active",
+        "statusLabel": "Aktiv",
+        "tags": [
+          "Mobile",
+          "Telegram",
+          "Alerts"
+        ],
+        "image": "/assets/generated/device-visuals/iphone-mobile-control.png"
+      },
+      {
+        "name": "Home Assistant",
+        "role": "Automation und Bruecke",
+        "route": "HA -> Mac mini",
+        "channel": "Automation",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "HA",
+          "Scenes",
+          "Bridge"
+        ],
+        "image": "/assets/generated/device-visuals/home-assistant-automation.png"
+      },
+      {
+        "name": "GitHub",
+        "role": "Repo Sync und Codebasis",
+        "route": "GitHub -> Repo",
+        "channel": "Sync",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "tags": [
+          "Repo",
+          "PR",
+          "Workflow"
+        ],
+        "image": "/assets/generated/dashboard-visuals/website-structure-monitoring.png"
+      },
+      {
+        "name": "Obsidian",
+        "role": "Vault und Live-Gedächtnis",
+        "route": "Vault -> Graph",
+        "channel": "Memory",
+        "status": "sync",
+        "statusLabel": "Sync",
+        "tags": [
+          "Vault",
+          "Graph",
+          "Memory"
+        ],
+        "image": "/assets/generated/dashboard-visuals/vault-memory-graph.png"
+      },
+      {
+        "name": "StreamDeck",
+        "role": "Aktionen und Hotkeys",
+        "route": "StreamDeck -> Ops",
+        "channel": "Actions",
+        "status": "ready",
+        "statusLabel": "Bereit",
+        "tags": [
+          "Shortcuts",
+          "Macros",
+          "Live"
+        ],
+        "image": "/assets/generated/dashboard-visuals/agent-routing-live.png"
+      },
+      {
+        "name": "Rodecaster",
+        "role": "Audio-Routing",
+        "route": "Rodecaster -> Audio",
+        "channel": "Audio",
+        "status": "ready",
+        "statusLabel": "Bereit",
+        "tags": [
+          "Audio",
+          "Mic",
+          "Scenes"
+        ],
+        "image": "/assets/generated/dashboard-visuals/audio-publishing-streams.png"
+      },
+      {
+        "name": "TikTok Live Studio",
+        "role": "Content Live-Fläche",
+        "route": "TikTok -> Content",
+        "channel": "Live",
+        "status": "ready",
+        "statusLabel": "Bereit",
+        "tags": [
+          "Live",
+          "Content",
+          "Publishing"
+        ],
+        "image": "/assets/generated/dashboard-visuals/social-platform-analytics.png"
+      },
+      {
+        "name": "SoundCloud",
+        "role": "Music Publishing",
+        "route": "SoundCloud -> Public",
+        "channel": "Audio",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "Audio",
+          "Public",
+          "Music"
+        ],
+        "image": "https://i1.sndcdn.com/avatars-5yfbYX94YqJGZcpa-5vxhWw-large.jpg"
+      }
+    ],
+    "delegations": [
+      {
+        "from": "Hermes",
+        "to": "Argus",
+        "task": "Erste Vorpruefung auf Logik, Risiko und Qualitaet anstoßen",
+        "channel": "Checks",
+        "priority": "P0",
+        "status": "support",
+        "statusLabel": "Support"
+      },
+      {
+        "from": "Argus",
+        "to": "Hermes",
+        "task": "Gegencheck und Korrekturrichtung an Hermes zurueckgeben",
+        "channel": "Review",
+        "priority": "P0",
+        "status": "support",
+        "statusLabel": "Support"
+      },
+      {
+        "from": "Hermes",
+        "to": "OpenClaw Gateway",
+        "task": "Auftrag in Broker, Queue und Delegationsschicht uebergeben",
+        "channel": "Bridge",
+        "priority": "P0",
+        "status": "connected",
+        "statusLabel": "Verbunden"
+      },
+      {
+        "from": "OpenClaw Gateway",
+        "to": "Jarvis",
+        "task": "Arbeitsstrang an Jarvis zur Verteilung in Subagenten übergeben",
+        "channel": "Queue",
+        "priority": "P0",
+        "status": "connected",
+        "statusLabel": "Verbunden"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Forge",
+        "task": "Repo, Infrastruktur und Fixes bereitstellen",
+        "channel": "Engineering",
+        "priority": "P0",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Sentinel",
+        "task": "Logs, Health und Security kontinuierlich ueberwachen",
+        "channel": "Monitoring",
+        "priority": "P0",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Heimdall",
+        "task": "HA-Backups, Home-Status und Device-Verbindungen prüfen",
+        "channel": "Home Assistant",
+        "priority": "P1",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Muse",
+        "task": "Content und Audio fuer Social-Aktionen vorbereiten",
+        "channel": "Media",
+        "priority": "P2",
+        "status": "ready",
+        "statusLabel": "Bereit"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Claude",
+        "task": "Komplexe Loesungen gegenpruefen, wenn die Standardkette nicht reicht",
+        "channel": "Reasoning",
+        "priority": "P2",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Claude Code",
+        "task": "Groessere Coding-Pakete mit Pair-Coding und Refactor-Hilfe unterstuetzen",
+        "channel": "Coding",
+        "priority": "P2",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "from": "Jarvis",
+        "to": "Codex",
+        "task": "Umsetzung, Tests und technische Tool-Ausführung übernehmen",
+        "channel": "Implementation",
+        "priority": "P2",
+        "status": "support",
+        "statusLabel": "Fallback"
+      }
+    ],
+    "conversations": [
+      {
+        "topic": "Kontrollkette",
+        "time": "06.08.26, 09:08",
+        "from": "Mensch",
+        "to": "Hermes",
+        "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "topic": "Vorpruefung",
+        "time": "06.08.26, 09:08",
+        "from": "Hermes",
+        "to": "Argus",
+        "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
+        "status": "support",
+        "statusLabel": "Support"
+      },
+      {
+        "topic": "Broker",
+        "time": "06.08.26, 09:08",
+        "from": "Hermes",
+        "to": "OpenClaw Gateway",
+        "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
+        "status": "connected",
+        "statusLabel": "Verbunden"
+      },
+      {
+        "topic": "Verteilung",
+        "time": "06.08.26, 09:08",
+        "from": "OpenClaw Gateway",
+        "to": "Jarvis",
+        "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "topic": "Subagenten",
+        "time": "06.08.26, 09:08",
+        "from": "Jarvis",
+        "to": "Forge",
+        "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
+        "status": "ready",
+        "statusLabel": "Bereit"
+      },
+      {
+        "topic": "Escalation",
+        "time": "06.08.26, 09:08",
+        "from": "Jarvis",
+        "to": "Claude Code",
+        "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "topic": "Speicher",
+        "time": "06.08.26, 09:08",
+        "from": "Jarvis",
+        "to": "Obsidian",
+        "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
+        "status": "sync",
+        "statusLabel": "Sync"
+      },
+      {
+        "topic": "Rueckgabe",
+        "time": "06.08.26, 09:08",
+        "from": "Jarvis",
+        "to": "Hermes",
+        "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
+        "status": "live",
+        "statusLabel": "Live"
+      }
+    ],
+    "liveData": [
+      {
+        "label": "Telegram",
+        "value": "Du / iPhone -> Hermes",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "label": "Argus Check",
+        "value": "Hermes -> Argus -> Hermes",
+        "status": "support",
+        "statusLabel": "Support"
+      },
+      {
+        "label": "Broker",
+        "value": "Hermes -> OpenClaw -> Jarvis",
+        "status": "connected",
+        "statusLabel": "Verbunden"
+      },
+      {
+        "label": "Subagenten",
+        "value": "Jarvis -> Fachagenten -> Jarvis",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "label": "HA-Bruecke",
+        "value": "Jarvis -> Heimdall",
+        "status": "live",
+        "statusLabel": "Live"
+      },
+      {
+        "label": "Memory Sync",
+        "value": "Jarvis -> Brain Vault / Obsidian",
+        "status": "sync",
+        "statusLabel": "Sync"
+      },
+      {
+        "label": "Coding Fallback",
+        "value": "Jarvis -> Claude / Claude Code / Codex",
+        "status": "support",
+        "statusLabel": "Fallback"
+      },
+      {
+        "label": "Rueckkanal",
+        "value": "Hermes -> Du",
+        "status": "live",
+        "statusLabel": "Live"
+      }
+    ],
+    "runtime": {
+      "gatewayState": {
+        "gateway_state": "running",
+        "restart_requested": false,
+        "active_agents": 0,
+        "platforms": {
+          "telegram": {
+            "state": "connected",
+            "updated_at": "2026-08-05T18:38:27.346442+00:00"
+          }
+        },
+        "updated_at": "2026-08-05T18:38:27.360922+00:00"
+      },
+      "gatewayLifecycle": {
+        "phase": "unknown",
+        "updated_at": null
+      },
+      "channelDirectory": {
+        "updated_at": "2026-08-06T09:03:05.027233",
+        "platformCounts": {
+          "telegram": 1
+        }
+      },
+      "brainVaultState": {
+        "last_run_utc": "2026-08-06T07:07:55.597260",
+        "last_added": 0,
+        "processed_count": 269
+      },
+      "argusBridgeState": {
+        "warning_count": 1,
+        "last_warning": "MacBook RAM bei 96%"
+      },
+      "activeSessionsState": {
+        "count": 0
+      },
+      "counts": {
+        "sessions": 1090,
+        "messages": 18682,
+        "delegations": 1,
+        "obligations": 89,
+        "routing": 1
+      },
+      "activeTelegramSession": {
+        "id": "5_5fc1b4",
+        "source": "telegram",
+        "model": "gemma4:12b-optimized",
+        "message_count": 176,
+        "tool_call_count": 82,
+        "started_at": 1785931275.67957,
+        "ended_at": null,
+        "title": "Aktive Telegram-Session",
+        "session_key": "Telegram Direktnachricht",
+        "chat_type": "dm",
+        "display_name": "Operator",
+        "profile_name": "zentralserver"
+      },
+      "latestDelegation": {
+        "id": "1a1377ee",
+        "state": "error",
+        "dispatched_at": 1785505554.651968,
+        "completed_at": 1785505674.893942,
+        "updated_at": 1785505675.3832252
+      },
+      "latestDelivery": {
+        "id": "22d5a8f9",
+        "platform": "telegram",
+        "state": "delivered",
+        "attempts": 0,
+        "created_at": 1785943982.2108328,
+        "updated_at": 1785943982.301415,
+        "has_error": false
+      },
+      "latestSpoolPath": "Hermes / Telegram Spool",
+      "latestSpoolPreview": "Ausgehender Telegram-Spool vorhanden • 202 Zeichen",
+      "routingRows": [
+        {
+          "sessionKey": "Telegram Direktnachricht",
+          "sessionId": "5_5fc1b4",
+          "displayName": "Operator",
+          "platform": "telegram",
+          "chatType": "dm",
+          "updatedAt": "05.08.26, 18:35"
+        }
+      ],
+      "stateMeta": {
+        "entries": 3
+      },
+      "currentRouting": {
+        "sessionKey": "Telegram Direktnachricht",
+        "sessionId": "5_5fc1b4",
+        "displayName": "Operator",
+        "platform": "telegram",
+        "chatType": "dm",
+        "updatedAt": "05.08.26, 18:35"
+      }
+    },
+    "sourceRegistry": [
+      {
+        "name": "Hermes state.db",
+        "kind": "Runtime",
+        "state": "live",
+        "detail": "1090 Sessions, 18682 Nachrichten, 1 Delegationen",
+        "route": "Hermes / state.db",
+        "channel": "SQLite"
+      },
+      {
+        "name": "Gateway State",
+        "kind": "Bridge",
+        "state": "live",
+        "detail": "Telegram connected • Active Agents 0",
+        "route": "Hermes / Gateway State",
+        "channel": "JSON"
+      },
+      {
+        "name": "Telegram Spool",
+        "kind": "Delivery",
+        "state": "connected",
+        "detail": "Ausgehender Telegram-Spool vorhanden • 202 Zeichen",
+        "route": "Hermes / Telegram Spool",
+        "channel": "last_message_to_send.txt"
+      },
+      {
+        "name": "Channel Directory",
+        "kind": "Routing",
+        "state": "connected",
+        "detail": "Channels: 1 • updated 06.08.26, 09:03",
+        "route": "Hermes / Channel Directory",
+        "channel": "Directory"
+      },
+      {
+        "name": "Brain Vault State",
+        "kind": "Memory",
+        "state": "sync",
+        "detail": "Last run 2026-08-06T07:07:55.597260 • Added 0",
+        "route": "Hermes / Brain Vault",
+        "channel": "Vault"
+      },
+      {
+        "name": "Argus Bridge",
+        "kind": "Support",
+        "state": "support",
+        "detail": "Warnings 1 • MacBook RAM bei 96%",
+        "route": "Hermes / Argus Bridge",
+        "channel": "Bridge"
+      },
+      {
+        "name": "Active Sessions",
+        "kind": "Runtime",
+        "state": "sync",
+        "detail": "0 aktive Runtime-Einträge",
+        "route": "Hermes / Active Sessions",
+        "channel": "JSON"
+      }
+    ],
+    "sessions": [
+      {
+        "name": "Hermes Session 1",
+        "role": "cron",
+        "route": "Session 6_090026",
+        "channel": "gemini-2.5-flash",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "7 Nachrichten",
+          "4 Tools",
+          "Ende: cron_complete"
+        ]
+      },
+      {
+        "name": "Hermes Session 2",
+        "role": "cron",
+        "route": "Session 5_230041",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "10 Nachrichten",
+          "4 Tools",
+          "Ende: cron_complete"
+        ]
+      },
+      {
+        "name": "Hermes Session 3",
+        "role": "cron",
+        "route": "Session 5_223038",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "20 Nachrichten",
+          "9 Tools",
+          "Ende: cron_complete"
+        ]
+      },
+      {
+        "name": "Telegram Session 4",
+        "role": "Telegram Direktnachricht",
+        "route": "Session 5_5fc1b4",
+        "channel": "gemma4:12b-optimized",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "176 Nachrichten",
+          "82 Tools"
+        ]
+      },
+      {
+        "name": "Hermes Session 5",
+        "role": "cron",
+        "route": "Session 5_110037",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "40 Nachrichten",
+          "20 Tools",
+          "Ende: cron_complete"
+        ]
+      },
+      {
+        "name": "Hermes Session 6",
+        "role": "cron",
+        "route": "Session 5_092028",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "12 Nachrichten",
+          "6 Tools",
+          "Ende: cron_complete"
+        ]
+      },
+      {
+        "name": "Hermes Session 7",
+        "role": "cron",
+        "route": "Session 5_090026",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "9 Nachrichten",
+          "5 Tools",
+          "Ende: cron_complete"
+        ]
+      },
+      {
+        "name": "Hermes Session 8",
+        "role": "cron",
+        "route": "Session 4_230035",
+        "channel": "gemini-2.5-flash",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "6 Nachrichten",
+          "2 Tools",
+          "Ende: cron_complete"
+        ]
+      }
+    ],
+    "recentMessages": [
+      {
+        "topic": "ASSISTANT • 6_090026",
+        "time": "06.08.26, 09:01",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 1550 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      },
+      {
+        "topic": "TOOL • 6_090026",
+        "time": "06.08.26, 09:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 4251 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "TOOL • 6_090026",
+        "time": "06.08.26, 09:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 2449 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "TOOL • 6_090026",
+        "time": "06.08.26, 09:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 4861 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "TOOL • 6_090026",
+        "time": "06.08.26, 09:00",
+        "from": "tool",
+        "to": "web_search",
+        "summary": "tool Aktivität • 2985 Zeichen • Tool web_search",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "ASSISTANT • 6_090026",
+        "time": "06.08.26, 09:00",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 0 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      },
+      {
+        "topic": "USER • 6_090026",
+        "time": "06.08.26, 09:00",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 1594 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "ASSISTANT • 5_230041",
+        "time": "05.08.26, 23:01",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 520 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      },
+      {
+        "topic": "TOOL • 5_230041",
+        "time": "05.08.26, 23:01",
+        "from": "tool",
+        "to": "patch",
+        "summary": "tool Aktivität • 696 Zeichen • Tool patch",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "ASSISTANT • 5_230041",
+        "time": "05.08.26, 23:01",
+        "from": "assistant",
+        "to": "Hermes",
+        "summary": "assistant Aktivität • 0 Zeichen",
+        "status": "live",
+        "statusLabel": "Assistant"
+      }
+    ],
+    "recentDelegations": [
+      {
+        "from": "Hermes",
+        "to": "Async Delegation",
+        "task": "Auftrag 1a1377ee • 1095 Zeichen • Ergebnis 694 Zeichen",
+        "channel": "error",
+        "priority": "P1",
+        "status": "support",
+        "statusLabel": "Error"
+      }
+    ],
+    "recentObligations": [
+      {
+        "label": "Delivery 22d5a8f9",
+        "value": "telegram • delivered • 684 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery 830e773e",
+        "value": "telegram • delivered • 1953 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery 070e62b6",
+        "value": "telegram • delivered • 10918 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery a3750890",
+        "value": "telegram • delivered • 32 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery 9f97c480",
+        "value": "telegram • delivered • 778 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      }
+    ]
+  }
 }

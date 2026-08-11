@@ -2,7 +2,7 @@
 set -euo pipefail
 
 SRC_DIR="${1:-/Users/martendr.gray/Documents/websitedatenupload}"
-ROOT="/Users/martendr.gray/Documents/New project/DJ-Website/assets/uploads/reports"
+ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)/assets/uploads/reports"
 STAMP="$(date +%Y-%m-%d)"
 OUT_DIR="$ROOT/previews-$STAMP"
 REPORT="$ROOT/media-curation-$STAMP.md"

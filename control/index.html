@@ -17,8 +17,7 @@
   <link rel="apple-touch-icon" href="/control/icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/control/icons/icon-192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/control/icons/icon-512.png">
-  <link rel="stylesheet" href="/control/control.css">
-  <link rel="stylesheet" href="control.css">
+  <link rel="stylesheet" href="/control/control.css?v=20260806d">
   <title>Kontrollzentrum | Dr. Gray & Mrs. Dr. Gray</title>
 </head>
 <body>
@@ -48,17 +47,41 @@
         </div>
       </header>
 
-      <section class="control-pulse" data-control-pulse aria-label="Visual Pulse">
-        <div class="pulse-grid" data-visual-pulse></div>
-      </section>
-
       <section id="overview" class="control-section">
         <div class="section-head">
           <h2>Uebersicht</h2>
-          <p>Direkter Ueberblick ueber Website, Shop, Social und Warnungen.</p>
+          <p>Systemlage, Live-Signale und direkter Hermes-Zugriff auf einer Seite.</p>
         </div>
-        <ul class="status-list" data-system-status></ul>
-        <div class="kpi-grid" data-kpis></div>
+        <section class="control-pulse" data-control-pulse aria-label="Live Systemlage">
+          <div class="pulse-grid" data-visual-pulse></div>
+        </section>
+        <div class="overview-operations-grid">
+          <div class="overview-chat" data-hermes-chat></div>
+          <aside class="overview-snapshot" aria-label="Systemstatus und Kennzahlen">
+            <div class="overview-snapshot-head">
+              <p class="eyebrow">Live Snapshot</p>
+              <h3>Systemstatus</h3>
+            </div>
+            <ul class="status-list" data-system-status></ul>
+            <div class="overview-snapshot-head overview-kpi-head">
+              <p class="eyebrow">Kennzahlen</p>
+              <h3>Aktueller Stand</h3>
+            </div>
+            <div class="kpi-grid" data-kpis></div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="agentsroom" class="control-section">
+        <div class="agentsroom-shell" data-agentsroom-section></div>
+      </section>
+
+      <section id="home-assistant" class="control-section">
+        <div class="section-head">
+          <h2>Home Assistant</h2>
+          <p>HA-Bruecke, Backup-Pfad zum Mac mini und zustaendige Agenten auf einer Seite.</p>
+        </div>
+        <div data-home-assistant-section></div>
       </section>
 
       <section id="website" class="control-section">
@@ -114,7 +137,7 @@
           <h2>Social</h2>
           <p>Verifizierte Profile, Plattformstatus und Quellenvergleich.</p>
         </div>
-        <div class="panel-grid two" data-social-section></div>
+        <div class="panel-grid" data-social-section></div>
       </section>
 
       <section id="alerts" class="control-section">
@@ -135,6 +158,14 @@
     </main>
   </div>
 
-  <script type="module" src="/control/main.js"></script>
+  <div class="control-dialog" data-control-dialog hidden aria-hidden="true">
+    <div class="control-dialog-backdrop" data-control-dialog-close></div>
+    <div class="control-dialog-card" role="dialog" aria-modal="true" aria-labelledby="control-dialog-title">
+      <button type="button" class="control-dialog-close" data-control-dialog-close aria-label="Popup schliessen">×</button>
+      <div class="control-dialog-body" data-control-dialog-body></div>
+    </div>
+  </div>
+
+  <script type="module" src="/control/main.js?v=20260806d"></script>
 </body>
 </html>

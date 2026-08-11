@@ -1,4 +1,4 @@
-const CACHE_NAME = "dg-control-v2";
+const CACHE_NAME = "dg-control-v5";
 const APP_SHELL = [
   "/control/",
   "/control/index.html",
@@ -35,6 +35,21 @@ self.addEventListener("fetch", (event) => {
 
   const requestUrl = new URL(event.request.url);
   if (requestUrl.origin !== self.location.origin || !requestUrl.pathname.startsWith("/control/")) {
+    return;
+  }
+
+  if (requestUrl.pathname === "/control/js/live-metrics.json") {
+    event.respondWith(
+      fetch(event.request, { cache: "no-store" })
+        .then((response) => {
+          if (response && response.ok && response.type === "basic") {
+            const copy = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, copy)).catch(() => undefined);
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
     return;
   }
 

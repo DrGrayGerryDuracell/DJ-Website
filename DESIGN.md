@@ -176,3 +176,59 @@ Mixed depth: fixed media backdrop, tonal-shift surfaces, and soft shadows.
 - The background carries atmosphere, not content.
 - Panels should read as lit glass or matte black metal, never flat white boxes.
 - Gold glows are controlled accents, not decoration.
+
+## 9. Control-Dashboard (`/control`) - v2 Ergaenzung
+
+Das interne Dashboard folgt dem Marken-System, weicht aber bewusst in drei Punkten ab.
+Diese Regeln gelten nur unter `/control` (control/control.css).
+
+### Hellere Basis
+
+Das Dashboard ist ein Arbeitsplatz, keine Buehne. Die Flaechen liegen eine Stufe ueber
+der Public Site, damit lange Sessions nicht ermueden:
+
+| Token | Public Site | Control v2 |
+|---|---|---|
+| `--bg` | #060606 | #0b0b0d |
+| `--bg-soft` | #111111 | #16161a |
+| `--panel` | rgba(14,14,14,.84) | rgba(28,28,33,.90) |
+| `--line` | gold @ .22 | gold @ .28 |
+
+### Bereichsakzente
+
+Gold traegt weiterhin das System. Pink und Cyan (bestehende Marken-Nebenakzente aus
+Abschnitt 2) markieren im Dashboard Funktionsbereiche - als Kantenlinie, Eyebrow und
+Hover-Signal, nie als Flaeche:
+
+| Farbe | Bereiche | Logik |
+|---|---|---|
+| Gold | Uebersicht, Website, Content, Einstellungen | Kern und Verwaltung |
+| Cyan `--accent-cyan` | Live-Aktivitaet, Performance, Agentsroom | Live- und Messdaten |
+| Pink `--accent-pink` | Alerts, Social, Shop, Katalog-Upload | Handlung und Aussenwirkung |
+
+Die aktive Farbe liegt in `--section-accent`, gesetzt per Sektions-ID und Nav-Href.
+Komponenten lesen ausschliesslich `--section-accent`.
+
+### Glow
+
+`--glow-sm/md/lg` via `color-mix` aus `--section-accent`. Nur auf: Fokusring,
+Hover-Kanten, aktivem Nav-Link, Live-Puls, `:target`-Sektion. Nie auf Text, Zahlen
+oder Flaechen. Ruhende Panels gluehen nicht.
+
+### Hover
+
+Alle Uebergaenge 120-200 ms, kein Layout-Shift, kein Scale. Nav-Links und Listenzeilen
+bekommen eine einfahrende Kantenlinie, KPI-Karten eine Unterkante mit Farbverlauf zu
+transparent, Buttons druecken bei `:active` 1 px nach unten.
+
+### Groessen-Skala
+
+control.css nutzt exakt acht Schriftstufen - keine Zwischenwerte:
+
+0.72 / 0.8 / 0.86 / 0.9 / 1 / 1.15 / 1.5 / 1.75 rem
+
+Radien: 3 px (Meter), 12 px (Controls), 14 px (Panels), 999 px (Pills).
+Neue Werte ausserhalb dieser Skalen sind nicht erlaubt.
+
+`prefers-reduced-motion: reduce` setzt alle Animations- und Uebergangsdauern auf
+0.01 ms; Glow bleibt statisch sichtbar.

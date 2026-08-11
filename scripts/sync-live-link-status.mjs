@@ -1,8 +1,10 @@
 #!/usr/bin/env node
 import { readFileSync, writeFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import vm from 'node:vm';
 
-const repoRoot = '/Users/martendr.gray/Documents/New project/DJ-Website';
+const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 const catalogPath = `${repoRoot}/assets/data/merch-catalog.js`;
 const outPath = `${repoRoot}/assets/data/live-link-status.js`;
 

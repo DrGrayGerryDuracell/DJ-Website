@@ -12,5 +12,11 @@ build/
 *.swo
 .idea/
 .vscode/
-.DS_Store
 wrangler.jsonc
+.worktrees/
+.superdesign/tmp/
+artifacts/control-bridge/
+artifacts/qa/control-agentsroom-1440.png
+artifacts/qa/control-agentsroom-1440-v2.png
+artifacts/qa/control-agentsroom-390.jpg
+artifacts/qa/control-devices-390.jpg

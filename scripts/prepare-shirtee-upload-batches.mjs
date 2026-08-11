@@ -1,9 +1,10 @@
 #!/usr/bin/env node
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
 import vm from "node:vm";
 
-const repoRoot = "/Users/martendr.gray/Documents/New project/DJ-Website";
+const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
 const queuePath = join(repoRoot, "artifacts/upload-queue/shirtee-upload-queue.json");
 const catalogPath = join(repoRoot, "assets/data/merch-catalog.js");
 const outDir = join(repoRoot, "artifacts/upload-batches");
