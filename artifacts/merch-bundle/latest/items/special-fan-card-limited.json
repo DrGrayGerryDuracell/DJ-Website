@@ -1,0 +1,32 @@
+{
+  "id": "special-fan-card-limited",
+  "bundleId": "bundle-special-fan-card-limited",
+  "bundleType": "bundle",
+  "title": "Founders Fan Card",
+  "line": "Special Merch",
+  "section": "special",
+  "status": "Special Drop",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "kontakt.html",
+  "slogan": "Limitiert fuer die fruehe Community.",
+  "copy": "Collector-Karte fuer Sonderaktionen, Signings und kleine Drop-Bundles ausserhalb klassischer POD-Strecken.",
+  "products": [
+    "Fan Card",
+    "Collector Set",
+    "Limited Bundle"
+  ],
+  "tags": [
+    "Special",
+    "Collector",
+    "Limited"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 146
+}

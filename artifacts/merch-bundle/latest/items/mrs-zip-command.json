@@ -1,0 +1,32 @@
+{
+  "id": "mrs-zip-command",
+  "bundleId": "apparel-mrs-zip-command",
+  "bundleType": "apparel",
+  "title": "Command Zip Hoodie",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Feminin im Schnitt, klar in der Haltung.",
+  "copy": "Zip-Hoodie fuer die dunklere Damen-Linie mit sauberem Frontzeichen und ruhiger Backprint-Option fuer Night-Reels und Event-Looks.",
+  "products": [
+    "Zip Hoodie",
+    "Crop Zip",
+    "Soft Oversize"
+  ],
+  "tags": [
+    "Damen",
+    "Zip",
+    "Selbstbewusst"
+  ],
+  "image": "store-assets/variants/mrs-front-zu-wild.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-zu-wild.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 41
+}

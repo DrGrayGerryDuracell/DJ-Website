@@ -1,0 +1,32 @@
+{
+  "id": "accessory-poster-set",
+  "bundleId": "print-accessory-poster-set",
+  "bundleType": "print",
+  "title": "Poster & Print Set",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Fuer Wände, Booths und kleine Studio-Ecken.",
+  "copy": "Poster, Art Print und kleinere Visual-Drops fuer Fans, die die Aesthetik nicht nur tragen, sondern auch haengen wollen.",
+  "products": [
+    "Poster",
+    "Art Print",
+    "Canvas"
+  ],
+  "tags": [
+    "Accessoire",
+    "Poster",
+    "Visual"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 113
+}

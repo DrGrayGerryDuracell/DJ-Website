@@ -1,0 +1,32 @@
+{
+  "id": "mrs-dress-liebe",
+  "bundleId": "apparel-mrs-dress-liebe",
+  "bundleType": "apparel",
+  "title": "Liebe lauter. Kleid",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Femininer, aber immer noch Szene.",
+  "copy": "Das ist unsere weichere Damen-Linie fuer Shirt-Kleid, lockeres Dress oder ein elegantes Oversize Piece mit Mrs.-Branding.",
+  "products": [
+    "Kleid",
+    "Shirt-Kleid",
+    "Oversize Tee"
+  ],
+  "tags": [
+    "Damen",
+    "Kleider",
+    "Elegant"
+  ],
+  "image": "store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 28
+}

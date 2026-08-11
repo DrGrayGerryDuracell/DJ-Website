@@ -1,0 +1,32 @@
+{
+  "id": "accessory-poster-citygrid",
+  "bundleId": "accessory-accessory-poster-citygrid",
+  "bundleType": "accessory",
+  "title": "City Grid Poster",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Wandmotiv mit Underground-Kern.",
+  "copy": "Posterlinie fuer Studio, Booth und Home-Setup mit dunkler Farbwelt und klarer Dr.-/Mrs.-Ausrichtung.",
+  "products": [
+    "Poster",
+    "Art Print",
+    "Canvas Print"
+  ],
+  "tags": [
+    "Accessoire",
+    "Poster",
+    "Visual"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 122
+}

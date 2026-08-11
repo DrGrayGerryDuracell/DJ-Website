@@ -1,0 +1,32 @@
+{
+  "id": "unisex-polo-core-top",
+  "bundleId": "apparel-unisex-polo-core-top",
+  "bundleType": "apparel",
+  "title": "Core Polo Top Upload",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Neutral vorn, flexibel hinten.",
+  "copy": "Top-Upload-Unisex-Polo fuer cleanere Everyday-Fits mit optionalem Backprint je nach Linie.",
+  "products": [
+    "Unisex Polo",
+    "Premium Polo",
+    "Smart Tee"
+  ],
+  "tags": [
+    "Unisex",
+    "Top Upload",
+    "Polo"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 154
+}

@@ -1,0 +1,32 @@
+{
+  "id": "accessory-cushion-couple-upload",
+  "bundleId": "bundle-accessory-cushion-couple-upload",
+  "bundleType": "bundle",
+  "title": "Couple Cushion Upload",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Home-Merch mit Duo-DNA.",
+  "copy": "Kissen-Variante als softeres Community-Piece mit klarem Couple-Motiv und sauberer Druckflaeche.",
+  "products": [
+    "Cushion",
+    "Pillow Cover",
+    "Gift Bundle"
+  ],
+  "tags": [
+    "Accessoire",
+    "Uploadbereit",
+    "Home"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 157
+}

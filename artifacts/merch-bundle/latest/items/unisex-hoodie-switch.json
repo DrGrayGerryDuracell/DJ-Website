@@ -1,0 +1,32 @@
+{
+  "id": "unisex-hoodie-switch",
+  "bundleId": "apparel-unisex-hoodie-switch",
+  "bundleType": "apparel",
+  "title": "Front Dual Logo, Ruecken frei waehlbar",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Ein Artikel, zwei Backprint-Wege.",
+  "copy": "Sauber fuer Hoodie und Heavy Tee. Vorne bleibt der Druck kompakt, hinten entscheidet das gewaehlte Logo den Charakter.",
+  "products": [
+    "Hoodie",
+    "Heavy Tee",
+    "Zip Hoodie"
+  ],
+  "tags": [
+    "Unisex",
+    "Wahlmotiv",
+    "Flexible Serie"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 84
+}

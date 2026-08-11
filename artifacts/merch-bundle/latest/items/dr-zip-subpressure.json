@@ -1,0 +1,32 @@
+{
+  "id": "dr-zip-subpressure",
+  "bundleId": "print-dr-zip-subpressure",
+  "bundleType": "print",
+  "title": "Subpressure Zip",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Front kompakt, Ruecken mit Wucht.",
+  "copy": "Zipper fuer dunkle Clubfits, Reise und Alltag. Der Druck bleibt klar, lesbar und ohne Designkonflikte.",
+  "products": [
+    "Zip Hoodie",
+    "Heavy Zip",
+    "Street Jacket"
+  ],
+  "tags": [
+    "Herren",
+    "Zip",
+    "Backprint"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 16
+}

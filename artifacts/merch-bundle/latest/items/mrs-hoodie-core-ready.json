@@ -1,0 +1,32 @@
+{
+  "id": "mrs-hoodie-core-ready",
+  "bundleId": "apparel-mrs-hoodie-core-ready",
+  "bundleType": "apparel",
+  "title": "Core Hoodie Ready",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Selbstbewusst und druckstark.",
+  "copy": "Mrs.-Hoodie fuer kuehlere Sets mit klarer Typo und konsistenter Logohierarchie.",
+  "products": [
+    "Ladies Hoodie",
+    "Unisex Hoodie",
+    "Zip Hoodie"
+  ],
+  "tags": [
+    "Damen",
+    "Shirtee Ready",
+    "Hoodie"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 49
+}

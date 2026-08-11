@@ -1,0 +1,32 @@
+{
+  "id": "accessory-pinset-couple",
+  "bundleId": "accessory-accessory-pinset-couple",
+  "bundleType": "accessory",
+  "title": "Couple Pin Set",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Symmetrie als kleines Detail.",
+  "copy": "Pin-Set fuer Jacke, Tasche und Festival-Fits mit sauber gepaarten Logos und konsistenten Hoehen.",
+  "products": [
+    "Pin Set",
+    "Badge Set",
+    "Collector Pack"
+  ],
+  "tags": [
+    "Accessoire",
+    "Pin",
+    "Couple"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 118
+}

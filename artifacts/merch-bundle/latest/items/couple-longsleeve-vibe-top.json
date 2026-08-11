@@ -1,0 +1,32 @@
+{
+  "id": "couple-longsleeve-vibe-top",
+  "bundleId": "apparel-couple-longsleeve-vibe-top",
+  "bundleType": "apparel",
+  "title": "His Beat Her Vibe Top Upload",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Emotional, aber nicht kitschig.",
+  "copy": "Langarm-Couple-Set als uploadstarke Einstiegsvariante fuer schnelle Kampagnen-Freigaben.",
+  "products": [
+    "2x Longsleeve",
+    "2x Heavy Longsleeve",
+    "2x Tee"
+  ],
+  "tags": [
+    "Couple",
+    "Top Upload",
+    "Longsleeve Set"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 79
+}

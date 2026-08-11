@@ -1,0 +1,32 @@
+{
+  "id": "accessory-gymbag-pressure",
+  "bundleId": "accessory-accessory-gymbag-pressure",
+  "bundleType": "accessory",
+  "title": "Pressure Gym Bag",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Sportform, Clubattitude.",
+  "copy": "Kompakter Gym-Bag-Look fuer Alltag und Eventtage mit reduziertem Frontlogo und robuster, klarer Typo.",
+  "products": [
+    "Gym Bag",
+    "Drawstring Bag",
+    "Mini Weekender"
+  ],
+  "tags": [
+    "Accessoire",
+    "Bag",
+    "Utility"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 115
+}

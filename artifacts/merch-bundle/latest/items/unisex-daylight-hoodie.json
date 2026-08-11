@@ -1,0 +1,32 @@
+{
+  "id": "unisex-daylight-hoodie",
+  "bundleId": "print-unisex-daylight-hoodie",
+  "bundleType": "print",
+  "title": "Daylight Unisex Hoodie",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "In Vorbereitung",
+  "priority": "P1",
+  "spotlight": true,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Vorne ruhig, hinten klar waehlen.",
+  "copy": "Die alltagstaugliche Duo-Variante fuer Unisex: cleanes Frontbild mit optionalem Dr.- oder Mrs.-Backprint fuer klare Identitaet.",
+  "products": [
+    "Unisex Hoodie",
+    "Unisex Tee",
+    "Crewneck"
+  ],
+  "tags": [
+    "Unisex",
+    "Backprint Wahl",
+    "Lifestyle"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 88
+}

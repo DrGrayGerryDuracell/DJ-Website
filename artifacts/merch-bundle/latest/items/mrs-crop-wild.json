@@ -1,0 +1,32 @@
+{
+  "id": "mrs-crop-wild",
+  "bundleId": "apparel-mrs-crop-wild",
+  "bundleType": "apparel",
+  "title": "Zu wild fuer leise. Crop",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Live im Store",
+  "priority": "P0",
+  "spotlight": true,
+  "uploadState": "uploaded",
+  "uploadLabel": "Bereits hochgeladen",
+  "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
+  "slogan": "Sexy, serioes und trotzdem direkt.",
+  "copy": "Das Mrs.-Logo bleibt die Hauptfigur. Der Spruch sitzt klar darunter oder daneben, ohne das Motiv zu ueberladen.",
+  "products": [
+    "Crop Shirt",
+    "Fitted Tee",
+    "Hoodie"
+  ],
+  "tags": [
+    "Damen",
+    "Frech",
+    "Mrs.-Logo"
+  ],
+  "image": "store-assets/variants/mrs-crop-wild.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-crop-wild.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 27
+}

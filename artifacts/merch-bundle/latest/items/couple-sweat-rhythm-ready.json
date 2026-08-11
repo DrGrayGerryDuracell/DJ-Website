@@ -1,0 +1,32 @@
+{
+  "id": "couple-sweat-rhythm-ready",
+  "bundleId": "apparel-couple-sweat-rhythm-ready",
+  "bundleType": "apparel",
+  "title": "Rhythm Sweat Set Ready",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Gemeinsame Energie, klare Linie.",
+  "copy": "Sweatshirt-Pair mit cleaner Front und homogener Typo fuer alltagstaugliche Couple-Drops.",
+  "products": [
+    "2x Sweatshirt",
+    "2x Crewneck",
+    "2x Hoodie"
+  ],
+  "tags": [
+    "Couple",
+    "Shirtee Ready",
+    "Sweat Set"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 76
+}

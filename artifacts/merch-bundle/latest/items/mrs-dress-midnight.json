@@ -1,0 +1,32 @@
+{
+  "id": "mrs-dress-midnight",
+  "bundleId": "apparel-mrs-dress-midnight",
+  "bundleType": "apparel",
+  "title": "Midnight Cutout Dress",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Mehr Clublook, weniger Standard-Merch.",
+  "copy": "Ein Abend-Piece fuer die Damen-Linie mit reduziertem Mrs.-Logo, kleiner Typo und starker Silhouette. Perfekt fuer Special Drops und hochwertigere Fotos.",
+  "products": [
+    "Kleid",
+    "Bodycon Dress",
+    "Event Look"
+  ],
+  "tags": [
+    "Damen",
+    "Dress",
+    "Club"
+  ],
+  "image": "store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 31
+}

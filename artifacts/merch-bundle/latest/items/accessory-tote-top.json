@@ -1,0 +1,32 @@
+{
+  "id": "accessory-tote-top",
+  "bundleId": "accessory-accessory-tote-top",
+  "bundleType": "accessory",
+  "title": "Core Tote Top Upload",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Einfach, stark, sofort startbar.",
+  "copy": "Top-Upload-Tote fuer schnelle Store-Erweiterung mit sauberem Frontlogo.",
+  "products": [
+    "Tote Bag",
+    "Organic Tote",
+    "Canvas Tote"
+  ],
+  "tags": [
+    "Accessoire",
+    "Top Upload",
+    "Tote"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 126
+}

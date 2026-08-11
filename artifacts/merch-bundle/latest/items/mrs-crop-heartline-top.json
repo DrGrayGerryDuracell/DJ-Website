@@ -1,0 +1,32 @@
+{
+  "id": "mrs-crop-heartline-top",
+  "bundleId": "apparel-mrs-crop-heartline-top",
+  "bundleType": "apparel",
+  "title": "Heartline Crop Top Upload",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Frech, feminin und ohne Kitsch.",
+  "copy": "Crop-Setup fuer schnelle Drop-Wellen mit klarer Mrs.-Praesenz und sauberer Typo-Hierarchie.",
+  "products": [
+    "Crop Top",
+    "Fitted Tee",
+    "Light Hoodie"
+  ],
+  "tags": [
+    "Damen",
+    "Top Upload",
+    "Crop"
+  ],
+  "image": "store-assets/variants/mrs-front-liebe-lauter.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-liebe-lauter.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 135
+}

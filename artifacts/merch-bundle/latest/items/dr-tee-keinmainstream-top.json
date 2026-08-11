@@ -1,0 +1,32 @@
+{
+  "id": "dr-tee-keinmainstream-top",
+  "bundleId": "apparel-dr-tee-keinmainstream-top",
+  "bundleType": "apparel",
+  "title": "Kein Mainstream Tee Top Upload",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Sofort druckbar, sofort klar.",
+  "copy": "Top-Upload-Variante fuer die harte Herren-Linie mit sauberer Front und klarer Markenachse.",
+  "products": [
+    "Unisex Tee",
+    "Premium Tee",
+    "Heavy Tee"
+  ],
+  "tags": [
+    "Herren",
+    "Top Upload",
+    "Core"
+  ],
+  "image": "store-assets/variants/dr-front-kein-mainstream.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-front-kein-mainstream.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 21
+}

@@ -1,0 +1,32 @@
+{
+  "id": "unisex-tee-sharedpulse",
+  "bundleId": "apparel-unisex-tee-sharedpulse",
+  "bundleType": "apparel",
+  "title": "Shared Pulse Tee",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Minimal vorne, maximal klar hinten.",
+  "copy": "Ein universelles Core-Shirt fuer die Community mit reduzierter Front und einer Backprint-Auswahl, die eure Richtung sauber markiert.",
+  "products": [
+    "Classic Tee",
+    "Longsleeve",
+    "Crewneck"
+  ],
+  "tags": [
+    "Unisex",
+    "Core",
+    "Community"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 92
+}

@@ -1,0 +1,32 @@
+{
+  "id": "couple-rainproof-tee",
+  "bundleId": "apparel-couple-rainproof-tee",
+  "bundleType": "apparel",
+  "title": "Rainproof Couple Tee",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Prioritaet",
+  "priority": "P1",
+  "spotlight": true,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Naehe unter Druck, nicht unter Zucker.",
+  "copy": "Das Rain-Neon-Bild schiebt Couple-Energie in eine duestere Clubsprache. Perfekt fuer Shirt-Set, Hoodie-Set oder eine limitierte Night-Edition.",
+  "products": [
+    "Couple Tee Set",
+    "Couple Hoodie",
+    "Night Edition"
+  ],
+  "tags": [
+    "Couple",
+    "Rain Neon",
+    "Night Drop"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 63
+}

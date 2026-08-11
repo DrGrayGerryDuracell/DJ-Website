@@ -1,0 +1,32 @@
+{
+  "id": "accessory-cap-retro",
+  "bundleId": "accessory-accessory-cap-retro",
+  "bundleType": "accessory",
+  "title": "Retro Duo Cap",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "In Vorbereitung",
+  "priority": "P1",
+  "spotlight": true,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Oldschool Shape, neue Linie.",
+  "copy": "Cap mit Retro-Schnitt, klarer Frontstick und kleinem Rueckenzeichen. Funktioniert fuer Herren-, Damen- und Couple-Fits ohne Stilbruch.",
+  "products": [
+    "Retro Cap",
+    "Dad Cap",
+    "Snapback"
+  ],
+  "tags": [
+    "Accessoire",
+    "Cap",
+    "Retro"
+  ],
+  "image": "store-assets/variants/accessory-dr-retro-cap.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/accessory-dr-retro-cap.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 108
+}

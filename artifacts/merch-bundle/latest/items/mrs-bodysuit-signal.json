@@ -1,0 +1,32 @@
+{
+  "id": "mrs-bodysuit-signal",
+  "bundleId": "apparel-mrs-bodysuit-signal",
+  "bundleType": "apparel",
+  "title": "Signal Bodysuit",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Sexy-serioes und klar im Clubprofil.",
+  "copy": "Mrs.-Logo als starke Hauptfigur auf reduzierter Front. Das Piece bleibt selbstbewusst, weiblich und null beliebig.",
+  "products": [
+    "Bodysuit",
+    "Fitted Top",
+    "Club Layer"
+  ],
+  "tags": [
+    "Damen",
+    "Bodysuit",
+    "Mrs.-Logo"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 40
+}

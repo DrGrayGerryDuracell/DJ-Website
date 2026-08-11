@@ -1,0 +1,32 @@
+{
+  "id": "dr-shirtline-blackbook",
+  "bundleId": "apparel-dr-shirtline-blackbook",
+  "bundleType": "apparel",
+  "title": "Blackbook Hemd",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Sauber, dunkel und ohne Mainstream-Geste.",
+  "copy": "Fuer ein edleres Herren-Piece mit minimalem Frontlogo und gerader Linie. Perfekt fuer Hemd, Overshirt oder dunklere Drop-Variante.",
+  "products": [
+    "Hemd",
+    "Overshirt",
+    "Light Shirt Jacket"
+  ],
+  "tags": [
+    "Herren",
+    "Hemd",
+    "Clean"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 5
+}

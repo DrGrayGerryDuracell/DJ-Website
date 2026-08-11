@@ -1,0 +1,32 @@
+{
+  "id": "accessory-phonecase-duo",
+  "bundleId": "sticker-accessory-phonecase-duo",
+  "bundleType": "sticker",
+  "title": "Duo Phone Case",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Kleine Flaeche, klare Marke.",
+  "copy": "Handyhuelle mit kompakter Typo oder Einzel-Logo fuer alltagstauglichen Wiedererkennungseffekt.",
+  "products": [
+    "Handyhuelle",
+    "Sticker Pack",
+    "Mini Gift"
+  ],
+  "tags": [
+    "Accessoire",
+    "Phone Case",
+    "Gift"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 112
+}

@@ -1,0 +1,32 @@
+{
+  "id": "dr-polo-nightshift",
+  "bundleId": "apparel-dr-polo-nightshift",
+  "bundleType": "apparel",
+  "title": "Nightshift Polo",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Polierter als Tee, aber weiter klar in der Techno-Linie.",
+  "copy": "Ein reduziertes Herren-Polo fuer Clubcrew, Warm-up, Backstage und alle Tage dazwischen. Vorn kleines Dr.-Gray-Branding, hinten optional ein technischer Rueckenclaim.",
+  "products": [
+    "Polo",
+    "Longsleeve Polo",
+    "Light Jacket"
+  ],
+  "tags": [
+    "Herren",
+    "Polo",
+    "Smart Dark"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 4
+}

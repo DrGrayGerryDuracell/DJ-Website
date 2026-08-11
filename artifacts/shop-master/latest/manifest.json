@@ -1,0 +1,70 @@
+{
+  "generatedAt": "2026-08-11T17:43:20.764Z",
+  "repoRoot": "/Users/martendr.gray/Desktop/DJ-Website-Repo",
+  "steps": [
+    {
+      "name": "sync-live-link-status",
+      "script": "scripts/sync-live-link-status.mjs",
+      "ok": true,
+      "code": 0,
+      "durationMs": 2130,
+      "stdout": "Wrote /Users/martendr.gray/Desktop/DJ-Website-Repo/assets/data/live-link-status.js",
+      "stderr": ""
+    },
+    {
+      "name": "sync-control-live-metrics",
+      "script": "scripts/sync-control-live-metrics.mjs",
+      "ok": true,
+      "code": 0,
+      "durationMs": 1470,
+      "stdout": "Wrote /Users/martendr.gray/Desktop/DJ-Website-Repo/control/js/live-metrics.json",
+      "stderr": ""
+    },
+    {
+      "name": "build-merch-content-bundle",
+      "script": "scripts/build-merch-content-bundle.mjs",
+      "ok": true,
+      "code": 0,
+      "durationMs": 70,
+      "stdout": "Wrote /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/merch-bundle/latest/manifest.json\nWrote /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/merch-bundle/latest/items.csv\nWrote /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/merch-bundle/latest/issues.csv\nWrote /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/merch-bundle/latest/README.md\nBundle items: 167 | issues: 0",
+      "stderr": ""
+    },
+    {
+      "name": "sync-control-live-metrics",
+      "script": "scripts/sync-control-live-metrics.mjs",
+      "ok": true,
+      "code": 0,
+      "durationMs": 990,
+      "stdout": "Wrote /Users/martendr.gray/Desktop/DJ-Website-Repo/control/js/live-metrics.json",
+      "stderr": ""
+    },
+    {
+      "name": "generate-upload-queue",
+      "script": "scripts/generate-upload-queue.mjs",
+      "ok": true,
+      "code": 0,
+      "durationMs": 49,
+      "stdout": "Wrote /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/upload-queue/shirtee-upload-queue.csv\nWrote /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/upload-queue/shirtee-upload-queue.json\nQueue total: 164 (ready: 0, pending: 0)",
+      "stderr": ""
+    },
+    {
+      "name": "prepare-shirtee-upload-batches",
+      "script": "scripts/prepare-shirtee-upload-batches.mjs",
+      "ok": true,
+      "code": 0,
+      "durationMs": 50,
+      "stdout": "Wrote /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/upload-batches/manifest.json\nWrote /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/upload-batches/README.md\nCreated 9 batch CSV files in /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/upload-batches",
+      "stderr": ""
+    },
+    {
+      "name": "generate-shirtee-api-request",
+      "script": "scripts/generate-shirtee-api-request.mjs",
+      "ok": true,
+      "code": 0,
+      "durationMs": 43,
+      "stdout": "Wrote /Users/martendr.gray/Desktop/DJ-Website-Repo/artifacts/requests/shirtee-api-request.md",
+      "stderr": ""
+    }
+  ],
+  "ok": true
+}

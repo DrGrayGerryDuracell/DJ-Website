@@ -1,0 +1,32 @@
+{
+  "id": "mrs-longsleeve-love-ready",
+  "bundleId": "apparel-mrs-longsleeve-love-ready",
+  "bundleType": "apparel",
+  "title": "Loveline Longsleeve Ready",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Weiblich im Ton, klar im Clubfit.",
+  "copy": "Langarm-Piece fuer melodischere Mrs.-Drops mit sauberem Frontprint und hoher Lesbarkeit.",
+  "products": [
+    "Ladies Longsleeve",
+    "Fitted Longsleeve",
+    "Soft Hoodie"
+  ],
+  "tags": [
+    "Damen",
+    "Shirtee Ready",
+    "Longsleeve"
+  ],
+  "image": "store-assets/variants/mrs-front-liebe-lauter.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-liebe-lauter.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 50
+}

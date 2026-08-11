@@ -1,0 +1,32 @@
+{
+  "id": "special-vip-pass-card",
+  "bundleId": "bundle-special-vip-pass-card",
+  "bundleType": "bundle",
+  "title": "VIP Pass Card Set",
+  "line": "Special Merch",
+  "section": "special",
+  "status": "Special Drop",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "kontakt.html",
+  "slogan": "Limitierte Event-Identitaet.",
+  "copy": "Collector-Set fuer Meetups, Guestlists und Eventaktionen ausserhalb normaler POD-Routine.",
+  "products": [
+    "VIP Card",
+    "Collector Set",
+    "Event Bundle"
+  ],
+  "tags": [
+    "Special",
+    "Event",
+    "Limited"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 159
+}

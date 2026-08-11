@@ -1,0 +1,32 @@
+{
+  "id": "mrs-tee-wild-ready",
+  "bundleId": "apparel-mrs-tee-wild-ready",
+  "bundleType": "apparel",
+  "title": "Wild Ready Tee",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Frech, serioes, clubnah.",
+  "copy": "Fitted Shirt mit klarer Frontachse fuer die frechere Damen-Linie und schnellen Upload.",
+  "products": [
+    "Ladies Tee",
+    "Fitted Tee",
+    "Longsleeve"
+  ],
+  "tags": [
+    "Damen",
+    "Shirtee Ready",
+    "Attitude"
+  ],
+  "image": "store-assets/variants/mrs-front-zu-wild.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-zu-wild.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 48
+}

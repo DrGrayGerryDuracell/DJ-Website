@@ -1,0 +1,32 @@
+{
+  "id": "special-vinyl-bag",
+  "bundleId": "bundle-special-vinyl-bag",
+  "bundleType": "bundle",
+  "title": "Nightdrive Vinyl Bag",
+  "line": "Special Merch",
+  "section": "special",
+  "status": "Special Drop",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "kontakt.html",
+  "slogan": "Von der Szene fuer die Szene.",
+  "copy": "Vinyl-Bag als Sondermerch fuer Fans mit analogem Setup. Klar gebrandet, dunkel gehalten und fuer reale Clubnaechte gedacht.",
+  "products": [
+    "Vinyl Bag",
+    "Record Carry Case",
+    "Limited Bundle"
+  ],
+  "tags": [
+    "Special",
+    "Vinyl",
+    "Clubtool"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 164
+}

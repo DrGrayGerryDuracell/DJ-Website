@@ -1,0 +1,32 @@
+{
+  "id": "dr-shirt-controlgrid-upload",
+  "bundleId": "apparel-dr-shirt-controlgrid-upload",
+  "bundleType": "apparel",
+  "title": "Control Grid Tee Upload",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Technische Kante fuer den naechsten Batch.",
+  "copy": "Schnell einsetzbares Tee-Setup fuer Dr.-Gray-Drops mit sauberer Front und ruhiger Rueckenoption.",
+  "products": [
+    "Unisex Tee",
+    "Heavy Tee",
+    "Premium Tee"
+  ],
+  "tags": [
+    "Herren",
+    "Uploadbereit",
+    "Control"
+  ],
+  "image": "store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 133
+}

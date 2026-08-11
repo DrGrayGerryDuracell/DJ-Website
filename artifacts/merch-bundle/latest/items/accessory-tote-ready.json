@@ -1,0 +1,32 @@
+{
+  "id": "accessory-tote-ready",
+  "bundleId": "accessory-accessory-tote-ready",
+  "bundleType": "accessory",
+  "title": "Core Tote Ready",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Alltagstauglich, klar gebrandet.",
+  "copy": "Tote fuer schnellen Shirtee-Upload mit sauberem Frontlogo und reduzierter Hook.",
+  "products": [
+    "Tote Bag",
+    "Organic Tote",
+    "Canvas Tote"
+  ],
+  "tags": [
+    "Accessoire",
+    "Shirtee Ready",
+    "Tote"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 123
+}

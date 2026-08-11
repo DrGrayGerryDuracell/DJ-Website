@@ -1,0 +1,32 @@
+{
+  "id": "unisex-tee-core-top",
+  "bundleId": "print-unisex-tee-core-top",
+  "bundleType": "print",
+  "title": "Core Tee Top Upload",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Front clean, Choice hinten.",
+  "copy": "Top-Upload-Item fuer eure modulare Unisex-Linie mit schneller Dr./Mrs.-Rueckenwahl.",
+  "products": [
+    "Unisex Tee",
+    "Premium Tee",
+    "Heavy Tee"
+  ],
+  "tags": [
+    "Unisex",
+    "Top Upload",
+    "Backprint Wahl"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 100
+}

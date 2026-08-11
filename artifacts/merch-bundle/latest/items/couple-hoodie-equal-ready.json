@@ -1,0 +1,32 @@
+{
+  "id": "couple-hoodie-equal-ready",
+  "bundleId": "apparel-couple-hoodie-equal-ready",
+  "bundleType": "apparel",
+  "title": "Equal Hoodie Set Ready",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Zwei Logos, eine klare Achse.",
+  "copy": "Hoodie-Set fuer naechsten Couple-Drop mit sauberer Symmetrie und kontrollierter Druckflaeche.",
+  "products": [
+    "2x Unisex Hoodie",
+    "2x Zip Hoodie",
+    "2x Sweatshirt"
+  ],
+  "tags": [
+    "Couple",
+    "Shirtee Ready",
+    "Hoodie Set"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 74
+}

@@ -1,0 +1,32 @@
+{
+  "id": "dr-oversize-bass",
+  "bundleId": "accessory-dr-oversize-bass",
+  "bundleType": "accessory",
+  "title": "Bass im Blut. Oversize",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Mehr Groove, weniger Deko.",
+  "copy": "Eine lockerere Herren-Silhouette fuer Oversize Tee, Heavy Hoodie und Cap. Passt zu einer dunklen, mechanischen Techno-Linie.",
+  "products": [
+    "Oversize Shirt",
+    "Heavy Hoodie",
+    "Cap"
+  ],
+  "tags": [
+    "Herren",
+    "Oversize",
+    "Dark Gold"
+  ],
+  "image": "store-assets/variants/dr-front-kein-mainstream.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-front-kein-mainstream.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 2
+}

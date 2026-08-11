@@ -36,6 +36,8 @@ const COMMANDS = {
   "generate-upload-queue": { cmd: process.execPath, args: [join(repoRoot, "scripts/generate-upload-queue.mjs")] },
   "generate-upload-batches": { cmd: process.execPath, args: [join(repoRoot, "scripts/prepare-shirtee-upload-batches.mjs")] },
   "generate-shirtee-api-request": { cmd: process.execPath, args: [join(repoRoot, "scripts/generate-shirtee-api-request.mjs")] },
+  "build-merch-bundle": { cmd: process.execPath, args: [join(repoRoot, "scripts/build-merch-content-bundle.mjs")] },
+  "build-shop-master-pack": { cmd: process.execPath, args: [join(repoRoot, "scripts/build-shop-master-pack.mjs")] },
   "write-hermes-spool": { cmd: process.execPath, args: [join(repoRoot, "scripts/write-hermes-spool-message.mjs")] },
   "check-links": { cmd: "/bin/bash", args: [join(repoRoot, "scripts/check-shirtee-links.sh")] }
 };
@@ -212,6 +214,8 @@ async function handleApi(request, response, url) {
       "upload-queue": join(repoRoot, "artifacts", "upload-queue", "shirtee-upload-queue.json"),
       "batch-manifest": join(repoRoot, "artifacts", "upload-batches", "manifest.json"),
       "shirtee-request": join(repoRoot, "artifacts", "requests", "shirtee-api-request.md"),
+      "merch-bundle": join(repoRoot, "artifacts", "merch-bundle", "latest", "manifest.json"),
+      "shop-master": join(repoRoot, "artifacts", "shop-master", "latest", "manifest.json"),
       "live-metrics": join(repoRoot, "control", "js", "live-metrics.json")
     };
     const filePath = map[kind];

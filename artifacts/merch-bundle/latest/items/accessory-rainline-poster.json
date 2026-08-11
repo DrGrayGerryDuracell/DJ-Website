@@ -1,0 +1,32 @@
+{
+  "id": "accessory-rainline-poster",
+  "bundleId": "accessory-accessory-rainline-poster",
+  "bundleType": "accessory",
+  "title": "Rainline Poster Drop",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "In Vorbereitung",
+  "priority": "P1",
+  "spotlight": true,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Bildsprache fuer Wände und Booth-Ecken.",
+  "copy": "Das Rain-Neon-Motiv funktioniert stark als Poster, Artcard oder signierter Print fuer Community-Bundles und Limited-Merch-Pakete.",
+  "products": [
+    "Poster",
+    "Artcard",
+    "Signed Print"
+  ],
+  "tags": [
+    "Accessoire",
+    "Poster",
+    "Limited"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 114
+}

@@ -1,0 +1,32 @@
+{
+  "id": "accessory-notebook-nightline",
+  "bundleId": "bundle-accessory-notebook-nightline",
+  "bundleType": "bundle",
+  "title": "Nightline Notebook",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Kompakt, dark und markant.",
+  "copy": "Notebook fuer Eventplanung, Studio-Notizen und Community-Bundles mit klarer Markenfuehrung.",
+  "products": [
+    "Notebook",
+    "Hardcover Journal",
+    "Bundle"
+  ],
+  "tags": [
+    "Accessoire",
+    "Geplant",
+    "Notebook"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 158
+}

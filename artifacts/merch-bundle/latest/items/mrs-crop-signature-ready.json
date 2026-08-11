@@ -1,0 +1,32 @@
+{
+  "id": "mrs-crop-signature-ready",
+  "bundleId": "apparel-mrs-crop-signature-ready",
+  "bundleType": "apparel",
+  "title": "Signature Crop Ready",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Mrs. im Fokus, sauber gesetzt.",
+  "copy": "Crop fuer schnellen Livegang mit dominantem Mrs.-Logo und klarer Hook ohne Ueberlagerung.",
+  "products": [
+    "Ladies Crop",
+    "Fitted Tee",
+    "Soft Crop"
+  ],
+  "tags": [
+    "Damen",
+    "Shirtee Ready",
+    "Mrs.-Fokus"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 47
+}

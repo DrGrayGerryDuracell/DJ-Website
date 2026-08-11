@@ -1,0 +1,32 @@
+{
+  "id": "couple-set-vibe",
+  "bundleId": "accessory-couple-set-vibe",
+  "bundleType": "accessory",
+  "title": "His Beat. Her Vibe.",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Mehr Attitude als Romantik-Kitsch.",
+  "copy": "Ein zweiteiliges Pair-Set mit klarer Aufteilung zwischen Frontclaim und Rueckensignatur.",
+  "products": [
+    "2er Shirt Set",
+    "2er Hoodie Set",
+    "Couple Cap"
+  ],
+  "tags": [
+    "Couple",
+    "Attitude",
+    "Limited"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 59
+}

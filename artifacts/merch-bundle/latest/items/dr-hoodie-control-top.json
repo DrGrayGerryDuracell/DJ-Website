@@ -1,0 +1,32 @@
+{
+  "id": "dr-hoodie-control-top",
+  "bundleId": "apparel-dr-hoodie-control-top",
+  "bundleType": "apparel",
+  "title": "Control Hoodie Top Upload",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Druckvoll und ohne Umwege.",
+  "copy": "Hoodie-Variante mit klarem Dr.-Auftritt fuer schnellen Produktstart im Store.",
+  "products": [
+    "Unisex Hoodie",
+    "Zip Hoodie",
+    "Sweatshirt"
+  ],
+  "tags": [
+    "Herren",
+    "Top Upload",
+    "Hoodie"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 22
+}

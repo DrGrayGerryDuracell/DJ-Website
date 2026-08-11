@@ -1,0 +1,32 @@
+{
+  "id": "unisex-crew-switchline",
+  "bundleId": "print-unisex-crew-switchline",
+  "bundleType": "print",
+  "title": "Switchline Crewneck",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "In Vorbereitung",
+  "priority": "P2",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Ein Frontdesign, zwei Ruecken-Charaktere.",
+  "copy": "Crewneck fuer die modulare Unisex-Linie mit Dr.- oder Mrs.-Backprint als klare Auswahl.",
+  "products": [
+    "Crewneck",
+    "Heavy Sweat",
+    "Light Layer"
+  ],
+  "tags": [
+    "Unisex",
+    "Crewneck",
+    "Backprint Wahl"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 94
+}

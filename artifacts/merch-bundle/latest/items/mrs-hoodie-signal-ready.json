@@ -1,0 +1,32 @@
+{
+  "id": "mrs-hoodie-signal-ready",
+  "bundleId": "apparel-mrs-hoodie-signal-ready",
+  "bundleType": "apparel",
+  "title": "Signal Hoodie Upload",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Mrs.-Lead mit dunklem Premium-Fit.",
+  "copy": "Uploadbereiter Hoodie mit starker Frontwirkung und ruhiger Backprint-Option fuer naechste Drops.",
+  "products": [
+    "Unisex Hoodie",
+    "Women Hoodie",
+    "Zip Hoodie"
+  ],
+  "tags": [
+    "Damen",
+    "Uploadbereit",
+    "Hoodie"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 136
+}

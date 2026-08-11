@@ -1,0 +1,32 @@
+{
+  "id": "couple-tee-vows-ready",
+  "bundleId": "apparel-couple-tee-vows-ready",
+  "bundleType": "apparel",
+  "title": "Vows Tee Set Ready",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Echt verbunden, klar inszeniert.",
+  "copy": "Couple-Tee-Set mit spiegelnder Frontlogik und identischer Logo-Hoehe fuer schnellen Shirtee-Upload.",
+  "products": [
+    "2x Unisex Tee",
+    "2x Premium Tee",
+    "2x Longsleeve"
+  ],
+  "tags": [
+    "Couple",
+    "Shirtee Ready",
+    "Tee Set"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 73
+}

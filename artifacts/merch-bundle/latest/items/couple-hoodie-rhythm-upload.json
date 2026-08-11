@@ -1,0 +1,32 @@
+{
+  "id": "couple-hoodie-rhythm-upload",
+  "bundleId": "apparel-couple-hoodie-rhythm-upload",
+  "bundleType": "apparel",
+  "title": "Rhythm Hoodie Upload",
+  "line": "Couple",
+  "section": "couple",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Emotional, klar und druckvoll.",
+  "copy": "Uploadbereiter Couple-Hoodie mit gleicher Logohoehe und klarer Trennung von Front und Rueckenprint.",
+  "products": [
+    "Couple Hoodie",
+    "Unisex Hoodie",
+    "Zip Hoodie"
+  ],
+  "tags": [
+    "Couple",
+    "Uploadbereit",
+    "Hoodie"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 153
+}

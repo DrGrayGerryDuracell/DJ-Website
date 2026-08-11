@@ -1,0 +1,32 @@
+{
+  "id": "accessory-sticker-nightcode",
+  "bundleId": "sticker-accessory-sticker-nightcode",
+  "bundleType": "sticker",
+  "title": "Nightcode Sticker Pack",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Mehr Szene auf kleinem Format.",
+  "copy": "Sticker-Set mit Dr.-, Mrs.- und Couple-Motiven fuer Cases, Booths, Notebooks und Promo-Pakete.",
+  "products": [
+    "Sticker Pack",
+    "Mini Print Set",
+    "Promo Bundle"
+  ],
+  "tags": [
+    "Accessoire",
+    "Sticker",
+    "Bundle"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 117
+}

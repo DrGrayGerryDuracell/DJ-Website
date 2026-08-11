@@ -1,0 +1,32 @@
+{
+  "id": "special-event-passband",
+  "bundleId": "bundle-special-event-passband",
+  "bundleType": "bundle",
+  "title": "Event Passband Set",
+  "line": "Special Merch",
+  "section": "special",
+  "status": "Special Drop",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "kontakt.html",
+  "slogan": "Limited fuer echte Nachtformate.",
+  "copy": "Nicht als Standard-POD gedacht, sondern als Sondermerch fuer Events, Meetups und Verlosungen.",
+  "products": [
+    "Wristband Set",
+    "Event Pass",
+    "Limited Bundle"
+  ],
+  "tags": [
+    "Special",
+    "Event",
+    "Limited"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 165
+}

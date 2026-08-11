@@ -1,0 +1,32 @@
+{
+  "id": "mrs-hoodie-wild",
+  "bundleId": "apparel-mrs-hoodie-wild",
+  "bundleType": "apparel",
+  "title": "Zu wild fuer leise Hoodie",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Prioritaet",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Die frechere Hoodie-Variante fuer kalte Naechte.",
+  "copy": "Front clean, Logo dominant und kein visuelles Durcheinander. Funktioniert fuer Damen-Hoodie und weicheren Oversize-Fit.",
+  "products": [
+    "Hoodie",
+    "Oversize Hoodie",
+    "Soft Zip"
+  ],
+  "tags": [
+    "Damen",
+    "Hoodie",
+    "Frech"
+  ],
+  "image": "store-assets/variants/mrs-front-zu-wild.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-zu-wild.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 35
+}

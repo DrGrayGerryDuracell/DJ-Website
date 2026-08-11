@@ -1,0 +1,32 @@
+{
+  "id": "unisex-polo-duo",
+  "bundleId": "apparel-unisex-polo-duo",
+  "bundleType": "apparel",
+  "title": "Duo Polo",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Sauberer als Tee, aber immer noch Szene.",
+  "copy": "Ein ruhigeres Unisex-Polo mit kompaktem Frontmotiv und optionalem Rueckenzeichen fuer einen smarten Dark-Fit.",
+  "products": [
+    "Polo",
+    "Light Longsleeve",
+    "Layer Piece"
+  ],
+  "tags": [
+    "Unisex",
+    "Polo",
+    "Dark Smart"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 87
+}

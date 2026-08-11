@@ -1,0 +1,32 @@
+{
+  "id": "accessory-tote-techno",
+  "bundleId": "accessory-accessory-tote-techno",
+  "bundleType": "accessory",
+  "title": "Techno mit Herz Tote Bag",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Alltagstauglich, aber klar im Branding.",
+  "copy": "Tasche oder Beutel mit sauberem Frontlogo und reduziertem Claim. Perfekt fuer Clubnacht, Alltag und Social Content.",
+  "products": [
+    "Tote Bag",
+    "Stoffbeutel",
+    "Gym Bag"
+  ],
+  "tags": [
+    "Accessoire",
+    "Bag",
+    "Logo"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 106
+}

@@ -1,0 +1,32 @@
+{
+  "id": "mrs-crop-nightpulse",
+  "bundleId": "apparel-mrs-crop-nightpulse",
+  "bundleType": "apparel",
+  "title": "Night Pulse Crop",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Feminin, frech und glasklar gesetzt.",
+  "copy": "Crop-Look mit dominantem Mrs.-Logo und kurzer Hook-Zeile fuer Clubfotos und Story-Reels.",
+  "products": [
+    "Crop Shirt",
+    "Soft Crop",
+    "Fitted Tee"
+  ],
+  "tags": [
+    "Damen",
+    "Crop",
+    "Nightlife"
+  ],
+  "image": "store-assets/variants/mrs-front-zu-wild.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-zu-wild.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 43
+}

@@ -1,0 +1,32 @@
+{
+  "id": "mrs-top-afterglow",
+  "bundleId": "apparel-mrs-top-afterglow",
+  "bundleType": "apparel",
+  "title": "Zu echt fuer Plastik-Raves",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Frech, clubbig und mit Haltung.",
+  "copy": "Funktioniert auf femininem Top, enganliegendem Tee oder leichtem Sommer-Hoodie mit kleinerem Mrs.-Frontlogo.",
+  "products": [
+    "Tank Top",
+    "Fitted Tee",
+    "Light Hoodie"
+  ],
+  "tags": [
+    "Damen",
+    "Club",
+    "Attitude"
+  ],
+  "image": "store-assets/variants/mrs-front-zu-wild.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-zu-wild.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 30
+}

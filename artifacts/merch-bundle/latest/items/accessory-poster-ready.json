@@ -1,0 +1,32 @@
+{
+  "id": "accessory-poster-ready",
+  "bundleId": "accessory-accessory-poster-ready",
+  "bundleType": "accessory",
+  "title": "Night Poster Ready",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Visual Drop fuer Booth und Home.",
+  "copy": "Poster-Artikel fuer schnelle Print-Drops mit dunkler Farbwelt und hoher Lesbarkeit.",
+  "products": [
+    "Poster",
+    "Art Print",
+    "Canvas Print"
+  ],
+  "tags": [
+    "Accessoire",
+    "Shirtee Ready",
+    "Poster"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 125
+}

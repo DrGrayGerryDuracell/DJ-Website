@@ -1,0 +1,32 @@
+{
+  "id": "couple-hoodie-echoline-top",
+  "bundleId": "apparel-couple-hoodie-echoline-top",
+  "bundleType": "apparel",
+  "title": "Echoline Hoodie Set Top Upload",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Zwei Teile, ein klarer Takt.",
+  "copy": "Hoodie-Duo mit ruhiger Front und abgestimmtem Rueckenclaim fuer schnellen Kampagnenstart.",
+  "products": [
+    "2x Unisex Hoodie",
+    "2x Zip Hoodie",
+    "2x Sweatshirt"
+  ],
+  "tags": [
+    "Couple",
+    "Top Upload",
+    "Echoline"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 81
+}

@@ -1,0 +1,32 @@
+{
+  "id": "accessory-mug-ready",
+  "bundleId": "accessory-accessory-mug-ready",
+  "bundleType": "accessory",
+  "title": "Core Mug Ready",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Kleinformat mit Wiedererkennung.",
+  "copy": "Mug-Linie fuer schnelle Bundle-Drops mit ruhiger Typo und klarer Markenpraesenz.",
+  "products": [
+    "Mug",
+    "Enamel Mug",
+    "Gift Set"
+  ],
+  "tags": [
+    "Accessoire",
+    "Shirtee Ready",
+    "Mug"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 124
+}

@@ -1,0 +1,32 @@
+{
+  "id": "mrs-dress-nightline-top",
+  "bundleId": "apparel-mrs-dress-nightline-top",
+  "bundleType": "apparel",
+  "title": "Nightline Dress Top Upload",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Selbstbewusst, clubnah und klar gefuehrt.",
+  "copy": "Dress-Linie mit Mrs.-Fokus, cleaner Front und seriös-frecher Wirkung fuer Event- und Night-Fits.",
+  "products": [
+    "Dress",
+    "Bodycon Dress",
+    "Club Dress"
+  ],
+  "tags": [
+    "Damen",
+    "Top Upload",
+    "Dress"
+  ],
+  "image": "store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 134
+}

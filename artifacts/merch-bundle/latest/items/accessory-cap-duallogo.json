@@ -1,0 +1,32 @@
+{
+  "id": "accessory-cap-duallogo",
+  "bundleId": "accessory-accessory-cap-duallogo",
+  "bundleType": "accessory",
+  "title": "Dual Logo Snap Cap",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "In Vorbereitung",
+  "priority": "P2",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Kleines Format, klare Haltung.",
+  "copy": "Snap- und Dad-Cap mit sauberem Frontzeichen fuer Herren-, Damen- und Couple-Fits ohne Stilbruch.",
+  "products": [
+    "Snapback",
+    "Dad Cap",
+    "Retro Cap"
+  ],
+  "tags": [
+    "Accessoire",
+    "Cap",
+    "Dual"
+  ],
+  "image": "store-assets/variants/accessory-dr-retro-cap.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/accessory-dr-retro-cap.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 120
+}

@@ -1,0 +1,32 @@
+{
+  "id": "mrs-polo-afterhours",
+  "bundleId": "apparel-mrs-polo-afterhours",
+  "bundleType": "apparel",
+  "title": "Afterhours Polo",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Selbstbewusst, klar und nicht aufgesetzt.",
+  "copy": "Eine etwas aufgeraeumtere Damen-Variante fuer Polo, fitted shirt oder leichtes Layering. Das Mrs.-Logo bleibt klein und stark, der Spruch fuehrt den Rest.",
+  "products": [
+    "Polo",
+    "Fitted Shirt",
+    "Soft Layer"
+  ],
+  "tags": [
+    "Damen",
+    "Polo",
+    "Elegant"
+  ],
+  "image": "store-assets/variants/mrs-front-zu-wild.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-zu-wild.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 32
+}

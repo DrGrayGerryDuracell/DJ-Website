@@ -1,0 +1,32 @@
+{
+  "id": "dr-tee-bassline-top",
+  "bundleId": "apparel-dr-tee-bassline-top",
+  "bundleType": "apparel",
+  "title": "Bassline Tee Top Upload",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Druckvoll im Claim, sauber im Schnitt.",
+  "copy": "Schneller Tee-Upload fuer die harte Dr.-Gray-Linie mit klarer Front und optionalem Rueckenlogo.",
+  "products": [
+    "Unisex Tee",
+    "Heavy Tee",
+    "Premium Tee"
+  ],
+  "tags": [
+    "Herren",
+    "Top Upload",
+    "Bassline"
+  ],
+  "image": "store-assets/variants/dr-front-bass-im-blut.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-front-bass-im-blut.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 24
+}

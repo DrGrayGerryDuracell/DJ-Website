@@ -1,0 +1,32 @@
+{
+  "id": "mrs-longsleeve-command",
+  "bundleId": "apparel-mrs-longsleeve-command",
+  "bundleType": "apparel",
+  "title": "Command Longsleeve",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "In Vorbereitung",
+  "priority": "P2",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Selbstbewusst, klar und nicht verkleidet.",
+  "copy": "Langarm-Variante fuer die serioes-freche Damen-Linie mit fokussierter Frontachse und ruhiger Typo.",
+  "products": [
+    "Longsleeve",
+    "Soft Hoodie",
+    "Layer Top"
+  ],
+  "tags": [
+    "Damen",
+    "Longsleeve",
+    "Command"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 44
+}

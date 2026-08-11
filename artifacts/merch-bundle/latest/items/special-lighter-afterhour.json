@@ -1,0 +1,32 @@
+{
+  "id": "special-lighter-afterhour",
+  "bundleId": "bundle-special-lighter-afterhour",
+  "bundleType": "bundle",
+  "title": "Afterhour Feuerzeug",
+  "line": "Special Merch",
+  "section": "special",
+  "status": "Special Drop",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "kontakt.html",
+  "slogan": "Klein, frech und stark fuer Event-Bundles.",
+  "copy": "Nicht als bestaetigter Shirtee-POD-Artikel geplant, sondern als Sondermerch fuer Events, Giveaways oder externe Produktion.",
+  "products": [
+    "Feuerzeug",
+    "Event Bundle",
+    "Giveaway"
+  ],
+  "tags": [
+    "Special",
+    "Offline",
+    "Limited"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 161
+}

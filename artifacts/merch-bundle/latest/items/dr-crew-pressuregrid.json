@@ -1,0 +1,32 @@
+{
+  "id": "dr-crew-pressuregrid",
+  "bundleId": "apparel-dr-crew-pressuregrid",
+  "bundleType": "apparel",
+  "title": "Pressure Grid Crewneck",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "In Vorbereitung",
+  "priority": "P1",
+  "spotlight": true,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Technische Linien, klare Mitte, null Ablenkung.",
+  "copy": "Crewneck fuer die cleanere Dr.-Gray-Achse mit scharfem Frontclaim und optionalem Nackenprint. Ideal fuer Clubcrew, Warm-up und Travel-Fit.",
+  "products": [
+    "Crewneck",
+    "Heavy Sweat",
+    "Layer Tee"
+  ],
+  "tags": [
+    "Herren",
+    "Crewneck",
+    "Control"
+  ],
+  "image": "store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 9
+}

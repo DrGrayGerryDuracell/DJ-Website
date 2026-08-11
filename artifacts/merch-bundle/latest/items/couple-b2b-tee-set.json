@@ -1,0 +1,32 @@
+{
+  "id": "couple-b2b-tee-set",
+  "bundleId": "apparel-couple-b2b-tee-set",
+  "bundleType": "apparel",
+  "title": "B2B Couple Tee Set",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Zwei Looks, ein Takt.",
+  "copy": "Set mit gespiegelt gesetzten Frontclaims und optionalen Rueckenlogos auf identischer Hoehe. Emotional, aber klar ohne Kitsch.",
+  "products": [
+    "2er Tee Set",
+    "2er Hoodie Set",
+    "2er Longsleeve Set"
+  ],
+  "tags": [
+    "Couple",
+    "B2B",
+    "Symmetrie"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 66
+}

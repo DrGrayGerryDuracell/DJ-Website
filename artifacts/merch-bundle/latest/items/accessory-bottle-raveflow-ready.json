@@ -1,0 +1,32 @@
+{
+  "id": "accessory-bottle-raveflow-ready",
+  "bundleId": "bundle-accessory-bottle-raveflow-ready",
+  "bundleType": "bundle",
+  "title": "Raveflow Bottle Upload",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Hydration trifft Brandcode.",
+  "copy": "Bottle-Linie als praktisches Community-Piece fuer Eventtage, Reisen und Studioeinsaetze.",
+  "products": [
+    "Bottle",
+    "Thermo Bottle",
+    "Gift Bundle"
+  ],
+  "tags": [
+    "Accessoire",
+    "Uploadbereit",
+    "Bottle"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 144
+}

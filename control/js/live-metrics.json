@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-06T07:08:04.234Z",
-    "generatedAtLabel": "06.08.26, 09:08",
+    "generatedAt": "2026-08-11T19:26:14.453Z",
+    "generatedAtLabel": "11.08.26, 21:26",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -14,8 +14,8 @@
     },
     "storeLinks": {
       "label": "Shop-Links",
-      "value": "Lokal nicht verifizierbar",
-      "level": "info"
+      "value": "3/3 erreichbar",
+      "level": "ok"
     },
     "social": {
       "label": "Social-Profile",
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "06.08.26, 09:08",
+      "value": "11.08.26, 21:26",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 332,
+      "value": 132,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -74,14 +74,14 @@
     {
       "id": "shopLinksOk",
       "label": "Shop-Links OK",
-      "value": null,
-      "delta": "lokal nicht verifizierbar",
+      "value": 3,
+      "delta": "Shirtee",
       "trend": "up"
     },
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 622,
+      "value": 629,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 441,
+        "visitors": 180,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 368,
+        "visitors": 126,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 303,
+        "visitors": 123,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 354,
+        "visitors": 124,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 388,
+        "visitors": 124,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 295,
+        "visitors": 128,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 328,
+        "visitors": 128,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 176,
+        "visitors": 123,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "332 ms",
+      "avgSession": "132 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -290,11 +290,11 @@
   "shopMetrics": {
     "linkHealth": {
       "checkedLinks": 3,
-      "okLinks": 0,
+      "okLinks": 3,
       "failLinks": 0,
-      "reachabilityRate": "nicht verifizierbar",
-      "checkedAt": "2026-08-06T07:08:04.234Z",
-      "checkedAtLabel": "06.08.26, 09:08"
+      "reachabilityRate": "100%",
+      "checkedAt": "2026-08-11T19:26:14.453Z",
+      "checkedAtLabel": "11.08.26, 21:26"
     },
     "catalog": {
       "totalItems": 167,
@@ -327,16 +327,16 @@
           "items": 10
         }
       ],
-      "storeVisibleProducts": 0,
+      "storeVisibleProducts": 3,
       "storeVisibleProductNames": [
         "Kein Mainstream. Hoodie",
         "Kein Mainstream. Hoodie",
         "Mrs. Dr. Gray Signature Hoodie"
       ],
-      "uploadedCount": 2,
+      "uploadedCount": 3,
       "submittedCount": 164,
       "readyCount": 0,
-      "pendingCount": 1,
+      "pendingCount": 0,
       "itemStates": [
         {
           "id": "dr-hoodie-mainstream",
@@ -348,10 +348,10 @@
           "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
-          "uploadState": "pending",
-          "uploadLabel": "Noch offen",
-          "verifiedLink": false,
-          "httpCode": 0
+          "uploadState": "uploaded",
+          "uploadLabel": "Bereits hochgeladen",
+          "verifiedLink": true,
+          "httpCode": 200
         },
         {
           "id": "dr-shirt-raw",
@@ -752,11 +752,11 @@
           "catalogStatus": "Live im Store",
           "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
           "hasImage": true,
-          "imageSrc": "https://media-1.ams3.digitaloceanspaces.com/media_cache/catalog/product/si320/8/K/j/a/8KjaVS1TWZpQy5ud.png",
+          "imageSrc": "/store-assets/variants/mrs-crop-wild.png",
           "uploadState": "uploaded",
           "uploadLabel": "Bereits hochgeladen",
-          "verifiedLink": false,
-          "httpCode": 0
+          "verifiedLink": true,
+          "httpCode": 200
         },
         {
           "id": "mrs-dress-liebe",
@@ -782,11 +782,11 @@
           "catalogStatus": "Live im Store",
           "href": "https://www.shirtee.com/de/drgray-mrsdrgray/",
           "hasImage": true,
-          "imageSrc": "https://media-1.ams3.digitaloceanspaces.com/media_cache/catalog/product/si320/L/B/e/q/LBeqn1swlODc4BJU.png",
+          "imageSrc": "/store-assets/variants/mrs-hoodie-serious.png",
           "uploadState": "uploaded",
           "uploadLabel": "Bereits hochgeladen",
-          "verifiedLink": false,
-          "httpCode": 0
+          "verifiedLink": true,
+          "httpCode": 200
         },
         {
           "id": "mrs-top-afterglow",
@@ -2899,44 +2899,236 @@
         }
       ]
     },
+    "merchBundle": {
+      "generatedAt": "2026-08-11T19:25:47.613Z",
+      "totalItems": 167,
+      "issueCount": 0,
+      "localImages": 167,
+      "remoteImages": 0,
+      "missingImages": 0,
+      "ready": 0,
+      "pending": 0,
+      "submitted": 164,
+      "uploaded": 3,
+      "byType": {
+        "print": 16,
+        "apparel": 105,
+        "accessory": 25,
+        "bundle": 17,
+        "sticker": 4
+      },
+      "bySection": {
+        "men": 31,
+        "women": 35,
+        "couple": 31,
+        "unisex": 28,
+        "accessories": 32,
+        "special": 10
+      },
+      "byLine": {
+        "Dr. Gray": 31,
+        "Mrs. Dr. Gray": 35,
+        "Couple Edition": 26,
+        "Unisex": 28,
+        "Accessories": 32,
+        "Couple": 5,
+        "Special Merch": 10
+      },
+      "byState": {
+        "uploaded": 3,
+        "submitted": 164
+      },
+      "families": [
+        {
+          "line": "Mrs. Dr. Gray",
+          "total": 35,
+          "sections": {
+            "women": 35
+          },
+          "states": {
+            "uploaded": 2,
+            "submitted": 33
+          },
+          "images": {
+            "local": 35
+          },
+          "spotlight": 2,
+          "issues": 0,
+          "topTitles": [
+            "Zu wild fuer leise. Crop",
+            "Liebe lauter. Kleid",
+            "Mrs. Dr. Gray Signature Hoodie",
+            "Zu echt fuer Plastik-Raves"
+          ]
+        },
+        {
+          "line": "Accessories",
+          "total": 32,
+          "sections": {
+            "accessories": 32
+          },
+          "states": {
+            "submitted": 32
+          },
+          "images": {
+            "local": 32
+          },
+          "spotlight": 2,
+          "issues": 0,
+          "topTitles": [
+            "Techno mit Herz Tote Bag",
+            "Dr. Gray Cap",
+            "Retro Duo Cap",
+            "Mrs. Dr. Gray Mug"
+          ]
+        },
+        {
+          "line": "Dr. Gray",
+          "total": 31,
+          "sections": {
+            "men": 31
+          },
+          "states": {
+            "uploaded": 1,
+            "submitted": 30
+          },
+          "images": {
+            "local": 31
+          },
+          "spotlight": 2,
+          "issues": 0,
+          "topTitles": [
+            "Kein Mainstream. Hoodie",
+            "Treibend. Roh. Ehrlich. Tee",
+            "Bass im Blut. Oversize",
+            "Druck statt Deko"
+          ]
+        },
+        {
+          "line": "Unisex",
+          "total": 28,
+          "sections": {
+            "unisex": 28
+          },
+          "states": {
+            "submitted": 28
+          },
+          "images": {
+            "local": 28
+          },
+          "spotlight": 1,
+          "issues": 0,
+          "topTitles": [
+            "Techno mit Herz. Unisex Tee",
+            "Front Dual Logo, Ruecken frei waehlbar",
+            "Core Shirt mit Backprint-Wahl",
+            "Techno mit Herz Sweatshirt"
+          ]
+        },
+        {
+          "line": "Couple Edition",
+          "total": 26,
+          "sections": {
+            "couple": 26
+          },
+          "states": {
+            "submitted": 26
+          },
+          "images": {
+            "local": 26
+          },
+          "spotlight": 2,
+          "issues": 0,
+          "topTitles": [
+            "Couple in Love mit dem Beat",
+            "Two Hearts. One Rhythm.",
+            "His Beat. Her Vibe.",
+            "Two Souls. One Drop."
+          ]
+        },
+        {
+          "line": "Special Merch",
+          "total": 10,
+          "sections": {
+            "special": 10
+          },
+          "states": {
+            "submitted": 10
+          },
+          "images": {
+            "local": 10
+          },
+          "spotlight": 0,
+          "issues": 0,
+          "topTitles": [
+            "Founders Fan Card",
+            "Clubpass Lanyard",
+            "VIP Pass Card Set",
+            "Duo Metal Pin Limited"
+          ]
+        },
+        {
+          "line": "Couple",
+          "total": 5,
+          "sections": {
+            "couple": 5
+          },
+          "states": {
+            "submitted": 5
+          },
+          "images": {
+            "local": 5
+          },
+          "spotlight": 0,
+          "issues": 0,
+          "topTitles": [
+            "Symmetry Hoodie Top Upload",
+            "One Rhythm Tee Upload",
+            "Beat Vow Longsleeve",
+            "Vow Tee Top Upload"
+          ]
+        }
+      ],
+      "issueSummary": {}
+    },
     "topProducts": [
       {
         "name": "Kein Mainstream. Hoodie",
-        "httpCode": 0,
+        "httpCode": 200,
         "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
-        "statusLabel": "Fehler",
+        "statusLabel": "erreichbar",
         "sourceLabel": "Shirtee-Linkcheck"
       },
       {
         "name": "Kein Mainstream. Hoodie",
-        "httpCode": 0,
+        "httpCode": 200,
         "href": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
-        "statusLabel": "Fehler",
+        "statusLabel": "erreichbar",
         "sourceLabel": "Shirtee-Linkcheck"
       },
       {
         "name": "Mrs. Dr. Gray Signature Hoodie",
-        "httpCode": 0,
+        "httpCode": 200,
         "href": "https://www.shirtee.com/de/drgray-mrsdrgray/",
-        "statusLabel": "Fehler",
+        "statusLabel": "erreichbar",
         "sourceLabel": "Shirtee-Linkcheck"
       }
     ],
     "timeline": [
       {
-        "time": "06.08.26, 09:08",
-        "type": "info",
-        "detail": "Shop-Link 1: lokal nicht verifizierbar"
+        "time": "11.08.26, 21:26",
+        "type": "ok",
+        "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "06.08.26, 09:08",
-        "type": "info",
-        "detail": "Shop-Link 2: lokal nicht verifizierbar"
+        "time": "11.08.26, 21:26",
+        "type": "ok",
+        "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "06.08.26, 09:08",
-        "type": "info",
-        "detail": "Shop-Link 3: lokal nicht verifizierbar"
+        "time": "11.08.26, 21:26",
+        "type": "ok",
+        "detail": "Shop-Link 3: HTTP 200"
       }
     ]
   },
@@ -2977,8 +3169,8 @@
         "verified": false,
         "status": "live",
         "metricValue": 10,
-        "valueLabel": "622 Follower • 10 Linksignale",
-        "statusLabel": "32 Tracks",
+        "valueLabel": "629 Follower • 10 Linksignale",
+        "statusLabel": "33 Tracks",
         "sourceLabel": "SoundCloud Public API"
       },
       {
@@ -2987,11 +3179,11 @@
         "handle": "Store / Merch",
         "profileImage": null,
         "profileUrl": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
-        "verified": false,
-        "status": "warn",
-        "metricValue": 0,
-        "valueLabel": "0 Produkte sichtbar • 0/3 gepruefte Produktlinks",
-        "statusLabel": "3 Links fehlerhaft",
+        "verified": true,
+        "status": "connected",
+        "metricValue": 3,
+        "valueLabel": "3 Produkte sichtbar • 3/3 gepruefte Produktlinks",
+        "statusLabel": "Alle geprueften Links erreichbar",
         "sourceLabel": "Shirtee-Linkcheck"
       }
     ],
@@ -3049,7 +3241,7 @@
       {
         "label": "Shirtee Store",
         "url": "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
-        "status": "check",
+        "status": "live",
         "displayName": "Dr. Gray & Mrs. Dr. Gray Store",
         "handle": "Shirtee",
         "profileImage": null,
@@ -3100,11 +3292,11 @@
       },
       {
         "metric": "Shirtee-Linkchecks",
-        "value": "lokal nicht verifizierbar",
-        "state": "info"
+        "value": "3/3 OK",
+        "state": "good"
       }
     ],
-    "responseTime": "332 ms",
+    "responseTime": "132 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3114,8 +3306,8 @@
       },
       {
         "label": "Shop Produktlinks",
-        "status": "lokal nicht verifizierbar",
-        "level": "info"
+        "status": "3/3 erreichbar",
+        "level": "ok"
       },
       {
         "label": "SoundCloud Profil",
@@ -3246,35 +3438,30 @@
         }
       ]
     },
-    "weakSpots": [
-      {
-        "item": "Shop-Pruefung",
-        "note": "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren."
-      }
-    ]
+    "weakSpots": []
   },
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "06.08.26, 09:08",
+      "time": "11.08.26, 21:26",
       "type": "check",
       "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "06.08.26, 09:08",
+      "time": "11.08.26, 21:26",
       "type": "check",
-      "text": "Shop-Linkcheck: lokal nicht verifizierbar"
+      "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "06.08.26, 09:08",
+      "time": "11.08.26, 21:26",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "06.08.26, 09:08",
+      "time": "11.08.26, 21:26",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3289,16 +3476,16 @@
     },
     {
       "id": "AL-SHOP",
-      "level": "info",
-      "title": "Shop lokal nicht verifizierbar",
-      "description": "Die lokale Umgebung kann die Shirtee-Links nicht testen; der Status bleibt deshalb neutral.",
+      "level": "ok",
+      "title": "Shop-Links erreichbar",
+      "description": "Alle geprueften Produktlinks sind erreichbar.",
       "source": "Shop Monitoring"
     },
     {
       "id": "AL-SOC",
       "level": "ok",
       "title": "SoundCloud Live-Profil erkannt",
-      "description": "622 Follower und 32 Tracks verifiziert.",
+      "description": "629 Follower und 33 Tracks verifiziert.",
       "source": "Social Monitoring"
     }
   ],
@@ -3573,6 +3760,52 @@
       }
     ]
   },
+  "kanban": {
+    "updatedAt": "2026-08-11T19:26:17.211Z",
+    "counts": {
+      "waiting": 0,
+      "running": 0,
+      "ready": 0,
+      "doneToday": 0
+    },
+    "services": [
+      {
+        "id": "gateway",
+        "label": "Hermes Gateway",
+        "status": "warn",
+        "statusLabel": "Fehler"
+      },
+      {
+        "id": "hermes-serve",
+        "label": "Hermes Serve",
+        "status": "ok",
+        "statusLabel": "Aktiv"
+      },
+      {
+        "id": "openclaw",
+        "label": "OpenClaw",
+        "status": "ok",
+        "statusLabel": "Online"
+      },
+      {
+        "id": "litellm",
+        "label": "LiteLLM",
+        "status": "warn",
+        "statusLabel": "Down"
+      },
+      {
+        "id": "argus",
+        "label": "ARGUS Apple FM",
+        "status": "warn",
+        "statusLabel": "Offline"
+      }
+    ],
+    "waiting": [],
+    "running": [],
+    "ready": [],
+    "doneToday": [],
+    "openTasks": []
+  },
   "agentsRoom": {
     "metrics": {
       "agentCount": 13,
@@ -3580,7 +3813,7 @@
       "deviceCount": 11,
       "liveCount": 10,
       "delegationCount": 11,
-      "conversationCount": 10,
+      "conversationCount": 8,
       "sourceCount": 7
     },
     "routing": [
@@ -4158,7 +4391,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "06.08.26, 09:08",
+        "time": "11.08.26, 21:26",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4167,7 +4400,7 @@
       },
       {
         "topic": "Vorpruefung",
-        "time": "06.08.26, 09:08",
+        "time": "11.08.26, 21:26",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
@@ -4176,7 +4409,7 @@
       },
       {
         "topic": "Broker",
-        "time": "06.08.26, 09:08",
+        "time": "11.08.26, 21:26",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4185,7 +4418,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "06.08.26, 09:08",
+        "time": "11.08.26, 21:26",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
@@ -4194,7 +4427,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "06.08.26, 09:08",
+        "time": "11.08.26, 21:26",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
@@ -4203,7 +4436,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "06.08.26, 09:08",
+        "time": "11.08.26, 21:26",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
@@ -4212,7 +4445,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "06.08.26, 09:08",
+        "time": "11.08.26, 21:26",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
@@ -4221,7 +4454,7 @@
       },
       {
         "topic": "Rueckgabe",
-        "time": "06.08.26, 09:08",
+        "time": "11.08.26, 21:26",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
@@ -4281,122 +4514,77 @@
     ],
     "runtime": {
       "gatewayState": {
-        "gateway_state": "running",
+        "gateway_state": "unknown",
         "restart_requested": false,
         "active_agents": 0,
         "platforms": {
           "telegram": {
-            "state": "connected",
-            "updated_at": "2026-08-05T18:38:27.346442+00:00"
+            "state": "unknown",
+            "updated_at": null
           }
         },
-        "updated_at": "2026-08-05T18:38:27.360922+00:00"
+        "updated_at": null
       },
       "gatewayLifecycle": {
         "phase": "unknown",
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-06T09:03:05.027233",
-        "platformCounts": {
-          "telegram": 1
-        }
+        "updated_at": null,
+        "platformCounts": {}
       },
       "brainVaultState": {
-        "last_run_utc": "2026-08-06T07:07:55.597260",
+        "last_run_utc": null,
         "last_added": 0,
-        "processed_count": 269
+        "processed_count": 0
       },
       "argusBridgeState": {
-        "warning_count": 1,
-        "last_warning": "MacBook RAM bei 96%"
+        "warning_count": 0,
+        "last_warning": "kein Hinweis"
       },
       "activeSessionsState": {
         "count": 0
       },
       "counts": {
-        "sessions": 1090,
-        "messages": 18682,
-        "delegations": 1,
-        "obligations": 89,
-        "routing": 1
+        "sessions": 0,
+        "messages": 0,
+        "delegations": 0,
+        "obligations": 0,
+        "routing": 0
       },
-      "activeTelegramSession": {
-        "id": "5_5fc1b4",
-        "source": "telegram",
-        "model": "gemma4:12b-optimized",
-        "message_count": 176,
-        "tool_call_count": 82,
-        "started_at": 1785931275.67957,
-        "ended_at": null,
-        "title": "Aktive Telegram-Session",
-        "session_key": "Telegram Direktnachricht",
-        "chat_type": "dm",
-        "display_name": "Operator",
-        "profile_name": "zentralserver"
-      },
-      "latestDelegation": {
-        "id": "1a1377ee",
-        "state": "error",
-        "dispatched_at": 1785505554.651968,
-        "completed_at": 1785505674.893942,
-        "updated_at": 1785505675.3832252
-      },
-      "latestDelivery": {
-        "id": "22d5a8f9",
-        "platform": "telegram",
-        "state": "delivered",
-        "attempts": 0,
-        "created_at": 1785943982.2108328,
-        "updated_at": 1785943982.301415,
-        "has_error": false
-      },
-      "latestSpoolPath": "Hermes / Telegram Spool",
-      "latestSpoolPreview": "Ausgehender Telegram-Spool vorhanden • 202 Zeichen",
-      "routingRows": [
-        {
-          "sessionKey": "Telegram Direktnachricht",
-          "sessionId": "5_5fc1b4",
-          "displayName": "Operator",
-          "platform": "telegram",
-          "chatType": "dm",
-          "updatedAt": "05.08.26, 18:35"
-        }
-      ],
+      "activeTelegramSession": null,
+      "latestDelegation": null,
+      "latestDelivery": null,
+      "latestSpoolPath": null,
+      "latestSpoolPreview": null,
+      "routingRows": [],
       "stateMeta": {
-        "entries": 3
+        "entries": 0
       },
-      "currentRouting": {
-        "sessionKey": "Telegram Direktnachricht",
-        "sessionId": "5_5fc1b4",
-        "displayName": "Operator",
-        "platform": "telegram",
-        "chatType": "dm",
-        "updatedAt": "05.08.26, 18:35"
-      }
+      "currentRouting": null
     },
     "sourceRegistry": [
       {
         "name": "Hermes state.db",
         "kind": "Runtime",
-        "state": "live",
-        "detail": "1090 Sessions, 18682 Nachrichten, 1 Delegationen",
+        "state": "support",
+        "detail": "0 Sessions, 0 Nachrichten, 0 Delegationen",
         "route": "Hermes / state.db",
         "channel": "SQLite"
       },
       {
         "name": "Gateway State",
         "kind": "Bridge",
-        "state": "live",
-        "detail": "Telegram connected • Active Agents 0",
+        "state": "support",
+        "detail": "Telegram unbekannt • Active Agents 0",
         "route": "Hermes / Gateway State",
         "channel": "JSON"
       },
       {
         "name": "Telegram Spool",
         "kind": "Delivery",
-        "state": "connected",
-        "detail": "Ausgehender Telegram-Spool vorhanden • 202 Zeichen",
+        "state": "support",
+        "detail": "Kein aktueller Nachrichtenspool gefunden",
         "route": "Hermes / Telegram Spool",
         "channel": "last_message_to_send.txt"
       },
@@ -4404,7 +4592,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 06.08.26, 09:03",
+        "detail": "Channels: 0 • updated n/a",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -4412,15 +4600,15 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run 2026-08-06T07:07:55.597260 • Added 0",
+        "detail": "Last run n/a • Added 0",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },
       {
         "name": "Argus Bridge",
         "kind": "Support",
-        "state": "support",
-        "detail": "Warnings 1 • MacBook RAM bei 96%",
+        "state": "ready",
+        "detail": "Warnings 0 • kein Hinweis",
         "route": "Hermes / Argus Bridge",
         "channel": "Bridge"
       },
@@ -4433,245 +4621,9 @@
         "channel": "JSON"
       }
     ],
-    "sessions": [
-      {
-        "name": "Hermes Session 1",
-        "role": "cron",
-        "route": "Session 6_090026",
-        "channel": "gemini-2.5-flash",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "7 Nachrichten",
-          "4 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Hermes Session 2",
-        "role": "cron",
-        "route": "Session 5_230041",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "10 Nachrichten",
-          "4 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Hermes Session 3",
-        "role": "cron",
-        "route": "Session 5_223038",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "20 Nachrichten",
-          "9 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Telegram Session 4",
-        "role": "Telegram Direktnachricht",
-        "route": "Session 5_5fc1b4",
-        "channel": "gemma4:12b-optimized",
-        "status": "live",
-        "statusLabel": "Live",
-        "tags": [
-          "176 Nachrichten",
-          "82 Tools"
-        ]
-      },
-      {
-        "name": "Hermes Session 5",
-        "role": "cron",
-        "route": "Session 5_110037",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "40 Nachrichten",
-          "20 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Hermes Session 6",
-        "role": "cron",
-        "route": "Session 5_092028",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "12 Nachrichten",
-          "6 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Hermes Session 7",
-        "role": "cron",
-        "route": "Session 5_090026",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "9 Nachrichten",
-          "5 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Hermes Session 8",
-        "role": "cron",
-        "route": "Session 4_230035",
-        "channel": "gemini-2.5-flash",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "6 Nachrichten",
-          "2 Tools",
-          "Ende: cron_complete"
-        ]
-      }
-    ],
-    "recentMessages": [
-      {
-        "topic": "ASSISTANT • 6_090026",
-        "time": "06.08.26, 09:01",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 1550 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "TOOL • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 4251 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "TOOL • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 2449 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "TOOL • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 4861 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "TOOL • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "tool",
-        "to": "web_search",
-        "summary": "tool Aktivität • 2985 Zeichen • Tool web_search",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "ASSISTANT • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 0 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "USER • 6_090026",
-        "time": "06.08.26, 09:00",
-        "from": "user",
-        "to": "Hermes",
-        "summary": "user Aktivität • 1594 Zeichen",
-        "status": "connected",
-        "statusLabel": "User"
-      },
-      {
-        "topic": "ASSISTANT • 5_230041",
-        "time": "05.08.26, 23:01",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 520 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "TOOL • 5_230041",
-        "time": "05.08.26, 23:01",
-        "from": "tool",
-        "to": "patch",
-        "summary": "tool Aktivität • 696 Zeichen • Tool patch",
-        "status": "info",
-        "statusLabel": "System"
-      },
-      {
-        "topic": "ASSISTANT • 5_230041",
-        "time": "05.08.26, 23:01",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "assistant Aktivität • 0 Zeichen",
-        "status": "live",
-        "statusLabel": "Assistant"
-      }
-    ],
-    "recentDelegations": [
-      {
-        "from": "Hermes",
-        "to": "Async Delegation",
-        "task": "Auftrag 1a1377ee • 1095 Zeichen • Ergebnis 694 Zeichen",
-        "channel": "error",
-        "priority": "P1",
-        "status": "support",
-        "statusLabel": "Error"
-      }
-    ],
-    "recentObligations": [
-      {
-        "label": "Delivery 22d5a8f9",
-        "value": "telegram • delivered • 684 Zeichen",
-        "status": "connected",
-        "statusLabel": "Delivered"
-      },
-      {
-        "label": "Delivery 830e773e",
-        "value": "telegram • delivered • 1953 Zeichen",
-        "status": "connected",
-        "statusLabel": "Delivered"
-      },
-      {
-        "label": "Delivery 070e62b6",
-        "value": "telegram • delivered • 10918 Zeichen",
-        "status": "connected",
-        "statusLabel": "Delivered"
-      },
-      {
-        "label": "Delivery a3750890",
-        "value": "telegram • delivered • 32 Zeichen",
-        "status": "connected",
-        "statusLabel": "Delivered"
-      },
-      {
-        "label": "Delivery 9f97c480",
-        "value": "telegram • delivered • 778 Zeichen",
-        "status": "connected",
-        "statusLabel": "Delivered"
-      }
-    ]
+    "sessions": [],
+    "recentMessages": [],
+    "recentDelegations": [],
+    "recentObligations": []
   }
 }

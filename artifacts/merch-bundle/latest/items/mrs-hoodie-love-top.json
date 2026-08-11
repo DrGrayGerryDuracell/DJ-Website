@@ -1,0 +1,32 @@
+{
+  "id": "mrs-hoodie-love-top",
+  "bundleId": "apparel-mrs-hoodie-love-top",
+  "bundleType": "apparel",
+  "title": "Liebe lauter Hoodie Top Upload",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Weibliche Kante mit Clubnahe.",
+  "copy": "Hoodie fuer die weichere Mrs.-Achse, uploadoptimiert und klar in der Logo-Hierarchie.",
+  "products": [
+    "Ladies Hoodie",
+    "Unisex Hoodie",
+    "Zip Hoodie"
+  ],
+  "tags": [
+    "Damen",
+    "Top Upload",
+    "Hoodie"
+  ],
+  "image": "store-assets/variants/mrs-front-liebe-lauter.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-liebe-lauter.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 53
+}

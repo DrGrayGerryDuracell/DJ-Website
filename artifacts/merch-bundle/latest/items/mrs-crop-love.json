@@ -1,0 +1,32 @@
+{
+  "id": "mrs-crop-love",
+  "bundleId": "apparel-mrs-crop-love",
+  "bundleType": "apparel",
+  "title": "Liebe lauter Crop",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Weicher im Wort, stark in der Wirkung.",
+  "copy": "Crop mit melodischerem Spruch fuer die weichere Mrs.-Linie. Passt zu Clubfotos, Story-Posts und eleganteren Fits.",
+  "products": [
+    "Crop Shirt",
+    "Soft Crop",
+    "Summer Top"
+  ],
+  "tags": [
+    "Damen",
+    "Crop",
+    "Melodic"
+  ],
+  "image": "store-assets/variants/mrs-front-liebe-lauter.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-liebe-lauter.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 34
+}

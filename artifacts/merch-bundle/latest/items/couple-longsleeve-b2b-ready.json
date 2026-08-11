@@ -1,0 +1,32 @@
+{
+  "id": "couple-longsleeve-b2b-ready",
+  "bundleId": "apparel-couple-longsleeve-b2b-ready",
+  "bundleType": "apparel",
+  "title": "B2B Longsleeve Set Ready",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Duo-Flow ohne Kitsch.",
+  "copy": "Langarm-Set mit ruhigen Fronts und abgestimmtem Rueckenclaim fuer starke Paarfotos.",
+  "products": [
+    "2x Longsleeve",
+    "2x Heavy Longsleeve",
+    "2x Tee"
+  ],
+  "tags": [
+    "Couple",
+    "Shirtee Ready",
+    "Longsleeve Set"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 75
+}

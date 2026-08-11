@@ -1,0 +1,32 @@
+{
+  "id": "unisex-shirt-dual",
+  "bundleId": "print-unisex-shirt-dual",
+  "bundleType": "print",
+  "title": "Techno mit Herz. Unisex Tee",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Prioritaet",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Vorne sauber, hinten mit waehlbarem Backlogo.",
+  "copy": "Unisex bleibt unsere flexibelste Linie: Frontclaim oder Duo-Logo vorne, hinten je nach Fit Dr. Gray oder Mrs. Dr. Gray.",
+  "products": [
+    "Unisex Tee",
+    "Unisex Hoodie",
+    "Longsleeve"
+  ],
+  "tags": [
+    "Unisex",
+    "Backprint Wahl",
+    "Core"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 83
+}

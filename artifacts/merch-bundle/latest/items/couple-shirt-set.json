@@ -1,0 +1,32 @@
+{
+  "id": "couple-shirt-set",
+  "bundleId": "bundle-couple-shirt-set",
+  "bundleType": "bundle",
+  "title": "Two Souls. One Drop.",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Als Shirt-Set gedacht, nicht als Kitsch.",
+  "copy": "Fuer zwei abgestimmte Pieces mit gemeinsamer Sprache und klarer Symmetrie. Sehr stark fuer Merch-Fotos, Storys und Event-Content.",
+  "products": [
+    "Shirt Set",
+    "Longsleeve Set",
+    "Event Bundle"
+  ],
+  "tags": [
+    "Couple",
+    "Set",
+    "Story"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 60
+}

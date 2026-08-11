@@ -1,0 +1,32 @@
+{
+  "id": "accessory-gymbag-core-top",
+  "bundleId": "accessory-accessory-gymbag-core-top",
+  "bundleType": "accessory",
+  "title": "Core Gymbag Top Upload",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Leicht, robust, alltagstauglich.",
+  "copy": "Gymbag-Variante fuer schnellere Accessoire-Drops mit sauberem Frontlogo und hoher Nutzbarkeit.",
+  "products": [
+    "Gymbag",
+    "Drawstring Bag",
+    "Daily Bag"
+  ],
+  "tags": [
+    "Accessoire",
+    "Top Upload",
+    "Bag"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 156
+}

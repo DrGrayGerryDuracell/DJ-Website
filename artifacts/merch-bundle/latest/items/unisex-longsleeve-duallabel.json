@@ -1,0 +1,32 @@
+{
+  "id": "unisex-longsleeve-duallabel",
+  "bundleId": "apparel-unisex-longsleeve-duallabel",
+  "bundleType": "apparel",
+  "title": "Dual Label Longsleeve",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Neutral im Fit, klar im Profil.",
+  "copy": "Langarm-Item mit ruhiger Front und waehlenbarer Rueckenlinie, passend fuer Alltag, Club und Layering.",
+  "products": [
+    "Longsleeve",
+    "Heavy Longsleeve",
+    "Layer Tee"
+  ],
+  "tags": [
+    "Unisex",
+    "Longsleeve",
+    "Core"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 95
+}

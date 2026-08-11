@@ -1,0 +1,32 @@
+{
+  "id": "accessory-mug-top",
+  "bundleId": "accessory-accessory-mug-top",
+  "bundleType": "accessory",
+  "title": "Core Mug Top Upload",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Alltagsteil mit Wiedererkennung.",
+  "copy": "Mug fuer schnelle Bundle- und Geschenkdrops mit klarer Typo und ruhiger Motivflaeche.",
+  "products": [
+    "Mug",
+    "Enamel Mug",
+    "Gift Set"
+  ],
+  "tags": [
+    "Accessoire",
+    "Top Upload",
+    "Mug"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 128
+}

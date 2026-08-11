@@ -1,0 +1,32 @@
+{
+  "id": "couple-hoodie-beat",
+  "bundleId": "apparel-couple-hoodie-beat",
+  "bundleType": "apparel",
+  "title": "Couple in Love mit dem Beat",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Prioritaet",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Das persoenlichste Duo-Statement im ganzen Drop.",
+  "copy": "Beide Logos auf identischer Hoehe, gemeinsame Mittelachse, keine Ueberlagerung. Perfekt fuer Hoodie- oder Shirt-Set.",
+  "products": [
+    "Hoodie Set",
+    "Shirt Set",
+    "Poster"
+  ],
+  "tags": [
+    "Couple",
+    "Duo",
+    "Symmetrisch"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 57
+}

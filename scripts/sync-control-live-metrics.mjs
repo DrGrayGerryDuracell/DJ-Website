@@ -11,6 +11,7 @@ const outPath = `${repoRoot}/control/js/live-metrics.json`;
 const catalogPath = `${repoRoot}/assets/data/merch-catalog.js`;
 const linkStatusPath = `${repoRoot}/assets/data/live-link-status.js`;
 const uploadProgressPath = `${repoRoot}/artifacts/upload-queue/upload-progress-2026-04-01.md`;
+const merchBundlePath = `${repoRoot}/artifacts/merch-bundle/latest/manifest.json`;
 
 const USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 13_0_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36";
 const websiteBase = "https://drgray-mrsdrgray.com";
@@ -841,10 +842,96 @@ function mapSectionLabel(section) {
   return lookup[section] || String(section || "Sonstiges");
 }
 
+function buildKanbanSection() {
+  const kanbanDbPath = join(process.env.HOME || "/Users/jarvisgray", ".hermes", "kanban.db");
+  const hotMdPath = join(process.env.HOME || "/Users/jarvisgray", "ObsidianVault/JARVIS-Brain/wiki/hot.md");
+  const today = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Berlin" }).format(new Date());
+
+  const allTasks = sqliteQueryJson(kanbanDbPath, `
+    SELECT id, title, status, priority, assignee, block_kind,
+           created_at, completed_at, worker_pid, consecutive_failures
+    FROM tasks WHERE status != 'archived'
+    ORDER BY CASE status
+      WHEN 'blocked' THEN 0 WHEN 'running' THEN 1
+      WHEN 'ready' THEN 2 WHEN 'todo' THEN 3
+      WHEN 'triage' THEN 4 WHEN 'done' THEN 5 END,
+    priority DESC, created_at DESC
+  `, []);
+
+  const waiting = allTasks.filter(t =>
+    t.status === "blocked" ||
+    (t.status === "running" && t.block_kind === "needs_input")
+  );
+  const running = allTasks.filter(t =>
+    t.status === "running" && t.block_kind !== "needs_input"
+  );
+  const ready = allTasks.filter(t =>
+    ["ready", "todo", "triage"].includes(t.status)
+  );
+  const doneToday = allTasks.filter(t => {
+    if (t.status !== "done" || !t.completed_at) return false;
+    const d = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Berlin" })
+      .format(new Date(t.completed_at * 1000));
+    return d === today;
+  });
+
+  let openTasks = [];
+  try {
+    const md = readFileSync(hotMdPath, "utf8");
+    openTasks = (md.match(/^- \[ \] .+/gm) || [])
+      .map(l => l.replace(/^- \[ \] /, ""))
+      .slice(0, 10);
+  } catch {}
+
+  const checkPid = (pattern) => {
+    try { execFileSync("pgrep", ["-f", pattern], { encoding: "utf8" }); return "ok"; }
+    catch { return "warn"; }
+  };
+  const checkHttp = (url) => {
+    try {
+      const code = execFileSync("curl", ["-s", "--max-time", "4", "-o", "/dev/null", "-w", "%{http_code}", url], { encoding: "utf8" }).trim();
+      return code.startsWith("2") || code.startsWith("3") ? "ok" : "warn";
+    } catch { return "warn"; }
+  };
+  const checkDocker = (name) => {
+    try {
+      const r = execFileSync("docker", ["ps", "--filter", `name=${name}`, "--format", "{{.Status}}"], { encoding: "utf8" });
+      return r.includes("Up") ? "ok" : "warn";
+    } catch { return "warn"; }
+  };
+
+  const gw = checkPid("hermes.*gateway");
+  const hs = checkPid("hermes.*serve");
+  const oc = checkHttp("http://192.168.178.176:18789/health");
+  const ll = checkDocker("jarvis-litellm");
+  const ar = checkHttp("http://127.0.0.1:11435/health");
+
+  const services = [
+    { id: "gateway",       label: "Hermes Gateway", status: gw, statusLabel: gw === "ok" ? "Aktiv" : "Fehler" },
+    { id: "hermes-serve",  label: "Hermes Serve",   status: hs, statusLabel: hs === "ok" ? "Aktiv" : "Fehler" },
+    { id: "openclaw",      label: "OpenClaw",        status: oc, statusLabel: oc === "ok" ? "Online" : "Offline" },
+    { id: "litellm",       label: "LiteLLM",         status: ll, statusLabel: ll === "ok" ? "Docker Up" : "Down" },
+    { id: "argus",         label: "ARGUS Apple FM",  status: ar, statusLabel: ar === "ok" ? "Online" : "Offline" },
+  ];
+
+  return {
+    updatedAt: new Date().toISOString(),
+    counts: { waiting: waiting.length, running: running.length, ready: ready.length, doneToday: doneToday.length },
+    services,
+    waiting,
+    running,
+    ready,
+    doneToday,
+    openTasks,
+  };
+}
+
+
 async function main() {
   const catalog = loadWindowData(catalogPath, "MERCH_CATALOG");
   const liveLinkStatus = loadWindowData(linkStatusPath, "LIVE_LINK_STATUS");
   const submittedIds = loadSubmittedIdsFromProgress();
+  const merchBundle = readJsonFile(merchBundlePath, null);
 
   const [pageChecks, soundcloud, tiktokDr, tiktokMrs, shirteeStore] = await Promise.all([
     Promise.all(corePages.map((path) => checkPage(path))),
@@ -1251,6 +1338,26 @@ async function main() {
           { id: "api", label: "Shirtee API Request", status: "support", statusLabel: "Adapter", note: "Request erzeugen, sobald API komplett steht" }
         ]
       },
+      merchBundle: merchBundle
+        ? {
+            generatedAt: merchBundle.generatedAt || null,
+            totalItems: merchBundle.totals?.items || 0,
+            issueCount: merchBundle.totals?.issues || 0,
+            localImages: merchBundle.totals?.localImages || 0,
+            remoteImages: merchBundle.totals?.remoteImages || 0,
+            missingImages: merchBundle.totals?.missingImages || 0,
+            ready: merchBundle.totals?.ready || 0,
+            pending: merchBundle.totals?.pending || 0,
+            submitted: merchBundle.totals?.submitted || 0,
+            uploaded: merchBundle.totals?.uploaded || 0,
+            byType: merchBundle.byType || {},
+            bySection: merchBundle.bySection || {},
+            byLine: merchBundle.byLine || {},
+            byState: merchBundle.byState || {},
+            families: Array.isArray(merchBundle.families) ? merchBundle.families : [],
+            issueSummary: merchBundle.issueSummary || {}
+          }
+        : null,
       topProducts,
       timeline: externalResults.slice(0, 8).map((entry, index) => ({
         time: generatedAtLabel,
@@ -1438,6 +1545,7 @@ async function main() {
         { id: "vault-learning", name: "Experience Loop", role: "Erfahrungen -> Regeln -> Kontext", state: "support", stateLabel: "Adapter", steward: "Hermes" }
       ]
     },
+    kanban: buildKanbanSection(),
     agentsRoom
   };
 

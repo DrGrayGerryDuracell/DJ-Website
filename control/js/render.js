@@ -1511,6 +1511,70 @@ export function renderWebsiteSection(container, metrics) {
   `;
 }
 
+function renderMerchBridgePanel(shopMetrics) {
+  const bundle = shopMetrics.merchBundle || null;
+  const storeHref = "https://www.shirtee.com/de/store/drgray-mrsdrgray/";
+
+  const typeBars = bundle
+    ? buildMiniBars(
+        Object.entries(bundle.byType || {}).map(([label, value]) => ({ label, value, unit: " Stk" })),
+        "value",
+        "label"
+      )
+    : `<p class="muted-line">Noch kein Bundle gebaut.</p>`;
+
+  const lineBars = bundle
+    ? buildMiniBars(
+        Object.entries(bundle.byLine || {}).map(([label, value]) => ({ label, value, unit: " Stk" })),
+        "value",
+        "label"
+      )
+    : "";
+
+  return `
+    <article class="panel">
+      <div class="section-banner">
+        <div>
+          <p class="eyebrow">Merch Bridge</p>
+          <h3>Katalog &rarr; Queue &rarr; Batches &rarr; Shirtee</h3>
+        </div>
+      </div>
+      <p class="muted-line">Ein-Knopf-Werkzeuge fuer den bestehenden Shirtee-Store. Kein neuer Shop &mdash; nur Sync-Aktionen auf dem gleichen Katalog.</p>
+      <div class="quick-action-group">
+        <a class="action-btn" href="${storeHref}" target="_blank" rel="noopener noreferrer">Shirtee Store &ouml;ffnen</a>
+        <a class="action-btn" href="/artifacts/upload-queue/shirtee-upload-queue.csv" target="_blank" rel="noopener noreferrer">Queue CSV</a>
+        <a class="action-btn" href="/artifacts/upload-batches/manifest.json" target="_blank" rel="noopener noreferrer">Batch Manifest</a>
+        <a class="action-btn" href="/artifacts/requests/shirtee-api-request.md" target="_blank" rel="noopener noreferrer">API-Request</a>
+        <a class="action-btn" href="/artifacts/merch-bundle/latest/manifest.json" target="_blank" rel="noopener noreferrer">Bundle Manifest</a>
+      </div>
+      <div class="quick-action-group">
+        <button type="button" class="action-btn" data-control-command="build-merch-bundle">Bundle bauen</button>
+        <button type="button" class="action-btn" data-control-command="generate-upload-queue">Queue erzeugen</button>
+        <button type="button" class="action-btn" data-control-command="generate-upload-batches">Batches erzeugen</button>
+        <button type="button" class="action-btn" data-control-command="generate-shirtee-api-request">API-Request bauen</button>
+        <button type="button" class="action-btn" data-control-command="build-shop-master-pack">Shop synchronisieren</button>
+        <button type="button" class="action-btn" data-control-command="sync-control-live">Live neu syncen</button>
+      </div>
+      <h4>Merch-Bundle Stand</h4>
+      <div class="mini-grid four">
+        <div><span>Artikel gesamt</span><strong>${formatValue(bundle?.totalItems || 0)}</strong></div>
+        <div><span>Bilder lokal</span><strong>${formatValue(bundle?.localImages || 0)}</strong></div>
+        <div><span>Bilder fehlen</span><strong>${formatValue(bundle?.missingImages || 0)}</strong></div>
+        <div><span>Issues</span><strong>${formatValue(bundle?.issueCount || 0)}</strong></div>
+      </div>
+      <div class="mini-grid three">
+        <div><span>Hochgeladen</span><strong>${formatValue(bundle?.uploaded || 0)}</strong></div>
+        <div><span>Eingereicht</span><strong>${formatValue(bundle?.submitted || 0)}</strong></div>
+        <div><span>Uploadbereit</span><strong>${formatValue(bundle?.ready || 0)}</strong></div>
+      </div>
+      <h4>Typenmix im Bundle</h4>
+      <div class="mini-bar-group">${typeBars}</div>
+      ${bundle ? `<h4>Linienmix im Bundle</h4><div class="mini-bar-group">${lineBars}</div>` : ""}
+      ${bundle?.generatedAt ? `<p class="muted-line">Letzter Bundle-Build: <strong>${new Date(bundle.generatedAt).toLocaleString("de-DE")}</strong></p>` : ""}
+    </article>
+  `;
+}
+
 export function renderShopSection(container, shopMetrics) {
   const workbench = shopMetrics.workbench || { drafts: [], uploadSteps: [] };
   const sectionSummary = shopMetrics.catalog.sections
@@ -1543,6 +1607,7 @@ export function renderShopSection(container, shopMetrics) {
       <h4>Linienmix im Katalog</h4>
       <div class="mini-bar-group">${buildMiniBars(shopMetrics.catalog.sections.map((item) => ({ label: item.label, value: item.items })), "value", "label")}</div>
     </article>
+    ${renderMerchBridgePanel(shopMetrics)}
     <article class="panel">
       <h3>Gepruefte Produktlinks</h3>
       <table class="data-table">

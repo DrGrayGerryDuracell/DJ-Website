@@ -1,0 +1,32 @@
+{
+  "id": "mrs-portrait-tee-bw",
+  "bundleId": "apparel-mrs-portrait-tee-bw",
+  "bundleType": "apparel",
+  "title": "Mrs. Portrait BW Tee",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "In Vorbereitung",
+  "priority": "P2",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Selbstbewusst, reduziert, klar im Blick.",
+  "copy": "Das Motiv arbeitet mit starkem Portraitfokus und wenig Ablenkung. Ideal fuer Signature-Tees, Crops und cleanere Event-Fits der Damen-Linie.",
+  "products": [
+    "Signature Tee",
+    "Crop Shirt",
+    "Soft Longsleeve"
+  ],
+  "tags": [
+    "Damen",
+    "Portrait",
+    "Signature"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 38
+}

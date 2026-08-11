@@ -1,0 +1,32 @@
+{
+  "id": "accessory-beanie-dark",
+  "bundleId": "accessory-accessory-beanie-dark",
+  "bundleType": "accessory",
+  "title": "Darkline Beanie",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Nur Logo, nur Winter, null Ballast.",
+  "copy": "Funktioniert fuer maennlichere und unisexige Fits zugleich und ist eine starke Ergaenzung zu Hoodie- und Jacket-Drops.",
+  "products": [
+    "Beanie",
+    "Fischermuetze",
+    "Winter Cap"
+  ],
+  "tags": [
+    "Accessoire",
+    "Beanie",
+    "Winter"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 111
+}

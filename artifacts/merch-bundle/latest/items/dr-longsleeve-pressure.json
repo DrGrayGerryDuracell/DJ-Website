@@ -1,0 +1,32 @@
+{
+  "id": "dr-longsleeve-pressure",
+  "bundleId": "apparel-dr-longsleeve-pressure",
+  "bundleType": "apparel",
+  "title": "Pressure Longsleeve",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Mehr Strecke im Look, dieselbe klare Haltung.",
+  "copy": "Ein technischer Longsleeve fuer kalte Clubnaechte, reduzierte Fronts und kleine Backprint-Nackenloesungen.",
+  "products": [
+    "Longsleeve",
+    "Heavy Longsleeve",
+    "Layer Tee"
+  ],
+  "tags": [
+    "Herren",
+    "Longsleeve",
+    "Dark"
+  ],
+  "image": "store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 6
+}

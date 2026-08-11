@@ -1,0 +1,32 @@
+{
+  "id": "dr-shirt-pressure",
+  "bundleId": "apparel-dr-shirt-pressure",
+  "bundleType": "apparel",
+  "title": "Druck statt Deko",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Fuer Leute, die ihren Techno lieber fuehlen als erklaeren.",
+  "copy": "Ideal fuer ein cleanes Frontmotiv mit technischer Liniengrafik, dazu ein grosses Rueckenlogo oder ein kleines Nackenbranding.",
+  "products": [
+    "Classic Tee",
+    "Longsleeve",
+    "Beanie"
+  ],
+  "tags": [
+    "Herren",
+    "Underground",
+    "Clean"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 3
+}

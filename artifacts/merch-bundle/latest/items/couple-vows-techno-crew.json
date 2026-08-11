@@ -1,0 +1,32 @@
+{
+  "id": "couple-vows-techno-crew",
+  "bundleId": "apparel-couple-vows-techno-crew",
+  "bundleType": "apparel",
+  "title": "Vows over Noise Crew Set",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Verbunden in Haltung, nicht in Kitsch.",
+  "copy": "Crewneck-Pair mit ruhiger Front und kontrollierter Rueckenachse. Die Linie bleibt emotional und gleichzeitig klar technoid.",
+  "products": [
+    "Crewneck Set",
+    "Longsleeve Set",
+    "Event Duo Pack"
+  ],
+  "tags": [
+    "Couple",
+    "Crewneck",
+    "Underground Love"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 68
+}

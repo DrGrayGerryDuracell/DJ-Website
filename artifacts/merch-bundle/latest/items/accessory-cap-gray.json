@@ -1,0 +1,32 @@
+{
+  "id": "accessory-cap-gray",
+  "bundleId": "accessory-accessory-cap-gray",
+  "bundleType": "accessory",
+  "title": "Dr. Gray Cap",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Nur Logo, null Spielerei.",
+  "copy": "Funktioniert fuer Dad Cap, Snapback oder Beanie. Gerade fuer die Herren-Linie ein guter Einstieg ausserhalb klassischer Shirts.",
+  "products": [
+    "Cap",
+    "Snapback",
+    "Beanie"
+  ],
+  "tags": [
+    "Accessoire",
+    "Cap",
+    "Herren"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 107
+}

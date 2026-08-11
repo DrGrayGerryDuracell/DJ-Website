@@ -1,0 +1,32 @@
+{
+  "id": "unisex-tee-cleanfront-top",
+  "bundleId": "apparel-unisex-tee-cleanfront-top",
+  "bundleType": "apparel",
+  "title": "Clean Front Tee Top Upload",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Vorne ruhig, hinten waehlbar.",
+  "copy": "Top-Upload-Unisex-Tee mit cleaner Front und optionalem Dr.- oder Mrs.-Backprint fuer modulare Releases.",
+  "products": [
+    "Unisex Tee",
+    "Premium Tee",
+    "Heavy Tee"
+  ],
+  "tags": [
+    "Unisex",
+    "Top Upload",
+    "Front Clean"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 140
+}

@@ -1,0 +1,32 @@
+{
+  "id": "dr-overshirt-nightline-top",
+  "bundleId": "apparel-dr-overshirt-nightline-top",
+  "bundleType": "apparel",
+  "title": "Nightline Overshirt Top Upload",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Cleanes Layer, harter Kern.",
+  "copy": "Overshirt-Variante fuer dunkle Street- und Clubfits mit klarer Frontachse und technischer Dr.-Gray-Kante.",
+  "products": [
+    "Overshirt",
+    "Light Jacket",
+    "Shirt Jacket"
+  ],
+  "tags": [
+    "Herren",
+    "Top Upload",
+    "Layer"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 148
+}

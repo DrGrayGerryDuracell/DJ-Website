@@ -1,0 +1,32 @@
+{
+  "id": "mrs-crop-playful-control",
+  "bundleId": "apparel-mrs-crop-playful-control",
+  "bundleType": "apparel",
+  "title": "Playful Control Crop",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "In Vorbereitung",
+  "priority": "P2",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Frech im Hook, sauber in der Linie.",
+  "copy": "Crop mit dominantem Mrs.-Logo und schmaler Claim-Zeile. Der Look bleibt sexy-serioes und sitzt stark auf Clubfotos und Night-Reels.",
+  "products": [
+    "Crop Shirt",
+    "Fitted Tee",
+    "Soft Hoodie"
+  ],
+  "tags": [
+    "Damen",
+    "Crop",
+    "Mrs.-Fokus"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 39
+}

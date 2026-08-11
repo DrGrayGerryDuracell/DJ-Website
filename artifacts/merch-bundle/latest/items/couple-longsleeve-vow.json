@@ -1,0 +1,32 @@
+{
+  "id": "couple-longsleeve-vow",
+  "bundleId": "apparel-couple-longsleeve-vow",
+  "bundleType": "apparel",
+  "title": "Beat Vow Longsleeve",
+  "line": "Couple",
+  "section": "couple",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Naehe im Motiv, Kontrolle im Layout.",
+  "copy": "Langarm-Variante fuer kuehlere Naechte mit gemeinsamem Couple-Code und sauberer Symmetrie.",
+  "products": [
+    "Longsleeve",
+    "Heavy Longsleeve",
+    "Couple Set"
+  ],
+  "tags": [
+    "Couple",
+    "Geplant",
+    "Longsleeve"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 139
+}

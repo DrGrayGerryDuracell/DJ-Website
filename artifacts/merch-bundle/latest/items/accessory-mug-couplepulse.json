@@ -1,0 +1,32 @@
+{
+  "id": "accessory-mug-couplepulse",
+  "bundleId": "bundle-accessory-mug-couplepulse",
+  "bundleType": "bundle",
+  "title": "Couple Pulse Mug Set",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Alltagstauglich mit Duo-Charakter.",
+  "copy": "Tassen-Set fuer Community-Bundles und Geschenkdrops mit klarer Typo und ruhiger Motivflaeche.",
+  "products": [
+    "Mug",
+    "Duo Mug Set",
+    "Gift Bundle"
+  ],
+  "tags": [
+    "Accessoire",
+    "Mug",
+    "Couple"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 121
+}

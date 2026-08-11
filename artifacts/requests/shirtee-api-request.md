@@ -1,4 +1,4 @@
-# Shirtee API Access Request (2026-08-06)
+# Shirtee API Access Request (2026-08-11)
 
 Hallo Shirtee Team,
 

@@ -1,0 +1,32 @@
+{
+  "id": "accessory-tote-nightline",
+  "bundleId": "accessory-accessory-tote-nightline",
+  "bundleType": "accessory",
+  "title": "Nightline Tote",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Tagesfit mit Clubcode.",
+  "copy": "Tote mit klarer Fronttypo fuer Alltag und Eventtage. Reduziert, robust und sofort wiedererkennbar.",
+  "products": [
+    "Tote Bag",
+    "Canvas Tote",
+    "Daily Bag"
+  ],
+  "tags": [
+    "Accessoire",
+    "Tote",
+    "Daily"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 119
+}

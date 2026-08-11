@@ -1,0 +1,32 @@
+{
+  "id": "dr-shirt-raw",
+  "bundleId": "apparel-dr-shirt-raw",
+  "bundleType": "apparel",
+  "title": "Treibend. Roh. Ehrlich. Tee",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "In Vorbereitung",
+  "priority": "P1",
+  "spotlight": true,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Die Szene-Linie fuer Peak-Time, Afterhour und klare Haltung.",
+  "copy": "Funktioniert stark auf Shirt, Longsleeve und Sleeveless. Die Typo bleibt gradlinig, das Logo wird nie in den Spruch hineingezogen.",
+  "products": [
+    "Shirt",
+    "Longsleeve",
+    "Sleeveless"
+  ],
+  "tags": [
+    "Herren",
+    "Peak Time",
+    "Statement"
+  ],
+  "image": "store-assets/variants/dr-front-kein-mainstream.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-front-kein-mainstream.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 1
+}

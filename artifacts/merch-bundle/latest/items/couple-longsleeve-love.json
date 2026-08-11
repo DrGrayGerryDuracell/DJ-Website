@@ -1,0 +1,32 @@
+{
+  "id": "couple-longsleeve-love",
+  "bundleId": "apparel-couple-longsleeve-love",
+  "bundleType": "apparel",
+  "title": "No Fake Love Longsleeve Set",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Frecher, roher und mit klarer Haltung.",
+  "copy": "Ein zweiteiliges Couple-Set fuer die dunklere Seite der Story. Weniger romantisch, mehr ehrliche Energie.",
+  "products": [
+    "Longsleeve Set",
+    "Tee Set",
+    "Dark Drop"
+  ],
+  "tags": [
+    "Couple",
+    "Longsleeve",
+    "Dark"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 62
+}

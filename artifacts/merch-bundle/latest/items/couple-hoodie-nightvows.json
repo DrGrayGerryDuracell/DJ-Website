@@ -1,0 +1,32 @@
+{
+  "id": "couple-hoodie-nightvows",
+  "bundleId": "bundle-couple-hoodie-nightvows",
+  "bundleType": "bundle",
+  "title": "Night Vows Hoodie Set",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "In Vorbereitung",
+  "priority": "P2",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Verbunden, druckvoll und null kitschig.",
+  "copy": "Hoodie-Pair fuer duestere Clubnaechte mit klar getrennten Fronts und gemeinsamer Rueckensprache.",
+  "products": [
+    "Hoodie Set",
+    "Heavy Hoodie Set",
+    "Night Bundle"
+  ],
+  "tags": [
+    "Couple",
+    "Hoodie",
+    "Night Drop"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 70
+}

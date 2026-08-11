@@ -1,0 +1,32 @@
+{
+  "id": "dr-tee-mainfloor-ready",
+  "bundleId": "print-dr-tee-mainfloor-ready",
+  "bundleType": "print",
+  "title": "Mainfloor Ready Tee",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Direkt, dunkel und druckstark.",
+  "copy": "Klassisches Tee-Setup fuer schnelle Shirtee-Uploads mit klarer Frontlinie und optionalem Backprint.",
+  "products": [
+    "Unisex Tee",
+    "Premium Tee",
+    "Heavy Tee"
+  ],
+  "tags": [
+    "Herren",
+    "Shirtee Ready",
+    "Frontprint"
+  ],
+  "image": "store-assets/variants/dr-front-kein-mainstream.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-front-kein-mainstream.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 17
+}

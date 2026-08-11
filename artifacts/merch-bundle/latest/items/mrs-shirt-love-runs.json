@@ -1,0 +1,32 @@
+{
+  "id": "mrs-shirt-love-runs",
+  "bundleId": "apparel-mrs-shirt-love-runs",
+  "bundleType": "apparel",
+  "title": "Liebe lauter Longsleeve",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Weicher Ton, starke Wirkung.",
+  "copy": "Langarmshirt und leichter Hoodie fuer melodischere Bilder, aber weiter klar in der Szene verankert.",
+  "products": [
+    "Longsleeve",
+    "Light Hoodie",
+    "Soft Tee"
+  ],
+  "tags": [
+    "Damen",
+    "Longsleeve",
+    "Melodic"
+  ],
+  "image": "store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 33
+}

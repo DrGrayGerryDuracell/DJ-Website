@@ -361,7 +361,7 @@ window.MERCH_CATALOG = {
       copy: "Das Mrs.-Logo bleibt die Hauptfigur. Der Spruch sitzt klar darunter oder daneben, ohne das Motiv zu ueberladen.",
       products: ["Crop Shirt", "Fitted Tee", "Hoodie"],
       tags: ["Damen", "Frech", "Mrs.-Logo"],
-      image: "https://media-1.ams3.digitaloceanspaces.com/media_cache/catalog/product/si320/8/K/j/a/8KjaVS1TWZpQy5ud.png",
+      image: "store-assets/variants/mrs-crop-wild.png",
       href: "https://www.shirtee.com/de/store/drgray-mrsdrgray/",
       status: "Live im Store"
     },
@@ -387,7 +387,7 @@ window.MERCH_CATALOG = {
       copy: "Sauber fuer Damen-Hoodie, Crop Hoodie und klassische Tee-Fits. Keine Fremdsymbole, nur Logo, Typo und eine klare Achse.",
       products: ["Hoodie", "Crop Hoodie", "Tee"],
       tags: ["Damen", "Signature", "Logo First"],
-      image: "https://media-1.ams3.digitaloceanspaces.com/media_cache/catalog/product/si320/L/B/e/q/LBeqn1swlODc4BJU.png",
+      image: "store-assets/variants/mrs-hoodie-serious.png",
       href: "https://www.shirtee.com/de/drgray-mrsdrgray/",
       status: "Live im Store"
     },

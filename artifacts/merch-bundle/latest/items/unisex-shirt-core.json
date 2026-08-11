@@ -1,0 +1,32 @@
+{
+  "id": "unisex-shirt-core",
+  "bundleId": "print-unisex-shirt-core",
+  "bundleType": "print",
+  "title": "Core Shirt mit Backprint-Wahl",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Unsere flexible Einstiegslinie fuer beide Richtungen.",
+  "copy": "Ein cleanes Unisex-Shirt fuer alle, die vorne reduziert bleiben und hinten klar markieren wollen, ob sie eher Dr. Gray oder Mrs. Dr. Gray tragen.",
+  "products": [
+    "Heavy Tee",
+    "Classic Tee",
+    "Longsleeve"
+  ],
+  "tags": [
+    "Unisex",
+    "Core",
+    "Choice"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 85
+}

@@ -1,0 +1,32 @@
+{
+  "id": "special-sunglasses-night",
+  "bundleId": "accessory-special-sunglasses-night",
+  "bundleType": "accessory",
+  "title": "Nightdrive Sunglasses",
+  "line": "Special Merch",
+  "section": "special",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "kontakt.html",
+  "slogan": "Logo dezent, Haltung maximal.",
+  "copy": "Auch das ist als Limited oder externe Produktion gedacht. Auf der Website zeigen wir es bewusst als Special Merch und nicht als bestaetigten Shirtee-Standardartikel.",
+  "products": [
+    "Sonnenbrille",
+    "Hardcase",
+    "Limited Drop"
+  ],
+  "tags": [
+    "Special",
+    "Festival",
+    "Limited"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 162
+}

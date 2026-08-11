@@ -1,0 +1,32 @@
+{
+  "id": "couple-tee-synchronized",
+  "bundleId": "apparel-couple-tee-synchronized",
+  "bundleType": "apparel",
+  "title": "Synchronized Couple Tee",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Geteilte Energie, klare Symmetrie.",
+  "copy": "Zweiteiliges Tee-Set mit gespiegelt gesetzten Hooks und identischer Logo-Hoehe fuer echte Duo-Optik.",
+  "products": [
+    "2er Tee Set",
+    "2er Longsleeve Set",
+    "Couple Pack"
+  ],
+  "tags": [
+    "Couple",
+    "Symmetrie",
+    "Tee Set"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 69
+}

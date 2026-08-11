@@ -1,0 +1,32 @@
+{
+  "id": "accessory-keyring-duallogo",
+  "bundleId": "bundle-accessory-keyring-duallogo",
+  "bundleType": "bundle",
+  "title": "Dual Logo Keyring",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Kleines Detail mit Wiedererkennung.",
+  "copy": "Keyring fuer schnelle Add-ons im Shop und als preisnahes Community-Merch.",
+  "products": [
+    "Keyring",
+    "Metal Keychain",
+    "Mini Bundle"
+  ],
+  "tags": [
+    "Accessoire",
+    "Geplant",
+    "Keyring"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 145
+}

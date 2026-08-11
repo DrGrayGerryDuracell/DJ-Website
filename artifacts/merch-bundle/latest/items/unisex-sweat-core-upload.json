@@ -1,0 +1,32 @@
+{
+  "id": "unisex-sweat-core-upload",
+  "bundleId": "apparel-unisex-sweat-core-upload",
+  "bundleType": "apparel",
+  "title": "Core Sweat Upload",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Everyday Piece mit sauberer Linie.",
+  "copy": "Unisex-Sweatshirt fuer breite Groessenspannen und klare Front-/Rueckenlogik ohne visuelle Brueche.",
+  "products": [
+    "Sweatshirt",
+    "Crewneck",
+    "Heavy Sweat"
+  ],
+  "tags": [
+    "Unisex",
+    "Uploadbereit",
+    "Core"
+  ],
+  "image": "store-assets/variants/dr-front-kein-mainstream.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-front-kein-mainstream.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 142
+}

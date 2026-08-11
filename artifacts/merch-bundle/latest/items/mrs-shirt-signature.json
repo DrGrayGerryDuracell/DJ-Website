@@ -1,0 +1,32 @@
+{
+  "id": "mrs-shirt-signature",
+  "bundleId": "apparel-mrs-shirt-signature",
+  "bundleType": "apparel",
+  "title": "Mrs. Dr. Gray Signature Tee",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Nur Marke, nur Haltung, null Spielerei.",
+  "copy": "Ein klares Shirt fuer die starke Logo-Linie. Perfekt fuer den direkten Wiedererkennungseffekt ohne weiteren Bildlärm.",
+  "products": [
+    "Tee",
+    "Fitted Tee",
+    "Clean Top"
+  ],
+  "tags": [
+    "Damen",
+    "Signature",
+    "Minimal"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 36
+}

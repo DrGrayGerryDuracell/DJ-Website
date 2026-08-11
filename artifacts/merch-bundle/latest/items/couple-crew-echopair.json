@@ -1,0 +1,32 @@
+{
+  "id": "couple-crew-echopair",
+  "bundleId": "apparel-couple-crew-echopair",
+  "bundleType": "apparel",
+  "title": "Echo Pair Crewneck",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Nah im Gefuehl, klar im Build.",
+  "copy": "Crewneck-Set mit cleaner Front, abgestimmtem Rueckenclaim und sauberer Typohierarchie auf beiden Teilen.",
+  "products": [
+    "Crewneck Set",
+    "Sweat Set",
+    "Gift Duo"
+  ],
+  "tags": [
+    "Couple",
+    "Crewneck",
+    "Duo"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 72
+}

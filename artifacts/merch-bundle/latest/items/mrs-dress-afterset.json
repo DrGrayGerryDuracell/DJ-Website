@@ -1,0 +1,32 @@
+{
+  "id": "mrs-dress-afterset",
+  "bundleId": "apparel-mrs-dress-afterset",
+  "bundleType": "apparel",
+  "title": "Afterset Dress",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Sexy-serioes mit sauberer Linie.",
+  "copy": "Dress-Piece fuer spaetere Event-Drops mit reduzierter Frontgrafik und klarer, hochwertiger Silhouette.",
+  "products": [
+    "Shirt Dress",
+    "Bodycon Dress",
+    "Event Fit"
+  ],
+  "tags": [
+    "Damen",
+    "Dress",
+    "Event"
+  ],
+  "image": "store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-dress-front-liebe-lauter.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 46
+}

@@ -1,0 +1,32 @@
+{
+  "id": "unisex-zip-pairmode",
+  "bundleId": "apparel-unisex-zip-pairmode",
+  "bundleType": "apparel",
+  "title": "Pair Mode Zip",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "In Vorbereitung",
+  "priority": "P2",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Ein Frontbild, zwei Rueckenrichtungen.",
+  "copy": "Zip-Variante fuer Alltag und Reise mit identischer Frontlogik und frei waehlbarem Backprint je nach Dr.- oder Mrs.-Fokus.",
+  "products": [
+    "Zip Hoodie",
+    "Heavy Zip",
+    "Street Layer"
+  ],
+  "tags": [
+    "Unisex",
+    "Zip",
+    "Flexible Serie"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 91
+}

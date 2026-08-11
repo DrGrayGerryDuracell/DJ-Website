@@ -1,0 +1,32 @@
+{
+  "id": "mrs-shirt-afterhour",
+  "bundleId": "apparel-mrs-shirt-afterhour",
+  "bundleType": "apparel",
+  "title": "Afterhour Attitude Tee",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#damen-kollektion",
+  "slogan": "Zu spaet fuer brav, zu echt fuer Plastik.",
+  "copy": "Ein Statement-Piece fuer die frechere Damen-Seite, mit klarer Typo und reduzierter Form.",
+  "products": [
+    "Tee",
+    "Longsleeve",
+    "Layer Top"
+  ],
+  "tags": [
+    "Damen",
+    "Afterhour",
+    "Attitude"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 37
+}

@@ -1,0 +1,32 @@
+{
+  "id": "unisex-longsleeve-choice-ready",
+  "bundleId": "apparel-unisex-longsleeve-choice-ready",
+  "bundleType": "apparel",
+  "title": "Choice Longsleeve Ready",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Neutral im Schnitt, klar im Zeichen.",
+  "copy": "Unisex-Longsleeve als schneller Upload-Artikel fuer die naechste Core-Welle.",
+  "products": [
+    "Longsleeve",
+    "Heavy Longsleeve",
+    "Layer Tee"
+  ],
+  "tags": [
+    "Unisex",
+    "Shirtee Ready",
+    "Longsleeve"
+  ],
+  "image": "store-assets/variants/unisex-backprint-options.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/unisex-backprint-options.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 99
+}

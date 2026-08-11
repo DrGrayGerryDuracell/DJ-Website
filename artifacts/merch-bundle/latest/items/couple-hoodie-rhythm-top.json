@@ -1,0 +1,32 @@
+{
+  "id": "couple-hoodie-rhythm-top",
+  "bundleId": "apparel-couple-hoodie-rhythm-top",
+  "bundleType": "apparel",
+  "title": "Rhythm Hoodie Set Top Upload",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Duo-Look mit klarer Mittelachse.",
+  "copy": "Hoodie-Paar fuer schnelle Launch-Welle mit kontrollierter Druckflaeche und ruhiger Typo.",
+  "products": [
+    "2x Unisex Hoodie",
+    "2x Zip Hoodie",
+    "2x Sweatshirt"
+  ],
+  "tags": [
+    "Couple",
+    "Top Upload",
+    "Hoodie Set"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 78
+}

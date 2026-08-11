@@ -1,0 +1,32 @@
+{
+  "id": "couple-split-signal-hoodie",
+  "bundleId": "bundle-couple-split-signal-hoodie",
+  "bundleType": "bundle",
+  "title": "Split Signal Hoodie Set",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "In Vorbereitung",
+  "priority": "P2",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Getrennte Fronts, gemeinsamer Rueckenschub.",
+  "copy": "Beide Hoodies bleiben in derselben visuellen Hoehe und teilen sich einen konsistenten Backprint-Rhythmus fuer starke Paarfotos.",
+  "products": [
+    "Hoodie Set",
+    "Crewneck Set",
+    "Night Bundle"
+  ],
+  "tags": [
+    "Couple",
+    "Hoodie",
+    "Signal"
+  ],
+  "image": "store-assets/variants/couple-front-verheiratet.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-verheiratet.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 67
+}

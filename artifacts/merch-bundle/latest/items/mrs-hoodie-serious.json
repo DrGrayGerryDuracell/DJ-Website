@@ -1,0 +1,32 @@
+{
+  "id": "mrs-hoodie-serious",
+  "bundleId": "apparel-mrs-hoodie-serious",
+  "bundleType": "apparel",
+  "title": "Mrs. Dr. Gray Signature Hoodie",
+  "line": "Mrs. Dr. Gray",
+  "section": "women",
+  "status": "Live im Store",
+  "priority": "P0",
+  "spotlight": true,
+  "uploadState": "uploaded",
+  "uploadLabel": "Bereits hochgeladen",
+  "href": "https://www.shirtee.com/de/drgray-mrsdrgray/",
+  "slogan": "Das Logo fuehrt, der Spruch veredelt.",
+  "copy": "Sauber fuer Damen-Hoodie, Crop Hoodie und klassische Tee-Fits. Keine Fremdsymbole, nur Logo, Typo und eine klare Achse.",
+  "products": [
+    "Hoodie",
+    "Crop Hoodie",
+    "Tee"
+  ],
+  "tags": [
+    "Damen",
+    "Signature",
+    "Logo First"
+  ],
+  "image": "store-assets/variants/mrs-hoodie-serious.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-hoodie-serious.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 29
+}

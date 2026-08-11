@@ -1,0 +1,32 @@
+{
+  "id": "dr-utility-jacket",
+  "bundleId": "apparel-dr-utility-jacket",
+  "bundleType": "apparel",
+  "title": "Utility Night Jacket",
+  "line": "Dr. Gray",
+  "section": "men",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#herren-kollektion",
+  "slogan": "Cleanes Frontlogo, harter Night-Service-Look.",
+  "copy": "Gedacht fuer leichtere Uebergangsjacken und Overshirts in dunkler Farbwelt mit einem ruhigen, praezisen Dr.-Gray-Auftritt.",
+  "products": [
+    "Light Jacket",
+    "Utility Overshirt",
+    "Coach Jacket"
+  ],
+  "tags": [
+    "Herren",
+    "Jacket",
+    "Dark Utility"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 12
+}

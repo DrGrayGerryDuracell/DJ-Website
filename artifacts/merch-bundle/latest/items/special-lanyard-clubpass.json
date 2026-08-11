@@ -1,0 +1,32 @@
+{
+  "id": "special-lanyard-clubpass",
+  "bundleId": "bundle-special-lanyard-clubpass",
+  "bundleType": "bundle",
+  "title": "Clubpass Lanyard",
+  "line": "Special Merch",
+  "section": "special",
+  "status": "Konzept",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "kontakt.html",
+  "slogan": "Sondermerch fuer Eventtage.",
+  "copy": "Lanyard-Linie fuer Meetups, Backstage-Formate und Community-Events mit klarer Markenfuehrung.",
+  "products": [
+    "Lanyard",
+    "Passholder",
+    "Event Bundle"
+  ],
+  "tags": [
+    "Special",
+    "Event",
+    "Limited"
+  ],
+  "image": "store-assets/variants/dr-back-logo.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/dr-back-logo.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 147
+}

@@ -1,0 +1,32 @@
+{
+  "id": "accessory-cap-top",
+  "bundleId": "accessory-accessory-cap-top",
+  "bundleType": "accessory",
+  "title": "Snap Cap Top Upload",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Kleinformat mit klarer Marke.",
+  "copy": "Cap-Variante als schneller Accessoire-Start fuer Herren-, Damen- und Couple-Fits.",
+  "products": [
+    "Snapback",
+    "Dad Cap",
+    "Retro Cap"
+  ],
+  "tags": [
+    "Accessoire",
+    "Top Upload",
+    "Cap"
+  ],
+  "image": "store-assets/variants/accessory-dr-retro-cap.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/accessory-dr-retro-cap.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 127
+}

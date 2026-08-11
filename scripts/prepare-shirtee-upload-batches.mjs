@@ -39,12 +39,16 @@ const catalog = loadWindowData(catalogPath, "MERCH_CATALOG");
 const catalogItems = Array.isArray(catalog?.items) ? catalog.items : [];
 const catalogById = new Map(catalogItems.map((item) => [item.id, item]));
 
-const ready = queue.filter((item) => item.uploadState === "ready");
-const pending = queue.filter((item) => item.uploadState === "pending");
+const grouped = {
+  ready: queue.filter((item) => item.uploadState === "ready"),
+  submitted: queue.filter((item) => item.uploadState === "submitted"),
+  pending: queue.filter((item) => item.uploadState === "pending")
+};
 
 const groups = [
-  { name: "ready", items: ready },
-  { name: "pending", items: pending }
+  { name: "ready", items: grouped.ready },
+  { name: "submitted", items: grouped.submitted },
+  { name: "pending", items: grouped.pending }
 ];
 
 const manifest = {
@@ -52,8 +56,9 @@ const manifest = {
   batchSize,
   totals: {
     queue: queue.length,
-    ready: ready.length,
-    pending: pending.length
+    ready: grouped.ready.length,
+    submitted: grouped.submitted.length,
+    pending: grouped.pending.length
   },
   batches: []
 };
@@ -130,6 +135,7 @@ writeFileSync(
     `Generated: ${manifest.generatedAt}\n\n` +
     `- Queue: ${manifest.totals.queue}\n` +
     `- Ready: ${manifest.totals.ready}\n` +
+    `- Submitted: ${manifest.totals.submitted}\n` +
     `- Pending: ${manifest.totals.pending}\n` +
     `- Batch size: ${batchSize}\n\n` +
     manifest.batches.map((b) => `- ${b.name} (${b.type}): ${b.itemCount} items`).join("\n") +

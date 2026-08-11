@@ -1,0 +1,32 @@
+{
+  "id": "couple-longsleeve-equaltempo",
+  "bundleId": "apparel-couple-longsleeve-equaltempo",
+  "bundleType": "apparel",
+  "title": "Equal Tempo Longsleeve Set",
+  "line": "Couple Edition",
+  "section": "couple",
+  "status": "Geplant",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#couple-edition",
+  "slogan": "Zwei Personen, eine Linienfuehrung.",
+  "copy": "Langarm-Set mit ruhiger Front und kontrollierter Backprint-Achse fuer emotionale, aber praezise Couple-Looks.",
+  "products": [
+    "Longsleeve Set",
+    "Tee Set",
+    "Crew Set"
+  ],
+  "tags": [
+    "Couple",
+    "Longsleeve",
+    "Equal"
+  ],
+  "image": "store-assets/variants/couple-front-two-hearts.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/couple-front-two-hearts.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 71
+}

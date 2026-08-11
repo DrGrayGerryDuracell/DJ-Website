@@ -1,0 +1,32 @@
+{
+  "id": "unisex-longsleeve-clean-upload",
+  "bundleId": "print-unisex-longsleeve-clean-upload",
+  "bundleType": "print",
+  "title": "Clean Longsleeve Upload",
+  "line": "Unisex",
+  "section": "unisex",
+  "status": "Uploadbereit",
+  "priority": "P1",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#unisex-drop",
+  "slogan": "Vorne reduziert, hinten nach Wahl.",
+  "copy": "Langarm-Unisex fuer modulare Drops mit ruhiger Frontflaeche und klarer Backprint-Option.",
+  "products": [
+    "Longsleeve",
+    "Heavy Longsleeve",
+    "Layer Tee"
+  ],
+  "tags": [
+    "Unisex",
+    "Uploadbereit",
+    "Backprint"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 155
+}

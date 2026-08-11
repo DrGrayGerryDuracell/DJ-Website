@@ -1,0 +1,32 @@
+{
+  "id": "accessory-sticker-core-top",
+  "bundleId": "sticker-accessory-sticker-core-top",
+  "bundleType": "sticker",
+  "title": "Core Sticker Pack Top Upload",
+  "line": "Accessories",
+  "section": "accessories",
+  "status": "Top Upload",
+  "priority": "P3",
+  "spotlight": false,
+  "uploadState": "submitted",
+  "uploadLabel": "Eingereicht (in Pruefung)",
+  "href": "shop.html#accessoires",
+  "slogan": "Schnelle Community-Drops mit hoher Reichweite.",
+  "copy": "Sticker-Pack fuer niedrigschwellige Merch-Einstiege und schnelle Add-ons im Store.",
+  "products": [
+    "Sticker Pack",
+    "Mini Sticker Set",
+    "Promo Bundle"
+  ],
+  "tags": [
+    "Accessoire",
+    "Top Upload",
+    "Sticker"
+  ],
+  "image": "store-assets/variants/mrs-front-signature.png",
+  "imageAbsolutePath": "/Users/martendr.gray/Desktop/DJ-Website-Repo/store-assets/variants/mrs-front-signature.png",
+  "imageKind": "local",
+  "issueCodes": [],
+  "hasImage": true,
+  "sourceIndex": 131
+}
