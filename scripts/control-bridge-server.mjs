@@ -39,7 +39,9 @@ const COMMANDS = {
   "build-merch-bundle": { cmd: process.execPath, args: [join(repoRoot, "scripts/build-merch-content-bundle.mjs")] },
   "build-shop-master-pack": { cmd: process.execPath, args: [join(repoRoot, "scripts/build-shop-master-pack.mjs")] },
   "write-hermes-spool": { cmd: process.execPath, args: [join(repoRoot, "scripts/write-hermes-spool-message.mjs")] },
-  "check-links": { cmd: "/bin/bash", args: [join(repoRoot, "scripts/check-shirtee-links.sh")] }
+  "check-links": { cmd: "/bin/bash", args: [join(repoRoot, "scripts/check-shirtee-links.sh")] },
+  "kanban-create": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-create.mjs")] },
+  "kanban-run-pipeline": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-run-pipeline.mjs")] }
 };
 
 function ensureStateFiles() {
@@ -192,6 +194,16 @@ async function handleApi(request, response, url) {
       return badRequest(response, "command ist erforderlich.");
     }
     const result = await runCommand(body.command);
+    return json(response, result.ok ? 200 : 500, result);
+  }
+
+  if (request.method === "POST" && url.pathname === "/api/control/kanban-create") {
+    const body = await readJsonBody(request);
+    const title = String(body.title || "").trim();
+    if (!title) {
+      return badRequest(response, "title ist erforderlich.");
+    }
+    const result = await runCommand("kanban-create", [`--title=${title}`]);
     return json(response, result.ok ? 200 : 500, result);
   }
 

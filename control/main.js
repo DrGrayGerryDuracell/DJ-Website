@@ -141,6 +141,13 @@ async function queueHaAction(payload) {
   });
 }
 
+async function createKanbanTask(title) {
+  return controlApi("/kanban-create", {
+    method: "POST",
+    body: JSON.stringify({ title })
+  });
+}
+
 async function writeHermesSpool(message, chatId) {
   return controlApi("/hermes-spool", {
     method: "POST",
@@ -571,6 +578,59 @@ function setupHermesChatActions() {
           : "Spool-Weitergabe blockiert",
       sendStatus === "failed" ? "is-warn" : "is-live"
     );
+  });
+}
+
+function setupKanbanActions() {
+  document.addEventListener("click", async (event) => {
+    const submitButton = event.target.closest("[data-kanban-new-task-submit]");
+    if (!submitButton) {
+      return;
+    }
+    const input = document.querySelector("[data-kanban-new-task-input]");
+    if (!input) {
+      return;
+    }
+    const title = String(input.value || "").trim();
+    if (!title) {
+      return;
+    }
+    const previousLabel = submitButton.textContent;
+    submitButton.textContent = "Läuft…";
+    submitButton.disabled = true;
+    try {
+      if (hasControlBridge()) {
+        await createKanbanTask(title);
+        input.value = "";
+        submitButton.textContent = "Erstellt ✓";
+        try {
+          await runBridgeCommand("sync-control-live");
+          const nextLiveMetrics = await loadLiveMetrics();
+          if (nextLiveMetrics?.metadata) {
+            window.__CONTROL_DATA__ = nextLiveMetrics;
+            renderKanbanSection(document.querySelector("[data-kanban-section]"), nextLiveMetrics.kanban);
+          }
+        } catch {
+          // Board wurde erstellt, Live-Refresh ist nur Komfort.
+        }
+      } else {
+        submitButton.textContent = "Bridge fehlt";
+      }
+    } catch {
+      submitButton.textContent = "Fehler";
+    }
+    window.setTimeout(() => {
+      submitButton.textContent = previousLabel;
+      submitButton.disabled = false;
+    }, 1800);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    const input = event.target.closest("[data-kanban-new-task-input]");
+    if (!input) return;
+    event.preventDefault();
+    document.querySelector("[data-kanban-new-task-submit]")?.click();
   });
 }
 
@@ -1460,6 +1520,7 @@ async function initControlDashboard() {
   });
   setupAppShell();
   setupHermesChatActions();
+  setupKanbanActions();
   setupAgentsRoomControls();
   setupControlDialogActions();
 

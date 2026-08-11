@@ -77,6 +77,11 @@
           <h2>Kanban</h2>
           <p>Hermes-Aufgaben auf dem Mac mini: Status, Services und offene Punkte.</p>
         </div>
+        <div class="kanban-toolbar">
+          <input type="text" data-kanban-new-task-input placeholder="Neue Aufgabe kurz beschreiben …" maxlength="200" />
+          <button type="button" class="action-btn" data-kanban-new-task-submit>Aufgabe erstellen</button>
+          <button type="button" class="action-btn is-secondary" data-control-command="kanban-run-pipeline">Jetzt bearbeiten</button>
+        </div>
         <div class="kanban-layout" data-kanban-section></div>
       </section>
 
