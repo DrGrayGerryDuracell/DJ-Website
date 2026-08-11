@@ -723,9 +723,9 @@ a { color: inherit; text-decoration: none; }
 .agentsroom-node-media img {
   display: block;
   width: 100%;
-  height: 172px;
+  height: 210px;
   object-fit: cover;
-  object-position: center top;
+  object-position: 50% 25%;
 }
 
 .agentsroom-node.has-media .agentsroom-node-head,

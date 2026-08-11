@@ -1157,7 +1157,7 @@ async function main() {
     agents: [
       { name: "Hermes", role: "Primär-Controller, Telegram-Hub und Rückkanal", route: "Mensch -> Hermes -> Mensch", channel: "Control / Telegram", status: "live", statusLabel: "Live", tags: ["Telegram", "Control", "Reply"], image: "/assets/generated/agent-avatars/hermes.png" },
       { name: "Argus", role: "Apple-nahe Vorprüfung, Diagnose und Gegencheck", route: "Hermes -> Argus -> Hermes", channel: "Checks", status: "support", statusLabel: "Support", tags: ["Audit", "Second Pass", "Safety"], image: "/assets/generated/agent-avatars/argus.png" },
-      { name: "OpenClaw Gateway", role: "Broker, Queue und Uebergabe an Jarvis", route: "Hermes -> Gateway -> Jarvis", channel: "Queue", status: "connected", statusLabel: "Verbunden", tags: ["Bridge", "Queue", "Delegation"] },
+      { name: "OpenClaw Gateway", role: "Broker, Queue und Übergabe an Jarvis", route: "Hermes -> Gateway -> Jarvis", channel: "Queue", status: "connected", statusLabel: "Verbunden", tags: ["Bridge", "Queue", "Delegation"] },
       { name: "Jarvis", role: "OpenClaw-Verteiler, Review und Subagenten-Orchestrierung", route: "Gateway -> Jarvis -> Hermes", channel: "Routing / Review", status: "live", statusLabel: "Live", tags: ["Delegation", "Review", "Graph"], image: "/assets/generated/agent-avatars/jarvis.png" },
       { name: "Forge", role: "OpenClaw Infra, Skills und Server", route: "Jarvis -> Forge", channel: "Engineering", status: "live", statusLabel: "Live", tags: ["Infra", "Skills", "Server"], image: "/assets/generated/agent-avatars/forge.png" },
       { name: "Sentinel", role: "Monitoring, Logs und Security", route: "Jarvis -> Sentinel", channel: "Watch", status: "live", statusLabel: "Live", tags: ["Logs", "Health", "Security"], image: "/assets/generated/agent-avatars/sentinel.png" },
@@ -1198,7 +1198,7 @@ async function main() {
     conversations: [
       { topic: "Kontrollkette", time: generatedAtLabel, from: "Mensch", to: "Hermes", summary: "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.", status: "live", statusLabel: "Live" },
       { topic: "Vorprüfung", time: generatedAtLabel, from: "Hermes", to: "Argus", summary: "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.", status: "support", statusLabel: "Support" },
-      { topic: "Broker", time: generatedAtLabel, from: "Hermes", to: "OpenClaw Gateway", summary: "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.", status: "connected", statusLabel: "Verbunden" },
+      { topic: "Broker", time: generatedAtLabel, from: "Hermes", to: "OpenClaw Gateway", summary: "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.", status: "connected", statusLabel: "Verbunden" },
       { topic: "Verteilung", time: generatedAtLabel, from: "OpenClaw Gateway", to: "Jarvis", summary: "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.", status: "live", statusLabel: "Live" },
       { topic: "Subagenten", time: generatedAtLabel, from: "Jarvis", to: "Forge", summary: "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.", status: "ready", statusLabel: "Bereit" },
       { topic: "Escalation", time: generatedAtLabel, from: "Jarvis", to: "Claude Code", summary: "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.", status: "support", statusLabel: "Fallback" },
