@@ -6,6 +6,7 @@ import {
   renderModeBadge,
   renderVisualPulse,
   renderHermesChat,
+  renderKanbanSection,
   renderAgentsRoomSection,
   renderHomeAssistantSection,
   renderSystemStatus,
@@ -1386,6 +1387,7 @@ function renderDashboardView(data) {
   renderSystemStatus(document.querySelector("[data-system-status]"), viewData.systemStatus);
   renderHermesChat(document.querySelector("[data-hermes-chat]"), viewData);
   renderKpis(document.querySelector("[data-kpis]"), viewData.overviewKpis);
+  renderKanbanSection(document.querySelector("[data-kanban-section]"), viewData.kanban);
   renderAgentsRoomSection(document.querySelector("[data-agentsroom-section]"), viewData.agentsRoom);
   renderHomeAssistantSection(document.querySelector("[data-home-assistant-section]"), viewData);
   renderWebsiteSection(document.querySelector("[data-website-section]"), viewData.websiteMetrics);

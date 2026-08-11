@@ -1,5 +1,6 @@
 export const controlNav = [
   { id: "overview", label: "Übersicht", hint: "Systemstatus und Kern-KPIs" },
+  { id: "kanban", label: "Kanban", hint: "Aufgaben, Status und Services" },
   { id: "agentsroom", label: "AgentsRoom", hint: "Routing, Agenten und Geräte" },
   { id: "home-assistant", label: "Home Assistant", hint: "HA, Backup und Mac mini" },
   { id: "website", label: "Website", hint: "HTTP Checks und Seitenwerte" },

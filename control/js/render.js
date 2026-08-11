@@ -1134,6 +1134,85 @@ export function renderVisualPulse(container, dashboardData) {
   `;
 }
 
+function formatKanbanTime(epochSeconds) {
+  if (!Number.isFinite(epochSeconds)) return null;
+  return new Intl.DateTimeFormat("de-DE", { dateStyle: "short", timeStyle: "short", timeZone: "Europe/Berlin" }).format(new Date(epochSeconds * 1000));
+}
+
+function renderKanbanTask(task) {
+  const needsAction = Boolean(task.block_kind) || Number(task.consecutive_failures || 0) > 0;
+  const completed = formatKanbanTime(task.completed_at);
+  return `
+    <li class="kanban-task-item${needsAction ? " kanban-needs-action" : ""}">
+      <p class="kanban-task-title">${escapeHtml(task.title)}</p>
+      <div class="kanban-task-meta">
+        <span class="kanban-task-id">${escapeHtml(task.id)}</span>
+        ${task.assignee ? `<span class="kanban-task-assignee">${escapeHtml(task.assignee)}</span>` : ""}
+        ${needsAction ? `<span class="kanban-task-assignee" style="color:#e05656">${escapeHtml(task.block_kind || "Fehler")}</span>` : ""}
+        ${completed ? `<span class="kanban-task-id">${completed}</span>` : ""}
+      </div>
+    </li>
+  `;
+}
+
+function renderKanbanColumn(title, cls, tasks, emptyLabel) {
+  return `
+    <div class="kanban-col kanban-col-${cls}">
+      <div class="kanban-col-head">
+        <span class="kanban-col-title kanban-${cls}">${title}</span>
+        <span class="kanban-count kanban-count-${cls}">${tasks.length}</span>
+      </div>
+      <ul class="kanban-task-list">
+        ${tasks.length ? tasks.map(renderKanbanTask).join("") : `<li class="kanban-empty">${emptyLabel}</li>`}
+      </ul>
+    </div>
+  `;
+}
+
+export function renderKanbanSection(container, kanban) {
+  const data = kanban || {};
+  const waiting = Array.isArray(data.waiting) ? data.waiting : [];
+  const running = Array.isArray(data.running) ? data.running : [];
+  const ready = Array.isArray(data.ready) ? data.ready : [];
+  const doneToday = Array.isArray(data.doneToday) ? data.doneToday : [];
+  const services = Array.isArray(data.services) ? data.services : [];
+  const openTasks = Array.isArray(data.openTasks) ? data.openTasks : [];
+
+  container.innerHTML = `
+    <div class="kanban-columns">
+      ${renderKanbanColumn("Blockiert", "wait", waiting, "Keine blockierten Tasks.")}
+      ${renderKanbanColumn("Läuft", "run", running, "Aktuell läuft nichts.")}
+      ${renderKanbanColumn("Bereit", "ready", ready, "Keine offenen Tasks.")}
+      ${renderKanbanColumn("Heute erledigt", "done", doneToday, "Heute noch nichts abgeschlossen.")}
+    </div>
+    <div class="kanban-sidebar">
+      <div class="kanban-sidebar-block">
+        <p class="eyebrow">Services (Mac mini)</p>
+        <ul class="kanban-service-list">
+          ${services
+            .map(
+              (svc) => `
+                <li class="kanban-service-row">
+                  <span class="status-dot ${svc.status === "ok" ? "dot-ok" : "dot-warn"}"></span>
+                  <span class="kanban-service-label">${escapeHtml(svc.label)}</span>
+                  <span class="kanban-service-status ${svc.status === "ok" ? "text-ok" : "text-warn"}">${escapeHtml(svc.statusLabel)}</span>
+                </li>
+              `
+            )
+            .join("")}
+        </ul>
+      </div>
+      <div class="kanban-sidebar-block">
+        <p class="eyebrow">Offene Punkte (hot.md)</p>
+        <ul class="kanban-open-list">
+          ${openTasks.length ? openTasks.map((item) => `<li class="kanban-open-item">${escapeHtml(item)}</li>`).join("") : `<li class="kanban-open-item">Keine offenen Punkte erfasst.</li>`}
+        </ul>
+      </div>
+      <p class="muted-line">Stand: ${escapeHtml(formatKanbanTime(data.updatedAt ? Math.floor(new Date(data.updatedAt).getTime() / 1000) : null) || "n/a")}</p>
+    </div>
+  `;
+}
+
 export function renderAgentsRoomSection(container, agentsRoom) {
   if (!container) {
     return;

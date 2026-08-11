@@ -842,21 +842,29 @@ function mapSectionLabel(section) {
   return lookup[section] || String(section || "Sonstiges");
 }
 
+function sqliteQueryJsonSsh(host, dbPath, query, fallback = []) {
+  try {
+    const output = execFileSync("ssh", ["-o", "ConnectTimeout=5", "-o", "BatchMode=yes", host, `sqlite3 -json ${dbPath} "${query.replace(/"/g, '\\"')}"`], {
+      encoding: "utf8",
+      timeout: 8000
+    });
+    if (!output.trim()) return fallback;
+    return JSON.parse(output);
+  } catch {
+    return fallback;
+  }
+}
+
 function buildKanbanSection() {
-  const kanbanDbPath = join(process.env.HOME || "/Users/jarvisgray", ".hermes", "kanban.db");
+  // The Hermes kanban board lives on the Mac mini ("zentralserver") at
+  // ~/.hermes/kanban.db — the local copy on whichever machine renders this
+  // dashboard is an empty stub, so query it over SSH instead.
+  const kanbanDbPath = "/Users/jarvisgray/.hermes/kanban.db";
   const hotMdPath = join(process.env.HOME || "/Users/jarvisgray", "ObsidianVault/JARVIS-Brain/wiki/hot.md");
   const today = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Berlin" }).format(new Date());
 
-  const allTasks = sqliteQueryJson(kanbanDbPath, `
-    SELECT id, title, status, priority, assignee, block_kind,
-           created_at, completed_at, worker_pid, consecutive_failures
-    FROM tasks WHERE status != 'archived'
-    ORDER BY CASE status
-      WHEN 'blocked' THEN 0 WHEN 'running' THEN 1
-      WHEN 'ready' THEN 2 WHEN 'todo' THEN 3
-      WHEN 'triage' THEN 4 WHEN 'done' THEN 5 END,
-    priority DESC, created_at DESC
-  `, []);
+  const kanbanQuery = `SELECT id, title, status, priority, assignee, block_kind, created_at, completed_at, worker_pid, consecutive_failures FROM tasks WHERE status != 'archived' ORDER BY CASE status WHEN 'blocked' THEN 0 WHEN 'running' THEN 1 WHEN 'ready' THEN 2 WHEN 'todo' THEN 3 WHEN 'triage' THEN 4 WHEN 'done' THEN 5 END, priority DESC, created_at DESC`;
+  const allTasks = sqliteQueryJsonSsh("mini", kanbanDbPath, kanbanQuery, []);
 
   const waiting = allTasks.filter(t =>
     t.status === "blocked" ||
@@ -883,35 +891,47 @@ function buildKanbanSection() {
       .slice(0, 10);
   } catch {}
 
-  const checkPid = (pattern) => {
-    try { execFileSync("pgrep", ["-f", pattern], { encoding: "utf8" }); return "ok"; }
-    catch { return "warn"; }
-  };
+  // The actual Hermes stack (gateway, hermes-serve, LiteLLM) runs on the Mac
+  // mini ("zentralserver"), not on whichever machine renders this dashboard —
+  // so these checks go over SSH instead of checking local pgrep/docker, which
+  // would otherwise always report "down" from a MacBook.
   const checkHttp = (url) => {
     try {
       const code = execFileSync("curl", ["-s", "--max-time", "4", "-o", "/dev/null", "-w", "%{http_code}", url], { encoding: "utf8" }).trim();
       return code.startsWith("2") || code.startsWith("3") ? "ok" : "warn";
     } catch { return "warn"; }
   };
-  const checkDocker = (name) => {
+  const checkSshLaunchd = (label) => {
     try {
-      const r = execFileSync("docker", ["ps", "--filter", `name=${name}`, "--format", "{{.Status}}"], { encoding: "utf8" });
+      execFileSync("ssh", ["-o", "ConnectTimeout=4", "-o", "BatchMode=yes", "mini", `launchctl list ${label} >/dev/null 2>&1`], { encoding: "utf8", timeout: 6000 });
+      return "ok";
+    } catch { return "warn"; }
+  };
+  const checkSshDocker = (name) => {
+    try {
+      const r = execFileSync("ssh", ["-o", "ConnectTimeout=4", "-o", "BatchMode=yes", "mini", `docker ps --filter name=${name} --format '{{.Status}}'`], { encoding: "utf8", timeout: 6000 });
       return r.includes("Up") ? "ok" : "warn";
     } catch { return "warn"; }
   };
+  const checkArgusLocal = () => {
+    try {
+      const out = execFileSync(join(process.env.HOME || "/Users/martendr.gray", "argus-agent/bin/argus-status"), [], { encoding: "utf8", timeout: 6000 });
+      return /Schweregrad:\s*OK/i.test(out) ? "ok" : "warn";
+    } catch { return "warn"; }
+  };
 
-  const gw = checkPid("hermes.*gateway");
-  const hs = checkPid("hermes.*serve");
+  const gw = checkSshLaunchd("ai.hermes.gateway.zentralserver");
+  const hs = checkSshLaunchd("com.jarvisgray.hermes-serve");
   const oc = checkHttp("http://192.168.178.176:18789/health");
-  const ll = checkDocker("jarvis-litellm");
-  const ar = checkHttp("http://127.0.0.1:11435/health");
+  const ll = checkSshDocker("jarvis-litellm");
+  const ar = checkArgusLocal();
 
   const services = [
     { id: "gateway",       label: "Hermes Gateway", status: gw, statusLabel: gw === "ok" ? "Aktiv" : "Fehler" },
     { id: "hermes-serve",  label: "Hermes Serve",   status: hs, statusLabel: hs === "ok" ? "Aktiv" : "Fehler" },
     { id: "openclaw",      label: "OpenClaw",        status: oc, statusLabel: oc === "ok" ? "Online" : "Offline" },
     { id: "litellm",       label: "LiteLLM",         status: ll, statusLabel: ll === "ok" ? "Docker Up" : "Down" },
-    { id: "argus",         label: "ARGUS Apple FM",  status: ar, statusLabel: ar === "ok" ? "Online" : "Offline" },
+    { id: "argus",         label: "ARGUS Apple FM",  status: ar, statusLabel: ar === "ok" ? "Online" : "Warnung" },
   ];
 
   return {
