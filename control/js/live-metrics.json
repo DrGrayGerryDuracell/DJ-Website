@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-11T20:49:34.829Z",
-    "generatedAtLabel": "11.08.26, 22:49",
+    "generatedAt": "2026-08-11T21:08:19.306Z",
+    "generatedAtLabel": "11.08.26, 23:08",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "11.08.26, 22:49",
+      "value": "11.08.26, 23:08",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 240,
+      "value": 280,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 250,
+        "visitors": 310,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 218,
+        "visitors": 279,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 220,
+        "visitors": 280,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 221,
+        "visitors": 271,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 220,
+        "visitors": 278,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 263,
+        "visitors": 277,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 262,
+        "visitors": 271,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 262,
+        "visitors": 277,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "240 ms",
+      "avgSession": "280 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-11T20:49:34.829Z",
-      "checkedAtLabel": "11.08.26, 22:49"
+      "checkedAt": "2026-08-11T21:08:19.306Z",
+      "checkedAtLabel": "11.08.26, 23:08"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "240 ms",
+    "responseTime": "280 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "11.08.26, 22:49",
+      "time": "11.08.26, 23:08",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "11.08.26, 22:49",
+      "time": "11.08.26, 23:08",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "11.08.26, 22:49",
+      "time": "11.08.26, 23:08",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "11.08.26, 22:49",
+      "time": "11.08.26, 23:08",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3761,12 +3761,12 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-11T20:49:38.737Z",
+    "updatedAt": "2026-08-11T21:08:21.391Z",
     "counts": {
-      "waiting": 0,
-      "running": 2,
-      "ready": 1,
-      "doneToday": 32
+      "waiting": 1,
+      "running": 4,
+      "ready": 0,
+      "doneToday": 33
     },
     "services": [
       {
@@ -3800,8 +3800,57 @@
         "statusLabel": "Warnung"
       }
     ],
-    "waiting": [],
+    "waiting": [
+      {
+        "id": "t_0d10ba8f",
+        "title": "skill prompting, skills selbst herstellen, server und map sowie cli selber bauen zusammenhänge verstehen",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786481622,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      }
+    ],
     "running": [
+      {
+        "id": "t_16d1c6ad",
+        "title": "Tik tot und content Planung mit content Kalender und auto generierten Videos, komplettes skill, wie alles funktioniert, tiktok Eigenschaften von Bildschirmen beachten. alle nötigen plugins etc dazu",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786482166,
+        "completed_at": null,
+        "worker_pid": 51196,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_763bf9fa",
+        "title": "aus kanban erlernte fertige task skills bauen",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786481796,
+        "completed_at": null,
+        "worker_pid": 51195,
+        "consecutive_failures": 1
+      },
+      {
+        "id": "t_e6ded419",
+        "title": "Research n8n for system improvement opportunities",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786477222,
+        "completed_at": null,
+        "worker_pid": 51515,
+        "consecutive_failures": 1
+      },
       {
         "id": "t_756a264b",
         "title": "Optimize Shop Integration with Shirtee",
@@ -3811,36 +3860,11 @@
         "block_kind": null,
         "created_at": 1786477093,
         "completed_at": null,
-        "worker_pid": 47510,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_95a2a225",
-        "title": "Identify and Install Plugins and Skills for Agents",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786476886,
-        "completed_at": null,
-        "worker_pid": 47509,
-        "consecutive_failures": 1
-      }
-    ],
-    "ready": [
-      {
-        "id": "t_e6ded419",
-        "title": "Research n8n for system improvement opportunities",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786477222,
-        "completed_at": null,
-        "worker_pid": null,
+        "worker_pid": 51514,
         "consecutive_failures": 0
       }
     ],
+    "ready": [],
     "doneToday": [
       {
         "id": "t_800b6312",
@@ -4031,6 +4055,18 @@
         "block_kind": null,
         "created_at": 1786452186,
         "completed_at": 1786475002,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_95a2a225",
+        "title": "Identify and Install Plugins and Skills for Agents",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786476886,
+        "completed_at": 1786481688,
         "worker_pid": null,
         "consecutive_failures": 0
       },
@@ -4814,7 +4850,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4823,7 +4859,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4832,7 +4868,7 @@
       },
       {
         "topic": "Broker",
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -4841,7 +4877,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -4850,7 +4886,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -4859,7 +4895,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -4868,7 +4904,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -4877,7 +4913,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "11.08.26, 22:49",
+        "time": "11.08.26, 23:08",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",

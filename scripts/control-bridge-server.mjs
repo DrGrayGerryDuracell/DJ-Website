@@ -41,7 +41,8 @@ const COMMANDS = {
   "write-hermes-spool": { cmd: process.execPath, args: [join(repoRoot, "scripts/write-hermes-spool-message.mjs")] },
   "check-links": { cmd: "/bin/bash", args: [join(repoRoot, "scripts/check-shirtee-links.sh")] },
   "kanban-create": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-create.mjs")] },
-  "kanban-run-pipeline": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-run-pipeline.mjs")] }
+  "kanban-run-pipeline": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-run-pipeline.mjs")] },
+  "kanban-task-action": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-task-action.mjs")] }
 };
 
 function ensureStateFiles() {
@@ -194,6 +195,17 @@ async function handleApi(request, response, url) {
       return badRequest(response, "command ist erforderlich.");
     }
     const result = await runCommand(body.command);
+    return json(response, result.ok ? 200 : 500, result);
+  }
+
+  if (request.method === "POST" && url.pathname === "/api/control/kanban-task-action") {
+    const body = await readJsonBody(request);
+    const id = String(body.id || "").trim();
+    const action = String(body.action || "").trim();
+    if (!id || !["retry", "archive", "complete"].includes(action)) {
+      return badRequest(response, "id und ein gültiges action (retry|archive|complete) sind erforderlich.");
+    }
+    const result = await runCommand("kanban-task-action", [`--id=${id}`, `--action=${action}`]);
     return json(response, result.ok ? 200 : 500, result);
   }
 

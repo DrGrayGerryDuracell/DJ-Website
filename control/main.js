@@ -148,6 +148,13 @@ async function createKanbanTask(title) {
   });
 }
 
+async function runKanbanTaskAction(id, action) {
+  return controlApi("/kanban-task-action", {
+    method: "POST",
+    body: JSON.stringify({ id, action })
+  });
+}
+
 async function writeHermesSpool(message, chatId) {
   return controlApi("/hermes-spool", {
     method: "POST",
@@ -583,6 +590,44 @@ function setupHermesChatActions() {
 
 function setupKanbanActions() {
   document.addEventListener("click", async (event) => {
+    const taskActionButton = event.target.closest("[data-kanban-task-action]");
+    if (taskActionButton) {
+      const id = taskActionButton.getAttribute("data-kanban-task-id");
+      const action = taskActionButton.getAttribute("data-kanban-task-action");
+      const row = taskActionButton.closest(".kanban-task-actions");
+      const buttons = row ? Array.from(row.querySelectorAll("button")) : [taskActionButton];
+      buttons.forEach((btn) => { btn.disabled = true; });
+      const previousLabel = taskActionButton.textContent;
+      taskActionButton.textContent = "Läuft…";
+      try {
+        if (hasControlBridge()) {
+          await runKanbanTaskAction(id, action);
+          taskActionButton.textContent = "Erledigt ✓";
+          try {
+            await runBridgeCommand("sync-control-live");
+            const nextLiveMetrics = await loadLiveMetrics();
+            if (nextLiveMetrics?.metadata) {
+              window.__CONTROL_DATA__ = nextLiveMetrics;
+              renderKanbanSection(document.querySelector("[data-kanban-section]"), nextLiveMetrics.kanban);
+            }
+          } catch {
+            // Aktion ist durch, Live-Refresh ist nur Komfort.
+          }
+        } else {
+          taskActionButton.textContent = "Bridge fehlt";
+        }
+      } catch {
+        taskActionButton.textContent = "Fehler";
+        buttons.forEach((btn) => { btn.disabled = false; });
+      }
+      window.setTimeout(() => {
+        if (document.body.contains(taskActionButton)) {
+          taskActionButton.textContent = previousLabel;
+        }
+      }, 1600);
+      return;
+    }
+
     const submitButton = event.target.closest("[data-kanban-new-task-submit]");
     if (!submitButton) {
       return;

@@ -1151,6 +1151,12 @@ function renderKanbanTask(task) {
         ${needsAction ? `<span class="kanban-task-assignee" style="color:#e05656">${escapeHtml(task.block_kind || "Fehler")}</span>` : ""}
         ${completed ? `<span class="kanban-task-id">${completed}</span>` : ""}
       </div>
+      ${needsAction ? `
+        <div class="kanban-task-actions">
+          <button type="button" class="kanban-task-action-btn" data-kanban-task-action="retry" data-kanban-task-id="${escapeHtml(task.id)}">Erneut versuchen</button>
+          <button type="button" class="kanban-task-action-btn is-muted" data-kanban-task-action="archive" data-kanban-task-id="${escapeHtml(task.id)}">Archivieren</button>
+        </div>
+      ` : ""}
     </li>
   `;
 }
