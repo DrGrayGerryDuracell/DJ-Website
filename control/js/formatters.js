@@ -1,7 +1,7 @@
 export function formatNumber(value) {
   const num = Number(value);
   if (!Number.isFinite(num)) {
-    return "nicht verfuegbar";
+    return "nicht verfügbar";
   }
   return new Intl.NumberFormat("de-DE").format(num);
 }
@@ -9,21 +9,21 @@ export function formatNumber(value) {
 export function formatCurrency(value) {
   const num = Number(value);
   if (!Number.isFinite(num)) {
-    return "nicht verfuegbar";
+    return "nicht verfügbar";
   }
   return new Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR", maximumFractionDigits: 0 }).format(num);
 }
 
 export function formatValue(value, unit) {
   if (value === null || value === undefined) {
-    return "nicht verfuegbar";
+    return "nicht verfügbar";
   }
   if (unit === "EUR") {
     return formatCurrency(value);
   }
   if (unit === "%") {
     const num = Number(value);
-    return Number.isFinite(num) ? `${num}%` : "nicht verfuegbar";
+    return Number.isFinite(num) ? `${num}%` : "nicht verfügbar";
   }
   if (typeof value === "number") {
     return formatNumber(value);

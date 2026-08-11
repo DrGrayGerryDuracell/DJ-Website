@@ -88,10 +88,10 @@ function statusClass(status) {
 }
 
 const STATUS_GUIDE = [
-  { cls: "is-live", label: "Gruen", meaning: "Live, aktiv oder fehlerfrei" },
+  { cls: "is-live", label: "Grün", meaning: "Live, aktiv oder fehlerfrei" },
   { cls: "is-connected", label: "Cyan", meaning: "Verbunden oder synchronisiert" },
   { cls: "is-ready", label: "Gelb", meaning: "Bereit, wartet auf Arbeit" },
-  { cls: "is-warn", label: "Orange", meaning: "Pruefung oder Eingriff empfohlen" },
+  { cls: "is-warn", label: "Orange", meaning: "Prüfung oder Eingriff empfohlen" },
   { cls: "is-error", label: "Rot", meaning: "Fehler, offline oder blockiert" }
 ];
 
@@ -111,9 +111,9 @@ function buildStatusGuide(compact = false) {
 
 function statusNarrative(status) {
   if (status === "error" || status === "offline" || status === "blocked") return "Akuter Fehler";
-  if (status === "warn" || status === "check" || status === "draft") return "Pruefung noetig";
+  if (status === "warn" || status === "check" || status === "draft") return "Prüfung nötig";
   if (status === "live" || status === "active") return "Stabil";
-  if (status === "connected" || status === "sync" || status === "submitted") return "Verknuepft";
+  if (status === "connected" || status === "sync" || status === "submitted") return "Verknüpft";
   if (status === "ready" || status === "support" || status === "planned") return "Bereit";
   return "Info";
 }
@@ -237,7 +237,7 @@ function buildOverviewCommandCards(dashboardData) {
   const cards = [
     {
       title: "Zentralserver",
-      value: gatewayState === "running" ? "Mac mini / Hermes stabil" : "Zentralserver pruefen",
+      value: gatewayState === "running" ? "Mac mini / Hermes stabil" : "Zentralserver prüfen",
       detail: `Gateway ${gatewayState} · Telegram ${telegramState}`,
       status: gatewayState === "running" && telegramState === "connected" ? "live" : "warn",
       image: getOverviewIcon("centralServer"),
@@ -247,7 +247,7 @@ function buildOverviewCommandCards(dashboardData) {
     {
       title: "Kommunikation",
       value: `${formatValue(agentsRoom.metrics?.routeCount || 0)} aktive Routen`,
-      detail: `${formatValue(agentsRoom.metrics?.delegationCount || 0)} Delegationen · ${formatValue(agentsRoom.metrics?.conversationCount || 0)} Gespraeche`,
+      detail: `${formatValue(agentsRoom.metrics?.delegationCount || 0)} Delegationen · ${formatValue(agentsRoom.metrics?.conversationCount || 0)} Gespräche`,
       status: (agentsRoom.metrics?.routeCount || 0) > 0 ? "connected" : "warn",
       image: getOverviewIcon("communication"),
       href: "#agentsroom",
@@ -256,7 +256,7 @@ function buildOverviewCommandCards(dashboardData) {
     {
       title: "Vault / Memory",
       value: vaultSource?.detail || "Brain Vault nicht gemeldet",
-      detail: vaultSource?.route || "Vault-Verbindungen pruefen",
+      detail: vaultSource?.route || "Vault-Verbindungen prüfen",
       status: vaultSource?.state || "warn",
       image: getOverviewIcon("vault"),
       href: "#agentsroom",
@@ -265,7 +265,7 @@ function buildOverviewCommandCards(dashboardData) {
     {
       title: "HA Backup",
       value: backupRoutePresent ? "Mac mini als Ziel aktiv" : "Backup-Pfad fehlt",
-      detail: backupRoutePresent ? "Home Assistant -> Mac mini ueber SMB / Bridge" : "Heimdall / HA Route offen",
+      detail: backupRoutePresent ? "Home Assistant -> Mac mini über SMB / Bridge" : "Heimdall / HA Route offen",
       status: backupRoutePresent ? "live" : "warn",
       image: getOverviewIcon("homeAssistant"),
       href: "#home-assistant",
@@ -274,7 +274,7 @@ function buildOverviewCommandCards(dashboardData) {
     {
       title: "Warnungen",
       value: warningCount > 0 ? `${warningCount} Punkte mit Bedarf` : "Keine offenen Warnungen",
-      detail: warningCount > 0 ? "Prio in Warnungen und Technik pruefen" : "Systemzustand im Snapshot ruhig",
+      detail: warningCount > 0 ? "Prio in Warnungen und Technik prüfen" : "Systemzustand im Snapshot ruhig",
       status: warningCount > 0 ? "warn" : "live",
       image: getOverviewIcon("alerts"),
       href: "#alerts",
@@ -337,7 +337,7 @@ function formatSocialStatus(status, statusLabel) {
   if (statusLabel) return statusLabel;
   if (status === "live") return "Live";
   if (status === "connected") return "Verbunden";
-  if (status === "warn" || status === "check") return "Pruefen";
+  if (status === "warn" || status === "check") return "Prüfen";
   if (status === "info") return "Hinweis";
   return status || "Info";
 }
@@ -515,15 +515,15 @@ function buildVaultGraphEdges(agentsRoom) {
   const argusBridge = hasSource(/Argus Bridge/i);
 
   return [
-    { from: "Operator", to: "Hermes", channel: "Telegram", purpose: "menschlicher Eingang", status: telegramConnected ? "live" : "warn", statusLabel: telegramConnected ? "Live" : "Pruefen" },
-    { from: "Hermes", to: "Telegram Spool", channel: "Queue", purpose: "Nachrichten ausgehend puffern", status: runtime.latestSpoolPath ? "connected" : "warn", statusLabel: runtime.latestSpoolPath ? "Verbunden" : "Pruefen" },
-    { from: "Hermes", to: "Channel Directory", channel: "Routing", purpose: "Kanaele und Ziele abgleichen", status: channelDirectory?.state || "connected", statusLabel: channelDirectory?.kind || "Routing" },
+    { from: "Operator", to: "Hermes", channel: "Telegram", purpose: "menschlicher Eingang", status: telegramConnected ? "live" : "warn", statusLabel: telegramConnected ? "Live" : "Prüfen" },
+    { from: "Hermes", to: "Telegram Spool", channel: "Queue", purpose: "Nachrichten ausgehend puffern", status: runtime.latestSpoolPath ? "connected" : "warn", statusLabel: runtime.latestSpoolPath ? "Verbunden" : "Prüfen" },
+    { from: "Hermes", to: "Channel Directory", channel: "Routing", purpose: "Kanäle und Ziele abgleichen", status: channelDirectory?.state || "connected", statusLabel: channelDirectory?.kind || "Routing" },
     { from: "Hermes", to: "Active Sessions", channel: "Runtime", purpose: "aktive Sitzungen tracken", status: activeSessions?.state || "live", statusLabel: activeSessions?.kind || "Runtime" },
     { from: "Hermes", to: "Jarvis", channel: "Control", purpose: "Aufgaben verteilen", status: "live", statusLabel: "Live" },
     { from: "Jarvis", to: "Brain Vault", channel: "Memory Sync", purpose: "Wissen verdichten", status: brainVault?.state || "sync", statusLabel: brainVault?.kind || "Memory" },
     { from: "Brain Vault", to: "Obsidian", channel: "Graph", purpose: "Knoten und Beziehungen spiegeln", status: "sync", statusLabel: "Sync" },
     { from: "Jarvis", to: "Argus Bridge", channel: "Review", purpose: "Zweitbewertung und Diagnose", status: argusBridge?.state || "support", statusLabel: argusBridge?.kind || "Support" },
-    { from: "GitHub", to: "Brain Vault", channel: "Repo Context", purpose: "Code und Dokumentation zufuehren", status: "connected", statusLabel: "Verbunden" }
+    { from: "GitHub", to: "Brain Vault", channel: "Repo Context", purpose: "Code und Dokumentation zuführen", status: "connected", statusLabel: "Verbunden" }
   ];
 }
 
@@ -540,7 +540,7 @@ function buildGraphDataset(agentsRoom, mode) {
     records.set("Mensch", { name: "Mensch", role: "Eigentümer und oberste Steuerstufe", route: "Du -> Hermes", channel: "Telegram", status: "live", statusLabel: "Live" });
   }
   if (isVaultMode) {
-    records.set("Operator", { name: "Operator", role: "Menschlicher Eingang ueber Telegram", route: "Operator -> Hermes", channel: "Telegram", status: "live", statusLabel: "Live" });
+    records.set("Operator", { name: "Operator", role: "Menschlicher Eingang über Telegram", route: "Operator -> Hermes", channel: "Telegram", status: "live", statusLabel: "Live" });
     records.set("Hermes", { name: "Hermes", role: "Runtime und Thread-Steuerung", route: "Hermes / state.db", channel: "Runtime", status: "live", statusLabel: "Live" });
     records.set("Jarvis", { name: "Jarvis", role: "Delegation und Verteilung", route: "Hermes -> Jarvis", channel: "Control", status: "live", statusLabel: "Live" });
     records.set("Brain Vault", { name: "Brain Vault", role: "Persistente Wissensbasis", route: "Hermes / Brain Vault", channel: "Vault", status: "sync", statusLabel: "Sync" });
@@ -641,7 +641,7 @@ function renderGraphView(agentsRoom, mode) {
       (edge) => `
         <div class="agentsroom-network-legend-item" data-route-from="${toGraphId(edge.from)}" data-route-to="${toGraphId(edge.to)}">
           <span>${escapeHtml(edge.from)} → ${escapeHtml(edge.to)}</span>
-          <strong>${escapeHtml(edge.channel)}${mode === "agents" && edge.feedback !== false && edge.from !== "Mensch" ? " · Rueckmeldung ↩" : ""}</strong>
+          <strong>${escapeHtml(edge.channel)}${mode === "agents" && edge.feedback !== false && edge.from !== "Mensch" ? " · Rückmeldung ↩" : ""}</strong>
           <small class="status-pill ${statusClass(edge.status || edge.state)}">${escapeHtml(edge.statusLabel || edge.state || edge.status)}</small>
         </div>
       `
@@ -653,7 +653,7 @@ function renderGraphView(agentsRoom, mode) {
       <div class="agentsroom-network-scroll" tabindex="0" aria-label="${mode === "devices" ? "Gerätenetz horizontal erkunden" : "Agentenfluss horizontal erkunden"}">
         <div class="agentsroom-network-zoom" data-network-zoom-shell style="--network-zoom:1">
           <div class="agentsroom-network">
-            <svg class="agentsroom-network-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="${mode === "devices" ? "Geraetenetz mit Mac mini als Zentralserver" : mode === "vault" ? "Vault-Graph mit Runtime, Brain Vault und Obsidian-Verbindungen" : "Agenten-Orchestrierung von Operator ueber Hermes und Jarvis"}">
+            <svg class="agentsroom-network-svg" viewBox="0 0 ${width} ${height}" role="img" aria-label="${mode === "devices" ? "Gerätenetz mit Mac mini als Zentralserver" : mode === "vault" ? "Vault-Graph mit Runtime, Brain Vault und Obsidian-Verbindungen" : "Agenten-Orchestrierung von Operator über Hermes und Jarvis"}">
               <defs>
                 <marker id="${markerId}" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
                   <path d="M 0 0 L 10 5 L 0 10 z" />
@@ -686,7 +686,7 @@ function buildRoutingWorkspace(agentsRoom) {
           Agentenfluss <span>${agentData.edges.length} Routen</span>
         </button>
         <button type="button" class="agentsroom-mode-btn" role="tab" aria-selected="false" data-network-mode="devices">
-          Geraetenetz <span>${deviceData.edges.length} Verbindungen</span>
+          Gerätenetz <span>${deviceData.edges.length} Verbindungen</span>
         </button>
         <button type="button" class="agentsroom-mode-btn" role="tab" aria-selected="false" data-network-mode="vault">
           Vault Graph <span>${vaultData.edges.length} Knotenpfade</span>
@@ -700,7 +700,7 @@ function buildRoutingWorkspace(agentsRoom) {
       </div>
       <div class="agentsroom-routing-key">
         <span><i class="route-sample is-forward"></i> Auftrag / Delegation</span>
-        <span><i class="route-sample is-feedback"></i> Ergebnis / Rueckmeldung</span>
+        <span><i class="route-sample is-feedback"></i> Ergebnis / Rückmeldung</span>
       </div>
       <div class="agentsroom-network-stage">
         ${renderGraphView(agentsRoom, "agents")}
@@ -1098,7 +1098,7 @@ export function renderVisualPulse(container, dashboardData) {
             (item) => `
               <div class="pulse-social-account">
                 <strong>${escapeHtml(item.label)}</strong>
-                <span>${escapeHtml(item.status === "live" ? "Verbunden" : item.status === "check" ? "Pruefen" : item.status)}</span>
+                <span>${escapeHtml(item.status === "live" ? "Verbunden" : item.status === "check" ? "Prüfen" : item.status)}</span>
               </div>
             `
           )
@@ -1128,8 +1128,8 @@ export function renderAgentsRoomSection(container, agentsRoom) {
   const recentObligations = Array.isArray(agentsRoom?.recentObligations) ? agentsRoom.recentObligations : [];
   const metrics = agentsRoom?.metrics || {};
   const runtimeLiveData = [
-    { label: "Gateway", value: runtime.gatewayState?.gateway_state || "unbekannt", status: runtime.gatewayState?.gateway_state === "running" ? "live" : "warn", statusLabel: runtime.gatewayState?.gateway_state === "running" ? "Aktiv" : "Pruefen" },
-    { label: "Telegram", value: runtime.gatewayState?.platforms?.telegram?.state || "unbekannt", status: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "connected" : "warn", statusLabel: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "Verbunden" : "Pruefen" },
+    { label: "Gateway", value: runtime.gatewayState?.gateway_state || "unbekannt", status: runtime.gatewayState?.gateway_state === "running" ? "live" : "warn", statusLabel: runtime.gatewayState?.gateway_state === "running" ? "Aktiv" : "Prüfen" },
+    { label: "Telegram", value: runtime.gatewayState?.platforms?.telegram?.state || "unbekannt", status: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "connected" : "warn", statusLabel: runtime.gatewayState?.platforms?.telegram?.state === "connected" ? "Verbunden" : "Prüfen" },
     { label: "Lifecycle", value: runtime.gatewayLifecycle?.phase || "unbekannt", status: runtime.gatewayLifecycle?.phase === "running" ? "live" : "sync", statusLabel: runtime.gatewayLifecycle?.phase === "running" ? "Laufend" : "Sync" },
     { label: "Aktuelle Route", value: runtime.currentRouting?.displayName ? `${runtime.currentRouting.displayName} • ${String(runtime.currentRouting.sessionId || runtime.currentRouting.sessionKey || "").slice(-8)}` : "keine Route", status: runtime.currentRouting ? "connected" : "info", statusLabel: runtime.currentRouting ? "Route" : "Keine" },
     { label: "Aktive Sessions", value: String(runtime.counts?.sessions ?? 0), status: (runtime.counts?.sessions || 0) > 0 ? "live" : "info", statusLabel: "SQLite" },
@@ -1182,15 +1182,15 @@ export function renderAgentsRoomSection(container, agentsRoom) {
           <div class="agentsroom-visual-strip">
             <button type="button" class="agentsroom-visual-card agentsroom-visual-action" data-network-target-mode="agents">
               <img src="${getDashboardVisual("communication")}" alt="Hermes Steuerung">
-              <div><strong>Hermes Mesh</strong><span>Telegram, Argus, OpenClaw, Jarvis und die Rueckgabe an dich.</span></div>
+              <div><strong>Hermes Mesh</strong><span>Telegram, Argus, OpenClaw, Jarvis und die Rückgabe an dich.</span></div>
             </button>
             <button type="button" class="agentsroom-visual-card agentsroom-visual-action" data-network-target-mode="devices">
-              <img src="${getDashboardVisual("homeAssistant")}" alt="Geraetenetz">
-              <div><strong>Geraetenetz</strong><span>Mac mini, Macs, Home Assistant und Publishing-Pfade.</span></div>
+              <img src="${getDashboardVisual("homeAssistant")}" alt="Gerätenetz">
+              <div><strong>Gerätenetz</strong><span>Mac mini, Macs, Home Assistant und Publishing-Pfade.</span></div>
             </button>
             <button type="button" class="agentsroom-visual-card agentsroom-visual-action" data-network-target-mode="vault">
               <img src="${getDashboardVisual("vault")}" alt="Vault Graph">
-              <div><strong>Vault Graph</strong><span>Brain Vault, Obsidian, Sessions, Review und Wissens-Rueckfluss.</span></div>
+              <div><strong>Vault Graph</strong><span>Brain Vault, Obsidian, Sessions, Review und Wissens-Rückfluss.</span></div>
             </button>
           </div>
         </article>
@@ -1300,7 +1300,7 @@ export function renderHomeAssistantSection(container, dashboardData) {
         <div>
           <p class="eyebrow">HA / Zentralserver</p>
           <h3>Home Assistant → Mac mini</h3>
-          <p>Der Mac mini bleibt das Backup-Ziel. Heimdall uebernimmt die HA-Pruefung, Jarvis delegiert und Hermes bleibt die zentrale Steuerstufe.</p>
+          <p>Der Mac mini bleibt das Backup-Ziel. Heimdall übernimmt die HA-Prüfung, Jarvis delegiert und Hermes bleibt die zentrale Steuerstufe.</p>
         </div>
         <div class="ha-command-status">
           <span class="status-pill ${statusClass(haDevice.status)}">HA: <strong>${escapeHtml(haDevice.statusLabel || "nicht gemeldet")}</strong></span>
@@ -1310,18 +1310,18 @@ export function renderHomeAssistantSection(container, dashboardData) {
         <div class="ha-actions">
           <a class="action-btn" href="#agentsroom">Im Routing anzeigen</a>
           <button type="button" class="action-btn is-secondary" data-ha-copy>HA-Diagnose kopieren</button>
-          <a class="action-btn is-secondary" href="#alerts">Warnungen pruefen</a>
+          <a class="action-btn is-secondary" href="#alerts">Warnungen prüfen</a>
         </div>
       </article>
 
       <article class="panel">
-        <h3>Zustaendigkeit & Datenfluss</h3>
+        <h3>Zuständigkeit & Datenfluss</h3>
         <ol class="ha-flow">
           <li><strong>Hermes</strong><span>zentrale Steuerung und Operator-Eingang</span></li>
-          <li><strong>Jarvis</strong><span>delegiert HA-Aufgaben und Backup-Pruefung</span></li>
+          <li><strong>Jarvis</strong><span>delegiert HA-Aufgaben und Backup-Prüfung</span></li>
           <li><strong>${escapeHtml(heimdall.name || "Heimdall")}</strong><span>${escapeHtml(heimdall.role || "HA-Agent nicht gemeldet")}</span></li>
           <li><strong>Home Assistant</strong><span>${escapeHtml(haDevice.route || "Route nicht gemeldet")}</span></li>
-          <li><strong>Mac mini</strong><span>zentrales Backup-Ziel ueber SMB / Bridge</span></li>
+          <li><strong>Mac mini</strong><span>zentrales Backup-Ziel über SMB / Bridge</span></li>
         </ol>
       </article>
 
@@ -1390,8 +1390,8 @@ export function renderHomeAssistantSection(container, dashboardData) {
 
       <article class="panel ha-wide">
         <div class="agentsroom-panel-head">
-          <div><h3>HA-Routen und Aufgaben</h3><p class="muted-line">Nur vorhandene Eintraege aus dem aktuellen Dashboard-Snapshot.</p></div>
-          <span class="status-pill ${backupRoute ? "is-live" : "is-warn"}">${backupRoute ? "Backup-Route vorhanden" : "Backup-Route pruefen"}</span>
+          <div><h3>HA-Routen und Aufgaben</h3><p class="muted-line">Nur vorhandene Einträge aus dem aktuellen Dashboard-Snapshot.</p></div>
+          <span class="status-pill ${backupRoute ? "is-live" : "is-warn"}">${backupRoute ? "Backup-Route vorhanden" : "Backup-Route prüfen"}</span>
         </div>
         <div class="ha-route-grid">
           ${haRoutes.map((route) => `<article><span class="status-pill ${statusClass(route.status)}">${escapeHtml(route.statusLabel || route.status)}</span><strong>${escapeHtml(route.from)} → ${escapeHtml(route.to)}</strong><p>${escapeHtml(route.channel)} · ${escapeHtml(route.purpose || "")}</p></article>`).join("") || `<p class="muted-line">Keine HA-Agentenroute gemeldet.</p>`}
@@ -1464,7 +1464,7 @@ export function renderWebsiteSection(container, metrics) {
       </div>
     </article>
     <article class="panel">
-      <h3>Seiten nach Dateigroesse</h3>
+      <h3>Seiten nach Dateigröße</h3>
       <table class="data-table">
         <thead><tr><th>Seite</th><th>KB</th><th>Status</th></tr></thead>
         <tbody>
@@ -1539,7 +1539,7 @@ function renderMerchBridgePanel(shopMetrics) {
           <h3>Katalog &rarr; Queue &rarr; Batches &rarr; Shirtee</h3>
         </div>
       </div>
-      <p class="muted-line">Ein-Knopf-Werkzeuge fuer den bestehenden Shirtee-Store. Kein neuer Shop &mdash; nur Sync-Aktionen auf dem gleichen Katalog.</p>
+      <p class="muted-line">Ein-Knopf-Werkzeuge für den bestehenden Shirtee-Store. Kein neuer Shop &mdash; nur Sync-Aktionen auf dem gleichen Katalog.</p>
       <div class="quick-action-group">
         <a class="action-btn" href="${storeHref}" target="_blank" rel="noopener noreferrer">Shirtee Store &ouml;ffnen</a>
         <a class="action-btn" href="/artifacts/upload-queue/shirtee-upload-queue.csv" target="_blank" rel="noopener noreferrer">Queue CSV</a>
@@ -1587,13 +1587,13 @@ export function renderShopSection(container, shopMetrics) {
     <article class="panel">
       <h3>Shop Monitoring (nur Echt-Daten)</h3>
       <div class="mini-grid three">
-        <div><span>Gepruefte Produktlinks</span><strong>${formatValue(shopMetrics.linkHealth.checkedLinks)}</strong></div>
+        <div><span>Geprüfte Produktlinks</span><strong>${formatValue(shopMetrics.linkHealth.checkedLinks)}</strong></div>
         <div><span>Erreichbare Produktlinks</span><strong>${formatValue(shopMetrics.linkHealth.okLinks)}</strong></div>
         <div><span>Fehlerhafte Produktlinks</span><strong>${formatValue(shopMetrics.linkHealth.failLinks)}</strong></div>
       </div>
       <div class="mini-grid three">
         <div><span>Erreichbarkeitsquote</span><strong>${shopMetrics.linkHealth.reachabilityRate}</strong></div>
-        <div><span>Katalogeintraege</span><strong>${formatValue(shopMetrics.catalog.totalItems)}</strong></div>
+        <div><span>Katalogeinträge</span><strong>${formatValue(shopMetrics.catalog.totalItems)}</strong></div>
         <div><span>Live im Store</span><strong>${formatValue(shopMetrics.catalog.liveItems)}</strong></div>
       </div>
       <div class="mini-grid three">
@@ -1609,12 +1609,12 @@ export function renderShopSection(container, shopMetrics) {
     </article>
     ${renderMerchBridgePanel(shopMetrics)}
     <article class="panel">
-      <h3>Gepruefte Produktlinks</h3>
+      <h3>Geprüfte Produktlinks</h3>
       <table class="data-table">
         <thead><tr><th>Produkt</th><th>HTTP</th><th>Status</th><th>Link</th></tr></thead>
         <tbody>
           ${shopMetrics.topProducts
-            .map((row) => `<tr><td>${row.name}</td><td>${formatValue(row.httpCode)}</td><td>${row.statusLabel || "-"}</td><td><a href="${row.href}" target="_blank" rel="noopener noreferrer">oeffnen</a></td></tr>${row.sourceLabel ? `<tr><td colspan="4" class="muted-row">Quelle: ${row.sourceLabel}</td></tr>` : ""}`)
+            .map((row) => `<tr><td>${row.name}</td><td>${formatValue(row.httpCode)}</td><td>${row.statusLabel || "-"}</td><td><a href="${row.href}" target="_blank" rel="noopener noreferrer">öffnen</a></td></tr>${row.sourceLabel ? `<tr><td colspan="4" class="muted-row">Quelle: ${row.sourceLabel}</td></tr>` : ""}`)
             .join("")}
         </tbody>
       </table>
@@ -1680,7 +1680,7 @@ export function renderCatalogUploadSection(container, shopMetrics) {
           </div>
           <p>${item.line} • ${item.sectionLabel}</p>
           <p class="muted-line">Katalogstatus: ${item.catalogStatus}</p>
-          <a href="${item.href}" target="_blank" rel="noopener noreferrer">Produktlink oeffnen</a>
+          <a href="${item.href}" target="_blank" rel="noopener noreferrer">Produktlink öffnen</a>
         </div>
       </article>
     `;
@@ -1692,7 +1692,7 @@ export function renderCatalogUploadSection(container, shopMetrics) {
       <div class="mini-grid three">
         <div><span>Artikel gesamt</span><strong>${formatValue(catalog.totalItems || itemStates.length)}</strong></div>
         <div><span>Bereits auf Shirtee</span><strong>${formatValue(catalog.uploadedCount || uploaded.length)}</strong></div>
-        <div><span>Eingereicht (Pruefung)</span><strong>${formatValue(catalog.submittedCount || submitted.length)}</strong></div>
+        <div><span>Eingereicht (Prüfung)</span><strong>${formatValue(catalog.submittedCount || submitted.length)}</strong></div>
       </div>
       <div class="mini-grid three">
         <div><span>Uploadbereit</span><strong>${formatValue(catalog.readyCount || ready.length)}</strong></div>
@@ -1707,7 +1707,7 @@ export function renderCatalogUploadSection(container, shopMetrics) {
     </article>
     <article class="panel">
       <h3>Upload-Reihenfolge (DJ)</h3>
-      <p class="muted-line">Empfohlen: erst "Uploadbereit", danach offene Konzeptartikel in Prioritaetsreihenfolge hochladen.</p>
+      <p class="muted-line">Empfohlen: erst "Uploadbereit", danach offene Konzeptartikel in Prioritätsreihenfolge hochladen.</p>
       <div class="catalog-group-grid">
         <div>
           <h4>Bereits hochgeladen</h4>
@@ -1718,7 +1718,7 @@ export function renderCatalogUploadSection(container, shopMetrics) {
           <div class="catalog-list">${ready.slice(0, 24).map(renderCard).join("") || `<p class="muted-line">Aktuell nichts als uploadbereit markiert.</p>`}</div>
         </div>
         <div>
-          <h4>Eingereicht (Pruefung)</h4>
+          <h4>Eingereicht (Prüfung)</h4>
           <div class="catalog-list">${submitted.slice(0, 24).map(renderCard).join("") || `<p class="muted-line">Aktuell keine eingereichten Artikel erkannt.</p>`}</div>
         </div>
         <div>
@@ -1893,9 +1893,9 @@ export function renderSocial(container, socialMetrics) {
   const contentSignals = socialMetrics.links.reduce((sum, row) => sum + Number(row.metricValue || 0), 0);
   const soundcloudRow = socialMetrics.links.find((row) => /soundcloud/i.test(row.platform || ""));
   const summaryCards = [
-    { label: "Staerkster Kanal", value: strongest, meta: "Routing / Fokus", status: "live" },
-    { label: "Live Profile", value: `${liveProfiles}/${socialMetrics.links.length}`, meta: "aktuell bestaetigt", status: liveProfiles >= 2 ? "connected" : "warn" },
-    { label: "SoundCloud", value: soundcloudRow?.valueLabel || "nicht verfuegbar", meta: soundcloudRow?.statusLabel || "kein Live-Signal", status: /lokal nicht verifizierbar/i.test(soundcloudRow?.statusLabel || "") ? "warn" : "live" },
+    { label: "Stärkster Kanal", value: strongest, meta: "Routing / Fokus", status: "live" },
+    { label: "Live Profile", value: `${liveProfiles}/${socialMetrics.links.length}`, meta: "aktuell bestätigt", status: liveProfiles >= 2 ? "connected" : "warn" },
+    { label: "SoundCloud", value: soundcloudRow?.valueLabel || "nicht verfügbar", meta: soundcloudRow?.statusLabel || "kein Live-Signal", status: /lokal nicht verifizierbar/i.test(soundcloudRow?.statusLabel || "") ? "warn" : "live" },
     { label: "Linksignale", value: formatValue(contentSignals), meta: "Website / Inhalt", status: "connected" }
   ];
   const profileCards = socialMetrics.links.map((row) => {
@@ -2025,7 +2025,7 @@ export function renderSocial(container, socialMetrics) {
                       <strong>${escapeHtml(item.label)}</strong>
                       <span class="social-node-title">${escapeHtml(item.displayName || "")}</span>
                     </div>
-                    <em class="status-pill ${item.status === "live" ? "is-ok" : item.status === "check" ? "is-warn" : "is-info"}">${item.status === "live" ? "Verbunden" : item.status === "check" ? "Pruefen" : item.status}</em>
+                    <em class="status-pill ${item.status === "live" ? "is-ok" : item.status === "check" ? "is-warn" : "is-info"}">${item.status === "live" ? "Verbunden" : item.status === "check" ? "Prüfen" : item.status}</em>
                   </div>
                   <p>${escapeHtml(item.handle || item.meta)}</p>
                   <a href="${item.url}" target="_blank" rel="noopener noreferrer">${escapeHtml(item.url)}</a>

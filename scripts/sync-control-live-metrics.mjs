@@ -998,7 +998,7 @@ async function main() {
     const isSubmitted = !isUploaded && submittedIds.has(item?.id || `catalog-${index + 1}`);
     const isReady = !isUploaded && (loweredStatus.includes("uploadbereit") || loweredStatus.includes("top upload"));
     const uploadState = isUploaded ? "uploaded" : isSubmitted ? "submitted" : isReady ? "ready" : "pending";
-    const uploadLabel = isUploaded ? "Bereits hochgeladen" : isSubmitted ? "Eingereicht (in Pruefung)" : isReady ? "Uploadbereit" : "Noch offen";
+    const uploadLabel = isUploaded ? "Bereits hochgeladen" : isSubmitted ? "Eingereicht (in Prüfung)" : isReady ? "Uploadbereit" : "Noch offen";
 
     return {
       id: item?.id || `catalog-${index + 1}`,
@@ -1056,7 +1056,7 @@ async function main() {
         tiktokDr.followers != null
           ? `${tiktokDr.followers.toLocaleString("de-DE")} Follower • ${tiktokDr.videos != null ? `${tiktokDr.videos} Videos` : `${hrefCounts.tiktokDr} Linksignale`}`
           : `${hrefCounts.tiktokDr} Linksignale im Seiteninhalt`,
-      statusLabel: tiktokDr.canonical ? "Profil erreichbar" : "Profil nicht bestaetigt",
+      statusLabel: tiktokDr.canonical ? "Profil erreichbar" : "Profil nicht bestätigt",
       sourceLabel: `${tiktokDr.source === "tiktok-api-v2" ? "TikTok API v2 OAuth" : "TikTok Profil-HTML"}${tiktokDr.statusCode != null ? ` • Code ${tiktokDr.statusCode}` : ""}${tiktokDr.likes != null ? ` • Likes ${tiktokDr.likes.toLocaleString("de-DE")}` : ""}`
     },
     {
@@ -1072,7 +1072,7 @@ async function main() {
         tiktokMrs.followers != null
           ? `${tiktokMrs.followers.toLocaleString("de-DE")} Follower • ${tiktokMrs.videos != null ? `${tiktokMrs.videos} Videos` : `${hrefCounts.tiktokMrs} Linksignale`}`
           : `${hrefCounts.tiktokMrs} Linksignale im Seiteninhalt`,
-      statusLabel: tiktokMrs.canonical ? "Profil erreichbar" : "Profil nicht bestaetigt",
+      statusLabel: tiktokMrs.canonical ? "Profil erreichbar" : "Profil nicht bestätigt",
       sourceLabel: `${tiktokMrs.source === "tiktok-api-v2" ? "TikTok API v2 OAuth" : "TikTok Profil-HTML"}${tiktokMrs.statusCode != null ? ` • Code ${tiktokMrs.statusCode}` : ""}${tiktokMrs.likes != null ? ` • Likes ${tiktokMrs.likes.toLocaleString("de-DE")}` : ""}`
     },
     {
@@ -1097,8 +1097,8 @@ async function main() {
       verified: shopFail === 0,
       status: shopFail > 0 ? "warn" : "connected",
       metricValue: storeVisibleProducts,
-      valueLabel: `${storeVisibleProducts} Produkte sichtbar • ${shopLive}/${shopChecked} gepruefte Produktlinks`,
-      statusLabel: shopFail > 0 ? `${shopFail} Links fehlerhaft` : "Alle geprueften Links erreichbar",
+      valueLabel: `${storeVisibleProducts} Produkte sichtbar • ${shopLive}/${shopChecked} geprüfte Produktlinks`,
+      statusLabel: shopFail > 0 ? `${shopFail} Links fehlerhaft` : "Alle geprüften Links erreichbar",
       sourceLabel: "Shirtee-Linkcheck"
     }
   ];
@@ -1118,25 +1118,25 @@ async function main() {
     },
     routing: [
       { from: "Mensch", to: "Hermes", channel: "Telegram / iPhone", purpose: "Operator-Eingang und Startsignal", status: "live", statusLabel: "Live", feedback: false },
-      { from: "Hermes", to: "Argus", channel: "Vorpruefung", purpose: "erstes Review auf Logik, Risiko und Korrektheit", status: "support", statusLabel: "Support", feedback: false },
-      { from: "Argus", to: "Hermes", channel: "Review Return", purpose: "Rueckgabe mit Korrekturhinweisen", status: "support", statusLabel: "Support", feedback: false },
-      { from: "Hermes", to: "OpenClaw Gateway", channel: "Queue / Bridge", purpose: "Auftrag an Broker und Delegationsschicht uebergeben", status: "connected", statusLabel: "Verbunden", feedback: false },
-      { from: "OpenClaw Gateway", to: "Jarvis", channel: "Broker -> Verteiler", purpose: "Jarvis uebernimmt Verteilung und Arbeitsplanung", status: "connected", statusLabel: "Verbunden" },
+      { from: "Hermes", to: "Argus", channel: "Vorprüfung", purpose: "erstes Review auf Logik, Risiko und Korrektheit", status: "support", statusLabel: "Support", feedback: false },
+      { from: "Argus", to: "Hermes", channel: "Review Return", purpose: "Rückgabe mit Korrekturhinweisen", status: "support", statusLabel: "Support", feedback: false },
+      { from: "Hermes", to: "OpenClaw Gateway", channel: "Queue / Bridge", purpose: "Auftrag an Broker und Delegationsschicht übergeben", status: "connected", statusLabel: "Verbunden", feedback: false },
+      { from: "OpenClaw Gateway", to: "Jarvis", channel: "Broker -> Verteiler", purpose: "Jarvis übernimmt Verteilung und Arbeitsplanung", status: "connected", statusLabel: "Verbunden" },
       { from: "Jarvis", to: "Forge", channel: "Infra / Skills / Server", purpose: "Engineering und Umsetzung", status: "live", statusLabel: "Live" },
       { from: "Jarvis", to: "Sentinel", channel: "Logs / Health / Security", purpose: "Monitoring und Sicherheit", status: "live", statusLabel: "Live" },
       { from: "Jarvis", to: "Oracle", channel: "Briefings", purpose: "Kontext, Wetter und News", status: "ready", statusLabel: "Bereit" },
       { from: "Jarvis", to: "Muse", channel: "Content / Audio / Social", purpose: "Content und Media", status: "ready", statusLabel: "Bereit" },
       { from: "Jarvis", to: "Heimdall", channel: "Home Assistant", purpose: "Smart Home, Automationen und HA-Backups", status: "connected", statusLabel: "Verbunden" },
-      { from: "Jarvis", to: "Friday", channel: "Deep Repair", purpose: "schwere Reparaturen und technische Ausnahmefaelle", status: "ready", statusLabel: "Bereit" },
-      { from: "Jarvis", to: "Claude", channel: "Counter Check", purpose: "nur bei hoher Komplexitaet und Reasoning-Bedarf", status: "support", statusLabel: "Fallback" },
-      { from: "Jarvis", to: "Claude Code", channel: "Pair Coding", purpose: "nur bei groesseren Coding-Aufgaben und Refactors", status: "support", statusLabel: "Fallback" },
-      { from: "Jarvis", to: "Codex", channel: "Code Escalation", purpose: "nur fuer Umsetzung, Tests und Tool-Arbeit", status: "support", statusLabel: "Fallback" },
-      { from: "Jarvis", to: "Hermes", channel: "Review Return", purpose: "gepruefte Ergebnisse zurueck an Hermes liefern", status: "live", statusLabel: "Live", feedback: false },
-      { from: "Hermes", to: "Mensch", channel: "Telegram Reply", purpose: "Ergebnis an dich zurueckgeben", status: "live", statusLabel: "Live", feedback: false }
+      { from: "Jarvis", to: "Friday", channel: "Deep Repair", purpose: "schwere Reparaturen und technische Ausnahmefälle", status: "ready", statusLabel: "Bereit" },
+      { from: "Jarvis", to: "Claude", channel: "Counter Check", purpose: "nur bei hoher Komplexität und Reasoning-Bedarf", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Claude Code", channel: "Pair Coding", purpose: "nur bei größeren Coding-Aufgaben und Refactors", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Codex", channel: "Code Escalation", purpose: "nur für Umsetzung, Tests und Tool-Arbeit", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Hermes", channel: "Review Return", purpose: "geprüfte Ergebnisse zurück an Hermes liefern", status: "live", statusLabel: "Live", feedback: false },
+      { from: "Hermes", to: "Mensch", channel: "Telegram Reply", purpose: "Ergebnis an dich zurückgeben", status: "live", statusLabel: "Live", feedback: false }
     ],
     agents: [
       { name: "Hermes", role: "Primär-Controller, Telegram-Hub und Rückkanal", route: "Mensch -> Hermes -> Mensch", channel: "Control / Telegram", status: "live", statusLabel: "Live", tags: ["Telegram", "Control", "Reply"], image: "/assets/generated/agent-avatars/hermes.png" },
-      { name: "Argus", role: "Apple-nahe Vorpruefung, Diagnose und Gegencheck", route: "Hermes -> Argus -> Hermes", channel: "Checks", status: "support", statusLabel: "Support", tags: ["Audit", "Second Pass", "Safety"], image: "/assets/generated/agent-avatars/argus.png" },
+      { name: "Argus", role: "Apple-nahe Vorprüfung, Diagnose und Gegencheck", route: "Hermes -> Argus -> Hermes", channel: "Checks", status: "support", statusLabel: "Support", tags: ["Audit", "Second Pass", "Safety"], image: "/assets/generated/agent-avatars/argus.png" },
       { name: "OpenClaw Gateway", role: "Broker, Queue und Uebergabe an Jarvis", route: "Hermes -> Gateway -> Jarvis", channel: "Queue", status: "connected", statusLabel: "Verbunden", tags: ["Bridge", "Queue", "Delegation"] },
       { name: "Jarvis", role: "OpenClaw-Verteiler, Review und Subagenten-Orchestrierung", route: "Gateway -> Jarvis -> Hermes", channel: "Routing / Review", status: "live", statusLabel: "Live", tags: ["Delegation", "Review", "Graph"], image: "/assets/generated/agent-avatars/jarvis.png" },
       { name: "Forge", role: "OpenClaw Infra, Skills und Server", route: "Jarvis -> Forge", channel: "Engineering", status: "live", statusLabel: "Live", tags: ["Infra", "Skills", "Server"], image: "/assets/generated/agent-avatars/forge.png" },
@@ -1145,7 +1145,7 @@ async function main() {
       { name: "Muse", role: "TikTok, SoundCloud und Content", route: "Jarvis -> Muse", channel: "Media", status: "ready", statusLabel: "Bereit", tags: ["Content", "Audio", "Social"], image: "/assets/generated/agent-avatars/muse.png" },
       { name: "Heimdall", role: "Home Assistant, Smart Home und HA-Backups", route: "Jarvis -> Heimdall", channel: "Home", status: "connected", statusLabel: "Verbunden", tags: ["HA", "Scenes", "Devices"], image: "/assets/generated/agent-avatars/heimdall.png" },
       { name: "Friday", role: "Schwere Reparaturen und Deep Work", route: "Jarvis -> Friday", channel: "Repair", status: "ready", statusLabel: "Bereit", tags: ["Deep Work", "Fixes", "Review"] },
-      { name: "Claude", role: "High-trust Gegenpruefung und komplexes Reasoning", route: "Jarvis -> Claude", channel: "Claude", status: "support", statusLabel: "Fallback", tags: ["Escalation", "Review", "Reasoning"] },
+      { name: "Claude", role: "High-trust Gegenprüfung und komplexes Reasoning", route: "Jarvis -> Claude", channel: "Claude", status: "support", statusLabel: "Fallback", tags: ["Escalation", "Review", "Reasoning"] },
       { name: "Claude Code", role: "Aufwendige Implementierung, Refactor und Pair Coding", route: "Jarvis -> Claude Code", channel: "Claude Code", status: "support", statusLabel: "Fallback", tags: ["Code", "Refactor", "Pairing"] },
       { name: "Codex", role: "Code-Ausführung, Tests und technische Umsetzung", route: "Jarvis -> Codex", channel: "Codex", status: "support", statusLabel: "Fallback", tags: ["Code", "Tests", "Implementation"] }
     ],
@@ -1154,7 +1154,7 @@ async function main() {
       { name: "MacBook", role: "Arbeits- und Mirror-Node", route: "MacBook -> Hermes", channel: "Mirror", status: "connected", statusLabel: "Verbunden", tags: ["Mirror", "Review", "Remote"], image: "/assets/generated/device-visuals/macbook-mirror-node.png" },
       { name: "iMac", role: "Operator-Station", route: "iMac -> Control", channel: "Operator", status: "live", statusLabel: "Live", tags: ["iMac", "Dashboard", "Control"], image: "/assets/generated/device-visuals/imac-operator-station.png" },
       { name: "iPhone", role: "Telegram / Mobile Companion", route: "iPhone -> Hermes", channel: "Telegram", status: "active", statusLabel: "Aktiv", tags: ["Mobile", "Telegram", "Alerts"], image: "/assets/generated/device-visuals/iphone-mobile-control.png" },
-      { name: "Home Assistant", role: "Automation und Bruecke", route: "HA -> Mac mini", channel: "Automation", status: "live", statusLabel: "Live", tags: ["HA", "Scenes", "Bridge"], image: "/assets/generated/device-visuals/home-assistant-automation.png" },
+      { name: "Home Assistant", role: "Automation und Brücke", route: "HA -> Mac mini", channel: "Automation", status: "live", statusLabel: "Live", tags: ["HA", "Scenes", "Bridge"], image: "/assets/generated/device-visuals/home-assistant-automation.png" },
       { name: "GitHub", role: "Repo Sync und Codebasis", route: "GitHub -> Repo", channel: "Sync", status: "connected", statusLabel: "Verbunden", tags: ["Repo", "PR", "Workflow"], image: "/assets/generated/dashboard-visuals/website-structure-monitoring.png" },
       { name: "Obsidian", role: "Vault und Live-Gedächtnis", route: "Vault -> Graph", channel: "Memory", status: "sync", statusLabel: "Sync", tags: ["Vault", "Graph", "Memory"], image: "/assets/generated/dashboard-visuals/vault-memory-graph.png" },
       { name: "StreamDeck", role: "Aktionen und Hotkeys", route: "StreamDeck -> Ops", channel: "Actions", status: "ready", statusLabel: "Bereit", tags: ["Shortcuts", "Macros", "Live"], image: "/assets/generated/dashboard-visuals/agent-routing-live.png" },
@@ -1163,37 +1163,37 @@ async function main() {
       { name: "SoundCloud", role: "Music Publishing", route: "SoundCloud -> Public", channel: "Audio", status: "live", statusLabel: "Live", tags: ["Audio", "Public", "Music"], image: soundcloud.available ? soundcloud.user.avatar_url || "/assets/generated/dashboard-visuals/audio-publishing-streams.png" : "/assets/generated/dashboard-visuals/audio-publishing-streams.png" }
     ],
     delegations: [
-      { from: "Hermes", to: "Argus", task: "Erste Vorpruefung auf Logik, Risiko und Qualitaet anstoßen", channel: "Checks", priority: "P0", status: "support", statusLabel: "Support" },
-      { from: "Argus", to: "Hermes", task: "Gegencheck und Korrekturrichtung an Hermes zurueckgeben", channel: "Review", priority: "P0", status: "support", statusLabel: "Support" },
-      { from: "Hermes", to: "OpenClaw Gateway", task: "Auftrag in Broker, Queue und Delegationsschicht uebergeben", channel: "Bridge", priority: "P0", status: "connected", statusLabel: "Verbunden" },
+      { from: "Hermes", to: "Argus", task: "Erste Vorprüfung auf Logik, Risiko und Qualität anstoßen", channel: "Checks", priority: "P0", status: "support", statusLabel: "Support" },
+      { from: "Argus", to: "Hermes", task: "Gegencheck und Korrekturrichtung an Hermes zurückgeben", channel: "Review", priority: "P0", status: "support", statusLabel: "Support" },
+      { from: "Hermes", to: "OpenClaw Gateway", task: "Auftrag in Broker, Queue und Delegationsschicht übergeben", channel: "Bridge", priority: "P0", status: "connected", statusLabel: "Verbunden" },
       { from: "OpenClaw Gateway", to: "Jarvis", task: "Arbeitsstrang an Jarvis zur Verteilung in Subagenten übergeben", channel: "Queue", priority: "P0", status: "connected", statusLabel: "Verbunden" },
       { from: "Jarvis", to: "Forge", task: "Repo, Infrastruktur und Fixes bereitstellen", channel: "Engineering", priority: "P0", status: "live", statusLabel: "Live" },
-      { from: "Jarvis", to: "Sentinel", task: "Logs, Health und Security kontinuierlich ueberwachen", channel: "Monitoring", priority: "P0", status: "live", statusLabel: "Live" },
+      { from: "Jarvis", to: "Sentinel", task: "Logs, Health und Security kontinuierlich überwachen", channel: "Monitoring", priority: "P0", status: "live", statusLabel: "Live" },
       { from: "Jarvis", to: "Heimdall", task: "HA-Backups, Home-Status und Device-Verbindungen prüfen", channel: "Home Assistant", priority: "P1", status: "live", statusLabel: "Live" },
-      { from: "Jarvis", to: "Muse", task: "Content und Audio fuer Social-Aktionen vorbereiten", channel: "Media", priority: "P2", status: "ready", statusLabel: "Bereit" },
-      { from: "Jarvis", to: "Claude", task: "Komplexe Loesungen gegenpruefen, wenn die Standardkette nicht reicht", channel: "Reasoning", priority: "P2", status: "support", statusLabel: "Fallback" },
-      { from: "Jarvis", to: "Claude Code", task: "Groessere Coding-Pakete mit Pair-Coding und Refactor-Hilfe unterstuetzen", channel: "Coding", priority: "P2", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Muse", task: "Content und Audio für Social-Aktionen vorbereiten", channel: "Media", priority: "P2", status: "ready", statusLabel: "Bereit" },
+      { from: "Jarvis", to: "Claude", task: "Komplexe Lösungen gegenprüfen, wenn die Standardkette nicht reicht", channel: "Reasoning", priority: "P2", status: "support", statusLabel: "Fallback" },
+      { from: "Jarvis", to: "Claude Code", task: "Größere Coding-Pakete mit Pair-Coding und Refactor-Hilfe unterstützen", channel: "Coding", priority: "P2", status: "support", statusLabel: "Fallback" },
       { from: "Jarvis", to: "Codex", task: "Umsetzung, Tests und technische Tool-Ausführung übernehmen", channel: "Implementation", priority: "P2", status: "support", statusLabel: "Fallback" }
     ],
     conversations: [
-      { topic: "Kontrollkette", time: generatedAtLabel, from: "Mensch", to: "Hermes", summary: "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.", status: "live", statusLabel: "Live" },
-      { topic: "Vorpruefung", time: generatedAtLabel, from: "Hermes", to: "Argus", summary: "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.", status: "support", statusLabel: "Support" },
+      { topic: "Kontrollkette", time: generatedAtLabel, from: "Mensch", to: "Hermes", summary: "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.", status: "live", statusLabel: "Live" },
+      { topic: "Vorprüfung", time: generatedAtLabel, from: "Hermes", to: "Argus", summary: "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.", status: "support", statusLabel: "Support" },
       { topic: "Broker", time: generatedAtLabel, from: "Hermes", to: "OpenClaw Gateway", summary: "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.", status: "connected", statusLabel: "Verbunden" },
-      { topic: "Verteilung", time: generatedAtLabel, from: "OpenClaw Gateway", to: "Jarvis", summary: "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.", status: "live", statusLabel: "Live" },
-      { topic: "Subagenten", time: generatedAtLabel, from: "Jarvis", to: "Forge", summary: "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.", status: "ready", statusLabel: "Bereit" },
-      { topic: "Escalation", time: generatedAtLabel, from: "Jarvis", to: "Claude Code", summary: "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.", status: "support", statusLabel: "Fallback" },
-      { topic: "Speicher", time: generatedAtLabel, from: "Jarvis", to: "Obsidian", summary: "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.", status: "sync", statusLabel: "Sync" },
-      { topic: "Rueckgabe", time: generatedAtLabel, from: "Jarvis", to: "Hermes", summary: "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.", status: "live", statusLabel: "Live" }
+      { topic: "Verteilung", time: generatedAtLabel, from: "OpenClaw Gateway", to: "Jarvis", summary: "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.", status: "live", statusLabel: "Live" },
+      { topic: "Subagenten", time: generatedAtLabel, from: "Jarvis", to: "Forge", summary: "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.", status: "ready", statusLabel: "Bereit" },
+      { topic: "Escalation", time: generatedAtLabel, from: "Jarvis", to: "Claude Code", summary: "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.", status: "support", statusLabel: "Fallback" },
+      { topic: "Speicher", time: generatedAtLabel, from: "Jarvis", to: "Obsidian", summary: "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.", status: "sync", statusLabel: "Sync" },
+      { topic: "Rückgabe", time: generatedAtLabel, from: "Jarvis", to: "Hermes", summary: "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.", status: "live", statusLabel: "Live" }
     ],
     liveData: [
       { label: "Telegram", value: "Du / iPhone -> Hermes", status: "live", statusLabel: "Live" },
       { label: "Argus Check", value: "Hermes -> Argus -> Hermes", status: "support", statusLabel: "Support" },
       { label: "Broker", value: "Hermes -> OpenClaw -> Jarvis", status: "connected", statusLabel: "Verbunden" },
       { label: "Subagenten", value: "Jarvis -> Fachagenten -> Jarvis", status: "live", statusLabel: "Live" },
-      { label: "HA-Bruecke", value: "Jarvis -> Heimdall", status: "live", statusLabel: "Live" },
+      { label: "HA-Brücke", value: "Jarvis -> Heimdall", status: "live", statusLabel: "Live" },
       { label: "Memory Sync", value: "Jarvis -> Brain Vault / Obsidian", status: "sync", statusLabel: "Sync" },
       { label: "Coding Fallback", value: "Jarvis -> Claude / Claude Code / Codex", status: "support", statusLabel: "Fallback" },
-      { label: "Rueckkanal", value: "Hermes -> Du", status: "live", statusLabel: "Live" }
+      { label: "Rückkanal", value: "Hermes -> Du", status: "live", statusLabel: "Live" }
     ]
   };
 
@@ -1244,18 +1244,18 @@ async function main() {
       deployment: { label: "Datenstand", value: generatedAtLabel, level: "info" }
     },
     overviewKpis: [
-      { id: "pagesChecked", label: "Gepruefte Seiten", value: pageChecks.length, delta: "Live", trend: "neutral" },
+      { id: "pagesChecked", label: "Geprüfte Seiten", value: pageChecks.length, delta: "Live", trend: "neutral" },
       { id: "pagesOk", label: "Seiten OK", value: pageEnvironmentIssue ? null : pageOk, delta: pageEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: pageProblemCount === 0 ? "up" : "neutral" },
       { id: "pagesFail", label: "Seiten mit Fehler", value: pageProblemCount, delta: pageEnvironmentIssue ? "Umgebung" : "Live", trend: pageProblemCount > 0 ? "down" : "neutral" },
       { id: "responseAvg", label: "Ø Antwortzeit (ms)", value: pageEnvironmentIssue ? null : avgResponse, delta: pageEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: "neutral" },
       { id: "merchItems", label: "Merch Artikel gesamt", value: items.length, delta: "Katalog", trend: "neutral" },
-      { id: "shopLinks", label: "Shop-Links geprueft", value: shopChecked, delta: "Shirtee", trend: "neutral" },
+      { id: "shopLinks", label: "Shop-Links geprüft", value: shopChecked, delta: "Shirtee", trend: "neutral" },
       { id: "shopLinksOk", label: "Shop-Links OK", value: shopEnvironmentIssue ? null : shopLive, delta: shopEnvironmentIssue ? "lokal nicht verifizierbar" : "Shirtee", trend: shopProblemCount === 0 ? "up" : "neutral" },
       { id: "soundcloudFollowers", label: "SoundCloud Follower", value: soundcloud.available ? soundcloud.user.followers_count : null, delta: soundcloudEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: "neutral" },
       { id: "tiktokProfiles", label: "TikTok Profile erreichbar", value: tiktokEnvironmentIssue ? null : [tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length, delta: tiktokEnvironmentIssue ? "lokal nicht verifizierbar" : "Live", trend: "neutral" },
       { id: "siteTiktokLinks", label: "TikTok Links auf Website", value: hrefCounts.tiktok, delta: "Inhalt", trend: "neutral" },
       { id: "siteShopLinks", label: "Shop Links auf Website", value: hrefCounts.shop, delta: "Inhalt", trend: "neutral" },
-      { id: "warnings", label: "Offene Warnungen", value: warningCount, delta: "Pruefstatus", trend: warningCount > 0 ? "down" : "neutral" }
+      { id: "warnings", label: "Offene Warnungen", value: warningCount, delta: "Prüfstatus", trend: warningCount > 0 ? "down" : "neutral" }
     ],
     websiteMetrics: {
       trafficSeries: pageChecks.map((item) => ({
@@ -1330,7 +1330,7 @@ async function main() {
         drafts: [
           { id: "drop-01", title: "Club Night Capsule", state: "draft", stateLabel: "Entwurf", line: "Merch / Capsule", task: "Mockup, Copy und Upload-Batch vorbereiten", priority: "P0" },
           { id: "drop-02", title: "Afterhours Neon", state: "ready", stateLabel: "Uploadbereit", line: "TikTok / Merch", task: "Shirtee-Request erzeugen und Batch bauen", priority: "P1" },
-          { id: "drop-03", title: "Sound Ritual", state: "submitted", stateLabel: "Pruefung", line: "Music / Merch", task: "Store-Preview und Produkttext gegenprüfen", priority: "P1" }
+          { id: "drop-03", title: "Sound Ritual", state: "submitted", stateLabel: "Prüfung", line: "Music / Merch", task: "Store-Preview und Produkttext gegenprüfen", priority: "P1" }
         ],
         uploadSteps: [
           { id: "queue", label: "Upload Queue", status: "connected", statusLabel: "CSV bereit", note: "CSV / Queue aus Katalog ableiten" },
@@ -1367,7 +1367,7 @@ async function main() {
     },
     socialMetrics: {
       links: socialRows,
-      strongestPlatform: socialStrongest?.platform || "nicht verfuegbar",
+      strongestPlatform: socialStrongest?.platform || "nicht verfügbar",
       routes: [
         { from: "Website", to: "TikTok Hauptseite", channel: "Hero / CTA", status: "live" },
         { from: "Website", to: "TikTok Backup", channel: "Hero / CTA", status: "live" },
@@ -1402,7 +1402,7 @@ async function main() {
       ],
       errorLog: [
         ...(pageProblemCount > 0 ? [{ id: "WEB-001", scope: "website", message: `${pageProblemCount} Seiten liefern keinen HTTP 200 Status`, level: "warn" }] : []),
-        ...(shopProblemCount > 0 ? [{ id: "SHOP-001", scope: "shop", message: `${shopProblemCount} gepruefte Shop-Links sind nicht erreichbar`, level: "warn" }] : []),
+        ...(shopProblemCount > 0 ? [{ id: "SHOP-001", scope: "shop", message: `${shopProblemCount} geprüfte Shop-Links sind nicht erreichbar`, level: "warn" }] : []),
         ...(!soundcloud.available && !soundcloudEnvironmentIssue ? [{ id: "SOC-001", scope: "soundcloud", message: "SoundCloud API aktuell nicht auslesbar", level: "warn" }] : [])
       ]
     },
@@ -1435,34 +1435,34 @@ async function main() {
         ]
       },
       weakSpots: [
-        ...(pageProblemCount > 0 ? [{ item: "Seitenverfuegbarkeit", note: "Mindestens ein Seitenpfad antwortet nicht mit HTTP 200." }] : []),
-        ...(shopProblemCount > 0 ? [{ item: "Produktlink-Verfuegbarkeit", note: "Nicht alle geprueften Shop-Links sind erreichbar." }] : []),
-        ...(pageEnvironmentIssue ? [{ item: "Netzwerk-DNS", note: "Die Umgebung kann die Hauptdomain nicht aufloesen; das ist kein Site-Fehler." }] : []),
-        ...(shopEnvironmentIssue ? [{ item: "Shop-Pruefung", note: "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren." }] : []),
+        ...(pageProblemCount > 0 ? [{ item: "Seitenverfügbarkeit", note: "Mindestens ein Seitenpfad antwortet nicht mit HTTP 200." }] : []),
+        ...(shopProblemCount > 0 ? [{ item: "Produktlink-Verfügbarkeit", note: "Nicht alle geprüften Shop-Links sind erreichbar." }] : []),
+        ...(pageEnvironmentIssue ? [{ item: "Netzwerk-DNS", note: "Die Umgebung kann die Hauptdomain nicht auflösen; das ist kein Site-Fehler." }] : []),
+        ...(shopEnvironmentIssue ? [{ item: "Shop-Prüfung", note: "Die lokale Umgebung kann die Shirtee-Links nicht verifizieren." }] : []),
         ...(hrefCounts.contact === 0 ? [{ item: "Kontakt-CTA", note: "Keine Kontakt-Links im Seiteninhalt erkannt." }] : [])
       ]
     },
     activityFeed: [
-      { id: "EVT-1", time: generatedAtLabel, type: "check", text: `Live-Pruefung abgeschlossen: ${pageChecks.length} Seitenchecks` },
+      { id: "EVT-1", time: generatedAtLabel, type: "check", text: `Live-Prüfung abgeschlossen: ${pageChecks.length} Seitenchecks` },
       { id: "EVT-2", time: generatedAtLabel, type: "check", text: shopEnvironmentIssue ? "Shop-Linkcheck: lokal nicht verifizierbar" : `Shop-Linkcheck: ${shopLive}/${shopChecked} erreichbar` },
       { id: "EVT-3", time: generatedAtLabel, type: "check", text: soundcloudEnvironmentIssue ? "SoundCloud: lokal nicht verifizierbar" : `SoundCloud: ${soundcloud.available ? "Profilsignal abrufbar" : "kein Profilsignal"}` },
       { id: "EVT-4", time: generatedAtLabel, type: "check", text: tiktokEnvironmentIssue ? "TikTok Profile: lokal nicht verifizierbar" : `TikTok Profile: ${[tiktokDr, tiktokMrs].filter((entry) => entry.canonical).length}/2 erreichbar` }
     ],
     alerts: [
       ...(pageEnvironmentIssue
-        ? [{ id: "AL-WEB", level: "info", title: "Website lokal nicht verifizierbar", description: "Die Shell-Umgebung kann die Domain nicht aufloesen; das Dashboard zeigt deshalb keinen falschen Ausfall an.", source: "Website Monitoring" }]
+        ? [{ id: "AL-WEB", level: "info", title: "Website lokal nicht verifizierbar", description: "Die Shell-Umgebung kann die Domain nicht auflösen; das Dashboard zeigt deshalb keinen falschen Ausfall an.", source: "Website Monitoring" }]
         : pageProblemCount > 0
-          ? [{ id: "AL-WEB", level: "warn", title: "Seitenchecks mit Fehler", description: `${pageProblemCount} von ${pageChecks.length} geprueften Seiten sind nicht auf HTTP 200.`, source: "Website Monitoring" }]
-          : [{ id: "AL-WEB", level: "ok", title: "Alle Seiten erreichbar", description: "Alle geprueften Kernseiten antworten mit HTTP 200.", source: "Website Monitoring" }]),
+          ? [{ id: "AL-WEB", level: "warn", title: "Seitenchecks mit Fehler", description: `${pageProblemCount} von ${pageChecks.length} geprüften Seiten sind nicht auf HTTP 200.`, source: "Website Monitoring" }]
+          : [{ id: "AL-WEB", level: "ok", title: "Alle Seiten erreichbar", description: "Alle geprüften Kernseiten antworten mit HTTP 200.", source: "Website Monitoring" }]),
       ...(shopEnvironmentIssue
         ? [{ id: "AL-SHOP", level: "info", title: "Shop lokal nicht verifizierbar", description: "Die lokale Umgebung kann die Shirtee-Links nicht testen; der Status bleibt deshalb neutral.", source: "Shop Monitoring" }]
         : shopProblemCount > 0
-          ? [{ id: "AL-SHOP", level: "warn", title: "Shop-Link Problem", description: `${shopProblemCount} gepruefte Produktlinks liefern keinen OK-Status.`, source: "Shop Monitoring" }]
-          : [{ id: "AL-SHOP", level: "ok", title: "Shop-Links erreichbar", description: "Alle geprueften Produktlinks sind erreichbar.", source: "Shop Monitoring" }]),
+          ? [{ id: "AL-SHOP", level: "warn", title: "Shop-Link Problem", description: `${shopProblemCount} geprüfte Produktlinks liefern keinen OK-Status.`, source: "Shop Monitoring" }]
+          : [{ id: "AL-SHOP", level: "ok", title: "Shop-Links erreichbar", description: "Alle geprüften Produktlinks sind erreichbar.", source: "Shop Monitoring" }]),
       {
         id: "AL-SOC",
         level: soundcloud.available ? "ok" : soundcloudEnvironmentIssue ? "info" : "warn",
-        title: soundcloud.available ? "SoundCloud Live-Profil erkannt" : soundcloudEnvironmentIssue ? "SoundCloud lokal nicht verifizierbar" : "SoundCloud eingeschraenkt",
+        title: soundcloud.available ? "SoundCloud Live-Profil erkannt" : soundcloudEnvironmentIssue ? "SoundCloud lokal nicht verifizierbar" : "SoundCloud eingeschränkt",
         description: soundcloud.available
           ? `${soundcloud.user.followers_count} Follower und ${soundcloud.user.track_count} Tracks verifiziert.`
           : soundcloudEnvironmentIssue
@@ -1472,8 +1472,8 @@ async function main() {
       }
     ],
     quickActions: [
-      { id: "qa-1", label: "Website oeffnen", href: websiteBase, external: true },
-      { id: "qa-2", label: "Shop Seite oeffnen", href: `${websiteBase}/shop.html`, external: true },
+      { id: "qa-1", label: "Website öffnen", href: websiteBase, external: true },
+      { id: "qa-2", label: "Shop Seite öffnen", href: `${websiteBase}/shop.html`, external: true },
       { id: "qa-3", label: "Shirtee Store", href: liveLinkStatus?.storeHref || "https://www.shirtee.com/de/store/drgray-mrsdrgray/", external: true },
       { id: "qa-4", label: "SoundCloud Profil", href: "https://soundcloud.com/drgray_sic", external: true },
       { id: "qa-5", label: "TikTok Hauptseite", href: "https://www.tiktok.com/@drgray_mrsdrgray", external: true },

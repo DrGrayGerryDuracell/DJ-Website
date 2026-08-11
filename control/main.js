@@ -97,7 +97,7 @@ function applyBridgeStateToData(data) {
   const bridgeLabel = bridgeOnline ? "Lokale Bridge aktiv" : "Lokale Bridge fehlt";
   const bridgeDetail = bridgeOnline
     ? `${window.__CONTROL_BRIDGE__?.mode || "local-bridge"} · ${window.__CONTROL_BRIDGE__?.availableCommands?.length || 0} Befehle`
-    : "Dashboard laeuft im statischen Modus";
+    : "Dashboard läuft im statischen Modus";
 
   nextData.metadata = nextData.metadata || {};
   nextData.metadata.bridge = {
@@ -564,7 +564,7 @@ function setupHermesChatActions() {
     renderHermesChat(document.querySelector("[data-hermes-chat]"), data);
     setHermesChatStatus(
       sendStatus === "bridge"
-        ? "An Hermes-Bridge uebergeben"
+        ? "An Hermes-Bridge übergeben"
         : sendStatus === "download"
           ? "Spool-Datei erzeugt"
           : "Spool-Weitergabe blockiert",
@@ -963,7 +963,7 @@ function setupControlDialogActions() {
     if (commandTrigger) {
       const command = commandTrigger.getAttribute("data-control-command");
       const previous = commandTrigger.textContent;
-      commandTrigger.textContent = "Laeuft...";
+      commandTrigger.textContent = "Läuft...";
       try {
         if (hasControlBridge()) {
           await runBridgeCommand(command);
@@ -1423,7 +1423,7 @@ async function initControlDashboard() {
         try {
           await runBridgeCommand("sync-control-live");
         } catch {
-          // Polling bleibt best-effort, auch wenn der Bridge-Sync ausfaellt.
+          // Polling bleibt best-effort, auch wenn der Bridge-Sync ausfällt.
         }
       }
       const nextLiveMetrics = await loadLiveMetrics();
@@ -1446,8 +1446,8 @@ document.addEventListener("DOMContentLoaded", () => {
       root.innerHTML = `
         <section class="control-section">
           <div class="panel">
-            <h3>Live-Daten nicht verfuegbar</h3>
-            <p>Das Control UI konnte keine verifizierten Live-Daten laden. Bitte den Sync erneut ausfuehren.</p>
+            <h3>Live-Daten nicht verfügbar</h3>
+            <p>Das Control UI konnte keine verifizierten Live-Daten laden. Bitte den Sync erneut ausführen.</p>
             <p class="muted-line">Befehl: <code>npm run sync:control-live</code></p>
           </div>
         </section>

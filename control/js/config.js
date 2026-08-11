@@ -1,15 +1,15 @@
 export const controlNav = [
-  { id: "overview", label: "Uebersicht", hint: "Systemstatus und Kern-KPIs" },
-  { id: "agentsroom", label: "AgentsRoom", hint: "Routing, Agenten und Geraete" },
+  { id: "overview", label: "Übersicht", hint: "Systemstatus und Kern-KPIs" },
+  { id: "agentsroom", label: "AgentsRoom", hint: "Routing, Agenten und Geräte" },
   { id: "home-assistant", label: "Home Assistant", hint: "HA, Backup und Mac mini" },
   { id: "website", label: "Website", hint: "HTTP Checks und Seitenwerte" },
   { id: "shop", label: "Shop", hint: "Shop-Linkmonitor und Produktchecks" },
   { id: "catalog-upload", label: "Katalog Uploads", hint: "Alle Artikel mit Upload-Status" },
-  { id: "live-activity", label: "Aktivitaet", hint: "Letzte Pruefereignisse" },
-  { id: "performance", label: "Technik", hint: "Verfuegbarkeit und Fehlerlog" },
+  { id: "live-activity", label: "Aktivität", hint: "Letzte Prüfereignisse" },
+  { id: "performance", label: "Technik", hint: "Verfügbarkeit und Fehlerlog" },
   { id: "content", label: "Inhalte", hint: "Content-Struktur und CTA-Hinweise" },
   { id: "social", label: "Social", hint: "Profile, Signale, Vergleiche" },
-  { id: "alerts", label: "Warnungen", hint: "Priorisierte Auffaelligkeiten" },
+  { id: "alerts", label: "Warnungen", hint: "Priorisierte Auffälligkeiten" },
   { id: "settings", label: "Aktionen", hint: "Direkte Schnellzugriffe" }
 ];
 

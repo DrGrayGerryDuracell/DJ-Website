@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-11T19:26:14.453Z",
-    "generatedAtLabel": "11.08.26, 21:26",
+    "generatedAt": "2026-08-11T19:32:44.477Z",
+    "generatedAtLabel": "11.08.26, 21:32",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,14 +24,14 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "11.08.26, 21:26",
+      "value": "11.08.26, 21:32",
       "level": "info"
     }
   },
   "overviewKpis": [
     {
       "id": "pagesChecked",
-      "label": "Gepruefte Seiten",
+      "label": "Geprüfte Seiten",
       "value": 8,
       "delta": "Live",
       "trend": "neutral"
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 132,
+      "value": 136,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -66,7 +66,7 @@
     },
     {
       "id": "shopLinks",
-      "label": "Shop-Links geprueft",
+      "label": "Shop-Links geprüft",
       "value": 3,
       "delta": "Shirtee",
       "trend": "neutral"
@@ -110,7 +110,7 @@
       "id": "warnings",
       "label": "Offene Warnungen",
       "value": 0,
-      "delta": "Pruefstatus",
+      "delta": "Prüfstatus",
       "trend": "neutral"
     }
   ],
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 180,
+        "visitors": 152,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 126,
+        "visitors": 132,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 123,
+        "visitors": 131,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 124,
+        "visitors": 135,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 124,
+        "visitors": 136,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 128,
+        "visitors": 133,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 128,
+        "visitors": 135,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 123,
+        "visitors": 134,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "132 ms",
+      "avgSession": "136 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-11T19:26:14.453Z",
-      "checkedAtLabel": "11.08.26, 21:26"
+      "checkedAt": "2026-08-11T19:32:44.477Z",
+      "checkedAtLabel": "11.08.26, 21:32"
     },
     "catalog": {
       "totalItems": 167,
@@ -364,7 +364,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -379,7 +379,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -394,7 +394,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -409,7 +409,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -424,7 +424,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -439,7 +439,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -454,7 +454,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -469,7 +469,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-bass-im-blut.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -484,7 +484,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -499,7 +499,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -514,7 +514,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -529,7 +529,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -544,7 +544,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -559,7 +559,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -574,7 +574,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -589,7 +589,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -604,7 +604,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -619,7 +619,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -634,7 +634,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -649,7 +649,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -664,7 +664,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -679,7 +679,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -694,7 +694,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -709,7 +709,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-bass-im-blut.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -724,7 +724,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -739,13 +739,13 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
         {
           "id": "mrs-crop-wild",
-          "title": "Zu wild fuer leise. Crop",
+          "title": "Zu wild für leise. Crop",
           "line": "Mrs. Dr. Gray",
           "section": "women",
           "sectionLabel": "Damen",
@@ -769,7 +769,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -790,7 +790,7 @@
         },
         {
           "id": "mrs-top-afterglow",
-          "title": "Zu echt fuer Plastik-Raves",
+          "title": "Zu echt für Plastik-Raves",
           "line": "Mrs. Dr. Gray",
           "section": "women",
           "sectionLabel": "Damen",
@@ -799,7 +799,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -814,7 +814,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -829,7 +829,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -844,7 +844,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -859,22 +859,22 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
         {
           "id": "mrs-hoodie-wild",
-          "title": "Zu wild fuer leise Hoodie",
+          "title": "Zu wild für leise Hoodie",
           "line": "Mrs. Dr. Gray",
           "section": "women",
           "sectionLabel": "Damen",
-          "catalogStatus": "Prioritaet",
+          "catalogStatus": "Priorität",
           "href": "/shop.html#damen-kollektion",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -889,7 +889,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -904,7 +904,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -919,7 +919,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -934,7 +934,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -949,7 +949,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -964,7 +964,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -979,7 +979,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -994,7 +994,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1009,7 +1009,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1024,7 +1024,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1039,7 +1039,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1054,7 +1054,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1069,7 +1069,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1084,7 +1084,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1099,7 +1099,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1114,7 +1114,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1129,7 +1129,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1144,7 +1144,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1159,7 +1159,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1174,7 +1174,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1189,7 +1189,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1199,12 +1199,12 @@
           "line": "Couple Edition",
           "section": "couple",
           "sectionLabel": "Couple",
-          "catalogStatus": "Prioritaet",
+          "catalogStatus": "Priorität",
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1219,7 +1219,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1234,7 +1234,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1249,7 +1249,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1259,12 +1259,12 @@
           "line": "Couple Edition",
           "section": "couple",
           "sectionLabel": "Couple",
-          "catalogStatus": "Prioritaet",
+          "catalogStatus": "Priorität",
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1279,7 +1279,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1289,12 +1289,12 @@
           "line": "Couple Edition",
           "section": "couple",
           "sectionLabel": "Couple",
-          "catalogStatus": "Prioritaet",
+          "catalogStatus": "Priorität",
           "href": "/shop.html#couple-edition",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1309,7 +1309,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1324,7 +1324,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1339,7 +1339,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1354,7 +1354,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1369,7 +1369,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1384,7 +1384,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1399,7 +1399,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1414,7 +1414,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1429,7 +1429,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1444,7 +1444,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1459,7 +1459,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1474,7 +1474,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1489,7 +1489,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1504,7 +1504,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1519,7 +1519,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1534,7 +1534,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1549,7 +1549,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1564,7 +1564,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1579,7 +1579,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1589,18 +1589,18 @@
           "line": "Unisex",
           "section": "unisex",
           "sectionLabel": "Unisex",
-          "catalogStatus": "Prioritaet",
+          "catalogStatus": "Priorität",
           "href": "/shop.html#unisex-drop",
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
         {
           "id": "unisex-hoodie-switch",
-          "title": "Front Dual Logo, Ruecken frei waehlbar",
+          "title": "Front Dual Logo, Rücken frei wählbar",
           "line": "Unisex",
           "section": "unisex",
           "sectionLabel": "Unisex",
@@ -1609,7 +1609,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1624,7 +1624,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1639,7 +1639,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1654,7 +1654,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1669,7 +1669,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1684,7 +1684,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1699,7 +1699,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1714,7 +1714,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1729,7 +1729,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1744,7 +1744,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1759,7 +1759,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1774,7 +1774,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1789,7 +1789,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1804,7 +1804,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1819,7 +1819,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1834,7 +1834,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1849,7 +1849,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1864,7 +1864,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1879,7 +1879,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1894,7 +1894,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1909,7 +1909,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1924,7 +1924,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/unisex-backprint-options.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1939,7 +1939,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1954,7 +1954,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1969,7 +1969,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/accessory-dr-retro-cap.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1984,7 +1984,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-zu-wild.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -1999,7 +1999,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2014,7 +2014,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2029,7 +2029,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2044,7 +2044,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2059,7 +2059,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2074,7 +2074,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2089,7 +2089,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2104,7 +2104,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2119,7 +2119,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2134,7 +2134,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2149,7 +2149,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/accessory-dr-retro-cap.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2164,7 +2164,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2179,7 +2179,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2194,7 +2194,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2209,7 +2209,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2224,7 +2224,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2239,7 +2239,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2254,7 +2254,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/accessory-dr-retro-cap.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2269,7 +2269,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2284,7 +2284,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2299,7 +2299,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2314,7 +2314,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2329,7 +2329,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-bass-im-blut.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2344,7 +2344,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-treibend-roh-ehrlich.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2359,7 +2359,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-dress-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2374,7 +2374,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2389,7 +2389,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2404,7 +2404,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2419,7 +2419,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2434,7 +2434,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2449,7 +2449,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2464,7 +2464,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2479,7 +2479,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2494,7 +2494,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/accessory-dr-retro-cap.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2509,7 +2509,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2524,7 +2524,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2539,7 +2539,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2554,7 +2554,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2569,7 +2569,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2584,7 +2584,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-front-kein-mainstream.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2599,7 +2599,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2614,7 +2614,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-liebe-lauter.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2629,7 +2629,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2644,7 +2644,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2659,7 +2659,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2674,7 +2674,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2689,7 +2689,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2704,7 +2704,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2719,7 +2719,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/mrs-front-signature.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2734,7 +2734,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2749,7 +2749,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2764,7 +2764,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2779,7 +2779,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2794,7 +2794,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2809,7 +2809,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-two-hearts.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2824,7 +2824,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/couple-front-verheiratet.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         },
@@ -2839,7 +2839,7 @@
           "hasImage": true,
           "imageSrc": "/store-assets/variants/dr-back-logo.png",
           "uploadState": "submitted",
-          "uploadLabel": "Eingereicht (in Pruefung)",
+          "uploadLabel": "Eingereicht (in Prüfung)",
           "verifiedLink": false,
           "httpCode": 0
         }
@@ -2869,7 +2869,7 @@
           "id": "drop-03",
           "title": "Sound Ritual",
           "state": "submitted",
-          "stateLabel": "Pruefung",
+          "stateLabel": "Prüfung",
           "line": "Music / Merch",
           "task": "Store-Preview und Produkttext gegenprüfen",
           "priority": "P1"
@@ -2900,7 +2900,7 @@
       ]
     },
     "merchBundle": {
-      "generatedAt": "2026-08-11T19:25:47.613Z",
+      "generatedAt": "2026-08-11T19:31:39.149Z",
       "totalItems": 167,
       "issueCount": 0,
       "localImages": 167,
@@ -2955,10 +2955,10 @@
           "spotlight": 2,
           "issues": 0,
           "topTitles": [
-            "Zu wild fuer leise. Crop",
+            "Zu wild für leise. Crop",
             "Liebe lauter. Kleid",
             "Mrs. Dr. Gray Signature Hoodie",
-            "Zu echt fuer Plastik-Raves"
+            "Zu echt für Plastik-Raves"
           ]
         },
         {
@@ -3020,7 +3020,7 @@
           "issues": 0,
           "topTitles": [
             "Techno mit Herz. Unisex Tee",
-            "Front Dual Logo, Ruecken frei waehlbar",
+            "Front Dual Logo, Rücken frei wählbar",
             "Core Shirt mit Backprint-Wahl",
             "Techno mit Herz Sweatshirt"
           ]
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "11.08.26, 21:26",
+        "time": "11.08.26, 21:32",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "11.08.26, 21:26",
+        "time": "11.08.26, 21:32",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "11.08.26, 21:26",
+        "time": "11.08.26, 21:32",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3182,8 +3182,8 @@
         "verified": true,
         "status": "connected",
         "metricValue": 3,
-        "valueLabel": "3 Produkte sichtbar • 3/3 gepruefte Produktlinks",
-        "statusLabel": "Alle geprueften Links erreichbar",
+        "valueLabel": "3 Produkte sichtbar • 3/3 geprüfte Produktlinks",
+        "statusLabel": "Alle geprüften Links erreichbar",
         "sourceLabel": "Shirtee-Linkcheck"
       }
     ],
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "132 ms",
+    "responseTime": "136 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "11.08.26, 21:26",
+      "time": "11.08.26, 21:32",
       "type": "check",
-      "text": "Live-Pruefung abgeschlossen: 8 Seitenchecks"
+      "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "11.08.26, 21:26",
+      "time": "11.08.26, 21:32",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "11.08.26, 21:26",
+      "time": "11.08.26, 21:32",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "11.08.26, 21:26",
+      "time": "11.08.26, 21:32",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3471,14 +3471,14 @@
       "id": "AL-WEB",
       "level": "ok",
       "title": "Alle Seiten erreichbar",
-      "description": "Alle geprueften Kernseiten antworten mit HTTP 200.",
+      "description": "Alle geprüften Kernseiten antworten mit HTTP 200.",
       "source": "Website Monitoring"
     },
     {
       "id": "AL-SHOP",
       "level": "ok",
       "title": "Shop-Links erreichbar",
-      "description": "Alle geprueften Produktlinks sind erreichbar.",
+      "description": "Alle geprüften Produktlinks sind erreichbar.",
       "source": "Shop Monitoring"
     },
     {
@@ -3492,13 +3492,13 @@
   "quickActions": [
     {
       "id": "qa-1",
-      "label": "Website oeffnen",
+      "label": "Website öffnen",
       "href": "https://drgray-mrsdrgray.com",
       "external": true
     },
     {
       "id": "qa-2",
-      "label": "Shop Seite oeffnen",
+      "label": "Shop Seite öffnen",
       "href": "https://drgray-mrsdrgray.com/shop.html",
       "external": true
     },
@@ -3761,7 +3761,7 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-11T19:26:17.211Z",
+    "updatedAt": "2026-08-11T19:32:44.634Z",
     "counts": {
       "waiting": 0,
       "running": 0,
@@ -3829,7 +3829,7 @@
       {
         "from": "Hermes",
         "to": "Argus",
-        "channel": "Vorpruefung",
+        "channel": "Vorprüfung",
         "purpose": "erstes Review auf Logik, Risiko und Korrektheit",
         "status": "support",
         "statusLabel": "Support",
@@ -3839,7 +3839,7 @@
         "from": "Argus",
         "to": "Hermes",
         "channel": "Review Return",
-        "purpose": "Rueckgabe mit Korrekturhinweisen",
+        "purpose": "Rückgabe mit Korrekturhinweisen",
         "status": "support",
         "statusLabel": "Support",
         "feedback": false
@@ -3848,7 +3848,7 @@
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "channel": "Queue / Bridge",
-        "purpose": "Auftrag an Broker und Delegationsschicht uebergeben",
+        "purpose": "Auftrag an Broker und Delegationsschicht übergeben",
         "status": "connected",
         "statusLabel": "Verbunden",
         "feedback": false
@@ -3857,7 +3857,7 @@
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "channel": "Broker -> Verteiler",
-        "purpose": "Jarvis uebernimmt Verteilung und Arbeitsplanung",
+        "purpose": "Jarvis übernimmt Verteilung und Arbeitsplanung",
         "status": "connected",
         "statusLabel": "Verbunden"
       },
@@ -3905,7 +3905,7 @@
         "from": "Jarvis",
         "to": "Friday",
         "channel": "Deep Repair",
-        "purpose": "schwere Reparaturen und technische Ausnahmefaelle",
+        "purpose": "schwere Reparaturen und technische Ausnahmefälle",
         "status": "ready",
         "statusLabel": "Bereit"
       },
@@ -3913,7 +3913,7 @@
         "from": "Jarvis",
         "to": "Claude",
         "channel": "Counter Check",
-        "purpose": "nur bei hoher Komplexitaet und Reasoning-Bedarf",
+        "purpose": "nur bei hoher Komplexität und Reasoning-Bedarf",
         "status": "support",
         "statusLabel": "Fallback"
       },
@@ -3921,7 +3921,7 @@
         "from": "Jarvis",
         "to": "Claude Code",
         "channel": "Pair Coding",
-        "purpose": "nur bei groesseren Coding-Aufgaben und Refactors",
+        "purpose": "nur bei größeren Coding-Aufgaben und Refactors",
         "status": "support",
         "statusLabel": "Fallback"
       },
@@ -3929,7 +3929,7 @@
         "from": "Jarvis",
         "to": "Codex",
         "channel": "Code Escalation",
-        "purpose": "nur fuer Umsetzung, Tests und Tool-Arbeit",
+        "purpose": "nur für Umsetzung, Tests und Tool-Arbeit",
         "status": "support",
         "statusLabel": "Fallback"
       },
@@ -3937,7 +3937,7 @@
         "from": "Jarvis",
         "to": "Hermes",
         "channel": "Review Return",
-        "purpose": "gepruefte Ergebnisse zurueck an Hermes liefern",
+        "purpose": "geprüfte Ergebnisse zurück an Hermes liefern",
         "status": "live",
         "statusLabel": "Live",
         "feedback": false
@@ -3946,7 +3946,7 @@
         "from": "Hermes",
         "to": "Mensch",
         "channel": "Telegram Reply",
-        "purpose": "Ergebnis an dich zurueckgeben",
+        "purpose": "Ergebnis an dich zurückgeben",
         "status": "live",
         "statusLabel": "Live",
         "feedback": false
@@ -3969,7 +3969,7 @@
       },
       {
         "name": "Argus",
-        "role": "Apple-nahe Vorpruefung, Diagnose und Gegencheck",
+        "role": "Apple-nahe Vorprüfung, Diagnose und Gegencheck",
         "route": "Hermes -> Argus -> Hermes",
         "channel": "Checks",
         "status": "support",
@@ -4093,7 +4093,7 @@
       },
       {
         "name": "Claude",
-        "role": "High-trust Gegenpruefung und komplexes Reasoning",
+        "role": "High-trust Gegenprüfung und komplexes Reasoning",
         "route": "Jarvis -> Claude",
         "channel": "Claude",
         "status": "support",
@@ -4190,7 +4190,7 @@
       },
       {
         "name": "Home Assistant",
-        "role": "Automation und Bruecke",
+        "role": "Automation und Brücke",
         "route": "HA -> Mac mini",
         "channel": "Automation",
         "status": "live",
@@ -4291,7 +4291,7 @@
       {
         "from": "Hermes",
         "to": "Argus",
-        "task": "Erste Vorpruefung auf Logik, Risiko und Qualitaet anstoßen",
+        "task": "Erste Vorprüfung auf Logik, Risiko und Qualität anstoßen",
         "channel": "Checks",
         "priority": "P0",
         "status": "support",
@@ -4300,7 +4300,7 @@
       {
         "from": "Argus",
         "to": "Hermes",
-        "task": "Gegencheck und Korrekturrichtung an Hermes zurueckgeben",
+        "task": "Gegencheck und Korrekturrichtung an Hermes zurückgeben",
         "channel": "Review",
         "priority": "P0",
         "status": "support",
@@ -4309,7 +4309,7 @@
       {
         "from": "Hermes",
         "to": "OpenClaw Gateway",
-        "task": "Auftrag in Broker, Queue und Delegationsschicht uebergeben",
+        "task": "Auftrag in Broker, Queue und Delegationsschicht übergeben",
         "channel": "Bridge",
         "priority": "P0",
         "status": "connected",
@@ -4336,7 +4336,7 @@
       {
         "from": "Jarvis",
         "to": "Sentinel",
-        "task": "Logs, Health und Security kontinuierlich ueberwachen",
+        "task": "Logs, Health und Security kontinuierlich überwachen",
         "channel": "Monitoring",
         "priority": "P0",
         "status": "live",
@@ -4354,7 +4354,7 @@
       {
         "from": "Jarvis",
         "to": "Muse",
-        "task": "Content und Audio fuer Social-Aktionen vorbereiten",
+        "task": "Content und Audio für Social-Aktionen vorbereiten",
         "channel": "Media",
         "priority": "P2",
         "status": "ready",
@@ -4363,7 +4363,7 @@
       {
         "from": "Jarvis",
         "to": "Claude",
-        "task": "Komplexe Loesungen gegenpruefen, wenn die Standardkette nicht reicht",
+        "task": "Komplexe Lösungen gegenprüfen, wenn die Standardkette nicht reicht",
         "channel": "Reasoning",
         "priority": "P2",
         "status": "support",
@@ -4372,7 +4372,7 @@
       {
         "from": "Jarvis",
         "to": "Claude Code",
-        "task": "Groessere Coding-Pakete mit Pair-Coding und Refactor-Hilfe unterstuetzen",
+        "task": "Größere Coding-Pakete mit Pair-Coding und Refactor-Hilfe unterstützen",
         "channel": "Coding",
         "priority": "P2",
         "status": "support",
@@ -4391,25 +4391,25 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "11.08.26, 21:26",
+        "time": "11.08.26, 21:32",
         "from": "Mensch",
         "to": "Hermes",
-        "summary": "Du startest ueber iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
+        "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
         "status": "live",
         "statusLabel": "Live"
       },
       {
-        "topic": "Vorpruefung",
-        "time": "11.08.26, 21:26",
+        "topic": "Vorprüfung",
+        "time": "11.08.26, 21:32",
         "from": "Hermes",
         "to": "Argus",
-        "summary": "Argus prueft erst, gibt ueberarbeitete Hinweise zurueck und schickt nichts ungeprueft weiter.",
+        "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
         "status": "support",
         "statusLabel": "Support"
       },
       {
         "topic": "Broker",
-        "time": "11.08.26, 21:26",
+        "time": "11.08.26, 21:32",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4418,46 +4418,46 @@
       },
       {
         "topic": "Verteilung",
-        "time": "11.08.26, 21:26",
+        "time": "11.08.26, 21:32",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
-        "summary": "Jarvis uebernimmt die Verteilung an die Unteragenten und sammelt alle Rueckgaben wieder ein.",
+        "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
         "status": "live",
         "statusLabel": "Live"
       },
       {
         "topic": "Subagenten",
-        "time": "11.08.26, 21:26",
+        "time": "11.08.26, 21:32",
         "from": "Jarvis",
         "to": "Forge",
-        "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausfuehrungsschicht.",
+        "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
         "status": "ready",
         "statusLabel": "Bereit"
       },
       {
         "topic": "Escalation",
-        "time": "11.08.26, 21:26",
+        "time": "11.08.26, 21:32",
         "from": "Jarvis",
         "to": "Claude Code",
-        "summary": "Claude, Claude Code und Codex werden nur bei Gegenpruefung oder groesseren Coding-Aufgaben zugeschaltet.",
+        "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
         "status": "support",
         "statusLabel": "Fallback"
       },
       {
         "topic": "Speicher",
-        "time": "11.08.26, 21:26",
+        "time": "11.08.26, 21:32",
         "from": "Jarvis",
         "to": "Obsidian",
-        "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und ueber Brain-Vault-Quellen synchron gehalten.",
+        "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
         "status": "sync",
         "statusLabel": "Sync"
       },
       {
-        "topic": "Rueckgabe",
-        "time": "11.08.26, 21:26",
+        "topic": "Rückgabe",
+        "time": "11.08.26, 21:32",
         "from": "Jarvis",
         "to": "Hermes",
-        "summary": "Jarvis gibt erst nach Review an Hermes zurueck. Hermes antwortet anschliessend an dich.",
+        "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",
         "status": "live",
         "statusLabel": "Live"
       }
@@ -4488,7 +4488,7 @@
         "statusLabel": "Live"
       },
       {
-        "label": "HA-Bruecke",
+        "label": "HA-Brücke",
         "value": "Jarvis -> Heimdall",
         "status": "live",
         "statusLabel": "Live"
@@ -4506,7 +4506,7 @@
         "statusLabel": "Fallback"
       },
       {
-        "label": "Rueckkanal",
+        "label": "Rückkanal",
         "value": "Hermes -> Du",
         "status": "live",
         "statusLabel": "Live"

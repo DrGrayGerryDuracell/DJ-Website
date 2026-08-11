@@ -22,7 +22,7 @@ const body = `# Shirtee API Access Request (${dateLabel})
 
 Hallo Shirtee Team,
 
-wir betreiben den Store **drgray-mrsdrgray** und moechten den Produkt-Upload aus unserem internen Katalog automatisieren.
+wir betreiben den Store **drgray-mrsdrgray** und möchten den Produkt-Upload aus unserem internen Katalog automatisieren.
 
 ## Aktueller Stand
 - Katalogartikel gesamt: **${total}**
@@ -31,15 +31,15 @@ wir betreiben den Store **drgray-mrsdrgray** und moechten den Produkt-Upload aus
 - Noch offen: **${pending}**
 
 ## Ziel
-Wir moechten Produkte (Design + Varianten + Texte + Preise) automatisiert in Shirtee anlegen/aktualisieren und den Status danach in unserem Dashboard zurueckspielen.
+Wir möchten Produkte (Design + Varianten + Texte + Preise) automatisiert in Shirtee anlegen/aktualisieren und den Status danach in unserem Dashboard zurückspielen.
 
-## Bitte um Rueckmeldung
-1. Gibt es eine dokumentierte API fuer Produktanlage/-update (REST o.ae.)?
+## Bitte um Rückmeldung
+1. Gibt es eine dokumentierte API für Produktanlage/-update (REST o.ä.)?
 2. Welche Authentifizierung wird genutzt (API Key, OAuth, andere)?
 3. Gibt es Sandbox/Testzugang?
-4. Welche Pflichtfelder benoetigt ein Produkt-Create?
+4. Welche Pflichtfelder benötigt ein Produkt-Create?
 5. Gibt es Rate Limits und Retry-Empfehlungen?
-6. Gibt es Webhooks oder einen Endpoint fuer Produktstatus/Sync?
+6. Gibt es Webhooks oder einen Endpoint für Produktstatus/Sync?
 
 Vielen Dank.
 `;
