@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-11T19:32:44.477Z",
-    "generatedAtLabel": "11.08.26, 21:32",
+    "generatedAt": "2026-08-11T19:50:14.729Z",
+    "generatedAtLabel": "11.08.26, 21:50",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "11.08.26, 21:32",
+      "value": "11.08.26, 21:50",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 136,
+      "value": 176,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 152,
+        "visitors": 182,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 132,
+        "visitors": 281,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 131,
+        "visitors": 170,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 135,
-        "pageviews": 0
-      },
-      {
-        "label": "videos",
-        "visitors": 136,
-        "pageviews": 0
-      },
-      {
-        "label": "shop",
         "visitors": 133,
         "pageviews": 0
       },
       {
+        "label": "videos",
+        "visitors": 153,
+        "pageviews": 0
+      },
+      {
+        "label": "shop",
+        "visitors": 152,
+        "pageviews": 0
+      },
+      {
         "label": "kontakt",
-        "visitors": 135,
+        "visitors": 167,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 134,
+        "visitors": 166,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "136 ms",
+      "avgSession": "176 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-11T19:32:44.477Z",
-      "checkedAtLabel": "11.08.26, 21:32"
+      "checkedAt": "2026-08-11T19:50:14.729Z",
+      "checkedAtLabel": "11.08.26, 21:50"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "136 ms",
+    "responseTime": "176 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "11.08.26, 21:32",
+      "time": "11.08.26, 21:50",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "11.08.26, 21:32",
+      "time": "11.08.26, 21:50",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "11.08.26, 21:32",
+      "time": "11.08.26, 21:50",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "11.08.26, 21:32",
+      "time": "11.08.26, 21:50",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3761,7 +3761,7 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-11T19:32:44.634Z",
+    "updatedAt": "2026-08-11T19:50:14.888Z",
     "counts": {
       "waiting": 0,
       "running": 0,
@@ -4391,7 +4391,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4400,7 +4400,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4409,7 +4409,7 @@
       },
       {
         "topic": "Broker",
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
@@ -4418,7 +4418,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -4427,7 +4427,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -4436,7 +4436,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -4445,7 +4445,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -4454,7 +4454,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "11.08.26, 21:32",
+        "time": "11.08.26, 21:50",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",

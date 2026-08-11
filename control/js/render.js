@@ -28,19 +28,45 @@ function buildTrafficBars(series) {
     .join("");
 }
 
-function buildSparkline(series, key) {
+function buildSparkline(series, key, opts = {}) {
   const values = series.map((item) => Number(item[key] || 0));
   const max = Math.max(...values, 1);
   const min = Math.min(...values, 0);
   const range = Math.max(max - min, 1);
-  const points = values
-    .map((value, index) => {
-      const x = (index / Math.max(values.length - 1, 1)) * 100;
-      const y = 90 - (((value - min) / range) * 70);
-      return `${x},${y}`;
+  const count = Math.max(values.length - 1, 1);
+  const coords = values.map((value, index) => ({
+    x: (index / count) * 100,
+    y: 88 - ((value - min) / range) * 74
+  }));
+
+  // Catmull-Rom -> cubic bezier for a smooth curve through every point.
+  const linePath = coords
+    .map((point, index) => {
+      if (index === 0) return `M ${point.x},${point.y}`;
+      const prev = coords[index - 1];
+      const cx = (prev.x + point.x) / 2;
+      return `C ${cx},${prev.y} ${cx},${point.y} ${point.x},${point.y}`;
     })
     .join(" ");
-  return `<svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="${points}" /></svg>`;
+
+  const areaPath = `${linePath} L ${coords[coords.length - 1].x},98 L ${coords[0].x},98 Z`;
+  const last = coords[coords.length - 1];
+  const gradientId = `sparkGradient-${opts.id || key}`;
+  const fillColor = opts.color || "var(--gold-strong)";
+
+  return `
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true" class="${opts.className || ""}">
+      <defs>
+        <linearGradient id="${gradientId}" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stop-color="${fillColor}" stop-opacity="0.38" />
+          <stop offset="100%" stop-color="${fillColor}" stop-opacity="0" />
+        </linearGradient>
+      </defs>
+      <path class="spark-area" d="${areaPath}" fill="url(#${gradientId})" stroke="none" />
+      <path class="spark-line" d="${linePath}" fill="none" />
+      <circle class="spark-dot" cx="${last.x}" cy="${last.y}" r="2.4" />
+    </svg>
+  `;
 }
 
 function buildMiniBars(list, key, labelKey) {
@@ -213,11 +239,6 @@ function getDashboardVisual(kind) {
 }
 
 function getOverviewIcon(kind) {
-  if (kind === "centralServer") return DASHBOARD_VISUALS.centralServer;
-  if (kind === "communication") return DASHBOARD_VISUALS.communication;
-  if (kind === "vault") return DASHBOARD_VISUALS.vault;
-  if (kind === "homeAssistant") return DASHBOARD_VISUALS.homeAssistant;
-  if (kind === "alerts") return DASHBOARD_VISUALS.alerts;
   return OVERVIEW_ICON_VISUALS[kind] || OVERVIEW_ICON_VISUALS.centralServer;
 }
 
@@ -1010,8 +1031,8 @@ export function renderVisualPulse(container, dashboardData) {
   }
 
   const trafficSeries = dashboardData.websiteMetrics.trafficSeries || [];
-  const visitorsSparkline = buildSparkline(trafficSeries, "visitors");
-  const pageviewsSparkline = buildSparkline(trafficSeries, "pageviews");
+  const visitorsSparkline = buildSparkline(trafficSeries, "visitors", { id: "visitors", color: "#f5c84c", className: "spark-primary" });
+  const pageviewsSparkline = buildSparkline(trafficSeries, "pageviews", { id: "pageviews", color: "#34e4ff", className: "spark-secondary" });
   const agentsRoom = dashboardData.agentsRoom || {};
   const agents = Array.isArray(agentsRoom.agents) ? agentsRoom.agents : [];
   const connectedAgents = agents.filter((agent) => ["live", "connected", "active", "sync"].includes(agent.status)).length;
@@ -1072,6 +1093,10 @@ export function renderVisualPulse(container, dashboardData) {
       <p class="pulse-eyebrow">Website</p>
       <h3>Live Signal</h3>
       <div class="sparkline-wrap signal-wave">${visitorsSparkline}${pageviewsSparkline}</div>
+      <div class="spark-legend">
+        <span class="spark-legend-item"><i class="spark-swatch swatch-primary"></i>Besucher <strong>${formatNumber(trafficSeries[trafficSeries.length - 1]?.visitors)}</strong></span>
+        <span class="spark-legend-item"><i class="spark-swatch swatch-secondary"></i>Seitenaufrufe <strong>${formatNumber(trafficSeries[trafficSeries.length - 1]?.pageviews)}</strong></span>
+      </div>
       <p class="pulse-copy">Seiten ok: <strong>${formatNumber(dashboardData.overviewKpis.find((kpi) => kpi.id === "pagesOk")?.value)}</strong> · Quelle: HTTP Snapshot</p>
     </article>
     <article class="pulse-card">
@@ -2047,15 +2072,50 @@ export function renderSocial(container, socialMetrics) {
   `;
 }
 
-export function renderAlerts(container, alerts) {
+const ALERT_ACK_STORAGE_KEY = "control-alert-acknowledged";
+const ALERT_LEVEL_RANK = { warn: 0, info: 1, ok: 2 };
+const ALERT_LEVEL_ICON = { warn: "&#9888;", info: "&#8505;", ok: "&#10003;" };
+const ALERT_LEVEL_LABEL = { warn: "Warnung", info: "Info", ok: "OK" };
+
+function readAcknowledgedAlerts() {
+  try {
+    const raw = window.localStorage.getItem(ALERT_ACK_STORAGE_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+export function renderAlerts(container, alerts, metadata) {
+  const list = Array.isArray(alerts) ? alerts : [];
+  const acknowledged = new Set(readAcknowledgedAlerts());
   const summary = {
-    warn: alerts.filter((item) => item.level === "warn").length,
-    ok: alerts.filter((item) => item.level === "ok").length,
-    info: alerts.filter((item) => item.level === "info").length
+    warn: list.filter((item) => item.level === "warn").length,
+    ok: list.filter((item) => item.level === "ok").length,
+    info: list.filter((item) => item.level === "info").length
   };
+  const activeWarnings = list.filter((item) => item.level === "warn" && !acknowledged.has(item.id));
+  const sorted = [...list].sort((a, b) => (ALERT_LEVEL_RANK[a.level] ?? 3) - (ALERT_LEVEL_RANK[b.level] ?? 3));
+
+  const bannerTone = activeWarnings.length ? "is-siren" : "is-calm";
+  const bannerTitle = activeWarnings.length
+    ? `${activeWarnings.length} aktive Warnung${activeWarnings.length === 1 ? "" : "en"}`
+    : "Alle Systeme im grünen Bereich";
+  const bannerCopy = activeWarnings.length
+    ? "Bitte prüfen und quittieren, sobald behoben."
+    : "Keine unbestätigten Warnungen im letzten Live-Snapshot.";
 
   container.innerHTML = `
     <article class="panel">
+      <div class="alarm-banner ${bannerTone}">
+        <span class="alarm-banner-icon" aria-hidden="true">${activeWarnings.length ? "&#9888;" : "&#128737;"}</span>
+        <div class="alarm-banner-copy">
+          <strong>${bannerTitle}</strong>
+          <span>${bannerCopy} &middot; Stand: ${escapeHtml(metadata?.generatedAtLabel || "n/a")}</span>
+        </div>
+        ${activeWarnings.length ? `<button type="button" class="action-btn is-secondary" data-ack-all-alerts>Alle quittieren</button>` : ""}
+      </div>
       <div class="section-banner">
         <div>
           <p class="eyebrow">Warnungen</p>
@@ -2068,10 +2128,26 @@ export function renderAlerts(container, alerts) {
         </div>
       </div>
       <div class="alert-grid">
-        ${alerts
+        ${sorted
           .map((alert) => {
             const cls = alert.level === "warn" ? "is-warn" : alert.level === "ok" ? "is-ok" : "is-info";
-            return `<article class="alert-card ${cls}"><h4>${alert.title}</h4><p>${alert.description}</p><span>${alert.source}</span></article>`;
+            const isAck = acknowledged.has(alert.id);
+            const pulsing = alert.level === "warn" && !isAck;
+            return `
+              <article class="alert-card ${cls}${pulsing ? " is-pulsing" : ""}${isAck ? " is-acknowledged" : ""}">
+                <div class="alert-card-head">
+                  <span class="alert-level-icon" aria-hidden="true">${ALERT_LEVEL_ICON[alert.level] || ALERT_LEVEL_ICON.info}</span>
+                  <h4>${escapeHtml(alert.title)}</h4>
+                </div>
+                <p>${escapeHtml(alert.description)}</p>
+                <div class="alert-card-foot">
+                  <span>${escapeHtml(alert.source)}</span>
+                  ${alert.level === "warn"
+                    ? `<button type="button" class="alert-ack-btn" data-ack-alert="${escapeHtml(alert.id)}">${isAck ? "Quittiert &#10003;" : "Quittieren"}</button>`
+                    : `<span class="alert-level-label">${ALERT_LEVEL_LABEL[alert.level] || ""}</span>`}
+                </div>
+              </article>
+            `;
           })
           .join("")}
       </div>

@@ -593,6 +593,39 @@ function getControlToggleValue(kind, id, controlId, fallback = false) {
   return Boolean(state?.[kind]?.[id]?.[controlId] ?? fallback);
 }
 
+const ALERT_ACK_STORAGE_KEY = "control-alert-acknowledged";
+
+function readAcknowledgedAlertIds() {
+  try {
+    const raw = JSON.parse(window.localStorage.getItem(ALERT_ACK_STORAGE_KEY) || "[]");
+    return Array.isArray(raw) ? raw : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeAcknowledgedAlertIds(ids) {
+  window.localStorage.setItem(ALERT_ACK_STORAGE_KEY, JSON.stringify(ids));
+}
+
+function acknowledgeAlert(id) {
+  const ids = new Set(readAcknowledgedAlertIds());
+  ids.add(id);
+  writeAcknowledgedAlertIds([...ids]);
+}
+
+function acknowledgeAllAlerts(alertIds) {
+  const ids = new Set(readAcknowledgedAlertIds());
+  alertIds.forEach((id) => ids.add(id));
+  writeAcknowledgedAlertIds([...ids]);
+}
+
+function rerenderAlerts() {
+  const container = document.querySelector("[data-alerts]");
+  if (!container) return;
+  renderAlerts(container, window.__CONTROL_DATA__?.alerts || [], window.__CONTROL_DATA__?.metadata);
+}
+
 async function setControlToggleValue(kind, id, controlId, value) {
   const serverState = window.__CONTROL_SERVER_STATE__?.controls ? structuredClone(window.__CONTROL_SERVER_STATE__.controls) : null;
   const state = serverState || readControlDialogState();
@@ -932,6 +965,21 @@ function reopenCurrentDialog() {
 
 function setupControlDialogActions() {
   document.addEventListener("click", async (event) => {
+    const ackAlertTrigger = event.target.closest("[data-ack-alert]");
+    if (ackAlertTrigger) {
+      acknowledgeAlert(ackAlertTrigger.getAttribute("data-ack-alert"));
+      rerenderAlerts();
+      return;
+    }
+
+    const ackAllTrigger = event.target.closest("[data-ack-all-alerts]");
+    if (ackAllTrigger) {
+      const warnIds = (window.__CONTROL_DATA__?.alerts || []).filter((item) => item.level === "warn").map((item) => item.id);
+      acknowledgeAllAlerts(warnIds);
+      rerenderAlerts();
+      return;
+    }
+
     const closeTrigger = event.target.closest("[data-control-dialog-close]");
     if (closeTrigger) {
       closeControlDialog();
@@ -1347,7 +1395,7 @@ function renderDashboardView(data) {
   renderPerformance(document.querySelector("[data-performance-section]"), viewData.performanceMetrics);
   renderContent(document.querySelector("[data-content-section]"), viewData.contentPerformance);
   renderSocial(document.querySelector("[data-social-section]"), viewData.socialMetrics);
-  renderAlerts(document.querySelector("[data-alerts]"), viewData.alerts);
+  renderAlerts(document.querySelector("[data-alerts]"), viewData.alerts, viewData.metadata);
   renderQuickActions(document.querySelector("[data-quick-actions]"), viewData);
   animateKpis();
   restoreControlDecks();
