@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-11T20:31:06.446Z",
-    "generatedAtLabel": "11.08.26, 22:31",
+    "generatedAt": "2026-08-11T20:49:34.829Z",
+    "generatedAtLabel": "11.08.26, 22:49",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "11.08.26, 22:31",
+      "value": "11.08.26, 22:49",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 134,
+      "value": 240,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 152,
+        "visitors": 250,
         "pageviews": 0
       },
       {
         "label": "index",
-        "visitors": 120,
+        "visitors": 218,
         "pageviews": 0
       },
       {
         "label": "bio",
-        "visitors": 128,
+        "visitors": 220,
         "pageviews": 0
       },
       {
         "label": "musik",
-        "visitors": 126,
+        "visitors": 221,
         "pageviews": 0
       },
       {
         "label": "videos",
-        "visitors": 130,
+        "visitors": 220,
         "pageviews": 0
       },
       {
         "label": "shop",
-        "visitors": 156,
+        "visitors": 263,
         "pageviews": 0
       },
       {
         "label": "kontakt",
-        "visitors": 131,
+        "visitors": 262,
         "pageviews": 0
       },
       {
         "label": "control",
-        "visitors": 130,
+        "visitors": 262,
         "pageviews": 0
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "134 ms",
+      "avgSession": "240 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-11T20:31:06.446Z",
-      "checkedAtLabel": "11.08.26, 22:31"
+      "checkedAt": "2026-08-11T20:49:34.829Z",
+      "checkedAtLabel": "11.08.26, 22:49"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "134 ms",
+    "responseTime": "240 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "11.08.26, 22:31",
+      "time": "11.08.26, 22:49",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "11.08.26, 22:31",
+      "time": "11.08.26, 22:49",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "11.08.26, 22:31",
+      "time": "11.08.26, 22:49",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "11.08.26, 22:31",
+      "time": "11.08.26, 22:49",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3761,12 +3761,12 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-11T20:31:08.481Z",
+    "updatedAt": "2026-08-11T20:49:38.737Z",
     "counts": {
-      "waiting": 1,
-      "running": 3,
-      "ready": 0,
-      "doneToday": 31
+      "waiting": 0,
+      "running": 2,
+      "ready": 1,
+      "doneToday": 32
     },
     "services": [
       {
@@ -3800,33 +3800,8 @@
         "statusLabel": "Warnung"
       }
     ],
-    "waiting": [
-      {
-        "id": "t_1df0aa9b",
-        "title": "Implement live Telegram message sync in HermesDesktop via backend event broadcast",
-        "status": "blocked",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786447306,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 2
-      }
-    ],
+    "waiting": [],
     "running": [
-      {
-        "id": "t_e6ded419",
-        "title": "Research n8n for system improvement opportunities",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786477222,
-        "completed_at": null,
-        "worker_pid": 44342,
-        "consecutive_failures": 0
-      },
       {
         "id": "t_756a264b",
         "title": "Optimize Shop Integration with Shirtee",
@@ -3836,8 +3811,8 @@
         "block_kind": null,
         "created_at": 1786477093,
         "completed_at": null,
-        "worker_pid": 44341,
-        "consecutive_failures": 0
+        "worker_pid": 47510,
+        "consecutive_failures": 1
       },
       {
         "id": "t_95a2a225",
@@ -3848,11 +3823,24 @@
         "block_kind": null,
         "created_at": 1786476886,
         "completed_at": null,
-        "worker_pid": 44340,
+        "worker_pid": 47509,
+        "consecutive_failures": 1
+      }
+    ],
+    "ready": [
+      {
+        "id": "t_e6ded419",
+        "title": "Research n8n for system improvement opportunities",
+        "status": "ready",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786477222,
+        "completed_at": null,
+        "worker_pid": null,
         "consecutive_failures": 0
       }
     ],
-    "ready": [],
     "doneToday": [
       {
         "id": "t_800b6312",
@@ -3959,6 +3947,18 @@
         "block_kind": null,
         "created_at": 1786447308,
         "completed_at": 1786463353,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_1df0aa9b",
+        "title": "Implement live Telegram message sync in HermesDesktop via backend event broadcast",
+        "status": "done",
+        "priority": 2,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786447306,
+        "completed_at": 1786480498,
         "worker_pid": null,
         "consecutive_failures": 0
       },
@@ -4406,7 +4406,7 @@
       },
       {
         "name": "OpenClaw Gateway",
-        "role": "Broker, Queue und Uebergabe an Jarvis",
+        "role": "Broker, Queue und Übergabe an Jarvis",
         "route": "Hermes -> Gateway -> Jarvis",
         "channel": "Queue",
         "status": "connected",
@@ -4814,7 +4814,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4823,7 +4823,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4832,16 +4832,16 @@
       },
       {
         "topic": "Broker",
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
-        "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Uebergabe starten.",
+        "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
         "status": "connected",
         "statusLabel": "Verbunden"
       },
       {
         "topic": "Verteilung",
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -4850,7 +4850,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -4859,7 +4859,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -4868,7 +4868,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -4877,7 +4877,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "11.08.26, 22:31",
+        "time": "11.08.26, 22:49",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",
