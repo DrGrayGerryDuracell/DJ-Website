@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-11T21:08:19.306Z",
-    "generatedAtLabel": "11.08.26, 23:08",
+    "generatedAt": "2026-08-12T12:49:48.252Z",
+    "generatedAtLabel": "12.08.26, 14:49",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "11.08.26, 23:08",
+      "value": "12.08.26, 14:49",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 280,
+      "value": 169,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -81,7 +81,7 @@
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 629,
+      "value": 628,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,69 +118,69 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 310,
-        "pageviews": 0
+        "visitors": 194,
+        "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 279,
-        "pageviews": 0
+        "visitors": 166,
+        "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 280,
-        "pageviews": 0
+        "visitors": 163,
+        "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 271,
-        "pageviews": 0
+        "visitors": 175,
+        "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 278,
-        "pageviews": 0
+        "visitors": 163,
+        "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 277,
-        "pageviews": 0
+        "visitors": 162,
+        "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 271,
-        "pageviews": 0
+        "visitors": 163,
+        "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 277,
-        "pageviews": 0
+        "visitors": 163,
+        "pageviews": 7
       }
     ],
     "topPages": [
       {
-        "page": "/",
-        "views": 0,
-        "ctr": "200"
-      },
-      {
-        "page": "/index.html",
-        "views": 0,
+        "page": "/shop.html",
+        "views": 31,
         "ctr": "200"
       },
       {
         "page": "/bio.html",
-        "views": 0,
-        "ctr": "200"
-      },
-      {
-        "page": "/musik.html",
-        "views": 0,
+        "views": 15,
         "ctr": "200"
       },
       {
         "page": "/videos.html",
-        "views": 0,
+        "views": 11,
+        "ctr": "200"
+      },
+      {
+        "page": "/",
+        "views": 11,
+        "ctr": "200"
+      },
+      {
+        "page": "/index.html",
+        "views": 11,
         "ctr": "200"
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "280 ms",
+      "avgSession": "169 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-11T21:08:19.306Z",
-      "checkedAtLabel": "11.08.26, 23:08"
+      "checkedAt": "2026-08-12T12:49:48.252Z",
+      "checkedAtLabel": "12.08.26, 14:49"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3169,7 +3169,7 @@
         "verified": false,
         "status": "live",
         "metricValue": 10,
-        "valueLabel": "629 Follower • 10 Linksignale",
+        "valueLabel": "628 Follower • 10 Linksignale",
         "statusLabel": "33 Tracks",
         "sourceLabel": "SoundCloud Public API"
       },
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "280 ms",
+    "responseTime": "169 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "11.08.26, 23:08",
+      "time": "12.08.26, 14:49",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "11.08.26, 23:08",
+      "time": "12.08.26, 14:49",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "11.08.26, 23:08",
+      "time": "12.08.26, 14:49",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "11.08.26, 23:08",
+      "time": "12.08.26, 14:49",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3485,7 +3485,7 @@
       "id": "AL-SOC",
       "level": "ok",
       "title": "SoundCloud Live-Profil erkannt",
-      "description": "629 Follower und 33 Tracks verifiziert.",
+      "description": "628 Follower und 33 Tracks verifiziert.",
       "source": "Social Monitoring"
     }
   ],
@@ -3761,12 +3761,12 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-11T21:08:21.391Z",
+    "updatedAt": "2026-08-12T12:49:50.410Z",
     "counts": {
       "waiting": 1,
-      "running": 4,
-      "ready": 0,
-      "doneToday": 33
+      "running": 0,
+      "ready": 4,
+      "doneToday": 15
     },
     "services": [
       {
@@ -3802,463 +3802,247 @@
     ],
     "waiting": [
       {
-        "id": "t_0d10ba8f",
-        "title": "skill prompting, skills selbst herstellen, server und map sowie cli selber bauen zusammenhänge verstehen",
+        "id": "t_287116d3",
+        "title": "Re-pair Partyleuchte using Tuya/Smart Life app",
         "status": "blocked",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786481622,
+        "created_at": 1786504969,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 2
       }
     ],
-    "running": [
+    "running": [],
+    "ready": [
+      {
+        "id": "t_0d272391",
+        "title": "Repair Tuya Partyleuchte plug: resolve error 914 by refreshing local_key",
+        "status": "todo",
+        "priority": 1,
+        "assignee": "zentralserver",
+        "block_kind": "needs_input",
+        "created_at": 1786482666,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_ef484b5a",
+        "title": "Retrieve new local_key via tuya-cli or Tuya IoT platform",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786504969,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_4a395e22",
+        "title": "Update Home Assistant tuya_local configuration with new local_key",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786504969,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_7e2395c4",
+        "title": "Reload tuya_local integration and verify fix",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786504969,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      }
+    ],
+    "doneToday": [
+      {
+        "id": "t_b2468175",
+        "title": "Website-Dateigroessen-Messung im Dashboard reparieren",
+        "status": "done",
+        "priority": 3,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786482691,
+        "completed_at": 1786494761,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_c8b3b6af",
+        "title": "Verwaiste launchd-Services auf dem Mac mini aufraeumen",
+        "status": "done",
+        "priority": 3,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786482689,
+        "completed_at": 1786494663,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_921b0482",
+        "title": "LiteLLM IPv6-Hang zu Anthropic sauber loesen",
+        "status": "done",
+        "priority": 3,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786482688,
+        "completed_at": 1786497041,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_53425e62",
+        "title": "SMB-Backup-Share Absicherung pruefen (guest access)",
+        "status": "done",
+        "priority": 2,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786482709,
+        "completed_at": 1786497136,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_581beb9f",
+        "title": "Home-Assistant-GUI-Zugang fuer Marten dauerhaft einrichten",
+        "status": "done",
+        "priority": 2,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786482692,
+        "completed_at": 1786494338,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_ba29a3b3",
+        "title": "Eufy-Kamera RTSP-Automation fuer Home Assistant verbessern",
+        "status": "done",
+        "priority": 2,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786482660,
+        "completed_at": 1786496162,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_e6c0234c",
+        "title": "Fix Hermes worker protocol violation: missing kanban_complete/kanban_block calls",
+        "status": "done",
+        "priority": 2,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786482657,
+        "completed_at": 1786497371,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_7a7e7162",
+        "title": "Hermes lernt Home-Assistant + Eufy-Setup ganzheitlich (Wissensbasis)",
+        "status": "done",
+        "priority": 1,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786482711,
+        "completed_at": 1786494112,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_b5853a4e",
+        "title": "Power-cycle Tuya plug and check entity availability",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786504969,
+        "completed_at": 1786505906,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_fa5abcd1",
+        "title": "Argus Apple FM Optimierung und Stabilisierung",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786484092,
+        "completed_at": 1786501304,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
       {
         "id": "t_16d1c6ad",
         "title": "Tik tot und content Planung mit content Kalender und auto generierten Videos, komplettes skill, wie alles funktioniert, tiktok Eigenschaften von Bildschirmen beachten. alle nötigen plugins etc dazu",
-        "status": "running",
+        "status": "done",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
         "created_at": 1786482166,
-        "completed_at": null,
-        "worker_pid": 51196,
+        "completed_at": 1786497417,
+        "worker_pid": null,
         "consecutive_failures": 0
       },
       {
         "id": "t_763bf9fa",
         "title": "aus kanban erlernte fertige task skills bauen",
-        "status": "running",
+        "status": "done",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
         "created_at": 1786481796,
-        "completed_at": null,
-        "worker_pid": 51195,
-        "consecutive_failures": 1
+        "completed_at": 1786498693,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_0d10ba8f",
+        "title": "skill prompting, skills selbst herstellen, server und map sowie cli selber bauen zusammenhänge verstehen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786481622,
+        "completed_at": 1786496607,
+        "worker_pid": null,
+        "consecutive_failures": 0
       },
       {
         "id": "t_e6ded419",
         "title": "Research n8n for system improvement opportunities",
-        "status": "running",
+        "status": "done",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
         "created_at": 1786477222,
-        "completed_at": null,
-        "worker_pid": 51515,
-        "consecutive_failures": 1
+        "completed_at": 1786495503,
+        "worker_pid": null,
+        "consecutive_failures": 0
       },
       {
         "id": "t_756a264b",
         "title": "Optimize Shop Integration with Shirtee",
-        "status": "running",
+        "status": "done",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
         "created_at": 1786477093,
-        "completed_at": null,
-        "worker_pid": 51514,
-        "consecutive_failures": 0
-      }
-    ],
-    "ready": [],
-    "doneToday": [
-      {
-        "id": "t_800b6312",
-        "title": "Run TikTok domain verification and capture UI response on jarvismini",
-        "status": "done",
-        "priority": 3,
-        "assignee": "jarvismini",
-        "block_kind": null,
-        "created_at": 1786452186,
-        "completed_at": 1786469085,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_995d9085",
-        "title": "Fix sudoers rule to allow passwordless sudo on MacBook",
-        "status": "done",
-        "priority": 3,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786445291,
-        "completed_at": 1786456846,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_a8d3a4be",
-        "title": "Submit TikTok App Review with demo video via Developer Portal",
-        "status": "done",
-        "priority": 3,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786445213,
-        "completed_at": 1786469132,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_73ed8dc9",
-        "title": "TikTok-Domain-Verifizierung nach DNS-Propagation prüfen und abschließen",
-        "status": "done",
-        "priority": 3,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786445204,
-        "completed_at": 1786475847,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_9bd628a7",
-        "title": "Implement chosen Hermes→Jarvis bridge mechanism",
-        "status": "done",
-        "priority": 2,
-        "assignee": "jarvismini",
-        "block_kind": null,
-        "created_at": 1786453585,
-        "completed_at": 1786471613,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_09a2be41",
-        "title": "Verify Logitech C920 capture via imagesnap on Jarvis Mac Mini",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786452383,
-        "completed_at": 1786468987,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_4c86d73d",
-        "title": "Extend control dashboard with agent status panels",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786447312,
-        "completed_at": 1786466824,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_837e558b",
-        "title": "Hermes zu Jarvis Kommunikations-Bridge einrichten",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786447310,
-        "completed_at": 1786474872,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_8876f83a",
-        "title": "Create Friday agent in OpenClaw with routines, calendar, and daily planning",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786447308,
-        "completed_at": 1786463353,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_1df0aa9b",
-        "title": "Implement live Telegram message sync in HermesDesktop via backend event broadcast",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786447306,
-        "completed_at": 1786480498,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_738af084",
-        "title": "Kamera als 'Auge' — Logitech C920 via brew+imagesnap auf Mac Mini",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786445257,
-        "completed_at": 1786476239,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_cecb27da",
-        "title": "Evaluate MCP vs HTTP vs SQLite bridge options for OpenClaw port 18789",
-        "status": "done",
-        "priority": 1,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786453585,
-        "completed_at": 1786459219,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_b4d1531f",
-        "title": "End-to-end test: Hermes delegates real task to Jarvis via bridge",
-        "status": "done",
-        "priority": 1,
-        "assignee": "jarvismini",
-        "block_kind": null,
-        "created_at": 1786453585,
-        "completed_at": 1786474804,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_275bd71c",
-        "title": "Create reusable capture helper script",
-        "status": "done",
-        "priority": 1,
-        "assignee": "jarvismini",
-        "block_kind": null,
-        "created_at": 1786452383,
-        "completed_at": 1786476185,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_919f5497",
-        "title": "Überwache Verifikationsstatus bis 'Verifiziert'",
-        "status": "done",
-        "priority": 1,
-        "assignee": "jarvismini",
-        "block_kind": null,
-        "created_at": 1786452186,
-        "completed_at": 1786474649,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_12f6869b",
-        "title": "Dokumentiere Resolver-Antworten und finales TikTok-Ergebnis",
-        "status": "done",
-        "priority": 1,
-        "assignee": "jarvismini",
-        "block_kind": null,
-        "created_at": 1786452186,
-        "completed_at": 1786475002,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_95a2a225",
-        "title": "Identify and Install Plugins and Skills for Agents",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786476886,
-        "completed_at": 1786481688,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_566d39d4",
-        "title": "Add backend event publisher for new Telegram messages",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786464573,
-        "completed_at": 1786474433,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_a1d93f31",
-        "title": "Replace polling in session.ts with WebSocket/SSE connection",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786464573,
-        "completed_at": 1786471625,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_7b049c3d",
-        "title": "Implement reconnection with exponential backoff in session.ts",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786464573,
-        "completed_at": 1786474281,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_531fdc4a",
-        "title": "Add telemetry for live delivery latency",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786464573,
-        "completed_at": 1786476033,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_9757d03b",
-        "title": "Integration test: verify live sync acceptance criteria",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786464573,
-        "completed_at": 1786477652,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_b82fbf08",
-        "title": "Ensure Homebrew installed and updated on Mac Mini",
-        "status": "done",
-        "priority": 0,
-        "assignee": "jarvismini",
-        "block_kind": null,
-        "created_at": 1786452383,
-        "completed_at": 1786452539,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_1400c030",
-        "title": "Install imagesnap via Homebrew",
-        "status": "done",
-        "priority": 0,
-        "assignee": "jarvismini",
-        "block_kind": null,
-        "created_at": 1786452383,
-        "completed_at": 1786452827,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_9f9d7dc8",
-        "title": "Prüfe DNS-Propagation über mehrere öffentliche Resolver",
-        "status": "done",
-        "priority": 0,
-        "assignee": "jarvismini",
-        "block_kind": null,
-        "created_at": 1786452186,
-        "completed_at": 1786452403,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_f3460e15",
-        "title": "Configure Samba Backup password in Home Assistant UI to enable automated backups",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": "needs_input",
-        "created_at": 1786445296,
-        "completed_at": 1786458170,
-        "worker_pid": null,
-        "consecutive_failures": 2
-      },
-      {
-        "id": "t_6a161559",
-        "title": "Investigate and resolve Music Assistant 502 errors with high RAM/swap on HA-Pi",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786445280,
-        "completed_at": 1786457359,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_5fdc2592",
-        "title": "Fix Sony Bravia REST API session closure requiring manual HA reload",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": "needs_input",
-        "created_at": 1786445273,
-        "completed_at": 1786458170,
-        "worker_pid": null,
-        "consecutive_failures": 2
-      },
-      {
-        "id": "t_4c2b63dd",
-        "title": "HA SSH access blocked on 192.168.178.145, awaiting Marten",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786445267,
-        "completed_at": 1786456162,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_db5874d0",
-        "title": "Answer Marten's question about MacBook monitor freeze",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786445248,
-        "completed_at": 1786456484,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_fc26ea00",
-        "title": "Build & activate Make.com scenario: Opus Clip → Make → TikTok Content Posting API",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786445220,
-        "completed_at": 1786448281,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_455d91d0",
-        "title": "Wait for Cloudflare A-Record propagation and Vercel SSL certificate validation",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786445196,
-        "completed_at": 1786446028,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_c73ce0b5",
-        "title": "Update system status in Obsidian Vault (wiki/hot.md)",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786442370,
-        "completed_at": 1786443771,
+        "completed_at": 1786495578,
         "worker_pid": null,
         "consecutive_failures": 0
       }
@@ -4850,7 +4634,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4859,7 +4643,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4868,7 +4652,7 @@
       },
       {
         "topic": "Broker",
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -4877,7 +4661,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -4886,7 +4670,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -4895,7 +4679,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -4904,7 +4688,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -4913,7 +4697,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "11.08.26, 23:08",
+        "time": "12.08.26, 14:49",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",

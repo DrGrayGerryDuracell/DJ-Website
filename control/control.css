@@ -3312,10 +3312,12 @@ a { color: inherit; text-decoration: none; }
 #performance,
 #agentsroom,
 #home-assistant,
+#kanban,
 .control-nav-link[href="#live-activity"],
 .control-nav-link[href="#performance"],
 .control-nav-link[href="#agentsroom"],
-.control-nav-link[href="#home-assistant"] {
+.control-nav-link[href="#home-assistant"],
+.control-nav-link[href="#kanban"] {
   --section-accent: var(--accent-cyan);
 }
 

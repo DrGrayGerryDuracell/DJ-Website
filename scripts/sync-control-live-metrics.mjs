@@ -520,7 +520,14 @@ async function checkPage(path) {
     const end = performance.now();
     const timingMs = Math.max(1, Math.round(end - start));
     const contentLengthHeader = response.headers.get("content-length");
-    const contentLength = contentLengthHeader ? Number(contentLengthHeader) : null;
+    let contentLength = null;
+    if (contentLengthHeader) {
+      contentLength = Number(contentLengthHeader);
+    } else {
+      // No content-length header (chunked transfer), read the body
+      const text = await response.text();
+      contentLength = text.length;
+    }
     const ok = response.status === 200;
     return {
       path,
