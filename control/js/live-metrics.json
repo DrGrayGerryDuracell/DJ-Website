@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-12T12:49:48.252Z",
-    "generatedAtLabel": "12.08.26, 14:49",
+    "generatedAt": "2026-08-12T13:19:49.979Z",
+    "generatedAtLabel": "12.08.26, 15:19",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "12.08.26, 14:49",
+      "value": "12.08.26, 15:19",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 169,
+      "value": 145,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 194,
+        "visitors": 149,
         "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 166,
+        "visitors": 122,
         "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 163,
+        "visitors": 205,
         "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 175,
+        "visitors": 123,
         "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 163,
+        "visitors": 141,
         "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 162,
+        "visitors": 180,
         "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 163,
+        "visitors": 118,
         "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 163,
+        "visitors": 119,
         "pageviews": 7
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "169 ms",
+      "avgSession": "145 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-12T12:49:48.252Z",
-      "checkedAtLabel": "12.08.26, 14:49"
+      "checkedAt": "2026-08-12T13:19:49.979Z",
+      "checkedAtLabel": "12.08.26, 15:19"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "169 ms",
+    "responseTime": "145 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "12.08.26, 14:49",
+      "time": "12.08.26, 15:19",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "12.08.26, 14:49",
+      "time": "12.08.26, 15:19",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "12.08.26, 14:49",
+      "time": "12.08.26, 15:19",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "12.08.26, 14:49",
+      "time": "12.08.26, 15:19",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3761,12 +3761,12 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-12T12:49:50.410Z",
+    "updatedAt": "2026-08-12T13:19:52.101Z",
     "counts": {
       "waiting": 1,
       "running": 0,
-      "ready": 4,
-      "doneToday": 15
+      "ready": 2,
+      "doneToday": 16
     },
     "services": [
       {
@@ -3802,16 +3802,16 @@
     ],
     "waiting": [
       {
-        "id": "t_287116d3",
-        "title": "Re-pair Partyleuchte using Tuya/Smart Life app",
-        "status": "blocked",
+        "id": "t_4a395e22",
+        "title": "Update tuya_local configuration for Partyleuchte device",
+        "status": "running",
         "priority": 0,
         "assignee": "zentralserver",
-        "block_kind": null,
+        "block_kind": "needs_input",
         "created_at": 1786504969,
         "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 2
+        "worker_pid": 21340,
+        "consecutive_failures": 0
       }
     ],
     "running": [],
@@ -3824,30 +3824,6 @@
         "assignee": "zentralserver",
         "block_kind": "needs_input",
         "created_at": 1786482666,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_ef484b5a",
-        "title": "Retrieve new local_key via tuya-cli or Tuya IoT platform",
-        "status": "todo",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786504969,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_4a395e22",
-        "title": "Update Home Assistant tuya_local configuration with new local_key",
-        "status": "todo",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786504969,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 0
@@ -3971,6 +3947,18 @@
         "block_kind": null,
         "created_at": 1786504969,
         "completed_at": 1786505906,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_287116d3",
+        "title": "Re-pair Partyleuchte using Tuya/Smart Life app",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786504969,
+        "completed_at": 1786539382,
         "worker_pid": null,
         "consecutive_failures": 0
       },
@@ -4634,7 +4622,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4643,7 +4631,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4652,7 +4640,7 @@
       },
       {
         "topic": "Broker",
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -4661,7 +4649,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -4670,7 +4658,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -4679,7 +4667,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -4688,7 +4676,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -4697,7 +4685,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "12.08.26, 14:49",
+        "time": "12.08.26, 15:19",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",

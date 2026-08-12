@@ -1144,19 +1144,17 @@ function renderKanbanTask(task) {
   const completed = formatKanbanTime(task.completed_at);
   return `
     <li class="kanban-task-item${needsAction ? " kanban-needs-action" : ""}">
-      <p class="kanban-task-title">${escapeHtml(task.title)}</p>
+      <button type="button" class="kanban-task-title kanban-task-title-btn" data-control-dialog-kind="kanban-task" data-control-dialog-id="${escapeHtml(task.id)}">${escapeHtml(task.title)}</button>
       <div class="kanban-task-meta">
         <span class="kanban-task-id">${escapeHtml(task.id)}</span>
         ${task.assignee ? `<span class="kanban-task-assignee">${escapeHtml(task.assignee)}</span>` : ""}
         ${needsAction ? `<span class="kanban-task-assignee" style="color:#e05656">${escapeHtml(task.block_kind || "Fehler")}</span>` : ""}
         ${completed ? `<span class="kanban-task-id">${completed}</span>` : ""}
       </div>
-      ${needsAction ? `
-        <div class="kanban-task-actions">
-          <button type="button" class="kanban-task-action-btn" data-kanban-task-action="retry" data-kanban-task-id="${escapeHtml(task.id)}">Erneut versuchen</button>
-          <button type="button" class="kanban-task-action-btn is-muted" data-kanban-task-action="archive" data-kanban-task-id="${escapeHtml(task.id)}">Archivieren</button>
-        </div>
-      ` : ""}
+      <div class="kanban-task-actions">
+        ${needsAction ? `<button type="button" class="kanban-task-action-btn" data-kanban-task-action="retry" data-kanban-task-id="${escapeHtml(task.id)}">Erneut versuchen</button>` : ""}
+        <button type="button" class="kanban-task-action-btn is-muted" data-control-dialog-kind="kanban-task" data-control-dialog-id="${escapeHtml(task.id)}">Details</button>
+      </div>
     </li>
   `;
 }

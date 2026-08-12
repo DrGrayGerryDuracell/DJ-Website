@@ -4112,6 +4112,21 @@ a { color: inherit; text-decoration: none; }
   line-height: 1.4;
   margin-bottom: 4px;
 }
+.kanban-task-title-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+.kanban-task-title-btn:hover {
+  color: var(--gold-strong);
+  text-decoration: underline;
+}
 .kanban-task-meta {
   display: flex;
   flex-wrap: wrap;

@@ -827,6 +827,43 @@ function buildDialogPayload(data, kind, id) {
     };
   }
 
+  if (kind === "kanban-task") {
+    const kanban = data?.kanban || {};
+    const allTasks = [
+      ...(kanban.waiting || []),
+      ...(kanban.running || []),
+      ...(kanban.ready || []),
+      ...(kanban.doneToday || [])
+    ];
+    const task = allTasks.find((entry) => entry.id === id);
+    if (!task) return null;
+    const needsAction = Boolean(task.block_kind) || Number(task.consecutive_failures || 0) > 0;
+    const statusToneMap = { done: "ok", running: "live", blocked: "warn", ready: "info", todo: "info", triage: "info" };
+    const actions = [];
+    if (needsAction || task.status === "blocked") {
+      actions.push({ type: "kanban-action", taskAction: "retry", taskId: task.id, label: "Erneut versuchen" });
+    }
+    if (task.status !== "done") {
+      actions.push({ type: "kanban-action", taskAction: "complete", taskId: task.id, label: "Als erledigt markieren" });
+    }
+    actions.push({ type: "kanban-action", taskAction: "archive", taskId: task.id, label: "Archivieren" });
+    actions.push({ type: "copy", label: "Task-ID kopieren", value: task.id });
+    return {
+      title: task.title,
+      subtitle: `Kanban-Task • ${task.id}`,
+      badges: [
+        { label: task.status, tone: statusToneMap[task.status] || "info" },
+        ...(needsAction ? [{ label: task.block_kind || "Fehler", tone: "warn" }] : [])
+      ],
+      paragraphs: [
+        task.assignee ? `Zugewiesen an: ${task.assignee}` : "Noch niemandem zugewiesen.",
+        Number(task.consecutive_failures || 0) > 0 ? `Fehlgeschlagene Versuche in Folge: ${task.consecutive_failures}` : null,
+        task.completed_at ? `Abgeschlossen: ${new Date(task.completed_at * 1000).toLocaleString("de-DE")}` : null
+      ].filter(Boolean),
+      actions
+    };
+  }
+
   if (kind === "website-page") {
     const page = websitePages.find((entry) => entry.id === id);
     if (!page) return null;
@@ -1010,6 +1047,9 @@ function renderControlDialog(payload) {
               }
               if (action.type === "bridge-command") {
                 return `<button type="button" class="action-btn is-secondary" data-control-command="${escapeHtml(action.command || "")}">${escapeHtml(action.label)}</button>`;
+              }
+              if (action.type === "kanban-action") {
+                return `<button type="button" class="action-btn is-secondary" data-kanban-task-action="${escapeHtml(action.taskAction)}" data-kanban-task-id="${escapeHtml(action.taskId)}">${escapeHtml(action.label)}</button>`;
               }
               if (action.type === "ha-queue") {
                 return `<button type="button" class="action-btn is-secondary" data-control-ha='${escapeHtml(JSON.stringify(action.payload || {}))}'>${escapeHtml(action.label)}</button>`;
