@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-12T16:18:28.664Z",
-    "generatedAtLabel": "12.08.26, 18:18",
+    "generatedAt": "2026-08-12T16:32:34.245Z",
+    "generatedAtLabel": "12.08.26, 18:32",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "12.08.26, 18:18",
+      "value": "12.08.26, 18:32",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 211,
+      "value": 250,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,43 +118,43 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 293,
+        "visitors": 296,
         "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 196,
+        "visitors": 236,
         "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 199,
+        "visitors": 228,
         "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 207,
+        "visitors": 235,
         "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 204,
+        "visitors": 241,
         "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 197,
+        "visitors": 240,
         "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 197,
+        "visitors": 258,
         "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 195,
-        "pageviews": 7
+        "visitors": 268,
+        "pageviews": 8
       }
     ],
     "topPages": [
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "211 ms",
+      "avgSession": "250 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-12T16:18:28.664Z",
-      "checkedAtLabel": "12.08.26, 18:18"
+      "checkedAt": "2026-08-12T16:32:34.245Z",
+      "checkedAtLabel": "12.08.26, 18:32"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "211 ms",
+    "responseTime": "250 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "12.08.26, 18:18",
+      "time": "12.08.26, 18:32",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "12.08.26, 18:18",
+      "time": "12.08.26, 18:32",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "12.08.26, 18:18",
+      "time": "12.08.26, 18:32",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "12.08.26, 18:18",
+      "time": "12.08.26, 18:32",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3911,33 +3911,33 @@
         "name": "Brain Vault",
         "role": "Persistentes Wissen",
         "state": "sync",
-        "stateLabel": "Sync",
-        "steward": "Memory Agent"
+        "stateLabel": "10.052 Notizen",
+        "steward": "Hermes / Jarvis (konzeptionell — Obsidian-Vault selbst ist die einzige live pruefbare Quelle)"
       },
       {
         "id": "vault-obsidian",
         "name": "Obsidian Graph",
-        "role": "Knoten und Beziehungen",
-        "state": "connected",
-        "stateLabel": "Verbunden",
+        "role": "Knoten und Beziehungen (konzeptionell, Teil des Brain Vault)",
+        "state": "info",
+        "stateLabel": "Architektur-Konzept",
         "steward": "Jarvis"
       },
       {
         "id": "vault-learning",
         "name": "Experience Loop",
-        "role": "Erfahrungen -> Regeln -> Kontext",
-        "state": "support",
-        "stateLabel": "Adapter",
+        "role": "Erfahrungen -> Regeln -> Kontext (konzeptionell)",
+        "state": "info",
+        "stateLabel": "Architektur-Konzept",
         "steward": "Hermes"
       }
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-12T16:18:40.254Z",
+    "updatedAt": "2026-08-12T16:32:39.579Z",
     "counts": {
-      "waiting": 4,
+      "waiting": 2,
       "running": 8,
-      "ready": 14,
+      "ready": 16,
       "doneToday": 23
     },
     "services": [
@@ -3974,49 +3974,25 @@
     ],
     "waiting": [
       {
-        "id": "t_bced9d45",
-        "title": "Reaktivierte OpenClaw-Agenten: zugewiesene Skills auf tatsaechliche Verfuegbarkeit pruefen",
+        "id": "t_c07776f0",
+        "title": "OpenClaw CLI Node-Versions-Mismatch loesen (nvm install kompatible Version)",
         "status": "blocked",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786550195,
+        "created_at": 1786550205,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 2
       },
       {
-        "id": "t_aa12cf64",
-        "title": "OpenClaw-Auth-Token aus SOUL.md in Secret/env verschieben",
+        "id": "t_b46052b6",
+        "title": "Dashboard vaultNodes (Brain Vault/Obsidian Graph/Experience Loop) von hartcodiert auf echte Daten umstellen",
         "status": "blocked",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786550189,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 2
-      },
-      {
-        "id": "t_2ef910ec",
-        "title": "6 quota-erschoepfte Cronjobs auf LiteLLM-Fallback-Kette umstellen",
-        "status": "blocked",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550184,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 2
-      },
-      {
-        "id": "t_dd026120",
-        "title": "OpenClaw Jarvis-Team reaktiviert (jarvis/heimdall/forge/sentinel/oracle/muse)",
-        "status": "blocked",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786549121,
+        "created_at": 1786550200,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 2
@@ -4024,52 +4000,40 @@
     ],
     "running": [
       {
-        "id": "t_b84b699b",
-        "title": "HA Energy Dashboard fertigstellen - jetzt mit verifiziertem GUI-Zugang erneut versuchen",
+        "id": "t_bced9d45",
+        "title": "Reaktivierte OpenClaw-Agenten: zugewiesene Skills auf tatsaechliche Verfuegbarkeit pruefen",
         "status": "running",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786550216,
+        "created_at": 1786550195,
         "completed_at": null,
-        "worker_pid": 51743,
-        "consecutive_failures": 1
+        "worker_pid": 64711,
+        "consecutive_failures": 0
       },
       {
-        "id": "t_1ec8ee77",
-        "title": "Zwei laufende OpenClaw-Gateway-Prozesse (Port 18789 und 18799) klaeren",
+        "id": "t_aa12cf64",
+        "title": "OpenClaw-Auth-Token aus SOUL.md in Secret/env verschieben",
         "status": "running",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786550211,
+        "created_at": 1786550189,
         "completed_at": null,
-        "worker_pid": 51742,
-        "consecutive_failures": 1
+        "worker_pid": 64710,
+        "consecutive_failures": 0
       },
       {
-        "id": "t_c07776f0",
-        "title": "OpenClaw CLI Node-Versions-Mismatch loesen (nvm install kompatible Version)",
+        "id": "t_2ef910ec",
+        "title": "6 quota-erschoepfte Cronjobs auf LiteLLM-Fallback-Kette umstellen",
         "status": "running",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786550205,
+        "created_at": 1786550184,
         "completed_at": null,
-        "worker_pid": 51455,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_b46052b6",
-        "title": "Dashboard vaultNodes (Brain Vault/Obsidian Graph/Experience Loop) von hartcodiert auf echte Daten umstellen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550200,
-        "completed_at": null,
-        "worker_pid": 51454,
-        "consecutive_failures": 1
+        "worker_pid": 64708,
+        "consecutive_failures": 0
       },
       {
         "id": "t_60260932",
@@ -4080,8 +4044,8 @@
         "block_kind": null,
         "created_at": 1786550064,
         "completed_at": null,
-        "worker_pid": 51741,
-        "consecutive_failures": 1
+        "worker_pid": 64707,
+        "consecutive_failures": 0
       },
       {
         "id": "t_099c24db",
@@ -4092,8 +4056,8 @@
         "block_kind": null,
         "created_at": 1786550035,
         "completed_at": null,
-        "worker_pid": 51740,
-        "consecutive_failures": 1
+        "worker_pid": 53994,
+        "consecutive_failures": 0
       },
       {
         "id": "t_297d6964",
@@ -4104,7 +4068,19 @@
         "block_kind": null,
         "created_at": 1786549955,
         "completed_at": null,
-        "worker_pid": 51739,
+        "worker_pid": 64706,
+        "consecutive_failures": 1
+      },
+      {
+        "id": "t_dd026120",
+        "title": "OpenClaw Jarvis-Team reaktiviert (jarvis/heimdall/forge/sentinel/oracle/muse)",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786549121,
+        "completed_at": null,
+        "worker_pid": 53993,
         "consecutive_failures": 0
       },
       {
@@ -4116,8 +4092,8 @@
         "block_kind": "capability",
         "created_at": 1786504969,
         "completed_at": null,
-        "worker_pid": 51738,
-        "consecutive_failures": 0
+        "worker_pid": 64705,
+        "consecutive_failures": 1
       }
     ],
     "ready": [
@@ -4276,6 +4252,30 @@
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 1
+      },
+      {
+        "id": "t_b84b699b",
+        "title": "HA Energy Dashboard fertigstellen - jetzt mit verifiziertem GUI-Zugang erneut versuchen",
+        "status": "ready",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550216,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_1ec8ee77",
+        "title": "Zwei laufende OpenClaw-Gateway-Prozesse (Port 18789 und 18799) klaeren",
+        "status": "ready",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550211,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
       },
       {
         "id": "t_0d272391",
@@ -5249,7 +5249,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -5258,7 +5258,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -5267,7 +5267,7 @@
       },
       {
         "topic": "Broker",
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -5276,7 +5276,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -5285,7 +5285,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -5294,7 +5294,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -5303,7 +5303,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -5312,7 +5312,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "12.08.26, 18:18",
+        "time": "12.08.26, 18:32",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",

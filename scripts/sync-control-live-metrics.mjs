@@ -958,6 +958,35 @@ function fetchHermesCronJobs() {
   }
 }
 
+// Brain Vault / Obsidian Graph / Experience Loop are conceptual architecture
+// labels (see SOUL.md "Vault-Gedächtnis"), not separately queryable live
+// services — only the underlying Obsidian vault directory itself has real,
+// checkable facts (file count, last write). Honest about that distinction
+// instead of claiming per-card "connected"/"sync" states nothing verifies.
+function fetchVaultStats() {
+  try {
+    const raw = execFileSync("ssh", ["-o", "ConnectTimeout=6", "-o", "BatchMode=yes", "mini",
+      "find ~/ObsidianVault/JARVIS-Brain -type f -iname '*.md' 2>/dev/null | wc -l"
+    ], { encoding: "utf8", timeout: 15000 });
+    const fileCount = parseInt(raw.trim(), 10);
+    if (!Number.isFinite(fileCount) || fileCount <= 0) throw new Error("keine Dateien gezaehlt");
+    return {
+      id: "vault-brain",
+      name: "Brain Vault",
+      role: "Persistentes Wissen",
+      state: "sync",
+      stateLabel: `${fileCount.toLocaleString("de-DE")} Notizen`,
+      steward: "Hermes / Jarvis (konzeptionell — Obsidian-Vault selbst ist die einzige live pruefbare Quelle)"
+    };
+  } catch (error) {
+    console.warn(`fetchVaultStats fehlgeschlagen (${error.message}), behalte vorherigen Stand`);
+    return previousValue("operationsWorkbench.vaultNodes.0") || {
+      id: "vault-brain", name: "Brain Vault", role: "Persistentes Wissen",
+      state: "warn", stateLabel: "Nicht erreichbar", steward: "Hermes / Jarvis"
+    };
+  }
+}
+
 function buildKanbanSection() {
   // The Hermes kanban board lives on the Mac mini ("zentralserver") at
   // ~/.hermes/kanban.db — the local copy on whichever machine renders this
@@ -1371,6 +1400,7 @@ async function main() {
   const openclawStatus = kanbanData.services?.find((s) => s.id === "openclaw")?.status || "warn";
   const subagentsLive = fetchOpenClawAgents(openclawStatus);
   const cronJobsLive = fetchHermesCronJobs();
+  const vaultBrainLive = fetchVaultStats();
 
   const data = {
     metadata: {
@@ -1688,9 +1718,9 @@ async function main() {
       cronJobs: cronJobsLive,
       subagents: subagentsLive,
       vaultNodes: [
-        { id: "vault-brain", name: "Brain Vault", role: "Persistentes Wissen", state: "sync", stateLabel: "Sync", steward: "Memory Agent" },
-        { id: "vault-obsidian", name: "Obsidian Graph", role: "Knoten und Beziehungen", state: "connected", stateLabel: "Verbunden", steward: "Jarvis" },
-        { id: "vault-learning", name: "Experience Loop", role: "Erfahrungen -> Regeln -> Kontext", state: "support", stateLabel: "Adapter", steward: "Hermes" }
+        vaultBrainLive,
+        { id: "vault-obsidian", name: "Obsidian Graph", role: "Knoten und Beziehungen (konzeptionell, Teil des Brain Vault)", state: "info", stateLabel: "Architektur-Konzept", steward: "Jarvis" },
+        { id: "vault-learning", name: "Experience Loop", role: "Erfahrungen -> Regeln -> Kontext (konzeptionell)", state: "info", stateLabel: "Architektur-Konzept", steward: "Hermes" }
       ]
     },
     kanban: kanbanData,
