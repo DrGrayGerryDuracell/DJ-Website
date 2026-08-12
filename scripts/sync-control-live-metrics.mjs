@@ -862,6 +862,102 @@ function sqliteQueryJsonSsh(host, dbPath, query, fallback = []) {
   }
 }
 
+// Static role labels — these are identity/permission facts from each agent's
+// permissions.json (read on 2026-08-12), not runtime state. Real runtime
+// state comes from the OpenClaw health check, since there is no per-agent
+// liveness API to query individually.
+const OPENCLAW_AGENT_ROLES = {
+  jarvis: { mode: "Orchestrator", models: "Claude Haiku + LiteLLM" },
+  heimdall: { mode: "Home Assistant", models: "Claude Haiku + LiteLLM" },
+  forge: { mode: "Engineering / Infra", models: "LiteLLM smart/premium" },
+  sentinel: { mode: "Monitoring", models: "LiteLLM fast/smart" },
+  oracle: { mode: "Research / Briefings", models: "LiteLLM fast/smart" },
+  muse: { mode: "Content / Social", models: "LiteLLM smart/premium" },
+  main: { mode: "Generic Fallback", models: "LiteLLM smart" }
+};
+
+// On transient SSH/parse failure, keep whatever the previous run wrote rather
+// than silently overwriting real data with an empty array — an empty list
+// looks identical to "nothing configured" on the dashboard, which is worse
+// than showing slightly-stale-but-real data for one refresh cycle.
+function previousValue(path) {
+  try {
+    const prev = JSON.parse(readFileSync(outPath, "utf8"));
+    return path.split(".").reduce((acc, key) => acc?.[key], prev);
+  } catch {
+    return undefined;
+  }
+}
+
+function fetchOpenClawAgents(openclawStatus) {
+  try {
+    const raw = execFileSync("ssh", ["-o", "ConnectTimeout=5", "-o", "BatchMode=yes", "mini", "cat ~/.openclaw/openclaw.json 2>/dev/null"], {
+      encoding: "utf8",
+      timeout: 8000
+    });
+    const cfg = JSON.parse(raw);
+    const list = Array.isArray(cfg?.agents?.list) ? cfg.agents.list : [];
+    return list
+      .filter((a) => a?.id && a.id !== "main")
+      .map((a) => {
+        const role = OPENCLAW_AGENT_ROLES[a.id] || { mode: "Subagent", models: "LiteLLM" };
+        return {
+          id: `sub-${a.id}`,
+          name: a.identity?.name || a.id,
+          emoji: a.identity?.emoji || "",
+          mode: role.mode,
+          llm: role.models,
+          fallback: Array.isArray(a.model?.fallbacks) ? a.model.fallbacks[0] || "-" : "-",
+          state: openclawStatus === "ok" ? "configured" : "unreachable",
+          stateLabel: openclawStatus === "ok" ? "In OpenClaw konfiguriert" : "OpenClaw nicht erreichbar"
+        };
+      });
+  } catch (error) {
+    console.warn(`fetchOpenClawAgents fehlgeschlagen (${error.message}), behalte vorherigen Stand`);
+    return previousValue("operationsWorkbench.subagents") || [];
+  }
+}
+
+function fetchHermesCronJobs() {
+  try {
+    const raw = execFileSync("ssh", ["-o", "ConnectTimeout=6", "-o", "BatchMode=yes", "mini", "/Users/jarvisgray/.hermes/hermes-agent/venv/bin/hermes --profile zentralserver cron list 2>&1"], {
+      encoding: "utf8",
+      timeout: 12000
+    });
+    const blocks = raw.split(/\n(?=  \S.*\[(?:active|paused)\])/);
+    const jobs = [];
+    for (const block of blocks) {
+      const nameMatch = block.match(/Name:\s+(.+)/);
+      const scheduleMatch = block.match(/Schedule:\s+(.+)/);
+      const nextRunMatch = block.match(/Next run:\s+(.+)/);
+      const lastRunMatch = block.match(/Last run:\s+(\S+)\s+(ok|error)/);
+      if (!nameMatch) continue;
+      const isPaused = /\[paused\]/.test(block);
+      const nextRun = nextRunMatch ? nextRunMatch[1].trim() : "None";
+      const lastRunOk = lastRunMatch ? lastRunMatch[2] === "ok" : null;
+      let state = "ready";
+      let stateLabel = "Geplant";
+      if (isPaused) { state = "paused"; stateLabel = "Pausiert"; }
+      else if (nextRun === "None") { state = "warn"; stateLabel = "Kein naechster Lauf (haengt)"; }
+      else if (lastRunOk === false) { state = "warn"; stateLabel = "Letzter Lauf fehlgeschlagen"; }
+      else if (lastRunOk === true) { state = "live"; stateLabel = "Laeuft planmaessig"; }
+      jobs.push({
+        id: `cron-${nameMatch[1].trim()}`,
+        name: nameMatch[1].trim(),
+        schedule: scheduleMatch ? scheduleMatch[1].trim() : "?",
+        state,
+        stateLabel,
+        owner: "Hermes"
+      });
+    }
+    if (!jobs.length) throw new Error("keine Jobs geparst — vermutlich leere/fehlerhafte cron-list-Ausgabe");
+    return jobs;
+  } catch (error) {
+    console.warn(`fetchHermesCronJobs fehlgeschlagen (${error.message}), behalte vorherigen Stand`);
+    return previousValue("operationsWorkbench.cronJobs") || [];
+  }
+}
+
 function buildKanbanSection() {
   // The Hermes kanban board lives on the Mac mini ("zentralserver") at
   // ~/.hermes/kanban.db — the local copy on whichever machine renders this
@@ -1271,6 +1367,11 @@ async function main() {
   agentsRoom.recentDelegations = hermesRuntime.recentDelegations;
   agentsRoom.recentObligations = hermesRuntime.recentObligations;
 
+  const kanbanData = buildKanbanSection();
+  const openclawStatus = kanbanData.services?.find((s) => s.id === "openclaw")?.status || "warn";
+  const subagentsLive = fetchOpenClawAgents(openclawStatus);
+  const cronJobsLive = fetchHermesCronJobs();
+
   const data = {
     metadata: {
       mode: "live",
@@ -1584,24 +1685,15 @@ async function main() {
       ]
     },
     operationsWorkbench: {
-      cronJobs: [
-        { id: "cron-live", name: "sync-control-live", schedule: "*/30 * * * *", state: "live", stateLabel: "Aktiv", owner: "Hermes" },
-        { id: "cron-shop", name: "check-shirtee-links", schedule: "0 */4 * * *", state: "ready", stateLabel: "Bereit", owner: "Jarvis" },
-        { id: "cron-upload", name: "generate-upload-queue", schedule: "15 2 * * *", state: "connected", stateLabel: "Verbunden", owner: "Forge" }
-      ],
-      subagents: [
-        { id: "sub-forge", name: "Forge", mode: "Infrastructure", llm: "Cloud LLM first", fallback: "Codex", state: "live" },
-        { id: "sub-sentinel", name: "Sentinel", mode: "Monitoring", llm: "Cloud LLM first", fallback: "Claude", state: "live" },
-        { id: "sub-muse", name: "Muse", mode: "Content", llm: "Cloud LLM first", fallback: "Claude Code", state: "ready" },
-        { id: "sub-heimdall", name: "Heimdall", mode: "Home Assistant", llm: "Cloud LLM first", fallback: "Codex", state: "connected" }
-      ],
+      cronJobs: cronJobsLive,
+      subagents: subagentsLive,
       vaultNodes: [
         { id: "vault-brain", name: "Brain Vault", role: "Persistentes Wissen", state: "sync", stateLabel: "Sync", steward: "Memory Agent" },
         { id: "vault-obsidian", name: "Obsidian Graph", role: "Knoten und Beziehungen", state: "connected", stateLabel: "Verbunden", steward: "Jarvis" },
         { id: "vault-learning", name: "Experience Loop", role: "Erfahrungen -> Regeln -> Kontext", state: "support", stateLabel: "Adapter", steward: "Hermes" }
       ]
     },
-    kanban: buildKanbanSection(),
+    kanban: kanbanData,
     agentsRoom
   };
 

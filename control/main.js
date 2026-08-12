@@ -960,28 +960,14 @@ function buildDialogPayload(data, kind, id) {
       title: job.name,
       subtitle: `Cronjob • ${job.schedule}`,
       badges: [{ label: job.stateLabel, tone: job.state }],
-      paragraphs: [`Owner: ${job.owner}`, "Vorbereitung für Run-now, Pause, Resume und Schedule-Editing im Dashboard."],
+      paragraphs: [`Owner: ${job.owner}`, `Zeitplan: ${job.schedule}`, "Echter Hermes-Cronjob auf dem Mac mini — Ausführung/Pause direkt im Dashboard ist noch nicht angebunden."],
       actions: [
         {
-          type: "bridge-command",
-          label: "Jetzt ausführen",
-          command: job.name === "sync-control-live"
-            ? "sync-control-live"
-            : job.name === "check-shirtee-links"
-              ? "check-links"
-              : "generate-upload-queue"
-        },
-        {
           type: "copy",
-          label: "Cron-Kommando kopieren",
-          value: job.name === "sync-control-live"
-            ? "npm run sync:control-live"
-            : job.name === "check-shirtee-links"
-              ? "npm run check:links"
-              : "npm run generate:upload-queue"
+          label: "Job-Namen kopieren",
+          value: job.name
         }
-      ],
-      toggles: [{ id: "enabled", label: "Cronjob aktiv", value: getControlToggleValue(kind, id, "enabled", job.state === "live"), onLabel: "Aktiv", offLabel: "Pausiert" }]
+      ]
     };
   }
 
@@ -991,7 +977,7 @@ function buildDialogPayload(data, kind, id) {
     return {
       title: agent.name,
       subtitle: agent.mode,
-      badges: [{ label: agent.state, tone: agent.state }],
+      badges: [{ label: agent.stateLabel || agent.state, tone: agent.state }],
       paragraphs: [`Primärstrategie: ${agent.llm}`, `Fallback: ${agent.fallback}`],
       actions: [
         {

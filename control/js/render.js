@@ -110,6 +110,8 @@ function statusClass(status) {
   if (status === "ready" || status === "planned") return "is-ready";
   if (status === "active" || status === "enabled") return "is-active";
   if (status === "sync") return "is-sync";
+  if (status === "configured") return "is-info";
+  if (status === "unreachable") return "is-error";
   return "is-info";
 }
 
@@ -2315,7 +2317,7 @@ export function renderQuickActions(container, dashboardData) {
                 <strong>${escapeHtml(agent.name)}</strong>
                 <span>${escapeHtml(agent.mode)}</span>
               </div>
-              <span class="status-pill ${statusClass(agent.state)}">${escapeHtml(agent.state)}</span>
+              <span class="status-pill ${statusClass(agent.state)}">${escapeHtml(agent.stateLabel || agent.state)}</span>
             </div>
             <p>${escapeHtml(agent.llm)}</p>
             <small>${escapeHtml(`Fallback: ${agent.fallback}`)}</small>

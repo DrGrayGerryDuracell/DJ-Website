@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-12T14:45:49.920Z",
-    "generatedAtLabel": "12.08.26, 16:45",
+    "generatedAt": "2026-08-12T15:49:33.230Z",
+    "generatedAtLabel": "12.08.26, 17:49",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "12.08.26, 16:45",
+      "value": "12.08.26, 17:49",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 185,
+      "value": 187,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 231,
+        "visitors": 202,
         "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 175,
+        "visitors": 174,
         "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 175,
+        "visitors": 177,
         "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 187,
+        "visitors": 228,
         "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 172,
+        "visitors": 174,
         "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 169,
+        "visitors": 204,
         "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 185,
+        "visitors": 170,
         "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 185,
+        "visitors": 170,
         "pageviews": 7
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "185 ms",
+      "avgSession": "187 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-12T14:45:49.920Z",
-      "checkedAtLabel": "12.08.26, 16:45"
+      "checkedAt": "2026-08-12T15:49:33.230Z",
+      "checkedAtLabel": "12.08.26, 17:49"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "185 ms",
+    "responseTime": "187 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "12.08.26, 16:45",
+      "time": "12.08.26, 17:49",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "12.08.26, 16:45",
+      "time": "12.08.26, 17:49",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "12.08.26, 16:45",
+      "time": "12.08.26, 17:49",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "12.08.26, 16:45",
+      "time": "12.08.26, 17:49",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3675,62 +3675,234 @@
   "operationsWorkbench": {
     "cronJobs": [
       {
-        "id": "cron-live",
-        "name": "sync-control-live",
-        "schedule": "*/30 * * * *",
-        "state": "live",
-        "stateLabel": "Aktiv",
+        "id": "cron-daily-telegram-research",
+        "name": "daily-telegram-research",
+        "schedule": "0 9 * * *",
+        "state": "warn",
+        "stateLabel": "Letzter Lauf fehlgeschlagen",
         "owner": "Hermes"
       },
       {
-        "id": "cron-shop",
-        "name": "check-shirtee-links",
-        "schedule": "0 */4 * * *",
-        "state": "ready",
-        "stateLabel": "Bereit",
-        "owner": "Jarvis"
+        "id": "cron-daily-telegram-content-plan",
+        "name": "daily-telegram-content-plan",
+        "schedule": "20 9 * * *",
+        "state": "warn",
+        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "owner": "Hermes"
       },
       {
-        "id": "cron-upload",
-        "name": "generate-upload-queue",
-        "schedule": "15 2 * * *",
-        "state": "connected",
-        "stateLabel": "Verbunden",
-        "owner": "Forge"
+        "id": "cron-koeln-nrw-event-monitor",
+        "name": "koeln-nrw-event-monitor",
+        "schedule": "0 11 * * 1-5",
+        "state": "warn",
+        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-weekly-set-branding-sampler",
+        "name": "weekly-set-branding-sampler",
+        "schedule": "30 10 * * 1",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-weekend-afterhours-hooks",
+        "name": "weekend-afterhours-hooks",
+        "schedule": "0 18 * * 6,0",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-weekly-master-plan",
+        "name": "weekly-master-plan",
+        "schedule": "30 8 * * 1",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-monthly-review-planner",
+        "name": "monthly-review-planner",
+        "schedule": "0 8 1 * *",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-release-set-launch-planner",
+        "name": "release-set-launch-planner",
+        "schedule": "0 12 * * 4",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-tiktok-live-ideas",
+        "name": "tiktok-live-ideas",
+        "schedule": "30 19 * * 2,4,6",
+        "state": "warn",
+        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-zentralserver-health-check",
+        "name": "zentralserver-health-check",
+        "schedule": "0 9,21 * * *",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-vault-hot-sync",
+        "name": "vault-hot-sync",
+        "schedule": "0 23 * * *",
+        "state": "warn",
+        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-ha-health-local",
+        "name": "ha-health-local",
+        "schedule": "every 240m",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-ha-backup-local",
+        "name": "ha-backup-local",
+        "schedule": "every 360m",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-daily-reflection",
+        "name": "daily-reflection",
+        "schedule": "30 22 * * *",
+        "state": "warn",
+        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-argus-health-local",
+        "name": "argus-health-local",
+        "schedule": "every 30m",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-plex-selfheal-local",
+        "name": "plex-selfheal-local",
+        "schedule": "every 10m",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-weekly_log_cleanup",
+        "name": "weekly_log_cleanup",
+        "schedule": "0 3 * * 0",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-kanban-research-enricher",
+        "name": "kanban-research-enricher",
+        "schedule": "every 15m",
+        "state": "warn",
+        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-kanban-review-watcher",
+        "name": "kanban-review-watcher",
+        "schedule": "every 10m",
+        "state": "warn",
+        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-kanban-blocked-notifier",
+        "name": "kanban-blocked-notifier",
+        "schedule": "every 30m",
+        "state": "ready",
+        "stateLabel": "Geplant",
+        "owner": "Hermes"
+      },
+      {
+        "id": "cron-kanban-hotmd-sync",
+        "name": "kanban-hotmd-sync",
+        "schedule": "every 360m",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
+        "owner": "Hermes"
       }
     ],
     "subagents": [
       {
-        "id": "sub-forge",
-        "name": "Forge",
-        "mode": "Infrastructure",
-        "llm": "Cloud LLM first",
-        "fallback": "Codex",
-        "state": "live"
-      },
-      {
-        "id": "sub-sentinel",
-        "name": "Sentinel",
-        "mode": "Monitoring",
-        "llm": "Cloud LLM first",
-        "fallback": "Claude",
-        "state": "live"
+        "id": "sub-heimdall",
+        "name": "Heimdall",
+        "emoji": "🏠",
+        "mode": "Home Assistant",
+        "llm": "Claude Haiku + LiteLLM",
+        "fallback": "anthropic/claude-sonnet-4-5",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
       },
       {
         "id": "sub-muse",
         "name": "Muse",
-        "mode": "Content",
-        "llm": "Cloud LLM first",
-        "fallback": "Claude Code",
-        "state": "ready"
+        "emoji": "🎧",
+        "mode": "Content / Social",
+        "llm": "LiteLLM smart/premium",
+        "fallback": "litellm/premium",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
       },
       {
-        "id": "sub-heimdall",
-        "name": "Heimdall",
-        "mode": "Home Assistant",
-        "llm": "Cloud LLM first",
-        "fallback": "Codex",
-        "state": "connected"
+        "id": "sub-sentinel",
+        "name": "Sentinel",
+        "emoji": "🩺",
+        "mode": "Monitoring",
+        "llm": "LiteLLM fast/smart",
+        "fallback": "litellm/fallback",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
+      },
+      {
+        "id": "sub-jarvis",
+        "name": "JARVIS",
+        "emoji": "🥷",
+        "mode": "Orchestrator",
+        "llm": "Claude Haiku + LiteLLM",
+        "fallback": "anthropic/claude-sonnet-4-5",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
+      },
+      {
+        "id": "sub-oracle",
+        "name": "Oracle",
+        "emoji": "📰",
+        "mode": "Research / Briefings",
+        "llm": "LiteLLM fast/smart",
+        "fallback": "litellm/smart",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
+      },
+      {
+        "id": "sub-forge",
+        "name": "Forge",
+        "emoji": "🛠",
+        "mode": "Engineering / Infra",
+        "llm": "LiteLLM smart/premium",
+        "fallback": "litellm/premium",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
       }
     ],
     "vaultNodes": [
@@ -3761,12 +3933,12 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-12T14:45:53.837Z",
+    "updatedAt": "2026-08-12T15:49:38.465Z",
     "counts": {
       "waiting": 0,
-      "running": 1,
-      "ready": 4,
-      "doneToday": 19
+      "running": 4,
+      "ready": 1,
+      "doneToday": 23
     },
     "services": [
       {
@@ -3803,31 +3975,55 @@
     "waiting": [],
     "running": [
       {
-        "id": "t_c8f66271",
-        "title": "Überprüfe die Funktionalität der Partyleuchte",
+        "id": "t_dd026120",
+        "title": "OpenClaw Jarvis-Team reaktiviert (jarvis/heimdall/forge/sentinel/oracle/muse)",
         "status": "running",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786543112,
+        "created_at": 1786549121,
         "completed_at": null,
-        "worker_pid": 33882,
+        "worker_pid": 44626,
         "consecutive_failures": 0
-      }
-    ],
-    "ready": [
+      },
       {
-        "id": "t_977e4ab6",
-        "title": "Kanban-Worker markieren Tasks als done trotz eigener Fehlermeldung (Untersuchung)",
-        "status": "ready",
+        "id": "t_c134a7ea",
+        "title": "Argus als Prompt-Helfer: rohe Nutzereingaben anreichern bevor Hermes sie verarbeitet",
+        "status": "running",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786545941,
+        "created_at": 1786548028,
         "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
+        "worker_pid": 44625,
+        "consecutive_failures": 1
       },
+      {
+        "id": "t_dc4d181f",
+        "title": "Telegram-Berichte mit Agent-Attribution (Muse/Forge/etc berichtet:)",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786548025,
+        "completed_at": null,
+        "worker_pid": 44624,
+        "consecutive_failures": 1
+      },
+      {
+        "id": "t_7e2395c4",
+        "title": "Tuya_local-Integration neu laden und überprüfen",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": "capability",
+        "created_at": 1786504969,
+        "completed_at": null,
+        "worker_pid": 44623,
+        "consecutive_failures": 1
+      }
+    ],
+    "ready": [
       {
         "id": "t_0d272391",
         "title": "Repair Tuya Partyleuchte plug: resolve error 914 by refreshing local_key",
@@ -3836,30 +4032,6 @@
         "assignee": "zentralserver",
         "block_kind": "needs_input",
         "created_at": 1786482666,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_4a395e22",
-        "title": "Update local_key for Partyleuchte in tuya_local config",
-        "status": "todo",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": "needs_input",
-        "created_at": 1786504969,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_7e2395c4",
-        "title": "Reload tuya_local integration and verify fix",
-        "status": "todo",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786504969,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 0
@@ -3963,6 +4135,30 @@
         "consecutive_failures": 0
       },
       {
+        "id": "t_a4642c00",
+        "title": "Kanban-Pipeline-Regel in SOUL.md widerspricht echtem Verhalten - Entscheidung noetig",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786546974,
+        "completed_at": 1786547475,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_977e4ab6",
+        "title": "Kanban-Worker markieren Tasks als done trotz eigener Fehlermeldung (Untersuchung)",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786545941,
+        "completed_at": 1786546199,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
         "id": "t_fde99428",
         "title": "Finde den Partyleuchte-Eintrag in der Konfigurationsdatei",
         "status": "done",
@@ -3999,6 +4195,18 @@
         "consecutive_failures": 0
       },
       {
+        "id": "t_c8f66271",
+        "title": "Überprüfe die Funktionalität der Partyleuchte",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786543112,
+        "completed_at": 1786546017,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
         "id": "t_b5853a4e",
         "title": "Power-cycle Tuya plug and check entity availability",
         "status": "done",
@@ -4019,6 +4227,18 @@
         "block_kind": null,
         "created_at": 1786504969,
         "completed_at": 1786539382,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_4a395e22",
+        "title": "Update local_key for Partyleuchte in tuya_local config",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786504969,
+        "completed_at": 1786546750,
         "worker_pid": null,
         "consecutive_failures": 0
       },
@@ -4161,16 +4381,16 @@
       }
     ],
     "openTasks": [
+      "Wissen pruefen: Kanban-Pipeline-Regel in SOUL.md widerspricht echtem Verhalten - Entscheidung noetig (t_a4642c00)",
+      "Wissen pruefen: Update local_key for Partyleuchte in tuya_local config (t_4a395e22)",
+      "Wissen pruefen: Kanban-Worker markieren Tasks als done trotz eigener Fehlermeldung (Untersuchung) (t_977e4ab6)",
+      "Wissen pruefen: Überprüfe die Funktionalität der Partyleuchte (t_c8f66271)",
       "Wissen pruefen: Speichere die Konfigurationsdatei (t_42ba8c0b)",
       "Wissen pruefen: Aktualisiere den local_key für Partyleuchte (t_d9b7fb0d)",
       "Wissen pruefen: Test: Protocol-Violation-Fix verifizieren (max_output_tokens) (t_b16a61af)",
       "Wissen pruefen: Finde den Partyleuchte-Eintrag in der Konfigurationsdatei (t_fde99428)",
       "Wissen pruefen: Re-pair Partyleuchte using Tuya/Smart Life app (t_287116d3)",
-      "Wissen pruefen: Power-cycle Tuya plug and check entity availability (t_b5853a4e)",
-      "Wissen pruefen: Argus Apple FM Optimierung und Stabilisierung (t_fa5abcd1)",
-      "Wissen pruefen: aus kanban erlernte fertige task skills bauen (t_763bf9fa)",
-      "Wissen pruefen: Tik tot und content Planung mit content Kalender und auto generierten Videos, komplettes skill, wie alles funktioniert, tiktok Eigenschaften von Bildschirmen beachten. alle nötigen plugins etc dazu (t_16d1c6ad)",
-      "Wissen pruefen: Fix Hermes worker protocol violation: missing kanban_complete/kanban_block calls (t_e6c0234c)"
+      "Wissen pruefen: Power-cycle Tuya plug and check entity availability (t_b5853a4e)"
     ]
   },
   "agentsRoom": {
@@ -4758,7 +4978,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4767,7 +4987,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4776,7 +4996,7 @@
       },
       {
         "topic": "Broker",
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -4785,7 +5005,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -4794,7 +5014,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -4803,7 +5023,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -4812,7 +5032,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -4821,7 +5041,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "12.08.26, 16:45",
+        "time": "12.08.26, 17:49",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",
