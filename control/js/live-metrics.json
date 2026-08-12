@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-12T14:07:40.686Z",
-    "generatedAtLabel": "12.08.26, 16:07",
+    "generatedAt": "2026-08-12T14:45:49.920Z",
+    "generatedAtLabel": "12.08.26, 16:45",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "12.08.26, 16:07",
+      "value": "12.08.26, 16:45",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 206,
+      "value": 185,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 237,
+        "visitors": 231,
         "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 186,
+        "visitors": 175,
         "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 184,
+        "visitors": 175,
         "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 217,
+        "visitors": 187,
         "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 221,
+        "visitors": 172,
         "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 219,
+        "visitors": 169,
         "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 171,
+        "visitors": 185,
         "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 215,
+        "visitors": 185,
         "pageviews": 7
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "206 ms",
+      "avgSession": "185 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-12T14:07:40.686Z",
-      "checkedAtLabel": "12.08.26, 16:07"
+      "checkedAt": "2026-08-12T14:45:49.920Z",
+      "checkedAtLabel": "12.08.26, 16:45"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "206 ms",
+    "responseTime": "185 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "12.08.26, 16:07",
+      "time": "12.08.26, 16:45",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "12.08.26, 16:07",
+      "time": "12.08.26, 16:45",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "12.08.26, 16:07",
+      "time": "12.08.26, 16:45",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "12.08.26, 16:07",
+      "time": "12.08.26, 16:45",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3761,12 +3761,12 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-12T14:07:45.182Z",
+    "updatedAt": "2026-08-12T14:45:53.837Z",
     "counts": {
       "waiting": 0,
       "running": 1,
-      "ready": 6,
-      "doneToday": 16
+      "ready": 4,
+      "doneToday": 19
     },
     "services": [
       {
@@ -3803,19 +3803,31 @@
     "waiting": [],
     "running": [
       {
-        "id": "t_fde99428",
-        "title": "Finde den Partyleuchte-Eintrag in der Konfigurationsdatei",
+        "id": "t_c8f66271",
+        "title": "Überprüfe die Funktionalität der Partyleuchte",
         "status": "running",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
         "created_at": 1786543112,
         "completed_at": null,
-        "worker_pid": 27866,
+        "worker_pid": 33882,
         "consecutive_failures": 0
       }
     ],
     "ready": [
+      {
+        "id": "t_977e4ab6",
+        "title": "Kanban-Worker markieren Tasks als done trotz eigener Fehlermeldung (Untersuchung)",
+        "status": "ready",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786545941,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
       {
         "id": "t_0d272391",
         "title": "Repair Tuya Partyleuchte plug: resolve error 914 by refreshing local_key",
@@ -3824,42 +3836,6 @@
         "assignee": "zentralserver",
         "block_kind": "needs_input",
         "created_at": 1786482666,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_d9b7fb0d",
-        "title": "Aktualisiere den local_key für Partyleuchte",
-        "status": "todo",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786543112,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_42ba8c0b",
-        "title": "Speichere die Konfigurationsdatei",
-        "status": "todo",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786543112,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_c8f66271",
-        "title": "Überprüfe die Funktionalität der Partyleuchte",
-        "status": "todo",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786543112,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 0
@@ -3987,6 +3963,42 @@
         "consecutive_failures": 0
       },
       {
+        "id": "t_fde99428",
+        "title": "Finde den Partyleuchte-Eintrag in der Konfigurationsdatei",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786543112,
+        "completed_at": 1786543919,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_d9b7fb0d",
+        "title": "Aktualisiere den local_key für Partyleuchte",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786543112,
+        "completed_at": 1786545680,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_42ba8c0b",
+        "title": "Speichere die Konfigurationsdatei",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786543112,
+        "completed_at": 1786545821,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
         "id": "t_b5853a4e",
         "title": "Power-cycle Tuya plug and check entity availability",
         "status": "done",
@@ -4085,6 +4097,15 @@
     ],
     "archived": [
       {
+        "id": "t_b16a61af",
+        "title": "Test: Protocol-Violation-Fix verifizieren (max_output_tokens)",
+        "status": "archived",
+        "assignee": "zentralserver",
+        "created_at": 1786543881,
+        "completed_at": 1786543981,
+        "last_summary": "status.txt mit Inhalt OK erstellt. Task erfolgreich abgeschlossen."
+      },
+      {
         "id": "t_006da26c",
         "title": "Verbessere die Empfindlichkeit der Bewegungserkennung der Eufy-Kamera",
         "status": "archived",
@@ -4140,16 +4161,16 @@
       }
     ],
     "openTasks": [
+      "Wissen pruefen: Speichere die Konfigurationsdatei (t_42ba8c0b)",
+      "Wissen pruefen: Aktualisiere den local_key für Partyleuchte (t_d9b7fb0d)",
+      "Wissen pruefen: Test: Protocol-Violation-Fix verifizieren (max_output_tokens) (t_b16a61af)",
+      "Wissen pruefen: Finde den Partyleuchte-Eintrag in der Konfigurationsdatei (t_fde99428)",
       "Wissen pruefen: Re-pair Partyleuchte using Tuya/Smart Life app (t_287116d3)",
       "Wissen pruefen: Power-cycle Tuya plug and check entity availability (t_b5853a4e)",
       "Wissen pruefen: Argus Apple FM Optimierung und Stabilisierung (t_fa5abcd1)",
       "Wissen pruefen: aus kanban erlernte fertige task skills bauen (t_763bf9fa)",
       "Wissen pruefen: Tik tot und content Planung mit content Kalender und auto generierten Videos, komplettes skill, wie alles funktioniert, tiktok Eigenschaften von Bildschirmen beachten. alle nötigen plugins etc dazu (t_16d1c6ad)",
-      "Wissen pruefen: Fix Hermes worker protocol violation: missing kanban_complete/kanban_block calls (t_e6c0234c)",
-      "Wissen pruefen: SMB-Backup-Share Absicherung pruefen (guest access) (t_53425e62)",
-      "Wissen pruefen: LiteLLM IPv6-Hang zu Anthropic sauber loesen (t_921b0482)",
-      "Wissen pruefen: skill prompting, skills selbst herstellen, server und map sowie cli selber bauen zusammenhänge verstehen (t_0d10ba8f)",
-      "Wissen pruefen: Eufy-Kamera RTSP-Automation fuer Home Assistant verbessern (t_ba29a3b3)"
+      "Wissen pruefen: Fix Hermes worker protocol violation: missing kanban_complete/kanban_block calls (t_e6c0234c)"
     ]
   },
   "agentsRoom": {
@@ -4737,7 +4758,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4746,7 +4767,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4755,7 +4776,7 @@
       },
       {
         "topic": "Broker",
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -4764,7 +4785,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -4773,7 +4794,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -4782,7 +4803,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -4791,7 +4812,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -4800,7 +4821,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "12.08.26, 16:07",
+        "time": "12.08.26, 16:45",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",
