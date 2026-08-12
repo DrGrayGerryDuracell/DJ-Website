@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-12T16:32:34.245Z",
-    "generatedAtLabel": "12.08.26, 18:32",
+    "generatedAt": "2026-08-12T22:22:33.285Z",
+    "generatedAtLabel": "13.08.26, 00:22",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "12.08.26, 18:32",
+      "value": "13.08.26, 00:22",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 250,
+      "value": 896,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -81,7 +81,7 @@
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 628,
+      "value": 629,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 296,
+        "visitors": 1397,
         "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 236,
+        "visitors": 828,
         "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 228,
+        "visitors": 824,
         "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 235,
+        "visitors": 845,
         "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 241,
+        "visitors": 809,
         "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 240,
+        "visitors": 818,
         "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 258,
+        "visitors": 816,
         "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 268,
+        "visitors": 834,
         "pageviews": 8
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "250 ms",
+      "avgSession": "896 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-12T16:32:34.245Z",
-      "checkedAtLabel": "12.08.26, 18:32"
+      "checkedAt": "2026-08-12T22:22:33.285Z",
+      "checkedAtLabel": "13.08.26, 00:22"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3169,7 +3169,7 @@
         "verified": false,
         "status": "live",
         "metricValue": 10,
-        "valueLabel": "628 Follower • 10 Linksignale",
+        "valueLabel": "629 Follower • 10 Linksignale",
         "statusLabel": "33 Tracks",
         "sourceLabel": "SoundCloud Public API"
       },
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "250 ms",
+    "responseTime": "896 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "12.08.26, 18:32",
+      "time": "13.08.26, 00:22",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "12.08.26, 18:32",
+      "time": "13.08.26, 00:22",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "12.08.26, 18:32",
+      "time": "13.08.26, 00:22",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "12.08.26, 18:32",
+      "time": "13.08.26, 00:22",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3485,7 +3485,7 @@
       "id": "AL-SOC",
       "level": "ok",
       "title": "SoundCloud Live-Profil erkannt",
-      "description": "628 Follower und 33 Tracks verifiziert.",
+      "description": "629 Follower und 33 Tracks verifiziert.",
       "source": "Social Monitoring"
     }
   ],
@@ -3838,69 +3838,19 @@
         "id": "cron-kanban-hotmd-sync",
         "name": "kanban-hotmd-sync",
         "schedule": "every 360m",
-        "state": "live",
-        "stateLabel": "Laeuft planmaessig",
+        "state": "warn",
+        "stateLabel": "Letzter Lauf fehlgeschlagen",
         "owner": "Hermes"
       }
     ],
     "subagents": [
       {
-        "id": "sub-heimdall",
-        "name": "Heimdall",
-        "emoji": "🏠",
-        "mode": "Home Assistant",
-        "llm": "Claude Haiku + LiteLLM",
-        "fallback": "anthropic/claude-sonnet-4-5",
-        "state": "configured",
-        "stateLabel": "In OpenClaw konfiguriert"
-      },
-      {
-        "id": "sub-muse",
-        "name": "Muse",
-        "emoji": "🎧",
-        "mode": "Content / Social",
-        "llm": "LiteLLM smart/premium",
-        "fallback": "litellm/premium",
-        "state": "configured",
-        "stateLabel": "In OpenClaw konfiguriert"
-      },
-      {
-        "id": "sub-sentinel",
-        "name": "Sentinel",
-        "emoji": "🩺",
-        "mode": "Monitoring",
-        "llm": "LiteLLM fast/smart",
-        "fallback": "litellm/fallback",
-        "state": "configured",
-        "stateLabel": "In OpenClaw konfiguriert"
-      },
-      {
         "id": "sub-jarvis",
-        "name": "JARVIS",
-        "emoji": "🥷",
+        "name": "jarvis",
+        "emoji": "",
         "mode": "Orchestrator",
         "llm": "Claude Haiku + LiteLLM",
-        "fallback": "anthropic/claude-sonnet-4-5",
-        "state": "configured",
-        "stateLabel": "In OpenClaw konfiguriert"
-      },
-      {
-        "id": "sub-oracle",
-        "name": "Oracle",
-        "emoji": "📰",
-        "mode": "Research / Briefings",
-        "llm": "LiteLLM fast/smart",
-        "fallback": "litellm/smart",
-        "state": "configured",
-        "stateLabel": "In OpenClaw konfiguriert"
-      },
-      {
-        "id": "sub-forge",
-        "name": "Forge",
-        "emoji": "🛠",
-        "mode": "Engineering / Infra",
-        "llm": "LiteLLM smart/premium",
-        "fallback": "litellm/premium",
+        "fallback": "litellm/fast",
         "state": "configured",
         "stateLabel": "In OpenClaw konfiguriert"
       }
@@ -3933,12 +3883,12 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-12T16:32:39.579Z",
+    "updatedAt": "2026-08-12T22:22:36.325Z",
     "counts": {
-      "waiting": 2,
+      "waiting": 10,
       "running": 8,
-      "ready": 16,
-      "doneToday": 23
+      "ready": 9,
+      "doneToday": 1
     },
     "services": [
       {
@@ -3968,19 +3918,43 @@
       {
         "id": "argus",
         "label": "ARGUS Apple FM",
-        "status": "warn",
-        "statusLabel": "Warnung"
+        "status": "ok",
+        "statusLabel": "Online"
       }
     ],
     "waiting": [
       {
-        "id": "t_c07776f0",
-        "title": "OpenClaw CLI Node-Versions-Mismatch loesen (nvm install kompatible Version)",
+        "id": "t_bc8ff24f",
+        "title": "SMB-Backup-Share-Absicherung (t_53425e62) stichprobenartig nachpruefen",
         "status": "blocked",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786550205,
+        "created_at": 1786550244,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_24909693",
+        "title": "Oracle Google-Calendar/Gmail-Zugriff pruefen: konfiguriert oder nur vorgesehen",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550241,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_1ec8ee77",
+        "title": "Zwei laufende OpenClaw-Gateway-Prozesse (Port 18789 und 18799) klaeren",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550211,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 2
@@ -3996,32 +3970,164 @@
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 2
-      }
-    ],
-    "running": [
+      },
       {
         "id": "t_bced9d45",
         "title": "Reaktivierte OpenClaw-Agenten: zugewiesene Skills auf tatsaechliche Verfuegbarkeit pruefen",
-        "status": "running",
+        "status": "blocked",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
         "created_at": 1786550195,
         "completed_at": null,
-        "worker_pid": 64711,
-        "consecutive_failures": 0
+        "worker_pid": null,
+        "consecutive_failures": 2
       },
       {
         "id": "t_aa12cf64",
         "title": "OpenClaw-Auth-Token aus SOUL.md in Secret/env verschieben",
-        "status": "running",
+        "status": "blocked",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
         "created_at": 1786550189,
         "completed_at": null,
-        "worker_pid": 64710,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_60260932",
+        "title": "BAUEN: Argus Prompt-Helfer mit gestufter Testphase vor Live-Schaltung",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550064,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_099c24db",
+        "title": "BAUEN: Telegram-Berichte mit echter Agent-Attribution (alle Agenten, kein Spam)",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550035,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_297d6964",
+        "title": "BAUEN: openclaw_tool.py - Hermes braucht ein echtes Werkzeug um OpenClaw/Jarvis-Team anzusprechen",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786549955,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_7e2395c4",
+        "title": "Tuya_local-Integration neu laden und überprüfen",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": "capability",
+        "created_at": 1786504969,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      }
+    ],
+    "running": [
+      {
+        "id": "t_8dea7ca5",
+        "title": "Sicherheitsaudit: Heimdall HA-Service-Allow-Liste gegen echte Entities abgleichen",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550237,
+        "completed_at": null,
+        "worker_pid": 68875,
         "consecutive_failures": 0
+      },
+      {
+        "id": "t_44cf5b2a",
+        "title": "Alle 21 echten Cronjobs einmal durchgehen: noch relevant oder Altlast",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550234,
+        "completed_at": null,
+        "worker_pid": 68873,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_4cb84e71",
+        "title": "HA-Backup: echten Restore-Test durchfuehren",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550231,
+        "completed_at": null,
+        "worker_pid": 68871,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_7da54068",
+        "title": "Katalog-Uploads: Produkte ohne Bild systematisch durchgehen",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550227,
+        "completed_at": null,
+        "worker_pid": 69658,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_d8a517bb",
+        "title": "Workflow vorbereiten: Partyleuchte local_key nach Martens Power-Cycle automatisch neu einlesen",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550223,
+        "completed_at": null,
+        "worker_pid": 68870,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_b84b699b",
+        "title": "HA Energy Dashboard fertigstellen - jetzt mit verifiziertem GUI-Zugang erneut versuchen",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550216,
+        "completed_at": null,
+        "worker_pid": 68869,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_c07776f0",
+        "title": "OpenClaw CLI Node-Versions-Mismatch loesen (nvm install kompatible Version)",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550205,
+        "completed_at": null,
+        "worker_pid": 69371,
+        "consecutive_failures": 1
       },
       {
         "id": "t_2ef910ec",
@@ -4032,71 +4138,35 @@
         "block_kind": null,
         "created_at": 1786550184,
         "completed_at": null,
-        "worker_pid": 64708,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_60260932",
-        "title": "BAUEN: Argus Prompt-Helfer mit gestufter Testphase vor Live-Schaltung",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550064,
-        "completed_at": null,
-        "worker_pid": 64707,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_099c24db",
-        "title": "BAUEN: Telegram-Berichte mit echter Agent-Attribution (alle Agenten, kein Spam)",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550035,
-        "completed_at": null,
-        "worker_pid": 53994,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_297d6964",
-        "title": "BAUEN: openclaw_tool.py - Hermes braucht ein echtes Werkzeug um OpenClaw/Jarvis-Team anzusprechen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786549955,
-        "completed_at": null,
-        "worker_pid": 64706,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_dd026120",
-        "title": "OpenClaw Jarvis-Team reaktiviert (jarvis/heimdall/forge/sentinel/oracle/muse)",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786549121,
-        "completed_at": null,
-        "worker_pid": 53993,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_7e2395c4",
-        "title": "Tuya_local-Integration neu laden und überprüfen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": "capability",
-        "created_at": 1786504969,
-        "completed_at": null,
-        "worker_pid": 64705,
+        "worker_pid": 69370,
         "consecutive_failures": 1
       }
     ],
     "ready": [
+      {
+        "id": "t_8165fee5",
+        "title": "QA task",
+        "status": "ready",
+        "priority": 0,
+        "assignee": null,
+        "block_kind": null,
+        "created_at": 1786565274,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_93fbd574",
+        "title": "QA Task",
+        "status": "ready",
+        "priority": 0,
+        "assignee": null,
+        "block_kind": null,
+        "created_at": 1786565249,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
       {
         "id": "t_00560414",
         "title": "Aktionen-Tab: Live-Uebersicht woran Agenten gerade aktiv arbeiten ergaenzen",
@@ -4143,7 +4213,7 @@
         "created_at": 1786550259,
         "completed_at": null,
         "worker_pid": null,
-        "consecutive_failures": 0
+        "consecutive_failures": 1
       },
       {
         "id": "t_8bb8ba7c",
@@ -4170,114 +4240,6 @@
         "consecutive_failures": 0
       },
       {
-        "id": "t_bc8ff24f",
-        "title": "SMB-Backup-Share-Absicherung (t_53425e62) stichprobenartig nachpruefen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550244,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_24909693",
-        "title": "Oracle Google-Calendar/Gmail-Zugriff pruefen: konfiguriert oder nur vorgesehen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550241,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_8dea7ca5",
-        "title": "Sicherheitsaudit: Heimdall HA-Service-Allow-Liste gegen echte Entities abgleichen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550237,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_44cf5b2a",
-        "title": "Alle 21 echten Cronjobs einmal durchgehen: noch relevant oder Altlast",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550234,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_4cb84e71",
-        "title": "HA-Backup: echten Restore-Test durchfuehren",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550231,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_7da54068",
-        "title": "Katalog-Uploads: Produkte ohne Bild systematisch durchgehen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550227,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_d8a517bb",
-        "title": "Workflow vorbereiten: Partyleuchte local_key nach Martens Power-Cycle automatisch neu einlesen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550223,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_b84b699b",
-        "title": "HA Energy Dashboard fertigstellen - jetzt mit verifiziertem GUI-Zugang erneut versuchen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550216,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_1ec8ee77",
-        "title": "Zwei laufende OpenClaw-Gateway-Prozesse (Port 18789 und 18799) klaeren",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550211,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
         "id": "t_0d272391",
         "title": "Repair Tuya Partyleuchte plug: resolve error 914 by refreshing local_key",
         "status": "todo",
@@ -4292,278 +4254,14 @@
     ],
     "doneToday": [
       {
-        "id": "t_b2468175",
-        "title": "Website-Dateigroessen-Messung im Dashboard reparieren",
-        "status": "done",
-        "priority": 3,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786482691,
-        "completed_at": 1786494761,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_c8b3b6af",
-        "title": "Verwaiste launchd-Services auf dem Mac mini aufraeumen",
-        "status": "done",
-        "priority": 3,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786482689,
-        "completed_at": 1786494663,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_921b0482",
-        "title": "LiteLLM IPv6-Hang zu Anthropic sauber loesen",
-        "status": "done",
-        "priority": 3,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786482688,
-        "completed_at": 1786497041,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_53425e62",
-        "title": "SMB-Backup-Share Absicherung pruefen (guest access)",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786482709,
-        "completed_at": 1786497136,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_581beb9f",
-        "title": "Home-Assistant-GUI-Zugang fuer Marten dauerhaft einrichten",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786482692,
-        "completed_at": 1786494338,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_ba29a3b3",
-        "title": "Eufy-Kamera RTSP-Automation fuer Home Assistant verbessern",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786482660,
-        "completed_at": 1786496162,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_e6c0234c",
-        "title": "Fix Hermes worker protocol violation: missing kanban_complete/kanban_block calls",
-        "status": "done",
-        "priority": 2,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786482657,
-        "completed_at": 1786497371,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_7a7e7162",
-        "title": "Hermes lernt Home-Assistant + Eufy-Setup ganzheitlich (Wissensbasis)",
-        "status": "done",
-        "priority": 1,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786482711,
-        "completed_at": 1786494112,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_a4642c00",
-        "title": "Kanban-Pipeline-Regel in SOUL.md widerspricht echtem Verhalten - Entscheidung noetig",
+        "id": "t_dd026120",
+        "title": "OpenClaw Jarvis-Team reaktiviert (jarvis/heimdall/forge/sentinel/oracle/muse)",
         "status": "done",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786546974,
-        "completed_at": 1786547475,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_977e4ab6",
-        "title": "Kanban-Worker markieren Tasks als done trotz eigener Fehlermeldung (Untersuchung)",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786545941,
-        "completed_at": 1786546199,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_fde99428",
-        "title": "Finde den Partyleuchte-Eintrag in der Konfigurationsdatei",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786543112,
-        "completed_at": 1786543919,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_d9b7fb0d",
-        "title": "Aktualisiere den local_key für Partyleuchte",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786543112,
-        "completed_at": 1786545680,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_42ba8c0b",
-        "title": "Speichere die Konfigurationsdatei",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786543112,
-        "completed_at": 1786545821,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_c8f66271",
-        "title": "Überprüfe die Funktionalität der Partyleuchte",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786543112,
-        "completed_at": 1786546017,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_b5853a4e",
-        "title": "Power-cycle Tuya plug and check entity availability",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786504969,
-        "completed_at": 1786505906,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_287116d3",
-        "title": "Re-pair Partyleuchte using Tuya/Smart Life app",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786504969,
-        "completed_at": 1786539382,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_4a395e22",
-        "title": "Update local_key for Partyleuchte in tuya_local config",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786504969,
-        "completed_at": 1786546750,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_fa5abcd1",
-        "title": "Argus Apple FM Optimierung und Stabilisierung",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786484092,
-        "completed_at": 1786501304,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_16d1c6ad",
-        "title": "Tik tot und content Planung mit content Kalender und auto generierten Videos, komplettes skill, wie alles funktioniert, tiktok Eigenschaften von Bildschirmen beachten. alle nötigen plugins etc dazu",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786482166,
-        "completed_at": 1786497417,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_763bf9fa",
-        "title": "aus kanban erlernte fertige task skills bauen",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786481796,
-        "completed_at": 1786498693,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_0d10ba8f",
-        "title": "skill prompting, skills selbst herstellen, server und map sowie cli selber bauen zusammenhänge verstehen",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786481622,
-        "completed_at": 1786496607,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_e6ded419",
-        "title": "Research n8n for system improvement opportunities",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786477222,
-        "completed_at": 1786495503,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_756a264b",
-        "title": "Optimize Shop Integration with Shirtee",
-        "status": "done",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786477093,
-        "completed_at": 1786495578,
+        "created_at": 1786549121,
+        "completed_at": 1786572874,
         "worker_pid": null,
         "consecutive_failures": 0
       }
@@ -4658,10 +4356,10 @@
       "Wissen pruefen: Überprüfe die Funktionalität der Partyleuchte (t_c8f66271)",
       "Wissen pruefen: Speichere die Konfigurationsdatei (t_42ba8c0b)",
       "Wissen pruefen: Aktualisiere den local_key für Partyleuchte (t_d9b7fb0d)",
-      "Wissen pruefen: Test: Protocol-Violation-Fix verifizieren (max_output_tokens) (t_b16a61af)",
       "Wissen pruefen: Finde den Partyleuchte-Eintrag in der Konfigurationsdatei (t_fde99428)",
       "Wissen pruefen: Re-pair Partyleuchte using Tuya/Smart Life app (t_287116d3)",
-      "Wissen pruefen: Power-cycle Tuya plug and check entity availability (t_b5853a4e)"
+      "Wissen pruefen: Power-cycle Tuya plug and check entity availability (t_b5853a4e)",
+      "Wissen pruefen: Argus Apple FM Optimierung und Stabilisierung (t_fa5abcd1)"
     ]
   },
   "agentsRoom": {
@@ -4671,7 +4369,7 @@
       "deviceCount": 11,
       "liveCount": 10,
       "delegationCount": 11,
-      "conversationCount": 8,
+      "conversationCount": 10,
       "sourceCount": 7
     },
     "routing": [
@@ -5249,7 +4947,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -5258,7 +4956,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -5267,7 +4965,7 @@
       },
       {
         "topic": "Broker",
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -5276,7 +4974,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -5285,7 +4983,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -5294,7 +4992,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -5303,7 +5001,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -5312,7 +5010,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "12.08.26, 18:32",
+        "time": "13.08.26, 00:22",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",
@@ -5372,77 +5070,122 @@
     ],
     "runtime": {
       "gatewayState": {
-        "gateway_state": "unknown",
+        "gateway_state": "running",
         "restart_requested": false,
         "active_agents": 0,
         "platforms": {
           "telegram": {
-            "state": "unknown",
-            "updated_at": null
+            "state": "connected",
+            "updated_at": "2026-08-12T21:29:19.911328+00:00"
           }
         },
-        "updated_at": null
+        "updated_at": "2026-08-12T21:29:19.935181+00:00"
       },
       "gatewayLifecycle": {
         "phase": "unknown",
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": null,
-        "platformCounts": {}
+        "updated_at": "2026-08-13T00:18:29.521653",
+        "platformCounts": {
+          "telegram": 1
+        }
       },
       "brainVaultState": {
-        "last_run_utc": null,
-        "last_added": 0,
-        "processed_count": 0
+        "last_run_utc": "2026-08-12T22:09:40.295262",
+        "last_added": 12,
+        "processed_count": 927
       },
       "argusBridgeState": {
-        "warning_count": 0,
-        "last_warning": "kein Hinweis"
+        "warning_count": 1,
+        "last_warning": "MacBook RAM bei 96%"
       },
       "activeSessionsState": {
-        "count": 0
+        "count": 8
       },
       "counts": {
-        "sessions": 0,
-        "messages": 0,
-        "delegations": 0,
-        "obligations": 0,
-        "routing": 0
+        "sessions": 2405,
+        "messages": 24923,
+        "delegations": 1,
+        "obligations": 17,
+        "routing": 1
       },
-      "activeTelegramSession": null,
-      "latestDelegation": null,
-      "latestDelivery": null,
-      "latestSpoolPath": null,
-      "latestSpoolPreview": null,
-      "routingRows": [],
+      "activeTelegramSession": {
+        "id": "5_62ead9",
+        "source": "cli",
+        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "message_count": 1,
+        "tool_call_count": 0,
+        "started_at": 1786573277.323648,
+        "ended_at": null,
+        "title": "Aktive Telegram-Session",
+        "session_key": "Telegram Direktnachricht",
+        "chat_type": "dm",
+        "display_name": "Operator",
+        "profile_name": "zentralserver"
+      },
+      "latestDelegation": {
+        "id": "1a1377ee",
+        "state": "error",
+        "dispatched_at": 1785505554.651968,
+        "completed_at": 1785505674.893942,
+        "updated_at": 1785505675.3832252
+      },
+      "latestDelivery": {
+        "id": "d1c90d0f",
+        "platform": "telegram",
+        "state": "delivered",
+        "attempts": 0,
+        "created_at": 1786541529.149976,
+        "updated_at": 1786541529.334017,
+        "has_error": false
+      },
+      "latestSpoolPath": "Hermes / Telegram Spool",
+      "latestSpoolPreview": "Ausgehender Telegram-Spool vorhanden • 202 Zeichen",
+      "routingRows": [
+        {
+          "sessionKey": "Telegram Direktnachricht",
+          "sessionId": "4_027d7f",
+          "displayName": "Operator",
+          "platform": "telegram",
+          "chatType": "dm",
+          "updatedAt": "12.08.26, 15:32"
+        }
+      ],
       "stateMeta": {
-        "entries": 0
+        "entries": 3
       },
-      "currentRouting": null
+      "currentRouting": {
+        "sessionKey": "Telegram Direktnachricht",
+        "sessionId": "4_027d7f",
+        "displayName": "Operator",
+        "platform": "telegram",
+        "chatType": "dm",
+        "updatedAt": "12.08.26, 15:32"
+      }
     },
     "sourceRegistry": [
       {
         "name": "Hermes state.db",
         "kind": "Runtime",
-        "state": "support",
-        "detail": "0 Sessions, 0 Nachrichten, 0 Delegationen",
+        "state": "live",
+        "detail": "2405 Sessions, 24923 Nachrichten, 1 Delegationen",
         "route": "Hermes / state.db",
         "channel": "SQLite"
       },
       {
         "name": "Gateway State",
         "kind": "Bridge",
-        "state": "support",
-        "detail": "Telegram unbekannt • Active Agents 0",
+        "state": "live",
+        "detail": "Telegram connected • Active Agents 0",
         "route": "Hermes / Gateway State",
         "channel": "JSON"
       },
       {
         "name": "Telegram Spool",
         "kind": "Delivery",
-        "state": "support",
-        "detail": "Kein aktueller Nachrichtenspool gefunden",
+        "state": "connected",
+        "detail": "Ausgehender Telegram-Spool vorhanden • 202 Zeichen",
         "route": "Hermes / Telegram Spool",
         "channel": "last_message_to_send.txt"
       },
@@ -5450,7 +5193,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 0 • updated n/a",
+        "detail": "Channels: 1 • updated 13.08.26, 00:18",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -5458,30 +5201,251 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run n/a • Added 0",
+        "detail": "Last run 2026-08-12T22:09:40.295262 • Added 12",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },
       {
         "name": "Argus Bridge",
         "kind": "Support",
-        "state": "ready",
-        "detail": "Warnings 0 • kein Hinweis",
+        "state": "support",
+        "detail": "Warnings 1 • MacBook RAM bei 96%",
         "route": "Hermes / Argus Bridge",
         "channel": "Bridge"
       },
       {
         "name": "Active Sessions",
         "kind": "Runtime",
-        "state": "sync",
-        "detail": "0 aktive Runtime-Einträge",
+        "state": "live",
+        "detail": "8 aktive Runtime-Einträge",
         "route": "Hermes / Active Sessions",
         "channel": "JSON"
       }
     ],
-    "sessions": [],
-    "recentMessages": [],
-    "recentDelegations": [],
-    "recentObligations": []
+    "sessions": [
+      {
+        "name": "Hermes Session 1",
+        "role": "cli",
+        "route": "Session 5_62ead9",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "1 Nachrichten"
+        ]
+      },
+      {
+        "name": "Hermes Session 2",
+        "role": "cli",
+        "route": "Session 5_53edd9",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "1 Nachrichten"
+        ]
+      },
+      {
+        "name": "Hermes Session 3",
+        "role": "cron",
+        "route": "Session 3_001948",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "1 Nachrichten"
+        ]
+      },
+      {
+        "name": "Hermes Session 4",
+        "role": "cli",
+        "route": "Session 6_41954e",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "1 Nachrichten"
+        ]
+      },
+      {
+        "name": "Hermes Session 5",
+        "role": "cli",
+        "route": "Session 6_ca2112",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "1 Nachrichten"
+        ]
+      },
+      {
+        "name": "Hermes Session 6",
+        "role": "cli",
+        "route": "Session 6_cb1165",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "1 Nachrichten"
+        ]
+      },
+      {
+        "name": "Hermes Session 7",
+        "role": "cli",
+        "route": "Session 7_095626",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "1 Nachrichten"
+        ]
+      },
+      {
+        "name": "Hermes Session 8",
+        "role": "cli",
+        "route": "Session 6_854649",
+        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
+        "status": "live",
+        "statusLabel": "Live",
+        "tags": [
+          "1 Nachrichten"
+        ]
+      }
+    ],
+    "recentMessages": [
+      {
+        "topic": "USER • 5_62ead9",
+        "time": "13.08.26, 00:21",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 5_53edd9",
+        "time": "13.08.26, 00:21",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 3_001948",
+        "time": "13.08.26, 00:20",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 7344 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 6_41954e",
+        "time": "13.08.26, 00:19",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 6_ca2112",
+        "time": "13.08.26, 00:19",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 6_cb1165",
+        "time": "13.08.26, 00:19",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 7_095626",
+        "time": "13.08.26, 00:19",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 6_854649",
+        "time": "13.08.26, 00:19",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 4_18dcca",
+        "time": "13.08.26, 00:17",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 0_d6bef3",
+        "time": "13.08.26, 00:15",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      }
+    ],
+    "recentDelegations": [
+      {
+        "from": "Hermes",
+        "to": "Async Delegation",
+        "task": "Auftrag 1a1377ee • 1095 Zeichen • Ergebnis 694 Zeichen",
+        "channel": "error",
+        "priority": "P1",
+        "status": "support",
+        "statusLabel": "Error"
+      }
+    ],
+    "recentObligations": [
+      {
+        "label": "Delivery d1c90d0f",
+        "value": "telegram • delivered • 6595 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery 0fd34d34",
+        "value": "telegram • delivered • 361 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery 322a7d35",
+        "value": "telegram • delivered • 1213 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery e8c32ebb",
+        "value": "telegram • delivered • 84 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery 3ff3a846",
+        "value": "telegram • delivered • 117 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      }
+    ]
   }
 }

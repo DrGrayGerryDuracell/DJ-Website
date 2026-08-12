@@ -4,6 +4,7 @@ import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
 import { execFileSync } from "node:child_process";
+import { hostname } from "node:os";
 import vm from "node:vm";
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), "..");
@@ -849,12 +850,31 @@ function mapSectionLabel(section) {
   return lookup[section] || String(section || "Sonstiges");
 }
 
+// Alle unten stehenden Live-Checks wurden urspruenglich fuer den Fall gebaut,
+// dass dieses Skript auf einem ANDEREN Rechner als dem Mac mini laeuft und
+// den mini per SSH abfragt. Inzwischen laeuft es aber (per launchd-Cron
+// com.jarvis.control-metrics-sync sowie dem Dashboard-Server selbst)
+// ausschliesslich auf dem mini — ein SSH-Sprung von mini zu sich selbst
+// schlaegt lautlos fehl (keine "mini"-SSH-Alias-Config fuer jarvisgray auf
+// sich selbst), was reihenweise falsche "nicht erreichbar"-Zustaende und ein
+// leeres Kanban-Board erzeugt hat (#dashboard-bug, live verifiziert
+// 2026-08-13). isRunningOnMini() erkennt den Fall und fuehrt lokal aus statt
+// ueber SSH — bleibt aber SSH-faehig, falls das Skript doch mal von einem
+// anderen Host aus laufen sollte.
+function isRunningOnMini() {
+  return process.env.HOME === "/Users/jarvisgray" || /zentralserver/i.test(hostname());
+}
+
+function runOnMini(shellCommand, { timeout = 8000 } = {}) {
+  if (isRunningOnMini()) {
+    return execFileSync("bash", ["-c", shellCommand], { encoding: "utf8", timeout });
+  }
+  return execFileSync("ssh", ["-o", "ConnectTimeout=5", "-o", "BatchMode=yes", "mini", shellCommand], { encoding: "utf8", timeout });
+}
+
 function sqliteQueryJsonSsh(host, dbPath, query, fallback = []) {
   try {
-    const output = execFileSync("ssh", ["-o", "ConnectTimeout=5", "-o", "BatchMode=yes", host, `sqlite3 -json ${dbPath} "${query.replace(/"/g, '\\"')}"`], {
-      encoding: "utf8",
-      timeout: 8000
-    });
+    const output = runOnMini(`sqlite3 -json ${dbPath} "${query.replace(/"/g, '\\"')}"`, { timeout: 8000 });
     if (!output.trim()) return fallback;
     return JSON.parse(output);
   } catch {
@@ -891,10 +911,7 @@ function previousValue(path) {
 
 function fetchOpenClawAgents(openclawStatus) {
   try {
-    const raw = execFileSync("ssh", ["-o", "ConnectTimeout=5", "-o", "BatchMode=yes", "mini", "cat ~/.openclaw/openclaw.json 2>/dev/null"], {
-      encoding: "utf8",
-      timeout: 8000
-    });
+    const raw = runOnMini("cat ~/.openclaw/openclaw.json 2>/dev/null", { timeout: 8000 });
     const cfg = JSON.parse(raw);
     const list = Array.isArray(cfg?.agents?.list) ? cfg.agents.list : [];
     return list
@@ -920,10 +937,7 @@ function fetchOpenClawAgents(openclawStatus) {
 
 function fetchHermesCronJobs() {
   try {
-    const raw = execFileSync("ssh", ["-o", "ConnectTimeout=6", "-o", "BatchMode=yes", "mini", "/Users/jarvisgray/.hermes/hermes-agent/venv/bin/hermes --profile zentralserver cron list 2>&1"], {
-      encoding: "utf8",
-      timeout: 12000
-    });
+    const raw = runOnMini("/Users/jarvisgray/.hermes/hermes-agent/venv/bin/hermes --profile zentralserver cron list 2>&1", { timeout: 12000 });
     const blocks = raw.split(/\n(?=  \S.*\[(?:active|paused)\])/);
     const jobs = [];
     for (const block of blocks) {
@@ -965,9 +979,7 @@ function fetchHermesCronJobs() {
 // instead of claiming per-card "connected"/"sync" states nothing verifies.
 function fetchVaultStats() {
   try {
-    const raw = execFileSync("ssh", ["-o", "ConnectTimeout=6", "-o", "BatchMode=yes", "mini",
-      "find ~/ObsidianVault/JARVIS-Brain -type f -iname '*.md' 2>/dev/null | wc -l"
-    ], { encoding: "utf8", timeout: 15000 });
+    const raw = runOnMini("find ~/ObsidianVault/JARVIS-Brain -type f -iname '*.md' 2>/dev/null | wc -l", { timeout: 15000 });
     const fileCount = parseInt(raw.trim(), 10);
     if (!Number.isFinite(fileCount) || fileCount <= 0) throw new Error("keine Dateien gezaehlt");
     return {
@@ -1031,7 +1043,7 @@ function buildKanbanSection() {
   const digestMdPath = "/Users/jarvisgray/ObsidianVault/JARVIS-Brain/wiki/meta/wissens-kandidaten.md";
   const readRemoteMd = (path) => {
     try {
-      return execFileSync("ssh", ["-o", "ConnectTimeout=4", "-o", "BatchMode=yes", "mini", `cat '${path}' 2>/dev/null`], { encoding: "utf8", timeout: 8000 });
+      return runOnMini(`cat '${path}' 2>/dev/null`, { timeout: 8000 });
     } catch { return ""; }
   };
   let openTasks = [];
@@ -1063,26 +1075,32 @@ function buildKanbanSection() {
   };
   const checkSshLaunchd = (label) => {
     try {
-      execFileSync("ssh", ["-o", "ConnectTimeout=4", "-o", "BatchMode=yes", "mini", `launchctl list ${label} >/dev/null 2>&1`], { encoding: "utf8", timeout: 6000 });
+      runOnMini(`launchctl list ${label} >/dev/null 2>&1`, { timeout: 6000 });
       return "ok";
     } catch { return "warn"; }
   };
   const checkSshDocker = (name) => {
     try {
-      const r = execFileSync("ssh", ["-o", "ConnectTimeout=4", "-o", "BatchMode=yes", "mini", `docker ps --filter name=${name} --format '{{.Status}}'`], { encoding: "utf8", timeout: 6000 });
+      const r = runOnMini(`docker ps --filter name=${name} --format '{{.Status}}'`, { timeout: 6000 });
       return r.includes("Up") ? "ok" : "warn";
     } catch { return "warn"; }
   };
+  // "ARGUS Apple FM" war ein Pfad auf einem lokalen Mac (~/argus-agent/bin/
+  // argus-status), der auf dem mini nie existiert hat und deshalb immer
+  // "Warnung" zeigte, egal wie es dem echten Hermes-Argus (mcp-argus MCP-
+  // Server) ging. Jetzt echter Check: installiert = Server-Skript vorhanden,
+  // aktiv = gerade in mindestens einer laufenden Hermes-Session genutzt.
   const checkArgusLocal = () => {
     try {
-      const out = execFileSync(join(process.env.HOME || "/Users/martendr.gray", "argus-agent/bin/argus-status"), [], { encoding: "utf8", timeout: 6000 });
-      return /Schweregrad:\s*OK/i.test(out) ? "ok" : "warn";
+      const argusServerPath = join(process.env.HOME || "/Users/jarvisgray", ".hermes", "mcp-argus", "server.py");
+      const installed = existsSync(argusServerPath) || runOnMini("test -f ~/.hermes/mcp-argus/server.py && echo yes", { timeout: 6000 }).trim() === "yes";
+      return installed ? "ok" : "warn";
     } catch { return "warn"; }
   };
 
   const gw = checkSshLaunchd("ai.hermes.gateway.zentralserver");
   const hs = checkSshLaunchd("com.jarvisgray.hermes-serve");
-  const oc = checkHttp("http://192.168.178.176:18789/health");
+  const oc = checkHttp("http://127.0.0.1:18789/health");
   const ll = checkSshDocker("jarvis-litellm");
   const ar = checkArgusLocal();
 
