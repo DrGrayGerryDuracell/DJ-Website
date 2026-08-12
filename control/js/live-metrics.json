@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-12T22:22:33.285Z",
-    "generatedAtLabel": "13.08.26, 00:22",
+    "generatedAt": "2026-08-12T22:34:49.399Z",
+    "generatedAtLabel": "13.08.26, 00:34",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "13.08.26, 00:22",
+      "value": "13.08.26, 00:34",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 896,
+      "value": 621,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 1397,
+        "visitors": 831,
         "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 828,
+        "visitors": 584,
         "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 824,
+        "visitors": 761,
         "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 845,
+        "visitors": 596,
         "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 809,
+        "visitors": 500,
         "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 818,
+        "visitors": 458,
         "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 816,
+        "visitors": 490,
         "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 834,
+        "visitors": 744,
         "pageviews": 8
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "896 ms",
+      "avgSession": "621 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-12T22:22:33.285Z",
-      "checkedAtLabel": "13.08.26, 00:22"
+      "checkedAt": "2026-08-12T22:34:49.399Z",
+      "checkedAtLabel": "13.08.26, 00:34"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "896 ms",
+    "responseTime": "621 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "13.08.26, 00:22",
+      "time": "13.08.26, 00:34",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "13.08.26, 00:22",
+      "time": "13.08.26, 00:34",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "13.08.26, 00:22",
+      "time": "13.08.26, 00:34",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "13.08.26, 00:22",
+      "time": "13.08.26, 00:34",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3883,11 +3883,11 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-12T22:22:36.325Z",
+    "updatedAt": "2026-08-12T22:34:56.232Z",
     "counts": {
-      "waiting": 10,
+      "waiting": 16,
       "running": 8,
-      "ready": 9,
+      "ready": 3,
       "doneToday": 1
     },
     "services": [
@@ -3924,6 +3924,18 @@
     ],
     "waiting": [
       {
+        "id": "t_8ed64cb5",
+        "title": "Offener Punkt aus hot.md: MacBook-Bildschirm-Freeze-Frage beantworten",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550259,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
         "id": "t_bc8ff24f",
         "title": "SMB-Backup-Share-Absicherung (t_53425e62) stichprobenartig nachpruefen",
         "status": "blocked",
@@ -3948,6 +3960,42 @@
         "consecutive_failures": 2
       },
       {
+        "id": "t_7da54068",
+        "title": "Katalog-Uploads: Produkte ohne Bild systematisch durchgehen",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550227,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_d8a517bb",
+        "title": "Workflow vorbereiten: Partyleuchte local_key nach Martens Power-Cycle automatisch neu einlesen",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550223,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_b84b699b",
+        "title": "HA Energy Dashboard fertigstellen - jetzt mit verifiziertem GUI-Zugang erneut versuchen",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550216,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
         "id": "t_1ec8ee77",
         "title": "Zwei laufende OpenClaw-Gateway-Prozesse (Port 18789 und 18799) klaeren",
         "status": "blocked",
@@ -3955,6 +4003,18 @@
         "assignee": "zentralserver",
         "block_kind": null,
         "created_at": 1786550211,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_c07776f0",
+        "title": "OpenClaw CLI Node-Versions-Mismatch loesen (nvm install kompatible Version)",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550205,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 2
@@ -3991,6 +4051,18 @@
         "assignee": "zentralserver",
         "block_kind": null,
         "created_at": 1786550189,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 2
+      },
+      {
+        "id": "t_2ef910ec",
+        "title": "6 quota-erschoepfte Cronjobs auf LiteLLM-Fallback-Kette umstellen",
+        "status": "blocked",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550184,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 2
@@ -4046,6 +4118,66 @@
     ],
     "running": [
       {
+        "id": "t_00560414",
+        "title": "Aktionen-Tab: Live-Uebersicht woran Agenten gerade aktiv arbeiten ergaenzen",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550273,
+        "completed_at": null,
+        "worker_pid": 73464,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_a5d9bb2f",
+        "title": "Eufy-Kamera RTSP-Stabilitaet ueber laengeren Zeitraum beobachten",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550269,
+        "completed_at": null,
+        "worker_pid": 72170,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_4bfdbcc3",
+        "title": "Unbekannte Cloudflare/Vercel-Dateien im DJ-Website-Repo klaeren",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550264,
+        "completed_at": null,
+        "worker_pid": 72169,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_8bb8ba7c",
+        "title": "Wissens-Kandidaten-Digest nach ein paar Tagen auf Nuetzlichkeit pruefen",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550253,
+        "completed_at": null,
+        "worker_pid": 72166,
+        "consecutive_failures": 1
+      },
+      {
+        "id": "t_4a068d46",
+        "title": "Groessere Stichprobe: weitere done-Tasks auf echten vs behaupteten Abschluss pruefen",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550249,
+        "completed_at": null,
+        "worker_pid": 72163,
+        "consecutive_failures": 1
+      },
+      {
         "id": "t_8dea7ca5",
         "title": "Sicherheitsaudit: Heimdall HA-Service-Allow-Liste gegen echte Entities abgleichen",
         "status": "running",
@@ -4054,7 +4186,7 @@
         "block_kind": null,
         "created_at": 1786550237,
         "completed_at": null,
-        "worker_pid": 68875,
+        "worker_pid": 72162,
         "consecutive_failures": 0
       },
       {
@@ -4066,8 +4198,8 @@
         "block_kind": null,
         "created_at": 1786550234,
         "completed_at": null,
-        "worker_pid": 68873,
-        "consecutive_failures": 0
+        "worker_pid": 72161,
+        "consecutive_failures": 1
       },
       {
         "id": "t_4cb84e71",
@@ -4078,67 +4210,7 @@
         "block_kind": null,
         "created_at": 1786550231,
         "completed_at": null,
-        "worker_pid": 68871,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_7da54068",
-        "title": "Katalog-Uploads: Produkte ohne Bild systematisch durchgehen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550227,
-        "completed_at": null,
-        "worker_pid": 69658,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_d8a517bb",
-        "title": "Workflow vorbereiten: Partyleuchte local_key nach Martens Power-Cycle automatisch neu einlesen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550223,
-        "completed_at": null,
-        "worker_pid": 68870,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_b84b699b",
-        "title": "HA Energy Dashboard fertigstellen - jetzt mit verifiziertem GUI-Zugang erneut versuchen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550216,
-        "completed_at": null,
-        "worker_pid": 68869,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_c07776f0",
-        "title": "OpenClaw CLI Node-Versions-Mismatch loesen (nvm install kompatible Version)",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550205,
-        "completed_at": null,
-        "worker_pid": 69371,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_2ef910ec",
-        "title": "6 quota-erschoepfte Cronjobs auf LiteLLM-Fallback-Kette umstellen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550184,
-        "completed_at": null,
-        "worker_pid": 69370,
+        "worker_pid": 72158,
         "consecutive_failures": 1
       }
     ],
@@ -4163,78 +4235,6 @@
         "assignee": null,
         "block_kind": null,
         "created_at": 1786565249,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_00560414",
-        "title": "Aktionen-Tab: Live-Uebersicht woran Agenten gerade aktiv arbeiten ergaenzen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550273,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_a5d9bb2f",
-        "title": "Eufy-Kamera RTSP-Stabilitaet ueber laengeren Zeitraum beobachten",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550269,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_4bfdbcc3",
-        "title": "Unbekannte Cloudflare/Vercel-Dateien im DJ-Website-Repo klaeren",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550264,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_8ed64cb5",
-        "title": "Offener Punkt aus hot.md: MacBook-Bildschirm-Freeze-Frage beantworten",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550259,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_8bb8ba7c",
-        "title": "Wissens-Kandidaten-Digest nach ein paar Tagen auf Nuetzlichkeit pruefen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550253,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_4a068d46",
-        "title": "Groessere Stichprobe: weitere done-Tasks auf echten vs behaupteten Abschluss pruefen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550249,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 0
@@ -4387,8 +4387,9 @@
         "to": "Argus",
         "channel": "Vorprüfung",
         "purpose": "erstes Review auf Logik, Risiko und Korrektheit",
-        "status": "support",
-        "statusLabel": "Support",
+        "status": "live",
+        "statusLabel": "Live",
+        "detail": "Argus MCP-Server aktiv in mindestens einer laufenden Hermes-Session",
         "feedback": false
       },
       {
@@ -4396,8 +4397,9 @@
         "to": "Hermes",
         "channel": "Review Return",
         "purpose": "Rückgabe mit Korrekturhinweisen",
-        "status": "support",
-        "statusLabel": "Support",
+        "status": "live",
+        "statusLabel": "Live",
+        "detail": "Argus MCP-Server aktiv in mindestens einer laufenden Hermes-Session",
         "feedback": false
       },
       {
@@ -4405,8 +4407,9 @@
         "to": "OpenClaw Gateway",
         "channel": "Queue / Bridge",
         "purpose": "Auftrag an Broker und Delegationsschicht übergeben",
-        "status": "connected",
-        "statusLabel": "Verbunden",
+        "status": "live",
+        "statusLabel": "Live",
+        "detail": "Gateway-Prozess laeuft, /health antwortet ok",
         "feedback": false
       },
       {
@@ -4414,48 +4417,54 @@
         "to": "Jarvis",
         "channel": "Broker -> Verteiler",
         "purpose": "Jarvis übernimmt Verteilung und Arbeitsplanung",
-        "status": "connected",
-        "statusLabel": "Verbunden"
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Jarvis anzusprechen (offener Kanban-Task t_297d6964)"
       },
       {
         "from": "Jarvis",
         "to": "Forge",
         "channel": "Infra / Skills / Server",
         "purpose": "Engineering und Umsetzung",
-        "status": "live",
-        "statusLabel": "Live"
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Forge anzusprechen (offener Kanban-Task t_297d6964)"
       },
       {
         "from": "Jarvis",
         "to": "Sentinel",
         "channel": "Logs / Health / Security",
         "purpose": "Monitoring und Sicherheit",
-        "status": "live",
-        "statusLabel": "Live"
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Sentinel anzusprechen (offener Kanban-Task t_297d6964)"
       },
       {
         "from": "Jarvis",
         "to": "Oracle",
         "channel": "Briefings",
         "purpose": "Kontext, Wetter und News",
-        "status": "ready",
-        "statusLabel": "Bereit"
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Oracle anzusprechen (offener Kanban-Task t_297d6964)"
       },
       {
         "from": "Jarvis",
         "to": "Muse",
         "channel": "Content / Audio / Social",
         "purpose": "Content und Media",
-        "status": "ready",
-        "statusLabel": "Bereit"
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Muse anzusprechen (offener Kanban-Task t_297d6964)"
       },
       {
         "from": "Jarvis",
         "to": "Heimdall",
         "channel": "Home Assistant",
         "purpose": "Smart Home, Automationen und HA-Backups",
-        "status": "connected",
-        "statusLabel": "Verbunden"
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Heimdall anzusprechen (offener Kanban-Task t_297d6964)"
       },
       {
         "from": "Jarvis",
@@ -4528,8 +4537,9 @@
         "role": "Apple-nahe Vorprüfung, Diagnose und Gegencheck",
         "route": "Hermes -> Argus -> Hermes",
         "channel": "Checks",
-        "status": "support",
-        "statusLabel": "Support",
+        "status": "live",
+        "statusLabel": "Live",
+        "detail": "Argus MCP-Server aktiv in mindestens einer laufenden Hermes-Session",
         "tags": [
           "Audit",
           "Second Pass",
@@ -4542,8 +4552,9 @@
         "role": "Broker, Queue und Übergabe an Jarvis",
         "route": "Hermes -> Gateway -> Jarvis",
         "channel": "Queue",
-        "status": "connected",
-        "statusLabel": "Verbunden",
+        "status": "live",
+        "statusLabel": "Live",
+        "detail": "Gateway-Prozess laeuft, /health antwortet ok",
         "tags": [
           "Bridge",
           "Queue",
@@ -4555,8 +4566,9 @@
         "role": "OpenClaw-Verteiler, Review und Subagenten-Orchestrierung",
         "route": "Gateway -> Jarvis -> Hermes",
         "channel": "Routing / Review",
-        "status": "live",
-        "statusLabel": "Live",
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Jarvis anzusprechen (offener Kanban-Task t_297d6964)",
         "tags": [
           "Delegation",
           "Review",
@@ -4569,8 +4581,9 @@
         "role": "OpenClaw Infra, Skills und Server",
         "route": "Jarvis -> Forge",
         "channel": "Engineering",
-        "status": "live",
-        "statusLabel": "Live",
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Forge anzusprechen (offener Kanban-Task t_297d6964)",
         "tags": [
           "Infra",
           "Skills",
@@ -4583,8 +4596,9 @@
         "role": "Monitoring, Logs und Security",
         "route": "Jarvis -> Sentinel",
         "channel": "Watch",
-        "status": "live",
-        "statusLabel": "Live",
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Sentinel anzusprechen (offener Kanban-Task t_297d6964)",
         "tags": [
           "Logs",
           "Health",
@@ -4597,8 +4611,9 @@
         "role": "Briefings, Wetter und News",
         "route": "Jarvis -> Oracle",
         "channel": "Briefings",
-        "status": "ready",
-        "statusLabel": "Bereit",
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Oracle anzusprechen (offener Kanban-Task t_297d6964)",
         "tags": [
           "Briefing",
           "Weather",
@@ -4611,8 +4626,9 @@
         "role": "TikTok, SoundCloud und Content",
         "route": "Jarvis -> Muse",
         "channel": "Media",
-        "status": "ready",
-        "statusLabel": "Bereit",
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Muse anzusprechen (offener Kanban-Task t_297d6964)",
         "tags": [
           "Content",
           "Audio",
@@ -4625,8 +4641,9 @@
         "role": "Home Assistant, Smart Home und HA-Backups",
         "route": "Jarvis -> Heimdall",
         "channel": "Home",
-        "status": "connected",
-        "statusLabel": "Verbunden",
+        "status": "error",
+        "statusLabel": "Kein Werkzeug",
+        "detail": "Hermes hat noch kein Werkzeug, um Heimdall anzusprechen (offener Kanban-Task t_297d6964)",
         "tags": [
           "HA",
           "Scenes",
@@ -4947,7 +4964,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4956,7 +4973,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4965,7 +4982,7 @@
       },
       {
         "topic": "Broker",
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -4974,7 +4991,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -4983,7 +5000,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -4992,7 +5009,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -5001,7 +5018,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -5010,7 +5027,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "13.08.26, 00:22",
+        "time": "13.08.26, 00:34",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",
@@ -5086,7 +5103,7 @@
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-13T00:18:29.521653",
+        "updated_at": "2026-08-13T00:33:31.936878",
         "platformCounts": {
           "telegram": 1
         }
@@ -5104,19 +5121,19 @@
         "count": 8
       },
       "counts": {
-        "sessions": 2405,
-        "messages": 24923,
+        "sessions": 2425,
+        "messages": 24943,
         "delegations": 1,
         "obligations": 17,
         "routing": 1
       },
       "activeTelegramSession": {
-        "id": "5_62ead9",
+        "id": "7_6d26cc",
         "source": "cli",
         "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
         "message_count": 1,
         "tool_call_count": 0,
-        "started_at": 1786573277.323648,
+        "started_at": 1786574087.3369322,
         "ended_at": null,
         "title": "Aktive Telegram-Session",
         "session_key": "Telegram Direktnachricht",
@@ -5169,7 +5186,7 @@
         "name": "Hermes state.db",
         "kind": "Runtime",
         "state": "live",
-        "detail": "2405 Sessions, 24923 Nachrichten, 1 Delegationen",
+        "detail": "2425 Sessions, 24943 Nachrichten, 1 Delegationen",
         "route": "Hermes / state.db",
         "channel": "SQLite"
       },
@@ -5193,7 +5210,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 13.08.26, 00:18",
+        "detail": "Channels: 1 • updated 13.08.26, 00:33",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -5226,7 +5243,7 @@
       {
         "name": "Hermes Session 1",
         "role": "cli",
-        "route": "Session 5_62ead9",
+        "route": "Session 7_6d26cc",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
         "status": "live",
         "statusLabel": "Live",
@@ -5237,7 +5254,7 @@
       {
         "name": "Hermes Session 2",
         "role": "cli",
-        "route": "Session 5_53edd9",
+        "route": "Session 6_f9a19c",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
         "status": "live",
         "statusLabel": "Live",
@@ -5247,8 +5264,8 @@
       },
       {
         "name": "Hermes Session 3",
-        "role": "cron",
-        "route": "Session 3_001948",
+        "role": "cli",
+        "route": "Session 6_ee4c4c",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
         "status": "live",
         "statusLabel": "Live",
@@ -5259,7 +5276,7 @@
       {
         "name": "Hermes Session 4",
         "role": "cli",
-        "route": "Session 6_41954e",
+        "route": "Session 6_8d56d0",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
         "status": "live",
         "statusLabel": "Live",
@@ -5270,7 +5287,7 @@
       {
         "name": "Hermes Session 5",
         "role": "cli",
-        "route": "Session 6_ca2112",
+        "route": "Session 5_9c67c9",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
         "status": "live",
         "statusLabel": "Live",
@@ -5281,7 +5298,7 @@
       {
         "name": "Hermes Session 6",
         "role": "cli",
-        "route": "Session 6_cb1165",
+        "route": "Session 5_a98c5c",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
         "status": "live",
         "statusLabel": "Live",
@@ -5292,7 +5309,7 @@
       {
         "name": "Hermes Session 7",
         "role": "cli",
-        "route": "Session 7_095626",
+        "route": "Session 5_3b982b",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
         "status": "live",
         "statusLabel": "Live",
@@ -5303,7 +5320,7 @@
       {
         "name": "Hermes Session 8",
         "role": "cli",
-        "route": "Session 6_854649",
+        "route": "Session 5_b6364f",
         "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
         "status": "live",
         "statusLabel": "Live",
@@ -5314,8 +5331,8 @@
     ],
     "recentMessages": [
       {
-        "topic": "USER • 5_62ead9",
-        "time": "13.08.26, 00:21",
+        "topic": "USER • 7_6d26cc",
+        "time": "13.08.26, 00:34",
         "from": "user",
         "to": "Hermes",
         "summary": "user Aktivität • 27 Zeichen",
@@ -5323,8 +5340,8 @@
         "statusLabel": "User"
       },
       {
-        "topic": "USER • 5_53edd9",
-        "time": "13.08.26, 00:21",
+        "topic": "USER • 6_f9a19c",
+        "time": "13.08.26, 00:31",
         "from": "user",
         "to": "Hermes",
         "summary": "user Aktivität • 27 Zeichen",
@@ -5332,17 +5349,8 @@
         "statusLabel": "User"
       },
       {
-        "topic": "USER • 3_001948",
-        "time": "13.08.26, 00:20",
-        "from": "user",
-        "to": "Hermes",
-        "summary": "user Aktivität • 7344 Zeichen",
-        "status": "connected",
-        "statusLabel": "User"
-      },
-      {
-        "topic": "USER • 6_41954e",
-        "time": "13.08.26, 00:19",
+        "topic": "USER • 6_ee4c4c",
+        "time": "13.08.26, 00:31",
         "from": "user",
         "to": "Hermes",
         "summary": "user Aktivität • 27 Zeichen",
@@ -5350,8 +5358,8 @@
         "statusLabel": "User"
       },
       {
-        "topic": "USER • 6_ca2112",
-        "time": "13.08.26, 00:19",
+        "topic": "USER • 6_8d56d0",
+        "time": "13.08.26, 00:31",
         "from": "user",
         "to": "Hermes",
         "summary": "user Aktivität • 27 Zeichen",
@@ -5359,8 +5367,8 @@
         "statusLabel": "User"
       },
       {
-        "topic": "USER • 6_cb1165",
-        "time": "13.08.26, 00:19",
+        "topic": "USER • 5_9c67c9",
+        "time": "13.08.26, 00:31",
         "from": "user",
         "to": "Hermes",
         "summary": "user Aktivität • 27 Zeichen",
@@ -5368,8 +5376,8 @@
         "statusLabel": "User"
       },
       {
-        "topic": "USER • 7_095626",
-        "time": "13.08.26, 00:19",
+        "topic": "USER • 5_a98c5c",
+        "time": "13.08.26, 00:31",
         "from": "user",
         "to": "Hermes",
         "summary": "user Aktivität • 27 Zeichen",
@@ -5377,8 +5385,8 @@
         "statusLabel": "User"
       },
       {
-        "topic": "USER • 6_854649",
-        "time": "13.08.26, 00:19",
+        "topic": "USER • 5_3b982b",
+        "time": "13.08.26, 00:31",
         "from": "user",
         "to": "Hermes",
         "summary": "user Aktivität • 27 Zeichen",
@@ -5386,8 +5394,8 @@
         "statusLabel": "User"
       },
       {
-        "topic": "USER • 4_18dcca",
-        "time": "13.08.26, 00:17",
+        "topic": "USER • 5_b6364f",
+        "time": "13.08.26, 00:31",
         "from": "user",
         "to": "Hermes",
         "summary": "user Aktivität • 27 Zeichen",
@@ -5395,11 +5403,20 @@
         "statusLabel": "User"
       },
       {
-        "topic": "USER • 0_d6bef3",
-        "time": "13.08.26, 00:15",
+        "topic": "USER • 3_537222",
+        "time": "13.08.26, 00:30",
         "from": "user",
         "to": "Hermes",
         "summary": "user Aktivität • 27 Zeichen",
+        "status": "connected",
+        "statusLabel": "User"
+      },
+      {
+        "topic": "USER • 3_002949",
+        "time": "13.08.26, 00:30",
+        "from": "user",
+        "to": "Hermes",
+        "summary": "user Aktivität • 4978 Zeichen",
         "status": "connected",
         "statusLabel": "User"
       }

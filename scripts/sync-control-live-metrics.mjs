@@ -25,6 +25,10 @@ const hermesBrainVaultStatePath = join(hermesProfileRoot, "state", "brain_vault_
 const hermesArgusBridgeStatePath = join(hermesProfileRoot, "state", "argus_bridge_state.json");
 const hermesActiveSessionsPath = join(hermesProfileRoot, "runtime", "active_sessions.json");
 const hermesCronOutputPath = join(hermesProfileRoot, "cron", "output");
+const hermesAgentRoot = join(process.env.HOME || "/Users/jarvisgray", ".hermes", "hermes-agent");
+const argusServerPath = join(process.env.HOME || "/Users/jarvisgray", ".hermes", "mcp-argus", "server.py");
+const openclawRoot = join(process.env.HOME || "/Users/jarvisgray", ".openclaw");
+const openclawConfigPath = join(openclawRoot, "openclaw.json");
 const corePages = [
   "/",
   "/index.html",
@@ -872,6 +876,113 @@ function runOnMini(shellCommand, { timeout = 8000 } = {}) {
   return execFileSync("ssh", ["-o", "ConnectTimeout=5", "-o", "BatchMode=yes", "mini", shellCommand], { encoding: "utf8", timeout });
 }
 
+// Echte Live-Checks fuer die AgentsRoom-Graph-Ansicht (Hermes -> Argus ->
+// OpenClaw Gateway -> Jarvis -> Subagenten). War bisher komplett hartcodiert
+// (immer "live"/"connected"), unabhaengig vom echten Zustand -- live
+// verifiziert 2026-08-13, siehe fetchOpenClawAgents-Kommentar oben fuer den
+// baugleichen Fix im operationsWorkbench-Bereich.
+function isProcessRunning(pattern) {
+  try {
+    const output = runOnMini(`pgrep -fl '${pattern}' || true`, { timeout: 6000 });
+    return output.trim().length > 0;
+  } catch {
+    return false;
+  }
+}
+
+function findFileByName(rootDir, fileName, maxDepth = 6) {
+  try {
+    const output = runOnMini(`find '${rootDir}' -maxdepth ${maxDepth} -iname '${fileName}' 2>/dev/null || true`, { timeout: 8000 }).trim();
+    return output ? output.split("\n")[0] : null;
+  } catch {
+    return null;
+  }
+}
+
+function checkOpenClawGatewayNode() {
+  const processRunning = isProcessRunning("openclaw.*gateway");
+  const health = (() => {
+    try {
+      return JSON.parse(runOnMini("curl -s -m 2 http://127.0.0.1:18789/health", { timeout: 4000 }));
+    } catch {
+      return null;
+    }
+  })();
+  const healthy = Boolean(health?.ok);
+  const state = healthy ? "live" : processRunning ? "warn" : "error";
+  const statusLabel = healthy ? "Live" : processRunning ? "Prüfen" : "Fehler";
+  const detail = healthy
+    ? "Gateway-Prozess laeuft, /health antwortet ok"
+    : processRunning
+      ? "Gateway-Prozess laeuft, aber /health antwortet nicht wie erwartet"
+      : "Gateway-Prozess (Port 18789) nicht gefunden";
+  return { state, statusLabel, detail };
+}
+
+function checkArgusNode() {
+  const installed = existsSync(argusServerPath);
+  const active = installed && isProcessRunning("mcp-argus/server.py");
+  const state = active ? "live" : installed ? "ready" : "error";
+  const statusLabel = active ? "Live" : installed ? "Bereit" : "Fehler";
+  const detail = active
+    ? "Argus MCP-Server aktiv in mindestens einer laufenden Hermes-Session"
+    : installed
+      ? "Argus installiert, aktuell in keiner laufenden Hermes-Session aktiv"
+      : "Argus-Server (mcp-argus/server.py) nicht gefunden";
+  return { state, statusLabel, detail };
+}
+
+let _openclawDispatchToolCache;
+function hasOpenClawDispatchTool() {
+  if (_openclawDispatchToolCache === undefined) {
+    _openclawDispatchToolCache = Boolean(findFileByName(hermesAgentRoot, "openclaw_tool.py"));
+  }
+  return _openclawDispatchToolCache;
+}
+
+let _openclawAgentRegistryCache;
+function getOpenClawAgentRegistry() {
+  if (_openclawAgentRegistryCache) return _openclawAgentRegistryCache;
+  const config = readJsonFile(openclawConfigPath, {});
+  const registeredIds = new Set((config?.agents?.list || []).map((agent) => agent.id));
+  const workspaceIds = new Set();
+  try {
+    for (const entry of readdirSync(openclawRoot, { withFileTypes: true })) {
+      if (!entry.isDirectory()) continue;
+      if (entry.name === "agents") {
+        for (const sub of readdirSync(join(openclawRoot, "agents"), { withFileTypes: true })) {
+          if (sub.isDirectory()) workspaceIds.add(sub.name);
+        }
+      } else if (entry.name.startsWith("workspace-")) {
+        workspaceIds.add(entry.name.replace("workspace-", ""));
+      }
+    }
+  } catch {
+    // Verzeichnis nicht lesbar -> workspaceIds bleibt leer, kein Absturz.
+  }
+  _openclawAgentRegistryCache = { registeredIds, workspaceIds };
+  return _openclawAgentRegistryCache;
+}
+
+// Kernaussage (Stand 2026-08): Hermes hat noch KEIN Werkzeug, um irgendeinen
+// OpenClaw-Subagenten anzusprechen (offener Kanban-Task t_297d6964) -> bis
+// das gebaut ist, ist jeder Subagent aus Hermes' Perspektive real nicht
+// erreichbar, egal ob er in openclaw.json registriert ist.
+function getSubagentLiveStatus(name, id) {
+  const dispatchable = hasOpenClawDispatchTool();
+  const { registeredIds, workspaceIds } = getOpenClawAgentRegistry();
+  if (!dispatchable) {
+    return { status: "error", statusLabel: "Kein Werkzeug", detail: `Hermes hat noch kein Werkzeug, um ${name} anzusprechen (offener Kanban-Task t_297d6964)` };
+  }
+  if (registeredIds.has(id)) {
+    return { status: "connected", statusLabel: "Verbunden", detail: `${name} ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar` };
+  }
+  if (workspaceIds.has(id)) {
+    return { status: "support", statusLabel: "Nicht registriert", detail: `Workspace fuer ${name} vorhanden, aber nicht in openclaw agents.list registriert` };
+  }
+  return { status: "error", statusLabel: "Nicht gefunden", detail: `Kein OpenClaw-Workspace fuer ${name} gefunden` };
+}
+
 function sqliteQueryJsonSsh(host, dbPath, query, fallback = []) {
   try {
     const output = runOnMini(`sqlite3 -json ${dbPath} "${query.replace(/"/g, '\\"')}"`, { timeout: 8000 });
@@ -1306,6 +1417,17 @@ async function main() {
     .filter((row) => typeof row.metricValue === "number")
     .sort((a, b) => b.metricValue - a.metricValue)[0];
 
+  const openclawGatewayNode = checkOpenClawGatewayNode();
+  const argusNode = checkArgusNode();
+  const subagentNodes = {
+    jarvis: getSubagentLiveStatus("Jarvis", "jarvis"),
+    forge: getSubagentLiveStatus("Forge", "forge"),
+    sentinel: getSubagentLiveStatus("Sentinel", "sentinel"),
+    oracle: getSubagentLiveStatus("Oracle", "oracle"),
+    muse: getSubagentLiveStatus("Muse", "muse"),
+    heimdall: getSubagentLiveStatus("Heimdall", "heimdall")
+  };
+
   const agentsRoom = {
     metrics: {
       agentCount: 13,
@@ -1317,15 +1439,15 @@ async function main() {
     },
     routing: [
       { from: "Mensch", to: "Hermes", channel: "Telegram / iPhone", purpose: "Operator-Eingang und Startsignal", status: "live", statusLabel: "Live", feedback: false },
-      { from: "Hermes", to: "Argus", channel: "Vorprüfung", purpose: "erstes Review auf Logik, Risiko und Korrektheit", status: "support", statusLabel: "Support", feedback: false },
-      { from: "Argus", to: "Hermes", channel: "Review Return", purpose: "Rückgabe mit Korrekturhinweisen", status: "support", statusLabel: "Support", feedback: false },
-      { from: "Hermes", to: "OpenClaw Gateway", channel: "Queue / Bridge", purpose: "Auftrag an Broker und Delegationsschicht übergeben", status: "connected", statusLabel: "Verbunden", feedback: false },
-      { from: "OpenClaw Gateway", to: "Jarvis", channel: "Broker -> Verteiler", purpose: "Jarvis übernimmt Verteilung und Arbeitsplanung", status: "connected", statusLabel: "Verbunden" },
-      { from: "Jarvis", to: "Forge", channel: "Infra / Skills / Server", purpose: "Engineering und Umsetzung", status: "live", statusLabel: "Live" },
-      { from: "Jarvis", to: "Sentinel", channel: "Logs / Health / Security", purpose: "Monitoring und Sicherheit", status: "live", statusLabel: "Live" },
-      { from: "Jarvis", to: "Oracle", channel: "Briefings", purpose: "Kontext, Wetter und News", status: "ready", statusLabel: "Bereit" },
-      { from: "Jarvis", to: "Muse", channel: "Content / Audio / Social", purpose: "Content und Media", status: "ready", statusLabel: "Bereit" },
-      { from: "Jarvis", to: "Heimdall", channel: "Home Assistant", purpose: "Smart Home, Automationen und HA-Backups", status: "connected", statusLabel: "Verbunden" },
+      { from: "Hermes", to: "Argus", channel: "Vorprüfung", purpose: "erstes Review auf Logik, Risiko und Korrektheit", status: argusNode.state, statusLabel: argusNode.statusLabel, detail: argusNode.detail, feedback: false },
+      { from: "Argus", to: "Hermes", channel: "Review Return", purpose: "Rückgabe mit Korrekturhinweisen", status: argusNode.state, statusLabel: argusNode.statusLabel, detail: argusNode.detail, feedback: false },
+      { from: "Hermes", to: "OpenClaw Gateway", channel: "Queue / Bridge", purpose: "Auftrag an Broker und Delegationsschicht übergeben", status: openclawGatewayNode.state, statusLabel: openclawGatewayNode.statusLabel, detail: openclawGatewayNode.detail, feedback: false },
+      { from: "OpenClaw Gateway", to: "Jarvis", channel: "Broker -> Verteiler", purpose: "Jarvis übernimmt Verteilung und Arbeitsplanung", status: subagentNodes.jarvis.status, statusLabel: subagentNodes.jarvis.statusLabel, detail: subagentNodes.jarvis.detail },
+      { from: "Jarvis", to: "Forge", channel: "Infra / Skills / Server", purpose: "Engineering und Umsetzung", status: subagentNodes.forge.status, statusLabel: subagentNodes.forge.statusLabel, detail: subagentNodes.forge.detail },
+      { from: "Jarvis", to: "Sentinel", channel: "Logs / Health / Security", purpose: "Monitoring und Sicherheit", status: subagentNodes.sentinel.status, statusLabel: subagentNodes.sentinel.statusLabel, detail: subagentNodes.sentinel.detail },
+      { from: "Jarvis", to: "Oracle", channel: "Briefings", purpose: "Kontext, Wetter und News", status: subagentNodes.oracle.status, statusLabel: subagentNodes.oracle.statusLabel, detail: subagentNodes.oracle.detail },
+      { from: "Jarvis", to: "Muse", channel: "Content / Audio / Social", purpose: "Content und Media", status: subagentNodes.muse.status, statusLabel: subagentNodes.muse.statusLabel, detail: subagentNodes.muse.detail },
+      { from: "Jarvis", to: "Heimdall", channel: "Home Assistant", purpose: "Smart Home, Automationen und HA-Backups", status: subagentNodes.heimdall.status, statusLabel: subagentNodes.heimdall.statusLabel, detail: subagentNodes.heimdall.detail },
       { from: "Jarvis", to: "Friday", channel: "Deep Repair", purpose: "schwere Reparaturen und technische Ausnahmefälle", status: "ready", statusLabel: "Bereit" },
       { from: "Jarvis", to: "Claude", channel: "Counter Check", purpose: "nur bei hoher Komplexität und Reasoning-Bedarf", status: "support", statusLabel: "Fallback" },
       { from: "Jarvis", to: "Claude Code", channel: "Pair Coding", purpose: "nur bei größeren Coding-Aufgaben und Refactors", status: "support", statusLabel: "Fallback" },
@@ -1335,14 +1457,14 @@ async function main() {
     ],
     agents: [
       { name: "Hermes", role: "Primär-Controller, Telegram-Hub und Rückkanal", route: "Mensch -> Hermes -> Mensch", channel: "Control / Telegram", status: "live", statusLabel: "Live", tags: ["Telegram", "Control", "Reply"], image: "/assets/generated/agent-avatars/hermes.png" },
-      { name: "Argus", role: "Apple-nahe Vorprüfung, Diagnose und Gegencheck", route: "Hermes -> Argus -> Hermes", channel: "Checks", status: "support", statusLabel: "Support", tags: ["Audit", "Second Pass", "Safety"], image: "/assets/generated/agent-avatars/argus.png" },
-      { name: "OpenClaw Gateway", role: "Broker, Queue und Übergabe an Jarvis", route: "Hermes -> Gateway -> Jarvis", channel: "Queue", status: "connected", statusLabel: "Verbunden", tags: ["Bridge", "Queue", "Delegation"] },
-      { name: "Jarvis", role: "OpenClaw-Verteiler, Review und Subagenten-Orchestrierung", route: "Gateway -> Jarvis -> Hermes", channel: "Routing / Review", status: "live", statusLabel: "Live", tags: ["Delegation", "Review", "Graph"], image: "/assets/generated/agent-avatars/jarvis.png" },
-      { name: "Forge", role: "OpenClaw Infra, Skills und Server", route: "Jarvis -> Forge", channel: "Engineering", status: "live", statusLabel: "Live", tags: ["Infra", "Skills", "Server"], image: "/assets/generated/agent-avatars/forge.png" },
-      { name: "Sentinel", role: "Monitoring, Logs und Security", route: "Jarvis -> Sentinel", channel: "Watch", status: "live", statusLabel: "Live", tags: ["Logs", "Health", "Security"], image: "/assets/generated/agent-avatars/sentinel.png" },
-      { name: "Oracle", role: "Briefings, Wetter und News", route: "Jarvis -> Oracle", channel: "Briefings", status: "ready", statusLabel: "Bereit", tags: ["Briefing", "Weather", "News"], image: "/assets/generated/agent-avatars/oracle.png" },
-      { name: "Muse", role: "TikTok, SoundCloud und Content", route: "Jarvis -> Muse", channel: "Media", status: "ready", statusLabel: "Bereit", tags: ["Content", "Audio", "Social"], image: "/assets/generated/agent-avatars/muse.png" },
-      { name: "Heimdall", role: "Home Assistant, Smart Home und HA-Backups", route: "Jarvis -> Heimdall", channel: "Home", status: "connected", statusLabel: "Verbunden", tags: ["HA", "Scenes", "Devices"], image: "/assets/generated/agent-avatars/heimdall.png" },
+      { name: "Argus", role: "Apple-nahe Vorprüfung, Diagnose und Gegencheck", route: "Hermes -> Argus -> Hermes", channel: "Checks", status: argusNode.state, statusLabel: argusNode.statusLabel, detail: argusNode.detail, tags: ["Audit", "Second Pass", "Safety"], image: "/assets/generated/agent-avatars/argus.png" },
+      { name: "OpenClaw Gateway", role: "Broker, Queue und Übergabe an Jarvis", route: "Hermes -> Gateway -> Jarvis", channel: "Queue", status: openclawGatewayNode.state, statusLabel: openclawGatewayNode.statusLabel, detail: openclawGatewayNode.detail, tags: ["Bridge", "Queue", "Delegation"] },
+      { name: "Jarvis", role: "OpenClaw-Verteiler, Review und Subagenten-Orchestrierung", route: "Gateway -> Jarvis -> Hermes", channel: "Routing / Review", status: subagentNodes.jarvis.status, statusLabel: subagentNodes.jarvis.statusLabel, detail: subagentNodes.jarvis.detail, tags: ["Delegation", "Review", "Graph"], image: "/assets/generated/agent-avatars/jarvis.png" },
+      { name: "Forge", role: "OpenClaw Infra, Skills und Server", route: "Jarvis -> Forge", channel: "Engineering", status: subagentNodes.forge.status, statusLabel: subagentNodes.forge.statusLabel, detail: subagentNodes.forge.detail, tags: ["Infra", "Skills", "Server"], image: "/assets/generated/agent-avatars/forge.png" },
+      { name: "Sentinel", role: "Monitoring, Logs und Security", route: "Jarvis -> Sentinel", channel: "Watch", status: subagentNodes.sentinel.status, statusLabel: subagentNodes.sentinel.statusLabel, detail: subagentNodes.sentinel.detail, tags: ["Logs", "Health", "Security"], image: "/assets/generated/agent-avatars/sentinel.png" },
+      { name: "Oracle", role: "Briefings, Wetter und News", route: "Jarvis -> Oracle", channel: "Briefings", status: subagentNodes.oracle.status, statusLabel: subagentNodes.oracle.statusLabel, detail: subagentNodes.oracle.detail, tags: ["Briefing", "Weather", "News"], image: "/assets/generated/agent-avatars/oracle.png" },
+      { name: "Muse", role: "TikTok, SoundCloud und Content", route: "Jarvis -> Muse", channel: "Media", status: subagentNodes.muse.status, statusLabel: subagentNodes.muse.statusLabel, detail: subagentNodes.muse.detail, tags: ["Content", "Audio", "Social"], image: "/assets/generated/agent-avatars/muse.png" },
+      { name: "Heimdall", role: "Home Assistant, Smart Home und HA-Backups", route: "Jarvis -> Heimdall", channel: "Home", status: subagentNodes.heimdall.status, statusLabel: subagentNodes.heimdall.statusLabel, detail: subagentNodes.heimdall.detail, tags: ["HA", "Scenes", "Devices"], image: "/assets/generated/agent-avatars/heimdall.png" },
       { name: "Friday", role: "Schwere Reparaturen und Deep Work", route: "Jarvis -> Friday", channel: "Repair", status: "ready", statusLabel: "Bereit", tags: ["Deep Work", "Fixes", "Review"] },
       { name: "Claude", role: "High-trust Gegenprüfung und komplexes Reasoning", route: "Jarvis -> Claude", channel: "Claude", status: "support", statusLabel: "Fallback", tags: ["Escalation", "Review", "Reasoning"] },
       { name: "Claude Code", role: "Aufwendige Implementierung, Refactor und Pair Coding", route: "Jarvis -> Claude Code", channel: "Claude Code", status: "support", statusLabel: "Fallback", tags: ["Code", "Refactor", "Pairing"] },
