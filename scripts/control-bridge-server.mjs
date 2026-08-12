@@ -42,7 +42,8 @@ const COMMANDS = {
   "check-links": { cmd: "/bin/bash", args: [join(repoRoot, "scripts/check-shirtee-links.sh")] },
   "kanban-create": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-create.mjs")] },
   "kanban-run-pipeline": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-run-pipeline.mjs")] },
-  "kanban-task-action": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-task-action.mjs")] }
+  "kanban-task-action": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-task-action.mjs")] },
+  "kanban-promote-knowledge": { cmd: process.execPath, args: [join(repoRoot, "scripts/kanban-promote-knowledge.mjs")] }
 };
 
 function ensureStateFiles() {
@@ -206,6 +207,16 @@ async function handleApi(request, response, url) {
       return badRequest(response, "id und ein gültiges action (retry|archive|complete) sind erforderlich.");
     }
     const result = await runCommand("kanban-task-action", [`--id=${id}`, `--action=${action}`]);
+    return json(response, result.ok ? 200 : 500, result);
+  }
+
+  if (request.method === "POST" && url.pathname === "/api/control/kanban-promote-knowledge") {
+    const body = await readJsonBody(request);
+    const id = String(body.id || "").trim();
+    if (!id || !/^[A-Za-z0-9_]+$/.test(id)) {
+      return badRequest(response, "id ist erforderlich.");
+    }
+    const result = await runCommand("kanban-promote-knowledge", [`--id=${id}`]);
     return json(response, result.ok ? 200 : 500, result);
   }
 

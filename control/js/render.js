@@ -1159,7 +1159,24 @@ function renderKanbanTask(task) {
   `;
 }
 
-function renderKanbanColumn(title, cls, tasks, emptyLabel) {
+function renderArchivedKanbanTask(task) {
+  const completed = formatKanbanTime(task.completed_at) || formatKanbanTime(task.created_at);
+  return `
+    <li class="kanban-task-item">
+      <button type="button" class="kanban-task-title kanban-task-title-btn" data-control-dialog-kind="kanban-task" data-control-dialog-id="${escapeHtml(task.id)}">${escapeHtml(task.title)}</button>
+      <div class="kanban-task-meta">
+        <span class="kanban-task-id">${escapeHtml(task.id)}</span>
+        ${completed ? `<span class="kanban-task-id">${completed}</span>` : ""}
+      </div>
+      <div class="kanban-task-actions">
+        ${task.last_summary ? `<button type="button" class="kanban-task-action-btn" data-kanban-task-action="promote-knowledge" data-kanban-task-id="${escapeHtml(task.id)}">Ins Wissen übernehmen</button>` : ""}
+        <button type="button" class="kanban-task-action-btn is-muted" data-control-dialog-kind="kanban-task" data-control-dialog-id="${escapeHtml(task.id)}">Details</button>
+      </div>
+    </li>
+  `;
+}
+
+function renderKanbanColumn(title, cls, tasks, emptyLabel, renderFn = renderKanbanTask) {
   return `
     <div class="kanban-col kanban-col-${cls}">
       <div class="kanban-col-head">
@@ -1167,7 +1184,7 @@ function renderKanbanColumn(title, cls, tasks, emptyLabel) {
         <span class="kanban-count kanban-count-${cls}">${tasks.length}</span>
       </div>
       <ul class="kanban-task-list">
-        ${tasks.length ? tasks.map(renderKanbanTask).join("") : `<li class="kanban-empty">${emptyLabel}</li>`}
+        ${tasks.length ? tasks.map(renderFn).join("") : `<li class="kanban-empty">${emptyLabel}</li>`}
       </ul>
     </div>
   `;
@@ -1179,6 +1196,7 @@ export function renderKanbanSection(container, kanban) {
   const running = Array.isArray(data.running) ? data.running : [];
   const ready = Array.isArray(data.ready) ? data.ready : [];
   const doneToday = Array.isArray(data.doneToday) ? data.doneToday : [];
+  const archived = Array.isArray(data.archived) ? data.archived : [];
   const services = Array.isArray(data.services) ? data.services : [];
   const openTasks = Array.isArray(data.openTasks) ? data.openTasks : [];
 
@@ -1188,6 +1206,7 @@ export function renderKanbanSection(container, kanban) {
       ${renderKanbanColumn("Läuft", "run", running, "Aktuell läuft nichts.")}
       ${renderKanbanColumn("Bereit", "ready", ready, "Keine offenen Tasks.")}
       ${renderKanbanColumn("Heute erledigt", "done", doneToday, "Heute noch nichts abgeschlossen.")}
+      ${renderKanbanColumn("Archiv", "archive", archived, "Noch nichts archiviert.", renderArchivedKanbanTask)}
     </div>
     <div class="kanban-sidebar">
       <div class="kanban-sidebar-block">

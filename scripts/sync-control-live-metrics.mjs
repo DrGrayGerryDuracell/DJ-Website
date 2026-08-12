@@ -873,6 +873,13 @@ function buildKanbanSection() {
   const kanbanQuery = `SELECT id, title, status, priority, assignee, block_kind, created_at, completed_at, worker_pid, consecutive_failures FROM tasks WHERE status != 'archived' ORDER BY CASE status WHEN 'blocked' THEN 0 WHEN 'running' THEN 1 WHEN 'ready' THEN 2 WHEN 'todo' THEN 3 WHEN 'triage' THEN 4 WHEN 'done' THEN 5 END, priority DESC, created_at DESC`;
   const allTasks = sqliteQueryJsonSsh("mini", kanbanDbPath, kanbanQuery, []);
 
+  // Archived tasks stay queryable by ID forever, but the active board hides
+  // them (query above excludes status='archived'). Surface a recent slice
+  // here with the last run's summary so the dashboard can offer "promote to
+  // knowledge" instead of the task just disappearing with no trace.
+  const archivedQuery = `SELECT t.id, t.title, t.status, t.assignee, t.created_at, t.completed_at, (SELECT r.summary FROM task_runs r WHERE r.task_id = t.id AND r.summary IS NOT NULL ORDER BY r.id DESC LIMIT 1) AS last_summary FROM tasks t WHERE t.status = 'archived' ORDER BY COALESCE(t.completed_at, t.created_at) DESC LIMIT 25`;
+  const archived = sqliteQueryJsonSsh("mini", kanbanDbPath, archivedQuery, []);
+
   const waiting = allTasks.filter(t =>
     t.status === "blocked" ||
     (t.status === "running" && t.block_kind === "needs_input")
@@ -949,6 +956,7 @@ function buildKanbanSection() {
     running,
     ready,
     doneToday,
+    archived,
     openTasks,
   };
 }

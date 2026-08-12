@@ -155,6 +155,13 @@ async function runKanbanTaskAction(id, action) {
   });
 }
 
+async function promoteKanbanKnowledge(id) {
+  return controlApi("/kanban-promote-knowledge", {
+    method: "POST",
+    body: JSON.stringify({ id })
+  });
+}
+
 async function writeHermesSpool(message, chatId) {
   return controlApi("/hermes-spool", {
     method: "POST",
@@ -601,8 +608,13 @@ function setupKanbanActions() {
       taskActionButton.textContent = "Läuft…";
       try {
         if (hasControlBridge()) {
-          await runKanbanTaskAction(id, action);
-          taskActionButton.textContent = "Erledigt ✓";
+          if (action === "promote-knowledge") {
+            await promoteKanbanKnowledge(id);
+            taskActionButton.textContent = "Übernommen ✓";
+          } else {
+            await runKanbanTaskAction(id, action);
+            taskActionButton.textContent = "Erledigt ✓";
+          }
           try {
             await runBridgeCommand("sync-control-live");
             const nextLiveMetrics = await loadLiveMetrics();
@@ -833,20 +845,27 @@ function buildDialogPayload(data, kind, id) {
       ...(kanban.waiting || []),
       ...(kanban.running || []),
       ...(kanban.ready || []),
-      ...(kanban.doneToday || [])
+      ...(kanban.doneToday || []),
+      ...(kanban.archived || [])
     ];
     const task = allTasks.find((entry) => entry.id === id);
     if (!task) return null;
     const needsAction = Boolean(task.block_kind) || Number(task.consecutive_failures || 0) > 0;
-    const statusToneMap = { done: "ok", running: "live", blocked: "warn", ready: "info", todo: "info", triage: "info" };
+    const isFinished = task.status === "done" || task.status === "archived";
+    const statusToneMap = { done: "ok", running: "live", blocked: "warn", ready: "info", todo: "info", triage: "info", archived: "info" };
     const actions = [];
     if (needsAction || task.status === "blocked") {
       actions.push({ type: "kanban-action", taskAction: "retry", taskId: task.id, label: "Erneut versuchen" });
     }
-    if (task.status !== "done") {
+    if (!isFinished) {
       actions.push({ type: "kanban-action", taskAction: "complete", taskId: task.id, label: "Als erledigt markieren" });
     }
-    actions.push({ type: "kanban-action", taskAction: "archive", taskId: task.id, label: "Archivieren" });
+    if (task.status !== "archived") {
+      actions.push({ type: "kanban-action", taskAction: "archive", taskId: task.id, label: "Archivieren" });
+    }
+    if (isFinished) {
+      actions.push({ type: "kanban-action", taskAction: "promote-knowledge", taskId: task.id, label: "Ins Wissen übernehmen" });
+    }
     actions.push({ type: "copy", label: "Task-ID kopieren", value: task.id });
     return {
       title: task.title,
@@ -858,7 +877,8 @@ function buildDialogPayload(data, kind, id) {
       paragraphs: [
         task.assignee ? `Zugewiesen an: ${task.assignee}` : "Noch niemandem zugewiesen.",
         Number(task.consecutive_failures || 0) > 0 ? `Fehlgeschlagene Versuche in Folge: ${task.consecutive_failures}` : null,
-        task.completed_at ? `Abgeschlossen: ${new Date(task.completed_at * 1000).toLocaleString("de-DE")}` : null
+        task.completed_at ? `Abgeschlossen: ${new Date(task.completed_at * 1000).toLocaleString("de-DE")}` : null,
+        task.last_summary ? `Zusammenfassung: ${task.last_summary}` : null
       ].filter(Boolean),
       actions
     };
