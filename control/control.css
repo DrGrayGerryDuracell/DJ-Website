@@ -91,6 +91,23 @@ a { color: inherit; text-decoration: none; }
   gap: 0.5rem;
 }
 
+.control-nav-group-label {
+  margin: 0.6rem 0.2rem 0.05rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 216, 109, 0.14);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(245, 241, 232, 0.45);
+}
+
+.control-nav-group-label:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
 .control-nav-link {
   min-height: 44px;
   padding: 0.7rem 0.9rem;
@@ -482,6 +499,10 @@ a { color: inherit; text-decoration: none; }
 .control-deck-panel {
   display: grid;
   gap: 1rem;
+}
+
+.control-deck-panel[hidden] {
+  display: none;
 }
 
 .agentsroom-hero {

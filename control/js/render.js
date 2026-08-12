@@ -1009,8 +1009,15 @@ export function renderHermesChat(container, dashboardData) {
 }
 
 export function renderNav(container, nav) {
+  let lastGroup;
   container.innerHTML = nav
-    .map((item) => `<a href="#${item.id}" class="control-nav-link"><span>${item.label}</span>${item.hint ? `<small>${item.hint}</small>` : ""}</a>`)
+    .map((item) => {
+      const groupLabel = item.group && item.group !== lastGroup
+        ? `<div class="control-nav-group-label">${escapeHtml(item.group)}</div>`
+        : "";
+      lastGroup = item.group;
+      return `${groupLabel}<a href="#${item.id}" class="control-nav-link"><span>${item.label}</span>${item.hint ? `<small>${item.hint}</small>` : ""}</a>`;
+    })
     .join("");
 }
 

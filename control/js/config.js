@@ -1,17 +1,17 @@
 export const controlNav = [
   { id: "overview", label: "Übersicht", hint: "Systemstatus und Kern-KPIs" },
-  { id: "kanban", label: "Kanban", hint: "Aufgaben, Status und Services" },
-  { id: "agentsroom", label: "AgentsRoom", hint: "Routing, Agenten und Geräte" },
-  { id: "home-assistant", label: "Home Assistant", hint: "HA, Backup und Mac mini" },
-  { id: "website", label: "Website", hint: "HTTP Checks und Seitenwerte" },
-  { id: "shop", label: "Shop", hint: "Shop-Linkmonitor und Produktchecks" },
-  { id: "catalog-upload", label: "Katalog Uploads", hint: "Alle Artikel mit Upload-Status" },
-  { id: "live-activity", label: "Aktivität", hint: "Letzte Prüfereignisse" },
-  { id: "performance", label: "Technik", hint: "Verfügbarkeit und Fehlerlog" },
-  { id: "content", label: "Inhalte", hint: "Content-Struktur und CTA-Hinweise" },
-  { id: "social", label: "Social", hint: "Profile, Signale, Vergleiche" },
-  { id: "alerts", label: "Warnungen", hint: "Priorisierte Auffälligkeiten" },
-  { id: "settings", label: "Aktionen", hint: "Direkte Schnellzugriffe" }
+  { id: "kanban", label: "Kanban", hint: "Aufgaben, Status und Services", group: "Betrieb" },
+  { id: "agentsroom", label: "AgentsRoom", hint: "Routing, Agenten und Geräte", group: "Betrieb" },
+  { id: "home-assistant", label: "Home Assistant", hint: "HA, Backup und Mac mini", group: "Betrieb" },
+  { id: "website", label: "Website", hint: "HTTP Checks und Seitenwerte", group: "Marketing" },
+  { id: "shop", label: "Shop", hint: "Shop-Linkmonitor und Produktchecks", group: "Marketing" },
+  { id: "catalog-upload", label: "Katalog Uploads", hint: "Alle Artikel mit Upload-Status", group: "Marketing" },
+  { id: "content", label: "Inhalte", hint: "Content-Struktur und CTA-Hinweise", group: "Marketing" },
+  { id: "social", label: "Social", hint: "Profile, Signale, Vergleiche", group: "Marketing" },
+  { id: "live-activity", label: "Aktivität", hint: "Letzte Prüfereignisse", group: "System" },
+  { id: "performance", label: "Technik", hint: "Verfügbarkeit und Fehlerlog", group: "System" },
+  { id: "alerts", label: "Warnungen", hint: "Priorisierte Auffälligkeiten", group: "System" },
+  { id: "settings", label: "Aktionen", hint: "Direkte Schnellzugriffe", group: "System" }
 ];
 
 export const dateRanges = [

@@ -312,7 +312,9 @@ function buildHermesRuntimeSnapshot() {
       time: formatBerlinDate(Number(row.timestamp)) || "unbekannt",
       from: row.role || "message",
       to: row.tool_name || "Hermes",
-      summary: `${String(row.role || "Nachricht")} Aktivität • ${String(row.content || "").length} Zeichen${row.tool_name ? ` • Tool ${sanitizeSnippet(row.tool_name, 32)}` : ""}`,
+      summary: String(row.content || "").trim()
+        ? sanitizeSnippet(row.content, 140)
+        : `${String(row.role || "Nachricht")} Aktivität${row.tool_name ? ` • Tool ${sanitizeSnippet(row.tool_name, 32)}` : ""} • kein Textinhalt`,
       status: row.role === "assistant" ? "live" : row.role === "user" ? "connected" : "info",
       statusLabel: row.role === "assistant" ? "Assistant" : row.role === "user" ? "User" : "System"
     }))
