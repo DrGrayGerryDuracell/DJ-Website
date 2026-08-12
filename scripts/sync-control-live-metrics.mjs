@@ -867,7 +867,10 @@ function buildKanbanSection() {
   // ~/.hermes/kanban.db — the local copy on whichever machine renders this
   // dashboard is an empty stub, so query it over SSH instead.
   const kanbanDbPath = "/Users/jarvisgray/.hermes/kanban.db";
-  const hotMdPath = join(process.env.HOME || "/Users/jarvisgray", "ObsidianVault/JARVIS-Brain/wiki/hot.md");
+  // Always the mini's home, regardless of which machine runs this sync
+  // script — process.env.HOME here is local and pointed at a path that
+  // doesn't exist on the mini, silently emptying openTasks (#dashboard-bug).
+  const hotMdPath = "/Users/jarvisgray/ObsidianVault/JARVIS-Brain/wiki/hot.md";
   const today = new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Berlin" }).format(new Date());
 
   const kanbanQuery = `SELECT id, title, status, priority, assignee, block_kind, created_at, completed_at, worker_pid, consecutive_failures FROM tasks WHERE status != 'archived' ORDER BY CASE status WHEN 'blocked' THEN 0 WHEN 'running' THEN 1 WHEN 'ready' THEN 2 WHEN 'todo' THEN 3 WHEN 'triage' THEN 4 WHEN 'done' THEN 5 END, priority DESC, created_at DESC`;
@@ -897,13 +900,31 @@ function buildKanbanSection() {
     return d === today;
   });
 
+  // hot.md and the vault digest live only on the mini's Obsidian vault, never
+  // on whichever machine renders this dashboard — a plain local readFileSync
+  // here always threw (wrong machine) and silently left openTasks empty.
+  const digestMdPath = "/Users/jarvisgray/ObsidianVault/JARVIS-Brain/wiki/meta/wissens-kandidaten.md";
+  const readRemoteMd = (path) => {
+    try {
+      return execFileSync("ssh", ["-o", "ConnectTimeout=4", "-o", "BatchMode=yes", "mini", `cat '${path}' 2>/dev/null`], { encoding: "utf8", timeout: 8000 });
+    } catch { return ""; }
+  };
   let openTasks = [];
-  try {
-    const md = readFileSync(hotMdPath, "utf8");
-    openTasks = (md.match(/^- \[ \] .+/gm) || [])
-      .map(l => l.replace(/^- \[ \] /, ""))
-      .slice(0, 10);
-  } catch {}
+  {
+    const seen = new Set();
+    // Digest first — it reflects live task state, while hot.md is a
+    // free-form running log that can go stale (items resolved elsewhere
+    // don't get checked off automatically).
+    const combined = readRemoteMd(digestMdPath) + "\n" + readRemoteMd(hotMdPath);
+    for (const line of combined.match(/^- \[ \] .+/gm) || []) {
+      const text = line.replace(/^- \[ \] /, "").trim();
+      if (text && !seen.has(text)) {
+        seen.add(text);
+        openTasks.push(text);
+      }
+      if (openTasks.length >= 10) break;
+    }
+  }
 
   // The actual Hermes stack (gateway, hermes-serve, LiteLLM) runs on the Mac
   // mini ("zentralserver"), not on whichever machine renders this dashboard —

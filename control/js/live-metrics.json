@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-12T13:33:24.264Z",
-    "generatedAtLabel": "12.08.26, 15:33",
+    "generatedAt": "2026-08-12T14:07:40.686Z",
+    "generatedAtLabel": "12.08.26, 16:07",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "12.08.26, 15:33",
+      "value": "12.08.26, 16:07",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 133,
+      "value": 206,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 153,
+        "visitors": 237,
         "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 125,
+        "visitors": 186,
         "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 120,
+        "visitors": 184,
         "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 119,
+        "visitors": 217,
         "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 117,
+        "visitors": 221,
         "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 143,
+        "visitors": 219,
         "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 142,
+        "visitors": 171,
         "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 142,
+        "visitors": 215,
         "pageviews": 7
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "133 ms",
+      "avgSession": "206 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-12T13:33:24.264Z",
-      "checkedAtLabel": "12.08.26, 15:33"
+      "checkedAt": "2026-08-12T14:07:40.686Z",
+      "checkedAtLabel": "12.08.26, 16:07"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "133 ms",
+    "responseTime": "206 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "12.08.26, 15:33",
+      "time": "12.08.26, 16:07",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "12.08.26, 15:33",
+      "time": "12.08.26, 16:07",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "12.08.26, 15:33",
+      "time": "12.08.26, 16:07",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "12.08.26, 15:33",
+      "time": "12.08.26, 16:07",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3761,11 +3761,11 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-12T13:33:26.793Z",
+    "updatedAt": "2026-08-12T14:07:45.182Z",
     "counts": {
       "waiting": 0,
-      "running": 0,
-      "ready": 3,
+      "running": 1,
+      "ready": 6,
       "doneToday": 16
     },
     "services": [
@@ -3801,7 +3801,20 @@
       }
     ],
     "waiting": [],
-    "running": [],
+    "running": [
+      {
+        "id": "t_fde99428",
+        "title": "Finde den Partyleuchte-Eintrag in der Konfigurationsdatei",
+        "status": "running",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786543112,
+        "completed_at": null,
+        "worker_pid": 27866,
+        "consecutive_failures": 0
+      }
+    ],
     "ready": [
       {
         "id": "t_0d272391",
@@ -3816,24 +3829,60 @@
         "consecutive_failures": 0
       },
       {
-        "id": "t_7e2395c4",
-        "title": "Reload tuya_local integration and verify fix",
+        "id": "t_d9b7fb0d",
+        "title": "Aktualisiere den local_key für Partyleuchte",
         "status": "todo",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": null,
-        "created_at": 1786504969,
+        "created_at": 1786543112,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_42ba8c0b",
+        "title": "Speichere die Konfigurationsdatei",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786543112,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_c8f66271",
+        "title": "Überprüfe die Funktionalität der Partyleuchte",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786543112,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 0
       },
       {
         "id": "t_4a395e22",
-        "title": "Update Partyleuchte configuration in tuya_local",
-        "status": "triage",
+        "title": "Update local_key for Partyleuchte in tuya_local config",
+        "status": "todo",
         "priority": 0,
         "assignee": "zentralserver",
         "block_kind": "needs_input",
+        "created_at": 1786504969,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_7e2395c4",
+        "title": "Reload tuya_local integration and verify fix",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
         "created_at": 1786504969,
         "completed_at": null,
         "worker_pid": null,
@@ -4036,6 +4085,24 @@
     ],
     "archived": [
       {
+        "id": "t_006da26c",
+        "title": "Verbessere die Empfindlichkeit der Bewegungserkennung der Eufy-Kamera",
+        "status": "archived",
+        "assignee": null,
+        "created_at": 1786542923,
+        "completed_at": null,
+        "last_summary": null
+      },
+      {
+        "id": "t_58809302",
+        "title": "Test: Sprachpruefung fuer Kanban-Tasks nach dem Fix",
+        "status": "archived",
+        "assignee": null,
+        "created_at": 1786542901,
+        "completed_at": null,
+        "last_summary": null
+      },
+      {
         "id": "t_ef484b5a",
         "title": "Retrieve new local_key via tuya-cli or Tuya IoT platform",
         "status": "archived",
@@ -4072,7 +4139,18 @@
         "last_summary": "Der Login in Home Assistant über die Browser-Automatisierung ist aufgrund von 'Ungültiger Benutzername oder Passwort' fehlgeschlagen und der manuelle Versuch via `computer_use` wurde verweigert. Es gibt keine direkte API zur Konfiguration des Energy Dashboards. Ich kann die Aufgabe nicht fortsetzen, ohne mich in die Home Assistant UI einloggen zu können. Benötige korrekte Login-Daten oder Anweisungen für den Login-Vorgang."
       }
     ],
-    "openTasks": []
+    "openTasks": [
+      "Wissen pruefen: Re-pair Partyleuchte using Tuya/Smart Life app (t_287116d3)",
+      "Wissen pruefen: Power-cycle Tuya plug and check entity availability (t_b5853a4e)",
+      "Wissen pruefen: Argus Apple FM Optimierung und Stabilisierung (t_fa5abcd1)",
+      "Wissen pruefen: aus kanban erlernte fertige task skills bauen (t_763bf9fa)",
+      "Wissen pruefen: Tik tot und content Planung mit content Kalender und auto generierten Videos, komplettes skill, wie alles funktioniert, tiktok Eigenschaften von Bildschirmen beachten. alle nötigen plugins etc dazu (t_16d1c6ad)",
+      "Wissen pruefen: Fix Hermes worker protocol violation: missing kanban_complete/kanban_block calls (t_e6c0234c)",
+      "Wissen pruefen: SMB-Backup-Share Absicherung pruefen (guest access) (t_53425e62)",
+      "Wissen pruefen: LiteLLM IPv6-Hang zu Anthropic sauber loesen (t_921b0482)",
+      "Wissen pruefen: skill prompting, skills selbst herstellen, server und map sowie cli selber bauen zusammenhänge verstehen (t_0d10ba8f)",
+      "Wissen pruefen: Eufy-Kamera RTSP-Automation fuer Home Assistant verbessern (t_ba29a3b3)"
+    ]
   },
   "agentsRoom": {
     "metrics": {
@@ -4659,7 +4737,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4668,7 +4746,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4677,7 +4755,7 @@
       },
       {
         "topic": "Broker",
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -4686,7 +4764,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -4695,7 +4773,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -4704,7 +4782,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -4713,7 +4791,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -4722,7 +4800,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "12.08.26, 15:33",
+        "time": "12.08.26, 16:07",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",

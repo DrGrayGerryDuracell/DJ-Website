@@ -1226,7 +1226,7 @@ export function renderKanbanSection(container, kanban) {
         </ul>
       </div>
       <div class="kanban-sidebar-block">
-        <p class="eyebrow">Offene Punkte (hot.md)</p>
+        <p class="eyebrow">Offene Punkte & Wissens-Kandidaten</p>
         <ul class="kanban-open-list">
           ${openTasks.length ? openTasks.map((item) => `<li class="kanban-open-item">${escapeHtml(item)}</li>`).join("") : `<li class="kanban-open-item">Keine offenen Punkte erfasst.</li>`}
         </ul>
