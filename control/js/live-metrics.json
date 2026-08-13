@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-13T10:09:03.872Z",
-    "generatedAtLabel": "13.08.26, 12:09",
+    "generatedAt": "2026-08-13T11:33:48.575Z",
+    "generatedAtLabel": "13.08.26, 13:33",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "13.08.26, 12:09",
+      "value": "13.08.26, 13:33",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 343,
+      "value": 395,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 464,
+        "visitors": 558,
         "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 292,
+        "visitors": 371,
         "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 295,
+        "visitors": 355,
         "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 315,
+        "visitors": 362,
         "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 514,
+        "visitors": 363,
         "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 289,
+        "visitors": 362,
         "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 284,
+        "visitors": 377,
         "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 288,
+        "visitors": 413,
         "pageviews": 8
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "343 ms",
+      "avgSession": "395 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-13T10:09:03.872Z",
-      "checkedAtLabel": "13.08.26, 12:09"
+      "checkedAt": "2026-08-13T11:33:48.575Z",
+      "checkedAtLabel": "13.08.26, 13:33"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "343 ms",
+    "responseTime": "395 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "13.08.26, 12:09",
+      "time": "13.08.26, 13:33",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "13.08.26, 12:09",
+      "time": "13.08.26, 13:33",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "13.08.26, 12:09",
+      "time": "13.08.26, 13:33",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "13.08.26, 12:09",
+      "time": "13.08.26, 13:33",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3911,7 +3911,7 @@
         "name": "Brain Vault",
         "role": "Persistentes Wissen",
         "state": "sync",
-        "stateLabel": "10.055 Notizen",
+        "stateLabel": "10.064 Notizen",
         "steward": "Hermes / Jarvis (konzeptionell — Obsidian-Vault selbst ist die einzige live pruefbare Quelle)"
       },
       {
@@ -3933,11 +3933,11 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-13T10:09:06.214Z",
+    "updatedAt": "2026-08-13T11:33:50.785Z",
     "counts": {
       "waiting": 0,
       "running": 0,
-      "ready": 6,
+      "ready": 27,
       "doneToday": 24
     },
     "services": [
@@ -3983,6 +3983,258 @@
         "assignee": "zentralserver",
         "block_kind": "needs_input",
         "created_at": 1786482666,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_d6219299",
+        "title": "Wissensdatenbank Exportvorlage",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786618387,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_8bcbeba8",
+        "title": "Benennungsnorm und Arbeitsprotokoll",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786618316,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_ff6b5dc1",
+        "title": "Wissensuebernahme Workflow",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786618261,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_27e78553",
+        "title": "Kontext",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617816,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_1d14800c",
+        "title": "MCP",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617816,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_1103554d",
+        "title": "n8n",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617816,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_9003f136",
+        "title": "Workflows",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617816,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_043a8983",
+        "title": "Cloud LLM",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617815,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_e1f3e68a",
+        "title": "Stabilität",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617815,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_2522024e",
+        "title": "Skills",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617815,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_cd50ce69",
+        "title": "Token",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617815,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_e5a4dc65",
+        "title": "LLM",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617815,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_b3908916",
+        "title": "Plugins",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617814,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_76520911",
+        "title": "CLI",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617814,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_1269950b",
+        "title": "Tasks",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617814,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_1d56c46e",
+        "title": "Verbindungen",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617814,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_459b3d59",
+        "title": "Graph Einstellungen",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617814,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_514b3cb1",
+        "title": "Arbeitsweisen",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617814,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_5e7b0f3c",
+        "title": "Speicher",
+        "status": "todo",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617811,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_9eb48732",
+        "title": "Ingest canonical content and brand knowledge and verify content dry-run",
+        "status": "triage",
+        "priority": 2,
+        "assignee": "zentralserver",
+        "block_kind": "needs_input",
+        "created_at": 1786616252,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_e86124bc",
+        "title": "Hermes-Systemkanban: Gesamtprojekt in arbeitsfaehige Teilaufgaben zerlegen",
+        "status": "triage",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786617597,
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 0
@@ -4339,6 +4591,69 @@
       }
     ],
     "archived": [
+      {
+        "id": "t_764038a4",
+        "title": "Systemstabilität und Betrieb festziehen",
+        "status": "archived",
+        "assignee": "zentralserver",
+        "created_at": 1786617663,
+        "completed_at": null,
+        "last_summary": null
+      },
+      {
+        "id": "t_0b027957",
+        "title": "Task-Graph, Reviews und Freigaben definieren",
+        "status": "archived",
+        "assignee": "zentralserver",
+        "created_at": 1786617663,
+        "completed_at": null,
+        "last_summary": null
+      },
+      {
+        "id": "t_c28b0def",
+        "title": "Cloud-LLM und lokale Fallbacks ausrichten",
+        "status": "archived",
+        "assignee": "zentralserver",
+        "created_at": 1786617663,
+        "completed_at": null,
+        "last_summary": null
+      },
+      {
+        "id": "t_b229e379",
+        "title": "CLI, Verbindungen und Speicher ordnen",
+        "status": "archived",
+        "assignee": "zentralserver",
+        "created_at": 1786617662,
+        "completed_at": null,
+        "last_summary": null
+      },
+      {
+        "id": "t_d1487ac1",
+        "title": "Token- und Kontextstrategie festlegen",
+        "status": "archived",
+        "assignee": "zentralserver",
+        "created_at": 1786617662,
+        "completed_at": null,
+        "last_summary": null
+      },
+      {
+        "id": "t_19e7363c",
+        "title": "Skills, Plugins und MCP sauber inventarisieren",
+        "status": "archived",
+        "assignee": "zentralserver",
+        "created_at": 1786617662,
+        "completed_at": null,
+        "last_summary": null
+      },
+      {
+        "id": "t_90468d34",
+        "title": "n8n-Workflows und Automationen standardisieren",
+        "status": "archived",
+        "assignee": "zentralserver",
+        "created_at": 1786617662,
+        "completed_at": null,
+        "last_summary": null
+      },
       {
         "id": "t_c134a7ea",
         "title": "Argus als Prompt-Helfer: rohe Nutzereingaben anreichern bevor Hermes sie verarbeitet",
@@ -5036,7 +5351,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -5045,7 +5360,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -5054,7 +5369,7 @@
       },
       {
         "topic": "Broker",
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -5063,7 +5378,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -5072,7 +5387,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -5081,7 +5396,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -5090,7 +5405,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -5099,7 +5414,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "13.08.26, 12:09",
+        "time": "13.08.26, 13:33",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",
@@ -5165,25 +5480,26 @@
         "platforms": {
           "telegram": {
             "state": "connected",
-            "updated_at": "2026-08-13T10:03:17.422607+00:00"
+            "updated_at": "2026-08-13T11:20:22.135659+00:00"
           }
         },
-        "updated_at": "2026-08-13T10:03:17.443441+00:00"
+        "updated_at": "2026-08-13T11:28:11.350087+00:00"
       },
       "gatewayLifecycle": {
         "phase": "unknown",
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-13T12:07:18.923684",
+        "updated_at": "2026-08-13T13:29:23.574845",
         "platformCounts": {
-          "telegram": 1
+          "telegram": 1,
+          "homeassistant": 0
         }
       },
       "brainVaultState": {
-        "last_run_utc": "2026-08-13T09:40:20.986338",
+        "last_run_utc": "2026-08-13T11:10:22.587534",
         "last_added": 12,
-        "processed_count": 1224
+        "processed_count": 1264
       },
       "argusBridgeState": {
         "warning_count": 1,
@@ -5193,20 +5509,20 @@
         "count": 0
       },
       "counts": {
-        "sessions": 3684,
-        "messages": 29021,
+        "sessions": 3709,
+        "messages": 29523,
         "delegations": 1,
-        "obligations": 17,
+        "obligations": 20,
         "routing": 1
       },
       "activeTelegramSession": {
-        "id": "3_120419",
+        "id": "3_133324",
         "source": "cron",
         "model": "smart",
-        "message_count": 10,
-        "tool_call_count": 4,
-        "started_at": 1786615462.111001,
-        "ended_at": 1786615482.203169,
+        "message_count": 21,
+        "tool_call_count": 10,
+        "started_at": 1786620805.269631,
+        "ended_at": null,
         "title": "Aktive Telegram-Session",
         "session_key": "Telegram Direktnachricht",
         "chat_type": "dm",
@@ -5221,12 +5537,12 @@
         "updated_at": 1785505675.3832252
       },
       "latestDelivery": {
-        "id": "d1c90d0f",
+        "id": "459d8518",
         "platform": "telegram",
         "state": "delivered",
         "attempts": 0,
-        "created_at": 1786541529.149976,
-        "updated_at": 1786541529.334017,
+        "created_at": 1786620491.361289,
+        "updated_at": 1786620491.446442,
         "has_error": false
       },
       "latestSpoolPath": "Hermes / Telegram Spool",
@@ -5238,7 +5554,7 @@
           "displayName": "Operator",
           "platform": "telegram",
           "chatType": "dm",
-          "updatedAt": "12.08.26, 15:32"
+          "updatedAt": "13.08.26, 13:28"
         }
       ],
       "stateMeta": {
@@ -5250,7 +5566,7 @@
         "displayName": "Operator",
         "platform": "telegram",
         "chatType": "dm",
-        "updatedAt": "12.08.26, 15:32"
+        "updatedAt": "13.08.26, 13:28"
       }
     },
     "sourceRegistry": [
@@ -5258,7 +5574,7 @@
         "name": "Hermes state.db",
         "kind": "Runtime",
         "state": "live",
-        "detail": "3684 Sessions, 29021 Nachrichten, 1 Delegationen",
+        "detail": "3709 Sessions, 29523 Nachrichten, 1 Delegationen",
         "route": "Hermes / state.db",
         "channel": "SQLite"
       },
@@ -5282,7 +5598,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 13.08.26, 12:07",
+        "detail": "Channels: 2 • updated 13.08.26, 13:29",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -5290,7 +5606,7 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run 2026-08-13T09:40:20.986338 • Added 12",
+        "detail": "Last run 2026-08-13T11:10:22.587534 • Added 12",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },
@@ -5315,85 +5631,32 @@
       {
         "name": "Hermes Session 1",
         "role": "cron",
-        "route": "Session 3_120419",
+        "route": "Session 3_133324",
         "channel": "smart",
-        "status": "connected",
-        "statusLabel": "Historisch",
+        "status": "live",
+        "statusLabel": "Live",
         "tags": [
-          "10 Nachrichten",
-          "4 Tools",
-          "Ende: cron_complete"
+          "21 Nachrichten",
+          "10 Tools"
         ]
       },
       {
         "name": "Hermes Session 2",
         "role": "cron",
-        "route": "Session 3_120009",
+        "route": "Session 3_133124",
         "channel": "smart",
         "status": "connected",
         "statusLabel": "Historisch",
         "tags": [
-          "7 Nachrichten",
-          "3 Tools",
+          "46 Nachrichten",
+          "22 Tools",
           "Ende: cron_complete"
         ]
       },
       {
         "name": "Hermes Session 3",
         "role": "cron",
-        "route": "Session 3_115509",
-        "channel": "smart",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "43 Nachrichten",
-          "21 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Hermes Session 4",
-        "role": "cron",
-        "route": "Session 3_115508",
-        "channel": "smart",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "41 Nachrichten",
-          "20 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Hermes Session 5",
-        "role": "cron",
-        "route": "Session 3_115308",
-        "channel": "smart",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "12 Nachrichten",
-          "5 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Hermes Session 6",
-        "role": "cron",
-        "route": "Session 3_114206",
-        "channel": "smart",
-        "status": "connected",
-        "statusLabel": "Historisch",
-        "tags": [
-          "4 Nachrichten",
-          "1 Tools",
-          "Ende: cron_complete"
-        ]
-      },
-      {
-        "name": "Hermes Session 7",
-        "role": "cron",
-        "route": "Session 3_113906",
+        "route": "Session 3_133124",
         "channel": "smart",
         "status": "connected",
         "statusLabel": "Historisch",
@@ -5404,41 +5667,84 @@
         ]
       },
       {
-        "name": "Hermes Session 8",
-        "role": "cron",
-        "route": "Session 3_113105",
+        "name": "Hermes Session 4",
+        "role": "cli",
+        "route": "Session 8_9eb40b",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "5 Nachrichten",
+          "2 Tools",
+          "Ende: agent_close"
+        ]
+      },
+      {
+        "name": "Hermes Session 5",
+        "role": "cli",
+        "route": "Session 5_8b1502",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "4 Nachrichten",
+          "1 Tools",
+          "Ende: agent_close"
+        ]
+      },
+      {
+        "name": "Hermes Session 6",
+        "role": "cli",
+        "route": "Session 8_cd9187",
         "channel": "smart",
         "status": "connected",
         "statusLabel": "Historisch",
         "tags": [
           "12 Nachrichten",
           "5 Tools",
+          "Ende: agent_close"
+        ]
+      },
+      {
+        "name": "Hermes Session 7",
+        "role": "cli",
+        "route": "Session 3_80266c",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "29 Nachrichten",
+          "15 Tools",
+          "Ende: agent_close"
+        ]
+      },
+      {
+        "name": "Hermes Session 8",
+        "role": "cron",
+        "route": "Session 3_132024",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
+        "tags": [
+          "14 Nachrichten",
+          "6 Tools",
           "Ende: cron_complete"
         ]
       }
     ],
     "recentMessages": [
       {
-        "topic": "ASSISTANT • 3_120419",
-        "time": "13.08.26, 12:04",
-        "from": "assistant",
-        "to": "Hermes",
-        "summary": "[SILENT]",
-        "status": "live",
-        "statusLabel": "Assistant"
-      },
-      {
-        "topic": "TOOL • 3_120419",
-        "time": "13.08.26, 12:04",
+        "topic": "TOOL • 3_133324",
+        "time": "13.08.26, 13:33",
         "from": "tool",
-        "to": "terminal",
-        "summary": "{\"output\": \"(no matching tasks)\", \"exit_code\": 0, \"error\": null}",
+        "to": "tool_search",
+        "summary": "{\"query\": \"hermes kanban unblock\", \"total_available\": 5, \"matches\": []}",
         "status": "info",
         "statusLabel": "System"
       },
       {
-        "topic": "ASSISTANT • 3_120419",
-        "time": "13.08.26, 12:04",
+        "topic": "ASSISTANT • 3_133324",
+        "time": "13.08.26, 13:33",
         "from": "assistant",
         "to": "Hermes",
         "summary": "assistant Aktivität • kein Textinhalt",
@@ -5446,17 +5752,17 @@
         "statusLabel": "Assistant"
       },
       {
-        "topic": "TOOL • 3_120419",
-        "time": "13.08.26, 12:04",
+        "topic": "TOOL • 3_133324",
+        "time": "13.08.26, 13:33",
         "from": "tool",
-        "to": "terminal",
-        "summary": "{\"output\": \"usage: hermes kanban [-h] [--board <slug>]\\n {init,boards,create,swarm,list,ls,show,assign,set-model,reclaim,reassign,diagnosti…",
+        "to": "tool_search",
+        "summary": "{\"query\": \"hermes kanban promote\", \"total_available\": 5, \"matches\": []}",
         "status": "info",
         "statusLabel": "System"
       },
       {
-        "topic": "ASSISTANT • 3_120419",
-        "time": "13.08.26, 12:04",
+        "topic": "ASSISTANT • 3_133324",
+        "time": "13.08.26, 13:33",
         "from": "assistant",
         "to": "Hermes",
         "summary": "assistant Aktivität • kein Textinhalt",
@@ -5464,17 +5770,17 @@
         "statusLabel": "Assistant"
       },
       {
-        "topic": "TOOL • 3_120419",
-        "time": "13.08.26, 12:04",
+        "topic": "TOOL • 3_133324",
+        "time": "13.08.26, 13:33",
         "from": "tool",
-        "to": "terminal",
-        "summary": "{\"output\": \"usage: hermes [-h] [--version] [-z PROMPT] [--usage-file PATH] [-m MODEL]\\n [--provider PROVIDER] [-t TOOLSETS] [--resume SESSI…",
+        "to": "tool_search",
+        "summary": "{\"query\": \"kanban_block\", \"total_available\": 5, \"matches\": []}",
         "status": "info",
         "statusLabel": "System"
       },
       {
-        "topic": "ASSISTANT • 3_120419",
-        "time": "13.08.26, 12:04",
+        "topic": "ASSISTANT • 3_133324",
+        "time": "13.08.26, 13:33",
         "from": "assistant",
         "to": "Hermes",
         "summary": "assistant Aktivität • kein Textinhalt",
@@ -5482,17 +5788,17 @@
         "statusLabel": "Assistant"
       },
       {
-        "topic": "TOOL • 3_120419",
-        "time": "13.08.26, 12:04",
+        "topic": "TOOL • 3_133324",
+        "time": "13.08.26, 13:33",
         "from": "tool",
-        "to": "process",
-        "summary": "{\"error\": \"session_id is required for poll\"} [Tool loop warning: repeated_exact_failure_warning; count=1; process has failed 1 times with i…",
+        "to": "tool_search",
+        "summary": "{\"query\": \"kanban_research_agent\", \"total_available\": 5, \"matches\": []}",
         "status": "info",
         "statusLabel": "System"
       },
       {
-        "topic": "ASSISTANT • 3_120419",
-        "time": "13.08.26, 12:04",
+        "topic": "ASSISTANT • 3_133324",
+        "time": "13.08.26, 13:33",
         "from": "assistant",
         "to": "Hermes",
         "summary": "assistant Aktivität • kein Textinhalt",
@@ -5500,13 +5806,22 @@
         "statusLabel": "Assistant"
       },
       {
-        "topic": "USER • 3_120419",
-        "time": "13.08.26, 12:04",
-        "from": "user",
+        "topic": "TOOL • 3_133324",
+        "time": "13.08.26, 13:33",
+        "from": "tool",
+        "to": "tool_search",
+        "summary": "{\"query\": \"brain_read_file\", \"total_available\": 5, \"matches\": []}",
+        "status": "info",
+        "statusLabel": "System"
+      },
+      {
+        "topic": "ASSISTANT • 3_133324",
+        "time": "13.08.26, 13:33",
+        "from": "assistant",
         "to": "Hermes",
-        "summary": "[IMPORTANT: The user has invoked the \"kanban-pipeline\" skill, indicating they want you to follow its instructions. The full skill content i…",
-        "status": "connected",
-        "statusLabel": "User"
+        "summary": "assistant Aktivität • kein Textinhalt",
+        "status": "live",
+        "statusLabel": "Assistant"
       }
     ],
     "recentDelegations": [
@@ -5522,32 +5837,32 @@
     ],
     "recentObligations": [
       {
+        "label": "Delivery 459d8518",
+        "value": "telegram • delivered • 1903 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery c7335e30",
+        "value": "telegram • delivered • 3518 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery 4754743e",
+        "value": "telegram • delivered • 2962 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
+        "label": "Delivery f104e9e2",
+        "value": "telegram • delivered • 107 Zeichen",
+        "status": "connected",
+        "statusLabel": "Delivered"
+      },
+      {
         "label": "Delivery d1c90d0f",
         "value": "telegram • delivered • 6595 Zeichen",
-        "status": "connected",
-        "statusLabel": "Delivered"
-      },
-      {
-        "label": "Delivery 0fd34d34",
-        "value": "telegram • delivered • 361 Zeichen",
-        "status": "connected",
-        "statusLabel": "Delivered"
-      },
-      {
-        "label": "Delivery 322a7d35",
-        "value": "telegram • delivered • 1213 Zeichen",
-        "status": "connected",
-        "statusLabel": "Delivered"
-      },
-      {
-        "label": "Delivery e8c32ebb",
-        "value": "telegram • delivered • 84 Zeichen",
-        "status": "connected",
-        "statusLabel": "Delivered"
-      },
-      {
-        "label": "Delivery 3ff3a846",
-        "value": "telegram • delivered • 117 Zeichen",
         "status": "connected",
         "statusLabel": "Delivered"
       }
