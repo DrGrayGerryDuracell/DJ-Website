@@ -1,8 +1,8 @@
 {
   "metadata": {
     "mode": "live",
-    "generatedAt": "2026-08-12T22:49:41.825Z",
-    "generatedAtLabel": "13.08.26, 00:49",
+    "generatedAt": "2026-08-13T10:09:03.872Z",
+    "generatedAtLabel": "13.08.26, 12:09",
     "timezone": "Europe/Berlin",
     "activeRange": "Live-Check"
   },
@@ -24,7 +24,7 @@
     },
     "deployment": {
       "label": "Datenstand",
-      "value": "13.08.26, 00:49",
+      "value": "13.08.26, 12:09",
       "level": "info"
     }
   },
@@ -53,7 +53,7 @@
     {
       "id": "responseAvg",
       "label": "Ø Antwortzeit (ms)",
-      "value": 1289,
+      "value": 343,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -81,7 +81,7 @@
     {
       "id": "soundcloudFollowers",
       "label": "SoundCloud Follower",
-      "value": 629,
+      "value": 630,
       "delta": "Live",
       "trend": "neutral"
     },
@@ -118,42 +118,42 @@
     "trafficSeries": [
       {
         "label": "Start",
-        "visitors": 2047,
+        "visitors": 464,
         "pageviews": 11
       },
       {
         "label": "index",
-        "visitors": 941,
+        "visitors": 292,
         "pageviews": 11
       },
       {
         "label": "bio",
-        "visitors": 958,
+        "visitors": 295,
         "pageviews": 15
       },
       {
         "label": "musik",
-        "visitors": 959,
+        "visitors": 315,
         "pageviews": 9
       },
       {
         "label": "videos",
-        "visitors": 970,
+        "visitors": 514,
         "pageviews": 11
       },
       {
         "label": "shop",
-        "visitors": 1591,
+        "visitors": 289,
         "pageviews": 31
       },
       {
         "label": "kontakt",
-        "visitors": 1521,
+        "visitors": 284,
         "pageviews": 9
       },
       {
         "label": "control",
-        "visitors": 1321,
+        "visitors": 288,
         "pageviews": 8
       }
     ],
@@ -228,7 +228,7 @@
     ],
     "regions": [],
     "engagement": {
-      "avgSession": "1289 ms",
+      "avgSession": "343 ms",
       "bounceRate": "nicht gemessen",
       "buttonCtr": "nicht gemessen"
     },
@@ -293,8 +293,8 @@
       "okLinks": 3,
       "failLinks": 0,
       "reachabilityRate": "100%",
-      "checkedAt": "2026-08-12T22:49:41.825Z",
-      "checkedAtLabel": "13.08.26, 00:49"
+      "checkedAt": "2026-08-13T10:09:03.872Z",
+      "checkedAtLabel": "13.08.26, 12:09"
     },
     "catalog": {
       "totalItems": 167,
@@ -3116,17 +3116,17 @@
     ],
     "timeline": [
       {
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "type": "ok",
         "detail": "Shop-Link 1: HTTP 200"
       },
       {
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "type": "ok",
         "detail": "Shop-Link 2: HTTP 200"
       },
       {
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "type": "ok",
         "detail": "Shop-Link 3: HTTP 200"
       }
@@ -3169,8 +3169,8 @@
         "verified": false,
         "status": "live",
         "metricValue": 10,
-        "valueLabel": "629 Follower • 10 Linksignale",
-        "statusLabel": "33 Tracks",
+        "valueLabel": "630 Follower • 10 Linksignale",
+        "statusLabel": "34 Tracks",
         "sourceLabel": "SoundCloud Public API"
       },
       {
@@ -3296,7 +3296,7 @@
         "state": "good"
       }
     ],
-    "responseTime": "1289 ms",
+    "responseTime": "343 ms",
     "uptime": "100% (Seitencheck)",
     "externalChecks": [
       {
@@ -3443,25 +3443,25 @@
   "activityFeed": [
     {
       "id": "EVT-1",
-      "time": "13.08.26, 00:49",
+      "time": "13.08.26, 12:09",
       "type": "check",
       "text": "Live-Prüfung abgeschlossen: 8 Seitenchecks"
     },
     {
       "id": "EVT-2",
-      "time": "13.08.26, 00:49",
+      "time": "13.08.26, 12:09",
       "type": "check",
       "text": "Shop-Linkcheck: 3/3 erreichbar"
     },
     {
       "id": "EVT-3",
-      "time": "13.08.26, 00:49",
+      "time": "13.08.26, 12:09",
       "type": "check",
       "text": "SoundCloud: Profilsignal abrufbar"
     },
     {
       "id": "EVT-4",
-      "time": "13.08.26, 00:49",
+      "time": "13.08.26, 12:09",
       "type": "check",
       "text": "TikTok Profile: 2/2 erreichbar"
     }
@@ -3485,7 +3485,7 @@
       "id": "AL-SOC",
       "level": "ok",
       "title": "SoundCloud Live-Profil erkannt",
-      "description": "629 Follower und 33 Tracks verifiziert.",
+      "description": "630 Follower und 34 Tracks verifiziert.",
       "source": "Social Monitoring"
     }
   ],
@@ -3678,24 +3678,24 @@
         "id": "cron-daily-telegram-research",
         "name": "daily-telegram-research",
         "schedule": "0 9 * * *",
-        "state": "warn",
-        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
         "owner": "Hermes"
       },
       {
         "id": "cron-daily-telegram-content-plan",
         "name": "daily-telegram-content-plan",
         "schedule": "20 9 * * *",
-        "state": "warn",
-        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
         "owner": "Hermes"
       },
       {
         "id": "cron-koeln-nrw-event-monitor",
         "name": "koeln-nrw-event-monitor",
         "schedule": "0 11 * * 1-5",
-        "state": "warn",
-        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
         "owner": "Hermes"
       },
       {
@@ -3742,8 +3742,8 @@
         "id": "cron-tiktok-live-ideas",
         "name": "tiktok-live-ideas",
         "schedule": "30 19 * * 2,4,6",
-        "state": "warn",
-        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
         "owner": "Hermes"
       },
       {
@@ -3758,8 +3758,8 @@
         "id": "cron-vault-hot-sync",
         "name": "vault-hot-sync",
         "schedule": "0 23 * * *",
-        "state": "warn",
-        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
         "owner": "Hermes"
       },
       {
@@ -3814,32 +3814,32 @@
         "id": "cron-kanban-research-enricher",
         "name": "kanban-research-enricher",
         "schedule": "every 15m",
-        "state": "warn",
-        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
         "owner": "Hermes"
       },
       {
         "id": "cron-kanban-review-watcher",
         "name": "kanban-review-watcher",
         "schedule": "every 10m",
-        "state": "warn",
-        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
         "owner": "Hermes"
       },
       {
         "id": "cron-kanban-blocked-notifier",
         "name": "kanban-blocked-notifier",
         "schedule": "every 30m",
-        "state": "warn",
-        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
         "owner": "Hermes"
       },
       {
         "id": "cron-kanban-hotmd-sync",
         "name": "kanban-hotmd-sync",
         "schedule": "every 360m",
-        "state": "warn",
-        "stateLabel": "Letzter Lauf fehlgeschlagen",
+        "state": "live",
+        "stateLabel": "Laeuft planmaessig",
         "owner": "Hermes"
       }
     ],
@@ -3853,6 +3853,56 @@
         "fallback": "litellm/fast",
         "state": "configured",
         "stateLabel": "In OpenClaw konfiguriert"
+      },
+      {
+        "id": "sub-heimdall",
+        "name": "heimdall",
+        "emoji": "",
+        "mode": "Home Assistant",
+        "llm": "Claude Haiku + LiteLLM",
+        "fallback": "litellm/fast",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
+      },
+      {
+        "id": "sub-forge",
+        "name": "forge",
+        "emoji": "",
+        "mode": "Engineering / Infra",
+        "llm": "LiteLLM smart/premium",
+        "fallback": "litellm/fast",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
+      },
+      {
+        "id": "sub-sentinel",
+        "name": "sentinel",
+        "emoji": "",
+        "mode": "Monitoring",
+        "llm": "LiteLLM fast/smart",
+        "fallback": "litellm/fast",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
+      },
+      {
+        "id": "sub-oracle",
+        "name": "oracle",
+        "emoji": "",
+        "mode": "Research / Briefings",
+        "llm": "LiteLLM fast/smart",
+        "fallback": "litellm/fast",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
+      },
+      {
+        "id": "sub-muse",
+        "name": "muse",
+        "emoji": "",
+        "mode": "Content / Social",
+        "llm": "LiteLLM smart/premium",
+        "fallback": "litellm/fast",
+        "state": "configured",
+        "stateLabel": "In OpenClaw konfiguriert"
       }
     ],
     "vaultNodes": [
@@ -3861,7 +3911,7 @@
         "name": "Brain Vault",
         "role": "Persistentes Wissen",
         "state": "sync",
-        "stateLabel": "10.052 Notizen",
+        "stateLabel": "10.055 Notizen",
         "steward": "Hermes / Jarvis (konzeptionell — Obsidian-Vault selbst ist die einzige live pruefbare Quelle)"
       },
       {
@@ -3883,12 +3933,12 @@
     ]
   },
   "kanban": {
-    "updatedAt": "2026-08-12T22:49:54.335Z",
+    "updatedAt": "2026-08-13T10:09:06.214Z",
     "counts": {
-      "waiting": 2,
-      "running": 8,
-      "ready": 17,
-      "doneToday": 1
+      "waiting": 0,
+      "running": 0,
+      "ready": 6,
+      "doneToday": 24
     },
     "services": [
       {
@@ -3922,323 +3972,9 @@
         "statusLabel": "Online"
       }
     ],
-    "waiting": [
-      {
-        "id": "t_b46052b6",
-        "title": "Dashboard vaultNodes (Brain Vault/Obsidian Graph/Experience Loop) von hartcodiert auf echte Daten umstellen",
-        "status": "blocked",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550200,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 2
-      },
-      {
-        "id": "t_297d6964",
-        "title": "BAUEN: openclaw_tool.py - Hermes braucht ein echtes Werkzeug um OpenClaw/Jarvis-Team anzusprechen",
-        "status": "blocked",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786549955,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 2
-      }
-    ],
-    "running": [
-      {
-        "id": "t_1ec8ee77",
-        "title": "Zwei laufende OpenClaw-Gateway-Prozesse (Port 18789 und 18799) klaeren",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550211,
-        "completed_at": null,
-        "worker_pid": 78894,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_c07776f0",
-        "title": "OpenClaw CLI Node-Versions-Mismatch loesen (nvm install kompatible Version)",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550205,
-        "completed_at": null,
-        "worker_pid": 78893,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_bced9d45",
-        "title": "Reaktivierte OpenClaw-Agenten: zugewiesene Skills auf tatsaechliche Verfuegbarkeit pruefen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550195,
-        "completed_at": null,
-        "worker_pid": 78892,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_aa12cf64",
-        "title": "OpenClaw-Auth-Token aus SOUL.md in Secret/env verschieben",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550189,
-        "completed_at": null,
-        "worker_pid": 78891,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_2ef910ec",
-        "title": "6 quota-erschoepfte Cronjobs auf LiteLLM-Fallback-Kette umstellen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550184,
-        "completed_at": null,
-        "worker_pid": 78890,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_60260932",
-        "title": "BAUEN: Argus Prompt-Helfer mit gestufter Testphase vor Live-Schaltung",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550064,
-        "completed_at": null,
-        "worker_pid": 78889,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_099c24db",
-        "title": "BAUEN: Telegram-Berichte mit echter Agent-Attribution (alle Agenten, kein Spam)",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550035,
-        "completed_at": null,
-        "worker_pid": 78888,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_7e2395c4",
-        "title": "Tuya_local-Integration neu laden und überprüfen",
-        "status": "running",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": "capability",
-        "created_at": 1786504969,
-        "completed_at": null,
-        "worker_pid": 78887,
-        "consecutive_failures": 1
-      }
-    ],
+    "waiting": [],
+    "running": [],
     "ready": [
-      {
-        "id": "t_8165fee5",
-        "title": "QA task",
-        "status": "ready",
-        "priority": 0,
-        "assignee": null,
-        "block_kind": null,
-        "created_at": 1786565274,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_93fbd574",
-        "title": "QA Task",
-        "status": "ready",
-        "priority": 0,
-        "assignee": null,
-        "block_kind": null,
-        "created_at": 1786565249,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_00560414",
-        "title": "Aktionen-Tab: Live-Uebersicht woran Agenten gerade aktiv arbeiten ergaenzen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550273,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_a5d9bb2f",
-        "title": "Eufy-Kamera RTSP-Stabilitaet ueber laengeren Zeitraum beobachten",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550269,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_4bfdbcc3",
-        "title": "Unbekannte Cloudflare/Vercel-Dateien im DJ-Website-Repo klaeren",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550264,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_8ed64cb5",
-        "title": "Offener Punkt aus hot.md: MacBook-Bildschirm-Freeze-Frage beantworten",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550259,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_8bb8ba7c",
-        "title": "Wissens-Kandidaten-Digest nach ein paar Tagen auf Nuetzlichkeit pruefen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550253,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_4a068d46",
-        "title": "Groessere Stichprobe: weitere done-Tasks auf echten vs behaupteten Abschluss pruefen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550249,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_bc8ff24f",
-        "title": "SMB-Backup-Share-Absicherung (t_53425e62) stichprobenartig nachpruefen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550244,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_24909693",
-        "title": "Oracle Google-Calendar/Gmail-Zugriff pruefen: konfiguriert oder nur vorgesehen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550241,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_8dea7ca5",
-        "title": "Sicherheitsaudit: Heimdall HA-Service-Allow-Liste gegen echte Entities abgleichen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550237,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 1
-      },
-      {
-        "id": "t_44cf5b2a",
-        "title": "Alle 21 echten Cronjobs einmal durchgehen: noch relevant oder Altlast",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550234,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_4cb84e71",
-        "title": "HA-Backup: echten Restore-Test durchfuehren",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550231,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_7da54068",
-        "title": "Katalog-Uploads: Produkte ohne Bild systematisch durchgehen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550227,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_d8a517bb",
-        "title": "Workflow vorbereiten: Partyleuchte local_key nach Martens Power-Cycle automatisch neu einlesen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550223,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
-      {
-        "id": "t_b84b699b",
-        "title": "HA Energy Dashboard fertigstellen - jetzt mit verifiziertem GUI-Zugang erneut versuchen",
-        "status": "ready",
-        "priority": 0,
-        "assignee": "zentralserver",
-        "block_kind": null,
-        "created_at": 1786550216,
-        "completed_at": null,
-        "worker_pid": null,
-        "consecutive_failures": 0
-      },
       {
         "id": "t_0d272391",
         "title": "Repair Tuya Partyleuchte plug: resolve error 914 by refreshing local_key",
@@ -4250,9 +3986,345 @@
         "completed_at": null,
         "worker_pid": null,
         "consecutive_failures": 0
+      },
+      {
+        "id": "t_24909693",
+        "title": "Oracle Google-Calendar/Gmail-Zugriff pruefen: konfiguriert oder nur vorgesehen",
+        "status": "triage",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": "needs_input",
+        "created_at": 1786550241,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_4cb84e71",
+        "title": "HA-Backup: echten Restore-Test durchfuehren",
+        "status": "triage",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550231,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_d8a517bb",
+        "title": "Workflow vorbereiten: Partyleuchte local_key nach Martens Power-Cycle automatisch neu einlesen",
+        "status": "triage",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": "needs_input",
+        "created_at": 1786550223,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_60260932",
+        "title": "BAUEN: Argus Prompt-Helfer mit gestufter Testphase vor Live-Schaltung",
+        "status": "triage",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": "needs_input",
+        "created_at": 1786550064,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_7e2395c4",
+        "title": "Tuya_local-Integration neu laden und überprüfen",
+        "status": "triage",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": "capability",
+        "created_at": 1786504969,
+        "completed_at": null,
+        "worker_pid": null,
+        "consecutive_failures": 0
       }
     ],
     "doneToday": [
+      {
+        "id": "t_24d3cd84",
+        "title": "OpenClaw: main-Agent OpenRouter-Billing tot + 5 Team-Subagenten (jarvis/heimdall/forge/sentinel/oracle/muse) existieren nicht wirklich",
+        "status": "done",
+        "priority": 2,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786605254,
+        "completed_at": 1786607828,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_1c585f00",
+        "title": "fallback_providers (fast/fallback) haben denselben provider:custom Key-Bug wie das gefixte primary model",
+        "status": "done",
+        "priority": 2,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786601789,
+        "completed_at": 1786603783,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_8165fee5",
+        "title": "QA task",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786565274,
+        "completed_at": 1786608029,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_93fbd574",
+        "title": "QA Task",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786565249,
+        "completed_at": 1786608024,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_00560414",
+        "title": "Aktionen-Tab: Live-Uebersicht woran Agenten gerade aktiv arbeiten ergaenzen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550273,
+        "completed_at": 1786608239,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_a5d9bb2f",
+        "title": "Eufy-Kamera RTSP-Stabilitaet ueber laengeren Zeitraum beobachten",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550269,
+        "completed_at": 1786608030,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_4bfdbcc3",
+        "title": "Unbekannte Cloudflare/Vercel-Dateien im DJ-Website-Repo klaeren",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550264,
+        "completed_at": 1786607968,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_8ed64cb5",
+        "title": "Offener Punkt aus hot.md: MacBook-Bildschirm-Freeze-Frage beantworten",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550259,
+        "completed_at": 1786603813,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_8bb8ba7c",
+        "title": "Wissens-Kandidaten-Digest nach ein paar Tagen auf Nuetzlichkeit pruefen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550253,
+        "completed_at": 1786603782,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_4a068d46",
+        "title": "Groessere Stichprobe: weitere done-Tasks auf echten vs behaupteten Abschluss pruefen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550249,
+        "completed_at": 1786607916,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_bc8ff24f",
+        "title": "SMB-Backup-Share-Absicherung (t_53425e62) stichprobenartig nachpruefen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550244,
+        "completed_at": 1786607862,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_8dea7ca5",
+        "title": "Sicherheitsaudit: Heimdall HA-Service-Allow-Liste gegen echte Entities abgleichen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550237,
+        "completed_at": 1786607796,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_44cf5b2a",
+        "title": "Alle 21 echten Cronjobs einmal durchgehen: noch relevant oder Altlast",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550234,
+        "completed_at": 1786579794,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_7da54068",
+        "title": "Katalog-Uploads: Produkte ohne Bild systematisch durchgehen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550227,
+        "completed_at": 1786580436,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_b84b699b",
+        "title": "HA Energy Dashboard fertigstellen - jetzt mit verifiziertem GUI-Zugang erneut versuchen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550216,
+        "completed_at": 1786605816,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_1ec8ee77",
+        "title": "Zwei laufende OpenClaw-Gateway-Prozesse (Port 18789 und 18799) klaeren",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550211,
+        "completed_at": 1786605796,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_c07776f0",
+        "title": "OpenClaw CLI Node-Versions-Mismatch loesen (nvm install kompatible Version)",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550205,
+        "completed_at": 1786580314,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_b46052b6",
+        "title": "Dashboard vaultNodes (Brain Vault/Obsidian Graph/Experience Loop) von hartcodiert auf echte Daten umstellen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550200,
+        "completed_at": 1786607873,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_bced9d45",
+        "title": "Reaktivierte OpenClaw-Agenten: zugewiesene Skills auf tatsaechliche Verfuegbarkeit pruefen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550195,
+        "completed_at": 1786585426,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_aa12cf64",
+        "title": "OpenClaw-Auth-Token aus SOUL.md in Secret/env verschieben",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550189,
+        "completed_at": 1786603785,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_2ef910ec",
+        "title": "6 quota-erschoepfte Cronjobs auf LiteLLM-Fallback-Kette umstellen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550184,
+        "completed_at": 1786580659,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_099c24db",
+        "title": "BAUEN: Telegram-Berichte mit echter Agent-Attribution (alle Agenten, kein Spam)",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786550035,
+        "completed_at": 1786607983,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
+      {
+        "id": "t_297d6964",
+        "title": "BAUEN: openclaw_tool.py - Hermes braucht ein echtes Werkzeug um OpenClaw/Jarvis-Team anzusprechen",
+        "status": "done",
+        "priority": 0,
+        "assignee": "zentralserver",
+        "block_kind": null,
+        "created_at": 1786549955,
+        "completed_at": 1786603793,
+        "worker_pid": null,
+        "consecutive_failures": 0
+      },
       {
         "id": "t_dd026120",
         "title": "OpenClaw Jarvis-Team reaktiviert (jarvis/heimdall/forge/sentinel/oracle/muse)",
@@ -4350,16 +4422,16 @@
       }
     ],
     "openTasks": [
-      "Wissen pruefen: Kanban-Pipeline-Regel in SOUL.md widerspricht echtem Verhalten - Entscheidung noetig (t_a4642c00)",
-      "Wissen pruefen: Update local_key for Partyleuchte in tuya_local config (t_4a395e22)",
-      "Wissen pruefen: Kanban-Worker markieren Tasks als done trotz eigener Fehlermeldung (Untersuchung) (t_977e4ab6)",
-      "Wissen pruefen: Überprüfe die Funktionalität der Partyleuchte (t_c8f66271)",
-      "Wissen pruefen: Speichere die Konfigurationsdatei (t_42ba8c0b)",
-      "Wissen pruefen: Aktualisiere den local_key für Partyleuchte (t_d9b7fb0d)",
-      "Wissen pruefen: Finde den Partyleuchte-Eintrag in der Konfigurationsdatei (t_fde99428)",
-      "Wissen pruefen: Re-pair Partyleuchte using Tuya/Smart Life app (t_287116d3)",
-      "Wissen pruefen: Power-cycle Tuya plug and check entity availability (t_b5853a4e)",
-      "Wissen pruefen: Argus Apple FM Optimierung und Stabilisierung (t_fa5abcd1)"
+      "Wissen pruefen: Aktionen-Tab: Live-Uebersicht woran Agenten gerade aktiv arbeiten ergaenzen (t_00560414)",
+      "Wissen pruefen: Eufy-Kamera RTSP-Stabilitaet ueber laengeren Zeitraum beobachten (t_a5d9bb2f)",
+      "Wissen pruefen: QA task (t_8165fee5)",
+      "Wissen pruefen: QA Task (t_93fbd574)",
+      "Wissen pruefen: BAUEN: Telegram-Berichte mit echter Agent-Attribution (alle Agenten, kein Spam) (t_099c24db)",
+      "Wissen pruefen: Unbekannte Cloudflare/Vercel-Dateien im DJ-Website-Repo klaeren (t_4bfdbcc3)",
+      "Wissen pruefen: Groessere Stichprobe: weitere done-Tasks auf echten vs behaupteten Abschluss pruefen (t_4a068d46)",
+      "Wissen pruefen: Dashboard vaultNodes (Brain Vault/Obsidian Graph/Experience Loop) von hartcodiert auf echte Daten umstellen (t_b46052b6)",
+      "Wissen pruefen: SMB-Backup-Share-Absicherung (t_53425e62) stichprobenartig nachpruefen (t_bc8ff24f)",
+      "Wissen pruefen: OpenClaw: main-Agent OpenRouter-Billing tot + 5 Team-Subagenten (jarvis/heimdall/forge/sentinel/oracle/muse) existieren nicht wirklich (t_24d3cd84)"
     ]
   },
   "agentsRoom": {
@@ -4417,54 +4489,54 @@
         "to": "Jarvis",
         "channel": "Broker -> Verteiler",
         "purpose": "Jarvis übernimmt Verteilung und Arbeitsplanung",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Jarvis anzusprechen (offener Kanban-Task t_297d6964)"
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Jarvis ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar"
       },
       {
         "from": "Jarvis",
         "to": "Forge",
         "channel": "Infra / Skills / Server",
         "purpose": "Engineering und Umsetzung",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Forge anzusprechen (offener Kanban-Task t_297d6964)"
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Forge ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar"
       },
       {
         "from": "Jarvis",
         "to": "Sentinel",
         "channel": "Logs / Health / Security",
         "purpose": "Monitoring und Sicherheit",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Sentinel anzusprechen (offener Kanban-Task t_297d6964)"
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Sentinel ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar"
       },
       {
         "from": "Jarvis",
         "to": "Oracle",
         "channel": "Briefings",
         "purpose": "Kontext, Wetter und News",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Oracle anzusprechen (offener Kanban-Task t_297d6964)"
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Oracle ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar"
       },
       {
         "from": "Jarvis",
         "to": "Muse",
         "channel": "Content / Audio / Social",
         "purpose": "Content und Media",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Muse anzusprechen (offener Kanban-Task t_297d6964)"
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Muse ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar"
       },
       {
         "from": "Jarvis",
         "to": "Heimdall",
         "channel": "Home Assistant",
         "purpose": "Smart Home, Automationen und HA-Backups",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Heimdall anzusprechen (offener Kanban-Task t_297d6964)"
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Heimdall ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar"
       },
       {
         "from": "Jarvis",
@@ -4566,9 +4638,9 @@
         "role": "OpenClaw-Verteiler, Review und Subagenten-Orchestrierung",
         "route": "Gateway -> Jarvis -> Hermes",
         "channel": "Routing / Review",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Jarvis anzusprechen (offener Kanban-Task t_297d6964)",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Jarvis ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar",
         "tags": [
           "Delegation",
           "Review",
@@ -4581,9 +4653,9 @@
         "role": "OpenClaw Infra, Skills und Server",
         "route": "Jarvis -> Forge",
         "channel": "Engineering",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Forge anzusprechen (offener Kanban-Task t_297d6964)",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Forge ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar",
         "tags": [
           "Infra",
           "Skills",
@@ -4596,9 +4668,9 @@
         "role": "Monitoring, Logs und Security",
         "route": "Jarvis -> Sentinel",
         "channel": "Watch",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Sentinel anzusprechen (offener Kanban-Task t_297d6964)",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Sentinel ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar",
         "tags": [
           "Logs",
           "Health",
@@ -4611,9 +4683,9 @@
         "role": "Briefings, Wetter und News",
         "route": "Jarvis -> Oracle",
         "channel": "Briefings",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Oracle anzusprechen (offener Kanban-Task t_297d6964)",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Oracle ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar",
         "tags": [
           "Briefing",
           "Weather",
@@ -4626,9 +4698,9 @@
         "role": "TikTok, SoundCloud und Content",
         "route": "Jarvis -> Muse",
         "channel": "Media",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Muse anzusprechen (offener Kanban-Task t_297d6964)",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Muse ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar",
         "tags": [
           "Content",
           "Audio",
@@ -4641,9 +4713,9 @@
         "role": "Home Assistant, Smart Home und HA-Backups",
         "route": "Jarvis -> Heimdall",
         "channel": "Home",
-        "status": "error",
-        "statusLabel": "Kein Werkzeug",
-        "detail": "Hermes hat noch kein Werkzeug, um Heimdall anzusprechen (offener Kanban-Task t_297d6964)",
+        "status": "connected",
+        "statusLabel": "Verbunden",
+        "detail": "Heimdall ist in openclaw.json agents.list registriert und ueber Hermes ansprechbar",
         "tags": [
           "HA",
           "Scenes",
@@ -4964,7 +5036,7 @@
     "conversations": [
       {
         "topic": "Kontrollkette",
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "from": "Mensch",
         "to": "Hermes",
         "summary": "Du startest über iPhone und Telegram. Hermes bleibt die einzige obere Steuerstufe.",
@@ -4973,7 +5045,7 @@
       },
       {
         "topic": "Vorprüfung",
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "from": "Hermes",
         "to": "Argus",
         "summary": "Argus prüft erst, gibt überarbeitete Hinweise zurück und schickt nichts ungeprüft weiter.",
@@ -4982,7 +5054,7 @@
       },
       {
         "topic": "Broker",
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "from": "Hermes",
         "to": "OpenClaw Gateway",
         "summary": "Erst nach Argus geht der Auftrag in OpenClaw, wo Queue, Broker und Übergabe starten.",
@@ -4991,7 +5063,7 @@
       },
       {
         "topic": "Verteilung",
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "from": "OpenClaw Gateway",
         "to": "Jarvis",
         "summary": "Jarvis übernimmt die Verteilung an die Unteragenten und sammelt alle Rückgaben wieder ein.",
@@ -5000,7 +5072,7 @@
       },
       {
         "topic": "Subagenten",
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "from": "Jarvis",
         "to": "Forge",
         "summary": "Forge, Sentinel, Oracle, Muse, Heimdall und Friday arbeiten unter Jarvis als fachliche Ausführungsschicht.",
@@ -5009,7 +5081,7 @@
       },
       {
         "topic": "Escalation",
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "from": "Jarvis",
         "to": "Claude Code",
         "summary": "Claude, Claude Code und Codex werden nur bei Gegenprüfung oder größeren Coding-Aufgaben zugeschaltet.",
@@ -5018,7 +5090,7 @@
       },
       {
         "topic": "Speicher",
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "from": "Jarvis",
         "to": "Obsidian",
         "summary": "Der Vault bleibt das Brain. Wissen wird verdichtet und über Brain-Vault-Quellen synchron gehalten.",
@@ -5027,7 +5099,7 @@
       },
       {
         "topic": "Rückgabe",
-        "time": "13.08.26, 00:49",
+        "time": "13.08.26, 12:09",
         "from": "Jarvis",
         "to": "Hermes",
         "summary": "Jarvis gibt erst nach Review an Hermes zurück. Hermes antwortet anschliessend an dich.",
@@ -5093,48 +5165,48 @@
         "platforms": {
           "telegram": {
             "state": "connected",
-            "updated_at": "2026-08-12T21:29:19.911328+00:00"
+            "updated_at": "2026-08-13T10:03:17.422607+00:00"
           }
         },
-        "updated_at": "2026-08-12T21:29:19.935181+00:00"
+        "updated_at": "2026-08-13T10:03:17.443441+00:00"
       },
       "gatewayLifecycle": {
         "phase": "unknown",
         "updated_at": null
       },
       "channelDirectory": {
-        "updated_at": "2026-08-13T00:48:32.351482",
+        "updated_at": "2026-08-13T12:07:18.923684",
         "platformCounts": {
           "telegram": 1
         }
       },
       "brainVaultState": {
-        "last_run_utc": "2026-08-12T22:39:41.595350",
+        "last_run_utc": "2026-08-13T09:40:20.986338",
         "last_added": 12,
-        "processed_count": 941
+        "processed_count": 1224
       },
       "argusBridgeState": {
         "warning_count": 1,
         "last_warning": "MacBook RAM bei 96%"
       },
       "activeSessionsState": {
-        "count": 8
+        "count": 0
       },
       "counts": {
-        "sessions": 2444,
-        "messages": 24962,
+        "sessions": 3684,
+        "messages": 29021,
         "delegations": 1,
         "obligations": 17,
         "routing": 1
       },
       "activeTelegramSession": {
-        "id": "3_004851",
+        "id": "3_120419",
         "source": "cron",
-        "model": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "message_count": 1,
-        "tool_call_count": 0,
-        "started_at": 1786574932.981733,
-        "ended_at": null,
+        "model": "smart",
+        "message_count": 10,
+        "tool_call_count": 4,
+        "started_at": 1786615462.111001,
+        "ended_at": 1786615482.203169,
         "title": "Aktive Telegram-Session",
         "session_key": "Telegram Direktnachricht",
         "chat_type": "dm",
@@ -5186,7 +5258,7 @@
         "name": "Hermes state.db",
         "kind": "Runtime",
         "state": "live",
-        "detail": "2444 Sessions, 24962 Nachrichten, 1 Delegationen",
+        "detail": "3684 Sessions, 29021 Nachrichten, 1 Delegationen",
         "route": "Hermes / state.db",
         "channel": "SQLite"
       },
@@ -5210,7 +5282,7 @@
         "name": "Channel Directory",
         "kind": "Routing",
         "state": "connected",
-        "detail": "Channels: 1 • updated 13.08.26, 00:48",
+        "detail": "Channels: 1 • updated 13.08.26, 12:07",
         "route": "Hermes / Channel Directory",
         "channel": "Directory"
       },
@@ -5218,7 +5290,7 @@
         "name": "Brain Vault State",
         "kind": "Memory",
         "state": "sync",
-        "detail": "Last run 2026-08-12T22:39:41.595350 • Added 12",
+        "detail": "Last run 2026-08-13T09:40:20.986338 • Added 12",
         "route": "Hermes / Brain Vault",
         "channel": "Vault"
       },
@@ -5233,8 +5305,8 @@
       {
         "name": "Active Sessions",
         "kind": "Runtime",
-        "state": "live",
-        "detail": "8 aktive Runtime-Einträge",
+        "state": "sync",
+        "detail": "0 aktive Runtime-Einträge",
         "route": "Hermes / Active Sessions",
         "channel": "JSON"
       }
@@ -5243,177 +5315,193 @@
       {
         "name": "Hermes Session 1",
         "role": "cron",
-        "route": "Session 3_004851",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "live",
-        "statusLabel": "Live",
+        "route": "Session 3_120419",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
         "tags": [
-          "1 Nachrichten"
+          "10 Nachrichten",
+          "4 Tools",
+          "Ende: cron_complete"
         ]
       },
       {
         "name": "Hermes Session 2",
-        "role": "cli",
-        "route": "Session 0_a31186",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "live",
-        "statusLabel": "Live",
+        "role": "cron",
+        "route": "Session 3_120009",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
         "tags": [
-          "1 Nachrichten"
+          "7 Nachrichten",
+          "3 Tools",
+          "Ende: cron_complete"
         ]
       },
       {
         "name": "Hermes Session 3",
-        "role": "cli",
-        "route": "Session 0_4a6ad7",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "live",
-        "statusLabel": "Live",
+        "role": "cron",
+        "route": "Session 3_115509",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
         "tags": [
-          "1 Nachrichten"
+          "43 Nachrichten",
+          "21 Tools",
+          "Ende: cron_complete"
         ]
       },
       {
         "name": "Hermes Session 4",
-        "role": "cli",
-        "route": "Session 9_5d24b1",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "live",
-        "statusLabel": "Live",
+        "role": "cron",
+        "route": "Session 3_115508",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
         "tags": [
-          "1 Nachrichten"
+          "41 Nachrichten",
+          "20 Tools",
+          "Ende: cron_complete"
         ]
       },
       {
         "name": "Hermes Session 5",
-        "role": "cli",
-        "route": "Session 0_cbb90f",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "live",
-        "statusLabel": "Live",
+        "role": "cron",
+        "route": "Session 3_115308",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
         "tags": [
-          "1 Nachrichten"
+          "12 Nachrichten",
+          "5 Tools",
+          "Ende: cron_complete"
         ]
       },
       {
         "name": "Hermes Session 6",
-        "role": "cli",
-        "route": "Session 0_082cb9",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "live",
-        "statusLabel": "Live",
+        "role": "cron",
+        "route": "Session 3_114206",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
         "tags": [
-          "1 Nachrichten"
+          "4 Nachrichten",
+          "1 Tools",
+          "Ende: cron_complete"
         ]
       },
       {
         "name": "Hermes Session 7",
-        "role": "cli",
-        "route": "Session 0_1d81fe",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "live",
-        "statusLabel": "Live",
+        "role": "cron",
+        "route": "Session 3_113906",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
         "tags": [
-          "1 Nachrichten"
+          "14 Nachrichten",
+          "6 Tools",
+          "Ende: cron_complete"
         ]
       },
       {
         "name": "Hermes Session 8",
-        "role": "cli",
-        "route": "Session 0_b4417c",
-        "channel": "nvidia/nemotron-3-ultra-550b-a55b:free",
-        "status": "live",
-        "statusLabel": "Live",
+        "role": "cron",
+        "route": "Session 3_113105",
+        "channel": "smart",
+        "status": "connected",
+        "statusLabel": "Historisch",
         "tags": [
-          "1 Nachrichten"
+          "12 Nachrichten",
+          "5 Tools",
+          "Ende: cron_complete"
         ]
       }
     ],
     "recentMessages": [
       {
-        "topic": "USER • 3_004851",
-        "time": "13.08.26, 00:48",
-        "from": "user",
+        "topic": "ASSISTANT • 3_120419",
+        "time": "13.08.26, 12:04",
+        "from": "assistant",
         "to": "Hermes",
-        "summary": "[IMPORTANT: The user has invoked the \"kanban-pipeline\" skill, indicating they want you to follow its instructions. The full skill content i…",
-        "status": "connected",
-        "statusLabel": "User"
+        "summary": "[SILENT]",
+        "status": "live",
+        "statusLabel": "Assistant"
       },
       {
-        "topic": "USER • 0_a31186",
-        "time": "13.08.26, 00:44",
-        "from": "user",
-        "to": "Hermes",
-        "summary": "work kanban task t_099c24db",
-        "status": "connected",
-        "statusLabel": "User"
+        "topic": "TOOL • 3_120419",
+        "time": "13.08.26, 12:04",
+        "from": "tool",
+        "to": "terminal",
+        "summary": "{\"output\": \"(no matching tasks)\", \"exit_code\": 0, \"error\": null}",
+        "status": "info",
+        "statusLabel": "System"
       },
       {
-        "topic": "USER • 0_4a6ad7",
-        "time": "13.08.26, 00:44",
-        "from": "user",
+        "topic": "ASSISTANT • 3_120419",
+        "time": "13.08.26, 12:04",
+        "from": "assistant",
         "to": "Hermes",
-        "summary": "work kanban task t_bced9d45",
-        "status": "connected",
-        "statusLabel": "User"
+        "summary": "assistant Aktivität • kein Textinhalt",
+        "status": "live",
+        "statusLabel": "Assistant"
       },
       {
-        "topic": "USER • 9_5d24b1",
-        "time": "13.08.26, 00:44",
-        "from": "user",
-        "to": "Hermes",
-        "summary": "work kanban task t_7e2395c4",
-        "status": "connected",
-        "statusLabel": "User"
+        "topic": "TOOL • 3_120419",
+        "time": "13.08.26, 12:04",
+        "from": "tool",
+        "to": "terminal",
+        "summary": "{\"output\": \"usage: hermes kanban [-h] [--board <slug>]\\n {init,boards,create,swarm,list,ls,show,assign,set-model,reclaim,reassign,diagnosti…",
+        "status": "info",
+        "statusLabel": "System"
       },
       {
-        "topic": "USER • 0_cbb90f",
-        "time": "13.08.26, 00:44",
-        "from": "user",
+        "topic": "ASSISTANT • 3_120419",
+        "time": "13.08.26, 12:04",
+        "from": "assistant",
         "to": "Hermes",
-        "summary": "work kanban task t_60260932",
-        "status": "connected",
-        "statusLabel": "User"
+        "summary": "assistant Aktivität • kein Textinhalt",
+        "status": "live",
+        "statusLabel": "Assistant"
       },
       {
-        "topic": "USER • 0_082cb9",
-        "time": "13.08.26, 00:44",
-        "from": "user",
-        "to": "Hermes",
-        "summary": "work kanban task t_b46052b6",
-        "status": "connected",
-        "statusLabel": "User"
+        "topic": "TOOL • 3_120419",
+        "time": "13.08.26, 12:04",
+        "from": "tool",
+        "to": "terminal",
+        "summary": "{\"output\": \"usage: hermes [-h] [--version] [-z PROMPT] [--usage-file PATH] [-m MODEL]\\n [--provider PROVIDER] [-t TOOLSETS] [--resume SESSI…",
+        "status": "info",
+        "statusLabel": "System"
       },
       {
-        "topic": "USER • 0_1d81fe",
-        "time": "13.08.26, 00:44",
-        "from": "user",
+        "topic": "ASSISTANT • 3_120419",
+        "time": "13.08.26, 12:04",
+        "from": "assistant",
         "to": "Hermes",
-        "summary": "work kanban task t_aa12cf64",
-        "status": "connected",
-        "statusLabel": "User"
+        "summary": "assistant Aktivität • kein Textinhalt",
+        "status": "live",
+        "statusLabel": "Assistant"
       },
       {
-        "topic": "USER • 0_b4417c",
-        "time": "13.08.26, 00:44",
-        "from": "user",
-        "to": "Hermes",
-        "summary": "work kanban task t_297d6964",
-        "status": "connected",
-        "statusLabel": "User"
+        "topic": "TOOL • 3_120419",
+        "time": "13.08.26, 12:04",
+        "from": "tool",
+        "to": "process",
+        "summary": "{\"error\": \"session_id is required for poll\"} [Tool loop warning: repeated_exact_failure_warning; count=1; process has failed 1 times with i…",
+        "status": "info",
+        "statusLabel": "System"
       },
       {
-        "topic": "USER • 9_99b293",
-        "time": "13.08.26, 00:44",
-        "from": "user",
+        "topic": "ASSISTANT • 3_120419",
+        "time": "13.08.26, 12:04",
+        "from": "assistant",
         "to": "Hermes",
-        "summary": "work kanban task t_2ef910ec",
-        "status": "connected",
-        "statusLabel": "User"
+        "summary": "assistant Aktivität • kein Textinhalt",
+        "status": "live",
+        "statusLabel": "Assistant"
       },
       {
-        "topic": "USER • 3_003953",
-        "time": "13.08.26, 00:40",
+        "topic": "USER • 3_120419",
+        "time": "13.08.26, 12:04",
         "from": "user",
         "to": "Hermes",
         "summary": "[IMPORTANT: The user has invoked the \"kanban-pipeline\" skill, indicating they want you to follow its instructions. The full skill content i…",
